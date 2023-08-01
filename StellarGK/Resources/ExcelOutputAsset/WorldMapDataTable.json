@@ -1,0 +1,192 @@
+[
+    {
+        "id": 0,
+        "name": 5408,
+        "unlockUserLevel": 1,
+        "resourceId": 0,
+        "c_idx": 5,
+        "resource": "c_005_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "-"
+    },
+    {
+        "id": 1,
+        "name": 5398,
+        "unlockUserLevel": 1,
+        "resourceId": 8,
+        "c_idx": 26,
+        "resource": "c_026_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_01"
+    },
+    {
+        "id": 2,
+        "name": 5399,
+        "unlockUserLevel": 1,
+        "resourceId": 3,
+        "c_idx": 14,
+        "resource": "c_014_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_02"
+    },
+    {
+        "id": 3,
+        "name": 5400,
+        "unlockUserLevel": 1,
+        "resourceId": 6,
+        "c_idx": 19,
+        "resource": "c_019_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_03"
+    },
+    {
+        "id": 4,
+        "name": 5401,
+        "unlockUserLevel": 1,
+        "resourceId": 1,
+        "c_idx": 12,
+        "resource": "c_012_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_04"
+    },
+    {
+        "id": 5,
+        "name": 5402,
+        "unlockUserLevel": 1,
+        "resourceId": 7,
+        "c_idx": 7,
+        "resource": "c_007_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_05"
+    },
+    {
+        "id": 6,
+        "name": 5403,
+        "unlockUserLevel": 1,
+        "resourceId": 2,
+        "c_idx": 10,
+        "resource": "c_010_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_06"
+    },
+    {
+        "id": 7,
+        "name": 5404,
+        "unlockUserLevel": 1,
+        "resourceId": 5,
+        "c_idx": 27,
+        "resource": "c_027_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_07"
+    },
+    {
+        "id": 8,
+        "name": 5405,
+        "unlockUserLevel": 1,
+        "resourceId": 9,
+        "c_idx": 20,
+        "resource": "c_020_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_08"
+    },
+    {
+        "id": 9,
+        "name": 5406,
+        "unlockUserLevel": 1,
+        "resourceId": 4,
+        "c_idx": 30,
+        "resource": "c_030_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_09"
+    },
+    {
+        "id": 10,
+        "name": 5407,
+        "unlockUserLevel": 1,
+        "resourceId": 10,
+        "c_idx": 16,
+        "resource": "c_016_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_10"
+    },
+    {
+        "id": 11,
+        "name": 6145,
+        "unlockUserLevel": 1,
+        "resourceId": 11,
+        "c_idx": 47,
+        "resource": "c_047_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_11"
+    },
+    {
+        "id": 12,
+        "name": 6146,
+        "unlockUserLevel": 1,
+        "resourceId": 12,
+        "c_idx": 50,
+        "resource": "c_050_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_12"
+    },
+    {
+        "id": 13,
+        "name": 6147,
+        "unlockUserLevel": 1,
+        "resourceId": 10,
+        "c_idx": 51,
+        "resource": "c_051_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_13"
+    },
+    {
+        "id": 14,
+        "name": 6148,
+        "unlockUserLevel": 1,
+        "resourceId": 2,
+        "c_idx": 48,
+        "resource": "c_048_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_14"
+    },
+    {
+        "id": 15,
+        "name": 6149,
+        "unlockUserLevel": 1,
+        "resourceId": 9,
+        "c_idx": 62,
+        "resource": "c_062_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_15"
+    },
+    {
+        "id": "16",
+        "name": "6150",
+        "unlockUserLevel": 1,
+        "resourceId": 6,
+        "c_idx": 75,
+        "resource": "c_075_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_04"
+    },
+    {
+        "id": "17",
+        "name": "6151",
+        "unlockUserLevel": 1,
+        "resourceId": 3,
+        "c_idx": 85,
+        "resource": "c_085_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_02"
+    },
+    {
+        "id": "18",
+        "name": "6152",
+        "unlockUserLevel": 1,
+        "resourceId": 8,
+        "c_idx": 92,
+        "resource": "c_092_t3",
+        "bgm": "Pocket_BGM_Chapter_001",
+        "listImg": "battlefieldsearch_01"
+    }
+]

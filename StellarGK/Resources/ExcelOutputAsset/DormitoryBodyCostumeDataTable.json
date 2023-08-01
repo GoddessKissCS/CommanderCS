@@ -1,0 +1,178 @@
+[
+    {
+        "ctid": 1,
+        "name": 6000001,
+        "desc": 6100001,
+        "atlasNumber": 1,
+        "skinSort": 1,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_999",
+        "resource": "sd_b_0001",
+        "decoIdx": 0
+    },
+    {
+        "ctid": 2,
+        "name": 6000002,
+        "desc": 6100002,
+        "atlasNumber": 1,
+        "skinSort": 2,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_005",
+        "resource": "sd_b_0002",
+        "decoIdx": 0
+    },
+    {
+        "ctid": 3,
+        "name": 6000003,
+        "desc": 6100003,
+        "atlasNumber": 1,
+        "skinSort": 3,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_001",
+        "resource": "sd_b_0003",
+        "decoIdx": 0
+    },
+    {
+        "ctid": 4,
+        "name": 6000004,
+        "desc": 6100004,
+        "atlasNumber": 1,
+        "skinSort": 4,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_002",
+        "resource": "sd_b_0004",
+        "decoIdx": 0
+    },
+    {
+        "ctid": 5,
+        "name": 6000005,
+        "desc": 6100005,
+        "atlasNumber": 1,
+        "skinSort": 5,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_004",
+        "resource": "sd_b_0005",
+        "decoIdx": 0
+    },
+    {
+        "ctid": 6,
+        "name": 6000006,
+        "desc": 6100006,
+        "atlasNumber": 1,
+        "skinSort": 6,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_003",
+        "resource": "sd_b_0006",
+        "decoIdx": 0
+    },
+    {
+        "ctid": 7,
+        "name": 6000007,
+        "desc": 6100007,
+        "atlasNumber": 1,
+        "skinSort": 7,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_008",
+        "resource": "sd_b_0007",
+        "decoIdx": 0
+    },
+    {
+        "ctid": 8,
+        "name": 6000008,
+        "desc": 6100008,
+        "atlasNumber": 1,
+        "skinSort": 8,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_007",
+        "resource": "sd_b_0008",
+        "decoIdx": 0
+    },
+    {
+        "ctid": 9,
+        "name": 6000009,
+        "desc": 6100009,
+        "atlasNumber": 1,
+        "skinSort": 9,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_009",
+        "resource": "sd_b_0009",
+        "decoIdx": 0
+    },
+    {
+        "ctid": 10,
+        "name": 6000010,
+        "desc": 6100010,
+        "atlasNumber": 1,
+        "skinSort": 10,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_006",
+        "resource": "sd_b_0010",
+        "decoIdx": 0
+    },
+    {
+        "ctid": 11,
+        "name": 6000011,
+        "desc": 6100011,
+        "atlasNumber": 1,
+        "skinSort": 11,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_011",
+        "resource": "sd_b_0011",
+        "decoIdx": 1
+    },
+    {
+        "ctid": 12,
+        "name": 6000012,
+        "desc": 6100012,
+        "atlasNumber": 1,
+        "skinSort": 12,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_012",
+        "resource": "sd_b_0012",
+        "decoIdx": 1
+    },
+    {
+        "ctid": 13,
+        "name": 6000013,
+        "desc": 6100013,
+        "atlasNumber": 1,
+        "skinSort": 13,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_013",
+        "resource": "sd_b_0013",
+        "decoIdx": 1
+    },
+    {
+        "ctid": 14,
+        "name": 6000014,
+        "desc": 6100014,
+        "atlasNumber": 1,
+        "skinSort": 14,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_014",
+        "resource": "sd_b_0014",
+        "decoIdx": 2
+    },
+    {
+        "ctid": 15,
+        "name": 6000015,
+        "desc": 6100015,
+        "atlasNumber": 1,
+        "skinSort": 15,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_015",
+        "resource": "sd_b_0015",
+        "decoIdx": 2
+    },
+    {
+        "ctid": 16,
+        "name": 6000016,
+        "desc": 6100016,
+        "atlasNumber": 1,
+        "skinSort": 16,
+        "aniTpye": 1,
+        "thumbnail": "cosbody_icon_016",
+        "resource": "sd_b_0016",
+        "decoIdx": 2
+    }
+]

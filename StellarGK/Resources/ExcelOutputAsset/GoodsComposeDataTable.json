@@ -1,0 +1,72 @@
+[
+    {
+        "idx": 1,
+        "composeIdx": 4001,
+        "value": 5,
+        "rewardIdx": 4002,
+        "rewardValue": 1
+    },
+    {
+        "idx": 2,
+        "composeIdx": 4002,
+        "value": 5,
+        "rewardIdx": 4003,
+        "rewardValue": 1
+    },
+    {
+        "idx": 3,
+        "composeIdx": 4005,
+        "value": 5,
+        "rewardIdx": 4006,
+        "rewardValue": 1
+    },
+    {
+        "idx": 4,
+        "composeIdx": 4006,
+        "value": 5,
+        "rewardIdx": 4007,
+        "rewardValue": 1
+    },
+    {
+        "idx": 5,
+        "composeIdx": 4009,
+        "value": 5,
+        "rewardIdx": 4010,
+        "rewardValue": 1
+    },
+    {
+        "idx": 6,
+        "composeIdx": 4010,
+        "value": 5,
+        "rewardIdx": 4011,
+        "rewardValue": 1
+    },
+    {
+        "idx": 7,
+        "composeIdx": 4013,
+        "value": 5,
+        "rewardIdx": 4014,
+        "rewardValue": 1
+    },
+    {
+        "idx": 8,
+        "composeIdx": 4014,
+        "value": 5,
+        "rewardIdx": 4015,
+        "rewardValue": 1
+    },
+    {
+        "idx": 9,
+        "composeIdx": 4017,
+        "value": 5,
+        "rewardIdx": 4018,
+        "rewardValue": 1
+    },
+    {
+        "idx": 10,
+        "composeIdx": 4018,
+        "value": 5,
+        "rewardIdx": 4019,
+        "rewardValue": 1
+    }
+]

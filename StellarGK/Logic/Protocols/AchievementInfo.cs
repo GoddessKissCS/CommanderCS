@@ -1,0 +1,37 @@
+﻿using Newtonsoft.Json;
+
+namespace StellarGK.Logic.Protocols
+{
+
+    [JsonObject(MemberSerialization.OptIn)]
+    public class AchievementInfo
+    {
+        [JsonProperty("achv")]
+        public List<AchievementData> AchievementList { get; set; }
+
+        [JsonProperty("acg")]
+        public int goal { get; set; }
+
+        [JsonProperty("accc")]
+        public int completeCount { get; set; }
+
+        [JsonObject(MemberSerialization.OptIn)]
+        public class AchievementData
+        {
+            [JsonProperty("acid")]
+            public int achievementId { get; set; }
+
+            [JsonProperty("asot")]
+            public int sort { get; set; }
+
+            [JsonProperty("apt")]
+            public int point { get; set; }
+
+            [JsonProperty("fin")]
+            public int complete { get; set; }
+
+            [JsonProperty("arcv")]
+            public int receive { get; set; }
+        }
+    }
+}

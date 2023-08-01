@@ -1,0 +1,26 @@
+﻿using Newtonsoft.Json;
+
+namespace StellarGK.Logic.Protocols
+{
+    [JsonObject(MemberSerialization.OptIn)]
+    public class EventRaidRankingData
+    {
+        [JsonProperty("uname")]
+        public string userName { get; set; }
+
+        [JsonProperty("thumb")]
+        public string userThumb { get; set; }
+
+        [JsonProperty("level")]
+        public string level { get; set; }
+
+        [JsonProperty("accdmg")]
+        public int damage { get; set; }
+
+        [JsonProperty("authority")]
+        public int authority { get; set; }
+
+        [JsonProperty("isown")]
+        public int isown { get; set; }
+    }
+}

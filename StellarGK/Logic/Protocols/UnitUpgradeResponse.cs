@@ -1,0 +1,40 @@
+﻿using Newtonsoft.Json;
+
+namespace StellarGK.Logic.Protocols
+{
+    [JsonObject(MemberSerialization.OptIn)]
+    public class UnitUpgradeResponse
+    {
+        [JsonProperty("ursc")]
+        public List<UserInformationResponse.PartData> partData { get; set; }
+
+        [JsonProperty("rsoc")]
+        public Resource goodsInfo { get; set; }
+
+        [JsonProperty("unit")]
+        public Dictionary<string, Unit> unitInfo { get; set; }
+
+        [JsonObject(MemberSerialization.OptIn)]
+        public class Resource
+        {
+            [JsonProperty("gold")]
+            public string __gold { get; set; }
+
+            [JsonProperty("abp")]
+            public string __blueprintArmy { get; set; }
+        }
+
+        [JsonObject(MemberSerialization.OptIn)]
+        public class Unit
+        {
+            [JsonProperty("uid")]
+            public string id;
+
+            [JsonProperty("lv")]
+            public int level;
+
+            [JsonProperty("sklv")]
+            public int sklv;
+        }
+    }
+}

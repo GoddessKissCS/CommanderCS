@@ -1,0 +1,1622 @@
+[
+  {
+    "Idx": 1,
+    "buffTarget": 1,
+    "buffLevel": 1,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 100,
+    "upgradeCoin": 30
+  },
+  {
+    "Idx": 2,
+    "buffTarget": 1,
+    "buffLevel": 2,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 200,
+    "upgradeCoin": 60
+  },
+  {
+    "Idx": 3,
+    "buffTarget": 1,
+    "buffLevel": 3,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 300,
+    "upgradeCoin": 90
+  },
+  {
+    "Idx": 4,
+    "buffTarget": 1,
+    "buffLevel": 4,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 400,
+    "upgradeCoin": 120
+  },
+  {
+    "Idx": 5,
+    "buffTarget": 1,
+    "buffLevel": 5,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 500,
+    "upgradeCoin": 150
+  },
+  {
+    "Idx": 6,
+    "buffTarget": 1,
+    "buffLevel": 6,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 600,
+    "upgradeCoin": 180
+  },
+  {
+    "Idx": 7,
+    "buffTarget": 1,
+    "buffLevel": 7,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 700,
+    "upgradeCoin": 210
+  },
+  {
+    "Idx": 8,
+    "buffTarget": 1,
+    "buffLevel": 8,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 800,
+    "upgradeCoin": 240
+  },
+  {
+    "Idx": 9,
+    "buffTarget": 1,
+    "buffLevel": 9,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 900,
+    "upgradeCoin": 270
+  },
+  {
+    "Idx": 10,
+    "buffTarget": 1,
+    "buffLevel": 10,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1000,
+    "upgradeCoin": 300
+  },
+  {
+    "Idx": 11,
+    "buffTarget": 1,
+    "buffLevel": 11,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1100,
+    "upgradeCoin": 330
+  },
+  {
+    "Idx": 12,
+    "buffTarget": 1,
+    "buffLevel": 12,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1200,
+    "upgradeCoin": 360
+  },
+  {
+    "Idx": 13,
+    "buffTarget": 1,
+    "buffLevel": 13,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1300,
+    "upgradeCoin": 390
+  },
+  {
+    "Idx": 14,
+    "buffTarget": 1,
+    "buffLevel": 14,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1400,
+    "upgradeCoin": 420
+  },
+  {
+    "Idx": 15,
+    "buffTarget": 1,
+    "buffLevel": 15,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1500,
+    "upgradeCoin": 450
+  },
+  {
+    "Idx": 16,
+    "buffTarget": 1,
+    "buffLevel": 16,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1600,
+    "upgradeCoin": 480
+  },
+  {
+    "Idx": 17,
+    "buffTarget": 1,
+    "buffLevel": 17,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1700,
+    "upgradeCoin": 510
+  },
+  {
+    "Idx": 18,
+    "buffTarget": 1,
+    "buffLevel": 18,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1800,
+    "upgradeCoin": 540
+  },
+  {
+    "Idx": 19,
+    "buffTarget": 1,
+    "buffLevel": 19,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1900,
+    "upgradeCoin": 570
+  },
+  {
+    "Idx": 20,
+    "buffTarget": 1,
+    "buffLevel": 20,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2000,
+    "upgradeCoin": 600
+  },
+  {
+    "Idx": 21,
+    "buffTarget": 1,
+    "buffLevel": 21,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2100,
+    "upgradeCoin": 630
+  },
+  {
+    "Idx": 22,
+    "buffTarget": 1,
+    "buffLevel": 22,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2200,
+    "upgradeCoin": 660
+  },
+  {
+    "Idx": 23,
+    "buffTarget": 1,
+    "buffLevel": 23,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2300,
+    "upgradeCoin": 690
+  },
+  {
+    "Idx": 24,
+    "buffTarget": 1,
+    "buffLevel": 24,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2400,
+    "upgradeCoin": 720
+  },
+  {
+    "Idx": 25,
+    "buffTarget": 1,
+    "buffLevel": 25,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2500,
+    "upgradeCoin": 750
+  },
+  {
+    "Idx": 26,
+    "buffTarget": 1,
+    "buffLevel": 26,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2600,
+    "upgradeCoin": 780
+  },
+  {
+    "Idx": 27,
+    "buffTarget": 1,
+    "buffLevel": 27,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2700,
+    "upgradeCoin": 810
+  },
+  {
+    "Idx": 28,
+    "buffTarget": 1,
+    "buffLevel": 28,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2800,
+    "upgradeCoin": 840
+  },
+  {
+    "Idx": 29,
+    "buffTarget": 1,
+    "buffLevel": 29,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2900,
+    "upgradeCoin": 870
+  },
+  {
+    "Idx": 30,
+    "buffTarget": 1,
+    "buffLevel": 30,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 3000,
+    "upgradeCoin": 900
+  },
+  {
+    "Idx": 1001,
+    "buffTarget": 1,
+    "buffLevel": 1,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 100,
+    "upgradeCoin": 30
+  },
+  {
+    "Idx": 1002,
+    "buffTarget": 1,
+    "buffLevel": 2,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 200,
+    "upgradeCoin": 60
+  },
+  {
+    "Idx": 1003,
+    "buffTarget": 1,
+    "buffLevel": 3,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 300,
+    "upgradeCoin": 90
+  },
+  {
+    "Idx": 1004,
+    "buffTarget": 1,
+    "buffLevel": 4,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 400,
+    "upgradeCoin": 120
+  },
+  {
+    "Idx": 1005,
+    "buffTarget": 1,
+    "buffLevel": 5,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 500,
+    "upgradeCoin": 150
+  },
+  {
+    "Idx": 1006,
+    "buffTarget": 1,
+    "buffLevel": 6,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 600,
+    "upgradeCoin": 180
+  },
+  {
+    "Idx": 1007,
+    "buffTarget": 1,
+    "buffLevel": 7,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 700,
+    "upgradeCoin": 210
+  },
+  {
+    "Idx": 1008,
+    "buffTarget": 1,
+    "buffLevel": 8,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 800,
+    "upgradeCoin": 240
+  },
+  {
+    "Idx": 1009,
+    "buffTarget": 1,
+    "buffLevel": 9,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 900,
+    "upgradeCoin": 270
+  },
+  {
+    "Idx": 1010,
+    "buffTarget": 1,
+    "buffLevel": 10,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1000,
+    "upgradeCoin": 300
+  },
+  {
+    "Idx": 1011,
+    "buffTarget": 1,
+    "buffLevel": 11,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1100,
+    "upgradeCoin": 330
+  },
+  {
+    "Idx": 1012,
+    "buffTarget": 1,
+    "buffLevel": 12,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1200,
+    "upgradeCoin": 360
+  },
+  {
+    "Idx": 1013,
+    "buffTarget": 1,
+    "buffLevel": 13,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1300,
+    "upgradeCoin": 390
+  },
+  {
+    "Idx": 1014,
+    "buffTarget": 1,
+    "buffLevel": 14,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1400,
+    "upgradeCoin": 420
+  },
+  {
+    "Idx": 1015,
+    "buffTarget": 1,
+    "buffLevel": 15,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1500,
+    "upgradeCoin": 450
+  },
+  {
+    "Idx": 1016,
+    "buffTarget": 1,
+    "buffLevel": 16,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1600,
+    "upgradeCoin": 480
+  },
+  {
+    "Idx": 1017,
+    "buffTarget": 1,
+    "buffLevel": 17,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1700,
+    "upgradeCoin": 510
+  },
+  {
+    "Idx": 1018,
+    "buffTarget": 1,
+    "buffLevel": 18,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1800,
+    "upgradeCoin": 540
+  },
+  {
+    "Idx": 1019,
+    "buffTarget": 1,
+    "buffLevel": 19,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1900,
+    "upgradeCoin": 570
+  },
+  {
+    "Idx": 1020,
+    "buffTarget": 1,
+    "buffLevel": 20,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2000,
+    "upgradeCoin": 600
+  },
+  {
+    "Idx": 1021,
+    "buffTarget": 1,
+    "buffLevel": 21,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2100,
+    "upgradeCoin": 630
+  },
+  {
+    "Idx": 1022,
+    "buffTarget": 1,
+    "buffLevel": 22,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2200,
+    "upgradeCoin": 660
+  },
+  {
+    "Idx": 1023,
+    "buffTarget": 1,
+    "buffLevel": 23,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2300,
+    "upgradeCoin": 690
+  },
+  {
+    "Idx": 1024,
+    "buffTarget": 1,
+    "buffLevel": 24,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2400,
+    "upgradeCoin": 720
+  },
+  {
+    "Idx": 1025,
+    "buffTarget": 1,
+    "buffLevel": 25,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2500,
+    "upgradeCoin": 750
+  },
+  {
+    "Idx": 1026,
+    "buffTarget": 1,
+    "buffLevel": 26,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2600,
+    "upgradeCoin": 780
+  },
+  {
+    "Idx": 1027,
+    "buffTarget": 1,
+    "buffLevel": 27,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2700,
+    "upgradeCoin": 810
+  },
+  {
+    "Idx": 1028,
+    "buffTarget": 1,
+    "buffLevel": 28,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2800,
+    "upgradeCoin": 840
+  },
+  {
+    "Idx": 1029,
+    "buffTarget": 1,
+    "buffLevel": 29,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2900,
+    "upgradeCoin": 870
+  },
+  {
+    "Idx": 1030,
+    "buffTarget": 1,
+    "buffLevel": 30,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 3000,
+    "upgradeCoin": 900
+  },
+  {
+    "Idx": 2001,
+    "buffTarget": 2,
+    "buffLevel": 1,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 50,
+    "upgradeCoin": 30
+  },
+  {
+    "Idx": 2002,
+    "buffTarget": 2,
+    "buffLevel": 2,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 100,
+    "upgradeCoin": 60
+  },
+  {
+    "Idx": 2003,
+    "buffTarget": 2,
+    "buffLevel": 3,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 150,
+    "upgradeCoin": 90
+  },
+  {
+    "Idx": 2004,
+    "buffTarget": 2,
+    "buffLevel": 4,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 200,
+    "upgradeCoin": 120
+  },
+  {
+    "Idx": 2005,
+    "buffTarget": 2,
+    "buffLevel": 5,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 250,
+    "upgradeCoin": 150
+  },
+  {
+    "Idx": 2006,
+    "buffTarget": 2,
+    "buffLevel": 6,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 300,
+    "upgradeCoin": 180
+  },
+  {
+    "Idx": 2007,
+    "buffTarget": 2,
+    "buffLevel": 7,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 350,
+    "upgradeCoin": 210
+  },
+  {
+    "Idx": 2008,
+    "buffTarget": 2,
+    "buffLevel": 8,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 400,
+    "upgradeCoin": 240
+  },
+  {
+    "Idx": 2009,
+    "buffTarget": 2,
+    "buffLevel": 9,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 450,
+    "upgradeCoin": 270
+  },
+  {
+    "Idx": 2010,
+    "buffTarget": 2,
+    "buffLevel": 10,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 500,
+    "upgradeCoin": 300
+  },
+  {
+    "Idx": 2011,
+    "buffTarget": 2,
+    "buffLevel": 11,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 550,
+    "upgradeCoin": 330
+  },
+  {
+    "Idx": 2012,
+    "buffTarget": 2,
+    "buffLevel": 12,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 600,
+    "upgradeCoin": 360
+  },
+  {
+    "Idx": 2013,
+    "buffTarget": 2,
+    "buffLevel": 13,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 650,
+    "upgradeCoin": 390
+  },
+  {
+    "Idx": 2014,
+    "buffTarget": 2,
+    "buffLevel": 14,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 700,
+    "upgradeCoin": 420
+  },
+  {
+    "Idx": 2015,
+    "buffTarget": 2,
+    "buffLevel": 15,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 750,
+    "upgradeCoin": 450
+  },
+  {
+    "Idx": 2016,
+    "buffTarget": 2,
+    "buffLevel": 16,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 800,
+    "upgradeCoin": 480
+  },
+  {
+    "Idx": 2017,
+    "buffTarget": 2,
+    "buffLevel": 17,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 850,
+    "upgradeCoin": 510
+  },
+  {
+    "Idx": 2018,
+    "buffTarget": 2,
+    "buffLevel": 18,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 900,
+    "upgradeCoin": 540
+  },
+  {
+    "Idx": 2019,
+    "buffTarget": 2,
+    "buffLevel": 19,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 950,
+    "upgradeCoin": 570
+  },
+  {
+    "Idx": 2020,
+    "buffTarget": 2,
+    "buffLevel": 20,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 1000,
+    "upgradeCoin": 600
+  },
+  {
+    "Idx": 2021,
+    "buffTarget": 2,
+    "buffLevel": 21,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 1050,
+    "upgradeCoin": 630
+  },
+  {
+    "Idx": 2022,
+    "buffTarget": 2,
+    "buffLevel": 22,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 1100,
+    "upgradeCoin": 660
+  },
+  {
+    "Idx": 2023,
+    "buffTarget": 2,
+    "buffLevel": 23,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 1150,
+    "upgradeCoin": 690
+  },
+  {
+    "Idx": 2024,
+    "buffTarget": 2,
+    "buffLevel": 24,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 1200,
+    "upgradeCoin": 720
+  },
+  {
+    "Idx": 2025,
+    "buffTarget": 2,
+    "buffLevel": 25,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 1250,
+    "upgradeCoin": 750
+  },
+  {
+    "Idx": 2026,
+    "buffTarget": 2,
+    "buffLevel": 26,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 1300,
+    "upgradeCoin": 780
+  },
+  {
+    "Idx": 2027,
+    "buffTarget": 2,
+    "buffLevel": 27,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 1350,
+    "upgradeCoin": 810
+  },
+  {
+    "Idx": 2028,
+    "buffTarget": 2,
+    "buffLevel": 28,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 1400,
+    "upgradeCoin": 840
+  },
+  {
+    "Idx": 2029,
+    "buffTarget": 2,
+    "buffLevel": 29,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 1450,
+    "upgradeCoin": 870
+  },
+  {
+    "Idx": 2030,
+    "buffTarget": 2,
+    "buffLevel": 30,
+    "buffType": 2,
+    "buffEffectType": 1,
+    "buffAdd": 1500,
+    "upgradeCoin": 900
+  },
+  {
+    "Idx": 3001,
+    "buffTarget": 2,
+    "buffLevel": 1,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 50,
+    "upgradeCoin": 30
+  },
+  {
+    "Idx": 3002,
+    "buffTarget": 2,
+    "buffLevel": 2,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 100,
+    "upgradeCoin": 60
+  },
+  {
+    "Idx": 3003,
+    "buffTarget": 2,
+    "buffLevel": 3,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 150,
+    "upgradeCoin": 90
+  },
+  {
+    "Idx": 3004,
+    "buffTarget": 2,
+    "buffLevel": 4,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 200,
+    "upgradeCoin": 120
+  },
+  {
+    "Idx": 3005,
+    "buffTarget": 2,
+    "buffLevel": 5,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 250,
+    "upgradeCoin": 150
+  },
+  {
+    "Idx": 3006,
+    "buffTarget": 2,
+    "buffLevel": 6,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 300,
+    "upgradeCoin": 180
+  },
+  {
+    "Idx": 3007,
+    "buffTarget": 2,
+    "buffLevel": 7,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 350,
+    "upgradeCoin": 210
+  },
+  {
+    "Idx": 3008,
+    "buffTarget": 2,
+    "buffLevel": 8,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 400,
+    "upgradeCoin": 240
+  },
+  {
+    "Idx": 3009,
+    "buffTarget": 2,
+    "buffLevel": 9,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 450,
+    "upgradeCoin": 270
+  },
+  {
+    "Idx": 3010,
+    "buffTarget": 2,
+    "buffLevel": 10,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 500,
+    "upgradeCoin": 300
+  },
+  {
+    "Idx": 3011,
+    "buffTarget": 2,
+    "buffLevel": 11,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 550,
+    "upgradeCoin": 330
+  },
+  {
+    "Idx": 3012,
+    "buffTarget": 2,
+    "buffLevel": 12,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 600,
+    "upgradeCoin": 360
+  },
+  {
+    "Idx": 3013,
+    "buffTarget": 2,
+    "buffLevel": 13,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 650,
+    "upgradeCoin": 390
+  },
+  {
+    "Idx": 3014,
+    "buffTarget": 2,
+    "buffLevel": 14,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 700,
+    "upgradeCoin": 420
+  },
+  {
+    "Idx": 3015,
+    "buffTarget": 2,
+    "buffLevel": 15,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 750,
+    "upgradeCoin": 450
+  },
+  {
+    "Idx": 3016,
+    "buffTarget": 2,
+    "buffLevel": 16,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 800,
+    "upgradeCoin": 480
+  },
+  {
+    "Idx": 3017,
+    "buffTarget": 2,
+    "buffLevel": 17,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 850,
+    "upgradeCoin": 510
+  },
+  {
+    "Idx": 3018,
+    "buffTarget": 2,
+    "buffLevel": 18,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 900,
+    "upgradeCoin": 540
+  },
+  {
+    "Idx": 3019,
+    "buffTarget": 2,
+    "buffLevel": 19,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 950,
+    "upgradeCoin": 570
+  },
+  {
+    "Idx": 3020,
+    "buffTarget": 2,
+    "buffLevel": 20,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 1000,
+    "upgradeCoin": 600
+  },
+  {
+    "Idx": 3021,
+    "buffTarget": 2,
+    "buffLevel": 21,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 1050,
+    "upgradeCoin": 630
+  },
+  {
+    "Idx": 3022,
+    "buffTarget": 2,
+    "buffLevel": 22,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 1100,
+    "upgradeCoin": 660
+  },
+  {
+    "Idx": 3023,
+    "buffTarget": 2,
+    "buffLevel": 23,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 1150,
+    "upgradeCoin": 690
+  },
+  {
+    "Idx": 3024,
+    "buffTarget": 2,
+    "buffLevel": 24,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 1200,
+    "upgradeCoin": 720
+  },
+  {
+    "Idx": 3025,
+    "buffTarget": 2,
+    "buffLevel": 25,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 1250,
+    "upgradeCoin": 750
+  },
+  {
+    "Idx": 3026,
+    "buffTarget": 2,
+    "buffLevel": 26,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 1300,
+    "upgradeCoin": 780
+  },
+  {
+    "Idx": 3027,
+    "buffTarget": 2,
+    "buffLevel": 27,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 1350,
+    "upgradeCoin": 810
+  },
+  {
+    "Idx": 3028,
+    "buffTarget": 2,
+    "buffLevel": 28,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 1400,
+    "upgradeCoin": 840
+  },
+  {
+    "Idx": 3029,
+    "buffTarget": 2,
+    "buffLevel": 29,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 1450,
+    "upgradeCoin": 870
+  },
+  {
+    "Idx": 3030,
+    "buffTarget": 2,
+    "buffLevel": 30,
+    "buffType": 2,
+    "buffEffectType": 0,
+    "buffAdd": 1500,
+    "upgradeCoin": 900
+  },
+  {
+    "Idx": 4001,
+    "buffTarget": 3,
+    "buffLevel": 1,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 100,
+    "upgradeCoin": 30
+  },
+  {
+    "Idx": 4002,
+    "buffTarget": 3,
+    "buffLevel": 2,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 200,
+    "upgradeCoin": 60
+  },
+  {
+    "Idx": 4003,
+    "buffTarget": 3,
+    "buffLevel": 3,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 300,
+    "upgradeCoin": 90
+  },
+  {
+    "Idx": 4004,
+    "buffTarget": 3,
+    "buffLevel": 4,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 400,
+    "upgradeCoin": 120
+  },
+  {
+    "Idx": 4005,
+    "buffTarget": 3,
+    "buffLevel": 5,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 500,
+    "upgradeCoin": 150
+  },
+  {
+    "Idx": 4006,
+    "buffTarget": 3,
+    "buffLevel": 6,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 600,
+    "upgradeCoin": 180
+  },
+  {
+    "Idx": 4007,
+    "buffTarget": 3,
+    "buffLevel": 7,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 700,
+    "upgradeCoin": 210
+  },
+  {
+    "Idx": 4008,
+    "buffTarget": 3,
+    "buffLevel": 8,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 800,
+    "upgradeCoin": 240
+  },
+  {
+    "Idx": 4009,
+    "buffTarget": 3,
+    "buffLevel": 9,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 900,
+    "upgradeCoin": 270
+  },
+  {
+    "Idx": 4010,
+    "buffTarget": 3,
+    "buffLevel": 10,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1000,
+    "upgradeCoin": 300
+  },
+  {
+    "Idx": 4011,
+    "buffTarget": 3,
+    "buffLevel": 11,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1100,
+    "upgradeCoin": 330
+  },
+  {
+    "Idx": 4012,
+    "buffTarget": 3,
+    "buffLevel": 12,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1200,
+    "upgradeCoin": 360
+  },
+  {
+    "Idx": 4013,
+    "buffTarget": 3,
+    "buffLevel": 13,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1300,
+    "upgradeCoin": 390
+  },
+  {
+    "Idx": 4014,
+    "buffTarget": 3,
+    "buffLevel": 14,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1400,
+    "upgradeCoin": 420
+  },
+  {
+    "Idx": 4015,
+    "buffTarget": 3,
+    "buffLevel": 15,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1500,
+    "upgradeCoin": 450
+  },
+  {
+    "Idx": 4016,
+    "buffTarget": 3,
+    "buffLevel": 16,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1600,
+    "upgradeCoin": 480
+  },
+  {
+    "Idx": 4017,
+    "buffTarget": 3,
+    "buffLevel": 17,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1700,
+    "upgradeCoin": 510
+  },
+  {
+    "Idx": 4018,
+    "buffTarget": 3,
+    "buffLevel": 18,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1800,
+    "upgradeCoin": 540
+  },
+  {
+    "Idx": 4019,
+    "buffTarget": 3,
+    "buffLevel": 19,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 1900,
+    "upgradeCoin": 570
+  },
+  {
+    "Idx": 4020,
+    "buffTarget": 3,
+    "buffLevel": 20,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2000,
+    "upgradeCoin": 600
+  },
+  {
+    "Idx": 4021,
+    "buffTarget": 3,
+    "buffLevel": 21,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2100,
+    "upgradeCoin": 630
+  },
+  {
+    "Idx": 4022,
+    "buffTarget": 3,
+    "buffLevel": 22,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2200,
+    "upgradeCoin": 660
+  },
+  {
+    "Idx": 4023,
+    "buffTarget": 3,
+    "buffLevel": 23,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2300,
+    "upgradeCoin": 690
+  },
+  {
+    "Idx": 4024,
+    "buffTarget": 3,
+    "buffLevel": 24,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2400,
+    "upgradeCoin": 720
+  },
+  {
+    "Idx": 4025,
+    "buffTarget": 3,
+    "buffLevel": 25,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2500,
+    "upgradeCoin": 750
+  },
+  {
+    "Idx": 4026,
+    "buffTarget": 3,
+    "buffLevel": 26,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2600,
+    "upgradeCoin": 780
+  },
+  {
+    "Idx": 4027,
+    "buffTarget": 3,
+    "buffLevel": 27,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2700,
+    "upgradeCoin": 810
+  },
+  {
+    "Idx": 4028,
+    "buffTarget": 3,
+    "buffLevel": 28,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2800,
+    "upgradeCoin": 840
+  },
+  {
+    "Idx": 4029,
+    "buffTarget": 3,
+    "buffLevel": 29,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 2900,
+    "upgradeCoin": 870
+  },
+  {
+    "Idx": 4030,
+    "buffTarget": 3,
+    "buffLevel": 30,
+    "buffType": 1,
+    "buffEffectType": 1,
+    "buffAdd": 3000,
+    "upgradeCoin": 900
+  },
+  {
+    "Idx": 5001,
+    "buffTarget": 3,
+    "buffLevel": 1,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 100,
+    "upgradeCoin": 30
+  },
+  {
+    "Idx": 5002,
+    "buffTarget": 3,
+    "buffLevel": 2,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 200,
+    "upgradeCoin": 60
+  },
+  {
+    "Idx": 5003,
+    "buffTarget": 3,
+    "buffLevel": 3,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 300,
+    "upgradeCoin": 90
+  },
+  {
+    "Idx": 5004,
+    "buffTarget": 3,
+    "buffLevel": 4,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 400,
+    "upgradeCoin": 120
+  },
+  {
+    "Idx": 5005,
+    "buffTarget": 3,
+    "buffLevel": 5,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 500,
+    "upgradeCoin": 150
+  },
+  {
+    "Idx": 5006,
+    "buffTarget": 3,
+    "buffLevel": 6,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 600,
+    "upgradeCoin": 180
+  },
+  {
+    "Idx": 5007,
+    "buffTarget": 3,
+    "buffLevel": 7,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 700,
+    "upgradeCoin": 210
+  },
+  {
+    "Idx": 5008,
+    "buffTarget": 3,
+    "buffLevel": 8,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 800,
+    "upgradeCoin": 240
+  },
+  {
+    "Idx": 5009,
+    "buffTarget": 3,
+    "buffLevel": 9,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 900,
+    "upgradeCoin": 270
+  },
+  {
+    "Idx": 5010,
+    "buffTarget": 3,
+    "buffLevel": 10,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1000,
+    "upgradeCoin": 300
+  },
+  {
+    "Idx": 5011,
+    "buffTarget": 3,
+    "buffLevel": 11,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1100,
+    "upgradeCoin": 330
+  },
+  {
+    "Idx": 5012,
+    "buffTarget": 3,
+    "buffLevel": 12,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1200,
+    "upgradeCoin": 360
+  },
+  {
+    "Idx": 5013,
+    "buffTarget": 3,
+    "buffLevel": 13,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1300,
+    "upgradeCoin": 390
+  },
+  {
+    "Idx": 5014,
+    "buffTarget": 3,
+    "buffLevel": 14,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1400,
+    "upgradeCoin": 420
+  },
+  {
+    "Idx": 5015,
+    "buffTarget": 3,
+    "buffLevel": 15,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1500,
+    "upgradeCoin": 450
+  },
+  {
+    "Idx": 5016,
+    "buffTarget": 3,
+    "buffLevel": 16,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1600,
+    "upgradeCoin": 480
+  },
+  {
+    "Idx": 5017,
+    "buffTarget": 3,
+    "buffLevel": 17,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1700,
+    "upgradeCoin": 510
+  },
+  {
+    "Idx": 5018,
+    "buffTarget": 3,
+    "buffLevel": 18,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1800,
+    "upgradeCoin": 540
+  },
+  {
+    "Idx": 5019,
+    "buffTarget": 3,
+    "buffLevel": 19,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 1900,
+    "upgradeCoin": 570
+  },
+  {
+    "Idx": 5020,
+    "buffTarget": 3,
+    "buffLevel": 20,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2000,
+    "upgradeCoin": 600
+  },
+  {
+    "Idx": 5021,
+    "buffTarget": 3,
+    "buffLevel": 21,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2100,
+    "upgradeCoin": 630
+  },
+  {
+    "Idx": 5022,
+    "buffTarget": 3,
+    "buffLevel": 22,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2200,
+    "upgradeCoin": 660
+  },
+  {
+    "Idx": 5023,
+    "buffTarget": 3,
+    "buffLevel": 23,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2300,
+    "upgradeCoin": 690
+  },
+  {
+    "Idx": 5024,
+    "buffTarget": 3,
+    "buffLevel": 24,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2400,
+    "upgradeCoin": 720
+  },
+  {
+    "Idx": 5025,
+    "buffTarget": 3,
+    "buffLevel": 25,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2500,
+    "upgradeCoin": 750
+  },
+  {
+    "Idx": 5026,
+    "buffTarget": 3,
+    "buffLevel": 26,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2600,
+    "upgradeCoin": 780
+  },
+  {
+    "Idx": 5027,
+    "buffTarget": 3,
+    "buffLevel": 27,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2700,
+    "upgradeCoin": 810
+  },
+  {
+    "Idx": 5028,
+    "buffTarget": 3,
+    "buffLevel": 28,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2800,
+    "upgradeCoin": 840
+  },
+  {
+    "Idx": 5029,
+    "buffTarget": 3,
+    "buffLevel": 29,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 2900,
+    "upgradeCoin": 870
+  },
+  {
+    "Idx": 5030,
+    "buffTarget": 3,
+    "buffLevel": 30,
+    "buffType": 1,
+    "buffEffectType": 0,
+    "buffAdd": 3000,
+    "upgradeCoin": 900
+  }
+]

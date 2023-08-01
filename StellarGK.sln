@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StellarGK", "StellarGK\StellarGK.csproj", "{23E54B06-8A1A-4545-9EE9-0BFF2368EACA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandHandlerMappingsSourceGenerator", "CommandHandlerMappingsSourceGenerator\CommandHandlerMappingsSourceGenerator.csproj", "{60F44908-2161-4619-91C5-418D9B388983}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23E54B06-8A1A-4545-9EE9-0BFF2368EACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23E54B06-8A1A-4545-9EE9-0BFF2368EACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23E54B06-8A1A-4545-9EE9-0BFF2368EACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23E54B06-8A1A-4545-9EE9-0BFF2368EACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60F44908-2161-4619-91C5-418D9B388983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60F44908-2161-4619-91C5-418D9B388983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60F44908-2161-4619-91C5-418D9B388983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60F44908-2161-4619-91C5-418D9B388983}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB43E66E-ADB3-471D-B638-99F7C0BE8029}
+	EndGlobalSection
+EndGlobal

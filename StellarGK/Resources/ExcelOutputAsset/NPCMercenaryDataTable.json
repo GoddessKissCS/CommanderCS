@@ -1,0 +1,104 @@
+[
+    {
+        "id": 10001,
+        "wave": 1,
+        "commanderId": 109,
+        "unitId": 5109,
+        "unitLevel": 99,
+        "unitGrade": 5,
+        "unitClass": 20,
+        "skillLevel": [
+            90,
+            90,
+            90,
+            90
+        ],
+        "unitScale": 100,
+        "explanation": 99991
+    },
+    {
+        "id": 10002,
+        "wave": 1,
+        "commanderId": 0,
+        "unitId": 0,
+        "unitLevel": 99,
+        "unitGrade": 5,
+        "unitClass": 20,
+        "skillLevel": [
+            90,
+            90,
+            90,
+            90
+        ],
+        "unitScale": 100,
+        "explanation": 99992
+    },
+    {
+        "id": 10003,
+        "wave": 1,
+        "commanderId": 0,
+        "unitId": 0,
+        "unitLevel": 99,
+        "unitGrade": 5,
+        "unitClass": 20,
+        "skillLevel": [
+            85,
+            85,
+            85,
+            85
+        ],
+        "unitScale": 100,
+        "explanation": 99993
+    },
+    {
+        "id": 10004,
+        "wave": 1,
+        "commanderId": 0,
+        "unitId": 0,
+        "unitLevel": 99,
+        "unitGrade": 5,
+        "unitClass": 20,
+        "skillLevel": [
+            85,
+            85,
+            85,
+            85
+        ],
+        "unitScale": 100,
+        "explanation": 99991
+    },
+    {
+        "id": 10005,
+        "wave": 1,
+        "commanderId": 0,
+        "unitId": 0,
+        "unitLevel": 99,
+        "unitGrade": 5,
+        "unitClass": 20,
+        "skillLevel": [
+            85,
+            85,
+            85,
+            85
+        ],
+        "unitScale": 100,
+        "explanation": 99992
+    },
+    {
+        "id": 10006,
+        "wave": 1,
+        "commanderId": 0,
+        "unitId": 0,
+        "unitLevel": 99,
+        "unitGrade": 5,
+        "unitClass": 20,
+        "skillLevel": [
+            85,
+            85,
+            85,
+            85
+        ],
+        "unitScale": 100,
+        "explanation": 99993
+    }
+]

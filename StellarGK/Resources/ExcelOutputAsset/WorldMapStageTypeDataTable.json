@@ -1,0 +1,68 @@
+[
+  {
+    "id": 101,
+    "battleCount": 1,
+    "resourceId": "map_stage_guardpost01",
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": 102,
+    "battleCount": 1,
+    "resourceId": "stage_boss_01",
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": 150,
+    "battleCount": 1,
+    "resourceId": "map_stage_supplystorage01",
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": 201,
+    "battleCount": 9999,
+    "resourceId": "map_stage_watchhouse01",
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": 202,
+    "battleCount": 9999,
+    "resourceId": "map_stage_watchhouse02",
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": 203,
+    "battleCount": 9999,
+    "resourceId": "map_stage_watchhouse03",
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": 210,
+    "battleCount": 9999,
+    "resourceId": "map_stage_factory01",
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": 211,
+    "battleCount": 9999,
+    "resourceId": "map_stage_factory02",
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": 212,
+    "battleCount": 9999,
+    "resourceId": "map_stage_factory03",
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": 301,
+    "battleCount": 3,
+    "resourceId": "stage_boss_02",
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": 302,
+    "battleCount": 3,
+    "resourceId": "stage_boss_01",
+    "bgm": "Pocket_BGM_Boss_001"
+  }
+]
