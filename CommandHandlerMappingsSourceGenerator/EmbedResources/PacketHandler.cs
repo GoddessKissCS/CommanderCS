@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using StellarGK.Host;
 
-namespace StellarGK2._0.Host
+namespace StellarGK.Host
 {
     public partial class PacketHandler
     {
