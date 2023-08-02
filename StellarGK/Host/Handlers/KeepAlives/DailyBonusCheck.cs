@@ -1,12 +1,11 @@
-﻿using Newtonsoft.Json;
-using StellarGK.Logic.Protocols;
+﻿using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.KeepAlives
 {
     [Command(Id = CommandId.DailyBonusCheck)]
     public class DailyBonusCheck : BaseCommandHandler<DailyBonusCheckRequest>
     {
-        public override string Handle(DailyBonusCheckRequest @params)
+        public override object Handle(DailyBonusCheckRequest @params)
         {
             // TODO
             // ADD Daily list that clears every month
@@ -29,7 +28,7 @@ namespace StellarGK.Host.Handlers.KeepAlives
                 result = DailyBonusCheckResponse,
             };
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
     }

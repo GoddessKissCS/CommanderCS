@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using Org.BouncyCastle.Bcpg;
-using StellarGK.Host.Handlers.Nickname;
-using StellarGK.Logic.Protocols;
+﻿using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Event
 {
@@ -9,7 +6,7 @@ namespace StellarGK.Host.Handlers.Event
     public class GetEventBattleList : BaseCommandHandler<GetEventBattleListRequest>
     {
 
-        public override string Handle(GetEventBattleListRequest @params)
+        public override object Handle(GetEventBattleListRequest @params)
         {
 
             List<EventBattleInfo> battleInfos = new();
@@ -29,7 +26,7 @@ namespace StellarGK.Host.Handlers.Event
                 id = BasePacket.Id
             };
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
     }

@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 using StellarGK.Database;
 using StellarGK.Database.Models;
 using StellarGK.Logic.Protocols;
@@ -9,7 +8,7 @@ namespace StellarGK.Host.Handlers.WorldMap
     [Command(Id = CommandId.WorldMapInformation)]
     public class WorldMapInformation : BaseCommandHandler<WorldMapInformationRequest>
     {
-        public override string Handle(WorldMapInformationRequest @params)
+        public override object Handle(WorldMapInformationRequest @params)
         {
             // TODO ???
 
@@ -29,7 +28,7 @@ namespace StellarGK.Host.Handlers.WorldMap
                 result = worldmap
             };
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
     }
     public class WorldMapInformationRequest

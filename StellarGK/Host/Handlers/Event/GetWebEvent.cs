@@ -1,24 +1,22 @@
-﻿using Newtonsoft.Json;
-
-namespace StellarGK.Host.Handlers.Event
+﻿namespace StellarGK.Host.Handlers.Event
 {
     [Command(Id = CommandId.GetWebEvent)]
     public class GetWebEvent : BaseCommandHandler<GetWebEventRequest>
     {
-        public override string Handle(GetWebEventRequest @params)
+        public override object Handle(GetWebEventRequest @params)
         {
             GetWebEventPacket gwe = new()
             {
                 wev = new List<string>() { "NONE" }
             };
 
-            ResponsePacket GWEM = new()
+            ResponsePacket response = new()
             {
                 id = BasePacket.Id,
                 result = gwe,
             };
 
-            return JsonConvert.SerializeObject(GWEM);
+            return response;
         }
 
 
@@ -30,6 +28,6 @@ namespace StellarGK.Host.Handlers.Event
 
     public class GetWebEventRequest
     {
-        
+
     }
 }

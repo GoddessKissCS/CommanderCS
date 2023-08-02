@@ -1,13 +1,9 @@
-﻿using Newtonsoft.Json;
-using Org.BouncyCastle.Bcpg;
-using StellarGK.Host.Handlers.Nickname;
-
-namespace StellarGK.Host.Handlers.Event
+﻿namespace StellarGK.Host.Handlers.Event
 {
     [Command(Id = CommandId.GetPlugEventInfo)]
     public class GetPlugEventInfo : BaseCommandHandler<GetPlugEventInfoRequest>
     {
-        public override string Handle(GetPlugEventInfoRequest @params)
+        public override object Handle(GetPlugEventInfoRequest @params)
         {
             ResponsePacket response = new();
 
@@ -20,7 +16,7 @@ namespace StellarGK.Host.Handlers.Event
             response.id = BasePacket.Id;
             response.result = plugEventInfo;
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
         public class GetPlugEventInfoPacket

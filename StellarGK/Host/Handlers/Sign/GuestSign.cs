@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.Sign
@@ -7,7 +6,7 @@ namespace StellarGK.Host.Handlers.Sign
     [Command(Id = CommandId.GuestSignIn)]
     public class GuestSign : BaseCommandHandler<GuestSignRequest>
     {
-        public override string Handle(GuestSignRequest @params)
+        public override object Handle(GuestSignRequest @params)
         {
 
             SignInP SignInP = RequestSignIn(@params.uid);
@@ -18,7 +17,7 @@ namespace StellarGK.Host.Handlers.Sign
                 result = SignInP
             };
 
-            return JsonConvert.SerializeObject(response);
+            return response;
 
         }
 

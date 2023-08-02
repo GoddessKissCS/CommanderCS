@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using StellarGK.Logic.Enums;
+﻿using StellarGK.Logic.Enums;
 using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Gacha
@@ -7,7 +6,7 @@ namespace StellarGK.Host.Handlers.Gacha
     [Command(Id = CommandId.GetRotationBannerInfo)]
     public class GetRotationBannerInfo : BaseCommandHandler<GetRotationBannerInfoRequest>
     {
-        public override string Handle(GetRotationBannerInfoRequest @params)
+        public override object Handle(GetRotationBannerInfoRequest @params)
         {
             RotationBanner.BannerList banner = new()
             {
@@ -35,7 +34,7 @@ namespace StellarGK.Host.Handlers.Gacha
                 result = rotationBanner,
             };
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
     }

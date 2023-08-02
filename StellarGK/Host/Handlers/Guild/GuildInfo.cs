@@ -4,7 +4,7 @@
     public class GuildInfo : BaseCommandHandler<GuildInfoRequest>
     {
 
-        public override string Handle(GuildInfoRequest @params)
+        public override object Handle(GuildInfoRequest @params)
         {
             return "{}";
         }

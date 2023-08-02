@@ -1,12 +1,11 @@
-﻿using Newtonsoft.Json;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.UserTerm
 {
     [Command(Id = CommandId.GetChangeDeviceCode)]
     public class GetChangeDeviceCode : BaseCommandHandler<GetChangeDeviceCodeRequest>
     {
-        public override string Handle(GetChangeDeviceCodeRequest @params)
+        public override object Handle(GetChangeDeviceCodeRequest @params)
         {
             ResponsePacket response = new()
             {
@@ -15,7 +14,7 @@ namespace StellarGK.Host.Handlers.UserTerm
             };
 
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
         private static string RequestForChangeDeviceCode(string sess)

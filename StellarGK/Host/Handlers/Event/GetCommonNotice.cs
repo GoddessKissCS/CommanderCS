@@ -1,14 +1,11 @@
-﻿using Newtonsoft.Json;
-using Org.BouncyCastle.Bcpg;
-using StellarGK.Host.Handlers.Nickname;
-using StellarGK.Logic.Protocols;
+﻿using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Event
 {
     [Command(Id = CommandId.GetCommonNotice)]
     public class GetCommonNotice : BaseCommandHandler<GetCommonNoticeRequest>
     {
-        public override string Handle(GetCommonNoticeRequest @params)
+        public override object Handle(GetCommonNoticeRequest @params)
         {
             ResponsePacket response = new();
 
@@ -32,7 +29,7 @@ namespace StellarGK.Host.Handlers.Event
             response.result = CommonNotice1;
             response.id = BasePacket.Id;
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
     }
     public class GetCommonNoticeRequest

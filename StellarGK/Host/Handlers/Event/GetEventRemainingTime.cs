@@ -1,12 +1,9 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace StellarGK.Host.Handlers.Event
+﻿namespace StellarGK.Host.Handlers.Event
 {
     [Command(Id = CommandId.GetEventRemaingTime)]
     public class GetEventRemainingTime : BaseCommandHandler<GetEventRemainingTimeRequest>
     {
-        public override string Handle(GetEventRemainingTimeRequest @params)
+        public override object Handle(GetEventRemainingTimeRequest @params)
         {
             var test = new Dictionary<string, int>()
                     {
@@ -25,7 +22,7 @@ namespace StellarGK.Host.Handlers.Event
                 result = getEventRemainingTimeM,
             };
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
 

@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 using StellarGK.Database;
 using StellarGK.Logic.Protocols;
 
@@ -9,7 +8,7 @@ namespace StellarGK.Host.Handlers.Server
     [Command(Id = CommandId.ServerStatus)]
     public class ServerStatus : BaseCommandHandler<ServerStatusRequest>
     {
-        public override string Handle(ServerStatusRequest @params)
+        public override object Handle(ServerStatusRequest @params)
         {
 
             ResponsePacket response = new();
@@ -30,7 +29,7 @@ namespace StellarGK.Host.Handlers.Server
             response.id = BasePacket.Id;
             response.result = serverData;
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
         private static ServerData.ServerInfo Req(int mIdx)

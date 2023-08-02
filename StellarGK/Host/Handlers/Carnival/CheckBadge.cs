@@ -1,13 +1,10 @@
-﻿using Newtonsoft.Json;
-
-
-namespace StellarGK.Host.Handlers.Carnival
+﻿namespace StellarGK.Host.Handlers.Carnival
 {
     [Command(Id = CommandId.CheckBadge)]
     public class CheckBadge : BaseCommandHandler<CheckBadgeRequest>
     {
 
-        public override string Handle(CheckBadgeRequest @params)
+        public override object Handle(CheckBadgeRequest @params)
         {
             ResponsePacket response = new()
             {
@@ -40,11 +37,11 @@ namespace StellarGK.Host.Handlers.Carnival
 
             response.result = checkBadgeMaster;
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
         public class CheckBadgeMaster
-        { 
+        {
 
             public int arena { get; set; }
 

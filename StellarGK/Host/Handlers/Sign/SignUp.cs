@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 using StellarGK.Database;
 using StellarGK.Utils;
 
@@ -8,7 +7,7 @@ namespace StellarGK.Host.Handlers.Sign
     [Command(Id = CommandId.SignUp)]
     public class SignUp : BaseCommandHandler<SignUpRequest>
     {
-        public override string Handle(SignUpRequest @params)
+        public override object Handle(SignUpRequest @params)
         {
             ResponsePacket response = new()
             {
@@ -24,7 +23,7 @@ namespace StellarGK.Host.Handlers.Sign
 
                     response.error = new() { code = code };
 
-                    return JsonConvert.SerializeObject(response);
+                    return response;
 
                 default:
                     SignUpPacket SignUp = new()
@@ -34,7 +33,7 @@ namespace StellarGK.Host.Handlers.Sign
 
                     response.result = SignUp;
 
-                    return JsonConvert.SerializeObject(response);
+                    return response;
 
             }
 
@@ -73,7 +72,7 @@ namespace StellarGK.Host.Handlers.Sign
 
     }
 
-    public class SignUpRequest 
+    public class SignUpRequest
     {
         [JsonPropertyName("uid")]
         public string uid { get; set; }

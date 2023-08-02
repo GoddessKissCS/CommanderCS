@@ -1,6 +1,4 @@
-﻿using StellarGK.Logic.Protocols;
-
-namespace StellarGK.Database.Models
+﻿namespace StellarGK.Database.Models
 {
     public class ResourcesScheme
     {

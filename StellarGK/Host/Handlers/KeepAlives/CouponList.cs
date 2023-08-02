@@ -1,11 +1,9 @@
-﻿using Newtonsoft.Json;
-
-namespace StellarGK.Host.Handlers.KeepAlives
+﻿namespace StellarGK.Host.Handlers.KeepAlives
 {
     [Command(Id = CommandId.GetCouponList)]
     public class GetCouponList : BaseCommandHandler<GetCouponListRequest>
     {
-        public override string Handle(GetCouponListRequest @params)
+        public override object Handle(GetCouponListRequest @params)
         {
 
             ResponsePacket response = new();
@@ -20,7 +18,7 @@ namespace StellarGK.Host.Handlers.KeepAlives
             response.id = BasePacket.Id;
             response.result = couponList;
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
 

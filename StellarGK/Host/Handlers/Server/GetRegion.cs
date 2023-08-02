@@ -1,12 +1,11 @@
-﻿using Newtonsoft.Json;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.Server
 {
     [Command(Id = CommandId.GetRegion)]
     public class GetRegion : BaseCommandHandler<GetRegionResult>
     {
-        public override string Handle(GetRegionResult @params)
+        public override object Handle(GetRegionResult @params)
         {
             //1 is korea,
             //2 is Global Version 1
@@ -37,7 +36,7 @@ namespace StellarGK.Host.Handlers.Server
                 result = infos
             };
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
         internal class ServerInfo

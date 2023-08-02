@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using Org.BouncyCastle.Bcpg;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.Dispatch
 {
@@ -8,7 +6,7 @@ namespace StellarGK.Host.Handlers.Dispatch
     public class GetDispatchCommanderListFromLogin : BaseCommandHandler<GetDispatchCommanderListFromLoginRequest>
     {
 
-        public override string Handle(GetDispatchCommanderListFromLoginRequest @params)
+        public override object Handle(GetDispatchCommanderListFromLoginRequest @params)
         {
             var resources = DatabaseManager.GameData.FindBySession(BasePacket.Session);
 
@@ -18,7 +16,7 @@ namespace StellarGK.Host.Handlers.Dispatch
                 result = resources.dispatchedCommanders,
             };
 
-            return JsonConvert.SerializeObject(responsePacket);
+            return responsePacket;
         }
 
 

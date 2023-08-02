@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using Org.BouncyCastle.Bcpg;
-using StellarGK.Host.Handlers.Nickname;
-using StellarGK.Logic.Protocols;
+﻿using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Dispatch
 {
@@ -9,30 +6,25 @@ namespace StellarGK.Host.Handlers.Dispatch
     public class GetExplorationList : BaseCommandHandler<GetExplorationListRequest>
     {
 
-        public override string Handle(GetExplorationListRequest @params)
+        public override object Handle(GetExplorationListRequest @params)
         {
-            GetExplorationListPacket GetExplorationList = new();
+            ResponsePacket response = new();
 
             List<string> cids = new();
+
 
             List<ExplorationData> GetExplorationList1 = new()
             {
 
             };
 
-            GetExplorationList.result = GetExplorationList1;
-            GetExplorationList.id = BasePacket.Id;
+            response.result = GetExplorationList1;
+            response.id = BasePacket.Id;
 
-            return JsonConvert.SerializeObject(GetExplorationList);
+            return response;
         }
     }
 
-    public class GetExplorationListPacket
-    {
-        public string id { get; set; }
-
-        public List<ExplorationData> result { get; set; }
-    }
 
     public class GetExplorationListRequest
     {

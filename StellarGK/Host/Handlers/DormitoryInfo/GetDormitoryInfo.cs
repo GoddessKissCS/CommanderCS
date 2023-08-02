@@ -1,8 +1,5 @@
 ﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json;
-using Org.BouncyCastle.Bcpg;
 using StellarGK.Database;
-using StellarGK.Host.Handlers.Nickname;
 using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.DormitoryInfo
@@ -11,7 +8,7 @@ namespace StellarGK.Host.Handlers.DormitoryInfo
     public class GetDormitoryInfo : BaseCommandHandler<GetDormitoryInfoRequest>
     {
 
-        public override string Handle(GetDormitoryInfoRequest @params)
+        public override object Handle(GetDormitoryInfoRequest @params)
         {
             var dormitoryInfo = DatabaseManager.Dormitory.FindBySession(BasePacket.Session);
 
@@ -33,13 +30,13 @@ namespace StellarGK.Host.Handlers.DormitoryInfo
                 result = DormitoryInfo
             };
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
     }
 
     public class GetDormitoryInfoRequest
     {
         [JsonPropertyName("type")]
-        public List<string> type {  get; set; }
+        public List<string> type { get; set; }
     }
 }

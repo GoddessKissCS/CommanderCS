@@ -1,12 +1,11 @@
-﻿using Newtonsoft.Json;
-using StellarGK.Logic.Protocols;
+﻿using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Shop
 {
     [Command(Id = CommandId.GetCashShopList)]
     public class GetCashShopList : BaseCommandHandler<GetCashShopListRequest>
     {
-        public override string Handle(GetCashShopListRequest @params)
+        public override object Handle(GetCashShopListRequest @params)
         {
 
             List<CashShopData> csl = new() { };
@@ -29,7 +28,7 @@ namespace StellarGK.Host.Handlers.Shop
                 id = BasePacket.Id
             };
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
     }
 

@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using StellarGK.Database;
-using StellarGK.Host.Handlers.Nickname;
 using StellarGK.Logic.ExcelReader;
 using StellarGK.Logic.Protocols;
 
@@ -10,7 +9,7 @@ namespace StellarGK.Host.Handlers.Commander
     [Command(Id = CommandId.CommanderRankUp)]
     public class CommanderRankUp : BaseCommandHandler<CommanderRankUpRequest>
     {
-        public override string Handle(CommanderRankUpRequest @params)
+        public override object Handle(CommanderRankUpRequest @params)
         {
             ResponsePacket response = new();
 
@@ -95,7 +94,7 @@ namespace StellarGK.Host.Handlers.Commander
             response.result = cmrup;
             response.id = BasePacket.Id;
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
         private static Dictionary<int, int> GradeCostList { get; set; } = new Dictionary<int, int>()

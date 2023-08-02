@@ -1,7 +1,7 @@
-using System.Text.Json.Serialization;
 using System.Text.Json;
-using StellarGK.Host.Middlewares;
+using System.Text.Json.Serialization;
 using StellarGK.Host;
+using StellarGK.Host.Middlewares;
 
 namespace StellarGK2
 {

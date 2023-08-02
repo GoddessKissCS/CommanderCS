@@ -1,11 +1,9 @@
-﻿using Newtonsoft.Json;
-
-namespace StellarGK.Host.Handlers.UserTerm
+﻿namespace StellarGK.Host.Handlers.UserTerm
 {
     [Command(Id = CommandId.UserTerm)]
     public class UserTerm : BaseCommandHandler<UserTermRequest>
     {
-        public override string Handle(UserTermRequest @params)
+        public override object Handle(UserTermRequest @params)
         {
 
             // TODO UNSURE ABOUT THIS
@@ -21,7 +19,7 @@ namespace StellarGK.Host.Handlers.UserTerm
             response.id = BasePacket.Id;
             response.result = userterm;
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
         public class userterm

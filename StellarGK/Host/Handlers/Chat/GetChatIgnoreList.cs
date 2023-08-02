@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using Org.BouncyCastle.Bcpg;
-using StellarGK.Database;
-using StellarGK.Host.Handlers.Nickname;
+﻿using StellarGK.Database;
 using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Chat
@@ -9,7 +6,7 @@ namespace StellarGK.Host.Handlers.Chat
     [Command(Id = CommandId.GetChatIgnoreList)]
     public class GetChatIgnoreList : BaseCommandHandler<GetChatIgnoreListRequest>
     {
-        public override string Handle(GetChatIgnoreListRequest @params)
+        public override object Handle(GetChatIgnoreListRequest @params)
         {
             ResponsePacket response = new();
 
@@ -29,7 +26,7 @@ namespace StellarGK.Host.Handlers.Chat
             response.result = blockuser;
             response.id = BasePacket.Id;
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
 

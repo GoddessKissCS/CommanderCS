@@ -1,14 +1,11 @@
-﻿using Newtonsoft.Json;
-using Org.BouncyCastle.Bcpg;
-using StellarGK.Host.Handlers.Nickname;
-using StellarGK.Logic.Protocols;
+﻿using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Commander
 {
     [Command(Id = CommandId.GetCommanderScenario)]
     public class GetCommanderScenario : BaseCommandHandler<GetCommanderScenarioRequest>
     {
-        public override string Handle(GetCommanderScenarioRequest @params)
+        public override object Handle(GetCommanderScenarioRequest @params)
         {
             GetCommanderScenarioPacket commanderScenario = new();
 
@@ -17,7 +14,7 @@ namespace StellarGK.Host.Handlers.Commander
             commanderScenario.result = result;
             commanderScenario.id = BasePacket.Id;
 
-            return JsonConvert.SerializeObject(commanderScenario);
+            return commanderScenario;
         }
 
         public class GetCommanderScenarioPacket

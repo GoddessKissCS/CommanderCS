@@ -10,7 +10,7 @@ namespace StellarGK.Host.Handlers.Login
     [Command(Id = CommandId.Login)]
     public class Login : BaseCommandHandler<LoginRequest>
     {
-        public override string Handle(LoginRequest @params)
+        public override object Handle(LoginRequest @params)
         {
             // TODO ADD UNABLE TO JOIN 
             ResponsePacket response = new()
@@ -29,7 +29,7 @@ namespace StellarGK.Host.Handlers.Login
 
                     response.error = new() { code = code };
 
-                    return JsonConvert.SerializeObject(response);
+                    return response;
 
                 default:
 
@@ -74,7 +74,7 @@ namespace StellarGK.Host.Handlers.Login
 
                     response.result = Login;
 
-                    return JsonConvert.SerializeObject(response);
+                    return response;
 
 
             }

@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 using StellarGK.Database;
 using StellarGK.Utils;
 
@@ -8,7 +7,7 @@ namespace StellarGK.Host.Handlers.Nickname
     [Command(Id = CommandId.SetNickNameFromTutorial)]
     public class SetNickNameFromTutorial : BaseCommandHandler<SetNickNameFromTutorialRequest>
     {
-        public override string Handle(SetNickNameFromTutorialRequest @params)
+        public override object Handle(SetNickNameFromTutorialRequest @params)
         {
             ErrorCode code = RequestNicknameAfterTutorial(BasePacket.Session, @params.Unm);
 
@@ -24,7 +23,7 @@ namespace StellarGK.Host.Handlers.Nickname
 
                     response.error = new() { code = code };
 
-                    return JsonConvert.SerializeObject(response);
+                    return response;
 
                 default:
                     SetNickNameF SetNickNameF1 = new()
@@ -33,7 +32,7 @@ namespace StellarGK.Host.Handlers.Nickname
                     };
 
 
-                    return JsonConvert.SerializeObject(response);
+                    return response;
             }
         }
 

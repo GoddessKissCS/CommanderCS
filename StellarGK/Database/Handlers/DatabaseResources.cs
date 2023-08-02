@@ -151,7 +151,7 @@ namespace StellarGK.Database.Handlers
 
 
 
- 
+
         public void UpdateCash(int id, int cash, bool useAddition)
         {
             var resources = FindByUid(id);

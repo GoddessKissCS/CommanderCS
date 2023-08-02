@@ -7,7 +7,7 @@ namespace StellarGK.Host.Handlers.Guild
     [Command(Id = CommandId.GuildList)]
     public class GuildList : BaseCommandHandler<GuildListRequest>
     {
-        public override string Handle(GuildListRequest @params)
+        public override object Handle(GuildListRequest @params)
         {
             List<RoGuild> guilds = new();
 

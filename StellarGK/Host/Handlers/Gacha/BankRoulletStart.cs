@@ -1,8 +1,5 @@
 ﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 using StellarGK.Database;
-using StellarGK.Host.Handlers.Event;
-using StellarGK.Host.Handlers.Nickname;
 using StellarGK.Logic.ExcelReader;
 using StellarGK.Logic.Protocols;
 
@@ -15,7 +12,7 @@ namespace StellarGK.Host.Handlers.Gacha
 
         public static Random random1 = new(random.Next());
 
-        public override string Handle(BankRoulletStartRequest @params)
+        public override object Handle(BankRoulletStartRequest @params)
         {
             int vIdx;// metrobank id
             int vcnt;// curremt rechargeCount? + 1
@@ -43,7 +40,7 @@ namespace StellarGK.Host.Handlers.Gacha
             };
 
 
-            return JsonConvert.SerializeObject(response);
+            return response;
 
         }
 
@@ -92,7 +89,7 @@ namespace StellarGK.Host.Handlers.Gacha
 
     }
 
-    public class BankRoulletStartRequest 
+    public class BankRoulletStartRequest
     {
         [JsonPropertyName("cnt")]
         public int count { get; set; }

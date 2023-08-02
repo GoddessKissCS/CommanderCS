@@ -6,7 +6,7 @@ namespace StellarGK.Host.Handlers.VersionCheck
     [Command(Id = CommandId.GameVersionInfo)]
     public class GameVersionInfo : BaseCommandHandler<GameVersionInfoRequest>
     {
-        public override string Handle(GameVersionInfoRequest @params)
+        public override object Handle(GameVersionInfoRequest @params)
         {
             ResponsePacket ResponsePacket = new();
 
@@ -28,7 +28,7 @@ namespace StellarGK.Host.Handlers.VersionCheck
             ResponsePacket.id = BasePacket.Id;
             ResponsePacket.result = game;
 
-            return JsonConvert.SerializeObject(ResponsePacket);
+            return ResponsePacket;
         }
 
         private class GameInfoToSent

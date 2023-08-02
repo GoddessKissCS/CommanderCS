@@ -29,10 +29,10 @@ namespace StellarGK.Database.Handlers
         {
             GuildScheme? guild = collection.AsQueryable().Where(d => d.Id == guildId).FirstOrDefault();
 
-            if(guild == null)
+            if (guild == null)
             {
                 return null;
-            } 
+            }
 
             UserInformationResponse.UserGuild userGuild = new()
             {

@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.Profile
@@ -7,7 +6,7 @@ namespace StellarGK.Host.Handlers.Profile
     [Command(Id = CommandId.ChangeMembership)]
     public class ChangeMemberShip : BaseCommandHandler<ChangeMemberShipRequest>
     {
-        public override string Handle(ChangeMemberShipRequest @params)
+        public override object Handle(ChangeMemberShipRequest @params)
         {
             ResponsePacket response = new();
 
@@ -22,12 +21,12 @@ namespace StellarGK.Host.Handlers.Profile
                     response.error = new() { code = code };
                     response.id = BasePacket.Id;
 
-                    return JsonConvert.SerializeObject(response);
+                    return response;
 
                 default:
                     response.id = BasePacket.Id;
                     response.result = "{}";
-                    return JsonConvert.SerializeObject(response);
+                    return response;
             }
 
 

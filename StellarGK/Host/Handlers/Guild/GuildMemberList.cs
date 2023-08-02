@@ -3,9 +3,9 @@
     [Command(Id = CommandId.GuildMemberList)]
     public class GuildMemberList : BaseCommandHandler<GuildMemberListRequest>
     {
-        public override string Handle(GuildMemberListRequest @params)
+        public override object Handle(GuildMemberListRequest @params)
         {
-            throw new NotImplementedException();
+            return "{}";
         }
     }
     public class GuildMemberListRequest

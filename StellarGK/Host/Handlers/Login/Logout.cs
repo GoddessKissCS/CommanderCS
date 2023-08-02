@@ -1,12 +1,10 @@
-﻿using Newtonsoft.Json;
-
-namespace StellarGK.Host.Handlers.Login
+﻿namespace StellarGK.Host.Handlers.Login
 {
 
     [Command(Id = CommandId.Logout)]
     public class Logout : BaseCommandHandler<LogoutRequest>
     {
-        public override string Handle(LogoutRequest @params)
+        public override object Handle(LogoutRequest @params)
         {
             ResponsePacket response = new();
 
@@ -14,7 +12,7 @@ namespace StellarGK.Host.Handlers.Login
             response.id = BasePacket.Id;
             response.result = logout.success;
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
         private class logout

@@ -1,11 +1,9 @@
-﻿using Newtonsoft.Json;
-
-namespace StellarGK.Host.Handlers.UserTerm
+﻿namespace StellarGK.Host.Handlers.UserTerm
 {
     [Command(Id = CommandId.GetBadWordList)]
     public class GetBadWordList : BaseCommandHandler<GetBadWordListRequest>
     {
-        public override string Handle(GetBadWordListRequest @params)
+        public override object Handle(GetBadWordListRequest @params)
         {
 
             ResponsePacket response = new();
@@ -26,7 +24,7 @@ namespace StellarGK.Host.Handlers.UserTerm
             response.id = BasePacket.Id;
             response.result = badWord;
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
 

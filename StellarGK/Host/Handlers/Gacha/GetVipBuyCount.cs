@@ -1,13 +1,11 @@
-﻿using Newtonsoft.Json;
-using StellarGK.Logic.Enums;
-using StellarGK.Logic.Protocols;
+﻿using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Gacha
 {
     [Command(Id = CommandId.GetVipBuyCount)]
     public class GetVipBuyCount : BaseCommandHandler<GetVipBuyCountRequest>
     {
-        public override string Handle(GetVipBuyCountRequest @params)
+        public override object Handle(GetVipBuyCountRequest @params)
         {
 
             //gets send EVipRechargeType enum + ["rchg"]
@@ -30,7 +28,7 @@ namespace StellarGK.Host.Handlers.Gacha
             response.id = BasePacket.Id;
             response.result = VIP;
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
         public class GetVIPBuyCountInv

@@ -31,7 +31,7 @@ namespace StellarGK.Host
     public abstract class BaseCommandHandler<TParams>
     {
         public BasePacket BasePacket { get; set; }
-        public abstract string Handle(TParams @params);
+        public abstract object Handle(TParams @params);
 
         // This is a example
         // THis could be reused in all command handlers

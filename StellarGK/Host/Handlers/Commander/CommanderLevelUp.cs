@@ -1,7 +1,5 @@
 ﻿using System.Text.Json.Serialization;
-using Org.BouncyCastle.Bcpg;
 using StellarGK.Database;
-using StellarGK.Host.Handlers.Nickname;
 using StellarGK.Logic.ExcelReader;
 using StellarGK.Logic.Protocols;
 
@@ -11,7 +9,7 @@ namespace StellarGK.Host.Handlers.Commander
     public class CommanderLevelUp : BaseCommandHandler<CommanderLevelUpRequest>
     {
 
-        public override string Handle(CommanderLevelUpRequest @params)
+        public override object Handle(CommanderLevelUpRequest @params)
         {
             // "cid":13,"cnt":1,"ctt":"ctt1"
 

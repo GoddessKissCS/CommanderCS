@@ -1,6 +1,4 @@
-﻿using System.Reflection.Emit;
-using Newtonsoft.Json;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 using StellarGK.Logic.ExcelReader;
 using StellarGK.Logic.Protocols;
 
@@ -10,9 +8,7 @@ namespace StellarGK.Host.Handlers.KeepAlives
     [Command(Id = CommandId.BulletCharge)]
     public class BulletCharge : BaseCommandHandler<BulletChargeResult>
     {
-
-
-        public override string Handle(BulletChargeResult @params)
+        public override object Handle(BulletChargeResult @params)
         {
 
             var charge = UserInfoReq(BasePacket.Session);
@@ -76,7 +72,7 @@ namespace StellarGK.Host.Handlers.KeepAlives
             response.result = resource;
 
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
         private static _BulletCharge UserInfoReq(string sess)
@@ -87,14 +83,14 @@ namespace StellarGK.Host.Handlers.KeepAlives
             {
                 oil = res.oil,
                 bullet = res.bullet,
-            level = res.level,
-            weaponMaterial1 = res.weaponMaterial1,
-            weaponMaterial2 = res.weaponMaterial2,
-            weaponMaterial3 = res.weaponMaterial3,
-            weaponMaterial4 = res.weaponMaterial4,
-            chip = res.chip,
-            world = user.worldState,
-             };
+                level = res.level,
+                weaponMaterial1 = res.weaponMaterial1,
+                weaponMaterial2 = res.weaponMaterial2,
+                weaponMaterial3 = res.weaponMaterial3,
+                weaponMaterial4 = res.weaponMaterial4,
+                chip = res.chip,
+                world = user.worldState,
+            };
 
             return _charge;
         }

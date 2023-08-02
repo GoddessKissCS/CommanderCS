@@ -25,7 +25,7 @@ namespace StellarGK.Host
                 {
                     // This only gets executed if it recived an array
 
-                    var responses = new List<string>();
+                    var responses = new List<object>();
 
                     foreach (var item in array)
                     {
@@ -45,12 +45,14 @@ namespace StellarGK.Host
                     return Encrypt(JsonConvert.SerializeObject(responses));
                 }
 
-                return Encrypt(ProcessPacket(node, serviceProvider));
+                var packet = ProcessPacket(node, serviceProvider);
+
+                return Encrypt(JsonConvert.SerializeObject(packet));
             }
             return "shouldnt happend";
         }
 
-        private static string ProcessPacket(JsonNode raw, IServiceProvider serviceProvider)
+        private static object ProcessPacket(JsonNode raw, IServiceProvider serviceProvider)
         {
             var rawPacket = raw.Deserialize<RawPacket>();
 
@@ -64,7 +66,7 @@ namespace StellarGK.Host
             return result;
         }
 
-        internal static string CommandMapping<TEndpoint, TParams>(RawPacket rawPacket, IServiceProvider serviceProvider) where TEndpoint : BaseCommandHandler<TParams>
+        internal static object CommandMapping<TEndpoint, TParams>(RawPacket rawPacket, IServiceProvider serviceProvider) where TEndpoint : BaseCommandHandler<TParams>
         {
             var @params = rawPacket.Params.Deserialize<TParams>();
 
@@ -89,6 +91,6 @@ namespace StellarGK.Host
         }).ToList();
     }
 
-  
+
 
 }

@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.Profile
@@ -7,7 +6,7 @@ namespace StellarGK.Host.Handlers.Profile
     [Command(Id = CommandId.UpdateTutorialStep)]
     public class UpdateTutorialStep : BaseCommandHandler<UpdateTutorialStepRequest>
     {
-        public override string Handle(UpdateTutorialStepRequest @params)
+        public override object Handle(UpdateTutorialStepRequest @params)
         {
 
             UpdateTutorialStepInfo utsi = new();
@@ -22,7 +21,7 @@ namespace StellarGK.Host.Handlers.Profile
                 result = utsi,
             };
 
-            return JsonConvert.SerializeObject(response);
+            return response;
 
         }
 

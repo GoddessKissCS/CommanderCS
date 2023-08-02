@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Host.Handlers.Nickname;
 using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Gacha
@@ -8,7 +7,7 @@ namespace StellarGK.Host.Handlers.Gacha
     public class GachaInformation : BaseCommandHandler<GachaInformationRequest>
     {
 
-        public override string Handle(GachaInformationRequest @params)
+        public override object Handle(GachaInformationRequest @params)
         {
             ResponsePacket response = new();
 

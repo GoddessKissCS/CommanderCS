@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 using StellarGK.Database;
 using StellarGK.Logic.Protocols;
 using StellarGK.Utils;
@@ -9,7 +8,7 @@ namespace StellarGK.Host.Handlers.Nickname
     [Command(Id = CommandId.ChangeNickname)]
     public class ChangeNickname : BaseCommandHandler<ChangeNicknameRequest>
     {
-        public override string Handle(ChangeNicknameRequest @params)
+        public override object Handle(ChangeNicknameRequest @params)
         {
 
             ResponsePacket response = new()
@@ -26,7 +25,7 @@ namespace StellarGK.Host.Handlers.Nickname
 
                     response.error = new() { code = code };
 
-                    return JsonConvert.SerializeObject(response);
+                    return response;
 
 
                 default:
@@ -37,7 +36,7 @@ namespace StellarGK.Host.Handlers.Nickname
 
                     response.result = data;
 
-                    return JsonConvert.SerializeObject(response);
+                    return response;
 
             }
         }

@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.Profile
@@ -7,7 +6,7 @@ namespace StellarGK.Host.Handlers.Profile
     [Command(Id = CommandId.ChangeUserThumbnail)]
     public class ChangeThumbnail : BaseCommandHandler<ChangeThumbnailRequest>
     {
-        public override string Handle(ChangeThumbnailRequest @params)
+        public override object Handle(ChangeThumbnailRequest @params)
         {
             ResponsePacket response = new();
 
@@ -21,13 +20,13 @@ namespace StellarGK.Host.Handlers.Profile
             {
                 response.result = "true";
 
-                return JsonConvert.SerializeObject(response);
+                return response;
             }
             else
             {
                 response.result = "false";
 
-                return JsonConvert.SerializeObject(response);
+                return response;
             }
         }
 

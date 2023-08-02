@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Tutorial
@@ -8,7 +7,7 @@ namespace StellarGK.Host.Handlers.Tutorial
     public class LoginTutorialSkip : BaseCommandHandler<LoginTutorialSkipRequest>
     {
 
-        public override string Handle(LoginTutorialSkipRequest @params)
+        public override object Handle(LoginTutorialSkipRequest @params)
         {
             ResponsePacket response = new();
 
@@ -22,7 +21,7 @@ namespace StellarGK.Host.Handlers.Tutorial
             response.id = BasePacket.Id;
             response.result = lts;
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
         private static UserInformationResponse.TutorialData RequestTutorialData(string sess, bool skipTutorial)

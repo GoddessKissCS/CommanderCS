@@ -1,6 +1,4 @@
-﻿using Org.BouncyCastle.Bcpg;
-using StellarGK.Host.Handlers.Nickname;
-using StellarGK.Logic.Protocols;
+﻿using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Carnival
 {
@@ -8,7 +6,7 @@ namespace StellarGK.Host.Handlers.Carnival
     public class GetCarnivalList : BaseCommandHandler<GetCarnivalListRequest>
     {
 
-        public override string Handle(GetCarnivalListRequest @params)
+        public override object Handle(GetCarnivalListRequest @params)
         {
 
             GetCarnivalListRes CL = new GetCarnivalListRes();

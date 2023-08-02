@@ -1,5 +1,4 @@
-﻿using MongoDB.Bson;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using StellarGK.Database.Models;
 
 namespace StellarGK.Database.Handlers

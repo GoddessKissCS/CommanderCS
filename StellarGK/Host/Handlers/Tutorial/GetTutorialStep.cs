@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 using StellarGK.Logic.Protocols;
 
 
@@ -9,7 +8,7 @@ namespace StellarGK.Host.Handlers.Tutorial
     public class GetTutorialStep : BaseCommandHandler<GetTutorialStepRequest>
     {
 
-        public override string Handle(GetTutorialStepRequest @params)
+        public override object Handle(GetTutorialStepRequest @params)
         {
             UserInformationResponse.TutorialData TData = RequestTutorialData(BasePacket.Session);
 
@@ -24,7 +23,7 @@ namespace StellarGK.Host.Handlers.Tutorial
                 id = BasePacket.Id
             };
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
 

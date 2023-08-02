@@ -4,7 +4,7 @@
     public class CheckChangeDeviceCode : BaseCommandHandler<CheckChangeDeviceCodeRequest>
     {
 
-        public override string Handle(CheckChangeDeviceCodeRequest @params)
+        public override object Handle(CheckChangeDeviceCodeRequest @params)
         {
             return "{}";
         }
