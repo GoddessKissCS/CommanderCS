@@ -1,5 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 using Org.BouncyCastle.Asn1.Ocsp;
 using StellarGK.Database;
 using StellarGK.Host;
@@ -38,10 +40,12 @@ namespace StellarGK2
                 options.WriteIndented = true;
             });
 
-            builder.WebHost.ConfigureKestrel(options =>
-            {
-                options.AllowSynchronousIO = true;
-            });
+
+
+            //builder.WebHost.ConfigureKestrel(options =>
+            //{
+            //    options.AllowSynchronousIO = true;
+            //});
 
 
             builder.Services.AddHttpClient();
@@ -91,6 +95,28 @@ namespace StellarGK2
             }
 
             app.UseMiddleware<CustomExceptionHandlerMiddleware>();
+
+            #region StaticFileServer
+
+            const string StaticFilesPath = "FileCDN";
+
+            //// Working Directory path
+            // var BasePath = builder.Environment.ContentRootPath;
+            // Executable file path
+            var BasePath = AppDomain.CurrentDomain.BaseDirectory;
+            var staticFilesProviderPath = Path.Combine(BasePath, StaticFilesPath);
+            var fileProvider = new PhysicalFileProvider(staticFilesProviderPath);
+
+            // https://stackoverflow.com/questions/50381490/what-is-the-difference-between-usestaticfiles-and-usefileserver-in-asp-net-c
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = fileProvider,
+                RequestPath = $"/{StaticFilesPath}",
+                HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
+                ServeUnknownFileTypes = true
+            });
+
+            #endregion StaticFileServer
 
             //app.UseCors((policyBuilder) =>
             //{
