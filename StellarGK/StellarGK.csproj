@@ -9,32 +9,21 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="PacketHandlers\**" />
-	  <Compile Remove="wwwroot\**" />
-	  <Content Remove="PacketHandlers\**" />
-	  <Content Remove="wwwroot\**" />
-	  <EmbeddedResource Remove="PacketHandlers\**" />
-	  <EmbeddedResource Remove="wwwroot\**" />
-	  <None Remove="PacketHandlers\**" />
-	  <None Remove="wwwroot\**" />
+		<PackageReference Include="MongoDB.Bson" Version="2.20.0" />
+		<PackageReference Include="MongoDB.Driver" Version="2.20.0" />
+		<PackageReference Include="MongoDB.Driver.Core" Version="2.20.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
+		<PackageReference Include="Tival.GZipCompressor" Version="1.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="FileCDN\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\CommandHandlerMappingsSourceGenerator\CommandHandlerMappingsSourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Include="MongoDB.Bson" Version="2.20.0" />
-	  <PackageReference Include="MongoDB.Driver" Version="2.20.0" />
-	  <PackageReference Include="MongoDB.Driver.Core" Version="2.20.0" />
-	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-	  <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
-	  <PackageReference Include="Tival.GZipCompressor" Version="1.0.1" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Update="FileCDN\SampleFile.html">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
 	</ItemGroup>
 </Project>
