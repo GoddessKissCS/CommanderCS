@@ -16,10 +16,10 @@ namespace StellarGK.Database
         public static DatabaseGameData GameData { get; } = new();
         public static void FirstCreate()
         {
-            GameVersionInfo.Create(1, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5OjgwODAvY2RuLw==", "aHR0cDovLzE5Mi4xNjguMTc4LjI5OjEwMDAwL2NoZWNrRGF0YS8=", "aHR0cDovL2drLmZsZXJvZ2FtZXMuY29tL3NlcnZlci8=", false, false, false, false);
-            GameVersionInfo.Create(2, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5OjgwODAvY2RuLw==", "aHR0cDovLzE5Mi4xNjguMTc4LjI5OjEwMDAwL2NoZWNrRGF0YS8=", "aHR0cDovL2drLmZsZXJvZ2FtZXMuY29tL3NlcnZlci8=", false, false, false, false);
-            GameVersionInfo.Create(3, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5OjgwODAvY2RuLw==", "aHR0cDovLzE5Mi4xNjguMTc4LjI5OjEwMDAwL2NoZWNrRGF0YS8=", "aHR0cDovL2drLmZsZXJvZ2FtZXMuY29tL3NlcnZlci8=", false, false, false, false);
-            GameVersionInfo.Create(4, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5OjgwODAvY2RuLw==", "aHR0cDovLzE5Mi4xNjguMTc4LjI5OjEwMDAwL2NoZWNrRGF0YS8 =", "aHR0cDovL2drLmZsZXJvZ2FtZXMuY29tL3NlcnZlci8=", false, false, false, false);
+            GameVersionInfo.Create(1, "1.066.12", "aGh0dHA6Ly8xOTIuMTY4LjE3OC4yOS9jaGF0LnBocA==", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQv", false, false, false, false);
+            GameVersionInfo.Create(2, "1.066.12", "aGh0dHA6Ly8xOTIuMTY4LjE3OC4yOS9jaGF0LnBocA==", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQv", false, false, false, false);
+            GameVersionInfo.Create(3, "1.066.12", "aGh0dHA6Ly8xOTIuMTY4LjE3OC4yOS9jaGF0LnBocA==", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQv", false, false, false, false);
+            GameVersionInfo.Create(4, "1.066.12", "aGh0dHA6Ly8xOTIuMTY4LjE3OC4yOS9jaGF0LnBocA==", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQv", false, false, false, false);
 
             GameTableVersion.Create(20220312000000);
 

@@ -1,10 +1,5 @@
-﻿using System.Linq;
-using System.Net;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Nodes;
-using Microsoft.AspNetCore.Http.Json;
-using MongoDB.Bson;
-using ZstdSharp;
 using static StellarGK.Utils.Compression;
 using static StellarGK.Utils.Crypto;
 
@@ -16,10 +11,6 @@ namespace StellarGK.Host
 
         public static async Task<string> ProcessRequest(HttpContext context, IServiceProvider serviceProvider)
         {
-            if (context.Request.Method != "POST" || !context.Request.Headers.UserAgent.Contains("BestHTTP"))
-            {
-                return "shouldnt happend";
-            }
             if (context.Request.Headers.UserAgent.Contains("BestHTTP"))
             {
                 var rawRequest = await Stream2ByteArray(context.Request.Body);

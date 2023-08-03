@@ -11,11 +11,14 @@ namespace StellarGK.Utils
     {
         static Crypto()
         {
-            var key = "Zb*!W-$&TA6mrIEU-F=ShH7=($ucOZdg";
-            _key = _encoding.GetBytes(key);
+            var key1 = "IU is Korea Best Singer! really!";
+            var key2 = "Zb*!W-$&TA6mrIEU-F=ShH7=($ucOZdg";
+            _2key = _encoding.GetBytes(key2);
+            _1key = _encoding.GetBytes(key1);
         }
 
-        private static readonly byte[] _key;
+        private static readonly byte[] _1key;
+        private static readonly byte[] _2key;
         private static readonly Encoding _encoding = Encoding.UTF8;
 
         public static string Encrypt(string input) => Encrypt(_encoding.GetBytes(input));
@@ -24,7 +27,7 @@ namespace StellarGK.Utils
             var engine = new RijndaelEngine(256);
             var padding = new ZeroBytePadding();
             var cipher = new PaddedBufferedBlockCipher(engine, padding);
-            var parameters = new KeyParameter(_key);
+            var parameters = new KeyParameter(_1key);
             cipher.Init(true, parameters);
             var comparisonBytes = new byte[cipher.GetOutputSize(input.Length)];
             var length = cipher.ProcessBytes(input, comparisonBytes, 0);
@@ -40,7 +43,7 @@ namespace StellarGK.Utils
             var engine = new RijndaelEngine(256);
             var padding = new ZeroBytePadding();
             var cipher = new PaddedBufferedBlockCipher(engine, padding);
-            var parameters = new KeyParameter(_key);
+            var parameters = new KeyParameter(_1key);
             cipher.Init(false, parameters);
 
             var comparisonBytes = new byte[cipher.GetOutputSize(input.Length)];
