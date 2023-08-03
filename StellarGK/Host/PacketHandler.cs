@@ -17,7 +17,7 @@ namespace StellarGK.Host
 
                 var decompressedRequest = Decompress(rawRequest);
 
-                var decryptedRequest = Decrypt(decompressedRequest);
+                var keyIndex = Decrypt(decompressedRequest, out var decryptedRequest);
 
                 var node = JsonSerializer.Deserialize<JsonNode>(decryptedRequest, JsonSerializerOptions);
 
@@ -56,7 +56,7 @@ namespace StellarGK.Host
 
                 var serialized = JsonSerializer.Serialize(response, JsonSerializerOptions);
 
-                var encrypted = Encrypt(serialized);
+                var encrypted = Encrypt(serialized, keyIndex);
 
                 return encrypted;
             }

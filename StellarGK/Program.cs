@@ -78,9 +78,6 @@ namespace StellarGK2
 
             app.MapGet("/", () => statusString);
 
-            //app.Services.CreateAsyncScope();
-
-            //app.MapPost("/checkData.php", PacketHandler.ProcessRequest);
             app.MapPost("/checkData.php", (HttpContext context, IServiceProvider provider) =>
             {
                 return PacketHandler.ProcessRequest(context, provider);
