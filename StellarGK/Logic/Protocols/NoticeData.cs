@@ -1,35 +1,35 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class NoticeData
     {
-        [JsonProperty("idx")]
+        [JsonPropertyName("idx")]
         public int idx { get; set; }
 
-        [JsonProperty("img")]
+        [JsonPropertyName("img")]
         public string img { get; set; }
 
-        [JsonProperty("ctnt")]
+        [JsonPropertyName("ctnt")]
         public string notice { get; set; }
 
-        [JsonProperty("link")]
+        [JsonPropertyName("link")]
         public string link { get; set; }
 
-        [JsonProperty("sdt")]
+        [JsonPropertyName("sdt")]
         public double startDate { get; set; }
 
-        [JsonProperty("edt")]
+        [JsonPropertyName("edt")]
         public double endDate { get; set; }
 
-        [JsonProperty("esdt")]
+        [JsonPropertyName("esdt")]
         public double eventStartDate { get; set; }
 
-        [JsonProperty("eedt")]
+        [JsonPropertyName("eedt")]
         public double eventEndDate { get; set; }
 
-        [JsonProperty("fixed")]
+        [JsonPropertyName("fixed")]
         public int notiFixed { get; set; }
     }
 }

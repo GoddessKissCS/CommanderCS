@@ -1,23 +1,23 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class CooperateInfo
     {
-        [JsonProperty("stage")]
+        [JsonPropertyName("stage")]
         public int stage { get; set; }
 
-        [JsonProperty("step")]
+        [JsonPropertyName("step")]
         public int step { get; set; }
 
-        [JsonProperty("remain")]
+        [JsonPropertyName("remain")]
         public int remain { get; set; }
 
-        [JsonProperty("dmg")]
+        [JsonPropertyName("dmg")]
         public ulong dmg { get; set; }
 
-        [JsonProperty("ticket")]
+        [JsonPropertyName("ticket")]
         public int ticket { get; set; }
     }
 }

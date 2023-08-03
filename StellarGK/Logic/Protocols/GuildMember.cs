@@ -1,47 +1,47 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class GuildMember
     {
-        [JsonProperty("member")]
+        [JsonPropertyName("member")]
         public List<MemberData> memberData { get; set; }
 
-        [JsonProperty("bb")]
+        [JsonPropertyName("bb")]
         public int badge { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class MemberData
         {
-            [JsonProperty("uno")]
+            [JsonPropertyName("uno")]
             public int uno { get; set; }
 
-            [JsonProperty("unm")]
+            [JsonPropertyName("unm")]
             public string name { get; set; }
 
-            [JsonProperty("thumb")]
+            [JsonPropertyName("thumb")]
             public int thumnail { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public int level { get; set; }
 
-            [JsonProperty("time")]
+            [JsonPropertyName("time")]
             public double lastTime { get; set; }
 
-            [JsonProperty("mstr")]
+            [JsonPropertyName("mstr")]
             public int memberGrade { get; set; }
 
-            [JsonProperty("dpnt")]
+            [JsonPropertyName("dpnt")]
             public int todayPoint { get; set; }
 
-            [JsonProperty("mpnt")]
+            [JsonPropertyName("mpnt")]
             public int totalPoint { get; set; }
 
-            [JsonProperty("pbpnt")]
+            [JsonPropertyName("pbpnt")]
             public int paymentBonusPoint { get; set; }
 
-            [JsonProperty("world")]
+            [JsonPropertyName("world")]
             public int world { get; set; }
         }
     }

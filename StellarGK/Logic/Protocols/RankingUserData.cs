@@ -1,62 +1,62 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class RankingUserData
     {
-        [JsonProperty("rank")]
+        [JsonPropertyName("rank")]
         public int ranking { get; set; }
 
-        [JsonProperty("prct")]
+        [JsonPropertyName("prct")]
         public float rankingRate { get; set; }
 
-        [JsonProperty("score")]
+        [JsonPropertyName("score")]
         public int score { get; set; }
 
-        [JsonProperty("nScore")]
+        [JsonPropertyName("nScore")]
         public int nextScore { get; set; }
 
-        [JsonProperty("wst")]
+        [JsonPropertyName("wst")]
         public int winningStreak { get; set; }
 
-        [JsonProperty("lst")]
+        [JsonPropertyName("lst")]
         public int losingStreak { get; set; }
 
-        [JsonProperty("win")]
+        [JsonPropertyName("win")]
         public int winCnt { get; set; }
 
-        [JsonProperty("lose")]
+        [JsonPropertyName("lose")]
         public int loseCnt { get; set; }
 
-        [JsonProperty("rcnt")]
+        [JsonPropertyName("rcnt")]
         public int raidCnt { get; set; }
 
-        [JsonProperty("nscr")]
+        [JsonPropertyName("nscr")]
         public int bestScore { get; set; }
 
-        [JsonProperty("avrg")]
+        [JsonPropertyName("avrg")]
         public int averageScore { get; set; }
 
-        [JsonProperty("ridx")]
+        [JsonPropertyName("ridx")]
         public int rewardId { get; set; }
 
-        [JsonProperty("dpnt")]
+        [JsonPropertyName("dpnt")]
         public int duelPoint { get; set; }
 
-        [JsonProperty("didx")]
+        [JsonPropertyName("didx")]
         public int rewardDuelPoint { get; set; }
 
-        [JsonProperty("wrank")]
+        [JsonPropertyName("wrank")]
         public int winRank { get; set; }
 
-        [JsonProperty("wridx")]
+        [JsonPropertyName("wridx")]
         public int winRankIdx { get; set; }
 
-        [JsonProperty("drank")]
+        [JsonPropertyName("drank")]
         public int raidRank { get; set; }
 
-        [JsonProperty("dridx")]
+        [JsonPropertyName("dridx")]
         public int raidRewardPoint { get; set; }
     }
 }

@@ -1,60 +1,62 @@
-﻿using System.Reflection;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ChattingInfo
     {
-        [JsonProperty("whisper")]
+        [JsonPropertyName("whisper")]
         public List<ChattingData> whisperList { get; set; }
 
-        [JsonProperty("channel")]
+        [JsonPropertyName("channel")]
         public List<ChattingData> channelList { get; set; }
 
-        [JsonProperty("guild")]
+        [JsonPropertyName("guild")]
         public List<ChattingData> guildList { get; set; }
 
-        [JsonProperty("time")]
+        [JsonPropertyName("time")]
         public int time { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class ChattingData
         {
-            [JsonProperty("chanel")]
+            [JsonPropertyName("chanel")]
             public string __channel { get; set; }
 
-            [JsonProperty("uno")]
+            [JsonPropertyName("uno")]
             public string __uno { get; set; }
 
-            [JsonProperty("svr")]
+            [JsonPropertyName("svr")]
             public int sendChannel { get; set; }
 
-            [JsonProperty("swld")]
+            [JsonPropertyName("swld")]
             public int sendWorld { get; set; }
 
-            [JsonProperty("send")]
+            [JsonPropertyName("send")]
             public string sendUno { get; set; }
 
-            [JsonProperty("snm")]
+            [JsonPropertyName("snm")]
             public string nickname { get; set; }
 
-            [JsonProperty("gnm", NullValueHandling = NullValueHandling.Ignore)]
+            [JsonPropertyName("gnm")]
+            [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
             public string guildName { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public int level { get; set; }
 
-            [JsonProperty("msg")]
+            [JsonPropertyName("msg")]
             public string message { get; set; }
 
-            [JsonProperty("date")]
+            [JsonPropertyName("date")]
             public double date { get; set; }
 
-            [JsonProperty("thmb")]
+            [JsonPropertyName("thmb")]
             public string thumbnail { get; set; }
 
+            /*
+             * 
+             *  TODO
             public ChattingMsgData chatMsgData
             {
                 get
@@ -81,6 +83,7 @@ namespace StellarGK.Logic.Protocols
                     return _chatMsgData;
                 }
             }
+            */
 
             [JsonIgnore]
             public ChattingMsgData _chatMsgData;

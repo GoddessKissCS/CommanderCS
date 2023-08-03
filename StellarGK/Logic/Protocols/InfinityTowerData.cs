@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class InfinityTowerData
     {
-        [JsonProperty("pifid")]
+        [JsonPropertyName("pifid")]
         public string curField { get; set; }
 
-        [JsonProperty("field")]
+        [JsonPropertyName("field")]
         public Dictionary<string, Dictionary<int, int>> fieldData { get; set; }
     }
 }

@@ -1,35 +1,35 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using StellarGK.Logic.Enums;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class RotationBanner
     {
-        [JsonProperty("rt")]
+        [JsonPropertyName("rt")]
         public int roataionTime { get; set; }
 
-        [JsonProperty("list")]
+        [JsonPropertyName("list")]
         public List<BannerList> bannerList;
 
         public class BannerList
         {
-            [JsonProperty("imgUrl")]
+            [JsonPropertyName("imgUrl")]
             public string ImgUrl { get; set; }
 
-            [JsonProperty("linkType")]
+            [JsonPropertyName("linkType")]
             public BannerListType linkType { get; set; }
 
-            [JsonProperty("linkIdx")]
+            [JsonPropertyName("linkIdx")]
             public int linkIdx { get; set; }
 
-            [JsonProperty("eidx")]
+            [JsonPropertyName("eidx")]
             public int eventIdx { get; set; }
 
-            [JsonProperty("sdate")]
+            [JsonPropertyName("sdate")]
             public string startDate { get; set; }
 
-            [JsonProperty("edate")]
+            [JsonPropertyName("edate")]
             public string endDate { get; set; }
         }
     }

@@ -1,47 +1,47 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class EventRaidData
     {
-        [JsonProperty("mbid")]
+        [JsonPropertyName("mbid")]
         public string bossId { get; set; }
 
-        [JsonProperty("eidx")]
+        [JsonPropertyName("eidx")]
         public string eIdx { get; set; }
 
-        [JsonProperty("enmy")]
+        [JsonPropertyName("enmy")]
         public string enemy { get; set; }
 
-        [JsonProperty("lv")]
+        [JsonPropertyName("lv")]
         public int level { get; set; }
 
-        [JsonProperty("hp")]
+        [JsonPropertyName("hp")]
         public int hp { get; set; }
 
-        [JsonProperty("dmg")]
+        [JsonPropertyName("dmg")]
         public int damage { get; set; }
 
-        [JsonProperty("remain")]
+        [JsonPropertyName("remain")]
         public int remain { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string userName { get; set; }
 
-        [JsonProperty("attendCount")]
+        [JsonPropertyName("attendCount")]
         public int attendCount { get; set; }
 
-        [JsonProperty("isown")]
+        [JsonPropertyName("isown")]
         public int isOwn { get; set; }
 
-        [JsonProperty("isshare")]
+        [JsonPropertyName("isshare")]
         public int isShare { get; set; }
 
-        [JsonProperty("isclr")]
+        [JsonPropertyName("isclr")]
         public int clear { get; set; }
 
-        [JsonProperty("recvRwd")]
+        [JsonPropertyName("recvRwd")]
         public int receive { get; set; }
     }
 }

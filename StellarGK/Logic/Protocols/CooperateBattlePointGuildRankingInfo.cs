@@ -1,35 +1,35 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class CooperateBattlePointGuildRankingInfo
     {
-        [JsonProperty("rank")]
+        [JsonPropertyName("rank")]
         public int rank { get; set; }
 
-        [JsonProperty("gIdx")]
+        [JsonPropertyName("gIdx")]
         public int gIdx { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string name { get; set; }
 
-        [JsonProperty("lv")]
+        [JsonPropertyName("lv")]
         public int lv { get; set; }
 
-        [JsonProperty("eblm")]
+        [JsonPropertyName("eblm")]
         public int eblm { get; set; }
 
-        [JsonProperty("server")]
+        [JsonPropertyName("server")]
         public int server { get; set; }
 
-        [JsonProperty("stage")]
+        [JsonPropertyName("stage")]
         public int stage { get; set; }
 
-        [JsonProperty("step")]
+        [JsonPropertyName("step")]
         public int step { get; set; }
 
-        [JsonProperty("accDmg")]
+        [JsonPropertyName("accDmg")]
         public ulong accDmg { get; set; }
     }
 }

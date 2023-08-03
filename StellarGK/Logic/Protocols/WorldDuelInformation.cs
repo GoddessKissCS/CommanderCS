@@ -1,38 +1,38 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class WorldDuelInformation
     {
-        [JsonProperty("itrm")]
+        [JsonPropertyName("itrm")]
         public double resetTime { get; set; }
 
-        [JsonProperty("rsoc")]
+        [JsonPropertyName("rsoc")]
         public UserInformationResponse.Resource resource { get; set; }
 
-        [JsonProperty("deck")]
+        [JsonPropertyName("deck")]
         public Dictionary<string, string> deck { get; set; }
 
-        [JsonProperty("buff")]
+        [JsonPropertyName("buff")]
         public Dictionary<string, int> duelBuff { get; set; }
 
-        [JsonProperty("bbf")]
+        [JsonPropertyName("bbf")]
         public List<int> activeBuff { get; set; }
 
-        [JsonProperty("rank")]
+        [JsonPropertyName("rank")]
         public RankingUserData user { get; set; }
 
-        [JsonProperty("trank")]
+        [JsonPropertyName("trank")]
         public List<PvPRankingList.RankData> rankingList { get; set; }
 
-        [JsonProperty("open")]
+        [JsonPropertyName("open")]
         public string _open { get; set; }
 
-        [JsonProperty("lsinfo")]
+        [JsonPropertyName("lsinfo")]
         public UserData bestRank { get; set; }
 
-        [JsonProperty("retryinfo")]
+        [JsonPropertyName("retryinfo")]
         public PvPDuelList.PvPDuelData retryInfo { get; set; }
 
         public bool open
@@ -43,31 +43,31 @@ namespace StellarGK.Logic.Protocols
             }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class UserData
         {
-            [JsonProperty("wld")]
+            [JsonPropertyName("wld")]
             public int world { get; set; }
 
-            [JsonProperty("unm")]
+            [JsonPropertyName("unm")]
             public string userName { get; set; }
 
-            [JsonProperty("gld")]
+            [JsonPropertyName("gld")]
             public string guildName { get; set; }
 
-            [JsonProperty("gwld")]
+            [JsonPropertyName("gwld")]
             public int guildWorld { get; set; }
 
-            [JsonProperty("score")]
+            [JsonPropertyName("score")]
             public int score { get; set; }
 
-            [JsonProperty("win")]
+            [JsonPropertyName("win")]
             public int win { get; set; }
 
-            [JsonProperty("lose")]
+            [JsonPropertyName("lose")]
             public int lose { get; set; }
 
-            [JsonProperty("thmb")]
+            [JsonPropertyName("thmb")]
             public string thmb { get; set; }
         }
     }

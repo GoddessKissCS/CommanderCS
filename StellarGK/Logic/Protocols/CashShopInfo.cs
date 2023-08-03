@@ -1,26 +1,26 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class CashShopInfo
     {
-        [JsonProperty("cstp")]
+        [JsonPropertyName("cstp")]
         public int cashType { get; set; }
 
-        [JsonProperty("csam")]
+        [JsonPropertyName("csam")]
         public int cashAmount { get; set; }
 
-        [JsonProperty("gmcs")]
+        [JsonPropertyName("gmcs")]
         public int gameCash { get; set; }
 
-        [JsonProperty("csevt")]
+        [JsonPropertyName("csevt")]
         public int eventCashAmount { get; set; }
 
-        [JsonProperty("gmcsevt")]
+        [JsonPropertyName("gmcsevt")]
         public int eventGameCash { get; set; }
 
-        [JsonProperty("evtId")]
+        [JsonPropertyName("evtId")]
         public int eventId { get; set; }
     }
 }

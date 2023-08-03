@@ -1,60 +1,60 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ConquestTroopInfo
     {
-        [JsonProperty("squard")]
+        [JsonPropertyName("squard")]
         public Dictionary<int, Troop> squard { get; set; }
 
-        [JsonProperty("slot")]
+        [JsonPropertyName("slot")]
         public List<int> slot { get; set; }
 
-        [JsonProperty("enemy")]
+        [JsonPropertyName("enemy")]
         public Enemy eGuild { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Enemy
         {
-            [JsonProperty("nm")]
+            [JsonPropertyName("nm")]
             public string name { get; set; }
 
-            [JsonProperty("world")]
+            [JsonPropertyName("world")]
             public int world { get; set; }
 
-            [JsonProperty("emblem")]
+            [JsonPropertyName("emblem")]
             public int emblem { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public int level { get; set; }
 
-            [JsonProperty("mcnt")]
+            [JsonPropertyName("mcnt")]
             public int mcnt { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Troop
         {
-            [JsonProperty("point")]
+            [JsonPropertyName("point")]
             public int point { get; set; }
 
-            [JsonProperty("status")]
+            [JsonPropertyName("status")]
             public string status { get; set; }
 
-            [JsonProperty("remain")]
+            [JsonPropertyName("remain")]
             public int remain { get; set; }
 
-            [JsonProperty("mvtm")]
+            [JsonPropertyName("mvtm")]
             public int mvtm { get; set; }
 
-            [JsonProperty("path")]
+            [JsonPropertyName("path")]
             public List<int> path { get; set; }
 
-            [JsonProperty("ucash")]
+            [JsonPropertyName("ucash")]
             public int ucash { get; set; }
 
-            [JsonProperty("deck")]
+            [JsonPropertyName("deck")]
             public Dictionary<string, string> deck { get; set; }
         }
     }

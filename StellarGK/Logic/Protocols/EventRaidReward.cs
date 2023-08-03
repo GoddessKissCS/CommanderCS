@@ -1,56 +1,56 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class EventRaidReward
     {
-        [JsonProperty("reward")]
+        [JsonPropertyName("reward")]
         public List<RewardInfo.RewardData> rewardList { get; set; }
 
-        [JsonProperty("rsoc")]
+        [JsonPropertyName("rsoc")]
         public UserInformationResponse.Resource resource { get; set; }
 
-        [JsonProperty("comm")]
+        [JsonPropertyName("comm")]
         public Dictionary<string, UserInformationResponse.Commander> commanderData { get; set; }
 
-        [JsonProperty("part")]
+        [JsonPropertyName("part")]
         public Dictionary<string, int> partData { get; set; }
 
-        [JsonProperty("medl")]
+        [JsonPropertyName("medl")]
         public Dictionary<string, int> medalData { get; set; }
 
-        [JsonProperty("ersoc")]
+        [JsonPropertyName("ersoc")]
         public Dictionary<string, int> eventResourceData { get; set; }
 
-        [JsonProperty("item")]
+        [JsonPropertyName("item")]
         public Dictionary<string, int> itemData { get; set; }
 
-        [JsonProperty("clst")]
+        [JsonPropertyName("clst")]
         public List<Dictionary<string, RewardInfo.HaveCostumeInfo>> costumeData { get; set; }
 
-        [JsonProperty("food")]
+        [JsonPropertyName("food")]
         public Dictionary<string, int> foodData { get; set; }
 
-        [JsonProperty("equip")]
+        [JsonPropertyName("equip")]
         public Dictionary<string, Dictionary<int, EquipItemInfo>> equipItem { get; set; }
 
-        [JsonProperty("rwdCnt")]
+        [JsonPropertyName("rwdCnt")]
         public EventRaidRewardData rewardCount { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class EventRaidRewardData
         {
-            [JsonProperty("attend")]
+            [JsonPropertyName("attend")]
             public int attend { get; set; }
 
-            [JsonProperty("own")]
+            [JsonPropertyName("own")]
             public int own { get; set; }
 
-            [JsonProperty("mvp")]
+            [JsonPropertyName("mvp")]
             public int mvp { get; set; }
 
-            [JsonProperty("mbids")]
+            [JsonPropertyName("mbids")]
             public List<string> mbids { get; set; }
         }
     }

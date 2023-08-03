@@ -1,151 +1,151 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using StellarGK.Logic.Enums;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class RewardInfo
     {
-        [JsonProperty("reward")]
+        [JsonPropertyName("reward")]
         public List<RewardData> reward { get; set; }
 
-        [JsonProperty("rsoc")]
+        [JsonPropertyName("rsoc")]
         public UserInformationResponse.Resource resource { get; set; }
 
-        [JsonProperty("comm")]
+        [JsonPropertyName("comm")]
         public Dictionary<string, UserInformationResponse.Commander> commander { get; set; }
 
-        [JsonProperty("part")]
+        [JsonPropertyName("part")]
         public Dictionary<string, int> partData { get; set; }
 
-        [JsonProperty("medl")]
+        [JsonPropertyName("medl")]
         public Dictionary<string, int> medalData { get; set; }
 
-        [JsonProperty("rank")]
+        [JsonPropertyName("rank")]
         public Dictionary<string, int> duelScoreData { get; set; }
 
-        [JsonProperty("ersoc")]
+        [JsonPropertyName("ersoc")]
         public Dictionary<string, int> eventResourceData { get; set; }
 
-        [JsonProperty("item")]
+        [JsonPropertyName("item")]
         public Dictionary<string, int> itemData { get; set; }
 
-        [JsonProperty("food")]
+        [JsonPropertyName("food")]
         public Dictionary<string, int> foodData { get; set; }
 
-        [JsonProperty("clst")]
+        [JsonPropertyName("clst")]
         public List<Dictionary<string, HaveCostumeInfo>> costumeData { get; set; }
 
-        [JsonProperty("equip")]
+        [JsonPropertyName("equip")]
         public Dictionary<string, Dictionary<int, EquipItemInfo>> equipItem { get; set; }
 
-        [JsonProperty("guit")]
+        [JsonPropertyName("guit")]
         public Dictionary<string, int> groupItemData { get; set; }
 
-        [JsonProperty("achv")]
+        [JsonPropertyName("achv")]
         public AchievementData nextAchievement { get; set; }
 
-        [JsonProperty("uinfo")]
+        [JsonPropertyName("uinfo")]
         public UserInformationResponse.BattleStatistics userInfo { get; set; }
 
-        [JsonProperty("achvs")]
+        [JsonPropertyName("achvs")]
         public List<AchievementData> nextAchievementList { get; set; }
 
-        [JsonProperty("comp")]
+        [JsonPropertyName("comp")]
         public List<int> receiveMissinIdx { get; set; }
 
-        [JsonProperty("compa")]
+        [JsonPropertyName("compa")]
         public Dictionary<string, int> receiveAchievementIdx { get; set; }
 
-        [JsonProperty("drsoc")]
+        [JsonPropertyName("drsoc")]
         public Dormitory.Resource dormitoryResource { get; set; }
 
-        [JsonProperty("deco")]
+        [JsonPropertyName("deco")]
         public Dictionary<string, int> dormitoryItemNormal { get; set; }
 
-        [JsonProperty("sdeco")]
+        [JsonPropertyName("sdeco")]
         public Dictionary<string, int> dormitoryItemAdvanced { get; set; }
 
-        [JsonProperty("wall")]
+        [JsonPropertyName("wall")]
         public Dictionary<string, int> dormitoryItemWallpaper { get; set; }
 
-        [JsonProperty("bcos")]
+        [JsonPropertyName("bcos")]
         public Dictionary<string, int> dormitoryCostumeBody { get; set; }
 
-        [JsonProperty("hcos")]
+        [JsonPropertyName("hcos")]
         public Dictionary<string, List<string>> dormitoryCostumeHead { get; set; }
 
-        [JsonProperty("weapon")]
+        [JsonPropertyName("weapon")]
         public Dictionary<string, WeaponData> weaponList { get; set; }
 
-        [JsonProperty("gts")]
+        [JsonPropertyName("gts")]
         public int time { get; set; }
 
-        [JsonProperty("prc")]
+        [JsonPropertyName("prc")]
         public float inAppPrice { get; set; }
 
-        [JsonProperty("exp")]
+        [JsonPropertyName("exp")]
         public int exp { get; set; }
 
-        [JsonProperty("exps")]
+        [JsonPropertyName("exps")]
         public List<ExplorationExp> explorationExp { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class RewardData
         {
-            [JsonProperty("rwdType")]
+            [JsonPropertyName("rwdType")]
             public ERewardType rewardType { get; set; }
 
-            [JsonProperty("rwdIdx")]
+            [JsonPropertyName("rwdIdx")]
             public string rewardId { get; set; }
 
-            [JsonProperty("cnt")]
+            [JsonPropertyName("cnt")]
             public int rewardCnt { get; set; }
 
-            [JsonProperty("efct")]
+            [JsonPropertyName("efct")]
             public int effect { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class CommanderMedal
         {
-            [JsonProperty("medl")]
+            [JsonPropertyName("medl")]
             public int medal { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class AchievementData
         {
-            [JsonProperty("acid")]
+            [JsonPropertyName("acid")]
             public int achievementId { get; set; }
 
-            [JsonProperty("asot")]
+            [JsonPropertyName("asot")]
             public int sort { get; set; }
 
-            [JsonProperty("apt")]
+            [JsonPropertyName("apt")]
             public int point { get; set; }
 
-            [JsonProperty("fin")]
+            [JsonPropertyName("fin")]
             public int complete { get; set; }
 
-            [JsonProperty("arcv")]
+            [JsonPropertyName("arcv")]
             public int receive { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class HaveCostumeInfo
         {
-            [JsonProperty("clst")]
+            [JsonPropertyName("clst")]
             public List<int> haveCostume { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class ExplorationExp
         {
-            [JsonProperty("idx")]
+            [JsonPropertyName("idx")]
             public int idx { get; set; }
 
-            [JsonProperty("exp")]
+            [JsonPropertyName("exp")]
             public int exp { get; set; }
         }
     }

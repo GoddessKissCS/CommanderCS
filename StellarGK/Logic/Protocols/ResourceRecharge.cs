@@ -1,47 +1,47 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ResourceRecharge
     {
-        [JsonProperty("bult")]
+        [JsonPropertyName("bult")]
         public RechargeData bulletData;
 
-        [JsonProperty("oil")]
+        [JsonPropertyName("oil")]
         public RechargeData oilData;
 
-        [JsonProperty("skil")]
+        [JsonPropertyName("skil")]
         public RechargeData skillData;
 
-        [JsonProperty("chip")]
+        [JsonPropertyName("chip")]
         public RechargeData chip;
 
-        [JsonProperty("wmat1")]
+        [JsonPropertyName("wmat1")]
         public RechargeData weaponMaterialData1;
 
-        [JsonProperty("wmat2")]
+        [JsonPropertyName("wmat2")]
         public RechargeData weaponMaterialData2;
 
-        [JsonProperty("wmat3")]
+        [JsonPropertyName("wmat3")]
         public RechargeData weaponMaterialData3;
 
-        [JsonProperty("wmat4")]
+        [JsonPropertyName("wmat4")]
         public RechargeData weaponMaterialData4;
 
-        [JsonProperty("gacha")]
+        [JsonPropertyName("gacha")]
         public Dictionary<string, GachaInformationResponse> gacha;
 
-        [JsonProperty("world")]
+        [JsonPropertyName("world")]
         public int worldState;
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class RechargeData
         {
-            [JsonProperty("cnt")]
+            [JsonPropertyName("cnt")]
             public int cnt { get; set; }
 
-            [JsonProperty("remain")]
+            [JsonPropertyName("remain")]
             public int remain { get; set; }
         }
     }

@@ -1,20 +1,20 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class RecruitCommanderDelayResponse
     {
-        [JsonProperty("wait")]
+        [JsonPropertyName("wait")]
         public int wait { get; set; }
 
-        [JsonProperty("gold")]
+        [JsonPropertyName("gold")]
         public string __gold { get; set; }
 
-        [JsonProperty("cash")]
+        [JsonPropertyName("cash")]
         public string __cash { get; set; }
 
-        [JsonProperty("comm")]
+        [JsonPropertyName("comm")]
         public SimpleCommanderInfo commander { get; set; }
     }
 }

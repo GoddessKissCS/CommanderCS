@@ -1,29 +1,29 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class WaveBattleInfoList
     {
-        [JsonProperty("wavebattle")]
+        [JsonPropertyName("wavebattle")]
         public List<WaveBattleInfo> InfoList { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class WaveBattleInfo
         {
-            [JsonProperty("wbid")]
+            [JsonPropertyName("wbid")]
             public int battleIdx { get; set; }
 
-            [JsonProperty("otime")]
+            [JsonPropertyName("otime")]
             public int openTime { get; set; }
 
-            [JsonProperty("ctime")]
+            [JsonPropertyName("ctime")]
             public int closeTime { get; set; }
 
-            [JsonProperty("clearCnt")]
+            [JsonPropertyName("clearCnt")]
             public int clearCount { get; set; }
 
-            [JsonProperty("maxCnt")]
+            [JsonPropertyName("maxCnt")]
             public int maxCount { get; set; }
         }
     }

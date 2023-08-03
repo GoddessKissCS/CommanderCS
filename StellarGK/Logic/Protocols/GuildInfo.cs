@@ -1,20 +1,20 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class GuildInfo
     {
-        [JsonProperty("rsoc")]
+        [JsonPropertyName("rsoc")]
         public UserInformationResponse.Resource resource { get; set; }
 
-        [JsonProperty("gld")]
+        [JsonPropertyName("gld")]
         public UserInformationResponse.UserGuild guildInfo { get; set; }
 
-        [JsonProperty("member")]
+        [JsonPropertyName("member")]
         public List<GuildMember.MemberData> memberData { get; set; }
 
-        [JsonProperty("glist")]
+        [JsonPropertyName("glist")]
         public List<RoGuild> guildList { get; set; }
     }
 }

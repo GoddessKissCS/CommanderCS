@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class EventRaidList
     {
-        [JsonProperty("rcnt")]
+        [JsonPropertyName("rcnt")]
         public int rewardCount { get; set; }
 
-        [JsonProperty("list")]
+        [JsonPropertyName("list")]
         public List<EventRaidData> bossList { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using StellarGK.Logic.Protocols;
+﻿using StellarGK.Logic.Protocols;
 
 
 namespace StellarGK.Host.Handlers.Guild
@@ -50,7 +49,7 @@ namespace StellarGK.Host.Handlers.Guild
                 result = guildInfo
             };
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
     }

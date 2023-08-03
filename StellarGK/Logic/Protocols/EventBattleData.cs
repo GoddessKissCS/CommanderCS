@@ -1,48 +1,48 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class EventBattleData
     {
-        [JsonProperty("evt")]
+        [JsonPropertyName("evt")]
         public EventData eventData { get; set; }
 
-        [JsonProperty("boss")]
+        [JsonPropertyName("boss")]
         public RaidData raidData { get; set; }
 
-        [JsonProperty("bossCnt")]
+        [JsonPropertyName("bossCnt")]
         public int bossCnt { get; set; }
 
-        [JsonProperty("rcnt")]
+        [JsonPropertyName("rcnt")]
         public int rewardCnt { get; set; }
 
-        [JsonProperty("rcntAll")]
+        [JsonPropertyName("rcntAll")]
         public int rewardCntAll { get; set; }
 
-        [JsonProperty("map")]
+        [JsonPropertyName("map")]
         public Dictionary<int, int> clearList { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class EventData
         {
-            [JsonProperty("efid")]
+            [JsonPropertyName("efid")]
             public string efid { get; set; }
 
-            [JsonProperty("esid")]
+            [JsonPropertyName("esid")]
             public string esid { get; set; }
 
-            [JsonProperty("remain")]
+            [JsonPropertyName("remain")]
             public double remain { get; set; }
 
-            [JsonProperty("type")]
+            [JsonPropertyName("type")]
             public int type { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class RaidData
         {
-            [JsonProperty("remain")]
+            [JsonPropertyName("remain")]
             public double remain { get; set; }
         }
     }

@@ -1,20 +1,20 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class RecallCommander
     {
-        [JsonProperty("rsoc")]
+        [JsonPropertyName("rsoc")]
         public UserInformationResponse.Resource resource { get; set; }
 
-        [JsonProperty("rgtm")]
+        [JsonPropertyName("rgtm")]
         public int runtime;
 
-        [JsonProperty("egld")]
+        [JsonPropertyName("egld")]
         public int getGold_time;
 
-        [JsonProperty("exgd")]
+        [JsonPropertyName("exgd")]
         public int getGold_engage;
     }
 }

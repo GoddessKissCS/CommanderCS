@@ -1,25 +1,32 @@
-﻿using System.Net;
+﻿using System.Linq;
+using System.Net;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using MongoDB.Bson;
 using static StellarGK.Utils.Compression;
 using static StellarGK.Utils.Crypto;
-using JsonConvert = Newtonsoft.Json.JsonConvert;
 
 namespace StellarGK.Host
 {
     public partial class PacketHandler
     {
-        public static string ProcessRequest(HttpListenerContext context, IServiceProvider serviceProvider)
+
+        public static JsonSerializerOptions options = new()
         {
-            if (context.Request.HttpMethod == "POST" || context.Request.UserAgent == "BestHTTP")
+
+        };
+
+        public static string ProcessRequest(HttpContext context, IServiceProvider serviceProvider)
+        {
+            if (context.Request.Method == "POST" || context.Request.Headers.UserAgent.Contains("BestHTTP"))
             {
-                JsonNode node = Decrypt(Decompress(Stream2ByteArray(context.Request.InputStream)));
+                JsonNode node = Decrypt(Decompress(Stream2ByteArray(context.Request.Body)));
 
                 if (node is null)
                 {
-                    throw new ArgumentNullException(nameof(node));
+                    return "{}";
+                    //throw new ArgumentNullException(nameof(node));
                 }
-
 
                 if (node is JsonArray array)
                 {
@@ -41,13 +48,13 @@ namespace StellarGK.Host
 
                     // Array Here
 
+                    return Encrypt(JsonSerializer.Serialize(responses, options));
 
-                    return Encrypt(JsonConvert.SerializeObject(responses));
                 }
 
                 var packet = ProcessPacket(node, serviceProvider);
 
-                return Encrypt(JsonConvert.SerializeObject(packet));
+                return Encrypt(JsonSerializer.Serialize(packet, options));
             }
             return "shouldnt happend";
         }

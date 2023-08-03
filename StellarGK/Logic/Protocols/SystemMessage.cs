@@ -1,47 +1,47 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class SystemMessage
     {
-        [JsonProperty("lvup")]
+        [JsonPropertyName("lvup")]
         public int level { get; set; }
 
-        [JsonProperty("sess")]
+        [JsonPropertyName("sess")]
         public string session { get; set; }
 
-        [JsonProperty("cid")]
+        [JsonPropertyName("cid")]
         public string commanderId { get; set; }
 
-        [JsonProperty("dmid")]
+        [JsonPropertyName("dmid")]
         public int missionId { get; set; }
 
-        [JsonProperty("fin")]
+        [JsonPropertyName("fin")]
         public bool missionComplete { get; set; }
 
-        [JsonProperty("gidx")]
+        [JsonPropertyName("gidx")]
         public string __gidx { get; set; }
 
-        [JsonProperty("rsoc")]
+        [JsonPropertyName("rsoc")]
         public UserInformationResponse.Resource resource { get; set; }
 
-        [JsonProperty("systemCheck")]
+        [JsonPropertyName("systemCheck")]
         public SystemCheck systemCheck { get; set; }
 
-        [JsonProperty("notice")]
+        [JsonPropertyName("notice")]
         public NoticeList noticeList { get; set; }
 
-        [JsonProperty("cnv")]
+        [JsonPropertyName("cnv")]
         public int carnival1 { get; set; }
 
-        [JsonProperty("cnv2")]
+        [JsonPropertyName("cnv2")]
         public int carnival2 { get; set; }
 
-        [JsonProperty("cnv3")]
+        [JsonPropertyName("cnv3")]
         public int carnival3 { get; set; }
 
-        [JsonProperty("rstm")]
+        [JsonPropertyName("rstm")]
         public int resetRemain { get; set; }
 
         public int userLevel
@@ -80,67 +80,67 @@ namespace StellarGK.Logic.Protocols
             }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class SystemCheck
         {
-            [JsonProperty("fromTime")]
+            [JsonPropertyName("fromTime")]
             public double fromTime { get; set; }
 
-            [JsonProperty("toTime")]
+            [JsonPropertyName("toTime")]
             public double toTime { get; set; }
 
-            [JsonProperty("msg")]
+            [JsonPropertyName("msg")]
             public Message message { get; set; }
 
-            [JsonProperty("now")]
+            [JsonPropertyName("now")]
             public double nowTime { get; set; }
 
-            [JsonObject(MemberSerialization.OptIn)]
+
             public class Message
             {
-                [JsonProperty("ko")]
+                [JsonPropertyName("ko")]
                 public string ko { get; set; }
 
-                [JsonProperty("cng")]
+                [JsonPropertyName("cng")]
                 public string cn { get; set; }
 
-                [JsonProperty("cnb")]
+                [JsonPropertyName("cnb")]
                 public string tw { get; set; }
 
-                [JsonProperty("jp")]
+                [JsonPropertyName("jp")]
                 public string jp { get; set; }
 
-                [JsonProperty("en")]
+                [JsonPropertyName("en")]
                 public string en { get; set; }
 
-                [JsonProperty("ru")]
+                [JsonPropertyName("ru")]
                 public string ru { get; set; }
             }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class NoticeList
         {
-            [JsonProperty("realtime")]
+            [JsonPropertyName("realtime")]
             public NoticeData realtime { get; set; }
 
-            [JsonProperty("chat")]
+            [JsonPropertyName("chat")]
             public NoticeData chat { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class NoticeData
         {
-            [JsonProperty("ctnt")]
+            [JsonPropertyName("ctnt")]
             public string contents { get; set; }
 
-            [JsonProperty("idx")]
+            [JsonPropertyName("idx")]
             public int idx { get; set; }
 
-            [JsonProperty("sdt")]
+            [JsonPropertyName("sdt")]
             public double startDate { get; set; }
 
-            [JsonProperty("edt")]
+            [JsonPropertyName("edt")]
             public double endDate { get; set; }
         }
     }

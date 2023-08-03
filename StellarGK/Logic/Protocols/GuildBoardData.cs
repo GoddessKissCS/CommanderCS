@@ -1,30 +1,30 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
 
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class GuildBoardData
     {
-        [JsonProperty("idx")]
+        [JsonPropertyName("idx")]
         public int idx { get; set; }
 
-        [JsonProperty("msg")]
+        [JsonPropertyName("msg")]
         public string msg { get; set; }
 
-        [JsonProperty("regdt")]
+        [JsonPropertyName("regdt")]
         public double regdt { get; set; }
 
-        [JsonProperty("uno")]
+        [JsonPropertyName("uno")]
         public int uno { get; set; }
 
-        [JsonProperty("thumb")]
+        [JsonPropertyName("thumb")]
         public string thumb { get; set; }
 
-        [JsonProperty("unm")]
+        [JsonPropertyName("unm")]
         public string unm { get; set; }
 
-        [JsonProperty("dauth")]
+        [JsonPropertyName("dauth")]
         public int dauth { get; set; }
     }
 }

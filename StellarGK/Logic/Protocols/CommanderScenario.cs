@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class CommanderScenario
     {
-        [JsonProperty("qrtr")]
+        [JsonPropertyName("qrtr")]
         public List<string> complete { get; set; }
 
-        [JsonProperty("rcvd")]
+        [JsonPropertyName("rcvd")]
         public int receive { get; set; }
     }
 }

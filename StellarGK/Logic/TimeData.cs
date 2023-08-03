@@ -1,8 +1,5 @@
-﻿using Newtonsoft.Json;
-
-namespace StellarGK.Logic
+﻿namespace StellarGK.Logic
 {
-    [JsonObject]
     public class TimeData
     {
         public double start { get; set; }

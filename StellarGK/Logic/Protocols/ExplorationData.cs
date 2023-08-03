@@ -1,18 +1,18 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ExplorationData
     {
-        [JsonProperty("idx")]
+        [JsonPropertyName("idx")]
         public int idx { get; set; }
 
         public long _timeTick { get; set; }
 
         public double _remainTime { get; set; }
 
-        [JsonProperty("rmtm")]
+        [JsonPropertyName("rmtm")]
         public double remainTime
         {
             get
@@ -35,7 +35,7 @@ namespace StellarGK.Logic.Protocols
             }
         }
 
-        [JsonProperty("cid")]
+        [JsonPropertyName("cid")]
         public List<string> cids { get; set; }
     }
 

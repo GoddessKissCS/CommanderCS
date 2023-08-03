@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class GachaRatingDataTypeB
     {
-        [JsonProperty("list")]
+        [JsonPropertyName("list")]
         public Dictionary<string, Dictionary<int, float>> list { get; set; }
     }
 }

@@ -1,35 +1,35 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class GuildRankingInfo
     {
-        [JsonProperty("idx")]
+        [JsonPropertyName("idx")]
         public int idx { get; set; }
 
-        [JsonProperty("world")]
+        [JsonPropertyName("world")]
         public int world { get; set; }
 
-        [JsonProperty("rnk")]
+        [JsonPropertyName("rnk")]
         public int rank { get; set; }
 
-        [JsonProperty("gnm")]
+        [JsonPropertyName("gnm")]
         public string guildName { get; set; }
 
-        [JsonProperty("lev")]
+        [JsonPropertyName("lev")]
         public int level { get; set; }
 
-        [JsonProperty("apt")]
+        [JsonPropertyName("apt")]
         public int point { get; set; }
 
-        [JsonProperty("scr")]
+        [JsonPropertyName("scr")]
         public int score { get; set; }
 
-        [JsonProperty("emb")]
+        [JsonPropertyName("emb")]
         public int emblem { get; set; }
 
-        [JsonProperty("cnt")]
+        [JsonPropertyName("cnt")]
         public int count { get; set; }
     }
 }

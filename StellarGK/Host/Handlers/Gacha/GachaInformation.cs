@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using StellarGK.Logic.Protocols;
+﻿using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Gacha
 {
@@ -27,7 +26,7 @@ namespace StellarGK.Host.Handlers.Gacha
             response.id = BasePacket.Id;
             response.result = test;
 
-            return JsonConvert.SerializeObject(response);
+            return response;
         }
 
         /*

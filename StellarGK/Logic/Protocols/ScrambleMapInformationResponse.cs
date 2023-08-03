@@ -1,17 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ScrambleMapInformationResponse
     {
-        [JsonProperty("stage")]
+        [JsonPropertyName("stage")]
         public string stageId { get; set; }
 
-        [JsonProperty("stus")]
+        [JsonPropertyName("stus")]
         public int status { get; set; }
 
-        [JsonProperty("rmhp")]
+        [JsonPropertyName("rmhp")]
         public string __hp { get; set; }
     }
 }

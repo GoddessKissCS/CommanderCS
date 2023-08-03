@@ -1,23 +1,23 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class GetTroopInformationResponse
     {
-        [JsonProperty("cid")]
+        [JsonPropertyName("cid")]
         public string commanderId { get; set; }
 
-        [JsonProperty("dnm")]
+        [JsonPropertyName("dnm")]
         public string nickname { get; set; }
 
-        [JsonProperty("deck")]
+        [JsonPropertyName("deck")]
         public Dictionary<string, Slot> slots { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Slot
         {
-            [JsonProperty("uid")]
+            [JsonPropertyName("uid")]
             public string unitId { get; set; }
         }
     }

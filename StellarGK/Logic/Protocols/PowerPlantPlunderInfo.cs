@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class PowerPlantPlunderInfo
     {
-        [JsonProperty("pRemain")]
+        [JsonPropertyName("pRemain")]
         public int remain { get; set; }
 
-        [JsonProperty("target")]
+        [JsonPropertyName("target")]
         public UserInformationResponse.Commander target { get; set; }
     }
 }

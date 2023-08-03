@@ -1,17 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class FavorUpData
     {
-        [JsonProperty("todayFavr")]
+        [JsonPropertyName("todayFavr")]
         public int todayFavorCount { get; set; }
 
-        [JsonProperty("favr")]
+        [JsonPropertyName("favr")]
         public List<CommanderFavor> commanderFavor { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class CommanderFavor
         {
         }

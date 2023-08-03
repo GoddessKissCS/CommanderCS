@@ -1,20 +1,20 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class DiapatchCommanderInfo
     {
-        [JsonProperty("cid")]
+        [JsonPropertyName("cid")]
         public int cid { get; set; }
 
-        [JsonProperty("rgtm")]
+        [JsonPropertyName("rgtm")]
         public int runtime { get; set; }
 
-        [JsonProperty("ecnt")]
+        [JsonPropertyName("ecnt")]
         public int engageCnt { get; set; }
 
-        [JsonProperty("egld")]
+        [JsonPropertyName("egld")]
         public int getGold { get; set; }
     }
 }

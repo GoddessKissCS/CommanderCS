@@ -1,29 +1,29 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class DailyBonusCheckResponse
     {
-        [JsonProperty("ver")]
+        [JsonPropertyName("ver")]
         public string version { get; set; }
 
-        [JsonProperty("didx")]
+        [JsonPropertyName("didx")]
         public int day { get; set; }
 
-        [JsonProperty("gidx")]
+        [JsonPropertyName("gidx")]
         public string goodsId { get; set; }
 
-        [JsonProperty("amnt")]
+        [JsonPropertyName("amnt")]
         public int goodsCount { get; set; }
 
-        [JsonProperty("sdt")]
+        [JsonPropertyName("sdt")]
         public string startTimeString { get; set; }
 
-        [JsonProperty("edt")]
+        [JsonPropertyName("edt")]
         public string endTimeString { get; set; }
 
-        [JsonProperty("rcvd")]
+        [JsonPropertyName("rcvd")]
         public int receiveState { get; set; }
 
         public bool received

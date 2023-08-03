@@ -1,50 +1,50 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
 
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class GetRadarData
     {
-        [JsonProperty("Radar")]
+        [JsonPropertyName("Radar")]
         public Radar radar { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Radar
         {
-            [JsonProperty("remain")]
+            [JsonPropertyName("remain")]
             public int remain { get; set; }
 
-            [JsonProperty("ovtm")]
+            [JsonPropertyName("ovtm")]
             public int overTime { get; set; }
 
-            [JsonProperty("stm")]
+            [JsonPropertyName("stm")]
             public int startTime { get; set; }
 
-            [JsonProperty("unm")]
+            [JsonPropertyName("unm")]
             public string uName { get; set; }
 
-            [JsonProperty("info")]
+            [JsonPropertyName("info")]
             public Dictionary<int, User> info { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class User
         {
-            [JsonProperty("alie")]
+            [JsonPropertyName("alie")]
             public Info alie { get; set; }
 
-            [JsonProperty("enemy")]
+            [JsonPropertyName("enemy")]
             public Info enemy { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Info
         {
-            [JsonProperty("move")]
+            [JsonPropertyName("move")]
             public int move { get; set; }
 
-            [JsonProperty("stand")]
+            [JsonPropertyName("stand")]
             public int stand { get; set; }
         }
     }

@@ -1,20 +1,20 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class GachaInformationResponse
     {
-        [JsonProperty("gbIdx")]
+        [JsonPropertyName("gbIdx")]
         public string type { get; set; }
 
-        [JsonProperty("cnt")]
+        [JsonPropertyName("cnt")]
         public int freeOpenRemainCount { get; set; }
 
-        [JsonProperty("remain")]
+        [JsonPropertyName("remain")]
         public int freeOpenRemainTime { get; set; }
 
-        [JsonProperty("acc")]
+        [JsonPropertyName("acc")]
         public int pilotRate { get; set; }
     }
 }

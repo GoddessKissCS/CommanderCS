@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class CooperateBattleData
     {
-        [JsonProperty("coop")]
+        [JsonPropertyName("coop")]
         public CooperateInfo coop { get; set; }
 
-        [JsonProperty("recv")]
+        [JsonPropertyName("recv")]
         public CooperateReceiveInfo recv { get; set; }
     }
 }

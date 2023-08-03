@@ -1,376 +1,376 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using StellarGK.Logic.Enums;
 
 namespace StellarGK.Logic.Protocols
 {
     public class Dormitory
     {
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Resource
         {
-            [JsonProperty("drpt")]
+            [JsonPropertyName("drpt")]
             public string __dormitoryPoint { get; set; }
 
-            [JsonProperty("wood")]
+            [JsonPropertyName("wood")]
             public string __wood { get; set; }
 
-            [JsonProperty("ston")]
+            [JsonPropertyName("ston")]
             public string __ston { get; set; }
 
-            [JsonProperty("elec")]
+            [JsonPropertyName("elec")]
             public string __elec { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class InventoryData
         {
-            [JsonProperty("deco")]
+            [JsonPropertyName("deco")]
             public Dictionary<string, int> itemNormal { get; set; }
 
-            [JsonProperty("sdeco")]
+            [JsonPropertyName("sdeco")]
             public Dictionary<string, int> itemAdvanced { get; set; }
 
-            [JsonProperty("wall")]
+            [JsonPropertyName("wall")]
             public Dictionary<string, int> itemWallpaper { get; set; }
 
-            [JsonProperty("bcos")]
+            [JsonPropertyName("bcos")]
             public Dictionary<string, int> costumeBody { get; set; }
 
-            [JsonProperty("hcos")]
+            [JsonPropertyName("hcos")]
             public Dictionary<string, List<string>> costumeHead { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Info : InventoryData
         {
-            [JsonProperty("drsoc")]
+            [JsonPropertyName("drsoc")]
             public Resource resource { get; set; }
 
-            [JsonProperty("duifo")]
+            [JsonPropertyName("duifo")]
             public Dictionary<string, int> info { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class FloorCommanderInfo
         {
-            [JsonProperty("cid")]
+            [JsonPropertyName("cid")]
             public string id { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public int level { get; set; }
 
-            [JsonProperty("grd")]
+            [JsonPropertyName("grd")]
             public int grade { get; set; }
 
-            [JsonProperty("cls")]
+            [JsonPropertyName("cls")]
             public int cls { get; set; }
 
-            [JsonProperty("cos")]
+            [JsonPropertyName("cos")]
             public int costume { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class RoomInfo
         {
-            [JsonProperty("fno")]
+            [JsonPropertyName("fno")]
             public string fno { get; set; }
 
-            [JsonProperty("fnm")]
+            [JsonPropertyName("fnm")]
             public string name { get; set; }
 
-            [JsonProperty("fst")]
+            [JsonPropertyName("fst")]
             public string state { get; set; }
 
-            [JsonProperty("cids")]
+            [JsonPropertyName("cids")]
             public List<string> commanders { get; set; }
 
-            [JsonProperty("rtm")]
+            [JsonPropertyName("rtm")]
             public double remain { get; set; }
 
-            [JsonProperty("fcom")]
+            [JsonPropertyName("fcom")]
             public List<FloorCommanderInfo> commanderInfos { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class FloorInfo
         {
-            [JsonProperty("ptst")]
+            [JsonPropertyName("ptst")]
             public bool pointState { get; set; }
 
-            [JsonProperty("fInfo")]
+            [JsonPropertyName("fInfo")]
             public Dictionary<string, RoomInfo> floors { get; set; }
 
             [JsonIgnore]
             public bool isMasterUser { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class GetUserFloorInfoResponse : FloorInfo
         {
-            [JsonProperty("tuno")]
+            [JsonPropertyName("tuno")]
             public string uno { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class ConstructFloorResponse
         {
-            [JsonProperty("drsoc")]
+            [JsonPropertyName("drsoc")]
             public Resource resource { get; set; }
 
-            [JsonProperty("fInfo")]
+            [JsonPropertyName("fInfo")]
             public Dictionary<string, RoomInfo> floors { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class FinishConstructFloorResponse
         {
-            [JsonProperty("rsoc")]
+            [JsonPropertyName("rsoc")]
             public UserInformationResponse.Resource resource { get; set; }
 
-            [JsonProperty("fInfo")]
+            [JsonPropertyName("fInfo")]
             public Dictionary<string, RoomInfo> floors { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class FloorDecoInfo
         {
-            [JsonProperty("idx")]
+            [JsonPropertyName("idx")]
             public string id { get; set; }
 
-            [JsonProperty("px")]
+            [JsonPropertyName("px")]
             public int px { get; set; }
 
-            [JsonProperty("py")]
+            [JsonPropertyName("py")]
             public int py { get; set; }
 
-            [JsonProperty("rt")]
+            [JsonPropertyName("rt")]
             public int rotation { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class FloorCharacterInfo
         {
-            [JsonProperty("cid")]
+            [JsonPropertyName("cid")]
             public string id { get; set; }
 
-            [JsonProperty("fno")]
+            [JsonPropertyName("fno")]
             public string fno { get; set; }
 
-            [JsonProperty("bcos")]
+            [JsonPropertyName("bcos")]
             public string bodyId { get; set; }
 
-            [JsonProperty("hcos")]
+            [JsonPropertyName("hcos")]
             public string headId { get; set; }
 
-            [JsonProperty("rtm")]
+            [JsonPropertyName("rtm")]
             public double remain { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class FloorDetailInfo
         {
-            [JsonProperty("fno")]
+            [JsonPropertyName("fno")]
             public string fno { get; set; }
 
-            [JsonProperty("fnm")]
+            [JsonPropertyName("fnm")]
             public string name { get; set; }
 
-            [JsonProperty("fwp")]
+            [JsonPropertyName("fwp")]
             public string wallpaperId { get; set; }
 
-            [JsonProperty("fdc")]
+            [JsonPropertyName("fdc")]
             public List<FloorDecoInfo> decos { get; set; }
 
-            [JsonProperty("fcm")]
+            [JsonPropertyName("fcm")]
             public Dictionary<string, FloorCharacterInfo> characters { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class GetUserFloorDetailInfoResponse : FloorDetailInfo
         {
-            [JsonProperty("tuno")]
+            [JsonPropertyName("tuno")]
             public string uno { get; set; }
 
-            [JsonProperty("favor")]
+            [JsonPropertyName("favor")]
             public bool favorState { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class ChangeDormitoryFloorNameResponse
         {
-            [JsonProperty("rsoc")]
+            [JsonPropertyName("rsoc")]
             public UserInformationResponse.Resource resource { get; set; }
 
-            [JsonProperty("fnm")]
+            [JsonPropertyName("fnm")]
             public string name { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class ShopProductItemInfo
         {
-            [JsonProperty("sidx")]
+            [JsonPropertyName("sidx")]
             public string id { get; set; }
 
-            [JsonProperty("amnt")]
+            [JsonPropertyName("amnt")]
             public int amount { get; set; }
 
-            [JsonProperty("sort")]
+            [JsonPropertyName("sort")]
             public int sort { get; set; }
 
-            [JsonProperty("gidx")]
+            [JsonPropertyName("gidx")]
             public string goodsId { get; set; }
 
-            [JsonProperty("prc")]
+            [JsonPropertyName("prc")]
             public int cost { get; set; }
 
-            [JsonProperty("stm")]
+            [JsonPropertyName("stm")]
             public double startRemain { get; set; }
 
-            [JsonProperty("etm")]
+            [JsonPropertyName("etm")]
             public double endRemain { get; set; }
 
-            [JsonProperty("pcnt")]
+            [JsonPropertyName("pcnt")]
             public int buyCount { get; set; }
 
-            [JsonProperty("lcnt")]
+            [JsonPropertyName("lcnt")]
             public int buyLimit { get; set; }
 
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class ShopInfo
         {
-            [JsonProperty("dshop")]
+            [JsonPropertyName("dshop")]
             public Dictionary<EDormitoryItemType, List<ShopProductItemInfo>> items;
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class BuyShopProductResponse : RewardInfo
         {
-            [JsonProperty("dshop")]
+            [JsonPropertyName("dshop")]
             public Dictionary<EDormitoryItemType, ShopProductItemInfo> items { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class ChangeWallpaperResponse
         {
-            [JsonProperty("fwp")]
+            [JsonPropertyName("fwp")]
             public string id { get; set; }
 
-            [JsonProperty("wall")]
+            [JsonPropertyName("wall")]
             public Dictionary<string, int> invenWallpaper { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class ArrangeDecorationResponse
         {
-            [JsonProperty("deco")]
+            [JsonPropertyName("deco")]
             public Dictionary<string, int> invenNormal { get; set; }
 
-            [JsonProperty("sdeco")]
+            [JsonPropertyName("sdeco")]
             public Dictionary<string, int> invenAdvanced { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class GetDormitoryCommanderInfoResponse
         {
-            [JsonProperty("dcom")]
+            [JsonPropertyName("dcom")]
             public Dictionary<string, CommanderInfo> commanderData { get; set; }
 
-            [JsonProperty("hcos")]
+            [JsonPropertyName("hcos")]
             public Dictionary<string, List<string>> headData { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class CommanderInfo
         {
-            [JsonProperty("cid")]
+            [JsonPropertyName("cid")]
             public string id { get; set; }
 
-            [JsonProperty("fno")]
+            [JsonPropertyName("fno")]
             public string fno { get; set; }
 
-            [JsonProperty("rtm")]
+            [JsonPropertyName("rtm")]
             public double reamin { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class CommanderHeadData
         {
-            [JsonProperty("hcos")]
+            [JsonPropertyName("hcos")]
             public string headId { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class CommanderBodyData
         {
-            [JsonProperty("bcos")]
+            [JsonPropertyName("bcos")]
             public string bodyId { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class CommanderRaminData
         {
-            [JsonProperty("rtm")]
+            [JsonPropertyName("rtm")]
             public double remain { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class ChangeCommanderHeadResponse
         {
-            [JsonProperty("fcm")]
+            [JsonPropertyName("fcm")]
             public Dictionary<string, CommanderHeadData> headData { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class ChangeCommanderBodyResponse
         {
-            [JsonProperty("bcos")]
+            [JsonPropertyName("bcos")]
             public Dictionary<string, int> invenBody { get; set; }
 
-            [JsonProperty("fcm")]
+            [JsonPropertyName("fcm")]
             public Dictionary<string, CommanderBodyData> bodyData { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class GetPointResponse
         {
-            [JsonProperty("reward")]
+            [JsonPropertyName("reward")]
             public List<RewardInfo.RewardData> reward { get; set; }
 
-            [JsonProperty("drsoc")]
+            [JsonPropertyName("drsoc")]
             public Resource resource { get; set; }
 
-            [JsonProperty("fcm")]
+            [JsonPropertyName("fcm")]
             public Dictionary<string, CommanderRaminData> reaminData { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class GetPointAllResponse : GetPointResponse
         {
-            [JsonProperty("ptst")]
+            [JsonPropertyName("ptst")]
             public bool pointState { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class SearchUserInfo
         {
-            [JsonProperty("uno")]
+            [JsonPropertyName("uno")]
             public string uno { get; set; }
 
-            [JsonProperty("wld")]
+            [JsonPropertyName("wld")]
             public int world { get; set; }
 
-            [JsonProperty("unm")]
+            [JsonPropertyName("unm")]
             public string name { get; set; }
 
-            [JsonProperty("thumb")]
+            [JsonPropertyName("thumb")]
             public string thumbnail { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public int level { get; set; }
 
-            [JsonProperty("time")]
+            [JsonPropertyName("time")]
             public double lastTime { get; set; }
         }
     }

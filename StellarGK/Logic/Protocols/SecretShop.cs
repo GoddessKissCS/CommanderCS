@@ -1,51 +1,51 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using StellarGK.Logic.Enums;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class SecretShop
     {
-        [JsonProperty("shop")]
+        [JsonPropertyName("shop")]
         public List<ShopData> shopList { get; set; }
 
-        [JsonProperty("rtime")]
+        [JsonPropertyName("rtime")]
         public int refreshTime { get; set; }
 
-        [JsonProperty("rcnt")]
+        [JsonPropertyName("rcnt")]
         public int refreshCount { get; set; }
 
-        [JsonProperty("rsoc")]
+        [JsonPropertyName("rsoc")]
         public UserInformationResponse.Resource resource { get; set; }
 
-        [JsonProperty("vrcnt")]
+        [JsonPropertyName("vrcnt")]
         public int reset { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class ShopData
         {
-            [JsonProperty("id")]
+            [JsonPropertyName("id")]
             public int id { get; set; }
 
-            [JsonProperty("sptp")]
+            [JsonPropertyName("sptp")]
             public ERewardType type { get; set; }
 
-            [JsonProperty("spid")]
+            [JsonPropertyName("spid")]
             public int idx { get; set; }
 
-            [JsonProperty("amnt")]
+            [JsonPropertyName("amnt")]
             public int count { get; set; }
 
-            [JsonProperty("ptyp")]
+            [JsonPropertyName("ptyp")]
             public EPriceType costType { get; set; }
 
-            [JsonProperty("prc")]
+            [JsonPropertyName("prc")]
             public int cost { get; set; }
 
-            [JsonProperty("sold")]
+            [JsonPropertyName("sold")]
             public int sold { get; set; }
 
-            [JsonProperty("rtime")]
+            [JsonPropertyName("rtime")]
             public int time { get; set; }
         }
     }

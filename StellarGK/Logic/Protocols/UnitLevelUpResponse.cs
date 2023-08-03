@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class UnitLevelUpResponse
     {
-        [JsonProperty("gold")]
+        [JsonPropertyName("gold")]
         public long gold { get; set; }
 
-        [JsonProperty("abp")]
+        [JsonPropertyName("abp")]
         public string __blueprintArmy { get; set; }
 
         public int blueprintArmy
@@ -23,7 +23,7 @@ namespace StellarGK.Logic.Protocols
             }
         }
 
-        [JsonProperty("nbp")]
+        [JsonPropertyName("nbp")]
         public string __blueprintNavy { get; set; }
 
         public int blueprintNavy

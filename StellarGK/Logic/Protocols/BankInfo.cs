@@ -1,26 +1,26 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class BankInfo
     {
-        [JsonProperty("chip")]
+        [JsonPropertyName("chip")]
         public string __chip { get; set; }
 
-        [JsonProperty("lev")]
+        [JsonPropertyName("lev")]
         public int level { get; set; }
 
-        [JsonProperty("luck")]
+        [JsonPropertyName("luck")]
         public int luck { get; set; }
 
-        [JsonProperty("rfcnt")]
+        [JsonPropertyName("rfcnt")]
         public int exchangeRateCnt { get; set; }
 
-        [JsonProperty("remain")]
+        [JsonPropertyName("remain")]
         public int remain { get; set; }
 
-        [JsonProperty("cash")]
+        [JsonPropertyName("cash")]
         public string __cash { get; set; }
     }
 }

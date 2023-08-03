@@ -1,17 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class WeaponData
     {
-        [JsonProperty("wid")]
+        [JsonPropertyName("wid")]
         public string id { get; set; }
 
-        [JsonProperty("wlv")]
+        [JsonPropertyName("wlv")]
         public int level { get; set; }
 
-        [JsonProperty("cid")]
+        [JsonPropertyName("cid")]
         public int cid { get; set; }
     }
 }

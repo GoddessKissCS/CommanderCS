@@ -1,19 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ChattingMsgData
     {
-        [JsonProperty("data")]
+        [JsonPropertyName("data")]
         public string data { get; set; }
 
-        [JsonProperty("rply", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("rply")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public ChattingRecordInfo record { get; set; }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this, Formatting.None);
-        }
     }
 }

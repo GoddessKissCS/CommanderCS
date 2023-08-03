@@ -1,82 +1,82 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using Newtonsoft.Json.Linq;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ScrambleStageInfo
     {
-        [JsonProperty("myDeck")]
+        [JsonPropertyName("myDeck")]
         public Dictionary<string, UserInformationResponse.Unit> myDeck { get; set; }
 
-        [JsonProperty("enemy")]
+        [JsonPropertyName("enemy")]
         public EnemyCommander enemy { get; set; }
 
-        [JsonProperty("stageInfo")]
+        [JsonPropertyName("stageInfo")]
         public UserInfo user { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class UserInfo
         {
-            [JsonProperty("unm")]
+            [JsonPropertyName("unm")]
             public string name { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public int level { get; set; }
 
-            [JsonProperty("thmb")]
+            [JsonPropertyName("thmb")]
             public int thumb { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class EnemyCommander
         {
-            [JsonProperty("uno")]
+            [JsonPropertyName("uno")]
             public string uno { get; set; }
 
-            [JsonProperty("cid")]
+            [JsonPropertyName("cid")]
             public string id { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public string __level { get; set; }
 
-            [JsonProperty("grd")]
+            [JsonPropertyName("grd")]
             public string __rank { get; set; }
 
-            [JsonProperty("cls")]
+            [JsonPropertyName("cls")]
             public string __cls { get; set; }
 
-            [JsonProperty("skv1")]
+            [JsonPropertyName("skv1")]
             public string __skv1 { get; set; }
 
-            [JsonProperty("skv2")]
+            [JsonPropertyName("skv2")]
             public string __skv2 { get; set; }
 
-            [JsonProperty("skv3")]
+            [JsonPropertyName("skv3")]
             public string __skv3 { get; set; }
 
-            [JsonProperty("skv4")]
+            [JsonPropertyName("skv4")]
             public string __skv4 { get; set; }
 
-            [JsonProperty("pwr")]
+            [JsonPropertyName("pwr")]
             public int power { get; set; }
 
-            [JsonProperty("dnm")]
+            [JsonPropertyName("dnm")]
             public string troopNickname { get; set; }
 
-            [JsonProperty("uLv")]
+            [JsonPropertyName("uLv")]
             public string userLevel { get; set; }
 
-            [JsonProperty("nm")]
+            [JsonPropertyName("nm")]
             public string nickname { get; set; }
 
-            [JsonProperty("thumb")]
+            [JsonPropertyName("thumb")]
             public int thumbnail { get; set; }
 
-            [JsonProperty("deck")]
+            [JsonPropertyName("deck")]
             public object __troopSlotsSource { get; set; }
 
-            [JsonProperty("gsk")]
+            [JsonPropertyName("gsk")]
             public List<GuildSkill> guildSkillList { get; set; }
 
             public Dictionary<int, Slot> troopSlots
@@ -105,26 +105,26 @@ namespace StellarGK.Logic.Protocols
                 }
             }
 
-            [JsonObject(MemberSerialization.OptIn)]
+
             public class Slot
             {
-                [JsonProperty("uid")]
+                [JsonPropertyName("uid")]
                 public string unitId { get; set; }
 
-                [JsonProperty("hp")]
+                [JsonPropertyName("hp")]
                 public int unitHp { get; set; }
 
-                [JsonProperty("lv")]
+                [JsonPropertyName("lv")]
                 public int unitLevel { get; set; }
             }
 
-            [JsonObject(MemberSerialization.OptIn)]
+
             public class GuildSkill
             {
-                [JsonProperty("GS_Idx")]
+                [JsonPropertyName("GS_Idx")]
                 public string idx { get; set; }
 
-                [JsonProperty("GS_Level")]
+                [JsonPropertyName("GS_Level")]
                 public int level { get; set; }
             }
         }

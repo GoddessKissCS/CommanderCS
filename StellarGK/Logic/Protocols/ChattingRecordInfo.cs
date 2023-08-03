@@ -1,21 +1,21 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using StellarGK.Logic.Enums;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ChattingRecordInfo
     {
-        [JsonProperty("rid")]
+        [JsonPropertyName("rid")]
         public string id { get; set; }
 
-        [JsonProperty("unm")]
+        [JsonPropertyName("unm")]
         public string userName { get; set; }
 
-        [JsonProperty("enm")]
+        [JsonPropertyName("enm")]
         public string enemyName { get; set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public ERePlayType rePlayType { get; set; }
 
         [JsonIgnore]

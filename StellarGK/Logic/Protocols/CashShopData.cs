@@ -1,30 +1,30 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using StellarGK.Logic.Enums;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class CashShopData
     {
-        [JsonProperty("ptyp")]
+        [JsonPropertyName("ptyp")]
         public ECashRechargePriceType pType { get; set; }
 
-        [JsonProperty("prc")]
+        [JsonPropertyName("prc")]
         public string price { get; set; }
 
-        [JsonProperty("prId")]
+        [JsonPropertyName("prId")]
         public string priceId { get; set; }
 
-        [JsonProperty("evcs")]
+        [JsonPropertyName("evcs")]
         public int eventCash { get; set; }
 
-        [JsonProperty("fscs")]
+        [JsonPropertyName("fscs")]
         public int firstBuyCash { get; set; }
 
-        [JsonProperty("remain")]
+        [JsonPropertyName("remain")]
         public double remainTime { get; set; }
 
-        [JsonProperty("cnt")]
+        [JsonPropertyName("cnt")]
         public int buyCount { get; set; }
     }
 

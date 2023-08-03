@@ -1,21 +1,21 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using StellarGK.Logic.Enums;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class BuildingInformationResponse
     {
-        [JsonProperty("bid")]
+        [JsonPropertyName("bid")]
         public EBuilding buildType { get; set; }
 
-        [JsonProperty("stus")]
+        [JsonPropertyName("stus")]
         public int stateCode { get; set; }
 
-        [JsonProperty("lv")]
+        [JsonPropertyName("lv")]
         public int level { get; set; }
 
-        [JsonProperty("remain")]
+        [JsonPropertyName("remain")]
         public int remainTime { get; set; }
     }
 }

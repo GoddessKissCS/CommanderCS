@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.VersionCheck
@@ -48,7 +48,7 @@ namespace StellarGK.Host.Handlers.VersionCheck
 
     public class GameVersionInfoRequest
     {
-        [JsonProperty("ch")]
+        [JsonPropertyName("ch")]
         public int ch { get; set; }
     }
 }

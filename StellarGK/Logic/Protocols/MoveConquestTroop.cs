@@ -1,20 +1,20 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class MoveConquestTroop
     {
-        [JsonProperty("path")]
+        [JsonPropertyName("path")]
         public List<int> path { get; set; }
 
-        [JsonProperty("distance")]
+        [JsonPropertyName("distance")]
         public int distance { get; set; }
 
-        [JsonProperty("rsoc")]
+        [JsonPropertyName("rsoc")]
         public UserInformationResponse.Resource rsoc { get; set; }
 
-        [JsonProperty("ucash")]
+        [JsonPropertyName("ucash")]
         public int ucash { get; set; }
     }
 }

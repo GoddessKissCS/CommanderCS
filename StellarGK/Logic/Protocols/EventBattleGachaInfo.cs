@@ -1,17 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class EventBattleGachaInfo
     {
-        [JsonProperty("season")]
+        [JsonPropertyName("season")]
         public int season { get; set; }
 
-        [JsonProperty("reset")]
+        [JsonPropertyName("reset")]
         public int reset { get; set; }
 
-        [JsonProperty("info")]
+        [JsonPropertyName("info")]
         public Dictionary<int, int> info { get; set; }
     }
 }

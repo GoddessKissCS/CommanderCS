@@ -1,23 +1,23 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ScrambleRankingData
     {
-        [JsonProperty("score")]
+        [JsonPropertyName("score")]
         public int score { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string name { get; set; }
 
-        [JsonProperty("thmb")]
+        [JsonPropertyName("thmb")]
         public string thmb { get; set; }
 
-        [JsonProperty("lv")]
+        [JsonPropertyName("lv")]
         public int lv { get; set; }
 
-        [JsonProperty("role")]
+        [JsonPropertyName("role")]
         public int role { get; set; }
     }
 }

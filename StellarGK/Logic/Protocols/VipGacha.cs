@@ -1,67 +1,67 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class VipGacha
     {
-        [JsonProperty("list")]
+        [JsonPropertyName("list")]
         public Dictionary<string, VipGachaInfo> VipGachaInfoList { get; set; }
 
-        [JsonProperty("cnt")]
+        [JsonPropertyName("cnt")]
         public int gachaCount { get; set; }
 
-        [JsonProperty("rsoc")]
+        [JsonPropertyName("rsoc")]
         public UserInformationResponse.Resource resource { get; set; }
 
-        [JsonProperty("comm")]
+        [JsonPropertyName("comm")]
         public Dictionary<string, UserInformationResponse.Commander> commanderData { get; set; }
 
-        [JsonProperty("part")]
+        [JsonPropertyName("part")]
         public Dictionary<string, int> partData { get; set; }
 
-        [JsonProperty("medl")]
+        [JsonPropertyName("medl")]
         public Dictionary<string, int> medalData { get; set; }
 
-        [JsonProperty("item")]
+        [JsonPropertyName("item")]
         public Dictionary<string, int> itemData { get; set; }
 
-        [JsonProperty("guit")]
+        [JsonPropertyName("guit")]
         public Dictionary<string, int> groupItemData { get; set; }
 
-        [JsonProperty("gacha")]
+        [JsonPropertyName("gacha")]
         public List<VipGachaResult> gacharesult { get; set; }
 
-        [JsonProperty("rtm")]
+        [JsonPropertyName("rtm")]
         public int refreshTime { get; set; }
 
         public class VipGachaInfo
         {
-            [JsonProperty("rwdType")]
+            [JsonPropertyName("rwdType")]
             public int rewardType { get; set; }
 
-            [JsonProperty("rwdIdx")]
+            [JsonPropertyName("rwdIdx")]
             public int rewardIdx { get; set; }
 
-            [JsonProperty("rwdCnt")]
+            [JsonPropertyName("rwdCnt")]
             public int rewardCount { get; set; }
 
-            [JsonProperty("rwdRate")]
+            [JsonPropertyName("rwdRate")]
             public int rewardRate { get; set; }
 
-            [JsonProperty("rwdPoint")]
+            [JsonPropertyName("rwdPoint")]
             public float rewardPoint { get; set; }
         }
 
         public class VipGachaResult
         {
-            [JsonProperty("type")]
+            [JsonPropertyName("type")]
             public int rewardType_result { get; set; }
 
-            [JsonProperty("idx")]
+            [JsonPropertyName("idx")]
             public int rewardIdx_result { get; set; }
 
-            [JsonProperty("cnt")]
+            [JsonPropertyName("cnt")]
             public int rewardCount_result { get; set; }
         }
     }

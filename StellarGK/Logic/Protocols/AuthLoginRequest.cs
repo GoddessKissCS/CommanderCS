@@ -1,60 +1,60 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using StellarGK.Logic.Enums;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class AuthLoginRequest
     {
-        [JsonProperty("mIdx")]
+        [JsonPropertyName("mIdx")]
         public int memberId { get; set; }
 
-        [JsonProperty("tokn")]
+        [JsonPropertyName("tokn")]
         public string token { get; set; }
 
-        [JsonProperty("wld")]
+        [JsonPropertyName("wld")]
         public int world { get; set; }
 
-        [JsonProperty("unm")]
+        [JsonPropertyName("unm")]
         public string userName { get; set; }
 
-        [JsonProperty("plfm")]
+        [JsonPropertyName("plfm")]
         public Platform platform { get; set; }
 
-        [JsonProperty("devc")]
+        [JsonPropertyName("devc")]
         public string deviceName { get; set; }
 
-        [JsonProperty("dvid")]
+        [JsonPropertyName("dvid")]
         public string deviceId { get; set; }
 
-        [JsonProperty("ptype")]
+        [JsonPropertyName("ptype")]
         public int patchType { get; set; }
 
-        [JsonProperty("oscd")]
+        [JsonPropertyName("oscd")]
         public OSCode osCode { get; set; }
 
-        [JsonProperty("osvr")]
+        [JsonPropertyName("osvr")]
         public string osVersion { get; set; }
 
-        [JsonProperty("gmvr")]
+        [JsonPropertyName("gmvr")]
         public string gameVersion { get; set; }
 
-        [JsonProperty("apk")]
+        [JsonPropertyName("apk")]
         public string apkFileName { get; set; }
 
-        [JsonProperty("psId")]
+        [JsonPropertyName("psId")]
         public string pushRegistrationId { get; set; }
 
-        [JsonProperty("lang")]
+        [JsonPropertyName("lang")]
         public string languageCode { get; set; }
 
-        [JsonProperty("ctry")]
+        [JsonPropertyName("ctry")]
         public string countryCode { get; set; }
 
-        [JsonProperty("gpid")]
+        [JsonPropertyName("gpid")]
         public string largoId { get; set; }
 
-        [JsonProperty("ch")]
+        [JsonPropertyName("ch")]
         public int channel { get; set; }
     }
 }

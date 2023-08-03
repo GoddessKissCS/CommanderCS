@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using StellarGK.Database;
 using StellarGK.Logic.ExcelReader;
 using StellarGK.Logic.Protocols;
@@ -31,7 +31,7 @@ namespace StellarGK.Host.Handlers.Commander
                     response.id = BasePacket.Id;
                     response.error = new() { code = ErrorCode.NotEnoughResources };
 
-                    return JsonConvert.SerializeObject(response);
+                    return response;
                 }
 
                 commander.__rank = (Convert.ToInt32(commander.__rank) + 1).ToString();
@@ -60,7 +60,7 @@ namespace StellarGK.Host.Handlers.Commander
                     response.id = BasePacket.Id;
                     response.error = new() { code = ErrorCode.NotEnoughResources };
 
-                    return JsonConvert.SerializeObject(response);
+                    return response;
                 }
 
                 medalsdata[cid] = commanderMedals;
@@ -180,7 +180,7 @@ namespace StellarGK.Host.Handlers.Commander
 
     public class CommanderRankUpRequest
     {
-        [JsonProperty("cid")]
+        [JsonPropertyName("cid")]
         public int cid { get; set; }
     }
 }

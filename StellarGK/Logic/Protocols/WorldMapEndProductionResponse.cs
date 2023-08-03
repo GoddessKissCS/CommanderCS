@@ -1,17 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class WorldMapEndProductionResponse
     {
-        [JsonProperty("res")]
+        [JsonPropertyName("res")]
         public UserInformationResponse.Resource resource { get; set; }
 
-        [JsonProperty("reward")]
+        [JsonPropertyName("reward")]
         public List<RewardInfo.RewardData> reward { get; set; }
 
-        [JsonProperty("pldr")]
+        [JsonPropertyName("pldr")]
         public bool plundered { get; set; }
     }
 }

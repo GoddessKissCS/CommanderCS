@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class SimpleCommanderInfo
     {
-        [JsonProperty("cid")]
+        [JsonPropertyName("cid")]
         public string id { get; set; }
 
-        [JsonProperty("medl")]
+        [JsonPropertyName("medl")]
         public int medal { get; set; }
     }
 }

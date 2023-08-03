@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class WorldMapReward
     {
-        [JsonProperty("comm")]
+        [JsonPropertyName("comm")]
         public Dictionary<string, UserInformationResponse.Commander> commanderData { get; set; }
 
-        [JsonProperty("medl")]
+        [JsonPropertyName("medl")]
         public Dictionary<string, int> medalData { get; set; }
     }
 }

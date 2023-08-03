@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class InfinityTowerInformation
     {
-        [JsonProperty("tinfo")]
+        [JsonPropertyName("tinfo")]
         public InfinityTowerData infinityData { get; set; }
 
         [JsonIgnore]

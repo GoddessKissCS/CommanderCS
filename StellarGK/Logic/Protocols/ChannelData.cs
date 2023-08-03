@@ -1,23 +1,23 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ChannelData
     {
-        [JsonProperty("openDt")]
+        [JsonPropertyName("openDt")]
         public double openTime { get; set; }
 
-        [JsonProperty("maxLv")]
+        [JsonPropertyName("maxLv")]
         public int maxLevel { get; set; }
 
-        [JsonProperty("maxSt")]
+        [JsonPropertyName("maxSt")]
         public string maxStage { get; set; }
 
-        [JsonProperty("plcnt")]
+        [JsonPropertyName("plcnt")]
         public string commanderCount { get; set; }
 
-        [JsonProperty("svcnt")]
+        [JsonPropertyName("svcnt")]
         public string serverCount { get; set; }
     }
 }

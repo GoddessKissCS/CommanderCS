@@ -1,17 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class EventBattleInfo
     {
-        [JsonProperty("eidx")]
+        [JsonPropertyName("eidx")]
         public string idx { get; set; }
 
-        [JsonProperty("remain")]
+        [JsonPropertyName("remain")]
         public double remain { get; set; }
 
-        [JsonProperty("rcnt")]
+        [JsonPropertyName("rcnt")]
         public int rewardCount { get; set; }
     }
 }

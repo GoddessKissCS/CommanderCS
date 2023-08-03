@@ -1,39 +1,39 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
 
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ShopReward
     {
-        [JsonProperty("part")]
+        [JsonPropertyName("part")]
         public Dictionary<string, int> partData { get; set; }
 
-        [JsonProperty("medl")]
+        [JsonPropertyName("medl")]
         public Dictionary<string, int> medalData { get; set; }
 
-        [JsonProperty("ersoc")]
+        [JsonPropertyName("ersoc")]
         public Dictionary<string, int> eventResourceData { get; set; }
 
-        [JsonProperty("item")]
+        [JsonPropertyName("item")]
         public Dictionary<string, int> itemData { get; set; }
 
-        [JsonProperty("food")]
+        [JsonPropertyName("food")]
         public Dictionary<string, int> foodData { get; set; }
 
-        [JsonProperty("comm")]
+        [JsonPropertyName("comm")]
         public Dictionary<string, UserInformationResponse.Commander> commanderData { get; set; }
 
-        [JsonProperty("equip")]
+        [JsonPropertyName("equip")]
         public Dictionary<string, Dictionary<int, EquipItemInfo>> equipItem { get; set; }
 
-        [JsonProperty("guit")]
+        [JsonPropertyName("guit")]
         public Dictionary<string, int> groupItemData { get; set; }
 
-        [JsonProperty("shop")]
+        [JsonPropertyName("shop")]
         public SecretShop.ShopData shop;
 
-        [JsonProperty("rsoc")]
+        [JsonPropertyName("rsoc")]
         public UserInformationResponse.Resource rsoc;
     }
 }

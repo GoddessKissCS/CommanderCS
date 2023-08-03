@@ -1,35 +1,35 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ServerData
     {
-        [JsonProperty("ws")]
+        [JsonPropertyName("ws")]
         public List<ServerInfo> serverInfoList { get; set; }
 
-        [JsonProperty("new")]
+        [JsonPropertyName("new")]
         public int newServer { get; set; }
 
-        [JsonProperty("rsrv")]
+        [JsonPropertyName("rsrv")]
         public int recommandServer { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class ServerInfo
         {
-            [JsonProperty("wld")]
+            [JsonPropertyName("wld")]
             public int idx { get; set; }
 
-            [JsonProperty("stus")]
+            [JsonPropertyName("stus")]
             public int status { get; set; }
 
-            [JsonProperty("thum")]
+            [JsonPropertyName("thum")]
             public int thumnail { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public int level { get; set; }
 
-            [JsonProperty("lcdt")]
+            [JsonPropertyName("lcdt")]
             public double lastLoginTime { get; set; }
         }
     }

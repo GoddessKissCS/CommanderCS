@@ -1,68 +1,68 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using StellarGK.Logic.Enums;
 
 namespace StellarGK.Logic.Protocols
 {
 
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class GachaOpenBoxResponse
     {
-        [JsonProperty("gbIdx")]
+        [JsonPropertyName("gbIdx")]
         public EGachaAnimationType type { get; set; }
 
-        [JsonProperty("gacha")]
+        [JsonPropertyName("gacha")]
         public List<Reward> rewardList { get; set; }
 
-        [JsonProperty("rsoc")]
+        [JsonPropertyName("rsoc")]
         public UserInformationResponse.Resource goodsResult { get; set; }
 
-        [JsonProperty("commMedl")]
+        [JsonPropertyName("commMedl")]
         public Dictionary<string, CommanderMedal> commanderIdMedalDict { get; set; }
 
-        [JsonProperty("comm")]
+        [JsonPropertyName("comm")]
         public Dictionary<string, UserInformationResponse.Commander> commanderIdDict { get; set; }
 
-        [JsonProperty("clst")]
+        [JsonPropertyName("clst")]
         public List<Dictionary<string, RewardInfo.HaveCostumeInfo>> costumeData { get; set; }
 
-        [JsonProperty("part")]
+        [JsonPropertyName("part")]
         public Dictionary<string, int> partData { get; set; }
 
-        [JsonProperty("medl")]
+        [JsonPropertyName("medl")]
         public Dictionary<string, int> medalData { get; set; }
 
-        [JsonProperty("ersoc")]
+        [JsonPropertyName("ersoc")]
         public Dictionary<string, int> eventResourceData { get; set; }
 
-        [JsonProperty("item")]
+        [JsonPropertyName("item")]
         public Dictionary<string, int> itemData { get; set; }
 
-        [JsonProperty("info")]
+        [JsonPropertyName("info")]
         public GachaInformationResponse changedGachaInformation { get; set; }
 
-        [JsonProperty("food")]
+        [JsonPropertyName("food")]
         public Dictionary<string, int> foodData { get; set; }
 
-        [JsonProperty("equip")]
+        [JsonPropertyName("equip")]
         public Dictionary<string, Dictionary<int, EquipItemInfo>> equipItem { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Reward
         {
-            [JsonProperty("type")]
+            [JsonPropertyName("type")]
             public ERewardType type { get; set; }
 
-            [JsonProperty("idx")]
+            [JsonPropertyName("idx")]
             public string id { get; set; }
 
-            [JsonProperty("cnt")]
+            [JsonPropertyName("cnt")]
             public int count { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class CommanderMedal
         {
-            [JsonProperty("medl")]
+            [JsonPropertyName("medl")]
             public int medal { get; set; }
         }
     }

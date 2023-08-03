@@ -1,63 +1,64 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class RecordInfo
     {
 
-        [JsonProperty("gnm", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("gnm")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string guildName { get; set; }
 
-        [JsonProperty("uno")]
+        [JsonPropertyName("uno")]
         public int uno;
 
-        [JsonProperty("rid")]
+        [JsonPropertyName("rid")]
         public string id;
 
-        [JsonProperty("replayData")]
+        [JsonPropertyName("replayData")]
         public object data;
 
-        [JsonProperty("ws")]
+        [JsonPropertyName("ws")]
         public int winState;
 
-        [JsonProperty("smvr")]
+        [JsonPropertyName("smvr")]
         public int simulationVer;
 
-        [JsonProperty("rlvr")]
+        [JsonPropertyName("rlvr")]
         public double regulationVer;
 
-        [JsonProperty("unm")]
+        [JsonPropertyName("unm")]
         public string _userName;
 
-        [JsonProperty("thmb")]
+        [JsonPropertyName("thmb")]
         public string thumbnail;
 
-        [JsonProperty("lv")]
+        [JsonPropertyName("lv")]
         public int level;
 
-        [JsonProperty("rank")]
+        [JsonPropertyName("rank")]
         public int rank;
 
-        [JsonProperty("date")]
+        [JsonPropertyName("date")]
         public double date;
 
-        [JsonProperty("vs")]
+        [JsonPropertyName("vs")]
         public UserInfo userInfo;
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class UserInfo
         {
-            [JsonProperty("lnm")]
+            [JsonPropertyName("lnm")]
             public string lName;
 
-            [JsonProperty("llv")]
+            [JsonPropertyName("llv")]
             public int lLevel;
 
-            [JsonProperty("rnm")]
+            [JsonPropertyName("rnm")]
             public string rName;
 
-            [JsonProperty("rlv")]
+            [JsonPropertyName("rlv")]
             public string rLevel;
         }
     }

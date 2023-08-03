@@ -1,54 +1,54 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using StellarGK.Logic.Enums;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ConquestInfo
     {
-        [JsonProperty("step")]
+        [JsonPropertyName("step")]
         public EConquestState state { get; set; }
 
-        [JsonProperty("remain")]
+        [JsonPropertyName("remain")]
         public int remain { get; set; }
 
-        [JsonProperty("signed")]
+        [JsonPropertyName("signed")]
         public int sign { get; set; }
 
-        [JsonProperty("join")]
+        [JsonPropertyName("join")]
         public int join { get; set; }
 
-        [JsonProperty("side")]
+        [JsonPropertyName("side")]
         public string side { get; set; }
 
-        [JsonProperty("prev")]
+        [JsonPropertyName("prev")]
         public PrevState prev { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class PrevState
         {
-            [JsonProperty("isWin")]
+            [JsonPropertyName("isWin")]
             public int isWin { get; set; }
 
-            [JsonProperty("exdt")]
+            [JsonPropertyName("exdt")]
             public int exdt { get; set; }
 
-            [JsonProperty("point")]
+            [JsonPropertyName("point")]
             public Point pointData { get; set; }
 
-            [JsonProperty("users")]
+            [JsonPropertyName("users")]
             public Dictionary<string, int> userList { get; set; }
 
-            [JsonProperty("usrpnt")]
+            [JsonPropertyName("usrpnt")]
             public List<int> standbyList { get; set; }
 
-            [JsonObject(MemberSerialization.OptIn)]
+
             public class Point
             {
-                [JsonProperty("win")]
+                [JsonPropertyName("win")]
                 public List<int> win { get; set; }
 
-                [JsonProperty("lose")]
+                [JsonPropertyName("lose")]
                 public List<int> lose { get; set; }
             }
         }

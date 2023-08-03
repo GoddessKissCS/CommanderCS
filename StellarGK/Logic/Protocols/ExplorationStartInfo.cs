@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ExplorationStartInfo
     {
-        [JsonProperty("idx")]
+        [JsonPropertyName("idx")]
         public int idx;
 
-        [JsonProperty("cid")]
+        [JsonPropertyName("cid")]
         public List<string> cids;
     }
 }

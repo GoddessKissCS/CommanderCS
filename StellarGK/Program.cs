@@ -1,5 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Org.BouncyCastle.Asn1.Ocsp;
+using StellarGK.Database;
 using StellarGK.Host;
 using StellarGK.Host.Middlewares;
 
@@ -36,6 +38,12 @@ namespace StellarGK2
                 options.WriteIndented = true;
             });
 
+            builder.WebHost.ConfigureKestrel(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
+
+
             builder.Services.AddHttpClient();
 
 
@@ -66,10 +74,14 @@ namespace StellarGK2
 
             app.MapGet("/", () => statusString);
 
-            app.Services.CreateAsyncScope();
+            //app.Services.CreateAsyncScope();
 
             //app.MapPost("/checkData.php", PacketHandler.ProcessRequest);
-            app.MapPost("/checkData", PacketHandler.ProcessRequest);
+            app.MapPost("/checkData", (HttpContext context, IServiceProvider provider) =>
+            {
+                return PacketHandler.ProcessRequest(context, provider);
+            });
+            //app.MapGet("get", PacketHandler.Packet);
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -89,7 +101,13 @@ namespace StellarGK2
 
             //app.UseAuthorization();
 
+            //DatabaseManager.FirstCreate();
+
+
             app.Run();
+
+
+
         }
     }
 }

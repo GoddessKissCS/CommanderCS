@@ -1,32 +1,32 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class MissionInfo
     {
-        [JsonProperty("dlms")]
+        [JsonPropertyName("dlms")]
         public List<MissionData> missionList { get; set; }
 
-        [JsonProperty("dmg")]
+        [JsonPropertyName("dmg")]
         public int goal { get; set; }
 
-        [JsonProperty("dmcc")]
+        [JsonPropertyName("dmcc")]
         public int completeCount { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class MissionData
         {
-            [JsonProperty("dmid")]
+            [JsonPropertyName("dmid")]
             public int missionId { get; set; }
 
-            [JsonProperty("dmpt")]
+            [JsonPropertyName("dmpt")]
             public int point { get; set; }
 
-            [JsonProperty("fin")]
+            [JsonPropertyName("fin")]
             public int complete { get; set; }
 
-            [JsonProperty("rcvd")]
+            [JsonPropertyName("rcvd")]
             public int receive { get; set; }
         }
     }

@@ -1,17 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class BuildingLevelUpResponse
     {
-        [JsonProperty("gold")]
+        [JsonPropertyName("gold")]
         public string __gold { get; set; }
 
-        [JsonProperty("cash")]
+        [JsonPropertyName("cash")]
         public string __cash { get; set; }
 
-        [JsonProperty("remain")]
+        [JsonPropertyName("remain")]
         public int remainTime { get; set; }
     }
 }

@@ -1,17 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class WorldMapInformationResponse
     {
-        [JsonProperty("mid")]
+        [JsonPropertyName("mid")]
         public string stageId { get; set; }
 
-        [JsonProperty("cnt")]
+        [JsonPropertyName("cnt")]
         public int clearCount { get; set; }
 
-        [JsonProperty("star")]
+        [JsonPropertyName("star")]
         public int star { get; set; }
     }
 }

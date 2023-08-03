@@ -1,21 +1,21 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using Newtonsoft.Json.Linq;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class SituationExploreReward
     {
-        [JsonProperty("sply")]
+        [JsonPropertyName("sply")]
         public int exploreTicket { get; set; }
 
-        [JsonProperty("gold")]
+        [JsonPropertyName("gold")]
         public string __gold { get; set; }
 
-        [JsonProperty("cash")]
+        [JsonPropertyName("cash")]
         public string __cash { get; set; }
 
-        [JsonProperty("reward")]
+        [JsonPropertyName("reward")]
         public object __reward { get; set; }
 
         public Dictionary<string, int> reward

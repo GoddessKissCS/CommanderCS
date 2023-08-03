@@ -1,35 +1,35 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class MailInfo
     {
-        [JsonProperty("list")]
+        [JsonPropertyName("list")]
         public List<MailData> mailList { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class MailData
         {
-            [JsonProperty("idx")]
+            [JsonPropertyName("idx")]
             public int idx { get; set; }
 
-            [JsonProperty("type")]
+            [JsonPropertyName("type")]
             public int type { get; set; }
 
-            [JsonProperty("msg")]
+            [JsonPropertyName("msg")]
             public string message { get; set; }
 
-            [JsonProperty("rmtm")]
+            [JsonPropertyName("rmtm")]
             public double remainTime { get; set; }
 
-            [JsonProperty("reward")]
+            [JsonPropertyName("reward")]
             public List<RewardInfo.RewardData> reward { get; set; }
 
-            [JsonProperty("sts")]
+            [JsonPropertyName("sts")]
             public string status { get; set; }
 
-            [JsonProperty("recv")]
+            [JsonPropertyName("recv")]
             public string __receive { get; set; }
         }
     }

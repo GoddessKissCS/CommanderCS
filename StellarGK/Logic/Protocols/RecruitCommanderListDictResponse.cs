@@ -1,41 +1,41 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class RecruitCommanderListDictResponse
     {
-        [JsonProperty("list")]
+        [JsonPropertyName("list")]
         public Dictionary<string, Commander> list { get; set; }
 
-        [JsonProperty("remain")]
+        [JsonPropertyName("remain")]
         public int remainTime { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Commander
         {
-            [JsonProperty("cid")]
+            [JsonPropertyName("cid")]
             public string id { get; set; }
 
-            [JsonProperty("grd")]
+            [JsonPropertyName("grd")]
             public string rank { get; set; }
 
-            [JsonProperty("honr")]
+            [JsonPropertyName("honr")]
             public int honor { get; set; }
 
-            [JsonProperty("gold")]
+            [JsonPropertyName("gold")]
             public int gold { get; set; }
 
-            [JsonProperty("cash")]
+            [JsonPropertyName("cash")]
             public int cash { get; set; }
 
-            [JsonProperty("sell")]
+            [JsonPropertyName("sell")]
             public bool recruited { get; set; }
 
-            [JsonProperty("wait")]
+            [JsonPropertyName("wait")]
             public int waitTime { get; set; }
 
-            [JsonProperty("dnm")]
+            [JsonPropertyName("dnm")]
             public int troopNickname { get; set; }
         }
     }

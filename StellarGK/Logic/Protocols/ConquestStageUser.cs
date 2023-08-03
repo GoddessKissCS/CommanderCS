@@ -1,45 +1,45 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ConquestStageUser
     {
-        [JsonProperty("slot")]
+        [JsonPropertyName("slot")]
         public int slot { get; set; }
 
-        [JsonProperty("stat")]
+        [JsonPropertyName("stat")]
         public string state { get; set; }
 
-        [JsonProperty("deck")]
+        [JsonPropertyName("deck")]
         public List<Deck> deck { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Deck
         {
-            [JsonProperty("cid")]
+            [JsonPropertyName("cid")]
             public string cid { get; set; }
 
-            [JsonProperty("lev")]
+            [JsonPropertyName("lev")]
             public int level { get; set; }
 
-            [JsonProperty("grade")]
+            [JsonPropertyName("grade")]
             public int grade { get; set; }
 
-            [JsonProperty("class")]
+            [JsonPropertyName("class")]
             public int cls { get; set; }
 
-            [JsonProperty("cos")]
+            [JsonPropertyName("cos")]
             public int costume { get; set; }
 
-            [JsonProperty("pos")]
+            [JsonPropertyName("pos")]
             public int position { get; set; }
 
-            [JsonProperty("mry")]
+            [JsonPropertyName("mry")]
             public int marry { get; set; }
 
-            [JsonProperty("tsdc")]
+            [JsonPropertyName("tsdc")]
             public List<int> transcendence { get; set; }
         }
     }

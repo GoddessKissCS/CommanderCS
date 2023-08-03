@@ -1,17 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class CompleteAchievementInfo
     {
-        [JsonProperty("acid")]
+        [JsonPropertyName("acid")]
         public int achievementId { get; set; }
 
-        [JsonProperty("asot")]
+        [JsonPropertyName("asot")]
         public int sort { get; set; }
 
-        [JsonProperty("gts")]
+        [JsonPropertyName("gts")]
         public int time { get; set; }
     }
 }

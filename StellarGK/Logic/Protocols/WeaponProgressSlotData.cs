@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
     public class WeaponProgressSlotData
     {
-        [JsonProperty("slot")]
+        [JsonPropertyName("slot")]
         public int slot { get; set; }
 
-        [JsonProperty("remain")]
+        [JsonPropertyName("remain")]
         public int remain { get; set; }
     }
 }

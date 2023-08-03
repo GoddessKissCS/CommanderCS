@@ -1,38 +1,38 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class PlunderTimeMachine
     {
-        [JsonProperty("reward")]
+        [JsonPropertyName("reward")]
         public List<List<RewardInfo.RewardData>> reward { get; set; }
 
-        [JsonProperty("rsoc")]
+        [JsonPropertyName("rsoc")]
         public UserInformationResponse.Resource resource { get; set; }
 
-        [JsonProperty("part")]
+        [JsonPropertyName("part")]
         public Dictionary<string, int> partData { get; set; }
 
-        [JsonProperty("medl")]
+        [JsonPropertyName("medl")]
         public Dictionary<string, int> medalData { get; set; }
 
-        [JsonProperty("ersoc")]
+        [JsonPropertyName("ersoc")]
         public Dictionary<string, int> eventResourceData { get; set; }
 
-        [JsonProperty("item")]
+        [JsonPropertyName("item")]
         public Dictionary<string, int> itemData { get; set; }
 
-        [JsonProperty("food")]
+        [JsonPropertyName("food")]
         public Dictionary<string, int> foodData { get; set; }
 
-        [JsonProperty("vshp")]
+        [JsonPropertyName("vshp")]
         public int VipShopOpen { get; set; }
 
-        [JsonProperty("vrtm")]
+        [JsonPropertyName("vrtm")]
         public int VipShopRemainTime { get; set; }
 
-        [JsonProperty("guit")]
+        [JsonPropertyName("guit")]
         public Dictionary<string, int> groupItemData { get; set; }
     }
 }

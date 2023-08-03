@@ -1,54 +1,54 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using StellarGK.Logic.Enums;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class AlarmData
     {
-        [JsonProperty("dcnt")]
+        [JsonPropertyName("dcnt")]
         public int dcnt { get; set; }
 
-        [JsonProperty("hold")]
+        [JsonPropertyName("hold")]
         public HoldData hold { get; set; }
 
-        [JsonProperty("cmdr")]
+        [JsonPropertyName("cmdr")]
         public int cmdr { get; set; }
 
-        [JsonProperty("shop")]
+        [JsonPropertyName("shop")]
         public Dictionary<EShopType, int> shop { get; set; }
 
-        [JsonProperty("expd")]
+        [JsonPropertyName("expd")]
         public int expd { get; set; }
 
-        [JsonProperty("mwdw")]
+        [JsonPropertyName("mwdw")]
         public int mwdw { get; set; }
 
-        [JsonProperty("srgs")]
+        [JsonPropertyName("srgs")]
         public int srgs { get; set; }
 
-        [JsonProperty("srge")]
+        [JsonPropertyName("srge")]
         public int srge { get; set; }
 
-        [JsonProperty("ocps")]
+        [JsonPropertyName("ocps")]
         public int ocps { get; set; }
 
-        [JsonProperty("ocpe")]
+        [JsonPropertyName("ocpe")]
         public int ocpe { get; set; }
 
-        [JsonProperty("raid")]
+        [JsonPropertyName("raid")]
         public int raid { get; set; }
 
-        [JsonProperty("arena")]
+        [JsonPropertyName("arena")]
         public int arena { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class HoldData
         {
-            [JsonProperty("cnt")]
+            [JsonPropertyName("cnt")]
             public int count { get; set; }
 
-            [JsonProperty("time")]
+            [JsonPropertyName("time")]
             public int time { get; set; }
         }
     }

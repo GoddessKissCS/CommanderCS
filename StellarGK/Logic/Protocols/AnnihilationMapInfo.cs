@@ -1,34 +1,34 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using Newtonsoft.Json.Linq;
 using StellarGK.Logic.Enums;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class AnnihilationMapInfo
     {
-        [JsonProperty("mst")]
+        [JsonPropertyName("mst")]
         public int stage { get; set; }
 
-        [JsonProperty("adpt")]
+        [JsonPropertyName("adpt")]
         public int isPlayAdvanceParty { get; set; }
 
-        [JsonProperty("lcid")]
+        [JsonPropertyName("lcid")]
         public List<string> dieCommanderList { get; set; }
 
-        [JsonProperty("clear")]
+        [JsonPropertyName("clear")]
         public int clear { get; set; }
 
-        [JsonProperty("remain")]
+        [JsonPropertyName("remain")]
         public int remainTime { get; set; }
 
-        [JsonProperty("vcid")]
+        [JsonPropertyName("vcid")]
         public List<StatusData> commanderStatusList { get; set; }
 
-        [JsonProperty("enemy")]
+        [JsonPropertyName("enemy")]
         public List<Dictionary<int, CommanderData>> enemyList { get; set; }
 
-        [JsonProperty("rInfo")]
+        [JsonPropertyName("rInfo")]
         public object __advancePartyReward { get; set; }
 
         public AdvancePartyRewardInfo advancePartyReward
@@ -57,57 +57,57 @@ namespace StellarGK.Logic.Protocols
             }
         }
 
-        [JsonProperty("mode")]
+        [JsonPropertyName("mode")]
         public AnnihilationMode mode { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class CommanderData
         {
-            [JsonProperty("uid")]
+            [JsonPropertyName("uid")]
             public string id { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public int level { get; set; }
 
-            [JsonProperty("spd")]
+            [JsonPropertyName("spd")]
             public int speed { get; set; }
 
-            [JsonProperty("hp")]
+            [JsonPropertyName("hp")]
             public int hp { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class AdvancePartyRewardInfo
         {
-            [JsonProperty("reward")]
+            [JsonPropertyName("reward")]
             public List<List<RewardInfo.RewardData>> rewardList { get; set; }
 
-            [JsonProperty("rsoc")]
+            [JsonPropertyName("rsoc")]
             public UserInformationResponse.Resource resource { get; set; }
 
-            [JsonProperty("part")]
+            [JsonPropertyName("part")]
             public Dictionary<string, int> partData { get; set; }
 
-            [JsonProperty("medl")]
+            [JsonPropertyName("medl")]
             public Dictionary<string, int> medalData { get; set; }
 
-            [JsonProperty("ersoc")]
+            [JsonPropertyName("ersoc")]
             public Dictionary<string, int> eventResourceData { get; set; }
 
-            [JsonProperty("item")]
+            [JsonPropertyName("item")]
             public Dictionary<string, int> itemData { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class StatusData
         {
-            [JsonProperty("cid")]
+            [JsonPropertyName("cid")]
             public string id { get; set; }
 
-            [JsonProperty("dmghp")]
+            [JsonPropertyName("dmghp")]
             public string __dmghp { get; set; }
 
-            [JsonProperty("sp")]
+            [JsonPropertyName("sp")]
             public int sp { get; set; }
         }
     }

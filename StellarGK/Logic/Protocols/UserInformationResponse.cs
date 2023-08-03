@@ -1,592 +1,592 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class UserInformationResponse
     {
-        [JsonProperty("rsoc")]
+        [JsonPropertyName("rsoc")]
         public Resource goodsInfo { get; set; }
 
-        [JsonProperty("uifo")]
+        [JsonPropertyName("uifo")]
         public BattleStatistics battleStatisticsInfo { get; set; }
 
-        [JsonProperty("comm")]
+        [JsonPropertyName("comm")]
         public object __commanderInfo { get; set; }
 
-        [JsonProperty("uno")]
+        [JsonPropertyName("uno")]
         public string uno { get; set; }
 
-        [JsonProperty("stage")]
+        [JsonPropertyName("stage")]
         public int stage { get; set; }
 
-        [JsonProperty("part")]
+        [JsonPropertyName("part")]
         public Dictionary<string, int> partData { get; set; }
 
-        [JsonProperty("medl")]
+        [JsonPropertyName("medl")]
         public Dictionary<string, int> medalData { get; set; }
 
-        [JsonProperty("ersoc")]
+        [JsonPropertyName("ersoc")]
         public Dictionary<string, int> eventResourceData { get; set; }
 
-        [JsonProperty("food")]
+        [JsonPropertyName("food")]
         public Dictionary<string, int> foodData { get; set; }
 
-        [JsonProperty("item")]
+        [JsonPropertyName("item")]
         public Dictionary<string, int> itemData { get; set; }
 
-        [JsonProperty("gld")]
+        [JsonPropertyName("gld")]
         public UserGuild guildInfo { get; set; }
 
-        [JsonProperty("cc")]
+        [JsonPropertyName("cc")]
         public Dictionary<string, List<int>> sweepClearData { get; set; }
 
-        [JsonProperty("deck")]
+        [JsonPropertyName("deck")]
         public List<PreDeck> preDeck { get; set; }
 
-        [JsonProperty("nhcc")]
+        [JsonPropertyName("nhcc")]
         public Dictionary<string, List<int>> donHaveCommCostumeData { get; set; }
 
-        [JsonProperty("grp")]
+        [JsonPropertyName("grp")]
         public List<int> completeRewardGroupIdx { get; set; }
 
-        [JsonProperty("rstm")]
+        [JsonPropertyName("rstm")]
         public int resetRemain { get; set; }
 
-        [JsonProperty("onoff")]
+        [JsonPropertyName("onoff")]
         public bool notification { get; set; }
 
-        [JsonProperty("equip")]
+        [JsonPropertyName("equip")]
         public Dictionary<string, Dictionary<int, EquipItemInfo>> equipItem { get; set; }
 
-        [JsonProperty("guit")]
+        [JsonPropertyName("guit")]
         public Dictionary<string, int> groupItemData { get; set; }
 
-        [JsonProperty("weapon")]
+        [JsonPropertyName("weapon")]
         public Dictionary<string, WeaponData> weaponList { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Resource
         {
-            [JsonProperty("unm")]
+            [JsonPropertyName("unm")]
             public string __nickname { get; set; }
 
-            [JsonProperty("thmb")]
+            [JsonPropertyName("thmb")]
             public string __thumbnailId { get; set; }
 
-            [JsonProperty("exp")]
+            [JsonPropertyName("exp")]
             public string __exp { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public string __level { get; set; }
 
-            [JsonProperty("vlv")]
+            [JsonPropertyName("vlv")]
             public string __vipLevel { get; set; }
 
-            [JsonProperty("vexp")]
+            [JsonPropertyName("vexp")]
             public string __vipExp { get; set; }
 
-            [JsonProperty("gold")]
+            [JsonPropertyName("gold")]
             public string __gold { get; set; }
 
-            [JsonProperty("cash")]
+            [JsonPropertyName("cash")]
             public string __cash { get; set; }
 
-            [JsonProperty("honr")]
+            [JsonPropertyName("honr")]
             public string __honor { get; set; }
 
-            [JsonProperty("sply")]
+            [JsonPropertyName("sply")]
             public string __explorationTicket { get; set; }
 
-            [JsonProperty("swp")]
+            [JsonPropertyName("swp")]
             public string __sweepTicket { get; set; }
 
-            [JsonProperty("keys")]
+            [JsonPropertyName("keys")]
             public string __opener { get; set; }
 
-            [JsonProperty("chlg")]
+            [JsonPropertyName("chlg")]
             public string __challenge { get; set; }
 
-            [JsonProperty("blcg")]
+            [JsonPropertyName("blcg")]
             public string __blackChallenge { get; set; }
 
-            [JsonProperty("opcn")]
+            [JsonPropertyName("opcn")]
             public string __opcon { get; set; }
 
-            [JsonProperty("acon")]
+            [JsonPropertyName("acon")]
             public string __challengeCoin { get; set; }
 
-            [JsonProperty("wbt")]
+            [JsonPropertyName("wbt")]
             public string __waveDuelTicket { get; set; }
 
-            [JsonProperty("wbc")]
+            [JsonPropertyName("wbc")]
             public string __waveDuelCoin { get; set; }
 
-            [JsonProperty("gcon")]
+            [JsonPropertyName("gcon")]
             public string __guildCoin { get; set; }
 
-            [JsonProperty("rcon")]
+            [JsonPropertyName("rcon")]
             public string __raidCoin { get; set; }
 
-            [JsonProperty("ncon")]
+            [JsonPropertyName("ncon")]
             public string __annCoin { get; set; }
 
-            [JsonProperty("bult")]
+            [JsonPropertyName("bult")]
             public string __bullet { get; set; }
 
-            [JsonProperty("chip")]
+            [JsonPropertyName("chip")]
             public string __chip { get; set; }
 
-            [JsonProperty("abp")]
+            [JsonPropertyName("abp")]
             public string __blueprintArmy { get; set; }
 
-            [JsonProperty("nbp")]
+            [JsonPropertyName("nbp")]
             public string __blueprintNavy { get; set; }
 
-            [JsonProperty("cmtr")]
+            [JsonPropertyName("cmtr")]
             public string __commanderPromotionPoint { get; set; }
 
-            [JsonProperty("ebac")]
+            [JsonPropertyName("ebac")]
             public string __eventRaidTicket { get; set; }
 
-            [JsonProperty("oil")]
+            [JsonPropertyName("oil")]
             public string __oil { get; set; }
 
-            [JsonProperty("wmat1")]
+            [JsonPropertyName("wmat1")]
             public string __weaponMaterial1 { get; set; }
 
-            [JsonProperty("wmat2")]
+            [JsonPropertyName("wmat2")]
             public string __weaponMaterial2 { get; set; }
 
-            [JsonProperty("wmat3")]
+            [JsonPropertyName("wmat3")]
             public string __weaponMaterial3 { get; set; }
 
-            [JsonProperty("wmat4")]
+            [JsonPropertyName("wmat4")]
             public string __weaponMaterial4 { get; set; }
 
-            [JsonProperty("wimt")]
+            [JsonPropertyName("wimt")]
             public string __weaponImmediateTicket { get; set; }
 
-            [JsonProperty("wmt")]
+            [JsonPropertyName("wmt")]
             public string __weaponMakeTicket { get; set; }
 
-            [JsonProperty("ring")]
+            [JsonPropertyName("ring")]
             public string __ring { get; set; }
 
-            [JsonProperty("cgft")]
+            [JsonPropertyName("cgft")]
             public string __commanderGift { get; set; }
 
-            [JsonProperty("sbtk")]
+            [JsonPropertyName("sbtk")]
             public string __worldDuelTicket { get; set; }
 
-            [JsonProperty("sbc1")]
+            [JsonPropertyName("sbc1")]
             public string __worldDuelCoin { get; set; }
 
-            [JsonProperty("sbc2")]
+            [JsonPropertyName("sbc2")]
             public string __worldDuelUpgradeCoin { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class BattleResult
         {
-            [JsonProperty("save")]
+            [JsonPropertyName("save")]
             public bool save { get; set; }
 
-            [JsonProperty("rsoc")]
+            [JsonPropertyName("rsoc")]
             public Resource __resource { get; set; }
 
-            [JsonProperty("reward")]
+            [JsonPropertyName("reward")]
             public List<RewardInfo.RewardData> rewardList { get; set; }
 
-            [JsonProperty("comm")]
+            [JsonPropertyName("comm")]
             public Dictionary<string, Commander> commanderData { get; set; }
 
-            [JsonProperty("part")]
+            [JsonPropertyName("part")]
             public Dictionary<string, int> partData { get; set; }
 
-            [JsonProperty("medl")]
+            [JsonPropertyName("medl")]
             public Dictionary<string, int> medalData { get; set; }
 
-            [JsonProperty("ersoc")]
+            [JsonPropertyName("ersoc")]
             public Dictionary<string, int> eventResourceData { get; set; }
 
-            [JsonProperty("item")]
+            [JsonPropertyName("item")]
             public Dictionary<string, int> itemData { get; set; }
 
-            [JsonProperty("food")]
+            [JsonPropertyName("food")]
             public Dictionary<string, int> foodData { get; set; }
 
-            [JsonProperty("favr")]
+            [JsonPropertyName("favr")]
             public List<FavorUpData.CommanderFavor> commanderFavor { get; set; }
 
-            [JsonProperty("vshp")]
+            [JsonPropertyName("vshp")]
             public int VipShopOpen { get; set; }
 
-            [JsonProperty("vrtm")]
+            [JsonPropertyName("vrtm")]
             public int VipShopResetTime { get; set; }
 
-            [JsonProperty("guit")]
+            [JsonPropertyName("guit")]
             public Dictionary<string, int> groupItemData { get; set; }
 
-            [JsonProperty("tinfo")]
+            [JsonPropertyName("tinfo")]
             public InfinityTowerData infinityData { get; set; }
 
-            [JsonProperty("user")]
+            [JsonPropertyName("user")]
             public UserData user;
 
-            [JsonObject(MemberSerialization.OptIn)]
+
             public class UserData
             {
-                [JsonProperty("prnk")]
+                [JsonPropertyName("prnk")]
                 public int prevRank { get; set; }
 
-                [JsonProperty("rank")]
+                [JsonPropertyName("rank")]
                 public int rank { get; set; }
 
-                [JsonProperty("prct")]
+                [JsonPropertyName("prct")]
                 public float rankPercent { get; set; }
 
-                [JsonProperty("score")]
+                [JsonPropertyName("score")]
                 public int curScore { get; set; }
 
-                [JsonProperty("pscr")]
+                [JsonPropertyName("pscr")]
                 public int prevScore { get; set; }
 
-                [JsonProperty("ascr")]
+                [JsonPropertyName("ascr")]
                 public int getScore { get; set; }
 
-                [JsonProperty("wscr")]
+                [JsonPropertyName("wscr")]
                 public int winScore { get; set; }
 
-                [JsonProperty("wst")]
+                [JsonPropertyName("wst")]
                 public int winCount { get; set; }
 
-                [JsonProperty("pwst")]
+                [JsonPropertyName("pwst")]
                 public int prevWinCount { get; set; }
 
-                [JsonProperty("dpnt")]
+                [JsonPropertyName("dpnt")]
                 public int duelPoint { get; set; }
             }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class BattleStatistics
         {
-            [JsonProperty("egld")]
+            [JsonPropertyName("egld")]
             public long totalGold { get; set; }
 
-            [JsonProperty("pvew")]
+            [JsonPropertyName("pvew")]
             public int pveWinCount { get; set; }
 
-            [JsonProperty("pvel")]
+            [JsonPropertyName("pvel")]
             public int pveLoseCount { get; set; }
 
-            [JsonProperty("pvpw")]
+            [JsonPropertyName("pvpw")]
             public int pvpWinCount { get; set; }
 
-            [JsonProperty("pvpl")]
+            [JsonPropertyName("pvpl")]
             public int pvpLoseCount { get; set; }
 
-            [JsonProperty("acdc")]
+            [JsonPropertyName("acdc")]
             public int armyCommanderDestroyCount { get; set; }
 
-            [JsonProperty("audc")]
+            [JsonPropertyName("audc")]
             public int armyUnitDestroyCount { get; set; }
 
-            [JsonProperty("ncdc")]
+            [JsonPropertyName("ncdc")]
             public int navyCommanderDestroyCount { get; set; }
 
-            [JsonProperty("nudc")]
+            [JsonPropertyName("nudc")]
             public int navyUnitDestroyCount { get; set; }
 
-            [JsonProperty("pdgd")]
+            [JsonPropertyName("pdgd")]
             public int totalPlunderGold { get; set; }
 
-            [JsonProperty("wst")]
+            [JsonPropertyName("wst")]
             public int winStreak { get; set; }
 
-            [JsonProperty("wmst")]
+            [JsonPropertyName("wmst")]
             public int winMostStreak { get; set; }
 
-            [JsonProperty("pwst")]
+            [JsonPropertyName("pwst")]
             public int preWinStreak { get; set; }
 
-            [JsonProperty("atr")]
+            [JsonPropertyName("atr")]
             public int arenaHighRank { get; set; }
 
-            [JsonProperty("rtr")]
+            [JsonPropertyName("rtr")]
             public int raidHighRank { get; set; }
 
-            [JsonProperty("rts")]
+            [JsonPropertyName("rts")]
             public int raidHighScore { get; set; }
 
-            [JsonProperty("ggc")]
+            [JsonPropertyName("ggc")]
             public int normalGachaCount { get; set; }
 
-            [JsonProperty("cgc")]
+            [JsonPropertyName("cgc")]
             public int premiumGachaCount { get; set; }
 
-            [JsonProperty("stcc")]
+            [JsonPropertyName("stcc")]
             public int stageClearCount { get; set; }
 
-            [JsonProperty("swcc")]
+            [JsonPropertyName("swcc")]
             public int sweepClearCount { get; set; }
 
-            [JsonProperty("edc")]
+            [JsonPropertyName("edc")]
             public int unitDestroyCount { get; set; }
 
-            [JsonProperty("pdc")]
+            [JsonPropertyName("pdc")]
             public int commanderDestroyCount { get; set; }
 
-            [JsonProperty("vshp")]
+            [JsonPropertyName("vshp")]
             public int vipShop { get; set; }
 
-            [JsonProperty("vrtm")]
+            [JsonPropertyName("vrtm")]
             public int vipShopResetTime { get; set; }
 
-            [JsonProperty("prdc")]
+            [JsonPropertyName("prdc")]
             public int predeckCount { get; set; }
 
-            [JsonProperty("fpur")]
+            [JsonPropertyName("fpur")]
             public int firstPayment { get; set; }
 
-            [JsonProperty("wmsc")]
+            [JsonPropertyName("wmsc")]
             public int weaponMakeSlotCount { get; set; }
 
-            [JsonProperty("wic")]
+            [JsonPropertyName("wic")]
             public int weaponInventoryCount { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Unit
         {
-            [JsonProperty("sp")]
+            [JsonPropertyName("sp")]
             public List<int> spList { get; set; }
 
-            [JsonProperty("uid")]
+            [JsonPropertyName("uid")]
             public string id;
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public int level;
 
-            [JsonProperty("hp")]
+            [JsonPropertyName("hp")]
             public int Hp;
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Building
         {
-            [JsonProperty("bid")]
+            [JsonPropertyName("bid")]
             public int id { get; set; }
 
-            [JsonProperty("stus")]
+            [JsonPropertyName("stus")]
             public int state { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public int level { get; set; }
 
-            [JsonProperty("remain")]
+            [JsonPropertyName("remain")]
             public int remainTime { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Commander
         {
-            [JsonProperty("cid")]
+            [JsonPropertyName("cid")]
             public string id { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public string __level { get; set; }
 
-            [JsonProperty("grd")]
+            [JsonPropertyName("grd")]
             public string __rank { get; set; }
 
-            [JsonProperty("cls")]
+            [JsonPropertyName("cls")]
             public string __cls { get; set; }
 
-            [JsonProperty("exp")]
+            [JsonPropertyName("exp")]
             public string __exp { get; set; }
 
-            [JsonProperty("medl")]
+            [JsonPropertyName("medl")]
             public int medl { get; set; }
 
-            [JsonProperty("skv1")]
+            [JsonPropertyName("skv1")]
             public string __skv1 { get; set; }
 
-            [JsonProperty("skv2")]
+            [JsonPropertyName("skv2")]
             public string __skv2 { get; set; }
 
-            [JsonProperty("skv3")]
+            [JsonPropertyName("skv3")]
             public string __skv3 { get; set; }
 
-            [JsonProperty("skv4")]
+            [JsonPropertyName("skv4")]
             public string __skv4 { get; set; }
 
-            [JsonProperty("role")]
+            [JsonPropertyName("role")]
             public string role { get; set; }
 
-            [JsonProperty("stus")]
+            [JsonPropertyName("stus")]
             public string state { get; set; }
 
-            [JsonProperty("cos")]
+            [JsonPropertyName("cos")]
             public int currentCostume { get; set; }
 
-            [JsonProperty("clst")]
+            [JsonPropertyName("clst")]
             public List<int> haveCostume { get; set; }
 
-            [JsonProperty("evt")]
+            [JsonPropertyName("evt")]
             public Dictionary<int, int> eventCostume { get; set; }
 
-            [JsonProperty("fs")]
+            [JsonPropertyName("fs")]
             public int favorStep { get; set; }
 
-            [JsonProperty("fp")]
+            [JsonPropertyName("fp")]
             public int favorPoint { get; set; }
 
-            [JsonProperty("rsf")]
+            [JsonPropertyName("rsf")]
             public int favorRewardStep { get; set; }
 
-            [JsonProperty("favr")]
+            [JsonPropertyName("favr")]
             public int favr { get; set; }
 
-            [JsonProperty("fvrd")]
+            [JsonPropertyName("fvrd")]
             public int fvrd { get; set; }
 
-            [JsonProperty("eq")]
+            [JsonPropertyName("eq")]
             public Dictionary<string, int> equipItemInfo { get; set; }
 
-            [JsonProperty("mry")]
+            [JsonPropertyName("mry")]
             public int marry { get; set; }
 
-            [JsonProperty("tsdc")]
+            [JsonPropertyName("tsdc")]
             public List<int> transcendence { get; set; }
 
-            [JsonProperty("wp")]
+            [JsonPropertyName("wp")]
             public Dictionary<string, WeaponData> equipWeaponInfo { get; set; }
 
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class DailyCheckPoint
         {
-            [JsonProperty("swbc")]
+            [JsonPropertyName("swbc")]
             public int sweepTicketBuyCount { get; set; }
 
-            [JsonProperty("spbc")]
+            [JsonPropertyName("spbc")]
             public int explorationTicketBuyCount { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class PartData
         {
-            [JsonProperty("pidx")]
+            [JsonPropertyName("pidx")]
             public string idx { get; set; }
 
-            [JsonProperty("cnt")]
+            [JsonPropertyName("cnt")]
             public int count { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class UserGuild
         {
-            [JsonProperty("gidx")]
+            [JsonPropertyName("gidx")]
             public int idx { get; set; }
 
-            [JsonProperty("gnm")]
+            [JsonPropertyName("gnm")]
             public string name { get; set; }
 
-            [JsonProperty("lev")]
+            [JsonPropertyName("lev")]
             public int level { get; set; }
 
-            [JsonProperty("pnt")]
+            [JsonPropertyName("pnt")]
             public int point { get; set; }
 
-            [JsonProperty("apnt")]
+            [JsonPropertyName("apnt")]
             public int aPoint { get; set; }
 
-            [JsonProperty("mstr")]
+            [JsonPropertyName("mstr")]
             public int memberGrade { get; set; }
 
-            [JsonProperty("emb")]
+            [JsonPropertyName("emb")]
             public int emblem { get; set; }
 
-            [JsonProperty("gtyp")]
+            [JsonPropertyName("gtyp")]
             public int guildType { get; set; }
 
-            [JsonProperty("lvlm")]
+            [JsonPropertyName("lvlm")]
             public int limitLevel { get; set; }
 
-            [JsonProperty("ntc")]
+            [JsonPropertyName("ntc")]
             public string notice { get; set; }
 
-            [JsonProperty("stat")]
+            [JsonPropertyName("stat")]
             public int state { get; set; }
 
-            [JsonProperty("ctime")]
+            [JsonPropertyName("ctime")]
             public double closeTime { get; set; }
 
-            [JsonProperty("reg")]
+            [JsonPropertyName("reg")]
             public double createTime { get; set; }
 
-            [JsonProperty("mxCnt")]
+            [JsonPropertyName("mxCnt")]
             public int maxCount { get; set; }
 
-            [JsonProperty("cnt")]
+            [JsonPropertyName("cnt")]
             public int count { get; set; }
 
-            [JsonProperty("skill")]
+            [JsonPropertyName("skill")]
             public List<GuildSkill> skillDada { get; set; }
 
-            [JsonProperty("occupy")]
+            [JsonPropertyName("occupy")]
             public int occupy { get; set; }
 
-            [JsonProperty("world")]
+            [JsonPropertyName("world")]
             public int world { get; set; }
 
-            [JsonObject(MemberSerialization.OptIn)]
+
             public class GuildSkill
             {
-                [JsonProperty("gsid")]
+                [JsonPropertyName("gsid")]
                 public int idx { get; set; }
 
-                [JsonProperty("gslv")]
+                [JsonPropertyName("gslv")]
                 public int level { get; set; }
             }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class VipRechargeData
         {
-            [JsonProperty("vidx")]
+            [JsonPropertyName("vidx")]
             public int idx = 101;
 
-            [JsonProperty("mid")]
+            [JsonPropertyName("mid")]
             public int mid = 1;
 
-            [JsonProperty("cnt")]
+            [JsonPropertyName("cnt")]
             public int count = 1;
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class TutorialData
         {
-            [JsonProperty("step")]
+            [JsonPropertyName("step")]
             public int step { get; set; }
 
-            [JsonProperty("skip")]
+            [JsonPropertyName("skip")]
             public bool skip { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class PreDeck
         {
-            [JsonProperty("dpid")]
+            [JsonPropertyName("dpid")]
             public int idx { get; set; }
 
-            [JsonProperty("dpnm")]
+            [JsonPropertyName("dpnm")]
             public string name { get; set; }
 
-            [JsonProperty("deck")]
+            [JsonPropertyName("deck")]
             public Dictionary<string, int> deckData { get; set; }
         }
     }

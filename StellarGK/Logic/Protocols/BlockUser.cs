@@ -1,20 +1,20 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class BlockUser
     {
-        [JsonProperty("ch")]
+        [JsonPropertyName("ch")]
         public int channel { get; set; }
 
-        [JsonProperty("uno")]
+        [JsonPropertyName("uno")]
         public string uno { get; set; }
 
-        [JsonProperty("nick")]
+        [JsonPropertyName("nick")]
         public string nickName { get; set; }
 
-        [JsonProperty("thumb")]
+        [JsonPropertyName("thumb")]
         public string thumbnail { get; set; }
     }
 }

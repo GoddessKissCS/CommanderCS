@@ -1,63 +1,64 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class PvPRankingList
     {
-        [JsonProperty("rank")]
+        [JsonPropertyName("rank")]
         public List<RankData> rankList { get; set; }
 
-        [JsonProperty("user")]
+        [JsonPropertyName("user")]
         public RankingUserData user { get; set; }
 
-        [JsonProperty("boss")]
+        [JsonPropertyName("boss")]
         public List<Dictionary<string, int>> bossData { get; set; }
 
-        [JsonProperty("info")]
+        [JsonPropertyName("info")]
         public RaidInfo info { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class RankData
         {
-            [JsonProperty("uno")]
+            [JsonPropertyName("uno")]
             public int id { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public int level { get; set; }
 
-            [JsonProperty("name")]
+            [JsonPropertyName("name")]
             public string _name { get; set; }
 
-            [JsonProperty("thmb")]
+            [JsonPropertyName("thmb")]
             public string thumb { get; set; }
 
-            [JsonProperty("score")]
+            [JsonPropertyName("score")]
             public int score { get; set; }
 
-            [JsonProperty("grd")]
+            [JsonPropertyName("grd")]
             public int grade { get; set; }
 
-            [JsonProperty("rank")]
+            [JsonPropertyName("rank")]
             public int rank { get; set; }
 
-            [JsonProperty("rgts")]
+            [JsonPropertyName("rgts")]
             public int time { get; set; }
 
-            [JsonProperty("gnm", NullValueHandling = NullValueHandling.Ignore)]
+            [JsonPropertyName("gnm")]
+            [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
             public string guildName { get; set; }
 
-            [JsonProperty("gwld")]
+            [JsonPropertyName("gwld")]
             public int guildServer { get; set; }
 
-            [JsonProperty("rid")]
+            [JsonPropertyName("rid")]
             public string replayId;
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class RaidInfo
         {
-            [JsonProperty("etm")]
+            [JsonPropertyName("etm")]
             public int endTime { get; set; }
         }
     }

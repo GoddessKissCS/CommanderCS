@@ -1,17 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class EquipItemInfo
     {
-        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         public int totalCount { get; set; }
 
-        [JsonProperty("avail")]
+        [JsonPropertyName("avail")]
         public int availableCount { get; set; }
 
-        [JsonProperty("list")]
+        [JsonPropertyName("list")]
         public List<int> equipCommanderList { get; set; }
     }
 }

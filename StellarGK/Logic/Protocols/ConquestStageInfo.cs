@@ -1,54 +1,54 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class ConquestStageInfo
     {
-        [JsonProperty("einfo")]
+        [JsonPropertyName("einfo")]
         public EnemyInfo enemyInfo { get; set; }
 
-        [JsonProperty("alie")]
+        [JsonPropertyName("alie")]
         public List<User> alieList { get; set; }
 
-        [JsonProperty("enemy")]
+        [JsonPropertyName("enemy")]
         public List<User> enemyList { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class User
         {
-            [JsonProperty("uno")]
+            [JsonPropertyName("uno")]
             public string uno { get; set; }
 
-            [JsonProperty("name")]
+            [JsonPropertyName("name")]
             public string name { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public int level { get; set; }
 
-            [JsonProperty("thumb")]
+            [JsonPropertyName("thumb")]
             public string thumb { get; set; }
 
-            [JsonProperty("auth")]
+            [JsonPropertyName("auth")]
             public int auth { get; set; }
 
-            [JsonProperty("standby")]
+            [JsonPropertyName("standby")]
             public int standby { get; set; }
 
-            [JsonProperty("move")]
+            [JsonPropertyName("move")]
             public int move { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class EnemyInfo
         {
-            [JsonProperty("name")]
+            [JsonPropertyName("name")]
             public string name { get; set; }
 
-            [JsonProperty("emblem")]
+            [JsonPropertyName("emblem")]
             public string emblem { get; set; }
 
-            [JsonProperty("gidx")]
+            [JsonPropertyName("gidx")]
             public int gidx { get; set; }
         }
     }

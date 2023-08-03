@@ -1,104 +1,104 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class GetConquestBattle
     {
-        [JsonProperty("entry")]
+        [JsonPropertyName("entry")]
         public Entry entry { get; set; }
 
-        [JsonProperty("battle")]
+        [JsonPropertyName("battle")]
         public List<Battle> battle { get; set; }
 
-        [JsonProperty("world")]
+        [JsonPropertyName("world")]
         public int enemyWorld { get; set; }
 
-        [JsonProperty("egnm")]
+        [JsonPropertyName("egnm")]
         public string enemyName { get; set; }
 
-        [JsonProperty("eside")]
+        [JsonPropertyName("eside")]
         public string eSide { get; set; }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Entry
         {
-            [JsonProperty("red")]
+            [JsonPropertyName("red")]
             public List<EntryInfo> red { get; set; }
 
-            [JsonProperty("blue")]
+            [JsonPropertyName("blue")]
             public List<EntryInfo> blue { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class EntryInfo
         {
-            [JsonProperty("uno")]
+            [JsonPropertyName("uno")]
             public string uno { get; set; }
 
-            [JsonProperty("name")]
+            [JsonPropertyName("name")]
             public string name { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public int level { get; set; }
 
-            [JsonProperty("thumb")]
+            [JsonPropertyName("thumb")]
             public string thumb { get; set; }
 
-            [JsonProperty("deck")]
+            [JsonPropertyName("deck")]
             public List<ConquestStageUser.Deck> deck { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Battle
         {
-            [JsonProperty("entry")]
+            [JsonPropertyName("entry")]
             public BattleEntry entry { get; set; }
 
-            [JsonProperty("result")]
+            [JsonPropertyName("result")]
             public Result result { get; set; }
 
-            [JsonProperty("rid")]
+            [JsonPropertyName("rid")]
             public string replayId { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class BattleEntry
         {
-            [JsonProperty("red")]
+            [JsonPropertyName("red")]
             public Dictionary<string, BattleEntryInfo> red { get; set; }
 
-            [JsonProperty("blue")]
+            [JsonPropertyName("blue")]
             public Dictionary<string, BattleEntryInfo> blue { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class BattleEntryInfo
         {
-            [JsonProperty("pos")]
+            [JsonPropertyName("pos")]
             public int pos { get; set; }
 
-            [JsonProperty("hp")]
+            [JsonPropertyName("hp")]
             public int hp { get; set; }
 
-            [JsonProperty("maxHp")]
+            [JsonPropertyName("maxHp")]
             public int maxHp { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class Result
         {
-            [JsonProperty("red")]
+            [JsonPropertyName("red")]
             public Dictionary<string, ResultInfo> red { get; set; }
 
-            [JsonProperty("blue")]
+            [JsonPropertyName("blue")]
             public Dictionary<string, ResultInfo> blue { get; set; }
         }
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class ResultInfo
         {
-            [JsonProperty("hp")]
+            [JsonPropertyName("hp")]
             public int hp { get; set; }
         }
     }

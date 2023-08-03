@@ -1,86 +1,86 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
-    [JsonObject(MemberSerialization.OptIn)]
+
     public class GuildDispatchCommanderList
     {
-        [JsonProperty("guild")]
+        [JsonPropertyName("guild")]
         public List<GuildDispatchCommanderInfo> commanderList;
 
-        [JsonProperty("npc")]
+        [JsonPropertyName("npc")]
         public Dictionary<string, int> npcList;
 
-        [JsonObject(MemberSerialization.OptIn)]
+
         public class GuildDispatchCommanderInfo
         {
-            [JsonProperty("tuno")]
+            [JsonPropertyName("tuno")]
             public int userIdx { get; set; }
 
-            [JsonProperty("tlv")]
+            [JsonPropertyName("tlv")]
             public int userLevel { get; set; }
 
-            [JsonProperty("tunm")]
+            [JsonPropertyName("tunm")]
             public string userName { get; set; }
 
-            [JsonProperty("thmb")]
+            [JsonPropertyName("thmb")]
             public string userThumbnail { get; set; }
 
-            [JsonProperty("tcid")]
+            [JsonPropertyName("tcid")]
             public int cid { get; set; }
 
-            [JsonProperty("lv")]
+            [JsonPropertyName("lv")]
             public int level { get; set; }
 
-            [JsonProperty("grd")]
+            [JsonPropertyName("grd")]
             public int grade { get; set; }
 
-            [JsonProperty("cls")]
+            [JsonPropertyName("cls")]
             public int cls { get; set; }
 
-            [JsonProperty("skv1")]
+            [JsonPropertyName("skv1")]
             public int skillLv_1 { get; set; }
 
-            [JsonProperty("skv2")]
+            [JsonPropertyName("skv2")]
             public int skillLv_2 { get; set; }
 
-            [JsonProperty("skv3")]
+            [JsonPropertyName("skv3")]
             public int skillLv_3 { get; set; }
 
-            [JsonProperty("skv4")]
+            [JsonPropertyName("skv4")]
             public int skillLv_4 { get; set; }
 
-            [JsonProperty("cos")]
+            [JsonPropertyName("cos")]
             public int costumeIdx { get; set; }
 
-            [JsonProperty("rfs")]
+            [JsonPropertyName("rfs")]
             public int favorStep { get; set; }
 
-            [JsonProperty("mry")]
+            [JsonPropertyName("mry")]
             public int marry { get; set; }
 
-            [JsonProperty("tsdc")]
+            [JsonPropertyName("tsdc")]
             public List<int> transcendence { get; set; }
 
-            [JsonProperty("empl")]
+            [JsonPropertyName("empl")]
             public int possibleEngage { get; set; }
 
-            [JsonProperty("exst")]
+            [JsonPropertyName("exst")]
             public int existEngaged { get; set; }
 
-            [JsonProperty("sp")]
+            [JsonPropertyName("sp")]
             public int sp { get; set; }
 
-            [JsonProperty("dmghp")]
+            [JsonPropertyName("dmghp")]
             public int dmghp { get; set; }
 
-            [JsonProperty("hp")]
+            [JsonPropertyName("hp")]
             public int hp { get; set; }
 
-            [JsonProperty("equip")]
+            [JsonPropertyName("equip")]
             public Dictionary<string, int> equipItem { get; set; }
 
-            [JsonProperty("wp")]
+            [JsonPropertyName("wp")]
             public Dictionary<string, WeaponData> weaponItem { get; set; }
         }
     }
