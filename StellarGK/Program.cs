@@ -99,6 +99,7 @@ namespace StellarGK2
             #region StaticFileServer
 
             const string StaticFilesPath = "FileCDN";
+            const string SlashStaticFilesPath = $"/{StaticFilesPath}";
 
             //// Working Directory path
             // var BasePath = builder.Environment.ContentRootPath;
@@ -107,11 +108,18 @@ namespace StellarGK2
             var staticFilesProviderPath = Path.Combine(BasePath, StaticFilesPath);
             var fileProvider = new PhysicalFileProvider(staticFilesProviderPath);
 
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions()
+            {
+                FileProvider = fileProvider,
+                RedirectToAppendTrailingSlash = true,
+                RequestPath = SlashStaticFilesPath,
+            });
+
             // https://stackoverflow.com/questions/50381490/what-is-the-difference-between-usestaticfiles-and-usefileserver-in-asp-net-c
             app.UseStaticFiles(new StaticFileOptions()
             {
                 FileProvider = fileProvider,
-                RequestPath = $"/{StaticFilesPath}",
+                RequestPath = SlashStaticFilesPath,
                 HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
                 ServeUnknownFileTypes = true
             });
