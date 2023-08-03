@@ -12,7 +12,7 @@ namespace StellarGK.Host
 {
     public partial class PacketHandler
     {
-        private static JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions();
+        private static JsonSerializerOptions JsonSerializerOptions = new();
 
         public static async Task<string> ProcessRequest(HttpContext context, IServiceProvider serviceProvider)
         {
@@ -20,53 +20,57 @@ namespace StellarGK.Host
             {
                 return "shouldnt happend";
             }
-
-            var rawRequest = await Stream2ByteArray(context.Request.Body);
-
-            var decompressedRequest = Decompress(rawRequest);
-
-            var decryptedRequest = Decrypt(decompressedRequest);
-
-            var node = JsonSerializer.Deserialize<JsonNode>(decryptedRequest, JsonSerializerOptions);
-
-            if (node is null)
+            if (context.Request.Headers.UserAgent.Contains("BestHTTP"))
             {
-                return "{}";
-                //throw new ArgumentNullException(nameof(node));
-            }
+                var rawRequest = await Stream2ByteArray(context.Request.Body);
 
-            object response;
+                var decompressedRequest = Decompress(rawRequest);
 
-            if (node is JsonArray array)
-            {
-                // This only gets executed if it recived an array
+                var decryptedRequest = Decrypt(decompressedRequest);
 
-                var responses = new List<object>();
+                var node = JsonSerializer.Deserialize<JsonNode>(decryptedRequest, JsonSerializerOptions);
 
-                foreach (var item in array)
+                if (node is null)
                 {
-                    if (item is null)
-                    {
-                        continue;
-                    }
-
-                    var partialResponse = ProcessPacket(item, serviceProvider);
-
-                    responses.Add(partialResponse);
+                    return "{}";
+                    //throw new ArgumentNullException(nameof(node));
                 }
 
-                response = responses;
+                object response;
+
+                if (node is JsonArray array)
+                {
+                    // This only gets executed if it recived an array
+
+                    var responses = new List<object>();
+
+                    foreach (var item in array)
+                    {
+                        if (item is null)
+                        {
+                            continue;
+                        }
+
+                        var partialResponse = ProcessPacket(item, serviceProvider);
+
+                        responses.Add(partialResponse);
+                    }
+
+                    response = responses;
+                }
+                else
+                {
+                    response = ProcessPacket(node, serviceProvider);
+                }
+
+                var serialized = JsonSerializer.Serialize(response, JsonSerializerOptions);
+
+                var encrypted = Encrypt(serialized);
+
+                return encrypted;
             }
-            else
-            {
-                response = ProcessPacket(node, serviceProvider);
-            }
 
-            var serialized = JsonSerializer.Serialize(response, JsonSerializerOptions);
-
-            var encrypted = Encrypt(serialized);
-
-            return encrypted;
+            return "shouldnt happen";
         }
 
         private static object ProcessPacket(JsonNode raw, IServiceProvider serviceProvider)

@@ -1,0 +1,29 @@
+body{
+    background: lightgrey;
+    font-size: 12pt;
+}
+h1, h2, p, div{
+    box-sizing: border-box;
+    font-family: sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    width: 640px;
+}
+img{
+    width: 640px;
+    height: 360px;
+}
+mark{
+    color: white;
+    font-family: monospace;
+    background-color: black;
+}
+p{
+    text-align: justify;
+}
+.console{
+    background-color: black;
+    color: gray;
+    font-family: monospace;
+    padding: 5px;
+}
