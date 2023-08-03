@@ -2,7 +2,9 @@
 using System.Net;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using Microsoft.AspNetCore.Http.Json;
 using MongoDB.Bson;
+using ZstdSharp;
 using static StellarGK.Utils.Compression;
 using static StellarGK.Utils.Crypto;
 
@@ -10,53 +12,61 @@ namespace StellarGK.Host
 {
     public partial class PacketHandler
     {
+        private static JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions();
 
-        public static JsonSerializerOptions options = new()
+        public static async Task<string> ProcessRequest(HttpContext context, IServiceProvider serviceProvider)
         {
-
-        };
-
-        public static string ProcessRequest(HttpContext context, IServiceProvider serviceProvider)
-        {
-            if (context.Request.Method == "POST" || context.Request.Headers.UserAgent.Contains("BestHTTP"))
+            if (context.Request.Method != "POST" || !context.Request.Headers.UserAgent.Contains("BestHTTP"))
             {
-                JsonNode node = Decrypt(Decompress(Stream2ByteArray(context.Request.Body)));
+                return "shouldnt happend";
+            }
 
-                if (node is null)
+            var rawRequest = await Stream2ByteArray(context.Request.Body);
+
+            var decompressedRequest = Decompress(rawRequest);
+
+            var decryptedRequest = Decrypt(decompressedRequest);
+
+            var node = JsonSerializer.Deserialize<JsonNode>(decryptedRequest, JsonSerializerOptions);
+
+            if (node is null)
+            {
+                return "{}";
+                //throw new ArgumentNullException(nameof(node));
+            }
+
+            object response;
+
+            if (node is JsonArray array)
+            {
+                // This only gets executed if it recived an array
+
+                var responses = new List<object>();
+
+                foreach (var item in array)
                 {
-                    return "{}";
-                    //throw new ArgumentNullException(nameof(node));
-                }
-
-                if (node is JsonArray array)
-                {
-                    // This only gets executed if it recived an array
-
-                    var responses = new List<object>();
-
-                    foreach (var item in array)
+                    if (item is null)
                     {
-                        if (item is null)
-                        {
-                            continue;
-                        }
-
-                        var response = ProcessPacket(item, serviceProvider);
-
-                        responses.Add(response);
+                        continue;
                     }
 
-                    // Array Here
+                    var partialResponse = ProcessPacket(item, serviceProvider);
 
-                    return Encrypt(JsonSerializer.Serialize(responses, options));
-
+                    responses.Add(partialResponse);
                 }
 
-                var packet = ProcessPacket(node, serviceProvider);
-
-                return Encrypt(JsonSerializer.Serialize(packet, options));
+                response = responses;
             }
-            return "shouldnt happend";
+            else
+            {
+                response = ProcessPacket(node, serviceProvider);
+            }
+
+            var serialized = JsonSerializer.Serialize(response, JsonSerializerOptions);
+
+            var encrypted = Encrypt(serialized);
+
+            return encrypted;
         }
 
         private static object ProcessPacket(JsonNode raw, IServiceProvider serviceProvider)
@@ -97,7 +107,4 @@ namespace StellarGK.Host
             return $"{commandId} {enumText}";
         }).ToList();
     }
-
-
-
 }

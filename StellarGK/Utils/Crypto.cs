@@ -69,6 +69,5 @@ namespace StellarGK.Utils
             }
             return builder.ToString();
         }
-
     }
 }

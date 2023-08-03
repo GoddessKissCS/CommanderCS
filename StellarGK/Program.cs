@@ -129,11 +129,7 @@ namespace StellarGK2
 
             //DatabaseManager.FirstCreate();
 
-
             app.Run();
-
-
-
         }
     }
 }

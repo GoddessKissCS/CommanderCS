@@ -11,13 +11,13 @@ namespace StellarGK.Utils
             return GZIP.Decompress(Input);
         }
 
-        public static byte[] Stream2ByteArray(Stream instream)
+        public static async Task<byte[]> Stream2ByteArray(Stream instream)
         {
             if (instream is MemoryStream stream)
                 return stream.ToArray();
 
             var memoryStream = new MemoryStream();
-            instream.CopyTo(memoryStream);
+            await instream.CopyToAsync(memoryStream);
             return memoryStream.ToArray();
         }
 
