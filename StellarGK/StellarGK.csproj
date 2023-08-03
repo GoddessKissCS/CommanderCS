@@ -9,12 +9,18 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\CommandHandlerMappingsSourceGenerator\CommandHandlerMappingsSourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+	  <Compile Remove="PacketHandlers\**" />
+	  <Compile Remove="wwwroot\**" />
+	  <Content Remove="PacketHandlers\**" />
+	  <Content Remove="wwwroot\**" />
+	  <EmbeddedResource Remove="PacketHandlers\**" />
+	  <EmbeddedResource Remove="wwwroot\**" />
+	  <None Remove="PacketHandlers\**" />
+	  <None Remove="wwwroot\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="wwwroot\" />
-	  <Folder Include="PacketHandlers\" />
+		<ProjectReference Include="..\CommandHandlerMappingsSourceGenerator\CommandHandlerMappingsSourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 	</ItemGroup>
 
 	<ItemGroup>
