@@ -18,7 +18,7 @@ namespace StellarGK.Database.Handlers
             GameDataScheme user = new()
             {
                 Id = mIdx,
-                stages = WorldMapStageData.GetInstance().GetStages(),
+                stages = WorldMapStageData.GetInstance().AddAllStagesAtDefault(),
                 medalData = new()
                 {
                     {"1", 10}

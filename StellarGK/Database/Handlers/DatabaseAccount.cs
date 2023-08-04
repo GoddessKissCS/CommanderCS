@@ -16,7 +16,7 @@ namespace StellarGK.Database.Handlers
             AccountScheme? tryUser = collection.AsQueryable().Where(d => d.name == name).FirstOrDefault();
             if (tryUser != null) { return tryUser; }
 
-            int memberId = DatabaseAutoIncrement.GetNextNumber("UID", 1000);
+            int memberId = DatabaseManager.AutoIncrements.GetNextNumber("UID", 1000);
 
             AccountScheme user = new()
             {
@@ -50,7 +50,7 @@ namespace StellarGK.Database.Handlers
             AccountScheme? tryUser = collection.AsQueryable().Where(d => d.name == name).FirstOrDefault();
             if (tryUser != null) { return tryUser; }
 
-            int memberId = DatabaseAutoIncrement.GetNextNumber("UID", 1000);
+            int memberId = DatabaseManager.AutoIncrements.GetNextNumber("UID", 1000);
 
             AccountScheme user = new()
             {

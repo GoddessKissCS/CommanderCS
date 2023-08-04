@@ -10,26 +10,23 @@ namespace StellarGK.Host.Handlers.KeepAlives
     {
         public override object Handle(BulletChargeResult @params)
         {
+            var user = DatabaseManager.Account.FindBySession(BasePacket.Session);
+            var res = DatabaseManager.Resources.FindBySession(BasePacket.Session);
 
-            var charge = UserInfoReq(BasePacket.Session);
-
-            int bullets = UserLevelData.GetInstance().FromLevel(Convert.ToInt32(charge.level)).maxBullet;
-
-            ResponsePacket response = new();
-
+            int bullets = UserLevelData.GetInstance().FromLevel(res.level).maxBullet;
 
             ResourceRecharge resource = new()
             {
 
                 bulletData = new()
                 {
-                    cnt = Convert.ToInt32(charge.bullet),
+                    cnt = Convert.ToInt32(res.bullet),
                     remain = bullets,
                 },
                 oilData = new()
                 {
-                    cnt = Convert.ToInt32(charge.oil),
-                    remain = Convert.ToInt32(charge.oil)
+                    cnt = Convert.ToInt32(res.oil),
+                    remain = Convert.ToInt32(res.oil)
                 },
                 skillData = new()
                 {
@@ -38,76 +35,45 @@ namespace StellarGK.Host.Handlers.KeepAlives
                 },
                 chip = new()
                 {
-                    remain = Convert.ToInt32(charge.chip),
-                    cnt = Convert.ToInt32(charge.chip),
+                    remain = Convert.ToInt32(res.chip),
+                    cnt = Convert.ToInt32(res.chip),
                 },
                 weaponMaterialData1 = new()
                 {
-                    cnt = Convert.ToInt32(charge.weaponMaterial1),
-                    remain = Convert.ToInt32(charge.weaponMaterial1),
+                    cnt = Convert.ToInt32(res.weaponMaterial1),
+                    remain = Convert.ToInt32(res.weaponMaterial1),
                 },
                 weaponMaterialData2 = new()
                 {
-                    cnt = Convert.ToInt32(charge.weaponMaterial2),
-                    remain = Convert.ToInt32(charge.weaponMaterial2),
+                    cnt = Convert.ToInt32(res.weaponMaterial2),
+                    remain = Convert.ToInt32(res.weaponMaterial2),
                 },
                 weaponMaterialData3 = new()
                 {
-                    cnt = Convert.ToInt32(charge.weaponMaterial3),
-                    remain = Convert.ToInt32(charge.weaponMaterial3),
+                    cnt = Convert.ToInt32(res.weaponMaterial3),
+                    remain = Convert.ToInt32(res.weaponMaterial3),
                 },
                 weaponMaterialData4 = new()
                 {
-                    cnt = Convert.ToInt32(charge.weaponMaterial4),
-                    remain = Convert.ToInt32(charge.weaponMaterial4),
+                    cnt = Convert.ToInt32(res.weaponMaterial4),
+                    remain = Convert.ToInt32(res.weaponMaterial4),
                 },
-                worldState = charge.world,
+                worldState = user.worldState,
                 gacha = new()
                 {
 
                 }
             };
 
-            response.id = BasePacket.Id;
-            response.result = resource;
-
+            ResponsePacket response = new()
+            {
+                id = BasePacket.Id,
+                result = resource
+            };
 
             return response;
         }
 
-        private static _BulletCharge UserInfoReq(string sess)
-        {
-            var user = DatabaseManager.Account.FindBySession(sess);
-            var res = DatabaseManager.Resources.FindBySession(sess);
-            _BulletCharge _charge = new()
-            {
-                oil = res.oil,
-                bullet = res.bullet,
-                level = res.level,
-                weaponMaterial1 = res.weaponMaterial1,
-                weaponMaterial2 = res.weaponMaterial2,
-                weaponMaterial3 = res.weaponMaterial3,
-                weaponMaterial4 = res.weaponMaterial4,
-                chip = res.chip,
-                world = user.worldState,
-            };
-
-            return _charge;
-        }
-
-    }
-
-    public class _BulletCharge
-    {
-        public string bullet { get; set; }
-        public string chip { get; set; }
-        public string level { get; set; }
-        public string oil { get; set; }
-        public string weaponMaterial1 { get; set; }
-        public string weaponMaterial2 { get; set; }
-        public string weaponMaterial3 { get; set; }
-        public string weaponMaterial4 { get; set; }
-        public int world { get; set; }
     }
 
     public class BulletChargeResult

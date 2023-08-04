@@ -1,4 +1,5 @@
-﻿using StellarGK.Utils.ExcelReader;
+﻿using System.Text.Json.Serialization;
+using StellarGK.Utils.ExcelReader;
 
 namespace StellarGK.Logic.ExcelReader
 {
@@ -20,14 +21,22 @@ namespace StellarGK.Logic.ExcelReader
 
     public class UserLevelDataExcel
     {
-        public int level;
-        public int exp;
-        public int uExp;
-        public int maxBullet;
-        public int maxSkill;
-        public int rewardBullet;
-        public int bankGold;
-        public int goldIncrease;
+        [JsonPropertyName("level")]
+        public int level { get; set; }
+        [JsonPropertyName("exp")]
+        public int exp { get; set; }
+        [JsonPropertyName("uExp")]
+        public int uExp { get; set; }
+        [JsonPropertyName("maxBullet")]
+        public int maxBullet { get; set; }
+        [JsonPropertyName("maxSkill")]
+        public int maxSkill { get; set; }
+        [JsonPropertyName("rewardBullet")]
+        public int rewardBullet { get; set; }
+        [JsonPropertyName("bankGold")]
+        public int bankGold { get; set; }
+        [JsonPropertyName("goldIncrease")]
+        public int goldIncrease { get; set; }
     }
 
 }

@@ -4,6 +4,7 @@ namespace StellarGK.Database
 {
     public class DatabaseManager
     {
+        public static DatabaseAutoIncrements AutoIncrements { get; } = new();
         public static DatabaseAccount Account { get; } = new();
         public static DatabaseBattleStatistics BattleStatistics { get; } = new();
         public static DatabaseDormitory Dormitory { get; } = new();
@@ -16,10 +17,10 @@ namespace StellarGK.Database
         public static DatabaseGameData GameData { get; } = new();
         public static void FirstCreate()
         {
-            GameVersionInfo.Create(1, "1.066.12", "aGh0dHA6Ly8xOTIuMTY4LjE3OC4yOS9jaGF0LnBocA==", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQv", false, false, false, false);
-            GameVersionInfo.Create(2, "1.066.12", "aGh0dHA6Ly8xOTIuMTY4LjE3OC4yOS9jaGF0LnBocA==", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQv", false, false, false, false);
-            GameVersionInfo.Create(3, "1.066.12", "aGh0dHA6Ly8xOTIuMTY4LjE3OC4yOS9jaGF0LnBocA==", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQv", false, false, false, false);
-            GameVersionInfo.Create(4, "1.066.12", "aGh0dHA6Ly8xOTIuMTY4LjE3OC4yOS9jaGF0LnBocA==", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQv", false, false, false, false);
+            GameVersionInfo.Create(1, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L0ZpbGVDRE4v", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQucGhw", false, false, false, false);
+            GameVersionInfo.Create(2, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L0ZpbGVDRE4v", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQucGhw", false, false, false, false);
+            GameVersionInfo.Create(3, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L0ZpbGVDRE4v", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQucGhw", false, false, false, false);
+            GameVersionInfo.Create(4, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L0ZpbGVDRE4v", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQucGhw", false, false, false, false);
 
             GameTableVersion.Create(20220312000000);
 

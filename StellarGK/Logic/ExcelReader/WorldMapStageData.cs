@@ -8,12 +8,12 @@ namespace StellarGK.Logic.ExcelReader
     {
         public override string FileName { get { return "WorldMapStageDataTable_2.json"; } }
 
-        public WorldMapStageDataExcel? FromLevel(int worldMapId)
+        public WorldMapStageDataExcel? FromWorldMapId(int worldMapId)
         {
             return All.Where(avatar => avatar.worldMapId == worldMapId).FirstOrDefault();
         }
 
-        public Dictionary<string, List<WorldMapInformationResponse>> GetStages()
+        public Dictionary<string, List<WorldMapInformationResponse>> AddAllStagesAtDefault()
         {
             Dictionary<string, List<WorldMapInformationResponse>> stages = new();
 
@@ -26,7 +26,7 @@ namespace StellarGK.Logic.ExcelReader
                 stages = stageList
                  .GroupBy(s => s.worldMapId)
                     .ToDictionary(
-                g => g.Key.ToString(), // Convert the int key to string
+                g => g.Key.ToString(),
                 g => g.Select(s => new WorldMapInformationResponse
                 {
                     stageId = "" + s.id,

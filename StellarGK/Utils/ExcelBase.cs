@@ -27,7 +27,7 @@ namespace StellarGK.Utils.ExcelReader
         {
             string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
 
-            All = JsonSerializer.Deserialize<Scheme[]>(path) ?? Array.Empty<Scheme>();
+            All = JsonSerializer.Deserialize<Scheme[]>(path);
         }
 #pragma warning restore CS8618, CS8602 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     }
