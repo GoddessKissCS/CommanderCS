@@ -1,12 +1,9 @@
+using System.Net.WebSockets;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
-using Org.BouncyCastle.Asn1.Ocsp;
 using StellarGK.Database;
 using StellarGK.Host;
-using StellarGK.Host.Middlewares;
-using StellarGK.Logic.ExcelReader;
 
 namespace StellarGK2
 {
@@ -72,7 +69,7 @@ namespace StellarGK2
                 CommandsLoaded = PacketHandler.CommandsMapped,
             };
 
-            var statusString = JsonSerializer.Serialize(status, new JsonSerializerOptions()
+            var statusString = System.Text.Json.JsonSerializer.Serialize(status, new JsonSerializerOptions()
             {
                 WriteIndented = true,
             });
@@ -85,6 +82,18 @@ namespace StellarGK2
             });
             //app.MapGet("get", PacketHandler.Packet);
 
+            var wsOptions = new WebSocketOptions()
+            {
+                KeepAliveInterval = TimeSpan.FromMilliseconds(1000),
+            };
+
+            app.UseWebSockets(wsOptions);
+
+            app.MapGet("/chat.php", async (HttpContext context) =>
+            {
+                await PacketHandler.Send(context);
+            });
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -92,7 +101,7 @@ namespace StellarGK2
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMiddleware<CustomExceptionHandlerMiddleware>();
+            //app.UseMiddleware<CustomExceptionHandlerMiddleware>();
 
             #region StaticFileServer
 

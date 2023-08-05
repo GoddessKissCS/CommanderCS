@@ -1,4 +1,6 @@
-﻿namespace StellarGK.Host.Handlers.KeepAlives
+﻿using System.Text.Json.Serialization;
+
+namespace StellarGK.Host.Handlers.KeepAlives
 {
     [Command(Id = CommandId.GetCouponList)]
     public class GetCouponList : BaseCommandHandler<GetCouponListRequest>
@@ -24,6 +26,7 @@
 
         public class CouponList
         {
+            [JsonPropertyName("list")]
             public List<string> list { get; set; }
         }
     }

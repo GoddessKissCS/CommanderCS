@@ -1,4 +1,5 @@
-﻿using StellarGK.Database;
+﻿using System.Text.Json.Serialization;
+using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.VersionCheck
 {
@@ -26,6 +27,7 @@ namespace StellarGK.Host.Handlers.VersionCheck
 
         internal class VersionInfo
         {
+            [JsonPropertyName("ver")]
             public double ver { get; set; }
         }
 

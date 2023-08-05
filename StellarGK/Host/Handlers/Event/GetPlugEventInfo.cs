@@ -1,4 +1,6 @@
-﻿namespace StellarGK.Host.Handlers.Event
+﻿using System.Text.Json.Serialization;
+
+namespace StellarGK.Host.Handlers.Event
 {
     [Command(Id = CommandId.GetPlugEventInfo)]
     public class GetPlugEventInfo : BaseCommandHandler<GetPlugEventInfoRequest>
@@ -21,8 +23,10 @@
 
         public class GetPlugEventInfoPacket
         {
+            [JsonPropertyName("pst")]
             public List<int> pst { get; set; }
 
+            [JsonPropertyName("cmt")]
             public List<int> cmt { get; set; }
         }
     }

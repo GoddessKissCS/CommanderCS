@@ -10,8 +10,8 @@ namespace StellarGK.Logic.Protocols
             stageIdx = position;
         }
 
-        public ENavigatorType type;
+        public ENavigatorType type { get; set; }
 
-        public int stageIdx;
+        public int stageIdx { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace StellarGK.Host.Handlers.UserTerm
+﻿using System.Text.Json.Serialization;
+
+namespace StellarGK.Host.Handlers.UserTerm
 {
     [Command(Id = CommandId.GetBadWordList)]
     public class GetBadWordList : BaseCommandHandler<GetBadWordListRequest>
@@ -30,6 +32,7 @@
 
         private class badwords
         {
+            [JsonPropertyName("word")]
             public Dictionary<string, List<string>> word { get; set; }
         }
     }

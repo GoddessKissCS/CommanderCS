@@ -26,12 +26,5 @@ namespace StellarGK.Logic.Protocols
         [JsonPropertyName("rcvd")]
         public int receiveState { get; set; }
 
-        public bool received
-        {
-            get
-            {
-                return receiveState > 0;
-            }
-        }
     }
 }

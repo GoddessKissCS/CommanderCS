@@ -64,8 +64,11 @@ namespace StellarGK.Host.Handlers.Sign
 
         private class SignInP
         {
+            [JsonPropertyName("mIdx")]
             public int mIdx { get; set; }
+            [JsonPropertyName("tokn")]
             public string tokn { get; set; }
+            [JsonPropertyName("srv")]
             public int srv { get; set; }
         }
 

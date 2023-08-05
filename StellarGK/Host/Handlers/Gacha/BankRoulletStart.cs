@@ -81,8 +81,11 @@ namespace StellarGK.Host.Handlers.Gacha
 
         public class BankRoullet
         {
+            [JsonPropertyName("rsoc")]
             public UserInformationResponse.Resource rsoc { get; set; }
+            [JsonPropertyName("cnt")]
             public int cnt { get; set; }
+            [JsonPropertyName("luck")]
             public List<int> luck { get; set; }
 
         }

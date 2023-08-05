@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json.Linq;
 using StellarGK.Logic.Enums;
 
 namespace StellarGK.Logic.Protocols
@@ -31,36 +30,8 @@ namespace StellarGK.Logic.Protocols
         [JsonPropertyName("rInfo")]
         public object __advancePartyReward { get; set; }
 
-        public AdvancePartyRewardInfo advancePartyReward
-        {
-            get
-            {
-                if (__advancePartyReward == null)
-                {
-                    return null;
-                }
-                JArray jarray = null;
-                try
-                {
-                    jarray = JArray.FromObject(__advancePartyReward);
-                }
-                catch (Exception ex)
-                {
-                    _ = ex;
-                }
-                if (jarray != null)
-                {
-                    return null;
-                }
-                JObject jobject = JObject.FromObject(__advancePartyReward);
-                return jobject.ToObject<AdvancePartyRewardInfo>();
-            }
-        }
-
         [JsonPropertyName("mode")]
         public AnnihilationMode mode { get; set; }
-
-
         public class CommanderData
         {
             [JsonPropertyName("uid")]
@@ -75,8 +46,6 @@ namespace StellarGK.Logic.Protocols
             [JsonPropertyName("hp")]
             public int hp { get; set; }
         }
-
-
         public class AdvancePartyRewardInfo
         {
             [JsonPropertyName("reward")]
@@ -97,8 +66,6 @@ namespace StellarGK.Logic.Protocols
             [JsonPropertyName("item")]
             public Dictionary<string, int> itemData { get; set; }
         }
-
-
         public class StatusData
         {
             [JsonPropertyName("cid")]

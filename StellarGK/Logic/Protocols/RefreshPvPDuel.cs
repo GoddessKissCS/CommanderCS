@@ -18,6 +18,6 @@ namespace StellarGK.Logic.Protocols
         public int openRemain { get; set; }
 
         [JsonPropertyName("rsoc")]
-        public UserInformationResponse.Resource rsoc;
+        public UserInformationResponse.Resource rsoc { get; set; }
     }
 }

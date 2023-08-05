@@ -31,9 +31,9 @@ namespace StellarGK.Logic.Protocols
         public Dictionary<string, int> groupItemData { get; set; }
 
         [JsonPropertyName("shop")]
-        public SecretShop.ShopData shop;
+        public SecretShop.ShopData shop { get; set; }
 
         [JsonPropertyName("rsoc")]
-        public UserInformationResponse.Resource rsoc;
+        public UserInformationResponse.Resource rsoc { get; set; }
     }
 }

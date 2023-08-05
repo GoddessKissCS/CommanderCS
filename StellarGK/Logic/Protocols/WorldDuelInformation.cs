@@ -35,15 +35,6 @@ namespace StellarGK.Logic.Protocols
         [JsonPropertyName("retryinfo")]
         public PvPDuelList.PvPDuelData retryInfo { get; set; }
 
-        public bool open
-        {
-            get
-            {
-                return !string.IsNullOrEmpty(_open) && (_open == "true" || _open == "True");
-            }
-        }
-
-
         public class UserData
         {
             [JsonPropertyName("wld")]

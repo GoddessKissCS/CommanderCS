@@ -232,7 +232,7 @@ namespace StellarGK.Logic.Protocols
             public InfinityTowerData infinityData { get; set; }
 
             [JsonPropertyName("user")]
-            public UserData user;
+            public UserData user { get; set; }
 
 
             public class UserData
@@ -364,13 +364,13 @@ namespace StellarGK.Logic.Protocols
             public List<int> spList { get; set; }
 
             [JsonPropertyName("uid")]
-            public string id;
+            public string id { get; set; }
 
             [JsonPropertyName("lv")]
-            public int level;
+            public int level { get; set; }
 
             [JsonPropertyName("hp")]
-            public int Hp;
+            public int Hp { get; set; }
         }
 
 
@@ -558,13 +558,13 @@ namespace StellarGK.Logic.Protocols
         public class VipRechargeData
         {
             [JsonPropertyName("vidx")]
-            public int idx = 101;
+            public int idx { get; set; } = 101;
 
             [JsonPropertyName("mid")]
-            public int mid = 1;
+            public int mid { get; set; } = 1;
 
             [JsonPropertyName("cnt")]
-            public int count = 1;
+            public int count { get; set; } = 1;
         }
 
 

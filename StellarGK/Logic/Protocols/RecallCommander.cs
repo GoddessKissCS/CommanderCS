@@ -9,12 +9,12 @@ namespace StellarGK.Logic.Protocols
         public UserInformationResponse.Resource resource { get; set; }
 
         [JsonPropertyName("rgtm")]
-        public int runtime;
+        public int runtime { get; set; }
 
         [JsonPropertyName("egld")]
-        public int getGold_time;
+        public int getGold_time { get; set; }
 
         [JsonPropertyName("exgd")]
-        public int getGold_engage;
+        public int getGold_engage { get; set; }
     }
 }

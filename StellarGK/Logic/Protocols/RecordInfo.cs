@@ -11,55 +11,55 @@ namespace StellarGK.Logic.Protocols
         public string guildName { get; set; }
 
         [JsonPropertyName("uno")]
-        public int uno;
+        public int uno { get; set; }
 
         [JsonPropertyName("rid")]
-        public string id;
+        public string id { get; set; }
 
         [JsonPropertyName("replayData")]
-        public object data;
+        public object data { get; set; }
 
         [JsonPropertyName("ws")]
-        public int winState;
+        public int winState { get; set; }
 
         [JsonPropertyName("smvr")]
-        public int simulationVer;
+        public int simulationVer { get; set; }
 
         [JsonPropertyName("rlvr")]
-        public double regulationVer;
+        public double regulationVer { get; set; }
 
         [JsonPropertyName("unm")]
-        public string _userName;
+        public string _userName { get; set; }
 
         [JsonPropertyName("thmb")]
-        public string thumbnail;
+        public string thumbnail { get; set; }
 
         [JsonPropertyName("lv")]
-        public int level;
+        public int level { get; set; }
 
         [JsonPropertyName("rank")]
-        public int rank;
+        public int rank { get; set; }
 
         [JsonPropertyName("date")]
-        public double date;
+        public double date { get; set; }
 
         [JsonPropertyName("vs")]
-        public UserInfo userInfo;
+        public UserInfo userInfo { get; set; }
 
 
         public class UserInfo
         {
             [JsonPropertyName("lnm")]
-            public string lName;
+            public string lName { get; set; }
 
             [JsonPropertyName("llv")]
-            public int lLevel;
+            public int lLevel { get; set; }
 
             [JsonPropertyName("rnm")]
-            public string rName;
+            public string rName { get; set; }
 
             [JsonPropertyName("rlv")]
-            public string rLevel;
+            public string rLevel { get; set; }
         }
     }
 }

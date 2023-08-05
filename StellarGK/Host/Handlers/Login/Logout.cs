@@ -1,4 +1,6 @@
-﻿namespace StellarGK.Host.Handlers.Login
+﻿using System.Text.Json.Serialization;
+
+namespace StellarGK.Host.Handlers.Login
 {
 
     [Command(Id = CommandId.Logout)]
@@ -17,6 +19,7 @@
 
         private class logout
         {
+            [JsonPropertyName("success")]
             public bool success { get; set; }
         }
     }

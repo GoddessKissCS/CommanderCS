@@ -1,4 +1,5 @@
-﻿using StellarGK.Database;
+﻿using System.Text.Json.Serialization;
+using StellarGK.Database;
 using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Tutorial
@@ -43,12 +44,14 @@ namespace StellarGK.Host.Handlers.Tutorial
 
         private class TutorialStep
         {
+            [JsonPropertyName("ttrl")]
             public UserInformationResponse.TutorialData ttrl { get; set; }
         }
     }
 
     public class LoginTutorialSkipRequest
     {
+        [JsonPropertyName("skip")]
         public int skip { get; set; }
     }
 }

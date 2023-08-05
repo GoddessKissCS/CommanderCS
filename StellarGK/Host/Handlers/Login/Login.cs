@@ -97,8 +97,9 @@ namespace StellarGK.Host.Handlers.Login
 
         private class LoginPacket
         {
+            [JsonPropertyName("sess")]
             public string sess { get; set; }
-
+            [JsonPropertyName("info")]
             public UserInformationResponse info { get; set; }
         }
     }

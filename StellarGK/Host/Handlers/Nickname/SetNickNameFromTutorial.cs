@@ -31,6 +31,7 @@ namespace StellarGK.Host.Handlers.Nickname
                         step = @params.Step,
                     };
 
+                    response.result = SetNickNameF1;
 
                     return response;
             }
@@ -74,6 +75,7 @@ namespace StellarGK.Host.Handlers.Nickname
 
         public class SetNickNameF
         {
+            [JsonPropertyName("step")]
             public int step { get; set; }
         }
     }

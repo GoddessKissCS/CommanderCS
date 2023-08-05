@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+﻿using Newtonsoft.Json;
 using StellarGK.Logic.Protocols;
 using StellarGK.Utils.ExcelReader;
 
@@ -19,7 +19,7 @@ namespace StellarGK.Logic.ExcelReader
 
             string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
 
-            var stageList = JsonSerializer.Deserialize<List<WorldMapStageDataExcel>>(path);
+            var stageList = JsonConvert.DeserializeObject<List<WorldMapStageDataExcel>>(path);
 
             foreach (var stage in stageList)
             {

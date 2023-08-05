@@ -7,21 +7,14 @@ namespace StellarGK.Host.Handlers.Commander
     {
         public override object Handle(GetCommanderScenarioRequest @params)
         {
-            GetCommanderScenarioPacket commanderScenario = new();
+            ResponsePacket response = new();
 
             Dictionary<string, Dictionary<string, CommanderScenario>> result = new Dictionary<string, Dictionary<string, CommanderScenario>>();
 
-            commanderScenario.result = result;
-            commanderScenario.id = BasePacket.Id;
+            response.result = result;
+            response.id = BasePacket.Id;
 
-            return commanderScenario;
-        }
-
-        public class GetCommanderScenarioPacket
-        {
-            public string id { get; set; }
-
-            public Dictionary<string, Dictionary<string, CommanderScenario>> result { get; set; }
+            return response;
         }
 
     }

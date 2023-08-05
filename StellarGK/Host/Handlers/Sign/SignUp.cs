@@ -67,6 +67,7 @@ namespace StellarGK.Host.Handlers.Sign
 
         private class SignUpPacket
         {
+            [JsonPropertyName("uid")]
             public string uid { get; set; }
         }
 

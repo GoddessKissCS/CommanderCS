@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+﻿using Newtonsoft.Json;
 
 namespace StellarGK.Utils.ExcelReader
 {
@@ -6,7 +6,7 @@ namespace StellarGK.Utils.ExcelReader
     public abstract class BaseExcelReader<Self, Scheme>
     {
         public Scheme[] All { get; set; }
-        private readonly Logger c = new("Factory", ConsoleColor.Yellow);
+        //private readonly Logger c = new("Factory", ConsoleColor.Yellow);
         public abstract string FileName { get; }
         private static Self Instance;
 
@@ -27,7 +27,7 @@ namespace StellarGK.Utils.ExcelReader
         {
             string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
 
-            All = JsonSerializer.Deserialize<Scheme[]>(path);
+            All = JsonConvert.DeserializeObject<Scheme[]>(path) ?? Array.Empty<Scheme>();
         }
 #pragma warning restore CS8618, CS8602 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     }

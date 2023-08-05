@@ -47,32 +47,11 @@ namespace StellarGK.Logic.Protocols
 
         [JsonPropertyName("ctm")]
         public int connectTime { get; set; }
-
-
         public class CarnivaTime
         {
             [JsonPropertyName("rtm")]
-            public string remain
-            {
-                set
-                {
-                    double byDuration = 0.0;
-                    if (!string.IsNullOrEmpty(value))
-                    {
-                        byDuration = double.Parse(value);
-                    }
-                    if (remainTimeData == null)
-                    {
-                        remainTimeData = new TimeData();
-                    }
-                    remainTimeData.SetByDuration(byDuration);
-                }
-            }
-
-            public TimeData remainTimeData;
+            public string remain { get; set; }
         }
-
-
         public class ProcessData
         {
             [JsonPropertyName("cnt")]
@@ -91,64 +70,14 @@ namespace StellarGK.Logic.Protocols
             public string lup { get; set; }
 
             [JsonPropertyName("nstm")]
-            public string startTime
-            {
-                set
-                {
-                    double byDuration = 0.0;
-                    if (!string.IsNullOrEmpty(value))
-                    {
-                        byDuration = double.Parse(value);
-                    }
-                    if (startTimeData == null)
-                    {
-                        startTimeData = new TimeData();
-                    }
-                    startTimeData.SetByDuration(byDuration);
-                }
-            }
+            public string startTime { get; set; }
 
             [JsonPropertyName("netm")]
-            public string endTime
-            {
-                set
-                {
-                    double byDuration = 0.0;
-                    if (!string.IsNullOrEmpty(value))
-                    {
-                        byDuration = double.Parse(value);
-                    }
-                    if (endTimeData == null)
-                    {
-                        endTimeData = new TimeData();
-                    }
-                    endTimeData.SetByDuration(byDuration);
-                }
-            }
+            public string endTime { get; set; }
 
             [JsonPropertyName("rtm")]
-            public string remain
-            {
-                set
-                {
-                    double byDuration = 0.0;
-                    if (!string.IsNullOrEmpty(value))
-                    {
-                        byDuration = double.Parse(value);
-                    }
-                    if (remainTimeData == null)
-                    {
-                        remainTimeData = new TimeData();
-                    }
-                    remainTimeData.SetByDuration(byDuration);
-                }
-            }
+            public string remain { get; set; }
 
-            public TimeData startTimeData;
-
-            public TimeData endTimeData;
-
-            public TimeData remainTimeData;
         }
     }
 }

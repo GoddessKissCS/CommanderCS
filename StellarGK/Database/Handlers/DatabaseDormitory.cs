@@ -22,14 +22,14 @@ namespace StellarGK.Database.Handlers
                 },
                 dormitoryInfo = new()
                 {
-                    { "inven", 999 } // MEANS INVENTORY LIMIT
+                    { "inven", 10 } // MEANS INVENTORY LIMIT
                 },
                 dormitoryResource = new()
                 {
-                    __dormitoryPoint = "1",
-                    __ston = "1",
-                    __elec = "1",
-                    __wood = "1",
+                    __dormitoryPoint = "10",
+                    __ston = "10",
+                    __elec = "10",
+                    __wood = "10",
                 },
                 itemAdvanced = new()
                 {

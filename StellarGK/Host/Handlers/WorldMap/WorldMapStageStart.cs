@@ -1,4 +1,5 @@
-﻿using StellarGK.Database;
+﻿using System.Text.Json.Serialization;
+using StellarGK.Database;
 using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.WorldMap
@@ -29,7 +30,9 @@ namespace StellarGK.Host.Handlers.WorldMap
 
         public class WorldMapStageStartRes
         {
+            [JsonPropertyName("rsoc")]
             public UserInformationResponse.Resource rsoc { get; set; }
+            [JsonPropertyName("reward")]
             public List<RewardInfo.RewardData> reward { get; set; }
         }
 

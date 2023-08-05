@@ -6,9 +6,9 @@ namespace StellarGK.Logic.Protocols
     public class ExplorationStartInfo
     {
         [JsonPropertyName("idx")]
-        public int idx;
+        public int idx { get; set; }
 
         [JsonPropertyName("cid")]
-        public List<string> cids;
+        public List<string> cids { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace StellarGK.Host.Handlers.Event
+﻿using System.Text.Json.Serialization;
+
+namespace StellarGK.Host.Handlers.Event
 {
     [Command(Id = CommandId.GetEventRemaingTime)]
     public class GetEventRemainingTime : BaseCommandHandler<GetEventRemainingTimeRequest>
@@ -28,6 +30,7 @@
 
         public class GetEventRemainingTimeM
         {
+            [JsonPropertyName("buff")]
             public Dictionary<string, int> buff { get; set; }
         }
     }

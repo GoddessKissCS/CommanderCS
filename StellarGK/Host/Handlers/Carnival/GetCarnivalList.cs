@@ -1,4 +1,5 @@
-﻿using StellarGK.Logic.Protocols;
+﻿using System.Text.Json.Serialization;
+using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Carnival
 {
@@ -9,7 +10,7 @@ namespace StellarGK.Host.Handlers.Carnival
         public override object Handle(GetCarnivalListRequest @params)
         {
 
-            GetCarnivalListRes CL = new GetCarnivalListRes();
+            ResponsePacket response = new();
 
             CarnivalList CLlist = new CarnivalList();
 
@@ -21,18 +22,13 @@ namespace StellarGK.Host.Handlers.Carnival
         }
 
 
-        public class GetCarnivalListRes
-        {
-            public string id { get; set; }
-
-            public CarnivalList result { get; set; }
-        }
     }
 
     public class GetCarnivalListRequest
     {
+        [JsonPropertyName("cctype")]
         public int cctype { get; set; }
-
+        [JsonPropertyName("eidx")]
         public int eidx { get; set; }
     }
 }

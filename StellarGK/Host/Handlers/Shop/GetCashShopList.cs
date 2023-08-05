@@ -32,12 +32,6 @@ namespace StellarGK.Host.Handlers.Shop
         }
     }
 
-    public class CashShopList
-    {
-        public string id { get; set; }
-        public List<CashShopData> result { get; set; }
-    }
-
     public class GetCashShopListRequest
     {
 

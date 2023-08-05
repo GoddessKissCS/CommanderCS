@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json.Linq;
 
 namespace StellarGK.Logic.Protocols
 {
@@ -78,32 +77,6 @@ namespace StellarGK.Logic.Protocols
 
             [JsonPropertyName("gsk")]
             public List<GuildSkill> guildSkillList { get; set; }
-
-            public Dictionary<int, Slot> troopSlots
-            {
-                get
-                {
-                    if (__troopSlotsSource == null)
-                    {
-                        return null;
-                    }
-                    JArray jarray = null;
-                    try
-                    {
-                        jarray = JArray.FromObject(__troopSlotsSource);
-                    }
-                    catch (Exception ex)
-                    {
-                        _ = ex;
-                    }
-                    if (jarray != null)
-                    {
-                        return null;
-                    }
-                    JObject jobject = JObject.FromObject(__troopSlotsSource);
-                    return jobject.ToObject<Dictionary<int, Slot>>();
-                }
-            }
 
 
             public class Slot

@@ -44,42 +44,6 @@ namespace StellarGK.Logic.Protocols
         [JsonPropertyName("rstm")]
         public int resetRemain { get; set; }
 
-        public int userLevel
-        {
-            get
-            {
-                if (!string.IsNullOrEmpty(session))
-                {
-                    return level;
-                }
-                return -1;
-            }
-        }
-
-        public int commanderLevel
-        {
-            get
-            {
-                if (!string.IsNullOrEmpty(commanderId))
-                {
-                    return level;
-                }
-                return -1;
-            }
-        }
-
-        public int getMissionId
-        {
-            get
-            {
-                if (missionComplete)
-                {
-                    return missionId;
-                }
-                return -1;
-            }
-        }
-
 
         public class SystemCheck
         {

@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {
@@ -7,7 +6,6 @@ namespace StellarGK.Logic.Protocols
 
     public class AchievementInfo
     {
-        [DataMember(Name = "achv")]
         [JsonPropertyName("achv")]
         public List<AchievementData> AchievementList { get; set; }
 
@@ -16,7 +14,6 @@ namespace StellarGK.Logic.Protocols
 
         [JsonPropertyName("accc")]
         public int completeCount { get; set; }
-
 
         public class AchievementData
         {

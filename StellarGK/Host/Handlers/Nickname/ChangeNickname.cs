@@ -68,6 +68,7 @@ namespace StellarGK.Host.Handlers.Nickname
 
         public class Data
         {
+            [JsonPropertyName("rsoc")]
             public UserInformationResponse.Resource rsoc { get; set; }
         }
 

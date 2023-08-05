@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+﻿using Newtonsoft.Json;
 using StellarGK.Utils.ExcelReader;
 
 namespace StellarGK.Logic.ExcelReader
@@ -19,7 +19,7 @@ namespace StellarGK.Logic.ExcelReader
 
             string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
 
-            List<GoodsDataExcel> items = JsonSerializer.Deserialize<List<GoodsDataExcel>>(path);
+            List<GoodsDataExcel> items = JsonConvert.DeserializeObject<List<GoodsDataExcel>>(path);
 
             foreach (var item in items)
             {

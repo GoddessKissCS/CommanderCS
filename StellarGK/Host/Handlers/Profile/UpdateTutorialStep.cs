@@ -28,6 +28,7 @@ namespace StellarGK.Host.Handlers.Profile
 
         public class UpdateTutorialStepInfo
         {
+            [JsonPropertyName("step")]
             public int step { get; set; }
         }
 

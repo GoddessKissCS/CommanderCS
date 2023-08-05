@@ -39,8 +39,9 @@ namespace StellarGK.Host.Handlers.WorldMap
 
     public class WorldMapResponse
     {
+        [JsonPropertyName("stage")]
         public List<WorldMapInformationResponse> stage { get; set; }
-
+        [JsonPropertyName("rwd")]
         public int rwd { get; set; }
     }
 }

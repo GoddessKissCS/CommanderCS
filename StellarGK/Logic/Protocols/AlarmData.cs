@@ -42,7 +42,6 @@ namespace StellarGK.Logic.Protocols
         [JsonPropertyName("arena")]
         public int arena { get; set; }
 
-
         public class HoldData
         {
             [JsonPropertyName("cnt")]

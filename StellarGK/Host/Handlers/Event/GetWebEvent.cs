@@ -1,4 +1,6 @@
-﻿namespace StellarGK.Host.Handlers.Event
+﻿using System.Text.Json.Serialization;
+
+namespace StellarGK.Host.Handlers.Event
 {
     [Command(Id = CommandId.GetWebEvent)]
     public class GetWebEvent : BaseCommandHandler<GetWebEventRequest>
@@ -22,6 +24,7 @@
 
         public class GetWebEventPacket
         {
+            [JsonPropertyName("wev")]
             public List<string> wev { get; set; }
         }
     }

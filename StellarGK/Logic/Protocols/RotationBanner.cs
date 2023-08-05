@@ -10,7 +10,7 @@ namespace StellarGK.Logic.Protocols
         public int roataionTime { get; set; }
 
         [JsonPropertyName("list")]
-        public List<BannerList> bannerList;
+        public List<BannerList> bannerList { get; set; }
 
         public class BannerList
         {

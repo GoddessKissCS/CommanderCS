@@ -1,4 +1,6 @@
-﻿namespace StellarGK.Host.Handlers.UserTerm
+﻿using System.Text.Json.Serialization;
+
+namespace StellarGK.Host.Handlers.UserTerm
 {
     [Command(Id = CommandId.UserTerm)]
     public class UserTerm : BaseCommandHandler<UserTermRequest>
@@ -24,7 +26,9 @@
 
         public class userterm
         {
+            [JsonPropertyName("member")]
             public string member { get; set; }
+            [JsonPropertyName("wemade")]
             public string wemade { get; set; }
 
         }
