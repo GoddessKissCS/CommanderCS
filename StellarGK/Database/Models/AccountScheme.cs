@@ -38,7 +38,7 @@ namespace StellarGK.Database.Models
         public int PermissionLevel { get; set; }
         public int? guildId { get; set; }
         public bool notifaction { get; set; }
-        public List<BlockUser> blockedUsers { get; set; }
+        public List<BlockUser>? blockedUsers { get; set; }
         public int resetDateTime { get; set; }
 
     }

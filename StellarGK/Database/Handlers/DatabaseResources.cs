@@ -89,7 +89,6 @@ namespace StellarGK.Database.Handlers
         }
 
 
-
         public UserInformationResponse.Resource? ResourcesSchemeToUserInformationResource(ResourcesScheme resources)
         {
             UserInformationResponse.Resource resource = new()
@@ -139,12 +138,12 @@ namespace StellarGK.Database.Handlers
             return resource;
 
         }
-        public UserInformationResponse.Resource? RequestResourcesScheme(string session)
+        public UserInformationResponse.Resource? RequestResources(string session)
         {
             return ResourcesSchemeToUserInformationResource(FindBySession(session));
 
         }
-        public UserInformationResponse.Resource? RequestResourcesScheme(int mIdx)
+        public UserInformationResponse.Resource? RequestResources(int mIdx)
         {
             return ResourcesSchemeToUserInformationResource(FindByUid(mIdx));
         }

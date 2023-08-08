@@ -1,11 +1,9 @@
-using System.Net.WebSockets;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.FileProviders;
-using StellarGK.Database;
 using StellarGK.Host;
 
-namespace StellarGK2
+namespace StellarGK
 {
     public class Program
     {
@@ -80,7 +78,6 @@ namespace StellarGK2
             {
                 return PacketHandler.ProcessRequest(context, provider);
             });
-            //app.MapGet("get", PacketHandler.Packet);
 
             var wsOptions = new WebSocketOptions()
             {
@@ -89,10 +86,10 @@ namespace StellarGK2
 
             app.UseWebSockets(wsOptions);
 
-            app.MapGet("/chat.php", async (HttpContext context) =>
-            {
-                await PacketHandler.Send(context);
-            });
+            //app.MapGet("/chat.php", async (HttpContext context) =>
+            //{
+            //    await PacketHandler.ProcessChatRequest(context);
+            //});
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

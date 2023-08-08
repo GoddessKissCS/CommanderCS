@@ -1,7 +1,7 @@
 ﻿using MongoDB.Driver;
 using StellarGK.Database.Models;
 using StellarGK.Host;
-using StellarGK.Utils;
+using StellarGK.Tools;
 
 namespace StellarGK.Database.Handlers
 {
@@ -38,6 +38,7 @@ namespace StellarGK.Database.Handlers
                 PermissionLevel = 0,
                 guildId = null,
                 lastStage = 0,
+                blockedUsers = new() { },
             };
 
             collection.InsertOne(user);
@@ -71,6 +72,7 @@ namespace StellarGK.Database.Handlers
                 PermissionLevel = 0,
                 guildId = null,
                 lastStage = 0,
+                blockedUsers = new() { },
             };
 
             collection.InsertOne(user);
