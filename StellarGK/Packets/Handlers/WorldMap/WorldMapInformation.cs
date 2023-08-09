@@ -12,10 +12,15 @@ namespace StellarGK.Host.Handlers.WorldMap
 
             GetGameData().stages.TryGetValue(@params.world.ToString(), out List<WorldMapInformationResponse> worldMapStages);
 
+            bool reward = worldMapStages.All(c => c.star == 3); 
+
+            // reward means if you complete the stage
+            // maybe needs a rework if you already have it?
+
             WorldMapResponse worldmap = new()
             {
                 stage = worldMapStages,
-                rwd = 0
+                rwd = Convert.ToInt32(reward) 
             };
 
             ResponsePacket response = new()

@@ -13,6 +13,7 @@ namespace StellarGK.Host.Handlers.Server
             //3 is Global Version 2
             //4 is Global Version 3
 
+            // needs a small adjust for servers and playercount
 
             var server = DatabaseManager.Server.Get(1);
 
@@ -20,21 +21,22 @@ namespace StellarGK.Host.Handlers.Server
             {
                 maxLv = server.maxLevel,
                 maxSt = server.maxStage,
-                openDt = server.openDateTime,
+                openDt = server.openDate,
                 svcnt = server.serverCount.ToString(),
                 plcnt = server.playerCount.ToString(),
             };
 
-            Dictionary<string, ServerInfo> infos = new()
+            Dictionary<string, ServerInfo> serverInfo = new()
             {
-                { "1", korea }
+                { "1", korea },
+                { "2", korea },
             };
 
 
             ResponsePacket response = new()
             {
                 id = BasePacket.Id,
-                result = infos
+                result = serverInfo
             };
 
             return response;

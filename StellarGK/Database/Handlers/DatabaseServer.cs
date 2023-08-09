@@ -14,7 +14,7 @@ namespace StellarGK.Database.Handlers
                 Id = id,
                 maxLevel = maxlevel,
                 maxStage = maxstage,
-                openDateTime = openDt,
+                openDate = openDt,
                 playerCount = playercount,
                 serverCount = servercount,
             };

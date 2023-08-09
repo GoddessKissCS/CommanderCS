@@ -13,14 +13,14 @@ namespace StellarGK.Database.Handlers
             GameVersionScheme versionInfo = new()
             {
                 Id = id,
-                ver = ver,
-                cdn = cdn,
-                game = game,
-                chat = chat,
-                fc = fc,
-                gglogin = gglogin,
-                policy = policy,
-                stat = stat,
+                version = ver,
+                cdn_url = cdn,
+                game_url = game,
+                chat_url = chat,
+                fileCheck = fc,
+                enableGoogleLogin = gglogin,
+                showPolicy = policy,
+                versionStatus = stat,
                 word = new()
                 {
                     { "en", 1 }

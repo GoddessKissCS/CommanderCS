@@ -44,10 +44,7 @@ namespace StellarGK.Host.Handlers.Commander
 
                 DatabaseManager.Resources.UpdateGold(GetSession(), commanderRankData.gold, false);
 
-
-            }
-            else
-            {
+            } else {
 
                 medalsdata.TryGetValue(cid, out var commanderMedals);
 
@@ -99,17 +96,17 @@ namespace StellarGK.Host.Handlers.Commander
 
         private static Dictionary<int, int> GradeCostList { get; set; } = new Dictionary<int, int>()
         {
-            {1,10 },
-            {2,30 },
-            {3,80 }
+            { 1, 10 },
+            { 2, 30 },
+            { 3, 80 }
         };
         private static Dictionary<int, int> RankCostList { get; set; } = new Dictionary<int, int>()
         {
-            {1,20 },
-            {2,50 },
-            {3,100 },
-            {4,150 },
-            {5,250 }
+            { 1, 20 },
+            { 2, 50 },
+            { 3, 100 },
+            { 4, 150 },
+            { 5, 250 }
         };
         private static bool TryRecruitCommander(int grade, ref int medals)
         {

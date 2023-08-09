@@ -11,6 +11,9 @@ namespace StellarGK.Host.Handlers.Server
         public override object Handle(ServerStatusRequest @params)
         {
 
+            // needs to be reworked
+
+
             ResponsePacket response = new();
 
             ServerData serverData = new();
@@ -60,5 +63,11 @@ namespace StellarGK.Host.Handlers.Server
     {
         [JsonPropertyName("mIdx")]
         public int mIdx { get; set; }
+
+        [JsonPropertyName("tokn")]
+        public string tokn { get; set; }
+
+        [JsonPropertyName("srv")]
+        public int srv { get; set; }
     }
 }

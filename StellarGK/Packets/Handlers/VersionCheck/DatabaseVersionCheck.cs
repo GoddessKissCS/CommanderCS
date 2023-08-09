@@ -9,11 +9,11 @@ namespace StellarGK.Host.Handlers.VersionCheck
     {
         public override object Handle(DatabaseVersionCheckRequest @params)
         {
-            var version = DatabaseManager.GameTableVersion.Get();
+            var gametable = DatabaseManager.GameTableVersion.Get();
 
             VersionInfo res = new()
             {
-                ver = version.ver,
+                ver = gametable.version,
             };
 
             ResponsePacket response = new()

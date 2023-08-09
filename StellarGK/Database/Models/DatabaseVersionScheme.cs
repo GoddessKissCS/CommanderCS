@@ -3,6 +3,6 @@
     public class DatabaseVersionScheme
     {
         public int Id { get; set; }
-        public double ver { get; set; }
+        public double version { get; set; }
     }
 }

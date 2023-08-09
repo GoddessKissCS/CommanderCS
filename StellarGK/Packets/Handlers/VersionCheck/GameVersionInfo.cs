@@ -14,15 +14,15 @@ namespace StellarGK.Host.Handlers.VersionCheck
 
             GameInfoToSent game = new()
             {
-                policy = Convert.ToDouble(info.policy),
-                chat = info.chat,
-                cdn = info.cdn,
-                game = info.game,
-                fc = Convert.ToInt32(info.fc),
-                gglogin = Convert.ToInt32(info.gglogin),
-                ver = info.ver,
+                policy = Convert.ToDouble(info.showPolicy),
+                chat = info.chat_url,
+                cdn = info.cdn_url,
+                game = info.game_url,
+                fc = Convert.ToInt32(info.fileCheck),
+                gglogin = Convert.ToInt32(info.enableGoogleLogin),
+                ver = info.version,
                 word = info.word,
-                stat = Convert.ToInt32(info.stat)
+                stat = Convert.ToInt32(info.versionStatus)
             };
 
             ResponsePacket.id = BasePacket.Id;

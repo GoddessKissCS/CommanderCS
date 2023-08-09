@@ -2,7 +2,6 @@
 
 namespace StellarGK.Host
 {
-
     public class ResponsePacket
     {
         [JsonPropertyName("id")]

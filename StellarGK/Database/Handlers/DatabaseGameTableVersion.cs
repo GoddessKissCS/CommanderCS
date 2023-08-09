@@ -11,7 +11,7 @@ namespace StellarGK.Database.Handlers
         {
             DatabaseVersionScheme dataInfo = new()
             {
-                ver = version
+                version = version
             };
 
             collection.InsertOne(dataInfo);
