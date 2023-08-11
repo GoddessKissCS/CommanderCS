@@ -1,11 +1,12 @@
 using System.Text.Json.Serialization;
+using MongoDB.Bson;
 using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Database.Schemes
 {
     public class GameProfileScheme {
 
-        public int Id { get; set;}
+        public ObjectId Id { get; set; }
         public int memberId { get; set; }
         public int server { get; set; }
         public int? guildId { get; set; }

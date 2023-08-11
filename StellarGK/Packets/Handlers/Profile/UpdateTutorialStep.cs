@@ -8,7 +8,6 @@ namespace StellarGK.Host.Handlers.Profile
     {
         public override object Handle(UpdateTutorialStepRequest @params)
         {
-
             UpdateTutorialStepInfo utsi = new();
 
             DatabaseManager.GameProfile.UpdateStep(GetSession(), @params.step);

@@ -21,7 +21,7 @@ namespace StellarGK.Host.Handlers.UserTerm
         {
             var account = DatabaseManager.Account.FindBySession(sess);
 
-            var devicechange = DatabaseManager.DeviceCode.FindByUid(account.Id);
+            var devicechange = DatabaseManager.DeviceCode.FindByUid(account.memberId);
 
             // TODO - ADDING CHECK ON IF DEVICECODE IS OLDER THAN 7 DAYS I SUPPOSE
             // TODO ADDS SOME OTHER CHECKS ASWELL
@@ -31,7 +31,7 @@ namespace StellarGK.Host.Handlers.UserTerm
             {
                 if (devicechange == null)
                 {
-                    var device = DatabaseManager.DeviceCode.Create(account.Id);
+                    var device = DatabaseManager.DeviceCode.Create(account.memberId);
 
                     return device.code;
                 }

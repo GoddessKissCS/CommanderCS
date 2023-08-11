@@ -1,8 +1,10 @@
-﻿namespace StellarGK.Database.Schemes
+﻿using MongoDB.Bson;
+
+namespace StellarGK.Database.Schemes
 {
     public class DatabaseVersionScheme
     {
-        public int Id { get; set; }
+        public ObjectId Id { get; set; }
         public double version { get; set; }
     }
 }

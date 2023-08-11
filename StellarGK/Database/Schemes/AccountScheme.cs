@@ -1,10 +1,12 @@
-﻿using StellarGK.Logic.Protocols;
+﻿using MongoDB.Bson;
+using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Database.Schemes
 {
     public class AccountScheme
     {
-        public int Id { get; set; }
+        public ObjectId Id { get; set; }
+        public int memberId { get; set; }
         public string name { get; set; }
         public string password { get; set; }
         public string token { get; set; }

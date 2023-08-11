@@ -10,7 +10,7 @@ namespace StellarGK.Host.Handlers.Server
     {
         public override object Handle(ServerStatusRequest @params)
         {
-
+            // TODO
             // needs to be reworked
 
 

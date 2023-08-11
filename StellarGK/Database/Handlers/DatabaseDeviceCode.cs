@@ -12,7 +12,7 @@ namespace StellarGK.Database.Handlers
         {
             DeviceChangeCodeScheme deviceCode = new()
             {
-                Id = id,
+                memberId = id,
                 code = Constants.ChangeDeviceCode,
                 createTime = Constants.CurrentTimeStamp,
             };
@@ -25,7 +25,7 @@ namespace StellarGK.Database.Handlers
 
         public DeviceChangeCodeScheme? FindByUid(int uid)
         {
-            DeviceChangeCodeScheme? user = collection.AsQueryable().Where(d => d.Id == uid).FirstOrDefault();
+            DeviceChangeCodeScheme? user = collection.AsQueryable().Where(d => d.memberId == uid).FirstOrDefault();
             return user;
         }
     }

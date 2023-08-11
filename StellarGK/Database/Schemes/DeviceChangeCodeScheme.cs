@@ -1,8 +1,11 @@
-﻿namespace StellarGK.Database.Schemes
+﻿using MongoDB.Bson;
+
+namespace StellarGK.Database.Schemes
 {
     public class DeviceChangeCodeScheme
     {
-        public int Id { get; set; }
+        public ObjectId Id { get; set; }
+        public int memberId { get; set; }
         public string code { get; set; }
         public int createTime { get; set; }
     }

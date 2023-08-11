@@ -12,7 +12,7 @@ namespace StellarGK.Database.Handlers
 
             GameVersionScheme versionInfo = new()
             {
-                Id = id,
+                channelId = id,
                 version = ver,
                 cdn_url = cdn,
                 game_url = game,
@@ -34,7 +34,7 @@ namespace StellarGK.Database.Handlers
 
         public GameVersionScheme Get(int id)
         {
-            return collection.AsQueryable().Where(d => d.Id == id).FirstOrDefault();
+            return collection.AsQueryable().Where(d => d.channelId == id).FirstOrDefault();
         }
     }
 }

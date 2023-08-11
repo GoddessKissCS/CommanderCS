@@ -1,10 +1,12 @@
-﻿using StellarGK.Logic.Protocols;
+﻿using MongoDB.Bson;
+using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Database.Schemes
 {
     public class GuildScheme
     {
-        public int Id { get; set; }
+        public ObjectId Id { get; set; }
+        public int guildId { get; set; }
         public string name { get; set; }
         public int level { get; set; }
         public int point { get; set; }

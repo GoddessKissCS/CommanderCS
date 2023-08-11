@@ -44,11 +44,6 @@ namespace StellarGK.Host.Handlers.Nickname
 
             var user = DatabaseManager.GameProfile.FindByNick(nickname);
 
-            if (user.userResources.nickname == nickname)
-            {
-                return ErrorCode.AlreadyInUse;
-            }
-
             if (user == null)
             {
                 var profile = DatabaseManager.GameProfile.FindBySession(sess);
@@ -65,8 +60,11 @@ namespace StellarGK.Host.Handlers.Nickname
                 DatabaseManager.GameProfile.UpdateNickName(sess, nickname);
 
                 return ErrorCode.Success;
+            } else if (user.userResources.nickname == nickname)
+            {
+                return ErrorCode.AlreadyInUse;
             }
-            
+
             return 0;
         }
 

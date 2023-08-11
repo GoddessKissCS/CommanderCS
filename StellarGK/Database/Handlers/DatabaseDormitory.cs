@@ -9,13 +9,13 @@ namespace StellarGK.Database.Handlers
 
         public DormitoryScheme Create(int id)
         {
-            DormitoryScheme? tryUser = collection.AsQueryable().Where(d => d.Id == id).FirstOrDefault();
+            DormitoryScheme? tryUser = collection.AsQueryable().Where(d => d.memberId == id).FirstOrDefault();
             if (tryUser != null) { return tryUser; }
 
             //TODO THIS
             DormitoryScheme user = new()
             {
-                Id = id,
+                memberId = id,
                 costumeHead = new()
                 {
 
@@ -56,7 +56,7 @@ namespace StellarGK.Database.Handlers
 
         public DormitoryScheme? FindByUid(int uid)
         {
-            DormitoryScheme? user = collection.AsQueryable().Where(d => d.Id == uid).FirstOrDefault();
+            DormitoryScheme? user = collection.AsQueryable().Where(d => d.memberId == uid).FirstOrDefault();
             return user;
         }
         public DormitoryScheme? FindBySession(string session)

@@ -140,7 +140,7 @@ namespace StellarGK
 
             //app.UseAuthorization();
 
-            //DatabaseManager.FirstCreate();
+            DatabaseManager.FirstCreate();
 
             app.Run();
         }

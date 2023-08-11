@@ -11,7 +11,7 @@ namespace StellarGK.Database.Handlers
         {
             ServerScheme versionInfo = new()
             {
-                Id = id,
+                channelId = id,
                 maxLevel = maxlevel,
                 maxStage = maxstage,
                 openDate = openDt,
@@ -26,7 +26,7 @@ namespace StellarGK.Database.Handlers
 
         public ServerScheme Get(int id)
         {
-            ServerScheme? server = collection.AsQueryable().Where(d => d.Id == id).FirstOrDefault();
+            ServerScheme? server = collection.AsQueryable().Where(d => d.channelId == id).FirstOrDefault();
 
             return server;
         }

@@ -20,7 +20,7 @@ namespace StellarGK.Database.Handlers
         }
         public GuildScheme FindByUid(int guildId)
         {
-            GuildScheme? guild = collection.AsQueryable().Where(d => d.Id == guildId).FirstOrDefault();
+            GuildScheme? guild = collection.AsQueryable().Where(d => d.guildId == guildId).FirstOrDefault();
 
             return guild;
         }
@@ -32,7 +32,7 @@ namespace StellarGK.Database.Handlers
                 return null;
             }
 
-            GuildScheme? guild = collection.AsQueryable().Where(d => d.Id == guildId).FirstOrDefault();
+            GuildScheme? guild = collection.AsQueryable().Where(d => d.guildId == guildId).FirstOrDefault();
 
             if (guild == null)
             {
@@ -49,7 +49,7 @@ namespace StellarGK.Database.Handlers
                 createTime = guild.createTime,
                 emblem = guild.emblem,
                 guildType = guild.guildType,
-                idx = guild.Id,
+                idx = guild.guildId,
                 level = guild.level,
                 limitLevel = guild.limitlevel,
                 maxCount = guild.maxCount,

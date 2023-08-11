@@ -23,7 +23,7 @@ namespace StellarGK.Database.Handlers
             AccountScheme user = new()
             {
                 name = name,
-                Id = memberId,              
+                memberId = memberId,              
                 token = Guid.NewGuid().ToString(),
                 password = Crypto.ComputeSha256Hash(password),
                 channel = channel,
@@ -55,7 +55,7 @@ namespace StellarGK.Database.Handlers
             AccountScheme user = new()
             {
                 name = name,
-                Id = memberId,
+                memberId = memberId,
                 token = Guid.NewGuid().ToString(),
                 channel = channel,
                 creationTime = Constants.CurrentTimeStamp,
@@ -81,12 +81,12 @@ namespace StellarGK.Database.Handlers
         }
         public AccountScheme? FindByUid(int memberId)
         {
-            AccountScheme? user = collection.AsQueryable().Where(d => d.Id == memberId).FirstOrDefault();
+            AccountScheme? user = collection.AsQueryable().Where(d => d.memberId == memberId).FirstOrDefault();
             return user;
         }
         public AccountScheme? FindByUid(string memberId)
         {
-            AccountScheme? user = collection.AsQueryable().Where(d => d.Id == int.Parse(memberId)).FirstOrDefault();
+            AccountScheme? user = collection.AsQueryable().Where(d => d.memberId == int.Parse(memberId)).FirstOrDefault();
             return user;
         }
         public bool AccountExists(string accountName)
@@ -112,7 +112,7 @@ namespace StellarGK.Database.Handlers
 
                 var password_hash = Crypto.ComputeSha256Hash(password);
 
-                var filter = Builders<AccountScheme>.Filter.Eq("Id", account.Id);
+                var filter = Builders<AccountScheme>.Filter.Eq("Id", account.memberId);
                 var update = Builders<AccountScheme>.Update.Set("name", oldName).Set("password", password_hash).Set("platformId", platformId).Set("channel", channel);
 
                 collection.UpdateOne(filter, update);
@@ -134,7 +134,7 @@ namespace StellarGK.Database.Handlers
         {
             var account = FindByName(name);
 
-            var filter = Builders<AccountScheme>.Filter.Eq("Id", account.Id);
+            var filter = Builders<AccountScheme>.Filter.Eq("Id", account.memberId);
             var update = Builders<AccountScheme>.Update.Set("lastLoginTime", Constants.CurrentTimeStamp);
 
             collection.UpdateOne(filter, update);

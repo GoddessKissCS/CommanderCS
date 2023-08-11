@@ -32,11 +32,11 @@ namespace StellarGK.Host.Handlers.Sign
             }
             else
             {
-                DatabaseManager.Account.UpdateLoginTime(user.Id);
+                DatabaseManager.Account.UpdateLoginTime(user.memberId);
 
                 Sign.tokn = user.token;
                 Sign.srv = user.lastServerLoggedIn;
-                Sign.mIdx = user.Id;
+                Sign.mIdx = user.memberId;
 
                 return Sign;
             }

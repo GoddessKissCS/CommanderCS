@@ -1,10 +1,12 @@
-﻿using StellarGK.Logic.Protocols;
+﻿using MongoDB.Bson;
+using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Database.Schemes
 {
     public class DormitoryScheme
     {
-        public int Id { get; set; }
+        public ObjectId Id { get; set; }
+        public int memberId { get; set; }
         public Dictionary<string, int> dormitoryInfo { get; set; }
         public Dormitory.Resource dormitoryResource { get; set; }
         public Dictionary<string, int> itemNormal { get; set; }

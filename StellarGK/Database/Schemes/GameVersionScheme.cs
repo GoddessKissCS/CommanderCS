@@ -1,8 +1,11 @@
-﻿namespace StellarGK.Database.Schemes
+﻿using MongoDB.Bson;
+
+namespace StellarGK.Database.Schemes
 {
     public class GameVersionScheme
     {
-        public int Id { get; set; }
+        public ObjectId Id { get; set; }
+        public int channelId { get; set; }
         public string version { get; set; }
         public bool version_state { get; set; }
         public string cdn_url { get; set; }
