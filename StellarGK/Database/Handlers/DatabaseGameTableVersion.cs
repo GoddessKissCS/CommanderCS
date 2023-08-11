@@ -1,5 +1,5 @@
 ﻿using MongoDB.Driver;
-using StellarGK.Database.Models;
+using StellarGK.Database.Schemes;
 
 namespace StellarGK.Database.Handlers
 {

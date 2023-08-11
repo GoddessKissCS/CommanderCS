@@ -18,12 +18,22 @@ namespace StellarGK.Host.Handlers.Server
 
             ServerData serverData = new();
 
-            var SIFO = Req(@params.mIdx);
+            var SIFO = ProfilesRequest(@params.mIdx, GetSession());
 
-            List<ServerData.ServerInfo> serverInfo = new(
-                new List<ServerData.ServerInfo>() {
-                        { SIFO }
-             });
+            ServerData.ServerInfo nullServer = new()
+            {
+                idx = 0,
+                status = 0,
+                lastLoginTime = 0,
+                level = 0,
+                thumnail = 0,
+            };
+
+            List<ServerData.ServerInfo> serverInfo = new()
+            {
+                SIFO, 
+                nullServer
+            };
 
             serverData.serverInfoList = serverInfo;
             serverData.recommandServer = 1;
@@ -35,11 +45,12 @@ namespace StellarGK.Host.Handlers.Server
             return response;
         }
 
-        private static ServerData.ServerInfo Req(int mIdx)
+        private static ServerData.ServerInfo ProfilesRequest(string mIdx, string session)
         {
-
             var account = DatabaseManager.Account.FindByUid(mIdx);
-            var resources = DatabaseManager.Resources.FindByUid(mIdx);
+            //var resources = DatabaseManager.GameProfile.Fin(mIdx);
+
+            var user = DatabaseManager.GameProfile.FindBySession(session);
 
             ServerData.ServerInfo SIFO = new()
             {
@@ -50,8 +61,8 @@ namespace StellarGK.Host.Handlers.Server
                 thumnail = 0,
             };
 
-            SIFO.level = Convert.ToInt32(resources.level);
-            SIFO.thumnail = Convert.ToInt32(resources.thumbnailId);
+            SIFO.level = user.userResources.level;
+            SIFO.thumnail = user.userResources.thumbnailId;
             SIFO.lastLoginTime = account.lastLoginTime;
 
             return SIFO;
@@ -62,7 +73,7 @@ namespace StellarGK.Host.Handlers.Server
     public class ServerStatusRequest
     {
         [JsonPropertyName("mIdx")]
-        public int mIdx { get; set; }
+        public string mIdx { get; set; }
 
         [JsonPropertyName("tokn")]
         public string tokn { get; set; }

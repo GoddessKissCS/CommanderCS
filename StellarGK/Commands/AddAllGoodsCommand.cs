@@ -12,7 +12,8 @@ namespace StellarGK.Commands
 
             int accountId = int.Parse(args[0]);
 
-            DatabaseManager.GameData.UpdateItemData(accountId, itemData);
+            // TODO UPDATE
+            //DatabaseManager.GameData.UpdateItemData(accountId, itemData);
 
             Console.WriteLine($"Added All Goods to id {args[0]}");
 

@@ -1,5 +1,5 @@
 ﻿using MongoDB.Driver;
-using StellarGK.Database.Models;
+using StellarGK.Database.Schemes;
 using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Database.Handlers
@@ -27,6 +27,11 @@ namespace StellarGK.Database.Handlers
 
         public UserInformationResponse.UserGuild RequestGuild(int? guildId)
         {
+            if(guildId == null)
+            {
+                return null;
+            }
+
             GuildScheme? guild = collection.AsQueryable().Where(d => d.Id == guildId).FirstOrDefault();
 
             if (guild == null)

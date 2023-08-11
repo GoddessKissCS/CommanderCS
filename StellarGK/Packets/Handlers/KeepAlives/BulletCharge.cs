@@ -9,23 +9,22 @@ namespace StellarGK.Host.Handlers.KeepAlives
     {
         public override object Handle(BulletChargeResult @params)
         {
-            var user = GetAccount();
-            var res = GetResources();
+            var user = GetGameProfile();
 
-            int bullets = UserLevelData.GetInstance().FromLevel(res.level).maxBullet;
+            int bullets = UserLevelData.GetInstance().FromLevel(user.userResources.level).maxBullet;
 
             ResourceRecharge resource = new()
             {
 
                 bulletData = new()
                 {
-                    cnt = Convert.ToInt32(res.bullet),
+                    cnt = user.userResources.bullet,
                     remain = bullets,
                 },
                 oilData = new()
                 {
-                    cnt = Convert.ToInt32(res.oil),
-                    remain = Convert.ToInt32(res.oil)
+                    cnt = user.userResources.oil,
+                    remain = user.userResources.oil,
                 },
                 skillData = new()
                 {
@@ -34,28 +33,28 @@ namespace StellarGK.Host.Handlers.KeepAlives
                 },
                 chip = new()
                 {
-                    remain = Convert.ToInt32(res.chip),
-                    cnt = Convert.ToInt32(res.chip),
+                    remain = user.userResources.chip,
+                    cnt = user.userResources.chip,
                 },
                 weaponMaterialData1 = new()
                 {
-                    cnt = Convert.ToInt32(res.weaponMaterial1),
-                    remain = Convert.ToInt32(res.weaponMaterial1),
+                    cnt = user.userResources.weaponMaterial1,
+                    remain = user.userResources.weaponMaterial1,
                 },
                 weaponMaterialData2 = new()
                 {
-                    cnt = Convert.ToInt32(res.weaponMaterial2),
-                    remain = Convert.ToInt32(res.weaponMaterial2),
+                    cnt = user.userResources.weaponMaterial2,
+                    remain = user.userResources.weaponMaterial2,
                 },
                 weaponMaterialData3 = new()
                 {
-                    cnt = Convert.ToInt32(res.weaponMaterial3),
-                    remain = Convert.ToInt32(res.weaponMaterial3),
+                    cnt = user.userResources.weaponMaterial3,
+                    remain = user.userResources.weaponMaterial3,
                 },
                 weaponMaterialData4 = new()
                 {
-                    cnt = Convert.ToInt32(res.weaponMaterial4),
-                    remain = Convert.ToInt32(res.weaponMaterial4),
+                    cnt = user.userResources.weaponMaterial4,
+                    remain = user.userResources.weaponMaterial4,
                 },
                 worldState = user.worldState,
                 gacha = new()

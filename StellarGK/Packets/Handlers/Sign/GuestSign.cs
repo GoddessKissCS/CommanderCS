@@ -35,7 +35,7 @@ namespace StellarGK.Host.Handlers.Sign
                 DatabaseManager.Account.UpdateLoginTime(user.Id);
 
                 Sign.tokn = user.token;
-                Sign.srv = user.server;
+                Sign.srv = user.lastServerLoggedIn;
                 Sign.mIdx = user.Id;
 
                 return Sign;

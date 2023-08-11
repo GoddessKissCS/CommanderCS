@@ -9,31 +9,28 @@ namespace StellarGK.Host.Handlers.Carnival
         public override object Handle(CheckBadgeRequest @params)
         {
 
+            var user = GetGameProfile().userBadges;
+
             // TODO ADJUST THIS SHIT
             CheckBadgeMaster checkBadgeMaster = new()
             {
                 id = BasePacket.Id,
-                arena = 1,
-                dlms = 1,
-                achv = 1,
-                rwd = 1,
-                shop = new Dictionary<string, int>()
-                {
-                    { "raid", 0 },
-                    { "arena3", 0 },
-                    { "arena", 0 }
-                },
-                cnvl = new List<string>(),
-                ccnv = 0,
-                cnvl2 = new List<string>(),
-                ccvn2 = 0,
-                cnvl3 = new List<string>(),
-                ccvn3 = 0,
-                wb = 0,
-                gb = 0,
-                grp = 0,
-                ercnt = 0,
-                iftw = 0,
+                arena = user.arena,
+                dlms = user.dlms,
+                achv = user.achv,
+                rwd = user.rwd,
+                shop = user.shop,
+                cnvl = user.cnvl,
+                ccnv = user.ccnv,
+                cnvl2 = user.cnvl2,
+                ccvn2 = user.ccvn2,
+                cnvl3 = user.cnvl3,
+                ccvn3 = user.ccvn3,
+                wb = user.wb,
+                gb = user.gb,
+                grp = user.grp,
+                ercnt = user.ercnt,
+                iftw = user.iftw,
             };
 
 

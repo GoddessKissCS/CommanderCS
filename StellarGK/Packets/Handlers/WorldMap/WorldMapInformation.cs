@@ -10,7 +10,7 @@ namespace StellarGK.Host.Handlers.WorldMap
         {
             // TODO ???
 
-            GetGameData().stages.TryGetValue(@params.world.ToString(), out List<WorldMapInformationResponse> worldMapStages);
+            GetGameProfile().stages.TryGetValue(@params.world.ToString(), out List<WorldMapInformationResponse> worldMapStages);
 
             bool reward = worldMapStages.All(c => c.star == 3); 
 

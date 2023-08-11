@@ -28,7 +28,7 @@ namespace StellarGK.Host.Handlers.Nickname
 
             Data data = new()
             {
-                rsoc = DatabaseManager.Resources.RequestResources(GetSession()),
+                rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(GetSession()),
             };
 
             response.result = data;
@@ -44,17 +44,17 @@ namespace StellarGK.Host.Handlers.Nickname
                 return ErrorCode.InappropriateWords;
             }
 
-            var user = DatabaseManager.Resources.FindByNickname(AccountName);
+            var user = DatabaseManager.GameProfile.FindByNick(AccountName);
             if (user == null)
             {
-                int cash = Convert.ToInt32(user.cash) - 100;
+                int cash = user.userResources.cash - 100;
 
-                DatabaseManager.Resources.UpdateCash(user.Id, cash, false);
+                DatabaseManager.GameProfile.UpdateCash(sess, cash, false);
 
                 return ErrorCode.Success;
 
             }
-            else if (user.nickname == AccountName)
+            else if (user.userResources.nickname == AccountName)
             {
                 return ErrorCode.AlreadyInUse;
             }

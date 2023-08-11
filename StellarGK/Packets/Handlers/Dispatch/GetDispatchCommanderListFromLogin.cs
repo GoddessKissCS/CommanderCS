@@ -9,7 +9,7 @@
             ResponsePacket responsePacket = new()
             {
                 id = BasePacket.Id,
-                result = GetGameData().dispatchedCommanders,
+                result = GetGameProfile().dispatchedCommanders,
             };
 
             return responsePacket;

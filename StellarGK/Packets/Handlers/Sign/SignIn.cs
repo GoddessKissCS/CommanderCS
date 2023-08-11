@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 using StellarGK.Database;
-using StellarGK.Database.Models;
+using StellarGK.Database.Schemes;
 using StellarGK.Tools;
 
 namespace StellarGK.Host.Handlers.Sign
@@ -14,7 +14,6 @@ namespace StellarGK.Host.Handlers.Sign
 
             ErrorCode code = RequestSignIn(@params.uid, @params.pwd, out SignInP SignInP);
 
-
             if (code == ErrorCode.IdNotFound || code == ErrorCode.PasswordInvalid)
             {
                 response.id = BasePacket.Id;
@@ -26,11 +25,16 @@ namespace StellarGK.Host.Handlers.Sign
             response.id = BasePacket.Id;
             response.result = SignInP;
 
+
+            DatabaseManager.Account.UpdateLoginTime(@params.uid);
+
             return response;
 
         }
         private static ErrorCode RequestSignIn(string AccountName, string password, out SignInP signInP)
         {
+            var password_hash = Crypto.ComputeSha256Hash(password);
+
             signInP = new();
             if (!DatabaseManager.Account.AccountExists(AccountName))
             {
@@ -39,15 +43,11 @@ namespace StellarGK.Host.Handlers.Sign
             else
             {
                 AccountScheme user = DatabaseManager.Account.FindByName(AccountName);
-                if (user.password == Crypto.ComputeSha256Hash(password))
+                if (user.password == password_hash)
                 {
-
-                    DatabaseManager.Account.UpdateLoginTime(user.Id);
-
                     signInP.mIdx = user.Id;
                     signInP.tokn = user.token;
-                    signInP.srv = user.server;
-
+                    signInP.srv = user.lastServerLoggedIn;
                     return ErrorCode.Success;
                 }
                 else

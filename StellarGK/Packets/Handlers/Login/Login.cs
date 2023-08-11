@@ -18,9 +18,14 @@ namespace StellarGK.Host.Handlers.Login
                 id = BasePacket.Id
             };
 
+            //@params.world
+            // first we need to check if the world has a profile if not create a new one
+            
             string session = Constants.Session;
 
-            ErrorCode code = RequestLogin(@params.memberId, @params.deviceName, @params.deviceId, @params.patchType, (int)@params.osCode, @params.osVersion, @params.gameVersion, @params.apkFileName, @params.pushRegistrationId, @params.languageCode, @params.countryCode, @params.largoId, @params.channel, session);
+            var user = DatabaseManager.GameProfile.GetOrCreate(@params.memberId, @params.world);
+
+            ErrorCode code = RequestLogin(@params, session);
 
             if (code == ErrorCode.BannedOrSuspended || code == ErrorCode.UnableToJoin)
             {
@@ -29,36 +34,36 @@ namespace StellarGK.Host.Handlers.Login
                 return response;
             }
 
-            var account = GetAccount();
-
-            var gamedata = GetGameData();
+            var goods = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+            var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(session);
+            var guild = DatabaseManager.Guild.RequestGuild(user.guildId);
 
             UserInformationResponse userInformationResponse = new()
             {
-                goodsInfo = DatabaseManager.Resources.RequestResources(@params.memberId),
-                battleStatisticsInfo = DatabaseManager.BattleStatistics.RequestBattleStatistics(@params.memberId),
-                uno = account.uno,
-                stage = account.lastStage,
-                notification = account.notifaction,
+                goodsInfo = goods,
+                battleStatisticsInfo = battlestats,
+                uno = user.uno,
+                stage = user.lastStage,
+                notification = user.notifaction,
 
-                foodData = gamedata.foodData,
-                eventResourceData = gamedata.eventResourceData,
-                groupItemData = gamedata.groupItemData,
-                itemData = gamedata.ItemData,
-                medalData = gamedata.medalData,
-                partData = gamedata.partData,
+                foodData = user.userInventory.foodData,
+                eventResourceData = user.userInventory.eventResourceData,
+                groupItemData = user.userInventory.groupItemData,
+                itemData = user.userInventory.itemData,
+                medalData = user.userInventory.medalData,
+                partData = user.userInventory.partData,
 
-                resetRemain = 1, // should be set?
+                resetRemain = user.resetDateTime, // should be set?
 
-                equipItem = gamedata.equipItem,
+                equipItem = user.userInventory.equipItem,            
 
-                donHaveCommCostumeData = gamedata.donHaveCommCostumeData,
-                completeRewardGroupIdx = gamedata.completeRewardGroupIdx,
-                guildInfo = DatabaseManager.Guild.RequestGuild(account.guildId),
-                sweepClearData = gamedata.sweepClearData,
-                preDeck = gamedata.preDeck,
-                weaponList = gamedata.weaponList,
-                __commanderInfo = JObject.FromObject(gamedata.commanderData),
+                donHaveCommCostumeData = user.userInventory.donHaveCommCostumeData,
+                completeRewardGroupIdx = user.completeRewardGroupIdx,
+                guildInfo = guild,
+                sweepClearData = user.sweepClearData,
+                preDeck = user.preDeck,
+                weaponList = user.userInventory.weaponList,
+                __commanderInfo = JObject.FromObject(user.commanderData),
             };
 
 
@@ -75,17 +80,16 @@ namespace StellarGK.Host.Handlers.Login
 
         }
 
-
-        private static ErrorCode RequestLogin(int mIdx, string devc, string dvid, int ptype, int oscd, string osvr, string gmvr, string apk, string psId, string lang, string ctry, string gpid, int ch, string session)
+        private static ErrorCode RequestLogin(LoginRequest @params, string session)
         {
-            var user = DatabaseManager.Account.FindByUid(mIdx);
-            if (user.isBanned == true)
+            var user = DatabaseManager.Account.FindByUid(@params.memberId);
+            if (user.isBanned == true && user.isBanned != null)
             {
                 return ErrorCode.BannedOrSuspended;
             }
             else
             {
-                DatabaseManager.Account.UpdateUponLogin(mIdx, devc, dvid, ptype, oscd, osvr, gmvr, apk, psId, lang, gpid, ctry, ch, session);
+                DatabaseManager.GameProfile.UpdateOnLogin(@params, session);
                 return ErrorCode.Success;
             }
         }

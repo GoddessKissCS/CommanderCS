@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 
-namespace StellarGK.Database.Models
+namespace StellarGK.Database.Schemes
 {
     public class AIScheme
     {

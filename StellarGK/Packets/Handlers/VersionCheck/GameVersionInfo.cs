@@ -22,7 +22,7 @@ namespace StellarGK.Host.Handlers.VersionCheck
                 gglogin = Convert.ToInt32(info.enableGoogleLogin),
                 ver = info.version,
                 word = info.word,
-                stat = Convert.ToInt32(info.versionStatus)
+                stat = Convert.ToInt32(info.version_state)
             };
 
             ResponsePacket.id = BasePacket.Id;

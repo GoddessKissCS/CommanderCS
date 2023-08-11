@@ -19,11 +19,13 @@ namespace StellarGK.Host.Handlers.Gacha
 
             // return cnt is the remaining spins
 
-            var luck = BankGold(GetSession(), @params.count);
+            string session = GetSession();
+
+            var luck = BankGold(session, @params.count);
 
             BankRoullet bankRoullet = new()
             {
-                rsoc = DatabaseManager.Resources.RequestResources(GetSession()),
+                rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session),
                 luck = luck,
                 cnt = @params.count
             };
@@ -48,9 +50,9 @@ namespace StellarGK.Host.Handlers.Gacha
                 luck.Add(random1.Next(1, 10));
             };
 
-            var resources = DatabaseManager.Resources.FindBySession(sessionId);
+            var user = DatabaseManager.GameProfile.FindBySession(sessionId);
 
-            int thebankGold = UserLevelData.GetInstance().FromLevel(resources.level).bankGold;
+            int thebankGold = UserLevelData.GetInstance().FromLevel(user.userResources.level).bankGold;
 
             int updateGold = luck.Sum() * thebankGold;
 
@@ -61,14 +63,11 @@ namespace StellarGK.Host.Handlers.Gacha
                 minusCash = 10;
             }
 
+            var newCash = user.userResources.cash - minusCash;
 
-            var newCash = Convert.ToInt32(resources.cash) - minusCash;
+            var newGold = user.userResources.gold + updateGold;
 
-            var newGold = Convert.ToInt32(resources.gold) + updateGold;
-
-            DatabaseManager.Resources.UpdateGoldAndCash(resources.Id, newGold, newCash);
-
-            DatabaseManager.BattleStatistics.AddGold(resources.Id, newGold);
+            DatabaseManager.GameProfile.UpdateGoldAndCash(sessionId, newGold, newCash, true);
 
             return luck;
 

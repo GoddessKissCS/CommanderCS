@@ -12,7 +12,10 @@ namespace StellarGK.Commands
 
             int accountId = int.Parse(args[0]);
 
-            DatabaseManager.GameData.UpdateCommanderData(accountId, commanders);
+
+            // TODO UPDATE
+
+            //DatabaseManager.GameData.UpdateCommanderData(accountId, commanders);
 
             Console.WriteLine($"Added All Chars to id {args[0]}");
 

@@ -30,9 +30,9 @@ namespace StellarGK.Host.Handlers.Tutorial
 
         private static UserInformationResponse.TutorialData RequestTutorialData(string sess)
         {
-            var user = DatabaseManager.Account.FindBySession(sess);
+            var user = DatabaseManager.GameProfile.FindBySession(sess).tutorialData;
 
-            return new UserInformationResponse.TutorialData() { skip = user.skip, step = user.step };
+            return user;
         }
 
         public class TutorialStep

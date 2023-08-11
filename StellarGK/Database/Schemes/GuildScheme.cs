@@ -1,6 +1,6 @@
 ﻿using StellarGK.Logic.Protocols;
 
-namespace StellarGK.Database.Models
+namespace StellarGK.Database.Schemes
 {
     public class GuildScheme
     {

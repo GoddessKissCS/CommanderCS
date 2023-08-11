@@ -17,11 +17,11 @@ namespace StellarGK.Host.Handlers.Commander
             // TODO ADD MAXLEVEL CHECK SO YOU CANT OVERLEVEL THEM OVER YOUR LEVEL
             //GIVES OUT ERRORCODE 20001 or 20003
 
-            var resources = GetGameData();
+            var user = GetGameProfile();
 
-            var commanderList = resources.commanderData;
+            var commanderList = user.commanderData;
 
-            var itemData = resources.ItemData;
+            var itemData = user.userInventory.itemData;
 
             if (commanderList.TryGetValue(@params.commanderId.ToString(), out UserInformationResponse.Commander commander) && commander != null)
             {

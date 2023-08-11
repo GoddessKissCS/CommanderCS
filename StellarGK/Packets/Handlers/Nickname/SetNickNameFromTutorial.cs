@@ -34,39 +34,39 @@ namespace StellarGK.Host.Handlers.Nickname
             return response;
         }
 
-        private static ErrorCode RequestNicknameAfterTutorial(string sess, string AccountName)
+        private static ErrorCode RequestNicknameAfterTutorial(string sess, string nickname)
         {
 
-            if (Misc.NameCheck(AccountName))
+            if (Misc.NameCheck(nickname))
             {
                 return ErrorCode.InappropriateWords;
             }
 
-            var user = DatabaseManager.Resources.FindByNickname(AccountName);
+            var user = DatabaseManager.GameProfile.FindByNick(nickname);
 
-            if (user == null)
-            {
-                var requestUser = DatabaseManager.Resources.FindBySession(sess);
-
-                var account = DatabaseManager.Account.FindBySession(sess);
-
-                if (account.skip == true)
-                {
-                    DatabaseManager.Account.UpdateStep(requestUser.Id, 12);
-                }
-                else
-                {
-                    DatabaseManager.Account.UpdateStep(requestUser.Id, 2);
-                }
-
-                DatabaseManager.Resources.UpdateNickName(AccountName, sess);
-
-                return ErrorCode.Success;
-            }
-            else if (user.nickname == AccountName)
+            if (user.userResources.nickname == nickname)
             {
                 return ErrorCode.AlreadyInUse;
             }
+
+            if (user == null)
+            {
+                var profile = DatabaseManager.GameProfile.FindBySession(sess);
+
+                if (profile.tutorialData.skip == true)
+                {
+                    DatabaseManager.GameProfile.UpdateStep(sess, 12);
+                }
+                else
+                {
+                    DatabaseManager.GameProfile.UpdateStep(sess, 2);
+                }
+
+                DatabaseManager.GameProfile.UpdateNickName(sess, nickname);
+
+                return ErrorCode.Success;
+            }
+            
             return 0;
         }
 

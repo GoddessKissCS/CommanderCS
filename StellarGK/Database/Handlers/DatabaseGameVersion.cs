@@ -1,5 +1,5 @@
 ﻿using MongoDB.Driver;
-using StellarGK.Database.Models;
+using StellarGK.Database.Schemes;
 
 namespace StellarGK.Database.Handlers
 {
@@ -20,7 +20,7 @@ namespace StellarGK.Database.Handlers
                 fileCheck = fc,
                 enableGoogleLogin = gglogin,
                 showPolicy = policy,
-                versionStatus = stat,
+                version_state = stat,
                 word = new()
                 {
                     { "en", 1 }

@@ -11,7 +11,7 @@ namespace StellarGK.Host.Handlers.Profile
 
             UpdateTutorialStepInfo utsi = new();
 
-            DatabaseManager.Account.UpdateStep(@params.mIdx, @params.step);
+            DatabaseManager.GameProfile.UpdateStep(GetSession(), @params.step);
 
             utsi.step = @params.step;
 

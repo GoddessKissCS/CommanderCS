@@ -1,4 +1,4 @@
-﻿namespace StellarGK.Database.Models
+﻿namespace StellarGK.Database.Schemes
 {
     public class ServerScheme
     {

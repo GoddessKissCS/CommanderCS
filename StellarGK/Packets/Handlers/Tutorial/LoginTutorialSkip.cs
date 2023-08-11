@@ -25,19 +25,18 @@ namespace StellarGK.Host.Handlers.Tutorial
             return response;
         }
 
-        private static UserInformationResponse.TutorialData RequestTutorialData(string sess, bool skipTutorial)
+        private static UserInformationResponse.TutorialData RequestTutorialData(string session, bool skipTutorial)
         {
-            var user = DatabaseManager.Account.FindBySession(sess);
+            UserInformationResponse.TutorialData tutorialData = new() { skip = skipTutorial , step = 0};
 
             if (skipTutorial)
             {
-                DatabaseManager.Account.UpdateStepAndSkip(user.Id, 12, skipTutorial);
-                return new UserInformationResponse.TutorialData() { skip = true, step = 12 };
+                tutorialData.step = 12;
+                return DatabaseManager.GameProfile.UpdateStepAndSkip(session, tutorialData);
             }
             else
             {
-                DatabaseManager.Account.UpdateStepAndSkip(user.Id, 0, skipTutorial);
-                return new UserInformationResponse.TutorialData() { skip = false, step = 0 };
+                return DatabaseManager.GameProfile.UpdateStepAndSkip(session, tutorialData);
 
             }
         }

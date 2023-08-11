@@ -12,7 +12,7 @@ namespace StellarGK.Host.Handlers.Profile
 
             // TODO - MISSING FALSE HANDLING
 
-            bool success = DatabaseManager.Resources.ChangeThumbnail(@params.idx, GetSession());
+            bool success = DatabaseManager.GameProfile.ChangeThumbnail(GetSession(),@params.idx);
 
             response.id = BasePacket.Id;
 

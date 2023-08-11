@@ -1,5 +1,5 @@
 ﻿using MongoDB.Driver;
-using StellarGK.Database.Models;
+using StellarGK.Database.Schemes;
 
 namespace StellarGK.Database.Handlers
 {
@@ -54,22 +54,6 @@ namespace StellarGK.Database.Handlers
             return user;
         }
 
-        public DormitoryScheme FindByName(string name)
-        {
-            AccountScheme? user = DatabaseAccount.collection.AsQueryable().Where(d => d.name == name).FirstOrDefault();
-
-            var dormitory = FindByUid(user.Id);
-
-            return dormitory;
-        }
-        public DormitoryScheme? FindByToken(string token)
-        {
-            AccountScheme? user = DatabaseAccount.collection.AsQueryable().Where(d => d.token == token).FirstOrDefault();
-
-            var dormitory = FindByUid(user.Id);
-
-            return dormitory;
-        }
         public DormitoryScheme? FindByUid(int uid)
         {
             DormitoryScheme? user = collection.AsQueryable().Where(d => d.Id == uid).FirstOrDefault();
@@ -77,9 +61,9 @@ namespace StellarGK.Database.Handlers
         }
         public DormitoryScheme? FindBySession(string session)
         {
-            AccountScheme? user = DatabaseAccount.collection.AsQueryable().Where(d => d.session == session).FirstOrDefault();
+            GameProfileScheme? user = DatabaseManager.GameProfile.FindBySession(session);
 
-            var dormitory = FindByUid(user.Id);
+            var dormitory = FindByUid(user.memberId);
 
             return dormitory;
         }

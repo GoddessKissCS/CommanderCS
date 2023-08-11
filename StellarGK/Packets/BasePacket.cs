@@ -1,7 +1,9 @@
 ﻿using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using StellarGK.Database;
-using StellarGK.Database.Models;
+using StellarGK.Database.Schemes;
+using StellarGK.Logic.Protocols;
+using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 
 namespace StellarGK.Host
 {
@@ -41,19 +43,19 @@ namespace StellarGK.Host
             return BasePacket.Session;
         }
 
+        public AccountScheme? GetAccount(int memberId)
+        {
+            return DatabaseManager.Account.FindByUid(memberId);
+        }
+
         public AccountScheme? GetAccount()
         {
             return DatabaseManager.Account.FindBySession(GetSession());
         }
 
-        public ResourcesScheme? GetResources()
+        public GameProfileScheme? GetGameProfile()
         {
-            return DatabaseManager.Resources.FindBySession(GetSession());
-        }
-
-        public BattleStatisticsScheme? GetBattleStatistics()
-        {
-            return DatabaseManager.BattleStatistics.FindBySession(GetSession());
+            return DatabaseManager.GameProfile.FindBySession(GetSession());
         }
 
         public DormitoryScheme? GetDormitory()
@@ -61,10 +63,6 @@ namespace StellarGK.Host
             return DatabaseManager.Dormitory.FindBySession(GetSession());
         }
 
-        public GameDataScheme? GetGameData()
-        {
-            return DatabaseManager.GameData.FindBySession(GetSession());
-        }
     }
 
     public enum CommandId : int

@@ -17,7 +17,7 @@ namespace StellarGK.Host.Handlers.WorldMap
 
             wmssr.reward = test;
 
-            wmssr.rsoc = DatabaseManager.Resources.ResourcesSchemeToUserInformationResource(GetResources());
+            wmssr.rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(GetSession());
 
             response.id = BasePacket.Id;
             response.result = wmssr;

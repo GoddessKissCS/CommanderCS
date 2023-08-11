@@ -1,10 +1,10 @@
-﻿namespace StellarGK.Database.Models
+﻿namespace StellarGK.Database.Schemes
 {
     public class GameVersionScheme
     {
         public int Id { get; set; }
         public string version { get; set; }
-        public bool versionStatus { get; set; }
+        public bool version_state { get; set; }
         public string cdn_url { get; set; }
         public string game_url { get; set; }
         public string chat_url { get; set; }

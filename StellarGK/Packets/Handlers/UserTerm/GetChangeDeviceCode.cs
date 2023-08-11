@@ -24,6 +24,8 @@ namespace StellarGK.Host.Handlers.UserTerm
             var devicechange = DatabaseManager.DeviceCode.FindByUid(account.Id);
 
             // TODO - ADDING CHECK ON IF DEVICECODE IS OLDER THAN 7 DAYS I SUPPOSE
+            // TODO ADDS SOME OTHER CHECKS ASWELL
+
 
             try
             {

@@ -1,5 +1,7 @@
-﻿using MongoDB.Driver;
-using StellarGK.Database.Models;
+﻿using System.Threading.Channels;
+using System;
+using MongoDB.Driver;
+using StellarGK.Database.Schemes;
 using StellarGK.Host;
 using StellarGK.Tools;
 
@@ -16,30 +18,27 @@ namespace StellarGK.Database.Handlers
             AccountScheme? tryUser = collection.AsQueryable().Where(d => d.name == name).FirstOrDefault();
             if (tryUser != null) { return tryUser; }
 
-            int memberId = DatabaseManager.AutoIncrements.GetNextNumber("UID", 1000);
+            int memberId = DatabaseManager.AutoIncrements.GetNextNumber("MemberId", 1000);
 
             AccountScheme user = new()
             {
                 name = name,
-                Id = memberId,
-                server = 1,
+                Id = memberId,              
                 token = Guid.NewGuid().ToString(),
                 password = Crypto.ComputeSha256Hash(password),
-                platformId = platformid,
                 channel = channel,
                 // result.worldState != -1;
                 // if exploration is finished id assume
-                worldState = 1,
-                uno = memberId.ToString(),
                 creationTime = Constants.CurrentTimeStamp,
                 lastLoginTime = Constants.CurrentTimeStamp,
-                isBanned = false,
-                banReason = "",
-                PermissionLevel = 0,
-                guildId = null,
-                lastStage = 0,
+                isBanned = null,
+                banReason = null,
                 blockedUsers = new() { },
+                clearance = Clearance.Player,
+                lastServerLoggedIn = 1,
             };
+
+            DatabaseManager.Dormitory.Create(memberId);
 
             collection.InsertOne(user);
 
@@ -51,51 +50,33 @@ namespace StellarGK.Database.Handlers
             AccountScheme? tryUser = collection.AsQueryable().Where(d => d.name == name).FirstOrDefault();
             if (tryUser != null) { return tryUser; }
 
-            int memberId = DatabaseManager.AutoIncrements.GetNextNumber("UID", 1000);
+            int memberId = DatabaseManager.AutoIncrements.GetNextNumber("MemberId", 1000);
 
             AccountScheme user = new()
             {
                 name = name,
                 Id = memberId,
-                server = 1,
                 token = Guid.NewGuid().ToString(),
-                platformId = platformid,
                 channel = channel,
-                // result.worldState != -1;
-                // if exploration is finished id assume
-                worldState = 1,
-                uno = memberId.ToString(),
                 creationTime = Constants.CurrentTimeStamp,
                 lastLoginTime = Constants.CurrentTimeStamp,
-                isBanned = false,
-                banReason = "",
-                PermissionLevel = 0,
-                guildId = null,
-                lastStage = 0,
+                isBanned = null,
+                banReason = null,
                 blockedUsers = new() { },
+                clearance = Clearance.Guest,
+                lastServerLoggedIn = 1,
             };
 
             collection.InsertOne(user);
 
+            DatabaseManager.Dormitory.Create(memberId);
+
             return user;
         }
-
 
         public AccountScheme FindByName(string accountName)
         {
             AccountScheme? user = collection.AsQueryable().Where(d => d.name == accountName).FirstOrDefault();
-            return user;
-        }
-        public AccountScheme FindByPassword(string password)
-        {
-            password = Crypto.ComputeSha256Hash(password);
-
-            AccountScheme? user = collection.AsQueryable().Where(d => d.password == password).FirstOrDefault();
-            return user;
-        }
-        public AccountScheme? FindByToken(string token)
-        {
-            AccountScheme? user = collection.AsQueryable().Where(d => d.token == token).FirstOrDefault();
             return user;
         }
         public AccountScheme? FindByUid(int memberId)
@@ -103,50 +84,14 @@ namespace StellarGK.Database.Handlers
             AccountScheme? user = collection.AsQueryable().Where(d => d.Id == memberId).FirstOrDefault();
             return user;
         }
-        public AccountScheme? FindBySession(string session)
+        public AccountScheme? FindByUid(string memberId)
         {
-            AccountScheme? user = collection.AsQueryable().Where(d => d.session == session).FirstOrDefault();
-
+            AccountScheme? user = collection.AsQueryable().Where(d => d.Id == int.Parse(memberId)).FirstOrDefault();
             return user;
         }
-
         public bool AccountExists(string accountName)
         {
             return collection.AsQueryable().Where(d => d.name == accountName).Count() > 0;
-        }
-
-
-        public void UpdateUponLogin(int memberId, string device, string deviceId, int patchType, int osCode, string osVersion, string gameVersion, string apk, string pushRegistrationId, string language, string countryName, string gpid, int channel, string session)
-        {
-            var filter = Builders<AccountScheme>.Filter.Eq("Id", memberId);
-
-            var update = Builders<AccountScheme>.Update.Set("device", device).Set("gameversion", gameVersion).Set("deviceid", deviceId).Set("patchType", patchType).Set("osCode", osCode).Set("osversion", osVersion).Set("apk", apk).Set("pushRegistrationId", pushRegistrationId).Set("language", language).Set("country", countryName).Set("gpid", gpid).Set("channel", channel).Set("session", session);
-
-            collection.UpdateOne(filter, update);
-        }
-        public void UpdateLoginTime(int memberId)
-        {
-            var filter = Builders<AccountScheme>.Filter.Eq("Id", memberId);
-
-            var update = Builders<AccountScheme>.Update.Set("lastLoginTime", Constants.CurrentTimeStamp);
-
-            collection.UpdateOne(filter, update);
-        }
-        public void UpdateStep(int memberId, int tutorialStep)
-        {
-            var filter = Builders<AccountScheme>.Filter.Eq("Id", memberId);
-
-            var update = Builders<AccountScheme>.Update.Set("step", tutorialStep);
-
-            collection.UpdateOne(filter, update);
-        }
-        public void UpdateStepAndSkip(int memberId, int tutorialStep, bool skip)
-        {
-            var filter = Builders<AccountScheme>.Filter.Eq("Id", memberId);
-
-            var update = Builders<AccountScheme>.Update.Set("step", tutorialStep).Set("skip", skip);
-
-            collection.UpdateOne(filter, update);
         }
 
         public ErrorCode ChangeMemberShip(string oldName, string password, int platformId, string newName, int channel)
@@ -165,8 +110,10 @@ namespace StellarGK.Database.Handlers
             {
                 var account = FindByName(newName);
 
+                var password_hash = Crypto.ComputeSha256Hash(password);
+
                 var filter = Builders<AccountScheme>.Filter.Eq("Id", account.Id);
-                var update = Builders<AccountScheme>.Update.Set("name", oldName).Set("password", Crypto.ComputeSha256Hash(password)).Set("platformId", platformId).Set("channel", channel);
+                var update = Builders<AccountScheme>.Update.Set("name", oldName).Set("password", password_hash).Set("platformId", platformId).Set("channel", channel);
 
                 collection.UpdateOne(filter, update);
 
@@ -174,5 +121,42 @@ namespace StellarGK.Database.Handlers
             }
         }
 
+        public void UpdateLoginTime(int id)
+        {
+            var filter = Builders<AccountScheme>.Filter.Eq("Id", id);
+            var update = Builders<AccountScheme>.Update.Set("lastLoginTime", Constants.CurrentTimeStamp);
+
+            collection.UpdateOne(filter, update);
+
+        }
+
+        public void UpdateLoginTime(string name)
+        {
+            var account = FindByName(name);
+
+            var filter = Builders<AccountScheme>.Filter.Eq("Id", account.Id);
+            var update = Builders<AccountScheme>.Update.Set("lastLoginTime", Constants.CurrentTimeStamp);
+
+            collection.UpdateOne(filter, update);
+
+        }
+
+        public AccountScheme? FindBySession(string session)
+        {
+            var user = DatabaseManager.GameProfile.FindBySession(session);
+
+            return FindByUid(user.memberId);
+        }
+
+        public void UpdateLastServerLoggedIn(int server, int memberid)
+        {
+            var user = FindByUid(memberid);
+
+            var filter = Builders<AccountScheme>.Filter.Eq("Id", memberid);
+            var update = Builders<AccountScheme>.Update.Set("lastServerLoggedIn", server);
+
+            collection.UpdateOne(filter, update);
+
+        }
     }
 }

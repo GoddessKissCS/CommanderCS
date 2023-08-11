@@ -13,18 +13,18 @@ namespace StellarGK.Host.Handlers.Commander
         {
             ResponsePacket response = new();
 
-            var resources = GetGameData();
+            string session = GetSession();
 
-            var commanderList = resources.commanderData;
-            var medalsdata = resources.medalData;
+            var user = GetGameProfile();
+
 
             string cid = @params.cid.ToString();
 
-            if (commanderList.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
+            if (user.commanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
             {
                 var commanderRankData = CommanderRankData.GetInstance().FromRank(commander.__rank);
 
-                medalsdata.TryGetValue(cid, out var commanderMedals);
+                user.userInventory.medalData.TryGetValue(cid, out var commanderMedals);
 
                 if (!TryRankUpCommander(commanderRankData.rank, ref commanderMedals))
                 {
@@ -39,14 +39,14 @@ namespace StellarGK.Host.Handlers.Commander
 
                 commanderRankData = CommanderRankData.GetInstance().FromRank(commander.__rank);
 
-                medalsdata[cid] = commanderMedals;
-                commanderList[cid] = commander;
+                user.userInventory.medalData[cid] = commanderMedals;
+                user.commanderData[cid] = commander;
 
-                DatabaseManager.Resources.UpdateGold(GetSession(), commanderRankData.gold, false);
+                DatabaseManager.GameProfile.UpdateGold(session, commanderRankData.gold, false);
 
             } else {
 
-                medalsdata.TryGetValue(cid, out var commanderMedals);
+                user.userInventory.medalData.TryGetValue(cid, out var commanderMedals);
 
                 var CostumeData = CommanderCostumeData.GetInstance().FromId(cid);
 
@@ -60,31 +60,31 @@ namespace StellarGK.Host.Handlers.Commander
                     return response;
                 }
 
-                medalsdata[cid] = commanderMedals;
+                user.userInventory.medalData[cid] = commanderMedals;
 
                 var newestCommander = CreateCommander(cid, CostumeData.ctid, commanderMedals, commanderData.grade);
 
                 int newcommanderId = 1;
 
-                if (commanderList.Count > 0)
+                if (user.commanderData.Count > 0)
                 {
-                    newcommanderId = Convert.ToInt32(commanderList.Last().Key) + 1;
+                    newcommanderId = Convert.ToInt32(user.commanderData.Last().Key) + 1;
                 }
 
-                commanderList.Add(newcommanderId.ToString(), newestCommander);
+                user.commanderData.Add(newcommanderId.ToString(), newestCommander);
 
-                DatabaseManager.Resources.UpdateGold(resources.Id, commanderData.recruitGold, false);
+                DatabaseManager.GameProfile.UpdateGold(session, commanderData.recruitGold, false);
             }
 
-            DatabaseManager.GameData.UpdateCommanderData(GetSession(), commanderList);
-            DatabaseManager.GameData.UpdateMedalData(GetSession(), medalsdata);
+            DatabaseManager.GameProfile.UpdateCommanderData(session, user.commanderData);
+            DatabaseManager.GameProfile.UpdateMedalData(session, user.userInventory.medalData);
 
-            var newResources = GetGameData();
+            var newResources = GetGameProfile();
 
             CommanderRankUpResponse cmrup = new()
             {
-                rsoc = DatabaseManager.Resources.RequestResources(GetSession()),
-                medl = newResources.medalData,
+                rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session),
+                medl = newResources.userInventory.medalData,
                 comm = newResources.commanderData,
             };
 

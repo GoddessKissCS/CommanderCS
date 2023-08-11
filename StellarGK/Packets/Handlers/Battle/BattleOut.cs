@@ -11,7 +11,7 @@ namespace StellarGK.Host.Handlers.Battle
 
             UserInformationResponse.BattleResult battleResult = new()
             {
-                __resource = DatabaseManager.Resources.RequestResources(GetSession()),
+                __resource = DatabaseManager.GameProfile.UserResourcesFromSession(GetSession()),
             };
 
             throw new Exception();
