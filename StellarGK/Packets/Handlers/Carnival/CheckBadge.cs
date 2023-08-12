@@ -82,3 +82,33 @@ namespace StellarGK.Host.Handlers.Carnival
     }
 
 }
+/*
+	// Token: 0x06005FFD RID: 24573 RVA: 0x000120F8 File Offset: 0x000102F8
+	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1504", true, true)]
+	public void CheckBadge()
+	{
+	}
+
+	// Token: 0x06005FFE RID: 24574 RVA: 0x001AFB18 File Offset: 0x001ADD18
+	private IEnumerator CheckBadgeResult(JsonRpcClient.Request request, string result, int arena, int dlms, int achv, int rwd, Dictionary<string, int> shop, List<string> cnvl, int ccnv, List<string> cnvl2, int ccnv2, List<string> cnvl3, int ccnv3, int wb, int gb, int grp, int ercnt, int iftw)
+	{
+		this.localUser.badgeChallenge = arena > 0;
+		this.localUser.badgeMissionCount = dlms;
+		this.localUser.badgeAchievementCount = achv;
+		this.localUser.badgeNewMailCount = rwd;
+		this.localUser.badgeRaidShop = shop.ContainsKey("raid") && shop["raid"] > 0;
+		this.localUser.badgeChallengeShop = shop.ContainsKey("arena") && shop["arena"] > 0;
+		this.localUser.badgeWaveDuelShop = shop.ContainsKey("arena3") && shop["arena3"] > 0;
+		this.localUser.badgeCarnivalTabList[1] = cnvl;
+		this.localUser.badgeCarnivalComplete[1] = ccnv != 0;
+		this.localUser.badgeCarnivalTabList[2] = cnvl2;
+		this.localUser.badgeCarnivalComplete[2] = ccnv2 != 0;
+		this.localUser.badgeCarnivalTabList[3] = cnvl3;
+		this.localUser.badgeCarnivalComplete[3] = ccnv3 != 0;
+		this.localUser.badgeWaveBattle = wb != 0;
+		this.localUser.badgeGuild = gb != 0;
+		this.localUser.badgeGroupCount = grp;
+		this.localUser.badgeEventRaidReward = ercnt > 0;
+		this.localUser.badgeInfinityBattleReward = iftw > 0;
+		yield break;
+	}*/

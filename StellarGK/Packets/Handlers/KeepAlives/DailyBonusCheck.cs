@@ -38,3 +38,25 @@ namespace StellarGK.Host.Handlers.KeepAlives
 
     }
 }
+
+/*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6112", true, true)]
+	public void DailyBonusCheck()
+	{
+	}
+
+	// Token: 0x06005F5B RID: 24411 RVA: 0x001AEE70 File Offset: 0x001AD070
+	private IEnumerator DailyBonusCheckResult(JsonRpcClient.Request request, Protocols.DailyBonusCheckResponse result)
+	{
+		this.localUser.RefreshDailyBonusFromNetwork(result);
+		this._CheckReceiveTestData("DailyBonusCheck");
+		UIDailyBonus dailyBonus = UIManager.instance.world.dailyBonus;
+		if (!result.received)
+		{
+			dailyBonus.InitAndOpenDailyBonus();
+		}
+		else
+		{
+			UIManager.instance.RefreshOpenedUI();
+		}
+		yield break;
+	}*/

@@ -36,5 +36,6 @@ namespace StellarGK.Host
         CommanderCantLevelHigherThanUser = 20003,
         TimedOut = 70003,
         UnknownErrorCode_1 = 30003,
+        EnteredInappropriateWords = 53010, // SOMEHOW IN BANKROULLETSTART
     }
 }

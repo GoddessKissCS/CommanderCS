@@ -1,17 +1,15 @@
 ﻿using System.Text.Json.Serialization;
-using StellarGK.Logic.Protocols;
 
-namespace StellarGK.Host.Handlers.DormitoryInfo
+namespace StellarGK.Host.Handlers.Dormitory
 {
     [Command(Id = CommandId.GetDormitoryInfo)]
     public class GetDormitoryInfo : BaseCommandHandler<GetDormitoryInfoRequest>
     {
-
         public override object Handle(GetDormitoryInfoRequest @params)
         {
             var dormitoryInfo = GetDormitory();
 
-            Dormitory.Info DormitoryInfo = new()
+            Logic.Protocols.Dormitory.Info DormitoryInfo = new()
             {
                 costumeBody = dormitoryInfo.costumeBody,
                 itemNormal = dormitoryInfo.itemNormal,

@@ -98,3 +98,28 @@ namespace StellarGK.Host.Handlers.Gacha
         public int vcnt { get; set; }
     }
 }
+/*	// Token: 0x06005FC9 RID: 24521 RVA: 0x000120F8 File Offset: 0x000102F8
+	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1501", true, true)]
+	public void BankRoulletStart(int vidx, int cnt, int vcnt)
+	{
+	}
+
+	// Token: 0x06005FCA RID: 24522 RVA: 0x001AF720 File Offset: 0x001AD920
+	private IEnumerator BankRoulletStartResult(JsonRpcClient.Request request, string result, Protocols.UserInformationResponse.Resource rsoc, int cnt, List<int> luck)
+	{
+		this.localUser.RefreshGoodsFromNetwork(rsoc);
+		string text = 601.ToString();
+		this.localUser.resourceRechargeList[text] = cnt;
+		UIManager.instance.world.metroBank.RoulletPlay(luck);
+		yield break;
+	}
+
+	// Token: 0x06005FCB RID: 24523 RVA: 0x001AF754 File Offset: 0x001AD954
+	private IEnumerator BankRoulletStartError(JsonRpcClient.Request request, string result, int code)
+	{
+		if (code == 53010)
+		{
+			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("7054"));
+		}
+		yield break;
+	}*/
