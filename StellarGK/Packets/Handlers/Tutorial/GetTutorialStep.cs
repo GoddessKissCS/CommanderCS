@@ -11,11 +11,11 @@ namespace StellarGK.Host.Handlers.Tutorial
 
         public override object Handle(GetTutorialStepRequest @params)
         {
-            UserInformationResponse.TutorialData TData = RequestTutorialData(GetSession());
+            UserInformationResponse.TutorialData tutorialData = RequestTutorialData(GetSession());
 
             TutorialStep tutorialStep = new()
             {
-                ttrl = TData
+                ttrl = tutorialData
             };
 
             ResponsePacket response = new()

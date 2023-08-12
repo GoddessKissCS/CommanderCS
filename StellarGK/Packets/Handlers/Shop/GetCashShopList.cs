@@ -8,6 +8,9 @@ namespace StellarGK.Host.Handlers.Shop
         public override object Handle(GetCashShopListRequest @params)
         {
 
+            // TODO
+            // NEED TO ADD A MONTHLY BUYABLE package
+
             List<CashShopData> csl = new() { };
             CashShopData c = new()
             {

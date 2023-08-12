@@ -1,4 +1,5 @@
-﻿using StellarGK.Logic.Protocols;
+﻿using StellarGK.Database;
+using StellarGK.Logic.Protocols;
 
 
 namespace StellarGK.Host.Handlers.Guild
@@ -8,46 +9,36 @@ namespace StellarGK.Host.Handlers.Guild
     {
         public override object Handle(GuildListRequest @params)
         {
-            List<RoGuild> guilds = new();
 
-            RoGuild guild = new()
-            {
-                apnt = 1,
-                cnt = 1,
-                emb = 1,
-                gidx = 1,
-                gnm = "Admin Lounge",
-                gtyp = 1,
-                lev = 1,
-                list = "",
-                mxCnt = 1,
-                ntc = "Hey",
-                world = 1,
-            };
-
-            guilds.Add(guild);
-
-            // TODO ADD SEARCH
-            // TODO
-            // GUILDLIST returns either guildlist or guildinfo + memberdata
-            // guildlist when you arent in a guild
-            // and guildinfo + memberdata when you are in a guild
-            // needs to be added 
-
-
-            Logic.Protocols.GuildInfo guildInfo = new()
+            Logic.Protocols.GuildInfo guildList = new()
             {
                 resource = null,
                 guildInfo = null,
                 memberData = null,
-                guildList = guilds,
+                guildList = null,
             };
 
             ResponsePacket response = new()
             {
                 id = BasePacket.Id,
-                result = guildInfo
+                result = guildList, 
             };
+
+            var user = GetGameProfile();
+
+            var userGuild = DatabaseManager.Guild.RequestGuild(user.guildId);
+
+            if(userGuild != null)
+            {
+                var memberData = DatabaseManager.Guild.RequestGuildMembers(user.guildId);
+
+                guildList.memberData = memberData;
+                guildList.guildInfo = userGuild;
+
+                return response;
+            }
+
+            guildList.guildList = DatabaseManager.Guild.GetAllGuilds(GetSession());
 
             return response;
         }

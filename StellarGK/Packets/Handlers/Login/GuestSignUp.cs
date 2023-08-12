@@ -26,9 +26,7 @@ namespace StellarGK.Host.Handlers.Sign
 
         private static string RequestSignUp(int platformid, int channel)
         {
-            var user = DatabaseManager.Account.CreateGuest(platformid, channel);
-
-            return user.name;
+            return DatabaseManager.Account.CreateGuest(platformid, channel).name;
         }
 
         public class GuestSignUpPacket

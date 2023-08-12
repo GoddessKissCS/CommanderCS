@@ -23,15 +23,12 @@ namespace StellarGK.Host
                 if (node is null)
                 {
                     return "{}";
-                    //throw new ArgumentNullException(nameof(node));
                 }
 
                 object response;
 
                 if (node is JsonArray array)
                 {
-                    // This only gets executed if it recived an array
-
                     var responses = new List<object>();
 
                     foreach (var item in array)

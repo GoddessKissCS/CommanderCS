@@ -45,6 +45,7 @@ namespace StellarGK.Host.Handlers.Sign
                 AccountScheme user = DatabaseManager.Account.FindByName(AccountName);
                 if (user.password == password_hash)
                 {
+                    DatabaseManager.Account.UpdateLoginTime(user.memberId);
                     signInP.mIdx = user.memberId;
                     signInP.tokn = user.token;
                     signInP.srv = user.lastServerLoggedIn;

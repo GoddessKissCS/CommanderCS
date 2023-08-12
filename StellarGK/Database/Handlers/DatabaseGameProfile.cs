@@ -123,6 +123,8 @@ namespace StellarGK.Database.Handlers
                 },
                 uno = uno.ToString(),
                 worldState = 0,
+                // result.worldState != -1;
+                // if exploration is finished id assume
                 lastLoginTime = 0,
                 userBadges = new()
                 {

@@ -4,9 +4,9 @@ using StellarGK.Database;
 namespace StellarGK.Host.Handlers.Sign
 {
     [Command(Id = CommandId.GuestSignIn)]
-    public class GuestSign : BaseCommandHandler<GuestSignRequest>
+    public class GuestSignIn : BaseCommandHandler<GuestSignInRequest>
     {
-        public override object Handle(GuestSignRequest @params)
+        public override object Handle(GuestSignInRequest @params)
         {
 
             SignInP SignInP = RequestSignIn(@params.uid);
@@ -53,7 +53,7 @@ namespace StellarGK.Host.Handlers.Sign
         }
     }
 
-    public class GuestSignRequest
+    public class GuestSignInRequest
     {
         [JsonPropertyName("uid")]
         public string uid { get; set; }

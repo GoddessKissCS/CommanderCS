@@ -25,7 +25,7 @@ namespace StellarGK.Host.Handlers.Login
 
             var user = DatabaseManager.GameProfile.GetOrCreate(@params.memberId, @params.world);
 
-            ErrorCode code = RequestLogin(@params, session);
+            var code = DatabaseManager.Account.RequestLogin(@params, session);
 
             if (code == ErrorCode.BannedOrSuspended || code == ErrorCode.UnableToJoin)
             {
@@ -78,20 +78,6 @@ namespace StellarGK.Host.Handlers.Login
             return response;
 
 
-        }
-
-        private static ErrorCode RequestLogin(LoginRequest @params, string session)
-        {
-            var user = DatabaseManager.Account.FindByUid(@params.memberId);
-            if (user.isBanned == true && user.isBanned != null)
-            {
-                return ErrorCode.BannedOrSuspended;
-            }
-            else
-            {
-                DatabaseManager.GameProfile.UpdateOnLogin(@params, session);
-                return ErrorCode.Success;
-            }
         }
 
         private class LoginPacket

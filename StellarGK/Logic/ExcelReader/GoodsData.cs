@@ -13,7 +13,7 @@ namespace StellarGK.Logic.ExcelReader
             return All.Where(avatar => avatar.serverFieldName == name).FirstOrDefault();
         }
 
-        public Dictionary<string, int> GetAllGoods()
+        public Dictionary<string, int> GetAllGoods(int count)
         {
             Dictionary<string, int> allGoods = new();
 
@@ -23,7 +23,7 @@ namespace StellarGK.Logic.ExcelReader
 
             foreach (var item in items)
             {
-                allGoods.Add(item.type.ToString(), 5);
+                allGoods.Add(item.type.ToString(), count);
             }
 
             return allGoods;

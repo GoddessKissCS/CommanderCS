@@ -16,7 +16,7 @@ namespace StellarGK.Commands
             // TODO UPDATE
             //DatabaseManager.Resources.UpdateExpAndLevel(accountId, exp, level);
 
-            Console.WriteLine($"Changed {args[0]}, exp and level too {exp} & {level}");
+            Console.WriteLine($"Changed {args[0]}, exp and level to {exp} & {level}");
 
         }
     }

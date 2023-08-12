@@ -13,6 +13,9 @@ namespace StellarGK.Host.Handlers.Server
             // TODO
             // needs to be reworked
 
+            // iterate through every server where i have a account
+            // if not just use nullserver
+
 
             ResponsePacket response = new();
 

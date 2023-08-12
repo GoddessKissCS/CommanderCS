@@ -11,8 +11,6 @@ namespace StellarGK.Database
 
         protected DatabaseTable(string collectionName)
         {
-            //Database.CreateCollection(collectionName);
-
             collection = Database.GetCollection<T>(collectionName);
         }
 

@@ -7,21 +7,21 @@ namespace StellarGK.Host.Handlers.UserTerm
     {
         public override object Handle(GetBadWordListRequest @params)
         {
-
             ResponsePacket response = new();
 
-            badwords badWord = new();
+            // TODO
+            // WILL BE A LIST OF BADWORDS LATER ON
 
-            Dictionary<string, List<string>> MasterBadWordList = new();
             List<string> en = new()
             {
                 "booooooobs",
             };
 
-
-            MasterBadWordList.Add("en", en);
-
-            badWord.word = MasterBadWordList;
+            badwords badWord = new()
+            {
+                word = new() {
+                {"en", en }
+            }};
 
             response.id = BasePacket.Id;
             response.result = badWord;

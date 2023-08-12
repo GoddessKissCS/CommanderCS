@@ -46,7 +46,7 @@ namespace StellarGK.Host.Handlers.Sign
 
             if (user == null)
             {
-                var newaccount = DatabaseManager.Account.Create(accountname, password, platformid, channel);
+                DatabaseManager.Account.Create(accountname, password, platformid, channel);
 
                 return ErrorCode.Success;
             }

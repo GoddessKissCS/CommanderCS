@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using StellarGK.Database.Schemes;
 using StellarGK.Host;
 using StellarGK.Tools;
+using StellarGK.Host.Handlers.Login;
 
 namespace StellarGK.Database.Handlers
 {
@@ -27,8 +28,6 @@ namespace StellarGK.Database.Handlers
                 token = Guid.NewGuid().ToString(),
                 password = Crypto.ComputeSha256Hash(password),
                 channel = channel,
-                // result.worldState != -1;
-                // if exploration is finished id assume
                 creationTime = Constants.CurrentTimeStamp,
                 lastLoginTime = Constants.CurrentTimeStamp,
                 isBanned = null,
@@ -158,5 +157,20 @@ namespace StellarGK.Database.Handlers
             collection.UpdateOne(filter, update);
 
         }
+
+        public ErrorCode RequestLogin(LoginRequest @params, string session)
+        {
+            var user = FindByUid(@params.memberId);
+            if (user.isBanned == true && user.isBanned != null)
+            {
+                return ErrorCode.BannedOrSuspended;
+            }
+            else
+            {
+                DatabaseManager.GameProfile.UpdateOnLogin(@params, session);
+                return ErrorCode.Success;
+            }
+        }
+
     }
 }

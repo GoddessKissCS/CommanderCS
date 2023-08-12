@@ -10,6 +10,7 @@ namespace StellarGK.Database
         public static DatabaseDeviceCode DeviceCode { get; } = new();
         public static DatabaseServer Server { get; } = new();
         public static DatabaseGuild Guild { get; } = new();
+        public static DatabaseGuildApplication GuildApplication { get; } = new();
         public static DatabaseGameVersion GameVersionInfo { get; } = new();
         public static DatabaseGameTableVersion GameTableVersion { get; } = new();
         public static DatabaseGameProfile GameProfile { get; } = new();

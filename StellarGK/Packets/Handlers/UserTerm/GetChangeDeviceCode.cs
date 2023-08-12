@@ -26,7 +26,6 @@ namespace StellarGK.Host.Handlers.UserTerm
             // TODO - ADDING CHECK ON IF DEVICECODE IS OLDER THAN 7 DAYS I SUPPOSE
             // TODO ADDS SOME OTHER CHECKS ASWELL
 
-
             try
             {
                 if (devicechange == null)
