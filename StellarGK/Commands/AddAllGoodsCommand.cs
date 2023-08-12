@@ -8,7 +8,7 @@ namespace StellarGK.Commands
     {
         public override void Run(string[] args)
         {
-            var itemData = GoodsData.GetInstance().GetAllGoods();
+            var itemData = GoodsData.GetInstance().GetAllGoods(1);
 
             int accountId = int.Parse(args[0]);
 

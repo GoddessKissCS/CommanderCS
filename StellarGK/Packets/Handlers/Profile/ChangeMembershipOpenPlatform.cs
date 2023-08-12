@@ -37,6 +37,36 @@ namespace StellarGK.Packets.Handlers.Profile
         }
     }
 
+    /*
+     * 
+    [JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1213", true, true)]
+    public void ChangeMembershipOpenPlatform(string tokn, Platform plfm, string puid, int ch)
+    {
+    }
+
+    private IEnumerator ChangeMembershipOpenPlatformResult(JsonRpcClient.Request request, string result)
+    {
+        string text = this._FindRequestProperty(request, "tokn");
+        Platform platform = (Platform)int.Parse(this._FindRequestProperty(request, "plfm"));
+        PlayerPrefs.SetString("MemberID", this.localUser.platformUserInfo);
+        PlayerPrefs.SetString("MemberPW", null);
+        PlayerPrefs.SetInt("MemberPlatform", (int)platform);
+        LocalStorage.RemoveLoginData(PlayerPrefs.GetString("GuestID"));
+        PlayerPrefs.SetString("GuestID", null);
+        LocalStorage.SaveLoginData(this.localUser.platformUserInfo, null, (int)platform);
+        if (platform == Platform.FaceBook)
+        {
+            this.RequestFBSignIn(text);
+        }
+        else if (platform == Platform.Google)
+        {
+            this.RequestGoogleSignIn(text);
+        }
+        yield break;
+    }
+
+    */
+
 
     public class ChangeMembershipOpenPlatformRequest
     {

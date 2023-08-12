@@ -1,4 +1,6 @@
-﻿using StellarGK.Database;
+﻿using System.Text.Json.Serialization;
+using Newtonsoft.Json.Linq;
+using StellarGK.Database;
 using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Battle
@@ -9,20 +11,20 @@ namespace StellarGK.Host.Handlers.Battle
         public override object Handle(BattleOutRequest @params)
         {
 
-            UserInformationResponse.BattleResult battleResult = new()
-            {
-                __resource = DatabaseManager.GameProfile.UserResourcesFromSession(GetSession()),
-            };
-
-            throw new Exception();
-
-
+            return "{}";
         }
 
     }
 
     public class BattleOutRequest
     {
-
+        [JsonPropertyName("type")]
+        public int type { get; set; }
+        [JsonPropertyName("checkSum")]
+        public string checkSum { get; set; }
+        [JsonPropertyName("info")]
+        public JArray info { get; set; }
+        [JsonPropertyName("result")]
+        public JArray result { get; set; }
     }
 }

@@ -33,6 +33,8 @@ namespace StellarGK.Host
         InappropriateWords = 20014,
         InvalidDeviceCode = 10024,
         NotEnoughResources = 20001,
-        CommanderCantLevelHigherThanUser = 20003
+        CommanderCantLevelHigherThanUser = 20003,
+        TimedOut = 70003,
+        UnknownErrorCode_1 = 30003,
     }
 }
