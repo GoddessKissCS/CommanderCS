@@ -2,8 +2,6 @@
 using System.Text.Json.Serialization;
 using StellarGK.Database;
 using StellarGK.Database.Schemes;
-using StellarGK.Logic.Protocols;
-using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 
 namespace StellarGK.Host
 {
@@ -35,9 +33,6 @@ namespace StellarGK.Host
     {
         public BasePacket BasePacket { get; set; }
         public abstract object Handle(TParams @params);
-
-        // This is a example
-        // THis could be reused in all command handlers
         public string GetSession()
         {
             return BasePacket.Session;

@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Event
 {
     public class GetEventBattleGachaInfo
     {
-        
+
     }
 }
 /*	// Token: 0x0600613C RID: 24892 RVA: 0x000120F8 File Offset: 0x000102F8

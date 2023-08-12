@@ -27,7 +27,7 @@ namespace StellarGK.Host.Handlers.Tutorial
 
         private static UserInformationResponse.TutorialData RequestTutorialData(string session, bool skipTutorial)
         {
-            UserInformationResponse.TutorialData tutorialData = new() { skip = skipTutorial , step = 0};
+            UserInformationResponse.TutorialData tutorialData = new() { skip = skipTutorial, step = 0 };
 
             if (skipTutorial)
             {

@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Inventory
 {
     public class GetGroupReward
     {
-        
+
     }
 }
 /*	// Token: 0x060060E8 RID: 24808 RVA: 0x000120F8 File Offset: 0x000102F8

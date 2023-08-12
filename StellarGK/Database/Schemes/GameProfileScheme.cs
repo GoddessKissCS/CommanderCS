@@ -1,10 +1,10 @@
-using System.Text.Json.Serialization;
 using MongoDB.Bson;
 using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Database.Schemes
 {
-    public class GameProfileScheme {
+    public class GameProfileScheme
+    {
 
         public ObjectId Id { get; set; }
         public int memberId { get; set; }
@@ -14,10 +14,10 @@ namespace StellarGK.Database.Schemes
         public string session { get; set; }
         public string uno { get; set; }
         public int lastStage { get; set; }
-        public bool notifaction { get; set; }   
+        public bool notifaction { get; set; }
         public int resetDateTime { get; set; }
         public int lastLoginTime { get; set; }
-        public UserDevice userDevice { get; set;}
+        public UserDevice userDevice { get; set; }
         public UserBattleStatistics userStatistics { get; set; }
         public UserResources userResources { get; set; }
         public UserInventory userInventory { get; set; }
@@ -31,10 +31,11 @@ namespace StellarGK.Database.Schemes
         public Dictionary<string, DiapatchCommanderInfo> dispatchedCommanders { get; set; }
         public List<UserInformationResponse.VipRechargeData> vipRechargeData { get; set; }
         public Dictionary<string, int> boughtCashShopItems { get; set; }
-
+        public List<BlockUser> blockedUsers { get; set; }
     }
 
-    public class UserDevice {
+    public class UserDevice
+    {
         public int platformId { get; set; }
         public string device { get; set; }
         public string deviceid { get; set; }
@@ -49,7 +50,8 @@ namespace StellarGK.Database.Schemes
         public string gpid { get; set; }
     }
 
-    public class UserBattleStatistics {
+    public class UserBattleStatistics
+    {
         public int totalGold { get; set; }
         public int pveWinCount { get; set; }
         public int pveLoseCount { get; set; }
@@ -80,7 +82,8 @@ namespace StellarGK.Database.Schemes
         public int weaponInventoryCount { get; set; }
     }
 
-    public class UserResources {
+    public class UserResources
+    {
         public string nickname { get; set; }
         public int annCoin { get; set; }
         public int blackChallenge { get; set; }
@@ -122,7 +125,8 @@ namespace StellarGK.Database.Schemes
         public int worldDuelUpgradeCoin { get; set; }
     }
 
-    public class UserInventory {
+    public class UserInventory
+    {
         public Dictionary<string, int> medalData { get; set; }
         public Dictionary<string, int> foodData { get; set; }
         public Dictionary<string, int> groupItemData { get; set; }

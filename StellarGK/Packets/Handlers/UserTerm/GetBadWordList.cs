@@ -21,7 +21,8 @@ namespace StellarGK.Host.Handlers.UserTerm
             {
                 word = new() {
                 {"en", en }
-            }};
+            }
+            };
 
             response.id = BasePacket.Id;
             response.result = badWord;

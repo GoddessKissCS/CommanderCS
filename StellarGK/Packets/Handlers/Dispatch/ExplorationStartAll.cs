@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Dispatch
 {
     public class ExplorationStartAll
     {
-        
+
     }
 }
 /*	// Token: 0x060060F7 RID: 24823 RVA: 0x000120F8 File Offset: 0x000102F8

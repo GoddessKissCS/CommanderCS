@@ -34,7 +34,7 @@ namespace StellarGK.Host.Handlers.Server
 
             List<ServerData.ServerInfo> serverInfo = new()
             {
-                SIFO, 
+                SIFO,
                 nullServer
             };
 

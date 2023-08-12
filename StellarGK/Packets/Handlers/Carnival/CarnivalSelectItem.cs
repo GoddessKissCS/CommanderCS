@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Carnival
 {
     public class CarnivalSelectItem
     {
-        
+
     }
 }
 /*	// Token: 0x060060C5 RID: 24773 RVA: 0x000120F8 File Offset: 0x000102F8

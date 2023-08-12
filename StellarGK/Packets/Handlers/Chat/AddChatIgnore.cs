@@ -1,15 +1,57 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text.Json.Serialization;
+using StellarGK.Database;
+using StellarGK.Host;
+using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Packets.Handlers.Chat
 {
-    public class AddChatIgnore
+    [Command(Id = CommandId.AddChatIgnore)]
+    public class AddChatIgnore : BaseCommandHandler<AddChatIgnoreRequest>
     {
-        
+        public override object Handle(AddChatIgnoreRequest @params)
+        {
+
+            BlockUser blockUser = new()
+            {
+                channel = @params.ch,
+                nickName = @params.nick,
+                thumbnail = @params.thumb,
+                uno = @params.uno,
+            };
+
+            bool YesOrNo = DatabaseManager.GameProfile.AddBlockedUser(blockUser, GetSession());
+
+            ResponsePacket response = new()
+            {
+                result = blockUser,
+                id = BasePacket.Id
+            };
+
+            return response;
+        }
+
+
     }
+
+    public class AddChatIgnoreRequest
+    {
+
+        [JsonPropertyName("ch")]
+        public int ch { get; set; }
+        [JsonPropertyName("uno")]
+        public string uno { get; set; }
+        [JsonPropertyName("nick")]
+        public string nick { get; set; }
+        [JsonPropertyName("thumb")]
+        public string thumb { get; set; }
+    }
+
 }
+
+
+
+
+
 /*	// Token: 0x06005FC3 RID: 24515 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1301", true, true)]
 	public void AddChatIgnore(int ch, string uno, string nick, string thumb)

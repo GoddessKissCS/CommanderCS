@@ -1,6 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
-using StellarGK.Host.Handlers.Profile;
 using StellarGK.Host;
 using StellarGK.Logic.Enums;
 

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using StellarGK.Database.Schemes;
 using StellarGK.Host.Handlers.Login;
 using StellarGK.Logic.ExcelReader;
@@ -150,10 +149,8 @@ namespace StellarGK.Database.Handlers
                     ercnt = 0,
                     iftw = 0,
                 },
-                vipRechargeData = new()
-                {
-                }
-                
+                vipRechargeData = new() { },
+                blockedUsers = new() { },
             };
 
             collection.InsertOne(user);
@@ -188,7 +185,7 @@ namespace StellarGK.Database.Handlers
                        .Where(d => d.session == session)
                        .FirstOrDefault();
 
-            if(tryUser == null)
+            if (tryUser == null)
             {
 
             }
@@ -319,7 +316,7 @@ namespace StellarGK.Database.Handlers
             collection.UpdateOne(filter, update);
 
         }
-        public void UpdateGold(string session, int gold, bool useAddition) 
+        public void UpdateGold(string session, int gold, bool useAddition)
         {
             var user = FindBySession(session);
 
@@ -431,7 +428,7 @@ namespace StellarGK.Database.Handlers
             return FindBySession(session).tutorialData;
         }
 
-        public bool ChangeThumbnail(string session,int idx)
+        public bool ChangeThumbnail(string session, int idx)
         {
 
             // TODO UPDATING
@@ -468,6 +465,41 @@ namespace StellarGK.Database.Handlers
             var update = Builders<GameProfileScheme>.Update.Set("userResources.nickname", accountName);
 
             collection.UpdateOne(filter, update);
+        }
+
+        public bool AddBlockedUser(BlockUser toBeBlocked, string session)
+        {
+
+            var user = DatabaseManager.GameProfile.FindBySession(session);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Id", user.memberId);
+            var update = Builders<GameProfileScheme>.Update.Push("blockedUsers", toBeBlocked);
+
+            var updateResult = collection.UpdateOne(filter, update);
+
+            if (updateResult.ModifiedCount > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool DelBlockedUser(string session, int ch, string uno)
+        {
+            var user = DatabaseManager.GameProfile.FindBySession(session);
+
+            var filter = Builders<GameProfileScheme>.Filter.Eq("memberId", user.memberId);
+            var update = Builders<GameProfileScheme>.Update.PullFilter("blockedUsers",
+                         Builders<BlockUser>.Filter.And(
+                         Builders<BlockUser>.Filter.Eq("ch", ch),
+                         Builders<BlockUser>.Filter.Eq("uno", uno)
+                                                             ));
+
+            var updateResult = collection.UpdateOne(filter, update);
+
+            if (updateResult.ModifiedCount > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
     }

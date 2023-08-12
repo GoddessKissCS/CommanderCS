@@ -16,7 +16,6 @@ namespace StellarGK.Host.Handlers.Dormitory
                 itemAdvanced = dormitoryInfo.itemAdvanced,
                 itemWallpaper = dormitoryInfo.itemWallpaper,
                 costumeHead = dormitoryInfo.costumeHead,
-
                 resource = dormitoryInfo.dormitoryResource,
                 info = dormitoryInfo.dormitoryInfo
             };

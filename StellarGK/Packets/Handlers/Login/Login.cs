@@ -20,7 +20,7 @@ namespace StellarGK.Host.Handlers.Login
 
             //@params.world
             // first we need to check if the world has a profile if not create a new one
-            
+
             string session = Constants.Session;
 
             var user = DatabaseManager.GameProfile.GetOrCreate(@params.memberId, @params.world);
@@ -55,7 +55,7 @@ namespace StellarGK.Host.Handlers.Login
 
                 resetRemain = user.resetDateTime, // should be set?
 
-                equipItem = user.userInventory.equipItem,            
+                equipItem = user.userInventory.equipItem,
 
                 donHaveCommCostumeData = user.userInventory.donHaveCommCostumeData,
                 completeRewardGroupIdx = user.completeRewardGroupIdx,

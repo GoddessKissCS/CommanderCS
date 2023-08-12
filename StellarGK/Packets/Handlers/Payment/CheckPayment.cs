@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Payment
 {
     public class CheckPayment
     {
-        
+
     }
 }
 /*	// Token: 0x0600600C RID: 24588 RVA: 0x000120F8 File Offset: 0x000102F8

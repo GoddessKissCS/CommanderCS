@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Guild
 {
     public class FireSubMaster
     {
-        
+
     }
 }
 /*	// Token: 0x06006049 RID: 24649 RVA: 0x000120F8 File Offset: 0x000102F8

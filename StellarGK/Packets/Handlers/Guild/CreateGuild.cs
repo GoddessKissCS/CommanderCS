@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Guild
 {
     public class CreateGuild
     {
-        
+
     }
 }
 /*	// Token: 0x0600601F RID: 24607 RVA: 0x000492CD File Offset: 0x000474CD

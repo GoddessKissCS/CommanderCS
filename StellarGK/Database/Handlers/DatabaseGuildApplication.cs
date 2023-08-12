@@ -1,6 +1,5 @@
 using MongoDB.Driver;
 using StellarGK.Database.Schemes;
-using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Database.Handlers
 {
@@ -38,7 +37,7 @@ namespace StellarGK.Database.Handlers
 
             if (tryGuild != null) { return "reg"; }
 
-            return string.Empty; 
+            return string.Empty;
 
         }
 

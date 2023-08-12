@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Replay
 {
     public class GetReplayList
     {
-        
+
     }
 }
 /*	// Token: 0x06005FE3 RID: 24547 RVA: 0x000120F8 File Offset: 0x000102F8

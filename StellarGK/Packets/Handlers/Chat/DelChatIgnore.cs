@@ -1,14 +1,35 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text.Json.Serialization;
+using StellarGK.Database;
+using StellarGK.Host;
 
 namespace StellarGK.Packets.Handlers.Chat
 {
-    public class DelChatIgnore
+    [Command(Id = CommandId.DelChatIgnore)]
+    public class DelChatIgnore : BaseCommandHandler<DelChatIgnoreRequest>
     {
-        
+        public override object Handle(DelChatIgnoreRequest @params)
+        {
+            bool YesOrNo = DatabaseManager.GameProfile.DelBlockedUser(GetSession(), @params.ch, @params.uno);
+
+            ResponsePacket response = new()
+            {
+                result = YesOrNo,
+                id = BasePacket.Id
+            };
+
+            return response;
+        }
     }
+
+    public class DelChatIgnoreRequest
+    {
+
+        [JsonPropertyName("ch")]
+        public int ch { get; set; }
+        [JsonPropertyName("uno")]
+        public string uno { get; set; }
+    }
+
 }
 /*	// Token: 0x06005FC5 RID: 24517 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1302", true, true)]

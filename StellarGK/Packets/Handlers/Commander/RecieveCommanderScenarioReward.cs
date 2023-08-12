@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Commander
 {
     public class RecieveCommanderScenarioReward
     {
-        
+
     }
 }
 /*	// Token: 0x060060E2 RID: 24802 RVA: 0x000120F8 File Offset: 0x000102F8

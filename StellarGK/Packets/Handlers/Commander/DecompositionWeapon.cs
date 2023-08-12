@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Commander
 {
     public class DecompositionWeapon
     {
-        
+
     }
 }
 /*	// Token: 0x06006178 RID: 24952 RVA: 0x000120F8 File Offset: 0x000102F8

@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Event
 {
     public class GetRotationBannerInfo
     {
-        
+
     }
 }
 /*	// Token: 0x06006115 RID: 24853 RVA: 0x000120F8 File Offset: 0x000102F8

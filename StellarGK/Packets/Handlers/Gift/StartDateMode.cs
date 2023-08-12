@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Gift
 {
     public class StartDateMode
     {
-        
+
     }
 }
 /*	// Token: 0x060060D3 RID: 24787 RVA: 0x000120F8 File Offset: 0x000102F8

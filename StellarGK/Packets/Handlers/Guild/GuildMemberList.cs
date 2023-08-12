@@ -1,5 +1,4 @@
-﻿using System;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Guild
@@ -16,7 +15,7 @@ namespace StellarGK.Host.Handlers.Guild
 
             var user = GetGameProfile();
 
-            if(user.guildId == null)
+            if (user.guildId == null)
             {
                 response.result = null;
                 return response;

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using StellarGK.Database.Schemes;
 using StellarGK.Logic.Protocols;
 
@@ -28,7 +27,7 @@ namespace StellarGK.Database.Handlers
 
         public UserInformationResponse.UserGuild RequestGuild(int? guildId)
         {
-            if(guildId == null)
+            if (guildId == null)
             {
                 return null;
             }
@@ -88,7 +87,7 @@ namespace StellarGK.Database.Handlers
 
             List<RoGuild> returnGuilds = new();
 
-            if(allGuilds == null)
+            if (allGuilds == null)
             {
                 return null;
             }

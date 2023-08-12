@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Dormitory
 {
     public class ArrangeDormitoryDecoration
     {
-        
+
     }
 }
 /*	// Token: 0x060061B7 RID: 25015 RVA: 0x000120F8 File Offset: 0x000102F8

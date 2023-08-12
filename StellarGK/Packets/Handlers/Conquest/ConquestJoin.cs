@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Conquest
 {
     public class ConquestJoin
     {
-        
+
     }
 }
 /*	// Token: 0x0600605A RID: 24666 RVA: 0x000120F8 File Offset: 0x000102F8

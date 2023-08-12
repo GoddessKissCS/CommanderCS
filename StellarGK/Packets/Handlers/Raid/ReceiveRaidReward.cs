@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Raid
 {
     public class ReceiveRaidReward
     {
-        
+
     }
 }
 /*	// Token: 0x06005FF7 RID: 24567 RVA: 0x000120F8 File Offset: 0x000102F8

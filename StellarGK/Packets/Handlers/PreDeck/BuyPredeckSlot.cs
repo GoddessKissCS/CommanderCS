@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.PreDeck
 {
     public class BuyPredeckSlot
     {
-        
+
     }
 }
 /*	// Token: 0x0600614A RID: 24906 RVA: 0x001B1710 File Offset: 0x001AF910

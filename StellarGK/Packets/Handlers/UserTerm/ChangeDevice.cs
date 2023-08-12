@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.UserTerm
 {
     public class ChangeDevice
     {
-        
+
     }
 }
 /*	// Token: 0x060060D1 RID: 24785 RVA: 0x000120F8 File Offset: 0x000102F8

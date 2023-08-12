@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Commander
 {
     public class UpgradeWeapon
     {
-        
+
     }
 }
 /*	// Token: 0x0600617B RID: 24955 RVA: 0x000120F8 File Offset: 0x000102F8

@@ -1,7 +1,5 @@
 ﻿using System.Text.Json.Serialization;
 using Newtonsoft.Json.Linq;
-using StellarGK.Database;
-using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Battle
 {

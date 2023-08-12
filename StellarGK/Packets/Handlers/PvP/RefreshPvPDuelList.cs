@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.PvP
 {
     public class RefreshPvPDuelList
     {
-        
+
     }
 }
 /*	// Token: 0x06005F83 RID: 24451 RVA: 0x000120F8 File Offset: 0x000102F8

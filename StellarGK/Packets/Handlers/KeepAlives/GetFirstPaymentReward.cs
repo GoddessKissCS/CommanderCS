@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.KeepAlives
 {
     public class GetFirstPaymentReward
     {
-        
+
     }
 }
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6108", true, true)]

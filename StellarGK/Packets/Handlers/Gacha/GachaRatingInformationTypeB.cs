@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Gacha
 {
     public class GachaRatingInformationTypeB
     {
-        
+
     }
 }
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6316", true, true)]

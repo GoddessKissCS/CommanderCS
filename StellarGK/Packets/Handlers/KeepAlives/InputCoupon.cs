@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.KeepAlives
 {
     public class InputCoupon
     {
-        
+
     }
 }
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8116", true, true)]

@@ -44,7 +44,9 @@ namespace StellarGK.Host.Handlers.Commander
 
                 DatabaseManager.GameProfile.UpdateGold(session, commanderRankData.gold, false);
 
-            } else {
+            }
+            else
+            {
 
                 user.userInventory.medalData.TryGetValue(cid, out var commanderMedals);
 

@@ -60,7 +60,8 @@ namespace StellarGK.Host.Handlers.Nickname
                 DatabaseManager.GameProfile.UpdateNickName(sess, nickname);
 
                 return ErrorCode.Success;
-            } else if (user.userResources.nickname == nickname)
+            }
+            else if (user.userResources.nickname == nickname)
             {
                 return ErrorCode.AlreadyInUse;
             }

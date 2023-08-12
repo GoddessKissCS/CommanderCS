@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Cooperate
 {
     public class CooperateBattleInfo
     {
-        
+
     }
 }
 /*	// Token: 0x06006102 RID: 24834 RVA: 0x000120F8 File Offset: 0x000102F8

@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.InfinityBattle
 {
     public class StartInfinityBattleScenario
     {
-        
+
     }
 }
 /*	// Token: 0x06006193 RID: 24979 RVA: 0x000120F8 File Offset: 0x000102F8

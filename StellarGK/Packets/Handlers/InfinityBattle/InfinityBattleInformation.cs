@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.InfinityBattle
 {
     public class InfinityBattleInformation
     {
-        
+
     }
 }/*	// Token: 0x0600618A RID: 24970 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8700", true, true)]

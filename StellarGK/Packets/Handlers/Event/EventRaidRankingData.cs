@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Event
 {
     public class EventRaidRankingData
     {
-        
+
     }
 }
 /*	// Token: 0x06006128 RID: 24872 RVA: 0x000120F8 File Offset: 0x000102F8

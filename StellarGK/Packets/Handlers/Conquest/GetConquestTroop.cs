@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Conquest
 {
     public class GetConquestTroop
     {
-        
+
     }
 }
 /*	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7504", true, true)]

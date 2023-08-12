@@ -43,8 +43,8 @@ namespace StellarGK.Host.Handlers.Gacha
 
     public class GetVipBuyCountRequest
     {
-		[JsonPropertyName("type")]
-		public List<string> type { get; set; }
+        [JsonPropertyName("type")]
+        public List<string> type { get; set; }
 
         [JsonPropertyName("renewType")]
         public int renewType { get; set; }

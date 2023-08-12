@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Annihilation
 {
     public class StartAnnihilation
     {
-        
+
     }
 }
 /*	// Token: 0x0600601B RID: 24603 RVA: 0x000120F8 File Offset: 0x000102F8

@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Situation
 {
     public class SituationInformation
     {
-        
+
     }
 }
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3202", true, true)]

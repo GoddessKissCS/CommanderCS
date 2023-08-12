@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Duel
 {
     public class ReceiveDuelPointReward
     {
-        
+
     }
 }
 /*	// Token: 0x06005FF5 RID: 24565 RVA: 0x000120F8 File Offset: 0x000102F8

@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Guild
 {
     public class CancelGuildJoin
     {
-        
+
     }
 }
 /*	// Token: 0x0600602A RID: 24618 RVA: 0x000120F8 File Offset: 0x000102F8

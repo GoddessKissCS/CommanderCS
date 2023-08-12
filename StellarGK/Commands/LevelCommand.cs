@@ -1,5 +1,4 @@
-﻿using StellarGK.Database;
-using StellarGK.Logic.ExcelReader;
+﻿using StellarGK.Logic.ExcelReader;
 
 namespace StellarGK.Commands
 {

@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.Chat
 {
     public class SendGuildMsgChatting
     {
-        
+
     }
 }
 /*	// Token: 0x06005FB6 RID: 24502 RVA: 0x000120F8 File Offset: 0x000102F8

@@ -1,5 +1,4 @@
 ﻿using StellarGK.Database;
-using StellarGK.Logic.Protocols;
 
 
 namespace StellarGK.Host.Handlers.Guild
@@ -21,14 +20,14 @@ namespace StellarGK.Host.Handlers.Guild
             ResponsePacket response = new()
             {
                 id = BasePacket.Id,
-                result = guildList, 
+                result = guildList,
             };
 
             var user = GetGameProfile();
 
             var userGuild = DatabaseManager.Guild.RequestGuild(user.guildId);
 
-            if(userGuild != null)
+            if (userGuild != null)
             {
                 var memberData = DatabaseManager.Guild.RequestGuildMembers(user.guildId);
 

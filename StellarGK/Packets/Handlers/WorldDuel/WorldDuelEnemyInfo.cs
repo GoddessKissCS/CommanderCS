@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace StellarGK.Packets.Handlers.WorldDuel
 {
     public class WorldDuelEnemyInfo
     {
-        
+
     }
 }
 /*	// Token: 0x0600615A RID: 24922 RVA: 0x000120F8 File Offset: 0x000102F8

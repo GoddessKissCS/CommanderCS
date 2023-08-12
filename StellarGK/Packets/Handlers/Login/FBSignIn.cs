@@ -1,6 +1,5 @@
 ﻿using System.Text.Json.Serialization;
 using StellarGK.Host;
-using StellarGK.Host.Handlers.Sign;
 
 namespace StellarGK.Packets.Handlers.Login
 {

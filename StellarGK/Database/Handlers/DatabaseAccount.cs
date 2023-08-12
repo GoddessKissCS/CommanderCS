@@ -1,10 +1,8 @@
-﻿using System.Threading.Channels;
-using System;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using StellarGK.Database.Schemes;
 using StellarGK.Host;
-using StellarGK.Tools;
 using StellarGK.Host.Handlers.Login;
+using StellarGK.Tools;
 
 namespace StellarGK.Database.Handlers
 {
@@ -24,7 +22,7 @@ namespace StellarGK.Database.Handlers
             AccountScheme user = new()
             {
                 name = name,
-                memberId = memberId,              
+                memberId = memberId,
                 token = Guid.NewGuid().ToString(),
                 password = Crypto.ComputeSha256Hash(password),
                 channel = channel,
@@ -32,7 +30,6 @@ namespace StellarGK.Database.Handlers
                 lastLoginTime = Constants.CurrentTimeStamp,
                 isBanned = null,
                 banReason = null,
-                blockedUsers = new() { },
                 clearance = Clearance.Player,
                 lastServerLoggedIn = 1,
             };
@@ -61,7 +58,6 @@ namespace StellarGK.Database.Handlers
                 lastLoginTime = Constants.CurrentTimeStamp,
                 isBanned = null,
                 banReason = null,
-                blockedUsers = new() { },
                 clearance = Clearance.Guest,
                 lastServerLoggedIn = 1,
             };
