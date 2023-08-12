@@ -9,11 +9,11 @@ namespace StellarGK.Host.Handlers.Event
         {
             ResponsePacket response = new();
 
-            GetPlugEventInfoPacket plugEventInfo = new();
-
-
-            plugEventInfo.cmt = new List<int>() { };
-            plugEventInfo.pst = new List<int>() { };
+            GetPlugEventInfoPacket plugEventInfo = new()
+            {
+                cmt = new List<int>() { },
+                pst = new List<int>() { }
+            };
 
             response.id = BasePacket.Id;
             response.result = plugEventInfo;

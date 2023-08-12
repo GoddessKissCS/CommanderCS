@@ -11,8 +11,6 @@ namespace StellarGK.Database.Handlers
     public class DatabaseGameProfile : DatabaseTable<GameProfileScheme>
     {
         public DatabaseGameProfile() : base("GameProfile") { }
-
-
         public GameProfileScheme? GetOrCreate(int memberId, int server)
         {
             var tryUser = collection.AsQueryable()
@@ -149,7 +147,11 @@ namespace StellarGK.Database.Handlers
                     grp = 0,
                     ercnt = 0,
                     iftw = 0,
+                },
+                vipRechargeData = new()
+                {
                 }
+                
             };
 
             collection.InsertOne(user);

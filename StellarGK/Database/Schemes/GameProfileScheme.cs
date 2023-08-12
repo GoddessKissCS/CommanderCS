@@ -29,7 +29,7 @@ namespace StellarGK.Database.Schemes
         public List<int> completeRewardGroupIdx { get; set; }
         public Dictionary<string, List<int>> sweepClearData { get; set; }
         public Dictionary<string, DiapatchCommanderInfo> dispatchedCommanders { get; set; }
-
+        public List<UserInformationResponse.VipRechargeData> vipRechargeData { get; set; }
     }
 
     public class UserDevice {

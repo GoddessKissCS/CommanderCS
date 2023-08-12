@@ -85,7 +85,7 @@ namespace StellarGK
                 KeepAliveInterval = TimeSpan.FromMilliseconds(1000),
             };
 
-            app.UseWebSockets(wsOptions);
+            //app.UseWebSockets(wsOptions);
 
             //app.MapGet("/chat.php", async (HttpContext context) =>
             //{
@@ -140,7 +140,7 @@ namespace StellarGK
 
             //app.UseAuthorization();
 
-            DatabaseManager.FirstCreate();
+            //DatabaseManager.FirstCreate();
 
             app.Run();
         }
