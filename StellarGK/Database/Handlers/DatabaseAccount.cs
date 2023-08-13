@@ -2,6 +2,7 @@
 using StellarGK.Database.Schemes;
 using StellarGK.Host;
 using StellarGK.Host.Handlers.Login;
+using StellarGK.Logic.Protocols;
 using StellarGK.Tools;
 
 namespace StellarGK.Database.Handlers
@@ -32,6 +33,7 @@ namespace StellarGK.Database.Handlers
                 banReason = null,
                 clearance = Clearance.Player,
                 lastServerLoggedIn = 1,
+                blockedUsers = new() { },
             };
 
             DatabaseManager.Dormitory.Create(memberId);
@@ -60,6 +62,7 @@ namespace StellarGK.Database.Handlers
                 banReason = null,
                 clearance = Clearance.Guest,
                 lastServerLoggedIn = 1,
+                blockedUsers = new() { },
             };
 
             collection.InsertOne(user);
@@ -166,6 +169,41 @@ namespace StellarGK.Database.Handlers
                 DatabaseManager.GameProfile.UpdateOnLogin(@params, session);
                 return ErrorCode.Success;
             }
+        }
+
+        public bool AddBlockedUser(BlockUser toBeBlocked, string session)
+        {
+
+            var user = DatabaseManager.GameProfile.FindBySession(session);
+            var filter = Builders<AccountScheme>.Filter.Eq("Id", user.memberId);
+            var update = Builders<AccountScheme>.Update.Push("blockedUsers", toBeBlocked);
+
+            var updateResult = collection.UpdateOne(filter, update);
+
+            if (updateResult.ModifiedCount > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool DelBlockedUser(string session, int ch, string uno)
+        {
+            var user = DatabaseManager.GameProfile.FindBySession(session);
+
+            var filter = Builders<AccountScheme>.Filter.Eq("memberId", user.memberId);
+            var update = Builders<AccountScheme>.Update.PullFilter("blockedUsers",
+                         Builders<BlockUser>.Filter.And(
+                         Builders<BlockUser>.Filter.Eq("ch", ch),
+                         Builders<BlockUser>.Filter.Eq("uno", uno)
+                                                             ));
+
+            var updateResult = collection.UpdateOne(filter, update);
+
+            if (updateResult.ModifiedCount > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
     }

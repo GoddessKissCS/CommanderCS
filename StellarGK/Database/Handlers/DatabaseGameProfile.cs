@@ -150,7 +150,6 @@ namespace StellarGK.Database.Handlers
                     iftw = 0,
                 },
                 vipRechargeData = new() { },
-                blockedUsers = new() { },
             };
 
             collection.InsertOne(user);
@@ -430,18 +429,15 @@ namespace StellarGK.Database.Handlers
 
         public bool ChangeThumbnail(string session, int idx)
         {
-
-            // TODO UPDATING
-
             int id = CommanderCostumeData.GetInstance().FromId(idx).ctid;
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("session", session);
 
             var update = Builders<GameProfileScheme>.Update.Set("userResources.thumbnailId", id);
 
-            collection.UpdateOne(filter, update);
+            var updateResult =  collection.UpdateOne(filter, update);
 
-            return true;
+            return updateResult.ModifiedCount > 0;
 
         }
 
@@ -482,14 +478,14 @@ namespace StellarGK.Database.Handlers
             }
             return false;
         }
-        public bool DelBlockedUser(string session, int ch, string uno)
+        public bool DelBlockedUser(string session, int channel, string uno)
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("memberId", user.memberId);
             var update = Builders<GameProfileScheme>.Update.PullFilter("blockedUsers",
                          Builders<BlockUser>.Filter.And(
-                         Builders<BlockUser>.Filter.Eq("ch", ch),
+                         Builders<BlockUser>.Filter.Eq("ch", channel),
                          Builders<BlockUser>.Filter.Eq("uno", uno)
                                                              ));
 

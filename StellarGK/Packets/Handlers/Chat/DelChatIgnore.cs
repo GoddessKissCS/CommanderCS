@@ -9,7 +9,7 @@ namespace StellarGK.Packets.Handlers.Chat
     {
         public override object Handle(DelChatIgnoreRequest @params)
         {
-            bool YesOrNo = DatabaseManager.GameProfile.DelBlockedUser(GetSession(), @params.ch, @params.uno);
+            bool YesOrNo = DatabaseManager.Account.DelBlockedUser(GetSession(), @params.ch, @params.uno);
 
             ResponsePacket response = new()
             {

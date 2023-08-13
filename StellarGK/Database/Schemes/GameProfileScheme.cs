@@ -31,7 +31,6 @@ namespace StellarGK.Database.Schemes
         public Dictionary<string, DiapatchCommanderInfo> dispatchedCommanders { get; set; }
         public List<UserInformationResponse.VipRechargeData> vipRechargeData { get; set; }
         public Dictionary<string, int> boughtCashShopItems { get; set; }
-        public List<BlockUser> blockedUsers { get; set; }
     }
 
     public class UserDevice

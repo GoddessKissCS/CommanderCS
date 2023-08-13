@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Database.Schemes
 {
@@ -16,6 +17,8 @@ namespace StellarGK.Database.Schemes
         public string? banReason { get; set; }
         public Clearance clearance { get; set; }
         public int lastServerLoggedIn { get; set; }
+
+        public List<BlockUser> blockedUsers { get; set; } // CAN BE MOVED IF ITS INCORRECT TO -> GAMEPROFILE IDC
     }
 
     public enum Clearance : int

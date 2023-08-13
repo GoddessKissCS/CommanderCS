@@ -19,7 +19,7 @@ namespace StellarGK.Packets.Handlers.Chat
                 uno = @params.uno,
             };
 
-            bool YesOrNo = DatabaseManager.GameProfile.AddBlockedUser(blockUser, GetSession());
+            bool YesOrNo = DatabaseManager.Account.AddBlockedUser(blockUser, GetSession());
 
             ResponsePacket response = new()
             {
