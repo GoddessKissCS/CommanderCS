@@ -8,26 +8,18 @@ namespace StellarGK.Host.Handlers.Profile
     {
         public override object Handle(ChangeThumbnailRequest @params)
         {
-            ResponsePacket response = new();
 
             // TODO - MISSING FALSE HANDLING
 
             bool success = DatabaseManager.GameProfile.ChangeThumbnail(GetSession(), @params.idx);
 
-            response.id = BasePacket.Id;
-
-            if (success)
+            ResponsePacket response = new()
             {
-                response.result = "true";
+                id = BasePacket.Id,
+                result = success.ToString()
+            };
 
-                return response;
-            }
-            else
-            {
-                response.result = "false";
-
-                return response;
-            }
+            return response;
         }
 
     }
@@ -35,6 +27,5 @@ namespace StellarGK.Host.Handlers.Profile
     {
         [JsonPropertyName("idx")]
         public int idx { get; set; }
-
     }
 }

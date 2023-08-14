@@ -491,11 +491,7 @@ namespace StellarGK.Database.Handlers
 
             var updateResult = collection.UpdateOne(filter, update);
 
-            if (updateResult.ModifiedCount > 0)
-            {
-                return true;
-            }
-            return false;
+            return updateResult.ModifiedCount > 0;
         }
 
     }
