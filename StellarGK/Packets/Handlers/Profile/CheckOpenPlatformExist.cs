@@ -1,10 +1,28 @@
+using StellarGK.Logic.Enums;
+using System.Text.Json.Serialization;
+
 namespace StellarGK.Packets.Handlers.Profile
 {
     public class CheckOpenPlatformExist
     {
 
     }
+
+    public class CheckOpenPlatformExistRequest
+    {
+        [JsonPropertyName("plfm")]
+        public Platform Plfm { get; set; }
+
+        [JsonPropertyName("tokn")]
+        public string Tokn { get; set; }
+
+        [JsonPropertyName("ch")]
+        public int Ch { get; set; }
+    }
+
 }
+
+
 /*	// Token: 0x060060CF RID: 24783 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1232", true, true)]
 	public void CheckOpenPlatformExist(Platform plfm, string tokn, int ch)

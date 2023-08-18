@@ -2,7 +2,7 @@
 
 namespace StellarGK.Logic.ExcelReader
 {
-    internal class UserLevelData : BaseExcelReader<UserLevelData, UserLevelDataExcel>
+    public class UserLevelData : BaseExcelReader<UserLevelData, UserLevelDataExcel>
     {
         public override string FileName { get { return "UserLevelDataTable.json"; } }
 

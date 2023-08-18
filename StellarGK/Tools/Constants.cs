@@ -45,7 +45,7 @@ namespace StellarGK.Tools
                 const string characters = "0123456789";
                 const int nameLength = 8;
 
-                StringBuilder nameBuilder = new StringBuilder(nameLength);
+                StringBuilder nameBuilder = new(nameLength);
 
                 using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
                 {
@@ -72,7 +72,7 @@ namespace StellarGK.Tools
                 const string characters = "aAbBcCdDeEfFgGhHjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ123456789";
                 const int codeLength = 16;
 
-                StringBuilder codeBuilder = new StringBuilder(codeLength);
+                StringBuilder codeBuilder = new(codeLength);
 
                 using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
                 {
@@ -99,7 +99,7 @@ namespace StellarGK.Tools
                 const string characters = "aAbBcCdDeEfFgGhHjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ123456789";
                 const int sessionLength = 43;
 
-                StringBuilder sessionBuilder = new StringBuilder(sessionLength);
+                StringBuilder sessionBuilder = new(sessionLength);
 
                 using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
                 {

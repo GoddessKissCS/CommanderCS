@@ -4,6 +4,9 @@ namespace StellarGK.Packets.Handlers.WaveDuel
     {
 
     }
+    public class GetWaveDuelDefenderInfoRequest
+    {
+    }
 }
 
 /*	// Token: 0x06005F9B RID: 24475 RVA: 0x000120F8 File Offset: 0x000102F8

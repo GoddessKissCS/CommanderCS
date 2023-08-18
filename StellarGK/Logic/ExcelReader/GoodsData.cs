@@ -3,7 +3,7 @@ using StellarGK.Tools;
 
 namespace StellarGK.Logic.ExcelReader
 {
-    internal class GoodsData : BaseExcelReader<GoodsData, GoodsDataExcel>
+    public class GoodsData : BaseExcelReader<GoodsData, GoodsDataExcel>
     {
         public override string FileName { get { return "GoodsDataTable.json"; } }
 

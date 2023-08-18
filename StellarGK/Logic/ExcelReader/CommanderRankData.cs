@@ -2,7 +2,7 @@
 
 namespace StellarGK.Logic.ExcelReader
 {
-    internal class CommanderRankData : BaseExcelReader<CommanderRankData, CommanderRankDataExcel>
+    public class CommanderRankData : BaseExcelReader<CommanderRankData, CommanderRankDataExcel>
     {
         public override string FileName { get { return "CommanderRankDataTable.json"; } }
 

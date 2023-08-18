@@ -7,7 +7,7 @@
         {
             ResponsePacket response = new()
             {
-                result = GetGameProfile().blockedUsers,
+                result = GetAccount().blockedUsers,
                 id = BasePacket.Id
             };
 

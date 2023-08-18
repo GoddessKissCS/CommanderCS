@@ -3,7 +3,7 @@
 namespace StellarGK.Commands
 {
     [CommandHandler("AddAllCommanders", "[id]", CommandType.Console)]
-    internal class AddAllCommandersCommand : Command
+    public class AddAllCommandersCommand : Command
     {
         public override void Run(string[] args)
         {

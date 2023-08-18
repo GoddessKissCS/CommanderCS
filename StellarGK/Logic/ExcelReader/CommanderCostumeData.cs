@@ -4,7 +4,7 @@ using StellarGK.Tools;
 
 namespace StellarGK.Logic.ExcelReader
 {
-    internal class CommanderCostumeData : BaseExcelReader<CommanderCostumeData, CommanderCostumeExcel>
+    public class CommanderCostumeData : BaseExcelReader<CommanderCostumeData, CommanderCostumeExcel>
     {
         public override string FileName { get { return "CommanderCostumeDataTable.json"; } }
 

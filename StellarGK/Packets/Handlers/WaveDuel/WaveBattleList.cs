@@ -4,6 +4,9 @@ namespace StellarGK.Packets.Handlers.WaveDuel
     {
 
     }
+    public class WaveBattleListRequest
+    {
+    }
 }
 /*	// Token: 0x060060E4 RID: 24804 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3301", true, true)]

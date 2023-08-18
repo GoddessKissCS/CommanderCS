@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Ranking
+namespace StellarGK.Packets.Handlers.PvP
 {
     public class GetRankingReward
     {

@@ -4,6 +4,10 @@ namespace StellarGK.Packets.Handlers.Mail
     {
 
     }
+
+    public class GetMailListRequest
+    {
+    }
 }
 
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6101", true, true)]

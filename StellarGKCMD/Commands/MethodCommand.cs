@@ -9,7 +9,7 @@ namespace StellarGK.Commands
         {
             if (Enum.TryParse(int.Parse(args[0]).ToString(), out CommandId enumValue))
             {
-                Console.WriteLine($"Parsed Enum Name: {enumValue}");
+                Console.WriteLine($"Parsed Method: {enumValue}");
             }
             else
             {

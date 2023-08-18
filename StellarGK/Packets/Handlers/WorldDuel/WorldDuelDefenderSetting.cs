@@ -1,8 +1,16 @@
+using System.Text.Json.Serialization;
+using Newtonsoft.Json.Linq;
+
 namespace StellarGK.Packets.Handlers.WorldDuel
 {
     public class WorldDuelDefenderSetting
     {
 
+    }
+    public class WorldDuelDefenderSettingRequest
+    {
+        [JsonPropertyName("deck")]
+        public JObject Deck { get; set; }
     }
 }
 /*	// Token: 0x06006151 RID: 24913 RVA: 0x000120F8 File Offset: 0x000102F8

@@ -1,8 +1,31 @@
+using System.Text.Json.Serialization;
+using Newtonsoft.Json.Linq;
+
 namespace StellarGK.Packets.Handlers.WaveDuel
 {
     public class WaveBattleStart
     {
 
+    }
+    public class WaveBattleStartRequest
+    {
+        [JsonPropertyName("type")]
+        public int Type { get; set; }
+
+        [JsonPropertyName("deck")]
+        public JObject Deck { get; set; }
+
+        [JsonPropertyName("gdp")]
+        public JObject Gdp { get; set; }
+
+        [JsonPropertyName("ucash")]
+        public int Ucash { get; set; }
+
+        [JsonPropertyName("idx")]
+        public int Idx { get; set; }
+
+        [JsonPropertyName("np")]
+        public int Np { get; set; }
     }
 }
 /*	// Token: 0x060060E6 RID: 24806 RVA: 0x000120F8 File Offset: 0x000102F8

@@ -6,7 +6,6 @@ namespace StellarGK.Tools
     public abstract class BaseExcelReader<Self, Scheme>
     {
         public Scheme[] All { get; set; }
-        //private readonly Logger c = new("Factory", ConsoleColor.Yellow);
         public abstract string FileName { get; }
         private static Self Instance;
 
@@ -17,7 +16,6 @@ namespace StellarGK.Tools
             if ((Instance as BaseExcelReader<Self, Scheme>).All == null)
             {
                 (Instance as BaseExcelReader<Self, Scheme>).Load();
-                //(Instance as BaseExcelReader<Self, Scheme>).c.Log($"{typeof(Self).Name} Excel Loaded From {(Instance as BaseExcelReader<Self, Scheme>).FileName}");
             }
 
             return Instance;

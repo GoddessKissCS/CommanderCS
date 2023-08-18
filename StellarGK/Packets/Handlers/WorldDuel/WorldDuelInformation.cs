@@ -4,6 +4,9 @@ namespace StellarGK.Packets.Handlers.WorldDuel
     {
 
     }
+    public class WorldDuelInformationRequest
+    {
+    }
 }
 /*	// Token: 0x0600614E RID: 24910 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3601", true, true)]

@@ -1,8 +1,16 @@
+using System.Text.Json.Serialization;
+
 namespace StellarGK.Packets.Handlers.WorldDuel
 {
     public class WorldDuelBuffSetting
     {
 
+    }
+
+    public class WorldDuelBuffSettingRequest
+    {
+        [JsonPropertyName("bbf")]
+        public string Bbf { get; set; }
     }
 }
 /*	// Token: 0x06006154 RID: 24916 RVA: 0x000120F8 File Offset: 0x000102F8

@@ -1,10 +1,16 @@
-﻿namespace StellarGK.Packets.Handlers.Profile
+﻿using System.Text.Json.Serialization;
+
+namespace StellarGK.Packets.Handlers.Profile
 {
     public class GetUserInformation
     {
     }
 
-
+    public class GetUserInformationRequest
+    {
+        [JsonPropertyName("type")]
+        public List<string> Type { get; set; }
+    }
 
 
 }

@@ -1,8 +1,15 @@
+using System.Text.Json.Serialization;
+
 namespace StellarGK.Packets.Handlers.Mail
 {
     public class ReadMail
     {
 
+    }
+    public class ReadMailRequest
+    {
+        [JsonPropertyName("idx")]
+        public int Idx { get; set; }
     }
 }
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6103", true, true)]

@@ -1,8 +1,16 @@
+using System.Text.Json.Serialization;
+
 namespace StellarGK.Packets.Handlers.WorldMap
 {
     public class WorldMapReward
     {
 
+    }
+
+    public class WorldMapRewardRequest
+    {
+        [JsonPropertyName("world")]
+        public int World { get; set; }
     }
 }
 
