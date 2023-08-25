@@ -13,83 +13,62 @@ namespace StellarGK.Database.Handlers
 
         // TODO add resetRemain 
 
-        public AccountScheme Create(string name, string password, int platformid, int channel)
+        public AccountScheme Create(string name = "", string password = "", int platformid = 0, int channel = 0)
         {
-            AccountScheme? tryUser = collection.AsQueryable().Where(d => d.name == name).FirstOrDefault();
+            AccountScheme? tryUser = Collection.AsQueryable().Where(d => d.Name == name).FirstOrDefault();
             if (tryUser != null) { return tryUser; }
 
             int memberId = DatabaseManager.AutoIncrements.GetNextNumber("MemberId", 1000);
 
             AccountScheme user = new()
             {
-                name = name,
-                memberId = memberId,
-                token = Guid.NewGuid().ToString(),
-                password = Crypto.ComputeSha256Hash(password),
-                channel = channel,
-                creationTime = Constants.CurrentTimeStamp,
-                lastLoginTime = Constants.CurrentTimeStamp,
+                MemberId = memberId,
+                Token = Guid.NewGuid().ToString(),
+                Channel = channel,
+                CreationTime = Constants.CurrentTimeStamp,
+                LastLoginTime = Constants.CurrentTimeStamp,
                 isBanned = null,
-                banReason = null,
-                clearance = Clearance.Player,
-                lastServerLoggedIn = 1,
-                blockedUsers = new() { },
+                BanReason = null,
+                LastServerLoggedIn = 1,
+                Platform = (Logic.Enums.Platform)platformid,
             };
 
-            DatabaseManager.Dormitory.Create(memberId);
-
-            collection.InsertOne(user);
-
-            return user;
-        }
-        public AccountScheme CreateGuest(int platformid, int channel)
-        {
-            string name = Constants.CreateGuestName;
-            AccountScheme? tryUser = collection.AsQueryable().Where(d => d.name == name).FirstOrDefault();
-            if (tryUser != null) { return tryUser; }
-
-            int memberId = DatabaseManager.AutoIncrements.GetNextNumber("MemberId", 1000);
-
-            AccountScheme user = new()
+            if (platformid == 0)
             {
-                name = name,
-                memberId = memberId,
-                token = Guid.NewGuid().ToString(),
-                channel = channel,
-                creationTime = Constants.CurrentTimeStamp,
-                lastLoginTime = Constants.CurrentTimeStamp,
-                isBanned = null,
-                banReason = null,
-                clearance = Clearance.Guest,
-                lastServerLoggedIn = 1,
-                blockedUsers = new() { },
-            };
+                string guestName = Constants.CreateGuestName;
+                user.Clearance = Clearance.Guest;
+                user.Name = guestName;
 
-            collection.InsertOne(user);
+            }
+            else
+            {
+                user.Name = name;
+                user.Password_Hash = Crypto.ComputeSha256Hash(password);
+                user.Clearance = Clearance.Player;
+            }
 
             DatabaseManager.Dormitory.Create(memberId);
+
+            Collection.InsertOne(user);
 
             return user;
         }
 
         public AccountScheme FindByName(string accountName)
         {
-            AccountScheme? user = collection.AsQueryable().Where(d => d.name == accountName).FirstOrDefault();
-            return user;
+            return Collection.AsQueryable().Where(d => d.Name == accountName).FirstOrDefault();
         }
         public AccountScheme? FindByUid(int memberId)
         {
-            AccountScheme? user = collection.AsQueryable().Where(d => d.memberId == memberId).FirstOrDefault();
-            return user;
+            return Collection.AsQueryable().Where(d => d.MemberId == memberId).FirstOrDefault();
         }
         public AccountScheme? FindByUid(string memberId)
         {
-            AccountScheme? user = collection.AsQueryable().Where(d => d.memberId == int.Parse(memberId)).FirstOrDefault();
-            return user;
+            return Collection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).FirstOrDefault();
         }
         public bool AccountExists(string accountName)
         {
-            return collection.AsQueryable().Where(d => d.name == accountName).Count() > 0;
+            return Collection.AsQueryable().Where(d => d.Name == accountName).Count() > 0;
         }
 
         public ErrorCode ChangeMemberShip(string oldName, string password, int platformId, string newName, int channel)
@@ -110,10 +89,10 @@ namespace StellarGK.Database.Handlers
 
                 var password_hash = Crypto.ComputeSha256Hash(password);
 
-                var filter = Builders<AccountScheme>.Filter.Eq("Id", account.memberId);
+                var filter = Builders<AccountScheme>.Filter.Eq("Id", account.MemberId);
                 var update = Builders<AccountScheme>.Update.Set("name", oldName).Set("password", password_hash).Set("platformId", platformId).Set("channel", channel);
 
-                collection.UpdateOne(filter, update);
+                Collection.UpdateOne(filter, update);
 
                 return ErrorCode.Success;
             }
@@ -122,28 +101,26 @@ namespace StellarGK.Database.Handlers
         public void UpdateLoginTime(int id)
         {
             var filter = Builders<AccountScheme>.Filter.Eq("Id", id);
-            var update = Builders<AccountScheme>.Update.Set("lastLoginTime", Constants.CurrentTimeStamp);
+            var update = Builders<AccountScheme>.Update.Set("LastLoginTime", Constants.CurrentTimeStamp);
 
-            collection.UpdateOne(filter, update);
-
+            Collection.UpdateOne(filter, update);
         }
 
         public void UpdateLoginTime(string name)
         {
             var account = FindByName(name);
 
-            var filter = Builders<AccountScheme>.Filter.Eq("Id", account.memberId);
-            var update = Builders<AccountScheme>.Update.Set("lastLoginTime", Constants.CurrentTimeStamp);
+            var filter = Builders<AccountScheme>.Filter.Eq("Id", account.MemberId);
+            var update = Builders<AccountScheme>.Update.Set("LastLoginTime", Constants.CurrentTimeStamp);
 
-            collection.UpdateOne(filter, update);
-
+            Collection.UpdateOne(filter, update);
         }
 
         public AccountScheme? FindBySession(string session)
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
-            return FindByUid(user.memberId);
+            return FindByUid(user.MemberId);
         }
 
         public void UpdateLastServerLoggedIn(int server, int memberid)
@@ -151,9 +128,9 @@ namespace StellarGK.Database.Handlers
             var user = FindByUid(memberid);
 
             var filter = Builders<AccountScheme>.Filter.Eq("Id", memberid);
-            var update = Builders<AccountScheme>.Update.Set("lastServerLoggedIn", server);
+            var update = Builders<AccountScheme>.Update.Set("LastServerLoggedIn", server);
 
-            collection.UpdateOne(filter, update);
+            Collection.UpdateOne(filter, update);
 
         }
 
@@ -175,10 +152,10 @@ namespace StellarGK.Database.Handlers
         {
 
             var user = DatabaseManager.GameProfile.FindBySession(session);
-            var filter = Builders<AccountScheme>.Filter.Eq("Id", user.memberId);
-            var update = Builders<AccountScheme>.Update.Push("blockedUsers", toBeBlocked);
+            var filter = Builders<AccountScheme>.Filter.Eq("Id", user.MemberId);
+            var update = Builders<AccountScheme>.Update.Push("BlockUsers", toBeBlocked);
 
-            var updateResult = collection.UpdateOne(filter, update);
+            var updateResult = Collection.UpdateOne(filter, update);
 
             if (updateResult.ModifiedCount > 0)
             {
@@ -190,14 +167,14 @@ namespace StellarGK.Database.Handlers
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
-            var filter = Builders<AccountScheme>.Filter.Eq("memberId", user.memberId);
-            var update = Builders<AccountScheme>.Update.PullFilter("blockedUsers",
+            var filter = Builders<AccountScheme>.Filter.Eq("memberId", user.MemberId);
+            var update = Builders<AccountScheme>.Update.PullFilter("BlockedUser",
                          Builders<BlockUser>.Filter.And(
                          Builders<BlockUser>.Filter.Eq("ch", ch),
                          Builders<BlockUser>.Filter.Eq("uno", uno)
                                                              ));
 
-            var updateResult = collection.UpdateOne(filter, update);
+            var updateResult = Collection.UpdateOne(filter, update);
 
             if (updateResult.ModifiedCount > 0)
             {

@@ -1,10 +1,10 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Logic.Protocols;
+﻿using StellarGK.Logic.Protocols;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Carnival
 {
-    [Command(Id = CommandId.GetCarnivalList)]
-    public class GetCarnivalList : BaseCommandHandler<GetCarnivalListRequest>
+    [Packet(MethodId.GetCarnivalList)]
+    public class GetCarnivalList : BaseMethodHandler<GetCarnivalListRequest>
     {
 
         public override object Handle(GetCarnivalListRequest @params)

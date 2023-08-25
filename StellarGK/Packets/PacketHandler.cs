@@ -66,31 +66,31 @@ namespace StellarGK.Host
         }
         private static object ProcessPacket(JsonNode raw, IServiceProvider serviceProvider)
         {
-            var rawPacket = raw.Deserialize<RawPacket>();
+            var paramsPacket = raw.Deserialize<ParamsPacket>();
 
-            if (!CommandsMapper.TryGetValue(rawPacket.Method, out var endpointMapping))
+            if (!CommandsMapper.TryGetValue(paramsPacket.Method, out var endpointMapping))
             {
                 throw new Exception("Unsupported Packet");
             }
 
-            var result = endpointMapping(rawPacket, serviceProvider);
+            var result = endpointMapping(paramsPacket, serviceProvider);
 
             return result;
         }
-        internal static object CommandMapping<TEndpoint, TParams>(RawPacket rawPacket, IServiceProvider serviceProvider) where TEndpoint : BaseCommandHandler<TParams>
+        internal static object CommandMapping<TEndpoint, TParams>(ParamsPacket paramsPacket, IServiceProvider serviceProvider) where TEndpoint : BaseMethodHandler<TParams>
         {
-            var @params = rawPacket.Params.Deserialize<TParams>();
+            var @params = paramsPacket.Params.Deserialize<TParams>();
 
             var commandHandler = ActivatorUtilities.CreateInstance<TEndpoint>(serviceProvider);
 
-            commandHandler.BasePacket = rawPacket;
+            commandHandler.BasePacket = paramsPacket;
 
             return commandHandler.Handle(@params);
         }
         public static List<string> CommandsMapped => CommandsMapper.Keys.Select(commandId =>
         {
             var commandIdStr = commandId.ToString();
-            var enumText = ((CommandId)commandId).ToString();
+            var enumText = ((MethodId)commandId).ToString();
 
             if (commandIdStr == enumText)
             {

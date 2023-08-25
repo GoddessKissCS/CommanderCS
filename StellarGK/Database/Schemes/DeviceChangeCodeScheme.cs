@@ -5,8 +5,8 @@ namespace StellarGK.Database.Schemes
     public class DeviceChangeCodeScheme
     {
         public ObjectId Id { get; set; }
-        public int memberId { get; set; }
-        public string code { get; set; }
-        public int createTime { get; set; }
+        public int MemberId { get; set; }
+        public string Code { get; set; }
+        public int CreateTime { get; set; }
     }
 }

@@ -2,8 +2,8 @@
 
 namespace StellarGK.Host.Handlers.Commander
 {
-    [Command(Id = CommandId.GetCommanderScenario)]
-    public class GetCommanderScenario : BaseCommandHandler<GetCommanderScenarioRequest>
+    [Packet(MethodId.GetCommanderScenario)]
+    public class GetCommanderScenario : BaseMethodHandler<GetCommanderScenarioRequest>
     {
         public override object Handle(GetCommanderScenarioRequest @params)
         {
@@ -11,8 +11,8 @@ namespace StellarGK.Host.Handlers.Commander
 
             Dictionary<string, Dictionary<string, CommanderScenario>> result = new Dictionary<string, Dictionary<string, CommanderScenario>>();
 
-            response.result = result;
-            response.id = BasePacket.Id;
+            response.Result = result;
+            response.Id = BasePacket.Id;
 
             return response;
         }

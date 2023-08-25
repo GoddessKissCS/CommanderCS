@@ -1,21 +1,21 @@
-﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using StellarGK.Database;
 using StellarGK.Logic.Enums;
 using StellarGK.Logic.Protocols;
 using StellarGK.Tools;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Login
 {
-    [Command(Id = CommandId.Login)]
-    public class Login : BaseCommandHandler<LoginRequest>
+    [Packet(MethodId.Login)]
+    public class Login : BaseMethodHandler<LoginRequest>
     {
         public override object Handle(LoginRequest @params)
         {
             // TODO ADD UNABLE TO JOIN 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id
+                Id = BasePacket.Id
             };
 
             //@params.world
@@ -29,41 +29,41 @@ namespace StellarGK.Host.Handlers.Login
 
             if (code == ErrorCode.BannedOrSuspended || code == ErrorCode.UnableToJoin)
             {
-                response.error = new() { code = code };
+                response.Error = new() { code = code };
 
                 return response;
             }
 
             var goods = DatabaseManager.GameProfile.UserResourcesFromSession(session);
             var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(session);
-            var guild = DatabaseManager.Guild.RequestGuild(user.guildId);
+            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId);
 
             UserInformationResponse userInformationResponse = new()
             {
                 goodsInfo = goods,
                 battleStatisticsInfo = battlestats,
-                uno = user.uno,
-                stage = user.lastStage,
-                notification = user.notifaction,
+                uno = user.Uno,
+                stage = user.LastStage,
+                notification = user.Notifaction,
 
-                foodData = user.userInventory.foodData,
-                eventResourceData = user.userInventory.eventResourceData,
-                groupItemData = user.userInventory.groupItemData,
-                itemData = user.userInventory.itemData,
-                medalData = user.userInventory.medalData,
-                partData = user.userInventory.partData,
+                foodData = user.UserInventory.foodData,
+                eventResourceData = user.UserInventory.eventResourceData,
+                groupItemData = user.UserInventory.groupItemData,
+                itemData = user.UserInventory.itemData,
+                medalData = user.UserInventory.medalData,
+                partData = user.UserInventory.partData,
 
-                resetRemain = user.resetDateTime, // should be set?
+                resetRemain = user.ResetDateTime, // should be set?
 
-                equipItem = user.userInventory.equipItem,
+                equipItem = user.UserInventory.equipItem,
 
-                donHaveCommCostumeData = user.userInventory.donHaveCommCostumeData,
-                completeRewardGroupIdx = user.completeRewardGroupIdx,
+                donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,
+                completeRewardGroupIdx = user.CompleteRewardGroupIdx,
                 guildInfo = guild,
-                sweepClearData = user.sweepClearData,
-                preDeck = user.preDeck,
-                weaponList = user.userInventory.weaponList,
-                __commanderInfo = JObject.FromObject(user.commanderData),
+                sweepClearData = user.SweepClearData,
+                preDeck = user.PreDeck,
+                weaponList = user.UserInventory.weaponList,
+                __commanderInfo = JObject.FromObject(user.CommanderData),
             };
 
 
@@ -73,7 +73,7 @@ namespace StellarGK.Host.Handlers.Login
                 sess = session
             };
 
-            response.result = Login;
+            response.Result = Login;
 
             return response;
 

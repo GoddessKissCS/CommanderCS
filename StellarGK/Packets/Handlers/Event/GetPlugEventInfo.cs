@@ -2,8 +2,8 @@
 
 namespace StellarGK.Host.Handlers.Event
 {
-    [Command(Id = CommandId.GetPlugEventInfo)]
-    public class GetPlugEventInfo : BaseCommandHandler<GetPlugEventInfoRequest>
+    [Packet(MethodId.GetPlugEventInfo)]
+    public class GetPlugEventInfo : BaseMethodHandler<GetPlugEventInfoRequest>
     {
         public override object Handle(GetPlugEventInfoRequest @params)
         {
@@ -15,8 +15,8 @@ namespace StellarGK.Host.Handlers.Event
                 pst = new List<int>() { }
             };
 
-            response.id = BasePacket.Id;
-            response.result = plugEventInfo;
+            response.Id = BasePacket.Id;
+            response.Result = plugEventInfo;
 
             return response;
         }

@@ -3,27 +3,27 @@ using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Guild
 {
-    [Command(Id = CommandId.GuildMemberList)]
-    public class GuildMemberList : BaseCommandHandler<GuildMemberListRequest>
+    [Packet(MethodId.GuildMemberList)]
+    public class GuildMemberList : BaseMethodHandler<GuildMemberListRequest>
     {
         public override object Handle(GuildMemberListRequest @params)
         {
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
+                Id = BasePacket.Id,
             };
 
-            var user = GetGameProfile();
+            var user = GetUserGameProfile();
 
-            if (user.guildId == null)
+            if (user.GuildId == null)
             {
-                response.result = null;
+                response.Result = null;
                 return response;
             }
 
             GuildMember guild = new()
             {
-                memberData = DatabaseManager.Guild.RequestGuildMembers(user.guildId),
+                memberData = DatabaseManager.Guild.RequestGuildMembers(user.GuildId),
                 badge = 0, // NO IDEA WHAT THIS SETS
                            // TODO
             };

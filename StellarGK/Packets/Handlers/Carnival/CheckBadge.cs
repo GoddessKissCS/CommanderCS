@@ -2,14 +2,14 @@
 
 namespace StellarGK.Host.Handlers.Carnival
 {
-    [Command(Id = CommandId.CheckBadge)]
-    public class CheckBadge : BaseCommandHandler<CheckBadgeRequest>
+    [Packet(MethodId.CheckBadge)]
+    public class CheckBadge : BaseMethodHandler<CheckBadgeRequest>
     {
 
         public override object Handle(CheckBadgeRequest @params)
         {
 
-            var user = GetGameProfile().userBadges;
+            var user = GetUserGameProfile().UserBadges;
 
             // TODO ADJUST THIS SHIT
             CheckBadgeMaster checkBadgeMaster = new()

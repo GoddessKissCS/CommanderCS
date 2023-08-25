@@ -1,32 +1,34 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Logic.Protocols;
+﻿using StellarGK.Logic.Protocols;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.WorldMap
 {
-    [Command(Id = CommandId.WorldMapInformation)]
-    public class WorldMapInformation : BaseCommandHandler<WorldMapInformationRequest>
+    [Packet(MethodId.WorldMapInformation)]
+    public class WorldMapInformation : BaseMethodHandler<WorldMapInformationRequest>
     {
         public override object Handle(WorldMapInformationRequest @params)
         {
-            // TODO ???
+#warning TODO ???
 
-            GetGameProfile().stages.TryGetValue(@params.world.ToString(), out List<WorldMapInformationResponse> worldMapStages);
+            GetUserGameProfile().Stages.TryGetValue(@params.world.ToString(), out List<WorldMapInformationResponse> worldMapStages);
 
-            bool reward = worldMapStages.All(c => c.star == 3);
+            int rwd = Convert.ToInt32(worldMapStages.All(c => c.star == 3));
 
             // reward means if you complete the stage
             // maybe needs a rework if you already have it?
+            // need to add if you already have all and add it to the db
+
 
             WorldMapResponse worldmap = new()
             {
                 stage = worldMapStages,
-                rwd = Convert.ToInt32(reward)
+                rwd = rwd,
             };
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
-                result = worldmap
+                Id = BasePacket.Id,
+                Result = worldmap
             };
 
             return response;

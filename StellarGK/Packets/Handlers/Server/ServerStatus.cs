@@ -1,21 +1,20 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 using StellarGK.Logic.Protocols;
+using System.Text.Json.Serialization;
 
 
 namespace StellarGK.Host.Handlers.Server
 {
-    [Command(Id = CommandId.ServerStatus)]
-    public class ServerStatus : BaseCommandHandler<ServerStatusRequest>
+    [Packet(MethodId.ServerStatus)]
+    public class ServerStatus : BaseMethodHandler<ServerStatusRequest>
     {
         public override object Handle(ServerStatusRequest @params)
         {
-            // TODO
+#warning TODO
             // needs to be reworked
 
             // iterate through every server where i have a account
             // if not just use nullserver
-
 
             ResponsePacket response = new();
 
@@ -42,8 +41,8 @@ namespace StellarGK.Host.Handlers.Server
             serverData.recommandServer = 1;
             serverData.newServer = 1;
 
-            response.id = BasePacket.Id;
-            response.result = serverData;
+            response.Id = BasePacket.Id;
+            response.Result = serverData;
 
             return response;
         }
@@ -51,7 +50,6 @@ namespace StellarGK.Host.Handlers.Server
         private static ServerData.ServerInfo ProfilesRequest(string mIdx, string session)
         {
             var account = DatabaseManager.Account.FindByUid(mIdx);
-            //var resources = DatabaseManager.GameProfile.Fin(mIdx);
 
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
@@ -64,9 +62,9 @@ namespace StellarGK.Host.Handlers.Server
                 thumnail = 0,
             };
 
-            SIFO.level = user.userResources.level;
-            SIFO.thumnail = user.userResources.thumbnailId;
-            SIFO.lastLoginTime = account.lastLoginTime;
+            SIFO.level = user.UserResources.level;
+            SIFO.thumnail = user.UserResources.thumbnailId;
+            SIFO.lastLoginTime = account.LastLoginTime;
 
             return SIFO;
 

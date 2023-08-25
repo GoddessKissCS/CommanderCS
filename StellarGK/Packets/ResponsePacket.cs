@@ -5,15 +5,15 @@ namespace StellarGK.Host
     public class ResponsePacket
     {
         [JsonPropertyName("id")]
-        public string id { get; set; }
+        public string Id { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("result")]
-        public object result { get; set; }
+        public object Result { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("error")]
-        public ErrorMessageId error { get; set; }
+        public ErrorMessageId Error { get; set; }
     }
     public class ErrorMessageId
     {

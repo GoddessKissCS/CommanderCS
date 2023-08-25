@@ -1,11 +1,11 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 using StellarGK.Tools;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Nickname
 {
-    [Command(Id = CommandId.SetNickNameFromTutorial)]
-    public class SetNickNameFromTutorial : BaseCommandHandler<SetNickNameFromTutorialRequest>
+    [Packet(MethodId.SetNickNameFromTutorial)]
+    public class SetNickNameFromTutorial : BaseMethodHandler<SetNickNameFromTutorialRequest>
     {
         public override object Handle(SetNickNameFromTutorialRequest @params)
         {
@@ -13,13 +13,13 @@ namespace StellarGK.Host.Handlers.Nickname
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
+                Id = BasePacket.Id,
             };
 
 
             if (code == ErrorCode.InappropriateWords || code == ErrorCode.AlreadyInUse)
             {
-                response.error = new() { code = code };
+                response.Error = new() { code = code };
 
                 return response;
             }
@@ -29,7 +29,7 @@ namespace StellarGK.Host.Handlers.Nickname
                 step = @params.Step,
             };
 
-            response.result = SetNickNameF1;
+            response.Result = SetNickNameF1;
 
             return response;
         }
@@ -48,7 +48,7 @@ namespace StellarGK.Host.Handlers.Nickname
             {
                 var profile = DatabaseManager.GameProfile.FindBySession(sess);
 
-                if (profile.tutorialData.skip == true)
+                if (profile.TutorialData.skip == true)
                 {
                     DatabaseManager.GameProfile.UpdateStep(sess, 12);
                 }
@@ -61,7 +61,7 @@ namespace StellarGK.Host.Handlers.Nickname
 
                 return ErrorCode.Success;
             }
-            else if (user.userResources.nickname == nickname)
+            else if (user.UserResources.nickname == nickname)
             {
                 return ErrorCode.AlreadyInUse;
             }

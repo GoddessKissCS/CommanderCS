@@ -1,8 +1,8 @@
-﻿using System.Security.Cryptography;
-using System.Text;
-using Org.BouncyCastle.Crypto.Engines;
+﻿using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.Crypto.Paddings;
 using Org.BouncyCastle.Crypto.Parameters;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace StellarGK.Tools
 {
@@ -17,6 +17,7 @@ namespace StellarGK.Tools
                  _encoding.GetBytes("Zb*!W-$&TA6mrIEU-F=ShH7=($ucOZdg"),
                  _encoding.GetBytes("IU is Korea Best Singer! really!"),
             };
+
         }
 
         public static int Decrypt(string input, out string value) => Decrypt(Convert.FromBase64String(input), out value);

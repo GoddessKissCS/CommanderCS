@@ -2,8 +2,8 @@
 
 namespace StellarGK.Host.Handlers.UserTerm
 {
-    [Command(Id = CommandId.GetBadWordList)]
-    public class GetBadWordList : BaseCommandHandler<GetBadWordListRequest>
+    [Packet(MethodId.GetBadWordList)]
+    public class GetBadWordList : BaseMethodHandler<GetBadWordListRequest>
     {
         public override object Handle(GetBadWordListRequest @params)
         {
@@ -24,8 +24,8 @@ namespace StellarGK.Host.Handlers.UserTerm
             }
             };
 
-            response.id = BasePacket.Id;
-            response.result = badWord;
+            response.Id = BasePacket.Id;
+            response.Result = badWord;
 
             return response;
         }

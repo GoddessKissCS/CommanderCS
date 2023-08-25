@@ -6,25 +6,25 @@ namespace StellarGK.Database.Schemes
     public class GuildScheme
     {
         public ObjectId Id { get; set; }
-        public int guildId { get; set; }
-        public string name { get; set; }
-        public int level { get; set; }
-        public int point { get; set; }
+        public int GuildId { get; set; }
+        public string Name { get; set; }
+        public int Level { get; set; }
+        public int Point { get; set; }
         public int aPoint { get; set; }
-        public int memberGrade { get; set; }
-        public int emblem { get; set; }
-        public int guildType { get; set; }
-        public int limitlevel { get; set; }
-        public string notice { get; set; }
-        public int state { get; set; }
-        public int closeTime { get; set; }
-        public int createTime { get; set; }
-        public int maxCount { get; set; }
-        public int count { get; set; }
-        public List<UserInformationResponse.UserGuild.GuildSkill> skillDada { get; set; }
-        public List<GuildMember.MemberData> memberData { get; set; }
-        public int occupy { get; set; }
-        public int world { get; set; }
+        public int MemberGrade { get; set; }
+        public int Emblem { get; set; }
+        public int GuildType { get; set; }
+        public int Limitlevel { get; set; }
+        public string Notice { get; set; }
+        public int State { get; set; }
+        public int CloseTime { get; set; }
+        public int CreateTime { get; set; }
+        public int MaxCount { get; set; }
+        public int Count { get; set; }
+        public List<UserInformationResponse.UserGuild.GuildSkill> SkillDada { get; set; }
+        public List<GuildMember.MemberData> MemberData { get; set; }
+        public int Occupy { get; set; }
+        public int World { get; set; }
 
     }
 }

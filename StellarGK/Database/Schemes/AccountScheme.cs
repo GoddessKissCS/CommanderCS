@@ -1,24 +1,23 @@
 ﻿using MongoDB.Bson;
-using StellarGK.Logic.Protocols;
+using StellarGK.Logic.Enums;
 
 namespace StellarGK.Database.Schemes
 {
     public class AccountScheme
     {
         public ObjectId Id { get; set; }
-        public int memberId { get; set; }
-        public string name { get; set; }
-        public string password { get; set; }
-        public string token { get; set; }
-        public long lastLoginTime { get; set; }
-        public long creationTime { get; set; }
-        public int channel { get; set; }
+        public int MemberId { get; set; }
+        public string Name { get; set; }
+        public string Password_Hash { get; set; }
+        public string Token { get; set; }
+        public long LastLoginTime { get; set; }
+        public long CreationTime { get; set; }
+        public int Channel { get; set; }
         public bool? isBanned { get; set; }
-        public string? banReason { get; set; }
-        public Clearance clearance { get; set; }
-        public int lastServerLoggedIn { get; set; }
-
-        public List<BlockUser> blockedUsers { get; set; } // CAN BE MOVED IF ITS INCORRECT TO -> GAMEPROFILE IDC
+        public string? BanReason { get; set; }
+        public Clearance Clearance { get; set; }
+        public int LastServerLoggedIn { get; set; }
+        public Platform Platform { get; set; }
     }
 
     public enum Clearance : int

@@ -2,8 +2,8 @@
 
 namespace StellarGK.Host.Handlers.Event
 {
-    [Command(Id = CommandId.GetCommonNotice)]
-    public class GetCommonNotice : BaseCommandHandler<GetCommonNoticeRequest>
+    [Packet(MethodId.GetCommonNotice)]
+    public class GetCommonNotice : BaseMethodHandler<GetCommonNoticeRequest>
     {
         public override object Handle(GetCommonNoticeRequest @params)
         {
@@ -26,8 +26,8 @@ namespace StellarGK.Host.Handlers.Event
                 */
             };
 
-            response.result = CommonNotice1;
-            response.id = BasePacket.Id;
+            response.Result = CommonNotice1;
+            response.Id = BasePacket.Id;
 
             return response;
         }

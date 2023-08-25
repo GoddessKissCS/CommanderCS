@@ -3,8 +3,8 @@
 
 namespace StellarGK.Host.Handlers.Guild
 {
-    [Command(Id = CommandId.GuildList)]
-    public class GuildList : BaseCommandHandler<GuildListRequest>
+    [Packet(MethodId.GuildList)]
+    public class GuildList : BaseMethodHandler<GuildListRequest>
     {
         public override object Handle(GuildListRequest @params)
         {
@@ -19,17 +19,17 @@ namespace StellarGK.Host.Handlers.Guild
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
-                result = guildList,
+                Id = BasePacket.Id,
+                Result = guildList,
             };
 
-            var user = GetGameProfile();
+            var user = GetUserGameProfile();
 
-            var userGuild = DatabaseManager.Guild.RequestGuild(user.guildId);
+            var userGuild = DatabaseManager.Guild.RequestGuild(user.GuildId);
 
             if (userGuild != null)
             {
-                var memberData = DatabaseManager.Guild.RequestGuildMembers(user.guildId);
+                var memberData = DatabaseManager.Guild.RequestGuildMembers(user.GuildId);
 
                 guildList.memberData = memberData;
                 guildList.guildInfo = userGuild;

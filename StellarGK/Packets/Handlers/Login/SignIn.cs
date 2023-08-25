@@ -1,12 +1,12 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 using StellarGK.Database.Schemes;
 using StellarGK.Tools;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Sign
 {
-    [Command(Id = CommandId.SignIn)]
-    public class SignIn : BaseCommandHandler<SignInRequest>
+    [Packet(MethodId.SignIn)]
+    public class SignIn : BaseMethodHandler<SignInRequest>
     {
         public override object Handle(SignInRequest @params)
         {
@@ -16,14 +16,14 @@ namespace StellarGK.Host.Handlers.Sign
 
             if (code == ErrorCode.IdNotFound || code == ErrorCode.PasswordInvalid)
             {
-                response.id = BasePacket.Id;
-                response.error = new() { code = code };
+                response.Id = BasePacket.Id;
+                response.Error = new() { code = code };
 
                 return response;
             }
 
-            response.id = BasePacket.Id;
-            response.result = SignInP;
+            response.Id = BasePacket.Id;
+            response.Result = SignInP;
 
 
             DatabaseManager.Account.UpdateLoginTime(@params.uid);
@@ -43,12 +43,12 @@ namespace StellarGK.Host.Handlers.Sign
             else
             {
                 AccountScheme user = DatabaseManager.Account.FindByName(AccountName);
-                if (user.password == password_hash)
+                if (user.Password_Hash == password_hash)
                 {
-                    DatabaseManager.Account.UpdateLoginTime(user.memberId);
-                    signInP.mIdx = user.memberId;
-                    signInP.tokn = user.token;
-                    signInP.srv = user.lastServerLoggedIn;
+                    DatabaseManager.Account.UpdateLoginTime(user.MemberId);
+                    signInP.mIdx = user.MemberId;
+                    signInP.tokn = user.Token;
+                    signInP.srv = user.LastServerLoggedIn;
                     return ErrorCode.Success;
                 }
                 else

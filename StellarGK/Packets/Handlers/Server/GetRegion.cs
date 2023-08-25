@@ -1,10 +1,10 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Server
 {
-    [Command(Id = CommandId.GetRegion)]
-    public class GetRegion : BaseCommandHandler<GetRegionResult>
+    [Packet(MethodId.GetRegion)]
+    public class GetRegion : BaseMethodHandler<GetRegionResult>
     {
         public override object Handle(GetRegionResult @params)
         {
@@ -13,30 +13,30 @@ namespace StellarGK.Host.Handlers.Server
             //3 is Global Version 2
             //4 is Global Version 3
 
-            // needs a small adjust for servers and playercount
+#warning TODO needs a small adjust for servers and playercount
 
             var server = DatabaseManager.Server.Get(1);
 
             ServerInfo korea = new()
             {
-                maxLv = server.maxLevel,
-                maxSt = server.maxStage,
-                openDt = server.openDate,
-                svcnt = server.serverCount.ToString(),
-                plcnt = server.playerCount.ToString(),
+                maxLv = server.MaxLevel,
+                maxSt = server.MaxStage,
+                openDt = server.OpenDate,
+                svcnt = server.ServerCount.ToString(),
+                plcnt = server.PlayerCount.ToString(),
             };
 
             Dictionary<string, ServerInfo> serverInfo = new()
             {
                 { "1", korea },
-                { "2", korea },
+                //{ "2", korea },
             };
 
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
-                result = serverInfo
+                Id = BasePacket.Id,
+                Result = serverInfo
             };
 
             return response;

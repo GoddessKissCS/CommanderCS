@@ -1,17 +1,21 @@
-﻿using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 using StellarGK.Database.Schemes;
+using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
-    public sealed class CommandAttribute : Attribute
+    public sealed class PacketAttribute : Attribute
     {
-        public CommandId Id { get; set; }
+        public PacketAttribute(MethodId cmdID)
+        {
+            Id = cmdID;
+        }
+        public MethodId Id { get; set; }
     }
 
-    public class RawPacket : BasePacket
+    public class ParamsPacket : BasePacket
     {
         [JsonPropertyName("params")]
         public JsonNode Params { get; set; }
@@ -29,7 +33,7 @@ namespace StellarGK.Host
         public string Session { get; set; }
     }
 
-    public abstract class BaseCommandHandler<TParams>
+    public abstract class BaseMethodHandler<TParams>
     {
         public BasePacket BasePacket { get; set; }
         public abstract object Handle(TParams @params);
@@ -37,30 +41,24 @@ namespace StellarGK.Host
         {
             return BasePacket.Session;
         }
-
-        public AccountScheme? GetAccount(int memberId)
+        public AccountScheme? GetUserAccount()
         {
-            return DatabaseManager.Account.FindByUid(memberId);
+            return DatabaseManager.Account.FindBySession(BasePacket.Session);
         }
 
-        public AccountScheme? GetAccount()
+        public GameProfileScheme? GetUserGameProfile()
         {
-            return DatabaseManager.Account.FindBySession(GetSession());
+            return DatabaseManager.GameProfile.FindBySession(BasePacket.Session);
         }
 
-        public GameProfileScheme? GetGameProfile()
+        public DormitoryScheme? GetUserDormitory()
         {
-            return DatabaseManager.GameProfile.FindBySession(GetSession());
-        }
-
-        public DormitoryScheme? GetDormitory()
-        {
-            return DatabaseManager.Dormitory.FindBySession(GetSession());
+            return DatabaseManager.Dormitory.FindBySession(BasePacket.Session);
         }
 
     }
 
-    public enum CommandId : int
+    public enum MethodId : int
     {
         GetRegion = 1000,
         GetTutorialStep = 1100,

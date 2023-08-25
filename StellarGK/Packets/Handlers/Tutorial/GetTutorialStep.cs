@@ -1,12 +1,12 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 using StellarGK.Logic.Protocols;
+using System.Text.Json.Serialization;
 
 
 namespace StellarGK.Host.Handlers.Tutorial
 {
-    [Command(Id = CommandId.GetTutorialStep)]
-    public class GetTutorialStep : BaseCommandHandler<GetTutorialStepRequest>
+    [Packet(MethodId.GetTutorialStep)]
+    public class GetTutorialStep : BaseMethodHandler<GetTutorialStepRequest>
     {
 
         public override object Handle(GetTutorialStepRequest @params)
@@ -20,8 +20,8 @@ namespace StellarGK.Host.Handlers.Tutorial
 
             ResponsePacket response = new()
             {
-                result = tutorialStep,
-                id = BasePacket.Id
+                Result = tutorialStep,
+                Id = BasePacket.Id
             };
 
             return response;
@@ -30,7 +30,7 @@ namespace StellarGK.Host.Handlers.Tutorial
 
         private static UserInformationResponse.TutorialData RequestTutorialData(string sess)
         {
-            var user = DatabaseManager.GameProfile.FindBySession(sess).tutorialData;
+            var user = DatabaseManager.GameProfile.FindBySession(sess).TutorialData;
 
             return user;
         }

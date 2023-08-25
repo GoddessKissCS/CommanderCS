@@ -2,8 +2,8 @@
 
 namespace StellarGK.Host.Handlers.Gacha
 {
-    [Command(Id = CommandId.GachaInformation)]
-    public class GachaInformation : BaseCommandHandler<GachaInformationRequest>
+    [Packet(MethodId.GachaInformation)]
+    public class GachaInformation : BaseMethodHandler<GachaInformationRequest>
     {
 
         public override object Handle(GachaInformationRequest @params)
@@ -23,8 +23,8 @@ namespace StellarGK.Host.Handlers.Gacha
             test.Add("1", w);
 
 
-            response.id = BasePacket.Id;
-            response.result = test;
+            response.Id = BasePacket.Id;
+            response.Result = test;
 
             return response;
         }

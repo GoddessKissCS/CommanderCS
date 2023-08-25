@@ -1,11 +1,11 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.VersionCheck
 {
 
-    [Command(Id = CommandId.DBVersionCheck)]
-    public class DatabaseVersionCheck : BaseCommandHandler<DatabaseVersionCheckRequest>
+    [Packet(MethodId.DBVersionCheck)]
+    public class DatabaseVersionCheck : BaseMethodHandler<DatabaseVersionCheckRequest>
     {
         public override object Handle(DatabaseVersionCheckRequest @params)
         {
@@ -13,13 +13,13 @@ namespace StellarGK.Host.Handlers.VersionCheck
 
             VersionInfo res = new()
             {
-                ver = gametable.version,
+                ver = gametable.Version,
             };
 
             ResponsePacket response = new()
             {
-                result = res,
-                id = BasePacket.Id
+                Result = res,
+                Id = BasePacket.Id
             };
 
             return response;

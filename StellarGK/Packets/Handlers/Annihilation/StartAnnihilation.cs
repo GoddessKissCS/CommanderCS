@@ -1,8 +1,26 @@
+using StellarGK.Host;
+using System.Text.Json.Serialization;
+
 namespace StellarGK.Packets.Handlers.Annihilation
 {
-    public class StartAnnihilation
-    {
 
+    [Packet(MethodId.StartAnnihilation)]
+    public class StartAnnihilation : BaseMethodHandler<StartAnnihilationRequest>
+    {
+        public override object Handle(StartAnnihilationRequest @params)
+        {
+            return "{}";
+        }
+    }
+
+    public class StartAnnihilationRequest
+    {
+        [JsonPropertyName("type")]
+        public int type { get; set; }
+        [JsonPropertyName("cid")]
+        public int checkSum { get; set; }
+        [JsonPropertyName("stage")]
+        public int stage { get; set; }
     }
 }
 /*	// Token: 0x0600601B RID: 24603 RVA: 0x000120F8 File Offset: 0x000102F8

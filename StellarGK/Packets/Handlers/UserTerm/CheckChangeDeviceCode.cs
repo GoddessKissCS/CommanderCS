@@ -1,7 +1,7 @@
 ﻿namespace StellarGK.Host.Handlers.UserTerm
 {
-    [Command(Id = CommandId.CheckChangeDeviceCode)]
-    public class CheckChangeDeviceCode : BaseCommandHandler<CheckChangeDeviceCodeRequest>
+    [Packet(MethodId.CheckChangeDeviceCode)]
+    public class CheckChangeDeviceCode : BaseMethodHandler<CheckChangeDeviceCodeRequest>
     {
 
         public override object Handle(CheckChangeDeviceCodeRequest @params)

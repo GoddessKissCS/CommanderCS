@@ -2,8 +2,8 @@
 
 namespace StellarGK.Host.Handlers.Dispatch
 {
-    [Command(Id = CommandId.GetExplorationList)]
-    public class GetExplorationList : BaseCommandHandler<GetExplorationListRequest>
+    [Packet(MethodId.GetExplorationList)]
+    public class GetExplorationList : BaseMethodHandler<GetExplorationListRequest>
     {
 
         public override object Handle(GetExplorationListRequest @params)
@@ -18,8 +18,8 @@ namespace StellarGK.Host.Handlers.Dispatch
 
             };
 
-            response.result = GetExplorationList1;
-            response.id = BasePacket.Id;
+            response.Result = GetExplorationList1;
+            response.Id = BasePacket.Id;
 
             return response;
         }

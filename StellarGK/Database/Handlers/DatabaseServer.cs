@@ -11,22 +11,22 @@ namespace StellarGK.Database.Handlers
         {
             ServerScheme versionInfo = new()
             {
-                channelId = id,
-                maxLevel = maxlevel,
-                maxStage = maxstage,
-                openDate = openDt,
-                playerCount = playercount,
-                serverCount = servercount,
+                ChannelId = id,
+                MaxLevel = maxlevel,
+                MaxStage = maxstage,
+                OpenDate = openDt,
+                PlayerCount = playercount,
+                ServerCount = servercount,
             };
 
-            collection.InsertOne(versionInfo);
+            Collection.InsertOne(versionInfo);
 
             return versionInfo;
         }
 
         public ServerScheme Get(int id)
         {
-            ServerScheme? server = collection.AsQueryable().Where(d => d.channelId == id).FirstOrDefault();
+            ServerScheme? server = Collection.AsQueryable().Where(d => d.ChannelId == id).FirstOrDefault();
 
             return server;
         }

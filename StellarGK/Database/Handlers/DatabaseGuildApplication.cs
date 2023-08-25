@@ -15,11 +15,11 @@ namespace StellarGK.Database.Handlers
 
             GuildApplicationScheme guildApplication = new()
             {
-                guildId = guildIdx,
-                uno = user.uno,
+                GuildId = guildIdx,
+                Uno = user.Uno,
             };
 
-            collection.InsertOne(guildApplication);
+            Collection.InsertOne(guildApplication);
 
         }
 
@@ -30,9 +30,9 @@ namespace StellarGK.Database.Handlers
 
             if (user == null) { }
 
-            var tryGuild = collection.AsQueryable()
-                       .Where(d => d.uno == user.uno)
-                       .Where(d => d.guildId == guildIdx)
+            var tryGuild = Collection.AsQueryable()
+                       .Where(d => d.Uno == user.Uno)
+                       .Where(d => d.GuildId == guildIdx)
                        .FirstOrDefault();
 
             if (tryGuild != null) { return "reg"; }
@@ -47,10 +47,10 @@ namespace StellarGK.Database.Handlers
 
             if (user == null) { }
 
-            var filter = Builders<GuildApplicationScheme>.Filter.And(Builders<GuildApplicationScheme>.Filter.Eq("uno", user.uno),
+            var filter = Builders<GuildApplicationScheme>.Filter.And(Builders<GuildApplicationScheme>.Filter.Eq("uno", user.Uno),
                          Builders<GuildApplicationScheme>.Filter.Eq("guildId", guildIdx));
 
-            var result = collection.DeleteOne(filter);
+            var result = Collection.DeleteOne(filter);
 
             return result.DeletedCount > 0;
         }

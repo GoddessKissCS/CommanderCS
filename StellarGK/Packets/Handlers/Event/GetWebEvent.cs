@@ -2,8 +2,8 @@
 
 namespace StellarGK.Host.Handlers.Event
 {
-    [Command(Id = CommandId.GetWebEvent)]
-    public class GetWebEvent : BaseCommandHandler<GetWebEventRequest>
+    [Packet(MethodId.GetWebEvent)]
+    public class GetWebEvent : BaseMethodHandler<GetWebEventRequest>
     {
         public override object Handle(GetWebEventRequest @params)
         {
@@ -14,8 +14,8 @@ namespace StellarGK.Host.Handlers.Event
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
-                result = gwe,
+                Id = BasePacket.Id,
+                Result = gwe,
             };
 
             return response;

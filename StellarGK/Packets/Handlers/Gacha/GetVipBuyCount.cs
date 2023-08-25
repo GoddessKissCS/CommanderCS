@@ -1,10 +1,10 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Logic.Protocols;
+﻿using StellarGK.Logic.Protocols;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Gacha
 {
-    [Command(Id = CommandId.GetVipBuyCount)]
-    public class GetVipBuyCount : BaseCommandHandler<GetVipBuyCountRequest>
+    [Packet(MethodId.GetVipBuyCount)]
+    public class GetVipBuyCount : BaseMethodHandler<GetVipBuyCountRequest>
     {
         public override object Handle(GetVipBuyCountRequest @params)
         {
@@ -26,8 +26,8 @@ namespace StellarGK.Host.Handlers.Gacha
             VIP.rchg = rchg;
 
 
-            response.id = BasePacket.Id;
-            response.result = VIP;
+            response.Id = BasePacket.Id;
+            response.Result = VIP;
 
             return response;
         }

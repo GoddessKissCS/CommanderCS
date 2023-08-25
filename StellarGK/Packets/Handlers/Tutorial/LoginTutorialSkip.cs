@@ -1,11 +1,11 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 using StellarGK.Logic.Protocols;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Tutorial
 {
-    [Command(Id = CommandId.LoginTutorialSkip)]
-    public class LoginTutorialSkip : BaseCommandHandler<LoginTutorialSkipRequest>
+    [Packet(MethodId.LoginTutorialSkip)]
+    public class LoginTutorialSkip : BaseMethodHandler<LoginTutorialSkipRequest>
     {
 
         public override object Handle(LoginTutorialSkipRequest @params)
@@ -19,8 +19,8 @@ namespace StellarGK.Host.Handlers.Tutorial
                 ttrl = TData,
             };
 
-            response.id = BasePacket.Id;
-            response.result = lts;
+            response.Id = BasePacket.Id;
+            response.Result = lts;
 
             return response;
         }

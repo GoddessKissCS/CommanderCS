@@ -1,11 +1,11 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Logic.ExcelReader;
+﻿using StellarGK.Logic.ExcelReader;
 using StellarGK.Logic.Protocols;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Commander
 {
-    [Command(Id = CommandId.CommanderLevelUp)]
-    public class CommanderLevelUp : BaseCommandHandler<CommanderLevelUpRequest>
+    [Packet(MethodId.CommanderLevelUp)]
+    public class CommanderLevelUp : BaseMethodHandler<CommanderLevelUpRequest>
     {
 
         public override object Handle(CommanderLevelUpRequest @params)
@@ -17,11 +17,11 @@ namespace StellarGK.Host.Handlers.Commander
             // TODO ADD MAXLEVEL CHECK SO YOU CANT OVERLEVEL THEM OVER YOUR LEVEL
             //GIVES OUT ERRORCODE 20001 or 20003
 
-            var user = GetGameProfile();
+            var user = GetUserGameProfile();
 
-            var commanderList = user.commanderData;
+            var commanderList = user.CommanderData;
 
-            var itemData = user.userInventory.itemData;
+            var itemData = user.UserInventory.itemData;
 
             if (commanderList.TryGetValue(@params.commanderId.ToString(), out UserInformationResponse.Commander commander) && commander != null)
             {

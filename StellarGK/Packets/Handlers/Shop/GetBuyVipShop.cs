@@ -1,7 +1,7 @@
 ﻿namespace StellarGK.Host.Handlers.Shop
 {
-    [Command(Id = CommandId.GetBuyVipShop)]
-    public class GetBuyVipShop : BaseCommandHandler<GetBuyVipShopRequest>
+    [Packet(MethodId.GetBuyVipShop)]
+    public class GetBuyVipShop : BaseMethodHandler<GetBuyVipShopRequest>
     {
         public override object Handle(GetBuyVipShopRequest @params)
         {

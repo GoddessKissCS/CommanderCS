@@ -1,10 +1,10 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Sign
 {
-    [Command(Id = CommandId.GuestSignUp)]
-    public class GuestSignUp : BaseCommandHandler<GuestSignUpRequest>
+    [Packet(MethodId.GuestSignUp)]
+    public class GuestSignUp : BaseMethodHandler<GuestSignUpRequest>
     {
         public override object Handle(GuestSignUpRequest @params)
         {
@@ -16,17 +16,16 @@ namespace StellarGK.Host.Handlers.Sign
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
-                result = SignUp
+                Id = BasePacket.Id,
+                Result = SignUp
             };
 
             return response;
         }
 
-
         private static string RequestSignUp(int platformid, int channel)
         {
-            return DatabaseManager.Account.CreateGuest(platformid, channel).name;
+            return DatabaseManager.Account.Create("", "", platformid, channel).Name;
         }
 
         public class GuestSignUpPacket

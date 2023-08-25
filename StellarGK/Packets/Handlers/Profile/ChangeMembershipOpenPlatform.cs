@@ -1,11 +1,11 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Host;
+﻿using StellarGK.Host;
 using StellarGK.Logic.Enums;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Profile
 {
-    [Command(Id = CommandId.ChangeMembershipOpenPlatform)]
-    public class ChangeMembershipOpenPlatform : BaseCommandHandler<ChangeMembershipOpenPlatformRequest>
+    [Packet(MethodId.ChangeMembershipOpenPlatform)]
+    public class ChangeMembershipOpenPlatform : BaseMethodHandler<ChangeMembershipOpenPlatformRequest>
     {
         public override object Handle(ChangeMembershipOpenPlatformRequest @params)
         {
@@ -27,8 +27,8 @@ namespace StellarGK.Packets.Handlers.Profile
 
             */
 
-            response.id = BasePacket.Id;
-            response.result = "{}";
+            response.Id = BasePacket.Id;
+            response.Result = "{}";
             return response;
 
 

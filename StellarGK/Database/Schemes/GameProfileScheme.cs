@@ -1,4 +1,5 @@
 using MongoDB.Bson;
+using StellarGK.Logic.Enums;
 using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Database.Schemes
@@ -7,75 +8,77 @@ namespace StellarGK.Database.Schemes
     {
 
         public ObjectId Id { get; set; }
-        public int memberId { get; set; }
-        public int server { get; set; }
-        public int? guildId { get; set; }
-        public int worldState { get; set; }
-        public string session { get; set; }
-        public string uno { get; set; }
-        public int lastStage { get; set; }
-        public bool notifaction { get; set; }
-        public int resetDateTime { get; set; }
-        public int lastLoginTime { get; set; }
-        public UserDevice userDevice { get; set; }
-        public UserBattleStatistics userStatistics { get; set; }
-        public UserResources userResources { get; set; }
-        public UserInventory userInventory { get; set; }
-        public UserBadges userBadges { get; set; }
-        public UserInformationResponse.TutorialData tutorialData { get; set; }
-        public Dictionary<string, List<WorldMapInformationResponse>> stages { get; set; }
-        public Dictionary<string, UserInformationResponse.Commander> commanderData { get; set; }
-        public List<UserInformationResponse.PreDeck> preDeck { get; set; }
-        public List<int> completeRewardGroupIdx { get; set; }
-        public Dictionary<string, List<int>> sweepClearData { get; set; }
-        public Dictionary<string, DiapatchCommanderInfo> dispatchedCommanders { get; set; }
-        public List<UserInformationResponse.VipRechargeData> vipRechargeData { get; set; }
-        public Dictionary<string, int> boughtCashShopItems { get; set; }
+        public int MemberId { get; set; }
+        public int Server { get; set; }
+        public int? GuildId { get; set; }
+        public int WorldState { get; set; }
+        public string Session { get; set; }
+        public string Uno { get; set; }
+        public int LastStage { get; set; }
+        public bool Notifaction { get; set; }
+        public int ResetDateTime { get; set; }
+        public int LastLoginTime { get; set; }
+        public UserDevice UserDevice { get; set; }
+        public UserBattleStatistics UserStatistics { get; set; }
+        public UserResources UserResources { get; set; }
+        public UserInventory UserInventory { get; set; }
+        public UserBadges UserBadges { get; set; }
+        public UserInformationResponse.TutorialData TutorialData { get; set; }
+        public Dictionary<string, List<WorldMapInformationResponse>> Stages { get; set; }
+        public Dictionary<string, UserInformationResponse.Commander> CommanderData { get; set; }
+        public List<UserInformationResponse.PreDeck> PreDeck { get; set; }
+        public List<int> CompleteRewardGroupIdx { get; set; }
+        public Dictionary<string, List<int>> SweepClearData { get; set; }
+        public Dictionary<string, DiapatchCommanderInfo> DispatchedCommanders { get; set; }
+        public List<UserInformationResponse.VipRechargeData> VipRechargeData { get; set; }
+        public Dictionary<string, int> BoughtCashShopItems { get; set; }
+        public List<BlockUser> BlockedUsers { get; set; }
+        public MailInfo? MailInfo { get; set; }
     }
 
     public class UserDevice
     {
-        public int platformId { get; set; }
-        public string device { get; set; }
-        public string deviceid { get; set; }
-        public int patchType { get; set; }
-        public int osCode { get; set; }
-        public string osversion { get; set; }
-        public string gameversion { get; set; }
-        public string apk { get; set; }
-        public string pushRegistrationId { get; set; }
-        public string language { get; set; }
-        public string country { get; set; }
-        public string gpid { get; set; }
+        public Platform PlatformId { get; set; }
+        public string Device { get; set; }
+        public string Deviceid { get; set; }
+        public int PatchType { get; set; }
+        public OSCode OsCode { get; set; }
+        public string Osversion { get; set; }
+        public string Gameversion { get; set; }
+        public string Apk { get; set; }
+        public string PushRegistrationId { get; set; }
+        public string Language { get; set; }
+        public string Country { get; set; }
+        public string Gpid { get; set; }
     }
 
     public class UserBattleStatistics
     {
-        public int totalGold { get; set; }
-        public int pveWinCount { get; set; }
-        public int pveLoseCount { get; set; }
-        public int pvpWinCount { get; set; }
-        public int pvpLoseCount { get; set; }
-        public int armyCommanderDestroyCount { get; set; }
-        public int armyUnitDestroyCount { get; set; }
-        public int navyCommanderDestroyCount { get; set; }
-        public int navyUnitDestroyCount { get; set; }
-        public int totalPlunderGold { get; set; }
-        public int winStreak { get; set; }
-        public int winMostStreak { get; set; }
-        public int preWinStreak { get; set; }
-        public int arenaHighRank { get; set; }
-        public int raidHighRank { get; set; }
-        public int raidHighScore { get; set; }
-        public int normalGachaCount { get; set; }
-        public int premiumGachaCount { get; set; }
-        public int stageClearCount { get; set; }
-        public int sweepClearCount { get; set; }
-        public int unitDestroyCount { get; set; }
-        public int commanderDestroyCount { get; set; }
-        public int vipShop { get; set; }
-        public int vipShopResetTime { get; set; }
-        public int predeckCount { get; set; }
+        public int TotalGold { get; set; }
+        public int PveWinCount { get; set; }
+        public int PveLoseCount { get; set; }
+        public int PvpWinCount { get; set; }
+        public int PvpLoseCount { get; set; }
+        public int ArmyCommanderDestroyCount { get; set; }
+        public int ArmyUnitDestroyCount { get; set; }
+        public int NavyCommanderDestroyCount { get; set; }
+        public int NavyUnitDestroyCount { get; set; }
+        public int TotalPlunderGold { get; set; }
+        public int WinStreak { get; set; }
+        public int WinMostStreak { get; set; }
+        public int PreWinStreak { get; set; }
+        public int ArenaHighRank { get; set; }
+        public int RaidHighRank { get; set; }
+        public int RaidHighScore { get; set; }
+        public int NormalGachaCount { get; set; }
+        public int PremiumGachaCount { get; set; }
+        public int StageClearCount { get; set; }
+        public int SweepClearCount { get; set; }
+        public int UnitDestroyCount { get; set; }
+        public int CommanderDestroyCount { get; set; }
+        public int VipShop { get; set; }
+        public int VipShopResetTime { get; set; }
+        public int PredeckCount { get; set; }
         public int firstPayment { get; set; }
         public int weaponMakeSlotCount { get; set; }
         public int weaponInventoryCount { get; set; }
@@ -85,7 +88,7 @@ namespace StellarGK.Database.Schemes
     {
         public string nickname { get; set; }
         public int annCoin { get; set; }
-        public int blackChallenge { get; set; }
+        public int BlackChallenge { get; set; }
         public int blueprintArmy { get; set; }
         public int blueprintNavy { get; set; }
         public int bullet { get; set; }

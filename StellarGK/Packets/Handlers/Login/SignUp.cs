@@ -1,24 +1,24 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 using StellarGK.Tools;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Sign
 {
-    [Command(Id = CommandId.SignUp)]
-    public class SignUp : BaseCommandHandler<SignUpRequest>
+    [Packet(MethodId.SignUp)]
+    public class SignUp : BaseMethodHandler<SignUpRequest>
     {
         public override object Handle(SignUpRequest @params)
         {
             ResponsePacket response = new()
             {
-                id = BasePacket.Id
+                Id = BasePacket.Id
             };
 
             ErrorCode code = RequestSignUp(@params.uid, @params.pwd, @params.plfm, @params.ch);
 
             if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
             {
-                response.error = new() { code = code };
+                response.Error = new() { code = code };
 
                 return response;
             }
@@ -28,7 +28,7 @@ namespace StellarGK.Host.Handlers.Sign
                 uid = @params.uid,
             };
 
-            response.result = SignUp;
+            response.Result = SignUp;
 
             return response;
 

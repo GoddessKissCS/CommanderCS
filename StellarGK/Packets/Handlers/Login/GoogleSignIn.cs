@@ -1,10 +1,10 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Host;
+﻿using StellarGK.Host;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Login
 {
-    [Command(Id = CommandId.GoogleSignIn)]
-    public class GoogleSignIn : BaseCommandHandler<GoogleSignInRequest>
+    [Packet(MethodId.GoogleSignIn)]
+    public class GoogleSignIn : BaseMethodHandler<GoogleSignInRequest>
     {
 
         public override object Handle(GoogleSignInRequest @params)

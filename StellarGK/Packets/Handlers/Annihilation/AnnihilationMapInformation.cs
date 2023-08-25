@@ -1,6 +1,18 @@
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Annihilation
 {
-    public class AnnihilationMapInformation
+    [Packet(MethodId.AnnihilationMapInformation)]
+    public class AnnihilationMapInformation : BaseMethodHandler<AnnihilationMapInformationRequest>
+    {
+        public override object Handle(AnnihilationMapInformationRequest @params)
+        {
+
+            return "{}";
+        }
+
+    }
+    public class AnnihilationMapInformationRequest
     {
 
     }

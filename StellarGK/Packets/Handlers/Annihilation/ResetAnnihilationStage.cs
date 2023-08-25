@@ -1,10 +1,27 @@
+using StellarGK.Host;
+using StellarGK.Logic.Enums;
+using System.Text.Json.Serialization;
+
 namespace StellarGK.Packets.Handlers.Annihilation
 {
-    public class ResetAnnihilationStage
+    [Packet(MethodId.ResetAnnihilationStage)]
+    public class ResetAnnihilationStage : BaseMethodHandler<ResetAnnihilationStageRequest>
     {
-
+        public override object Handle(ResetAnnihilationStageRequest @params)
+        {
+            return "{}";
+        }
     }
+
+
+    public class ResetAnnihilationStageRequest
+    {
+        [JsonPropertyName("mode")]
+        public AnnihilationMode mode { get; set; }
+    }
+
 }
+
 /*	// Token: 0x060060AD RID: 24749 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3237", true, true)]
 	public void ResetAnnihilationStage(AnnihilationMode mode)

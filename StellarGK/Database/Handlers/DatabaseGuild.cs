@@ -15,12 +15,12 @@ namespace StellarGK.Database.Handlers
 
         public GuildScheme FindByName(string guildName)
         {
-            GuildScheme? guild = collection.AsQueryable().Where(d => d.name == guildName).FirstOrDefault();
+            GuildScheme? guild = Collection.AsQueryable().Where(d => d.Name == guildName).FirstOrDefault();
             return guild;
         }
         public GuildScheme FindByUid(int guildId)
         {
-            GuildScheme? guild = collection.AsQueryable().Where(d => d.guildId == guildId).FirstOrDefault();
+            GuildScheme? guild = Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
 
             return guild;
         }
@@ -32,7 +32,7 @@ namespace StellarGK.Database.Handlers
                 return null;
             }
 
-            GuildScheme? guild = collection.AsQueryable().Where(d => d.guildId == guildId).FirstOrDefault();
+            GuildScheme? guild = Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
 
             if (guild == null)
             {
@@ -41,24 +41,24 @@ namespace StellarGK.Database.Handlers
 
             UserInformationResponse.UserGuild userGuild = new()
             {
-                skillDada = guild.skillDada,
-                state = guild.state,
+                skillDada = guild.SkillDada,
+                state = guild.State,
                 aPoint = guild.aPoint,
-                closeTime = guild.closeTime,
-                count = guild.count,
-                createTime = guild.createTime,
-                emblem = guild.emblem,
-                guildType = guild.guildType,
-                idx = guild.guildId,
-                level = guild.level,
-                limitLevel = guild.limitlevel,
-                maxCount = guild.maxCount,
-                memberGrade = guild.memberGrade,
-                name = guild.name,
-                notice = guild.notice,
-                occupy = guild.occupy,
-                point = guild.point,
-                world = guild.world,
+                closeTime = guild.CloseTime,
+                count = guild.Count,
+                createTime = guild.CreateTime,
+                emblem = guild.Emblem,
+                guildType = guild.GuildType,
+                idx = guild.GuildId,
+                level = guild.Level,
+                limitLevel = guild.Limitlevel,
+                maxCount = guild.MaxCount,
+                memberGrade = guild.MemberGrade,
+                name = guild.Name,
+                notice = guild.Notice,
+                occupy = guild.Occupy,
+                point = guild.Point,
+                world = guild.World,
             };
 
             return userGuild;
@@ -70,20 +70,20 @@ namespace StellarGK.Database.Handlers
                 return null;
             }
 
-            GuildScheme? guild = collection.AsQueryable().Where(d => d.guildId == guildId).FirstOrDefault();
+            GuildScheme? guild = Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
 
             if (guild == null)
             {
                 return null;
             }
 
-            return guild.memberData;
+            return guild.MemberData;
         }
 
 
         public List<RoGuild> GetAllGuilds(string session)
         {
-            var allGuilds = collection.AsQueryable().ToList();
+            var allGuilds = Collection.AsQueryable().ToList();
 
             List<RoGuild> returnGuilds = new();
 
@@ -97,16 +97,16 @@ namespace StellarGK.Database.Handlers
                 RoGuild dbGuild = new()
                 {
                     apnt = guild.aPoint,
-                    cnt = guild.count,
-                    mxCnt = guild.maxCount,
-                    gidx = guild.guildId,
-                    gnm = guild.name,
-                    gtyp = guild.guildType,
-                    emb = guild.emblem,
-                    lev = guild.level,
-                    ntc = guild.notice,
-                    world = guild.world,
-                    list = DatabaseManager.GuildApplication.RetrieveGuildApplication(session, guild.guildId),
+                    cnt = guild.Count,
+                    mxCnt = guild.MaxCount,
+                    gidx = guild.GuildId,
+                    gnm = guild.Name,
+                    gtyp = guild.GuildType,
+                    emb = guild.Emblem,
+                    lev = guild.Level,
+                    ntc = guild.Notice,
+                    world = guild.World,
+                    list = DatabaseManager.GuildApplication.RetrieveGuildApplication(session, guild.GuildId),
                 };
 
                 returnGuilds.Add(dbGuild);

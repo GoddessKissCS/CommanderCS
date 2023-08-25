@@ -1,5 +1,5 @@
-using System.Text.Json.Serialization;
 using Newtonsoft.Json.Linq;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.WaveDuel
 {

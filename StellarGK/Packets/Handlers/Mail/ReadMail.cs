@@ -1,10 +1,28 @@
+using StellarGK.Host.Handlers.Battle;
+using StellarGK.Host;
 using System.Text.Json.Serialization;
+using StellarGK.Database;
 
 namespace StellarGK.Packets.Handlers.Mail
 {
-    public class ReadMail
+	[Packet(MethodId.ReadMail)]
+    public class ReadMail : BaseMethodHandler<ReadMailRequest>
     {
+        public override object Handle(ReadMailRequest @params)
+        {
+#warning TODO: ADDING THE REWARD
 
+			bool result = DatabaseManager.GameProfile.ReadMail(GetSession(), @params.Idx);
+
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = result.ToString(),
+			};
+
+
+            return response;
+        }
     }
     public class ReadMailRequest
     {
@@ -12,19 +30,3 @@ namespace StellarGK.Packets.Handlers.Mail
         public int Idx { get; set; }
     }
 }
-/*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6103", true, true)]
-	public void ReadMail(int idx)
-	{
-	}
-
-	// Token: 0x06005F72 RID: 24434 RVA: 0x001AF020 File Offset: 0x001AD220
-	private IEnumerator ReadMailResult(JsonRpcClient.Request request, string result)
-	{
-		this.localUser.badgeNewMailCount--;
-		string text = this._FindRequestProperty(request, "idx");
-		RoReward roReward = this.localUser.FindReward(text);
-		roReward.received = true;
-		UIManager.instance.RefreshOpenedUI();
-		this._CheckReceiveTestData("ReadMailResult");
-		yield break;
-	}*/

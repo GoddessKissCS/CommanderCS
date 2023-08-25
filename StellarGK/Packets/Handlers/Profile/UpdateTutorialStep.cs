@@ -1,10 +1,10 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Profile
 {
-    [Command(Id = CommandId.UpdateTutorialStep)]
-    public class UpdateTutorialStep : BaseCommandHandler<UpdateTutorialStepRequest>
+    [Packet(MethodId.UpdateTutorialStep)]
+    public class UpdateTutorialStep : BaseMethodHandler<UpdateTutorialStepRequest>
     {
         public override object Handle(UpdateTutorialStepRequest @params)
         {
@@ -16,8 +16,8 @@ namespace StellarGK.Host.Handlers.Profile
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
-                result = utsi,
+                Id = BasePacket.Id,
+                Result = utsi,
             };
 
             return response;

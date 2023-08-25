@@ -2,8 +2,8 @@
 
 namespace StellarGK.Host.Handlers.UserTerm
 {
-    [Command(Id = CommandId.UserTerm)]
-    public class UserTerm : BaseCommandHandler<UserTermRequest>
+    [Packet(MethodId.UserTerm)]
+    public class UserTerm : BaseMethodHandler<UserTermRequest>
     {
         public override object Handle(UserTermRequest @params)
         {
@@ -18,8 +18,8 @@ namespace StellarGK.Host.Handlers.UserTerm
                 member = File.ReadAllText($"Resources\\Shared\\privacy.txt")
             };
 
-            response.id = BasePacket.Id;
-            response.result = userterm;
+            response.Id = BasePacket.Id;
+            response.Result = userterm;
 
             return response;
         }

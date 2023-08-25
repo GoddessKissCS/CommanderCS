@@ -2,8 +2,8 @@
 
 namespace StellarGK.Host.Handlers.Event
 {
-    [Command(Id = CommandId.GetEventBattleList)]
-    public class GetEventBattleList : BaseCommandHandler<GetEventBattleListRequest>
+    [Packet(MethodId.GetEventBattleList)]
+    public class GetEventBattleList : BaseMethodHandler<GetEventBattleListRequest>
     {
 
         public override object Handle(GetEventBattleListRequest @params)
@@ -22,8 +22,8 @@ namespace StellarGK.Host.Handlers.Event
 
             ResponsePacket response = new()
             {
-                result = battleInfos,
-                id = BasePacket.Id
+                Result = battleInfos,
+                Id = BasePacket.Id
             };
 
             return response;

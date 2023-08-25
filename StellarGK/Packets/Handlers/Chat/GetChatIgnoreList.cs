@@ -1,14 +1,14 @@
 ﻿namespace StellarGK.Host.Handlers.Chat
 {
-    [Command(Id = CommandId.GetChatIgnoreList)]
-    public class GetChatIgnoreList : BaseCommandHandler<GetChatIgnoreListRequest>
+    [Packet(MethodId.GetChatIgnoreList)]
+    public class GetChatIgnoreList : BaseMethodHandler<GetChatIgnoreListRequest>
     {
         public override object Handle(GetChatIgnoreListRequest @params)
         {
             ResponsePacket response = new()
             {
-                result = GetAccount().blockedUsers,
-                id = BasePacket.Id
+                Result = GetUserGameProfile().BlockedUsers,
+                Id = BasePacket.Id
             };
 
             return response;

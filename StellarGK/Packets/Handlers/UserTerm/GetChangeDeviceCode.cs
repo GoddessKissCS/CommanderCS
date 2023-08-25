@@ -2,15 +2,15 @@
 
 namespace StellarGK.Host.Handlers.UserTerm
 {
-    [Command(Id = CommandId.GetChangeDeviceCode)]
-    public class GetChangeDeviceCode : BaseCommandHandler<GetChangeDeviceCodeRequest>
+    [Packet(MethodId.GetChangeDeviceCode)]
+    public class GetChangeDeviceCode : BaseMethodHandler<GetChangeDeviceCodeRequest>
     {
         public override object Handle(GetChangeDeviceCodeRequest @params)
         {
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
-                result = RequestForChangeDeviceCode(GetSession())
+                Id = BasePacket.Id,
+                Result = RequestForChangeDeviceCode(GetSession())
             };
 
 
@@ -21,7 +21,7 @@ namespace StellarGK.Host.Handlers.UserTerm
         {
             var account = DatabaseManager.Account.FindBySession(sess);
 
-            var devicechange = DatabaseManager.DeviceCode.FindByUid(account.memberId);
+            var devicechange = DatabaseManager.DeviceCode.FindByUid(account.MemberId);
 
             // TODO - ADDING CHECK ON IF DEVICECODE IS OLDER THAN 7 DAYS I SUPPOSE
             // TODO ADDS SOME OTHER CHECKS ASWELL
@@ -30,9 +30,9 @@ namespace StellarGK.Host.Handlers.UserTerm
             {
                 if (devicechange == null)
                 {
-                    var device = DatabaseManager.DeviceCode.Create(account.memberId);
+                    var device = DatabaseManager.DeviceCode.Create(account.MemberId);
 
-                    return device.code;
+                    return device.Code;
                 }
             }
             catch (Exception ex)
@@ -40,7 +40,7 @@ namespace StellarGK.Host.Handlers.UserTerm
                 _ = ex;
                 return "Contact Admin";
             }
-            return devicechange.code;
+            return devicechange.Code;
 
         }
 

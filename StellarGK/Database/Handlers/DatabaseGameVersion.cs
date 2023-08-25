@@ -12,29 +12,29 @@ namespace StellarGK.Database.Handlers
 
             GameVersionScheme versionInfo = new()
             {
-                channelId = id,
-                version = ver,
-                cdn_url = cdn,
-                game_url = game,
-                chat_url = chat,
+                ChannelId = id,
+                Version = ver,
+                Cdn_Url = cdn,
+                Game_Url = game,
+                Chat_Url = chat,
                 fileCheck = fc,
                 enableGoogleLogin = gglogin,
                 showPolicy = policy,
-                version_state = stat,
-                word = new()
+                Version_State = stat,
+                Word = new()
                 {
                     { "en", 1 }
                 }
             };
 
-            collection.InsertOne(versionInfo);
+            Collection.InsertOne(versionInfo);
 
             return versionInfo;
         }
 
         public GameVersionScheme Get(int id)
         {
-            return collection.AsQueryable().Where(d => d.channelId == id).FirstOrDefault();
+            return Collection.AsQueryable().Where(d => d.ChannelId == id).FirstOrDefault();
         }
     }
 }

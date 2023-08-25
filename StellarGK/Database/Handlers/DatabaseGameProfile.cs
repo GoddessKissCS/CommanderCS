@@ -12,8 +12,8 @@ namespace StellarGK.Database.Handlers
         public DatabaseGameProfile() : base("GameProfile") { }
         public GameProfileScheme? GetOrCreate(int memberId, int server)
         {
-            var tryUser = collection.AsQueryable()
-                       .Where(d => d.server == server && d.memberId == memberId)
+            var tryUser = Collection.AsQueryable()
+                       .Where(d => d.Server == server && d.MemberId == memberId)
                        .FirstOrDefault();
 
             if (tryUser != null) { return tryUser; }
@@ -22,51 +22,67 @@ namespace StellarGK.Database.Handlers
 
             GameProfileScheme user = new()
             {
-                server = server,
-                stages = WorldMapStageData.GetInstance().AddAllStagesAtDefault(),
-                sweepClearData = new() { },
-                lastStage = 0,
-                userStatistics = new()
+                Server = server,
+                Stages = WorldMapStageData.GetInstance().AddAllStagesAtDefault(),
+                SweepClearData = new() { },
+                LastStage = 0,
+                UserStatistics = new()
                 {
-                    stageClearCount = 0,
-                    sweepClearCount = 0,
-                    preWinStreak = 0,
-                    raidHighScore = 0,
-                    vipShopResetTime = 0,
+                    StageClearCount = 0,
+                    SweepClearCount = 0,
+                    PreWinStreak = 0,
+                    RaidHighScore = 0,
+                    VipShopResetTime = 0,
                     weaponMakeSlotCount = 0,
-                    vipShop = 0,
-                    winStreak = 0,
-                    arenaHighRank = 0,
-                    winMostStreak = 0,
-                    armyCommanderDestroyCount = 0,
-                    armyUnitDestroyCount = 0,
-                    commanderDestroyCount = 0,
+                    VipShop = 0,
+                    WinStreak = 0,
+                    ArenaHighRank = 0,
+                    WinMostStreak = 0,
+                    ArmyCommanderDestroyCount = 0,
+                    ArmyUnitDestroyCount = 0,
+                    CommanderDestroyCount = 0,
                     firstPayment = 0,
-                    navyCommanderDestroyCount = 0,
-                    navyUnitDestroyCount = 0,
-                    normalGachaCount = 0,
-                    predeckCount = 0,
-                    premiumGachaCount = 0,
-                    pveLoseCount = 0,
-                    pveWinCount = 0,
-                    pvpLoseCount = 0,
-                    pvpWinCount = 0,
-                    raidHighRank = 0,
-                    totalGold = 100000,
-                    totalPlunderGold = 0,
-                    unitDestroyCount = 0,
+                    NavyCommanderDestroyCount = 0,
+                    NavyUnitDestroyCount = 0,
+                    NormalGachaCount = 0,
+                    PredeckCount = 0,
+                    PremiumGachaCount = 0,
+                    PveLoseCount = 0,
+                    PveWinCount = 0,
+                    PvpLoseCount = 0,
+                    PvpWinCount = 0,
+                    RaidHighRank = 0,
+                    TotalGold = 100000,
+                    TotalPlunderGold = 0,
+                    UnitDestroyCount = 0,
                     weaponInventoryCount = 0,
                 },
-                commanderData = new() { },
-                completeRewardGroupIdx = new() { },
-                dispatchedCommanders = new() { },
-                guildId = null,
-                memberId = memberId,
-                notifaction = false,
-                preDeck = new() { },
-                tutorialData = new() { skip = false, step = 0 },
-                userDevice = new() { },
-                userInventory = new()
+                CommanderData = new() 
+                { 
+                
+                },
+                CompleteRewardGroupIdx = new() 
+                {
+
+                },
+                DispatchedCommanders = new() 
+                { 
+                
+                },
+                GuildId = null,
+                MemberId = memberId,
+                Notifaction = false,
+                PreDeck = new() { },
+                TutorialData = new() 
+                {
+                    skip = false, 
+                    step = 0 
+                },
+                UserDevice = new() 
+                {
+
+                },
+                UserInventory = new()
                 {
                     equipItem = new() { },
                     donHaveCommCostumeData = new() { },
@@ -78,12 +94,12 @@ namespace StellarGK.Database.Handlers
                     partData = new() { },
                     weaponList = new() { }
                 },
-                resetDateTime = 0,
-                userResources = new()
+                ResetDateTime = 0,
+                UserResources = new()
                 {
                     sweepTicket = 0,
                     annCoin = 0,
-                    blackChallenge = 0,
+                    BlackChallenge = 0,
                     blueprintArmy = 0,
                     blueprintNavy = 0,
                     bullet = 500,
@@ -120,23 +136,23 @@ namespace StellarGK.Database.Handlers
                     worldDuelTicket = 0,
                     worldDuelUpgradeCoin = 0,
                 },
-                uno = uno.ToString(),
-                worldState = 0,
+                Uno = uno.ToString(),
+                WorldState = 0,
                 // result.worldState != -1;
                 // if exploration is finished id assume
-                lastLoginTime = 0,
-                userBadges = new()
+                LastLoginTime = 0,
+                UserBadges = new()
                 {
                     arena = 1,
                     dlms = 1,
                     achv = 1,
                     rwd = 1,
                     shop = new Dictionary<string, int>()
-                {
-                    { "raid", 0 },
-                    { "arena3", 0 },
-                    { "arena", 0 }
-                },
+                    {
+                        { "raid", 0 },
+                        { "arena3", 0 },
+                        { "arena", 0 }
+                    },
                     cnvl = new List<string>(),
                     ccnv = 0,
                     cnvl2 = new List<string>(),
@@ -149,18 +165,31 @@ namespace StellarGK.Database.Handlers
                     ercnt = 0,
                     iftw = 0,
                 },
-                vipRechargeData = new() { },
+                VipRechargeData = new() 
+                {
+                
+                },
+                BlockedUsers = new()
+                {
+
+                },
+                BoughtCashShopItems = new() 
+                { 
+
+                },
+                Session = string.Empty,
+                MailInfo = null,
             };
 
-            collection.InsertOne(user);
+            Collection.InsertOne(user);
 
             return user;
         }
 
         public GameProfileScheme? FromUidAndServer(int memberId, int server)
         {
-            var tryUser = collection.AsQueryable()
-                       .Where(d => d.server == server && d.memberId == memberId)
+            var tryUser = Collection.AsQueryable()
+                       .Where(d => d.Server == server && d.MemberId == memberId)
                        .FirstOrDefault();
 
             if (tryUser != null)
@@ -175,13 +204,13 @@ namespace StellarGK.Database.Handlers
 
         public bool AccountExists(string nickname)
         {
-            return collection.AsQueryable().Where(d => d.userResources.nickname == nickname).Count() > 0;
+            return Collection.AsQueryable().Where(d => d.UserResources.nickname == nickname).Count() > 0;
         }
 
         public GameProfileScheme? FindBySession(string session)
         {
-            var tryUser = collection.AsQueryable()
-                       .Where(d => d.session == session)
+            var tryUser = Collection.AsQueryable()
+                       .Where(d => d.Session == session)
                        .FirstOrDefault();
 
             if (tryUser == null)
@@ -194,45 +223,44 @@ namespace StellarGK.Database.Handlers
 
         public GameProfileScheme FindByNick(string nickname)
         {
-            GameProfileScheme? user = collection.AsQueryable().Where(d => d.userResources.nickname == nickname).FirstOrDefault();
-            return user;
+            return Collection.AsQueryable().Where(d => d.UserResources.nickname == nickname).FirstOrDefault();
         }
 
 
         public UserInformationResponse.BattleStatistics UserStatisticsFromSession(string session)
         {
-            var statistics = FindBySession(session).userStatistics;
+            var statistics = FindBySession(session).UserStatistics;
 
             UserInformationResponse.BattleStatistics BattleStatisticstis = new()
             {
-                navyCommanderDestroyCount = statistics.navyCommanderDestroyCount,
-                stageClearCount = statistics.stageClearCount,
-                sweepClearCount = statistics.sweepClearCount,
-                preWinStreak = statistics.preWinStreak,
-                raidHighScore = statistics.raidHighScore,
-                vipShop = statistics.vipShop,
-                vipShopResetTime = statistics.vipShopResetTime,
+                navyCommanderDestroyCount = statistics.NavyCommanderDestroyCount,
+                stageClearCount = statistics.StageClearCount,
+                sweepClearCount = statistics.SweepClearCount,
+                preWinStreak = statistics.PreWinStreak,
+                raidHighScore = statistics.RaidHighScore,
+                vipShop = statistics.VipShop,
+                vipShopResetTime = statistics.VipShopResetTime,
                 weaponMakeSlotCount = statistics.weaponMakeSlotCount,
-                winMostStreak = statistics.winMostStreak,
-                winStreak = statistics.winStreak,
-                arenaHighRank = statistics.arenaHighRank,
-                armyCommanderDestroyCount = statistics.armyCommanderDestroyCount,
-                armyUnitDestroyCount = statistics.armyUnitDestroyCount,
-                commanderDestroyCount = statistics.commanderDestroyCount,
+                winMostStreak = statistics.WinMostStreak,
+                winStreak = statistics.WinStreak,
+                arenaHighRank = statistics.ArenaHighRank,
+                armyCommanderDestroyCount = statistics.ArmyCommanderDestroyCount,
+                armyUnitDestroyCount = statistics.ArmyUnitDestroyCount,
+                commanderDestroyCount = statistics.CommanderDestroyCount,
                 firstPayment = statistics.firstPayment,
-                navyUnitDestroyCount = statistics.navyUnitDestroyCount,
-                normalGachaCount = statistics.normalGachaCount,
-                predeckCount = statistics.predeckCount,
-                premiumGachaCount = statistics.premiumGachaCount,
-                pveLoseCount = statistics.pveLoseCount,
-                pveWinCount = statistics.pveWinCount,
-                pvpLoseCount = statistics.pvpLoseCount,
-                pvpWinCount = statistics.pvpWinCount,
-                raidHighRank = statistics.raidHighRank,
-                totalGold = statistics.totalGold,
-                totalPlunderGold = statistics.totalPlunderGold,
+                navyUnitDestroyCount = statistics.NavyUnitDestroyCount,
+                normalGachaCount = statistics.NormalGachaCount,
+                predeckCount = statistics.PredeckCount,
+                premiumGachaCount = statistics.PremiumGachaCount,
+                pveLoseCount = statistics.PveLoseCount,
+                pveWinCount = statistics.PveWinCount,
+                pvpLoseCount = statistics.PvpLoseCount,
+                pvpWinCount = statistics.PvpWinCount,
+                raidHighRank = statistics.RaidHighRank,
+                totalGold = statistics.TotalGold,
+                totalPlunderGold = statistics.TotalPlunderGold,
                 weaponInventoryCount = statistics.weaponInventoryCount,
-                unitDestroyCount = statistics.unitDestroyCount,
+                unitDestroyCount = statistics.UnitDestroyCount,
             };
 
             return BattleStatisticstis;
@@ -240,14 +268,14 @@ namespace StellarGK.Database.Handlers
 
         public UserInformationResponse.Resource? UserResourcesFromSession(string session)
         {
-            var resources = FindBySession(session).userResources;
+            var resources = FindBySession(session).UserResources;
 
             UserInformationResponse.Resource resource = new()
             {
                 __nickname = resources.nickname,
                 __annCoin = Convert.ToString(resources.annCoin),
                 __level = Convert.ToString(resources.level),
-                __blackChallenge = Convert.ToString(resources.blackChallenge),
+                __blackChallenge = Convert.ToString(resources.BlackChallenge),
                 __blueprintArmy = Convert.ToString(resources.blueprintArmy),
                 __blueprintNavy = Convert.ToString(resources.blueprintNavy),
                 __bullet = Convert.ToString(resources.bullet),
@@ -296,23 +324,23 @@ namespace StellarGK.Database.Handlers
 
             if (useAddition)
             {
-                gold = user.userResources.gold + new_gold;
-                stats_gold = user.userStatistics.totalGold + new_gold;
-                cash = user.userResources.cash + new_cash;
+                gold = user.UserResources.gold + new_gold;
+                stats_gold = user.UserStatistics.TotalGold + new_gold;
+                cash = user.UserResources.cash + new_cash;
             }
             else
             {
-                gold = user.userResources.gold - new_gold;
-                stats_gold = user.userStatistics.totalGold - new_gold;
-                cash = user.userResources.cash - new_cash;
+                gold = user.UserResources.gold - new_gold;
+                stats_gold = user.UserStatistics.TotalGold - new_gold;
+                cash = user.UserResources.cash - new_cash;
             }
 
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("session", session);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
-            var update = Builders<GameProfileScheme>.Update.Set("userResources.gold", gold).Set("userResources.cash", cash).Set("userStatistics.totalGold", stats_gold);
+            var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", gold).Set("UserResources.cash", cash).Set("UserStatistics.totalGold", stats_gold);
 
-            collection.UpdateOne(filter, update);
+            Collection.UpdateOne(filter, update);
 
         }
         public void UpdateGold(string session, int gold, bool useAddition)
@@ -322,20 +350,20 @@ namespace StellarGK.Database.Handlers
             int stats_gold;
             if (useAddition)
             {
-                gold = user.userResources.gold + gold;
-                stats_gold = user.userStatistics.totalGold + gold;
+                gold = user.UserResources.gold + gold;
+                stats_gold = user.UserStatistics.TotalGold + gold;
             }
             else
             {
-                gold = user.userResources.gold - gold;
-                stats_gold = user.userStatistics.totalGold - gold;
+                gold = user.UserResources.gold - gold;
+                stats_gold = user.UserStatistics.TotalGold - gold;
             }
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("session", session);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
-            var update = Builders<GameProfileScheme>.Update.Set("userResources.gold", gold).Set("userStatistics.totalGold", stats_gold);
+            var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", gold).Set("UserResources.cash", cash).Set("UserStatistics.totalGold", stats_gold);
 
-            collection.UpdateOne(filter, update);
+            Collection.UpdateOne(filter, update);
 
 
         }
@@ -345,19 +373,19 @@ namespace StellarGK.Database.Handlers
 
             if (useAddition)
             {
-                cash = user.userResources.cash + cash;
+                cash = user.UserResources.cash + cash;
 
             }
             else
             {
-                cash = user.userResources.cash - cash;
+                cash = user.UserResources.cash - cash;
             }
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("session", session);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
             var update = Builders<GameProfileScheme>.Update.Set("userResources.cash", cash);
 
-            collection.UpdateOne(filter, update);
+            Collection.UpdateOne(filter, update);
 
         }
 
@@ -366,76 +394,76 @@ namespace StellarGK.Database.Handlers
 
             UserDevice userDevice = new()
             {
-                apk = @params.apkFileName,
-                country = @params.countryCode,
-                device = @params.deviceName,
-                deviceid = @params.deviceId,
-                gameversion = @params.gameVersion,
-                gpid = @params.largoId,
-                language = @params.languageCode,
-                osCode = (int)@params.osCode,
-                osversion = @params.osVersion,
-                patchType = @params.patchType,
-                platformId = (int)@params.platform,
-                pushRegistrationId = @params.pushRegistrationId,
+                Apk = @params.apkFileName,
+                Country = @params.countryCode,
+                Device = @params.deviceName,
+                Deviceid = @params.deviceId,
+                Gameversion = @params.gameVersion,
+                Gpid = @params.largoId,
+                Language = @params.languageCode,
+                OsCode = @params.osCode,
+                Osversion = @params.osVersion,
+                PatchType = @params.patchType,
+                PlatformId = @params.platform,
+                PushRegistrationId = @params.pushRegistrationId,
             };
 
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("memberId", @params.memberId) &
-                         Builders<GameProfileScheme>.Filter.Eq("server", @params.world);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("MemberId", @params.memberId) &
+                         Builders<GameProfileScheme>.Filter.Eq("Server", @params.world);
 
-            var update = Builders<GameProfileScheme>.Update.Set("session", session).Set("userDevice", userDevice).Set("lastLoginTime", Constants.CurrentTimeStamp);
+            var update = Builders<GameProfileScheme>.Update.Set("Session", session).Set("UserDevice", userDevice).Set("LastLoginTime", Constants.CurrentTimeStamp);
 
-            collection.UpdateOne(filter, update);
+            Collection.UpdateOne(filter, update);
 
             DatabaseManager.Account.UpdateLastServerLoggedIn(@params.world, @params.memberId);
         }
 
         public void UpdateCommanderData(string session, Dictionary<string, UserInformationResponse.Commander> commanderList)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.commanderData, commanderList);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.CommanderData, commanderList);
 
-            collection.UpdateOne(filter, update);
+            Collection.UpdateOne(filter, update);
         }
 
         public void UpdateMedalData(string session, Dictionary<string, int> medalsdata)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.userInventory.medalData, medalsdata);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.medalData, medalsdata);
 
-            collection.UpdateOne(filter, update);
+            Collection.UpdateOne(filter, update);
         }
 
         public void UpdateItemData(string session, Dictionary<string, int> goods)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.userInventory.itemData, goods);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.itemData, goods);
 
-            collection.UpdateOne(filter, update);
+            Collection.UpdateOne(filter, update);
         }
 
 
         public UserInformationResponse.TutorialData UpdateStepAndSkip(string session, UserInformationResponse.TutorialData tutorialData)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq("session", session);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
-            var update = Builders<GameProfileScheme>.Update.Set("tutorialData", tutorialData);
+            var update = Builders<GameProfileScheme>.Update.Set("TutorialData", tutorialData);
 
-            collection.UpdateOne(filter, update);
+            Collection.UpdateOne(filter, update);
 
-            return FindBySession(session).tutorialData;
+            return FindBySession(session).TutorialData;
         }
 
         public bool ChangeThumbnail(string session, int idx)
         {
             int id = CommanderCostumeData.GetInstance().FromId(idx).ctid;
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("session", session);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
-            var update = Builders<GameProfileScheme>.Update.Set("userResources.thumbnailId", id);
+            var update = Builders<GameProfileScheme>.Update.Set("UserResources.thumbnailId", id);
 
-            var updateResult =  collection.UpdateOne(filter, update);
+            var updateResult = Collection.UpdateOne(filter, update);
 
             return updateResult.ModifiedCount > 0;
 
@@ -443,55 +471,69 @@ namespace StellarGK.Database.Handlers
 
         public void UpdateStep(string session, int tutorialStep)
         {
-            var user = FindBySession(session).tutorialData;
+            var user = FindBySession(session).TutorialData;
 
             user.step = tutorialStep;
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("session", session);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
-            var update = Builders<GameProfileScheme>.Update.Set("tutorialData", user);
+            var update = Builders<GameProfileScheme>.Update.Set("TutorialData", user);
 
-            collection.UpdateOne(filter, update);
+            Collection.UpdateOne(filter, update);
         }
 
         public void UpdateNickName(string session, string accountName)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq("session", session);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
-            var update = Builders<GameProfileScheme>.Update.Set("userResources.nickname", accountName);
+            var update = Builders<GameProfileScheme>.Update.Set("UserResources.nickname", accountName);
 
-            collection.UpdateOne(filter, update);
+            Collection.UpdateOne(filter, update);
         }
 
         public bool AddBlockedUser(BlockUser toBeBlocked, string session)
         {
 
             var user = DatabaseManager.GameProfile.FindBySession(session);
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Id", user.memberId);
-            var update = Builders<GameProfileScheme>.Update.Push("blockedUsers", toBeBlocked);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Id", user.MemberId);
+            var update = Builders<GameProfileScheme>.Update.Push("BlockedUsers", toBeBlocked);
 
-            var updateResult = collection.UpdateOne(filter, update);
+            var updateResult = Collection.UpdateOne(filter, update);
 
-            if (updateResult.ModifiedCount > 0)
-            {
-                return true;
-            }
-            return false;
+            return updateResult.ModifiedCount > 0;
         }
         public bool DelBlockedUser(string session, int channel, string uno)
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("memberId", user.memberId);
-            var update = Builders<GameProfileScheme>.Update.PullFilter("blockedUsers",
+            var filter = Builders<GameProfileScheme>.Filter.Eq("memberId", user.MemberId);
+            var update = Builders<GameProfileScheme>.Update.PullFilter("BlockedUsers",
                          Builders<BlockUser>.Filter.And(
                          Builders<BlockUser>.Filter.Eq("ch", channel),
                          Builders<BlockUser>.Filter.Eq("uno", uno)
                                                              ));
 
-            var updateResult = collection.UpdateOne(filter, update);
+            var updateResult = Collection.UpdateOne(filter, update);
 
             return updateResult.ModifiedCount > 0;
+        }
+
+
+        public bool ReadMail(string session , int MailIdx)
+        {
+            var user = DatabaseManager.GameProfile.FindBySession(session);
+
+            var filter = Builders<GameProfileScheme>.Filter.Eq("memberId", user.MemberId);
+
+            var update = Builders<GameProfileScheme>.Update.PullFilter("mailList",
+                Builders<MailInfo.MailData>.Filter.And(
+                    Builders<MailInfo.MailData>.Filter.Eq("idx", MailIdx)
+                ));
+
+            var updateResult = Collection.UpdateOne(filter, update);
+
+            return updateResult.ModifiedCount > 0;
+
         }
 
     }

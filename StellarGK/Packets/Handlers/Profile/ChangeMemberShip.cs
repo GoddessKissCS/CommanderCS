@@ -1,10 +1,10 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Profile
 {
-    [Command(Id = CommandId.ChangeMembership)]
-    public class ChangeMemberShip : BaseCommandHandler<ChangeMemberShipRequest>
+    [Packet(MethodId.ChangeMembership)]
+    public class ChangeMemberShip : BaseMethodHandler<ChangeMemberShipRequest>
     {
         public override object Handle(ChangeMemberShipRequest @params)
         {
@@ -19,15 +19,15 @@ namespace StellarGK.Host.Handlers.Profile
 
             if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
             {
-                response.error = new() { code = code };
-                response.id = BasePacket.Id;
+                response.Error = new() { code = code };
+                response.Id = BasePacket.Id;
 
                 return response;
             }
 
 
-            response.id = BasePacket.Id;
-            response.result = "{}";
+            response.Id = BasePacket.Id;
+            response.Result = "{}";
             return response;
 
 

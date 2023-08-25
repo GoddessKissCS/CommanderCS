@@ -1,19 +1,19 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 using StellarGK.Logic.Protocols;
 using StellarGK.Tools;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Nickname
 {
-    [Command(Id = CommandId.ChangeNickname)]
-    public class ChangeNickname : BaseCommandHandler<ChangeNicknameRequest>
+    [Packet(MethodId.ChangeNickname)]
+    public class ChangeNickname : BaseMethodHandler<ChangeNicknameRequest>
     {
         public override object Handle(ChangeNicknameRequest @params)
         {
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id
+                Id = BasePacket.Id
             };
 
             ErrorCode code = RequestNickNameChange(@params.nickname, GetSession());
@@ -21,7 +21,7 @@ namespace StellarGK.Host.Handlers.Nickname
 
             if (code == ErrorCode.AlreadyInUse || code == ErrorCode.InappropriateWords)
             {
-                response.error = new() { code = code };
+                response.Error = new() { code = code };
 
                 return response;
             }
@@ -31,7 +31,7 @@ namespace StellarGK.Host.Handlers.Nickname
                 rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(GetSession()),
             };
 
-            response.result = data;
+            response.Result = data;
 
             return response;
 
@@ -47,14 +47,14 @@ namespace StellarGK.Host.Handlers.Nickname
             var user = DatabaseManager.GameProfile.FindByNick(AccountName);
             if (user == null)
             {
-                int cash = user.userResources.cash - 100;
+                int cash = user.UserResources.cash - 100;
 
                 DatabaseManager.GameProfile.UpdateCash(sess, cash, false);
 
                 return ErrorCode.Success;
 
             }
-            else if (user.userResources.nickname == AccountName)
+            else if (user.UserResources.nickname == AccountName)
             {
                 return ErrorCode.AlreadyInUse;
             }

@@ -2,28 +2,28 @@
 
 namespace StellarGK.Host.Handlers.Dormitory
 {
-    [Command(Id = CommandId.GetDormitoryInfo)]
-    public class GetDormitoryInfo : BaseCommandHandler<GetDormitoryInfoRequest>
+    [Packet(MethodId.GetDormitoryInfo)]
+    public class GetDormitoryInfo : BaseMethodHandler<GetDormitoryInfoRequest>
     {
         public override object Handle(GetDormitoryInfoRequest @params)
         {
-            var dormitoryInfo = GetDormitory();
+            var dormitoryInfo = GetUserDormitory();
 
             Logic.Protocols.Dormitory.Info DormitoryInfo = new()
             {
-                costumeBody = dormitoryInfo.costumeBody,
-                itemNormal = dormitoryInfo.itemNormal,
-                itemAdvanced = dormitoryInfo.itemAdvanced,
-                itemWallpaper = dormitoryInfo.itemWallpaper,
-                costumeHead = dormitoryInfo.costumeHead,
-                resource = dormitoryInfo.dormitoryResource,
-                info = dormitoryInfo.dormitoryInfo
+                costumeBody = dormitoryInfo.CostumeBody,
+                itemNormal = dormitoryInfo.ItemNormal,
+                itemAdvanced = dormitoryInfo.ItemAdvanced,
+                itemWallpaper = dormitoryInfo.ItemWallpaper,
+                costumeHead = dormitoryInfo.CostumeHead,
+                resource = dormitoryInfo.DormitoryResource,
+                info = dormitoryInfo.DormitoryInfo
             };
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
-                result = DormitoryInfo
+                Id = BasePacket.Id,
+                Result = DormitoryInfo
             };
 
             return response;

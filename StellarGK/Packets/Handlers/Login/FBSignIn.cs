@@ -1,10 +1,10 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Host;
+﻿using StellarGK.Host;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Login
 {
-    [Command(Id = CommandId.FBSignIn)]
-    public class FBSignIn : BaseCommandHandler<FBSignInRequest>
+    [Packet(MethodId.FBSignIn)]
+    public class FBSignIn : BaseMethodHandler<FBSignInRequest>
     {
         public override object Handle(FBSignInRequest @params)
         {

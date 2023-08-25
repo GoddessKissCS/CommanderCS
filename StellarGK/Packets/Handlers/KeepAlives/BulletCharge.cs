@@ -4,27 +4,27 @@ using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.KeepAlives
 {
-    [Command(Id = CommandId.BulletCharge)]
-    public class BulletCharge : BaseCommandHandler<BulletChargeResult>
+    [Packet(MethodId.BulletCharge)]
+    public class BulletCharge : BaseMethodHandler<BulletChargeResult>
     {
         public override object Handle(BulletChargeResult @params)
         {
-            var user = GetGameProfile();
+            var user = GetUserGameProfile();
 
-            int bullets = UserLevelData.GetInstance().FromLevel(user.userResources.level).maxBullet;
+            int bullets = UserLevelData.GetInstance().FromLevel(user.UserResources.level).maxBullet;
 
             ResourceRecharge resource = new()
             {
 
                 bulletData = new()
                 {
-                    cnt = user.userResources.bullet,
+                    cnt = user.UserResources.bullet,
                     remain = bullets,
                 },
                 oilData = new()
                 {
-                    cnt = user.userResources.oil,
-                    remain = user.userResources.oil,
+                    cnt = user.UserResources.oil,
+                    remain = user.UserResources.oil,
                 },
                 skillData = new()
                 {
@@ -33,30 +33,30 @@ namespace StellarGK.Host.Handlers.KeepAlives
                 },
                 chip = new()
                 {
-                    remain = user.userResources.chip,
-                    cnt = user.userResources.chip,
+                    remain = user.UserResources.chip,
+                    cnt = user.UserResources.chip,
                 },
                 weaponMaterialData1 = new()
                 {
-                    cnt = user.userResources.weaponMaterial1,
-                    remain = user.userResources.weaponMaterial1,
+                    cnt = user.UserResources.weaponMaterial1,
+                    remain = user.UserResources.weaponMaterial1,
                 },
                 weaponMaterialData2 = new()
                 {
-                    cnt = user.userResources.weaponMaterial2,
-                    remain = user.userResources.weaponMaterial2,
+                    cnt = user.UserResources.weaponMaterial2,
+                    remain = user.UserResources.weaponMaterial2,
                 },
                 weaponMaterialData3 = new()
                 {
-                    cnt = user.userResources.weaponMaterial3,
-                    remain = user.userResources.weaponMaterial3,
+                    cnt = user.UserResources.weaponMaterial3,
+                    remain = user.UserResources.weaponMaterial3,
                 },
                 weaponMaterialData4 = new()
                 {
-                    cnt = user.userResources.weaponMaterial4,
-                    remain = user.userResources.weaponMaterial4,
+                    cnt = user.UserResources.weaponMaterial4,
+                    remain = user.UserResources.weaponMaterial4,
                 },
-                worldState = user.worldState,
+                worldState = user.WorldState,
                 gacha = new()
                 {
 
@@ -65,8 +65,8 @@ namespace StellarGK.Host.Handlers.KeepAlives
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
-                result = resource
+                Id = BasePacket.Id,
+                Result = resource
             };
 
             return response;

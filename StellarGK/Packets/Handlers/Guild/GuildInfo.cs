@@ -1,7 +1,7 @@
 ﻿namespace StellarGK.Host.Handlers.Guild
 {
-    [Command(Id = CommandId.GuildInfo)]
-    public class GuildInfo : BaseCommandHandler<GuildInfoRequest>
+    [Packet(MethodId.GuildInfo)]
+    public class GuildInfo : BaseMethodHandler<GuildInfoRequest>
     {
 
         public override object Handle(GuildInfoRequest @params)

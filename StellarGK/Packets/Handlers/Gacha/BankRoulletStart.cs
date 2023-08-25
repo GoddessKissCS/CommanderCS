@@ -1,12 +1,12 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
 using StellarGK.Logic.ExcelReader;
 using StellarGK.Logic.Protocols;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Gacha
 {
-    [Command(Id = CommandId.BankRoulletStart)]
-    public class BankRoulletStart : BaseCommandHandler<BankRoulletStartRequest>
+    [Packet(MethodId.BankRoulletStart)]
+    public class BankRoulletStart : BaseMethodHandler<BankRoulletStartRequest>
     {
         public static Random random = new();
 
@@ -32,8 +32,8 @@ namespace StellarGK.Host.Handlers.Gacha
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
-                result = bankRoullet
+                Id = BasePacket.Id,
+                Result = bankRoullet
             };
 
 
@@ -52,7 +52,7 @@ namespace StellarGK.Host.Handlers.Gacha
 
             var user = DatabaseManager.GameProfile.FindBySession(sessionId);
 
-            int thebankGold = UserLevelData.GetInstance().FromLevel(user.userResources.level).bankGold;
+            int thebankGold = UserLevelData.GetInstance().FromLevel(user.UserResources.level).bankGold;
 
             int updateGold = luck.Sum() * thebankGold;
 
@@ -63,9 +63,9 @@ namespace StellarGK.Host.Handlers.Gacha
                 minusCash = 10;
             }
 
-            var newCash = user.userResources.cash - minusCash;
+            var newCash = user.UserResources.cash - minusCash;
 
-            var newGold = user.userResources.gold + updateGold;
+            var newGold = user.UserResources.gold + updateGold;
 
             DatabaseManager.GameProfile.UpdateGoldAndCash(sessionId, newGold, newCash, true);
 

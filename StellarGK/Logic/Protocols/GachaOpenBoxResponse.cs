@@ -1,5 +1,5 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Logic.Enums;
+﻿using StellarGK.Logic.Enums;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Logic.Protocols
 {

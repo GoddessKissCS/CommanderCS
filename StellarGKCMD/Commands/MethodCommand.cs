@@ -7,7 +7,7 @@ namespace StellarGK.Commands
     {
         public override void Run(string[] args)
         {
-            if (Enum.TryParse(int.Parse(args[0]).ToString(), out CommandId enumValue))
+            if (Enum.TryParse(int.Parse(args[0]).ToString(), out MethodId enumValue))
             {
                 Console.WriteLine($"Parsed Method: {enumValue}");
             }

@@ -1,10 +1,10 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Profile
 {
-    [Command(Id = CommandId.ChangeUserThumbnail)]
-    public class ChangeThumbnail : BaseCommandHandler<ChangeThumbnailRequest>
+    [Packet(MethodId.ChangeUserThumbnail)]
+    public class ChangeThumbnail : BaseMethodHandler<ChangeThumbnailRequest>
     {
         public override object Handle(ChangeThumbnailRequest @params)
         {
@@ -15,8 +15,8 @@ namespace StellarGK.Host.Handlers.Profile
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
-                result = success.ToString()
+                Id = BasePacket.Id,
+                Result = success.ToString()
             };
 
             return response;

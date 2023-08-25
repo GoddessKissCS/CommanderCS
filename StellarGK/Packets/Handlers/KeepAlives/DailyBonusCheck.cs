@@ -2,8 +2,8 @@
 
 namespace StellarGK.Host.Handlers.KeepAlives
 {
-    [Command(Id = CommandId.DailyBonusCheck)]
-    public class DailyBonusCheck : BaseCommandHandler<DailyBonusCheckRequest>
+    [Packet(MethodId.DailyBonusCheck)]
+    public class DailyBonusCheck : BaseMethodHandler<DailyBonusCheckRequest>
     {
         public override object Handle(DailyBonusCheckRequest @params)
         {
@@ -24,8 +24,8 @@ namespace StellarGK.Host.Handlers.KeepAlives
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
-                result = DailyBonusCheckResponse,
+                Id = BasePacket.Id,
+                Result = DailyBonusCheckResponse,
             };
 
             return response;

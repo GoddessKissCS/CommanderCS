@@ -2,8 +2,8 @@
 
 namespace StellarGK.Host.Handlers.Shop
 {
-    [Command(Id = CommandId.GetCashShopList)]
-    public class GetCashShopList : BaseCommandHandler<GetCashShopListRequest>
+    [Packet(MethodId.GetCashShopList)]
+    public class GetCashShopList : BaseMethodHandler<GetCashShopListRequest>
     {
         public override object Handle(GetCashShopListRequest @params)
         {
@@ -27,8 +27,8 @@ namespace StellarGK.Host.Handlers.Shop
 
             ResponsePacket response = new()
             {
-                result = csl,
-                id = BasePacket.Id
+                Result = csl,
+                Id = BasePacket.Id
             };
 
             return response;

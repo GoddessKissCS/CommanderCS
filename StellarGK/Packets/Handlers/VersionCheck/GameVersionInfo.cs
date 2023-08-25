@@ -1,10 +1,10 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Database;
+﻿using StellarGK.Database;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.VersionCheck
 {
-    [Command(Id = CommandId.GameVersionInfo)]
-    public class GameVersionInfo : BaseCommandHandler<GameVersionInfoRequest>
+    [Packet(MethodId.GameVersionInfo)]
+    public class GameVersionInfo : BaseMethodHandler<GameVersionInfoRequest>
     {
         public override object Handle(GameVersionInfoRequest @params)
         {
@@ -15,18 +15,18 @@ namespace StellarGK.Host.Handlers.VersionCheck
             GameInfoToSent game = new()
             {
                 policy = Convert.ToDouble(info.showPolicy),
-                chat = info.chat_url,
-                cdn = info.cdn_url,
-                game = info.game_url,
+                chat = info.Chat_Url,
+                cdn = info.Cdn_Url,
+                game = info.Game_Url,
                 fc = Convert.ToInt32(info.fileCheck),
                 gglogin = Convert.ToInt32(info.enableGoogleLogin),
-                ver = info.version,
-                word = info.word,
-                stat = Convert.ToInt32(info.version_state)
+                ver = info.Version,
+                word = info.Word,
+                stat = Convert.ToInt32(info.Version_State)
             };
 
-            ResponsePacket.id = BasePacket.Id;
-            ResponsePacket.result = game;
+            ResponsePacket.Id = BasePacket.Id;
+            ResponsePacket.Result = game;
 
             return ResponsePacket;
         }

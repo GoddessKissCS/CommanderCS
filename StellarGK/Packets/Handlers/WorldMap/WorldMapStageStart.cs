@@ -1,12 +1,12 @@
-﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using StellarGK.Database;
 using StellarGK.Logic.Protocols;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.WorldMap
 {
-    [Command(Id = CommandId.WorldMapStageStart)]
-    public class WorldMapStageStart : BaseCommandHandler<WorldMapStageStartRequest>
+    [Packet(MethodId.WorldMapStageStart)]
+    public class WorldMapStageStart : BaseMethodHandler<WorldMapStageStartRequest>
     {
         public override object Handle(WorldMapStageStartRequest @params)
         {
@@ -20,8 +20,8 @@ namespace StellarGK.Host.Handlers.WorldMap
 
             wmssr.rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(GetSession());
 
-            response.id = BasePacket.Id;
-            response.result = wmssr;
+            response.Id = BasePacket.Id;
+            response.Result = wmssr;
 
 
             return response;

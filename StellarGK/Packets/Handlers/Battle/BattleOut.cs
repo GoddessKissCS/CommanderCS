@@ -1,10 +1,10 @@
-﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json.Linq;
+﻿using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Battle
 {
-    [Command(Id = CommandId.BattleOut)]
-    public class BattleOut : BaseCommandHandler<BattleOutRequest>
+    [Packet(MethodId.BattleOut)]
+    public class BattleOut : BaseMethodHandler<BattleOutRequest>
     {
         public override object Handle(BattleOutRequest @params)
         {
@@ -21,9 +21,9 @@ namespace StellarGK.Host.Handlers.Battle
         [JsonPropertyName("checkSum")]
         public string checkSum { get; set; }
         [JsonPropertyName("info")]
-        public JArray info { get; set; }
+        public JsonArray info { get; set; }
         [JsonPropertyName("result")]
-        public JArray result { get; set; }
+        public JsonArray result { get; set; }
     }
 }
 
