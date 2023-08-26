@@ -52,7 +52,7 @@ namespace CommandHandlerMappingsSourceGenerator
             }
         }
 
-        private const string AttributeName = "Command";
+        private const string AttributeName = "Packet";
         private const string AttributeNameAlt = $"{AttributeName}Attribute";
 
         public static bool IsTargetForGenerator(SyntaxNode SyntaxNode, CancellationToken cancellationToken)

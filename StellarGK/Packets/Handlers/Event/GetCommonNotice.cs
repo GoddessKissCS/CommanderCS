@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.Event
 {
-    [Packet(MethodId.GetCommonNotice)]
+    [Packet(Id = MethodId.GetCommonNotice)]
     public class GetCommonNotice : BaseMethodHandler<GetCommonNoticeRequest>
     {
         public override object Handle(GetCommonNoticeRequest @params)

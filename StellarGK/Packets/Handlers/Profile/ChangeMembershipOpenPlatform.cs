@@ -4,14 +4,14 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Profile
 {
-    [Packet(MethodId.ChangeMembershipOpenPlatform)]
+    [Packet(Id = MethodId.ChangeMembershipOpenPlatform)]
     public class ChangeMembershipOpenPlatform : BaseMethodHandler<ChangeMembershipOpenPlatformRequest>
     {
         public override object Handle(ChangeMembershipOpenPlatformRequest @params)
         {
             ResponsePacket response = new();
 
-            // TODO - changing the platform from like google -> dbros? idk
+#warning TODO - changing the platform from like google -> dbros? idk
 
             //ErrorCode code = DatabaseManager.Account.ChangeMemberShip(@params.uid, @params.pwd, @params.plfm, @params.puid, @params.ch);
 

@@ -3,7 +3,7 @@
 namespace StellarGK.Host.Handlers.Login
 {
 
-    [Packet(MethodId.Logout)]
+    [Packet(Id = MethodId.Logout)]
     public class Logout : BaseMethodHandler<LogoutRequest>
     {
         public override object Handle(LogoutRequest @params)

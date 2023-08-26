@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Annihilation
 {
-    [Packet(MethodId.ResetAnnihilationStage)]
+    [Packet(Id = MethodId.ResetAnnihilationStage)]
     public class ResetAnnihilationStage : BaseMethodHandler<ResetAnnihilationStageRequest>
     {
         public override object Handle(ResetAnnihilationStageRequest @params)

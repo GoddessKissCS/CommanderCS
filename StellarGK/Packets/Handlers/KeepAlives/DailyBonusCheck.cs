@@ -2,12 +2,12 @@
 
 namespace StellarGK.Host.Handlers.KeepAlives
 {
-    [Packet(MethodId.DailyBonusCheck)]
+    [Packet(Id = MethodId.DailyBonusCheck)]
     public class DailyBonusCheck : BaseMethodHandler<DailyBonusCheckRequest>
     {
         public override object Handle(DailyBonusCheckRequest @params)
         {
-            // TODO
+#warning TODO
             // ADD Daily list that clears every month
             // Check against which day it is today and give the apprioate response
 

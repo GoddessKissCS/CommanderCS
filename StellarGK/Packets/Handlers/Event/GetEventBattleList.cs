@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.Event
 {
-    [Packet(MethodId.GetEventBattleList)]
+    [Packet(Id = MethodId.GetEventBattleList)]
     public class GetEventBattleList : BaseMethodHandler<GetEventBattleListRequest>
     {
 

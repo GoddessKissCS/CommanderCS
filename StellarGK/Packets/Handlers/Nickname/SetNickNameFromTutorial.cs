@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Nickname
 {
-    [Packet(MethodId.SetNickNameFromTutorial)]
+    [Packet(Id = MethodId.SetNickNameFromTutorial)]
     public class SetNickNameFromTutorial : BaseMethodHandler<SetNickNameFromTutorialRequest>
     {
         public override object Handle(SetNickNameFromTutorialRequest @params)
@@ -24,7 +24,7 @@ namespace StellarGK.Host.Handlers.Nickname
                 return response;
             }
 
-            SetNickNameF SetNickNameF1 = new()
+            SetNickNameResponse SetNickNameF1 = new()
             {
                 step = @params.Step,
             };
@@ -46,9 +46,9 @@ namespace StellarGK.Host.Handlers.Nickname
 
             if (user == null)
             {
-                var profile = DatabaseManager.GameProfile.FindBySession(sess);
+                var userGameProfile = DatabaseManager.GameProfile.FindBySession(sess);
 
-                if (profile.TutorialData.skip == true)
+                if (userGameProfile.TutorialData.skip == true)
                 {
                     DatabaseManager.GameProfile.UpdateStep(sess, 12);
                 }
@@ -69,7 +69,7 @@ namespace StellarGK.Host.Handlers.Nickname
             return 0;
         }
 
-        public class SetNickNameF
+        public class SetNickNameResponse
         {
             [JsonPropertyName("step")]
             public int step { get; set; }

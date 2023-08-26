@@ -12,7 +12,7 @@ namespace StellarGK.Commands
 
             int exp = UserLevelData.GetInstance().FromLevel(level).uExp;
 
-            // TODO UPDATE
+            #warning TODO UPDATE
             //DatabaseManager.Resources.UpdateExpAndLevel(accountId, exp, level);
 
             Console.WriteLine($"Changed {args[0]}, exp and level to {exp} & {level}");

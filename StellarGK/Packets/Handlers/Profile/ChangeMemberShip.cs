@@ -3,14 +3,14 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Profile
 {
-    [Packet(MethodId.ChangeMembership)]
+    [Packet(Id = MethodId.ChangeMembership)]
     public class ChangeMemberShip : BaseMethodHandler<ChangeMemberShipRequest>
     {
         public override object Handle(ChangeMemberShipRequest @params)
         {
             ResponsePacket response = new();
 
-            // TODO - ??? i dont know
+#warning TODO - ??? i dont know
 
             // SHOULD BE FINISHED?
 

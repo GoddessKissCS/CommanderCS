@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Dispatch
+namespace StellarGK.Packets.Handlers.Exploration
 {
     public class ExplorationCompleteAll
     {

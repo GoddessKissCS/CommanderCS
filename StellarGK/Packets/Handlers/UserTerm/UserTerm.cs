@@ -2,13 +2,13 @@
 
 namespace StellarGK.Host.Handlers.UserTerm
 {
-    [Packet(MethodId.UserTerm)]
+    [Packet(Id = MethodId.UserTerm)]
     public class UserTerm : BaseMethodHandler<UserTermRequest>
     {
         public override object Handle(UserTermRequest @params)
         {
 
-            // TODO UNSURE ABOUT THIS
+#warning TODO UNSURE ABOUT THIS
 
             ResponsePacket response = new();
 

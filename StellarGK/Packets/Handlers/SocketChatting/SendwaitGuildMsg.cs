@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Chat
+namespace StellarGK.Packets.Handlers.SocketChatting
 {
     public class SendwaitGuildMsg
     {

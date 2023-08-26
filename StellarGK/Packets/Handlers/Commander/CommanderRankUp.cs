@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Commander
 {
-    [Packet(MethodId.CommanderRankUp)]
+    [Packet(Id = MethodId.CommanderRankUp)]
     public class CommanderRankUp : BaseMethodHandler<CommanderRankUpRequest>
     {
         public override object Handle(CommanderRankUpRequest @params)
@@ -168,7 +168,8 @@ namespace StellarGK.Host.Handlers.Commander
                 id = commanderid,
                 marry = 0,
                 medl = commanderMedals,
-                role = "A", // TODO CREATE A ROLE TABLE
+#warning TODO CREATE A ROLE TABLE 
+                role = "A",
                 transcendence = new() { 0, 0, 0, 0 },
             };
 

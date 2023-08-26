@@ -7,12 +7,12 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Login
 {
-    [Packet(MethodId.Login)]
+    [Packet(Id = MethodId.Login)]
     public class Login : BaseMethodHandler<LoginRequest>
     {
         public override object Handle(LoginRequest @params)
         {
-            // TODO ADD UNABLE TO JOIN 
+#warning TODO ADD UNABLE TO JOIN 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id

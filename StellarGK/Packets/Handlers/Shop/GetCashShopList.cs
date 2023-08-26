@@ -2,13 +2,13 @@
 
 namespace StellarGK.Host.Handlers.Shop
 {
-    [Packet(MethodId.GetCashShopList)]
+    [Packet(Id = MethodId.GetCashShopList)]
     public class GetCashShopList : BaseMethodHandler<GetCashShopListRequest>
     {
         public override object Handle(GetCashShopListRequest @params)
         {
 
-            // TODO
+#warning TODO
             // NEED TO ADD A MONTHLY BUYABLE package
 
             List<CashShopData> csl = new() { };

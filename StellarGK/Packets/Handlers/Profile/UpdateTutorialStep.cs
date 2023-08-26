@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Profile
 {
-    [Packet(MethodId.UpdateTutorialStep)]
+    [Packet(Id = MethodId.UpdateTutorialStep)]
     public class UpdateTutorialStep : BaseMethodHandler<UpdateTutorialStepRequest>
     {
         public override object Handle(UpdateTutorialStepRequest @params)

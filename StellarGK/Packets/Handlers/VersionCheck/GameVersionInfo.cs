@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.VersionCheck
 {
-    [Packet(MethodId.GameVersionInfo)]
+    [Packet(Id = MethodId.GameVersionInfo)]
     public class GameVersionInfo : BaseMethodHandler<GameVersionInfoRequest>
     {
         public override object Handle(GameVersionInfoRequest @params)

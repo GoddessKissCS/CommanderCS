@@ -11,7 +11,7 @@ namespace StellarGK.Database.Handlers
     {
         public DatabaseAccount() : base("Account") { }
 
-        // TODO add resetRemain 
+#warning TODO add resetRemain 
 
         public AccountScheme Create(string name = "", string password = "", int platformid = 0, int channel = 0)
         {

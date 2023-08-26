@@ -1,6 +1,6 @@
 ﻿namespace StellarGK.Host.Handlers.Dispatch
 {
-    [Packet(MethodId.GetDispatchCommanderListFromLogin)]
+    [Packet(Id = MethodId.GetDispatchCommanderListFromLogin)]
     public class GetDispatchCommanderListFromLogin : BaseMethodHandler<GetDispatchCommanderListFromLoginRequest>
     {
 

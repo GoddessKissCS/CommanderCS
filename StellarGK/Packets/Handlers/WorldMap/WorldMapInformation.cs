@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.WorldMap
 {
-    [Packet(MethodId.WorldMapInformation)]
+    [Packet(Id = MethodId.WorldMapInformation)]
     public class WorldMapInformation : BaseMethodHandler<WorldMapInformationRequest>
     {
         public override object Handle(WorldMapInformationRequest @params)

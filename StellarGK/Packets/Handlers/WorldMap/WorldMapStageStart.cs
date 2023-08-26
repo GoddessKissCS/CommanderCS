@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.WorldMap
 {
-    [Packet(MethodId.WorldMapStageStart)]
+    [Packet(Id = MethodId.WorldMapStageStart)]
     public class WorldMapStageStart : BaseMethodHandler<WorldMapStageStartRequest>
     {
         public override object Handle(WorldMapStageStartRequest @params)

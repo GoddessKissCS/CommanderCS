@@ -1,8 +1,9 @@
-﻿using StellarGK.Logic.Protocols;
+﻿using StellarGK.Host;
+using StellarGK.Logic.Protocols;
 
-namespace StellarGK.Host.Handlers.Dispatch
+namespace StellarGK.Packets.Handlers.Exploration
 {
-    [Packet(MethodId.GetExplorationList)]
+    [Packet(Id = MethodId.GetExplorationList)]
     public class GetExplorationList : BaseMethodHandler<GetExplorationListRequest>
     {
 

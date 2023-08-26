@@ -1,10 +1,10 @@
-using Newtonsoft.Json.Linq;
 using StellarGK.Host;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Annihilation
 {
-    [Packet(MethodId.AnnihilationStageStart)]
+    [Packet(Id = MethodId.AnnihilationStageStart)]
     public class AnnihilationStageStart : BaseMethodHandler<AnnihilationStageStartRequest>
     {
         public override object Handle(AnnihilationStageStartRequest @params)
@@ -19,10 +19,10 @@ namespace StellarGK.Packets.Handlers.Annihilation
         public int Type { get; set; }
 
         [JsonPropertyName("deck")]
-        public JObject Deck { get; set; }
+        public JsonObject Deck { get; set; }
 
         [JsonPropertyName("gdp")]
-        public JObject Gdp { get; set; }
+        public JsonObject Gdp { get; set; }
 
         [JsonPropertyName("ucash")]
         public int Ucash { get; set; }

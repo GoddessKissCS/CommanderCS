@@ -3,7 +3,7 @@ using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Guild
 {
-    [Packet(MethodId.GuildMemberList)]
+    [Packet(Id = MethodId.GuildMemberList)]
     public class GuildMemberList : BaseMethodHandler<GuildMemberListRequest>
     {
         public override object Handle(GuildMemberListRequest @params)
@@ -25,7 +25,7 @@ namespace StellarGK.Host.Handlers.Guild
             {
                 memberData = DatabaseManager.Guild.RequestGuildMembers(user.GuildId),
                 badge = 0, // NO IDEA WHAT THIS SETS
-                           // TODO
+#warning TODO
             };
 
             return response;

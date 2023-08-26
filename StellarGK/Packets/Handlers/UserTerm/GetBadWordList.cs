@@ -2,14 +2,14 @@
 
 namespace StellarGK.Host.Handlers.UserTerm
 {
-    [Packet(MethodId.GetBadWordList)]
+    [Packet(Id = MethodId.GetBadWordList)]
     public class GetBadWordList : BaseMethodHandler<GetBadWordListRequest>
     {
         public override object Handle(GetBadWordListRequest @params)
         {
             ResponsePacket response = new();
 
-            // TODO
+#warning TODO
             // WILL BE A LIST OF BADWORDS LATER ON
 
             List<string> en = new()

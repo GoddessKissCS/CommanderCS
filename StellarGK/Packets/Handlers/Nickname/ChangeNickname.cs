@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Nickname
 {
-    [Packet(MethodId.ChangeNickname)]
+    [Packet(Id = MethodId.ChangeNickname)]
     public class ChangeNickname : BaseMethodHandler<ChangeNicknameRequest>
     {
         public override object Handle(ChangeNicknameRequest @params)
@@ -26,7 +26,7 @@ namespace StellarGK.Host.Handlers.Nickname
                 return response;
             }
 
-            Data data = new()
+            ChangeNicknameResponse data = new()
             {
                 rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(GetSession()),
             };
@@ -62,7 +62,7 @@ namespace StellarGK.Host.Handlers.Nickname
             return ErrorCode.Success;
         }
 
-        public class Data
+        public class ChangeNicknameResponse
         {
             [JsonPropertyName("rsoc")]
             public UserInformationResponse.Resource rsoc { get; set; }

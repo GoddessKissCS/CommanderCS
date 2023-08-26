@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.Carnival
 {
-    [Packet(MethodId.CheckBadge)]
+    [Packet(Id = MethodId.CheckBadge)]
     public class CheckBadge : BaseMethodHandler<CheckBadgeRequest>
     {
 
@@ -11,7 +11,7 @@ namespace StellarGK.Host.Handlers.Carnival
 
             var user = GetUserGameProfile().UserBadges;
 
-            // TODO ADJUST THIS SHIT
+#warning TODO ADJUST THIS SHIT
             CheckBadgeMaster checkBadgeMaster = new()
             {
                 id = BasePacket.Id,

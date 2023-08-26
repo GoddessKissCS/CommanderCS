@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Commander
 {
-    [Packet(MethodId.CommanderLevelUp)]
+    [Packet(Id = MethodId.CommanderLevelUp)]
     public class CommanderLevelUp : BaseMethodHandler<CommanderLevelUpRequest>
     {
 
@@ -14,7 +14,7 @@ namespace StellarGK.Host.Handlers.Commander
 
             // packet.count = cnt 
             // packet.commanderTrainingTicket = ctt
-            // TODO ADD MAXLEVEL CHECK SO YOU CANT OVERLEVEL THEM OVER YOUR LEVEL
+#warning TODO ADD MAXLEVEL CHECK SO YOU CANT OVERLEVEL THEM OVER YOUR LEVEL
             //GIVES OUT ERRORCODE 20001 or 20003
 
             var user = GetUserGameProfile();

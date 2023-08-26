@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Tutorial
 {
-    [Packet(MethodId.LoginTutorialSkip)]
+    [Packet(Id = MethodId.LoginTutorialSkip)]
     public class LoginTutorialSkip : BaseMethodHandler<LoginTutorialSkipRequest>
     {
 

@@ -8,10 +8,6 @@ namespace StellarGK.Host
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
     public sealed class PacketAttribute : Attribute
     {
-        public PacketAttribute(MethodId cmdID)
-        {
-            Id = cmdID;
-        }
         public MethodId Id { get; set; }
     }
 

@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Tutorial
 {
-    [Packet(MethodId.GetTutorialStep)]
+    [Packet(Id = MethodId.GetTutorialStep)]
     public class GetTutorialStep : BaseMethodHandler<GetTutorialStepRequest>
     {
 

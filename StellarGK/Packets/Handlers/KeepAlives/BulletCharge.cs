@@ -4,7 +4,7 @@ using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.KeepAlives
 {
-    [Packet(MethodId.BulletCharge)]
+    [Packet(Id = MethodId.BulletCharge)]
     public class BulletCharge : BaseMethodHandler<BulletChargeResult>
     {
         public override object Handle(BulletChargeResult @params)

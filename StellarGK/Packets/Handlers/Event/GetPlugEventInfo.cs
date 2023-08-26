@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.Event
 {
-    [Packet(MethodId.GetPlugEventInfo)]
+    [Packet(Id = MethodId.GetPlugEventInfo)]
     public class GetPlugEventInfo : BaseMethodHandler<GetPlugEventInfoRequest>
     {
         public override object Handle(GetPlugEventInfoRequest @params)

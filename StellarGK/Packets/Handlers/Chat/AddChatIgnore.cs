@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Chat
 {
-    [Packet(MethodId.AddChatIgnore)]
+    [Packet(Id = MethodId.AddChatIgnore)]
     public class AddChatIgnore : BaseMethodHandler<AddChatIgnoreRequest>
     {
         public override object Handle(AddChatIgnoreRequest @params)

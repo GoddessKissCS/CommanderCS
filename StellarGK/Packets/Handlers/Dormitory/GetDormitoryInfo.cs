@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.Dormitory
 {
-    [Packet(MethodId.GetDormitoryInfo)]
+    [Packet(Id = MethodId.GetDormitoryInfo)]
     public class GetDormitoryInfo : BaseMethodHandler<GetDormitoryInfoRequest>
     {
         public override object Handle(GetDormitoryInfoRequest @params)

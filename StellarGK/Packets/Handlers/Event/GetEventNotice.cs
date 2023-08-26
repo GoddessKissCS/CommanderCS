@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.Event
 {
-    [Packet(MethodId.GetEventNotice)]
+    [Packet(Id = MethodId.GetEventNotice)]
     public class GetEventNotice : BaseMethodHandler<GetEventNoticeRequest>
     {
 

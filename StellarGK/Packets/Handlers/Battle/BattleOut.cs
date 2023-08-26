@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Battle
 {
-    [Packet(MethodId.BattleOut)]
+    [Packet(Id = MethodId.BattleOut)]
     public class BattleOut : BaseMethodHandler<BattleOutRequest>
     {
         public override object Handle(BattleOutRequest @params)

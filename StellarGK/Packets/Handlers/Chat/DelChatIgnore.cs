@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Chat
 {
-    [Packet(MethodId.DelChatIgnore)]
+    [Packet(Id = MethodId.DelChatIgnore)]
     public class DelChatIgnore : BaseMethodHandler<DelChatIgnoreRequest>
     {
         public override object Handle(DelChatIgnoreRequest @params)

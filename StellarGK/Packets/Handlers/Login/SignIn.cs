@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Sign
 {
-    [Packet(MethodId.SignIn)]
+    [Packet(Id = MethodId.SignIn)]
     public class SignIn : BaseMethodHandler<SignInRequest>
     {
         public override object Handle(SignInRequest @params)

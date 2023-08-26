@@ -1,6 +1,6 @@
 ﻿namespace StellarGK.Host.Handlers.UserTerm
 {
-    [Packet(MethodId.CheckChangeDeviceCode)]
+    [Packet(Id = MethodId.CheckChangeDeviceCode)]
     public class CheckChangeDeviceCode : BaseMethodHandler<CheckChangeDeviceCodeRequest>
     {
 

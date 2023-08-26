@@ -3,13 +3,13 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Profile
 {
-    [Packet(MethodId.ChangeUserThumbnail)]
+    [Packet(Id = MethodId.ChangeUserThumbnail)]
     public class ChangeThumbnail : BaseMethodHandler<ChangeThumbnailRequest>
     {
         public override object Handle(ChangeThumbnailRequest @params)
         {
 
-            // TODO - MISSING FALSE HANDLING
+#warning TODO - MISSING FALSE HANDLING
 
             bool success = DatabaseManager.GameProfile.ChangeThumbnail(GetSession(), @params.idx);
 

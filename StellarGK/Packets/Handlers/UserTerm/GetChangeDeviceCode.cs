@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.UserTerm
 {
-    [Packet(MethodId.GetChangeDeviceCode)]
+    [Packet(Id = MethodId.GetChangeDeviceCode)]
     public class GetChangeDeviceCode : BaseMethodHandler<GetChangeDeviceCodeRequest>
     {
         public override object Handle(GetChangeDeviceCodeRequest @params)
@@ -23,8 +23,8 @@ namespace StellarGK.Host.Handlers.UserTerm
 
             var devicechange = DatabaseManager.DeviceCode.FindByUid(account.MemberId);
 
-            // TODO - ADDING CHECK ON IF DEVICECODE IS OLDER THAN 7 DAYS I SUPPOSE
-            // TODO ADDS SOME OTHER CHECKS ASWELL
+#warning TODO - ADDING CHECK ON IF DEVICECODE IS OLDER THAN 7 DAYS I SUPPOSE
+#warning TODO ADDS SOME OTHER CHECKS ASWELL
 
             try
             {

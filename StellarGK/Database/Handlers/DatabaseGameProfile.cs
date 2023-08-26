@@ -57,28 +57,28 @@ namespace StellarGK.Database.Handlers
                     UnitDestroyCount = 0,
                     weaponInventoryCount = 0,
                 },
-                CommanderData = new() 
-                { 
-                
-                },
-                CompleteRewardGroupIdx = new() 
+                CommanderData = new()
                 {
 
                 },
-                DispatchedCommanders = new() 
-                { 
-                
+                CompleteRewardGroupIdx = new()
+                {
+
+                },
+                DispatchedCommanders = new()
+                {
+
                 },
                 GuildId = null,
                 MemberId = memberId,
                 Notifaction = false,
                 PreDeck = new() { },
-                TutorialData = new() 
+                TutorialData = new()
                 {
-                    skip = false, 
-                    step = 0 
+                    skip = false,
+                    step = 0
                 },
-                UserDevice = new() 
+                UserDevice = new()
                 {
 
                 },
@@ -165,20 +165,20 @@ namespace StellarGK.Database.Handlers
                     ercnt = 0,
                     iftw = 0,
                 },
-                VipRechargeData = new() 
+                VipRechargeData = new()
                 {
-                
+
                 },
                 BlockedUsers = new()
                 {
 
                 },
-                BoughtCashShopItems = new() 
-                { 
+                BoughtCashShopItems = new()
+                {
 
                 },
                 Session = string.Empty,
-                MailInfo = null,
+                MailInfo = new() { },
             };
 
             Collection.InsertOne(user);
@@ -361,7 +361,7 @@ namespace StellarGK.Database.Handlers
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
-            var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", gold).Set("UserResources.cash", cash).Set("UserStatistics.totalGold", stats_gold);
+            var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", gold).Set("UserStatistics.totalGold", stats_gold);
 
             Collection.UpdateOne(filter, update);
 
@@ -519,7 +519,7 @@ namespace StellarGK.Database.Handlers
         }
 
 
-        public bool ReadMail(string session , int MailIdx)
+        public bool ReadMail(string session, int MailIdx)
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
