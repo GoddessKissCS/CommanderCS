@@ -2,23 +2,24 @@
 
 namespace StellarGK.Host.Handlers.KeepAlives
 {
-    [Packet(Id = MethodId.GetCouponList)]
+    [Packet(Id = Method.GetCouponList)]
     public class GetCouponList : BaseMethodHandler<GetCouponListRequest>
     {
         public override object Handle(GetCouponListRequest @params)
         {
-
-            ResponsePacket response = new();
             CouponList couponList = new();
             List<string> coupons = new()
             {
-                "test",
+
             };
 
             couponList.list = coupons;
 
-            response.Id = BasePacket.Id;
-            response.Result = couponList;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = couponList
+            };
 
             return response;
         }

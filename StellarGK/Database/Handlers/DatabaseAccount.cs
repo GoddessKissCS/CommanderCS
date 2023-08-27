@@ -2,17 +2,17 @@
 using StellarGK.Database.Schemes;
 using StellarGK.Host;
 using StellarGK.Host.Handlers.Login;
+using StellarGK.Logic.Enums;
 using StellarGK.Logic.Protocols;
 using StellarGK.Tools;
+using System.Threading.Channels;
+using System;
 
 namespace StellarGK.Database.Handlers
 {
     public class DatabaseAccount : DatabaseTable<AccountScheme>
     {
         public DatabaseAccount() : base("Account") { }
-
-#warning TODO add resetRemain 
-
         public AccountScheme Create(string name = "", string password = "", int platformid = 0, int channel = 0)
         {
             AccountScheme? tryUser = Collection.AsQueryable().Where(d => d.Name == name).FirstOrDefault();
@@ -30,7 +30,7 @@ namespace StellarGK.Database.Handlers
                 isBanned = null,
                 BanReason = null,
                 LastServerLoggedIn = 1,
-                Platform = (Logic.Enums.Platform)platformid,
+                Platform = (Platform)platformid,
             };
 
             if (platformid == 0)
@@ -71,26 +71,26 @@ namespace StellarGK.Database.Handlers
             return Collection.AsQueryable().Where(d => d.Name == accountName).Count() > 0;
         }
 
-        public ErrorCode ChangeMemberShip(string oldName, string password, int platformId, string newName, int channel)
+        public ErrorCode ChangeMemberShip(string changeName, string password, int platformId, string guestName, int channel)
         {
 
-            if (Misc.NameCheck(oldName))
+            if (Misc.NameCheck(changeName))
             {
                 return ErrorCode.InappropriateWords;
             }
 
-            if (AccountExists(oldName))
+            if (AccountExists(changeName))
             {
                 return ErrorCode.IdAlreadyExists;
             }
             else
             {
-                var account = FindByName(newName);
+                var account = FindByName(guestName);
 
                 var password_hash = Crypto.ComputeSha256Hash(password);
 
-                var filter = Builders<AccountScheme>.Filter.Eq("Id", account.MemberId);
-                var update = Builders<AccountScheme>.Update.Set("name", oldName).Set("password", password_hash).Set("platformId", platformId).Set("channel", channel);
+                var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
+                var update = Builders<AccountScheme>.Update.Set("Name", changeName).Set("Password_Hash", password_hash).Set("PlatformId", platformId).Set("Channel", channel);
 
                 Collection.UpdateOne(filter, update);
 
@@ -98,9 +98,10 @@ namespace StellarGK.Database.Handlers
             }
         }
 
+
         public void UpdateLoginTime(int id)
         {
-            var filter = Builders<AccountScheme>.Filter.Eq("Id", id);
+            var filter = Builders<AccountScheme>.Filter.Eq("MemberId", id);
             var update = Builders<AccountScheme>.Update.Set("LastLoginTime", Constants.CurrentTimeStamp);
 
             Collection.UpdateOne(filter, update);
@@ -110,7 +111,7 @@ namespace StellarGK.Database.Handlers
         {
             var account = FindByName(name);
 
-            var filter = Builders<AccountScheme>.Filter.Eq("Id", account.MemberId);
+            var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
             var update = Builders<AccountScheme>.Update.Set("LastLoginTime", Constants.CurrentTimeStamp);
 
             Collection.UpdateOne(filter, update);
@@ -127,7 +128,7 @@ namespace StellarGK.Database.Handlers
         {
             var user = FindByUid(memberid);
 
-            var filter = Builders<AccountScheme>.Filter.Eq("Id", memberid);
+            var filter = Builders<AccountScheme>.Filter.Eq("MemberId", memberid);
             var update = Builders<AccountScheme>.Update.Set("LastServerLoggedIn", server);
 
             Collection.UpdateOne(filter, update);
@@ -152,22 +153,18 @@ namespace StellarGK.Database.Handlers
         {
 
             var user = DatabaseManager.GameProfile.FindBySession(session);
-            var filter = Builders<AccountScheme>.Filter.Eq("Id", user.MemberId);
+            var filter = Builders<AccountScheme>.Filter.Eq("MemberId", user.MemberId);
             var update = Builders<AccountScheme>.Update.Push("BlockUsers", toBeBlocked);
 
             var updateResult = Collection.UpdateOne(filter, update);
 
-            if (updateResult.ModifiedCount > 0)
-            {
-                return true;
-            }
-            return false;
+            return updateResult.ModifiedCount > 0;
         }
         public bool DelBlockedUser(string session, int ch, string uno)
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
-            var filter = Builders<AccountScheme>.Filter.Eq("memberId", user.MemberId);
+            var filter = Builders<AccountScheme>.Filter.Eq("MemberId", user.MemberId);
             var update = Builders<AccountScheme>.Update.PullFilter("BlockedUser",
                          Builders<BlockUser>.Filter.And(
                          Builders<BlockUser>.Filter.Eq("ch", ch),
@@ -176,11 +173,36 @@ namespace StellarGK.Database.Handlers
 
             var updateResult = Collection.UpdateOne(filter, update);
 
-            if (updateResult.ModifiedCount > 0)
+            return updateResult.ModifiedCount > 0;
+        }
+
+
+        public ErrorCode ChangeMemberShipDbros(Platform plfm, string uid, string pwd)
+        {
+            throw new NotImplementedException();
+
+            /*
+            if (Misc.NameCheck(uid))
             {
-                return true;
+                return ErrorCode.InappropriateWords;
             }
-            return false;
+
+            if (AccountExists(changeName))
+            {
+                return ErrorCode.IdAlreadyExists;
+            }
+            else
+            {
+                var account = FindByName(guestName);
+
+                var password_hash = Crypto.ComputeSha256Hash(password);
+
+                var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
+                var update = Builders<AccountScheme>.Update.Set("Name", changeName).Set("Password_Hash", password_hash).Set("PlatformId", platformId).Set("Channel", channel);
+                Collection.UpdateOne(filter, update);
+                return ErrorCode.Success;
+            }
+            */
         }
 
     }

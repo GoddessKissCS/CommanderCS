@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.Gacha
 {
-    [Packet(Id = MethodId.GachaInformation)]
+    [Packet(Id = Method.GachaInformation)]
     public class GachaInformation : BaseMethodHandler<GachaInformationRequest>
     {
 

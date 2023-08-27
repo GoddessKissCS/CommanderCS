@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.Event
 {
-    [Packet(Id = MethodId.GetEventRemaingTime)]
+    [Packet(Id = Method.GetEventRemaingTime)]
     public class GetEventRemainingTime : BaseMethodHandler<GetEventRemainingTimeRequest>
     {
         public override object Handle(GetEventRemainingTimeRequest @params)

@@ -1,6 +1,6 @@
 ﻿namespace StellarGK.Host.Handlers.Chat
 {
-    [Packet(Id = MethodId.GetChatIgnoreList)]
+    [Packet(Id = Method.GetChatIgnoreList)]
     public class GetChatIgnoreList : BaseMethodHandler<GetChatIgnoreListRequest>
     {
         public override object Handle(GetChatIgnoreListRequest @params)

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Profile
 {
-    [Packet(Id = MethodId.ChangeMembership)]
+    [Packet(Id = Method.ChangeMembership)]
     public class ChangeMemberShip : BaseMethodHandler<ChangeMemberShipRequest>
     {
         public override object Handle(ChangeMemberShipRequest @params)

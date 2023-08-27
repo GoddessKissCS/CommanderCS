@@ -15,14 +15,11 @@ namespace StellarGK.Database.Handlers
 
         public GuildScheme FindByName(string guildName)
         {
-            GuildScheme? guild = Collection.AsQueryable().Where(d => d.Name == guildName).FirstOrDefault();
-            return guild;
+            return Collection.AsQueryable().Where(d => d.Name == guildName).FirstOrDefault();
         }
         public GuildScheme FindByUid(int guildId)
         {
-            GuildScheme? guild = Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
-
-            return guild;
+            return Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
         }
 
         public UserInformationResponse.UserGuild RequestGuild(int? guildId)
@@ -94,7 +91,9 @@ namespace StellarGK.Database.Handlers
 
             foreach (var guild in allGuilds)
             {
-                RoGuild dbGuild = new()
+                string isApplyingForGuild = DatabaseManager.GuildApplication.RetrieveGuildApplication(session, guild.GuildId);
+
+                RoGuild newGuild = new()
                 {
                     apnt = guild.aPoint,
                     cnt = guild.Count,
@@ -106,10 +105,10 @@ namespace StellarGK.Database.Handlers
                     lev = guild.Level,
                     ntc = guild.Notice,
                     world = guild.World,
-                    list = DatabaseManager.GuildApplication.RetrieveGuildApplication(session, guild.GuildId),
+                    list = isApplyingForGuild,
                 };
 
-                returnGuilds.Add(dbGuild);
+                returnGuilds.Add(newGuild);
             }
 
             return returnGuilds;

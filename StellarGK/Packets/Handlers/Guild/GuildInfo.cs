@@ -1,6 +1,6 @@
 ﻿namespace StellarGK.Host.Handlers.Guild
 {
-    [Packet(Id = MethodId.GuildInfo)]
+    [Packet(Id = Method.GuildInfo)]
     public class GuildInfo : BaseMethodHandler<GuildInfoRequest>
     {
 

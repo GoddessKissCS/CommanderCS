@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Commander
 {
-    [Packet(Id = MethodId.CommanderRankUp)]
+    [Packet(Id = Method.CommanderRankUp)]
     public class CommanderRankUp : BaseMethodHandler<CommanderRankUpRequest>
     {
         public override object Handle(CommanderRankUpRequest @params)

@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.KeepAlives
 {
-    [Packet(Id = MethodId.DailyBonusCheck)]
+    [Packet(Id = Method.DailyBonusCheck)]
     public class DailyBonusCheck : BaseMethodHandler<DailyBonusCheckRequest>
     {
         public override object Handle(DailyBonusCheckRequest @params)

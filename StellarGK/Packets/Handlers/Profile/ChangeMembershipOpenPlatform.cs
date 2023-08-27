@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Profile
 {
-    [Packet(Id = MethodId.ChangeMembershipOpenPlatform)]
+    [Packet(Id = Method.ChangeMembershipOpenPlatform)]
     public class ChangeMembershipOpenPlatform : BaseMethodHandler<ChangeMembershipOpenPlatformRequest>
     {
         public override object Handle(ChangeMembershipOpenPlatformRequest @params)

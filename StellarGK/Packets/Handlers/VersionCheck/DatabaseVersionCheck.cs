@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace StellarGK.Host.Handlers.VersionCheck
 {
 
-    [Packet(Id = MethodId.DBVersionCheck)]
+    [Packet(Id = Method.DBVersionCheck)]
     public class DatabaseVersionCheck : BaseMethodHandler<DatabaseVersionCheckRequest>
     {
         public override object Handle(DatabaseVersionCheckRequest @params)

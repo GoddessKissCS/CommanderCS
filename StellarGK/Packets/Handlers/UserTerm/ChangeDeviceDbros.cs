@@ -1,9 +1,82 @@
+using MongoDB.Driver;
+using StellarGK.Database;
+using StellarGK.Database.Schemes;
+using StellarGK.Host;
+using StellarGK.Logic.Enums;
+using StellarGK.Tools;
+using System.Text.Json.Serialization;
+
 namespace StellarGK.Packets.Handlers.UserTerm
 {
-    public class ChangeDeviceDbros
+    [Packet(Id = Method.ChangeDeviceDbros)]
+    public class ChangeDeviceDbros : BaseMethodHandler<ChangeDeviceDbrosRequest>
     {
+#warning TODO NO IDEA CURRENTLY HOW TO SOLVE THIS
+        public override object Handle(ChangeDeviceDbrosRequest @params)
+        {
+            ResponsePacket response = new();
+            response.Id = BasePacket.Id;
 
+            ErrorCode code = DatabaseManager.Account.ChangeMemberShipDbros(@params.plfm, @params.uid, @params.pwd);
+
+            if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
+            {
+                response.Error = new() { code = code };
+                
+                return response;
+            }
+
+            response.Result = "{}";
+            return response;
+
+        }
     }
+
+    public class ChangeDeviceDbrosRequest
+    {
+        [JsonPropertyName("ch")]
+        public int ch { get; set; }
+
+        [JsonPropertyName("dac")]
+        public string dac { get; set; }
+
+        [JsonPropertyName("uid")]
+        public string uid { get; set; }
+
+        [JsonPropertyName("pwd")]
+        public string pwd { get; set; }
+
+        [JsonPropertyName("plfm")]
+        public Platform plfm { get; set; }
+
+        [JsonPropertyName("devc")]
+        public string devc { get; set; }
+
+        [JsonPropertyName("dvid")]
+        public string dvid { get; set; }
+
+        [JsonPropertyName("ptype")]
+        public int ptype { get; set; }
+
+        [JsonPropertyName("oscd")]
+        public OSCode oscd { get; set; }
+
+        [JsonPropertyName("osvr")]
+        public string osvr { get; set; }
+
+        [JsonPropertyName("gmvr")]
+        public string gmvr { get; set; }
+
+        [JsonPropertyName("apk")]
+        public string apk { get; set; }
+
+        [JsonPropertyName("lang")]
+        public string lang { get; set; }
+
+        [JsonPropertyName("gpid")]
+        public string gpid { get; set; }
+    }
+
 }
 /*	// Token: 0x060060DA RID: 24794 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1234", true, true)]

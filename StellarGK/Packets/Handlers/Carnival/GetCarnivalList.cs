@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Carnival
 {
-    [Packet(Id = MethodId.GetCarnivalList)]
+    [Packet(Id = Method.GetCarnivalList)]
     public class GetCarnivalList : BaseMethodHandler<GetCarnivalListRequest>
     {
 

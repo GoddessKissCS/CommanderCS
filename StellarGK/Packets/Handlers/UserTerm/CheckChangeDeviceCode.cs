@@ -1,16 +1,54 @@
-﻿namespace StellarGK.Host.Handlers.UserTerm
+﻿using StellarGK.Database;
+using StellarGK.Logic.Enums;
+using System.Text.Json.Serialization;
+
+namespace StellarGK.Host.Handlers.UserTerm
 {
-    [Packet(Id = MethodId.CheckChangeDeviceCode)]
+    [Packet(Id = Method.CheckChangeDeviceCode)]
     public class CheckChangeDeviceCode : BaseMethodHandler<CheckChangeDeviceCodeRequest>
     {
-
         public override object Handle(CheckChangeDeviceCodeRequest @params)
         {
-            return "{}";
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id
+            };
+
+            var result = DatabaseManager.DeviceCode.FindByDeviceCode(@params.dac);
+
+			if(result == null)
+			{
+				response.Error = new() { code = ErrorCode.InvalidDeviceCode };
+
+				return response;
+            }
+
+            var user = DatabaseManager.Account.FindByUid(result.MemberId);
+
+			response.Result = new CheckChangeDeviceCodeResponse()
+			{
+				plfm = user.Platform,
+			};
+
+            return response;
         }
+    }
+
+    public class CheckChangeDeviceCodeResponse
+    {
+        [JsonPropertyName("plfm")]
+        public Platform plfm { get; set; }
+    }
+
+    public class CheckChangeDeviceCodeRequest
+	{
+		[JsonPropertyName("dac")]
+        public string dac { get; set; }
+
+        [JsonPropertyName("ch")]
+        public int ch { get; set; }
 
     }
-    public class CheckChangeDeviceCodeRequest { }
 
 }
 /*		// Token: 0x060060CC RID: 24780 RVA: 0x000120F8 File Offset: 0x000102F8

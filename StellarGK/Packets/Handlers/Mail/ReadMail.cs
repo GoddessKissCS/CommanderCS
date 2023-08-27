@@ -4,12 +4,12 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Mail
 {
-    [Packet(Id = MethodId.ReadMail)]
+    [Packet(Id = Method.ReadMail)]
     public class ReadMail : BaseMethodHandler<ReadMailRequest>
     {
         public override object Handle(ReadMailRequest @params)
         {
-#warning TODO: ADDING THE REWARD
+#warning TODO: ADDING THE REWARD TO THE ACCOUNT
 
             bool result = DatabaseManager.GameProfile.ReadMail(GetSession(), @params.Idx);
 

@@ -3,7 +3,7 @@
 
 namespace StellarGK.Host.Handlers.Guild
 {
-    [Packet(Id = MethodId.GuildList)]
+    [Packet(Id = Method.GuildList)]
     public class GuildList : BaseMethodHandler<GuildListRequest>
     {
         public override object Handle(GuildListRequest @params)

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Login
 {
-    [Packet(Id = MethodId.GoogleSignIn)]
+    [Packet(Id = Method.GoogleSignIn)]
     public class GoogleSignIn : BaseMethodHandler<GoogleSignInRequest>
     {
 

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Nickname
 {
-    [Packet(Id = MethodId.SetNickNameFromTutorial)]
+    [Packet(Id = Method.SetNickNameFromTutorial)]
     public class SetNickNameFromTutorial : BaseMethodHandler<SetNickNameFromTutorialRequest>
     {
         public override object Handle(SetNickNameFromTutorialRequest @params)

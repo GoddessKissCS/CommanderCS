@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.UserTerm
 {
-    [Packet(Id = MethodId.GetBadWordList)]
+    [Packet(Id = Method.GetBadWordList)]
     public class GetBadWordList : BaseMethodHandler<GetBadWordListRequest>
     {
         public override object Handle(GetBadWordListRequest @params)

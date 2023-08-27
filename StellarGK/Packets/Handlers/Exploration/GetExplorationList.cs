@@ -3,7 +3,7 @@ using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Packets.Handlers.Exploration
 {
-    [Packet(Id = MethodId.GetExplorationList)]
+    [Packet(Id = Method.GetExplorationList)]
     public class GetExplorationList : BaseMethodHandler<GetExplorationListRequest>
     {
 

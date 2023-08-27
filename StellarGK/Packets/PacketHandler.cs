@@ -90,7 +90,7 @@ namespace StellarGK.Host
         public static List<string> CommandsMapped => CommandsMapper.Keys.Select(commandId =>
         {
             var commandIdStr = commandId.ToString();
-            var enumText = ((MethodId)commandId).ToString();
+            var enumText = ((Method)commandId).ToString();
 
             if (commandIdStr == enumText)
             {

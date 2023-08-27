@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.Shop
 {
-    [Packet(Id = MethodId.GetCashShopList)]
+    [Packet(Id = Method.GetCashShopList)]
     public class GetCashShopList : BaseMethodHandler<GetCashShopListRequest>
     {
         public override object Handle(GetCashShopListRequest @params)

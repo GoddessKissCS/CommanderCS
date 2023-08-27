@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Server
 {
-    [Packet(Id = MethodId.ServerStatus)]
+    [Packet(Id = Method.ServerStatus)]
     public class ServerStatus : BaseMethodHandler<ServerStatusRequest>
     {
         public override object Handle(ServerStatusRequest @params)

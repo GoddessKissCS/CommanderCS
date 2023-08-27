@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Nickname
 {
-    [Packet(Id = MethodId.ChangeNickname)]
+    [Packet(Id = Method.ChangeNickname)]
     public class ChangeNickname : BaseMethodHandler<ChangeNicknameRequest>
     {
         public override object Handle(ChangeNicknameRequest @params)

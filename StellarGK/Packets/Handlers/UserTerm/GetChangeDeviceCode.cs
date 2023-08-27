@@ -1,30 +1,31 @@
 ﻿using StellarGK.Database;
+using StellarGK.Database.Schemes;
 
 namespace StellarGK.Host.Handlers.UserTerm
 {
-    [Packet(Id = MethodId.GetChangeDeviceCode)]
+    [Packet(Id = Method.GetChangeDeviceCode)]
     public class GetChangeDeviceCode : BaseMethodHandler<GetChangeDeviceCodeRequest>
     {
         public override object Handle(GetChangeDeviceCodeRequest @params)
         {
+
+            var userAccount = GetUserAccount();
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = RequestForChangeDeviceCode(GetSession())
+                Result = RequestForChangeDeviceCode(userAccount)
             };
 
 
             return response;
         }
 
-        private static string RequestForChangeDeviceCode(string sess)
+        private static string RequestForChangeDeviceCode(AccountScheme? account)
         {
-            var account = DatabaseManager.Account.FindBySession(sess);
-
             var devicechange = DatabaseManager.DeviceCode.FindByUid(account.MemberId);
 
-#warning TODO - ADDING CHECK ON IF DEVICECODE IS OLDER THAN 7 DAYS I SUPPOSE
-#warning TODO ADDS SOME OTHER CHECKS ASWELL
+#warning TODO - ADDING CHECK ON IF DEVICECODE IS OLDER THAN 7 DAYS I SUPPOSE AND ADD SOME OTHER CHECKS ASWELL
 
             try
             {
@@ -35,9 +36,8 @@ namespace StellarGK.Host.Handlers.UserTerm
                     return device.Code;
                 }
             }
-            catch (Exception ex)
+            catch (Exception _)
             {
-                _ = ex;
                 return "Contact Admin";
             }
             return devicechange.Code;

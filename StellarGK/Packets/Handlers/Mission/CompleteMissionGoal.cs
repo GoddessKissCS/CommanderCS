@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.KeepAlives
+namespace StellarGK.Packets.Handlers.Mission
 {
     public class CompleteMissionGoal
     {

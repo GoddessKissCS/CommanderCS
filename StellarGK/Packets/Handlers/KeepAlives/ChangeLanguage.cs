@@ -1,18 +1,27 @@
+using StellarGK.Host;
+using System.Text.Json.Serialization;
+
 namespace StellarGK.Packets.Handlers.KeepAlives
 {
-    public class ChangeLanguage
+	[Packet(Id = Method.ChangeLanguage)]
+    public class ChangeLanguage : BaseMethodHandler<ChangeLanguageRequest>
     {
 
-    }
-}
-/*	// Token: 0x0600609C RID: 24732 RVA: 0x000120F8 File Offset: 0x000102F8
-	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1229", true, true)]
-	public void ChangeLanguage(string lang)
-	{
-	}
+        public override object Handle(ChangeLanguageRequest @params)
+        {
+            ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = @params.lang,
+			};
 
-	// Token: 0x0600609D RID: 24733 RVA: 0x001B08D8 File Offset: 0x001AEAD8
-	private IEnumerator ChangeLanguageResult(JsonRpcClient.Request request, string result)
+			return response;
+        }
+
+    }
+	public class ChangeLanguageRequest
 	{
-		yield break;
-	}*/
+		[JsonPropertyName("lang")]
+		public string lang { get; set; }
+	}
+}

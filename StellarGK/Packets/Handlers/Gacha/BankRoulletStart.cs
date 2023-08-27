@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Gacha
 {
-    [Packet(Id = MethodId.BankRoulletStart)]
+    [Packet(Id = Method.BankRoulletStart)]
     public class BankRoulletStart : BaseMethodHandler<BankRoulletStartRequest>
     {
         public static Random random = new();

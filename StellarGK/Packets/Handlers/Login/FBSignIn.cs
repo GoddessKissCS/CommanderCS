@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Login
 {
-    [Packet(Id = MethodId.FBSignIn)]
+    [Packet(Id = Method.FBSignIn)]
     public class FBSignIn : BaseMethodHandler<FBSignInRequest>
     {
         public override object Handle(FBSignInRequest @params)

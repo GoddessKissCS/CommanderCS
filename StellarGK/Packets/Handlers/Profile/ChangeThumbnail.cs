@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Profile
 {
-    [Packet(Id = MethodId.ChangeUserThumbnail)]
+    [Packet(Id = Method.ChangeUserThumbnail)]
     public class ChangeThumbnail : BaseMethodHandler<ChangeThumbnailRequest>
     {
         public override object Handle(ChangeThumbnailRequest @params)

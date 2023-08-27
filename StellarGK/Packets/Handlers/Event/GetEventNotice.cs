@@ -2,13 +2,12 @@
 
 namespace StellarGK.Host.Handlers.Event
 {
-    [Packet(Id = MethodId.GetEventNotice)]
+    [Packet(Id = Method.GetEventNotice)]
     public class GetEventNotice : BaseMethodHandler<GetEventNoticeRequest>
     {
 
         public override object Handle(GetEventNoticeRequest @params)
         {
-            ResponsePacket response = new();
 
             List<NoticeData> EventNotice1 = new()
             {
@@ -28,8 +27,11 @@ namespace StellarGK.Host.Handlers.Event
                 */
             };
 
-            response.Result = EventNotice1;
-            response.Id = BasePacket.Id;
+            ResponsePacket response = new()
+            {
+                Result = EventNotice1,
+                Id = BasePacket.Id
+            };
 
             return response;
         }

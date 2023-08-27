@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Commander
 {
-    [Packet(Id = MethodId.CommanderLevelUp)]
+    [Packet(Id = Method.CommanderLevelUp)]
     public class CommanderLevelUp : BaseMethodHandler<CommanderLevelUpRequest>
     {
 

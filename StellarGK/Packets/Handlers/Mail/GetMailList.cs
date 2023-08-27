@@ -1,16 +1,22 @@
 using StellarGK.Host;
+using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Packets.Handlers.Mail
 {
-    [Packet(Id = MethodId.GetMailList)]
+    [Packet(Id = Method.GetMailList)]
     public class GetMailList : BaseMethodHandler<GetMailListRequest>
     {
         public override object Handle(GetMailListRequest @params)
         {
+            MailInfo mailInfo = new()
+            {
+                mailList = GetUserGameProfile().MailDataList
+            };
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = GetUserGameProfile().MailInfo
+                Result = mailInfo,
             };
 
             return response;

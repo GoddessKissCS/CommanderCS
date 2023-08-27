@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Login
 {
-    [Packet(Id = MethodId.Login)]
+    [Packet(Id = Method.Login)]
     public class Login : BaseMethodHandler<LoginRequest>
     {
         public override object Handle(LoginRequest @params)

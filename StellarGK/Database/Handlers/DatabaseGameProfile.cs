@@ -65,10 +65,7 @@ namespace StellarGK.Database.Handlers
                 {
 
                 },
-                DispatchedCommanders = new()
-                {
-
-                },
+                DispatchedCommanders = null,
                 GuildId = null,
                 MemberId = memberId,
                 Notifaction = false,
@@ -143,10 +140,10 @@ namespace StellarGK.Database.Handlers
                 LastLoginTime = 0,
                 UserBadges = new()
                 {
-                    arena = 1,
-                    dlms = 1,
-                    achv = 1,
-                    rwd = 1,
+                    arena = 0,
+                    dlms = 0,
+                    achv = 0,
+                    rwd = 0,
                     shop = new Dictionary<string, int>()
                     {
                         { "raid", 0 },
@@ -178,7 +175,7 @@ namespace StellarGK.Database.Handlers
 
                 },
                 Session = string.Empty,
-                MailInfo = new() { },
+                MailDataList = new() { },
             };
 
             Collection.InsertOne(user);
@@ -313,6 +310,7 @@ namespace StellarGK.Database.Handlers
                 __worldDuelUpgradeCoin = Convert.ToString(resources.worldDuelUpgradeCoin),
 
             };
+
             return resource;
         }
 
@@ -335,13 +333,11 @@ namespace StellarGK.Database.Handlers
                 cash = user.UserResources.cash - new_cash;
             }
 
-
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
             var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", gold).Set("UserResources.cash", cash).Set("UserStatistics.totalGold", stats_gold);
 
             Collection.UpdateOne(filter, update);
-
         }
         public void UpdateGold(string session, int gold, bool useAddition)
         {
@@ -364,8 +360,6 @@ namespace StellarGK.Database.Handlers
             var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", gold).Set("UserStatistics.totalGold", stats_gold);
 
             Collection.UpdateOne(filter, update);
-
-
         }
         public void UpdateCash(string session, int cash, bool useAddition)
         {
@@ -386,7 +380,6 @@ namespace StellarGK.Database.Handlers
             var update = Builders<GameProfileScheme>.Update.Set("userResources.cash", cash);
 
             Collection.UpdateOne(filter, update);
-
         }
 
         public void UpdateOnLogin(LoginRequest @params, string session)
@@ -495,7 +488,7 @@ namespace StellarGK.Database.Handlers
         {
 
             var user = DatabaseManager.GameProfile.FindBySession(session);
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Id", user.MemberId);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("MemberId", user.MemberId);
             var update = Builders<GameProfileScheme>.Update.Push("BlockedUsers", toBeBlocked);
 
             var updateResult = Collection.UpdateOne(filter, update);
@@ -506,7 +499,7 @@ namespace StellarGK.Database.Handlers
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("memberId", user.MemberId);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("MemberId", user.MemberId);
             var update = Builders<GameProfileScheme>.Update.PullFilter("BlockedUsers",
                          Builders<BlockUser>.Filter.And(
                          Builders<BlockUser>.Filter.Eq("ch", channel),
@@ -523,12 +516,24 @@ namespace StellarGK.Database.Handlers
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("memberId", user.MemberId);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("MemberId", user.MemberId);
 
-            var update = Builders<GameProfileScheme>.Update.PullFilter("mailList",
+            var update = Builders<GameProfileScheme>.Update.PullFilter("MailInfo",
                 Builders<MailInfo.MailData>.Filter.And(
                     Builders<MailInfo.MailData>.Filter.Eq("idx", MailIdx)
                 ));
+
+            var updateResult = Collection.UpdateOne(filter, update);
+
+            return updateResult.ModifiedCount > 0;
+
+        }
+
+
+        public bool UpdateNotifaction(string session, int onoff)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq("session", session);
+            var update = Builders<GameProfileScheme>.Update.Set("Notifaction", Convert.ToBoolean(onoff));
 
             var updateResult = Collection.UpdateOne(filter, update);
 

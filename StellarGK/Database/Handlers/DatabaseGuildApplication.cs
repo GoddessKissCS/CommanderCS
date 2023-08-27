@@ -20,7 +20,6 @@ namespace StellarGK.Database.Handlers
             };
 
             Collection.InsertOne(guildApplication);
-
         }
 
 
@@ -28,14 +27,14 @@ namespace StellarGK.Database.Handlers
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
-            if (user == null) { }
+            if (user == null) { return string.Empty; }
 
             var tryGuild = Collection.AsQueryable()
-                       .Where(d => d.Uno == user.Uno)
-                       .Where(d => d.GuildId == guildIdx)
-                       .FirstOrDefault();
+                            .Where(d => d.Uno == user.Uno)
+                            .Where(d => d.GuildId == guildIdx)
+                            .FirstOrDefault();
 
-            if (tryGuild != null) { return "reg"; }
+            if (tryGuild != null) {  return "reg";  }
 
             return string.Empty;
 

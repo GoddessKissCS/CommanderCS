@@ -56,8 +56,7 @@ namespace StellarGK.Database.Handlers
 
         public DormitoryScheme? FindByUid(int uid)
         {
-            DormitoryScheme? user = Collection.AsQueryable().Where(d => d.memberId == uid).FirstOrDefault();
-            return user;
+            return Collection.AsQueryable().Where(d => d.memberId == uid).FirstOrDefault();
         }
         public DormitoryScheme? FindBySession(string session)
         {

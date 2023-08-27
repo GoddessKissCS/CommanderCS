@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.Commander
 {
-    [Packet(Id = MethodId.GetCommanderScenario)]
+    [Packet(Id = Method.GetCommanderScenario)]
     public class GetCommanderScenario : BaseMethodHandler<GetCommanderScenarioRequest>
     {
         public override object Handle(GetCommanderScenarioRequest @params)

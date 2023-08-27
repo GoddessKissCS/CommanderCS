@@ -3,7 +3,7 @@ using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.Gacha
 {
-    [Packet(Id = MethodId.GetRotationBannerInfo)]
+    [Packet(Id = Method.GetRotationBannerInfo)]
     public class GetRotationBannerInfo : BaseMethodHandler<GetRotationBannerInfoRequest>
     {
         public override object Handle(GetRotationBannerInfoRequest @params)

@@ -1,18 +1,30 @@
+using StellarGK.Database;
+using StellarGK.Host;
+using System.Text.Json.Serialization;
+
 namespace StellarGK.Packets.Handlers.KeepAlives
 {
-    public class SetPushOnOff
+	[Packet(Id = Method.SetPushOnOff)]
+    public class SetPushOnOff : BaseMethodHandler<SetPushOnOffRequest>
     {
+        public override object Handle(SetPushOnOffRequest @params)
+        {
+			var result = DatabaseManager.GameProfile.UpdateNotifaction(GetSession(), @params.onoff);
 
+            ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = result.ToString(),
+			};
+
+			return response;
+        }
     }
-}
-/*	// Token: 0x060060D8 RID: 24792 RVA: 0x000120F8 File Offset: 0x000102F8
-	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1506", true, true)]
-	public void SetPushOnOff(int onoff)
+
+	public class SetPushOnOffRequest
 	{
+		[JsonPropertyName("onoff")]
+		public int onoff { get; set; }
 	}
 
-	// Token: 0x060060D9 RID: 24793 RVA: 0x001B0DB0 File Offset: 0x001AEFB0
-	private IEnumerator SetPushOnOffResult(JsonRpcClient.Request request, bool result)
-	{
-		yield break;
-	}*/
+}

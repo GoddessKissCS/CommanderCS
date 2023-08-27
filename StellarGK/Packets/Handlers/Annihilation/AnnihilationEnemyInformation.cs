@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Annihilation
 {
-    [Packet(Id = MethodId.AnnihilationEnemyInformation)]
+    [Packet(Id = Method.AnnihilationEnemyInformation)]
     public class AnnihilationEnemyInformation : BaseMethodHandler<AnnihilationEnemyInformationRequest>
     {
         public override object Handle(AnnihilationEnemyInformationRequest @params)

@@ -25,8 +25,13 @@ namespace StellarGK.Database.Handlers
 
         public DeviceChangeCodeScheme? FindByUid(int uid)
         {
-            DeviceChangeCodeScheme? user = Collection.AsQueryable().Where(d => d.MemberId == uid).FirstOrDefault();
-            return user;
+            return Collection.AsQueryable().Where(deviceScheme => deviceScheme.MemberId == uid).FirstOrDefault();
         }
+
+        public DeviceChangeCodeScheme? FindByDeviceCode(string code)
+        {
+            return Collection.AsQueryable().Where(deviceScheme => deviceScheme.Code == code).FirstOrDefault();
+        }
+
     }
 }

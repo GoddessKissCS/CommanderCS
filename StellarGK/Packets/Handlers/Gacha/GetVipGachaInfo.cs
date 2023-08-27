@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.Gacha
 {
-    [Packet(Id = MethodId.GetVipGachaInfo)]
+    [Packet(Id = Method.GetVipGachaInfo)]
     public class GetVipGachaInfo : BaseMethodHandler<GetVipGachaInfoRequest>
     {
         public override object Handle(GetVipGachaInfoRequest @params)

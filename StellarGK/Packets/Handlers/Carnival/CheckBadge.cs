@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.Carnival
 {
-    [Packet(Id = MethodId.CheckBadge)]
+    [Packet(Id = Method.CheckBadge)]
     public class CheckBadge : BaseMethodHandler<CheckBadgeRequest>
     {
 

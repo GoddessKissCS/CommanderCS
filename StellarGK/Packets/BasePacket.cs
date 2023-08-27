@@ -8,7 +8,7 @@ namespace StellarGK.Host
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
     public sealed class PacketAttribute : Attribute
     {
-        public MethodId Id { get; set; }
+        public Method Id { get; set; }
     }
 
     public class ParamsPacket : BasePacket
@@ -54,7 +54,7 @@ namespace StellarGK.Host
 
     }
 
-    public enum MethodId : int
+    public enum Method : int
     {
         GetRegion = 1000,
         GetTutorialStep = 1100,
@@ -189,6 +189,7 @@ namespace StellarGK.Host
         GetMailList = 6101,
         GetReward = 6102,
         ReadMail = 6103,
+        GetRewardAll = 6104,
         GetRankingReward = 6105,
         GetFirstPaymentReward = 6108,
         DailyBonusCheck = 6112,

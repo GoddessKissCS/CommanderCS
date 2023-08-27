@@ -5,14 +5,14 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.WorldMap
 {
-    [Packet(Id = MethodId.WorldMapStageStart)]
+    [Packet(Id = Method.WorldMapStageStart)]
     public class WorldMapStageStart : BaseMethodHandler<WorldMapStageStartRequest>
     {
         public override object Handle(WorldMapStageStartRequest @params)
         {
             ResponsePacket response = new();
 
-            WorldMapStageStartRes wmssr = new();
+            WorldMapStageStartResponse wmssr = new();
 
             List<RewardInfo.RewardData> test = new();
 
@@ -27,7 +27,7 @@ namespace StellarGK.Host.Handlers.WorldMap
             return response;
         }
 
-        public class WorldMapStageStartRes
+        public class WorldMapStageStartResponse
         {
             [JsonPropertyName("rsoc")]
             public UserInformationResponse.Resource rsoc { get; set; }

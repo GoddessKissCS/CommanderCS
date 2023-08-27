@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Server
 {
-    [Packet(Id = MethodId.GetRegion)]
+    [Packet(Id = Method.GetRegion)]
     public class GetRegion : BaseMethodHandler<GetRegionResult>
     {
         public override object Handle(GetRegionResult @params)

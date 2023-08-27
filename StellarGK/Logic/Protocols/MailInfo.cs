@@ -8,7 +8,6 @@ namespace StellarGK.Logic.Protocols
         [JsonPropertyName("list")]
         public List<MailData> mailList { get; set; }
 
-
         public class MailData
         {
             [JsonPropertyName("idx")]

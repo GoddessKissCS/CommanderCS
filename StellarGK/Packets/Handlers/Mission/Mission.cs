@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.KeepAlives
+namespace StellarGK.Packets.Handlers.Mission
 {
     public class Mission
     {
@@ -53,6 +53,7 @@ namespace StellarGK.Packets.Handlers.KeepAlives
 					}
 				}
 			}
+
 			Protocols.AchievementInfo achievementInfo = this._ConvertJObject<Protocols.AchievementInfo>(result);
 			if (achievementInfo != null)
 			{
@@ -75,6 +76,7 @@ namespace StellarGK.Packets.Handlers.KeepAlives
 					}
 				}
 			}
+
 			Protocols.UserInformationResponse userInformationResponse = this._ConvertJObject<Protocols.UserInformationResponse>(result);
 			if (userInformationResponse != null)
 			{

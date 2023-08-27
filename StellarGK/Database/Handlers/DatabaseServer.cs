@@ -26,9 +26,7 @@ namespace StellarGK.Database.Handlers
 
         public ServerScheme Get(int id)
         {
-            ServerScheme? server = Collection.AsQueryable().Where(d => d.ChannelId == id).FirstOrDefault();
-
-            return server;
+            return Collection.AsQueryable().Where(d => d.ChannelId == id).FirstOrDefault();
         }
     }
 

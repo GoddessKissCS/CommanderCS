@@ -37,5 +37,11 @@ namespace StellarGK.Host
         TimedOut = 70003,
         UnknownErrorCode_1 = 30003,
         EnteredInappropriateWords = 53010, // SOMEHOW IN BANKROULLETSTART
+        FederationSettingsChanged = 71301,
+        FederationGuildSettingsChanged = 71302,
+        CannotSentMoreThanOneFederationJoinRequest = 71303,
+        CannotSentMoreThanTwoFederationRequestsOrBeAccepted = 71110,
+        CannotSentTheSameFederationAnRequestAfterBeingDeclientWithin48Hours = 71111,
+        CannotSentAnotherFederationAnJoinRequestAfterLeavingForOneHour = 71112,
     }
 }

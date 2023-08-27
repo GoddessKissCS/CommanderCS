@@ -33,7 +33,7 @@ namespace StellarGK.Database.Schemes
         public List<UserInformationResponse.VipRechargeData> VipRechargeData { get; set; }
         public Dictionary<string, int> BoughtCashShopItems { get; set; }
         public List<BlockUser> BlockedUsers { get; set; }
-        public MailInfo? MailInfo { get; set; }
+        public List<MailInfo.MailData>? MailDataList { get; set; }
     }
 
     public class UserDevice

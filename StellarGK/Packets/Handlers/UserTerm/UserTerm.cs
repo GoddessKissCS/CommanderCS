@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.UserTerm
 {
-    [Packet(Id = MethodId.UserTerm)]
+    [Packet(Id = Method.UserTerm)]
     public class UserTerm : BaseMethodHandler<UserTermRequest>
     {
         public override object Handle(UserTermRequest @params)

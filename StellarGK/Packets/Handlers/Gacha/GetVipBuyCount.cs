@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Gacha
 {
-    [Packet(Id = MethodId.GetVipBuyCount)]
+    [Packet(Id = Method.GetVipBuyCount)]
     public class GetVipBuyCount : BaseMethodHandler<GetVipBuyCountRequest>
     {
         public override object Handle(GetVipBuyCountRequest @params)

@@ -2,7 +2,7 @@
 
 namespace StellarGK.Host.Handlers.Event
 {
-    [Packet(Id = MethodId.GetWebEvent)]
+    [Packet(Id = Method.GetWebEvent)]
     public class GetWebEvent : BaseMethodHandler<GetWebEventRequest>
     {
         public override object Handle(GetWebEventRequest @params)
