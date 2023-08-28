@@ -1,3 +1,4 @@
+using StellarGK.Database;
 using StellarGK.Host;
 using System.Text.Json.Serialization;
 
@@ -6,12 +7,12 @@ namespace StellarGK.Packets.Handlers.WorldMap
 	[Packet(Id = Method.WorldMapReward)]
     public class WorldMapReward : BaseMethodHandler<WorldMapRewardRequest>
     {
-
         public override object Handle(WorldMapRewardRequest @params)
         {
-
 			// Check all Pilots that exist
 			int commanderId;
+
+			var user = GetUserGameProfile();
 
 			switch (@params.world)
 			{
@@ -55,6 +56,7 @@ namespace StellarGK.Packets.Handlers.WorldMap
                     break;
             }
 
+			DatabaseManager.GameProfile.UpdateWorldMapReward(GetSession(), @params.world);
 
 			Logic.Protocols.WorldMapReward worldMap = new()
 			{

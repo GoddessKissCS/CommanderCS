@@ -1,4 +1,5 @@
-﻿using StellarGK.Logic.Protocols;
+﻿using StellarGK.Logic.ExcelReader;
+using StellarGK.Logic.Protocols;
 
 namespace StellarGK.Host.Handlers.KeepAlives
 {
@@ -10,6 +11,13 @@ namespace StellarGK.Host.Handlers.KeepAlives
 #warning TODO
             // ADD Daily list that clears every month
             // Check against which day it is today and give the apprioate response
+
+            DateTime currentDate = DateTime.Now;
+            int day = currentDate.Day;
+
+            string startTime;
+
+            //var dailybonus = DailyBonusData.GetInstance().FromDay(day, startTime);
 
             DailyBonusCheckResponse DailyBonusCheckResponse = new()
             {

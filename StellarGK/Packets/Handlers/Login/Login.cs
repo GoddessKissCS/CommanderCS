@@ -40,8 +40,6 @@ namespace StellarGK.Host.Handlers.Login
             var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(session);
             var guild = DatabaseManager.Guild.RequestGuild(user.GuildId);
 
-
-
             string jsonCommanderData = JsonSerializer.Serialize(user.CommanderData);
 
             UserInformationResponse userInformationResponse = new()

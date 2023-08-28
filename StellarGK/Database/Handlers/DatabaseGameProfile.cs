@@ -177,6 +177,7 @@ namespace StellarGK.Database.Handlers
                 },
                 Session = string.Empty,
                 MailDataList = new() { },
+                DailyBonusCheck = new() { },
             };
 
             Collection.InsertOne(user);
@@ -557,11 +558,16 @@ namespace StellarGK.Database.Handlers
             return updateResult.ModifiedCount > 0;
         }
 
-
-        public bool UpdateWorldMapReward(string session, int onoff)
+        public bool UpdateWorldMapReward(string session, int worldMapId)
         {
+            var user = FindBySession(session);
+
+            string mapId = "" + worldMapId;
+
+            user.WorldMapStagesReward[mapId] = 1;
+
             var filter = Builders<GameProfileScheme>.Filter.Eq("session", session);
-            var update = Builders<GameProfileScheme>.Update.Set("Notifaction", Convert.ToBoolean(onoff));
+            var update = Builders<GameProfileScheme>.Update.Set("WorldMapStagesReward", user.WorldMapStagesReward);
 
             var updateResult = Collection.UpdateOne(filter, update);
 

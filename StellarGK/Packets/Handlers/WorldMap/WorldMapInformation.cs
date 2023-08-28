@@ -21,7 +21,6 @@ namespace StellarGK.Host.Handlers.WorldMap
             // maybe needs a rework if you already have it?
             // need to add if you already have all and add it to the db
 
-
             WorldMapResponse worldmap = new()
             {
                 stage = worldMapStages,
