@@ -1,8 +1,91 @@
+using MongoDB.Driver;
+using StellarGK.Database;
+using StellarGK.Database.Schemes;
+using StellarGK.Host;
+using StellarGK.Logic.Enums;
+using StellarGK.Tools;
+using System.Text.Json.Serialization;
+
 namespace StellarGK.Packets.Handlers.UserTerm
 {
-    public class ChangeDevice
+    [Packet(Id = Method.ChangeDevice)]
+    public class ChangeDevice : BaseMethodHandler<ChangeDeviceRequest>
     {
+        public override object Handle(ChangeDeviceRequest @params)
+        {
+            ResponsePacket response = new();
+            response.Id = BasePacket.Id;
 
+            var ChangedDevice = DatabaseManager.Account.ChangeDevice(@params);
+
+#warning TODO MAYBE CHANGE THE DEVICE AND ETC TO ACCOUNT RATHER THAN GAMEPROFILE?
+
+            ChangeDeviceResponse changeDeviceResponse = new()
+            {
+                mIdx = ChangedDevice.MemberId,
+                tokn = ChangedDevice.Token
+            };
+
+            response.Result = changeDeviceResponse;
+
+            return response;
+
+        }
+    }
+
+    public class ChangeDeviceRequest
+    {
+        [JsonPropertyName("ch")]
+        public int ch { get; set; }
+
+        [JsonPropertyName("dac")]
+        public string dac { get; set; }
+
+        [JsonPropertyName("uid")]
+        public string uid { get; set; }
+
+        [JsonPropertyName("pwd")]
+        public string pwd { get; set; }
+
+        [JsonPropertyName("plfm")]
+        public Platform plfm { get; set; }
+
+        [JsonPropertyName("devc")]
+        public string devc { get; set; }
+
+        [JsonPropertyName("dvid")]
+        public string dvid { get; set; }
+
+        [JsonPropertyName("ptype")]
+        public int ptype { get; set; }
+
+        [JsonPropertyName("oscd")]
+        public OSCode oscd { get; set; }
+
+        [JsonPropertyName("osvr")]
+        public string osvr { get; set; }
+
+        [JsonPropertyName("gmvr")]
+        public string gmvr { get; set; }
+
+        [JsonPropertyName("apk")]
+        public string apk { get; set; }
+
+        [JsonPropertyName("lang")]
+        public string lang { get; set; }
+
+        [JsonPropertyName("gpid")]
+        public string gpid { get; set; }
+    }
+
+
+    internal class ChangeDeviceResponse
+    {
+        [JsonPropertyName("mIdx")]
+        public int mIdx { get; set; }
+
+        [JsonPropertyName("tokn")]
+        public string tokn { get; set; }
     }
 }
 /*	// Token: 0x060060D1 RID: 24785 RVA: 0x000120F8 File Offset: 0x000102F8

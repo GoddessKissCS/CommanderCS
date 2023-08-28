@@ -9,19 +9,17 @@ namespace StellarGK.Host.Handlers.UserTerm
         {
             ResponsePacket response = new();
 
-#warning TODO
-            // WILL BE A LIST OF BADWORDS LATER ON
+#warning TODO ADD AN ENTIRE BADWORDLIST WITH DIFFERENT LANGUAGES
 
             List<string> en = new()
             {
                 "booooooobs",
             };
 
-            badwords badWord = new()
+            BadWordListResponse badWord = new()
             {
                 word = new() {
-                {"en", en }
-            }
+                {"en", en }}
             };
 
             response.Id = BasePacket.Id;
@@ -31,7 +29,7 @@ namespace StellarGK.Host.Handlers.UserTerm
         }
 
 
-        private class badwords
+        internal class BadWordListResponse
         {
             [JsonPropertyName("word")]
             public Dictionary<string, List<string>> word { get; set; }

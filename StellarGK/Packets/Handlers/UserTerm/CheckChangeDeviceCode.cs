@@ -25,16 +25,18 @@ namespace StellarGK.Host.Handlers.UserTerm
 
             var user = DatabaseManager.Account.FindByUid(result.MemberId);
 
-			response.Result = new CheckChangeDeviceCodeResponse()
-			{
-				plfm = user.Platform,
-			};
+            CheckChangeDeviceCodeResponse CheckChangeDeviceCodeResponse = new()
+            {
+                plfm = user.Platform,
+            };
+
+            response.Result = CheckChangeDeviceCodeResponse;
 
             return response;
         }
     }
 
-    public class CheckChangeDeviceCodeResponse
+    internal class CheckChangeDeviceCodeResponse
     {
         [JsonPropertyName("plfm")]
         public Platform plfm { get; set; }

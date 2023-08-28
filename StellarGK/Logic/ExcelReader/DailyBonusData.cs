@@ -6,9 +6,11 @@ namespace StellarGK.Logic.ExcelReader
     {
         public override string FileName { get { return "DailyBonusDataTable.json"; } }
 
-        public DailyBonusDataExcel? FromDay(int day, string startTime)
+        public DailyBonusDataExcel? FromDay(int day, int startTime)
         {
-            return All.Where(avatar => avatar.day == day).FirstOrDefault();
+            return All.Where(avatar => avatar.day == day)
+                      .Where(avatar => avatar.startTime == startTime)
+                      .FirstOrDefault();
         }
 
     }

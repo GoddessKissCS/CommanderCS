@@ -18,7 +18,6 @@ namespace StellarGK.Host.Handlers.Nickname
 
             ErrorCode code = RequestNickNameChange(@params.nickname, GetSession());
 
-
             if (code == ErrorCode.AlreadyInUse || code == ErrorCode.InappropriateWords)
             {
                 response.Error = new() { code = code };
@@ -37,7 +36,7 @@ namespace StellarGK.Host.Handlers.Nickname
 
         }
 
-        private static ErrorCode RequestNickNameChange(string AccountName, string sess)
+        internal static ErrorCode RequestNickNameChange(string AccountName, string sess)
         {
             if (Misc.NameCheck(AccountName))
             {
@@ -62,7 +61,7 @@ namespace StellarGK.Host.Handlers.Nickname
             return ErrorCode.Success;
         }
 
-        public class ChangeNicknameResponse
+        internal class ChangeNicknameResponse
         {
             [JsonPropertyName("rsoc")]
             public UserInformationResponse.Resource rsoc { get; set; }

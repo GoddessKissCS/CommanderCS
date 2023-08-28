@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using StellarGK.Database;
 using StellarGK.Logic.Protocols;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.WorldMap
@@ -27,7 +28,7 @@ namespace StellarGK.Host.Handlers.WorldMap
             return response;
         }
 
-        public class WorldMapStageStartResponse
+        internal class WorldMapStageStartResponse
         {
             [JsonPropertyName("rsoc")]
             public UserInformationResponse.Resource rsoc { get; set; }
@@ -43,10 +44,10 @@ namespace StellarGK.Host.Handlers.WorldMap
         public int Type { get; set; }
 
         [JsonPropertyName("deck")]
-        public JObject Deck { get; set; }
+        public JsonObject Deck { get; set; }
 
         [JsonPropertyName("gdp")]
-        public JObject Gdp { get; set; }
+        public JsonObject Gdp { get; set; }
 
         [JsonPropertyName("ucash")]
         public int Ucash { get; set; }

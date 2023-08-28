@@ -17,7 +17,7 @@ namespace StellarGK.Packets.Handlers.UserTerm
             ResponsePacket response = new();
             response.Id = BasePacket.Id;
 
-            ErrorCode code = DatabaseManager.Account.ChangeMemberShipDbros(@params.plfm, @params.uid, @params.pwd);
+            ErrorCode code = DatabaseManager.Account.ChangeDevice(@params.plfm, @params.uid, @params.pwd);
 
             if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
             {

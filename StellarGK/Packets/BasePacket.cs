@@ -41,12 +41,10 @@ namespace StellarGK.Host
         {
             return DatabaseManager.Account.FindBySession(BasePacket.Session);
         }
-
         public GameProfileScheme? GetUserGameProfile()
         {
             return DatabaseManager.GameProfile.FindBySession(BasePacket.Session);
         }
-
         public DormitoryScheme? GetUserDormitory()
         {
             return DatabaseManager.Dormitory.FindBySession(BasePacket.Session);

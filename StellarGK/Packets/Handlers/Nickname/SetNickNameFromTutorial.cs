@@ -34,7 +34,7 @@ namespace StellarGK.Host.Handlers.Nickname
             return response;
         }
 
-        private static ErrorCode RequestNicknameAfterTutorial(string sess, string nickname)
+        internal static ErrorCode RequestNicknameAfterTutorial(string sess, string nickname)
         {
 
             if (Misc.NameCheck(nickname))
@@ -69,7 +69,7 @@ namespace StellarGK.Host.Handlers.Nickname
             return 0;
         }
 
-        public class SetNickNameResponse
+        internal class SetNickNameResponse
         {
             [JsonPropertyName("step")]
             public int step { get; set; }

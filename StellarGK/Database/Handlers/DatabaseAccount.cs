@@ -7,6 +7,8 @@ using StellarGK.Logic.Protocols;
 using StellarGK.Tools;
 using System.Threading.Channels;
 using System;
+using StellarGK.Packets.Handlers.UserTerm;
+using MongoDB.Driver.Core.Bindings;
 
 namespace StellarGK.Database.Handlers
 {
@@ -174,7 +176,7 @@ namespace StellarGK.Database.Handlers
         }
 
 
-        public ErrorCode ChangeMemberShipDbros(Platform plfm, string uid, string pwd)
+        public ErrorCode ChangeDevice(Platform plfm, string uid, string pwd)
         {
             throw new NotImplementedException();
 
@@ -202,5 +204,15 @@ namespace StellarGK.Database.Handlers
             */
         }
 
+        public AccountScheme? ChangeDevice(ChangeDeviceRequest @params)
+        {
+            var account = FindByName(@params.uid);
+
+            var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
+            var update = Builders<AccountScheme>.Update.Set("PlatformId", @params.plfm).Set("Channel", @params.plfm).Set("OsCode", @params.oscd);
+            Collection.UpdateOne(filter, update);
+
+            return FindByName(@params.uid);
+        }
     }
 }

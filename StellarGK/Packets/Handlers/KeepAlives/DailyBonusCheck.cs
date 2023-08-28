@@ -12,12 +12,12 @@ namespace StellarGK.Host.Handlers.KeepAlives
             // ADD Daily list that clears every month
             // Check against which day it is today and give the apprioate response
 
-            DateTime currentDate = DateTime.Now;
-            int day = currentDate.Day;
+            //DateTime currentDate = DateTime.Now;
+            //DateTime startOfMonth = new(currentDate.Year, currentDate.Month, 1);
+            //int day = currentDate.Day;
+            //int startOfMonthAsInt = int.Parse(startOfMonth.ToString("yyyyMMdd"));
 
-            string startTime;
-
-            //var dailybonus = DailyBonusData.GetInstance().FromDay(day, startTime);
+            //var dailybonus = DailyBonusData.GetInstance().FromDay(day, startOfMonthAsInt);
 
             DailyBonusCheckResponse DailyBonusCheckResponse = new()
             {

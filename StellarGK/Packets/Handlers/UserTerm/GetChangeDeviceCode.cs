@@ -17,7 +17,6 @@ namespace StellarGK.Host.Handlers.UserTerm
                 Result = RequestForChangeDeviceCode(userAccount)
             };
 
-
             return response;
         }
 
@@ -25,7 +24,15 @@ namespace StellarGK.Host.Handlers.UserTerm
         {
             var devicechange = DatabaseManager.DeviceCode.FindByUid(account.MemberId);
 
-#warning TODO - ADDING CHECK ON IF DEVICECODE IS OLDER THAN 7 DAYS I SUPPOSE AND ADD SOME OTHER CHECKS ASWELL
+            DateTime createTimeDate = DateTime.ParseExact(devicechange.CreateTime.ToString(), "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture);
+
+            TimeSpan timeDifference = DateTime.Now - createTimeDate;
+            int daysDifference = (int)timeDifference.TotalDays;
+
+            if (daysDifference > 7)
+            {
+                return "Code Expired";
+            }
 
             try
             {
