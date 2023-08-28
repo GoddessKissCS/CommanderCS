@@ -1,6 +1,6 @@
 namespace StellarGK.Packets.Handlers.Event
 {
-    public interface GetEventRemaingTime
+    public class GetEventRemaingTime
     {
 
     }

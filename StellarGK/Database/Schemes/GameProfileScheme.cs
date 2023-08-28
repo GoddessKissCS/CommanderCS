@@ -24,7 +24,8 @@ namespace StellarGK.Database.Schemes
         public UserInventory UserInventory { get; set; }
         public UserBadges UserBadges { get; set; }
         public UserInformationResponse.TutorialData TutorialData { get; set; }
-        public Dictionary<string, List<WorldMapInformationResponse>> Stages { get; set; }
+        public Dictionary<string, List<WorldMapInformationResponse>> WorldMapStages { get; set; }
+        public Dictionary<string, int> WorldMapStagesReward { get; set; }
         public Dictionary<string, UserInformationResponse.Commander> CommanderData { get; set; }
         public List<UserInformationResponse.PreDeck> PreDeck { get; set; }
         public List<int> CompleteRewardGroupIdx { get; set; }

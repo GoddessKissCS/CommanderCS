@@ -68,7 +68,7 @@ namespace StellarGK.Database.Handlers
         }
         public bool AccountExists(string accountName)
         {
-            return Collection.AsQueryable().Where(d => d.Name == accountName).Count() > 0;
+            return Collection.AsQueryable().Where(d => d.Name == accountName).Any();
         }
 
         public ErrorCode ChangeMemberShip(string changeName, string password, int platformId, string guestName, int channel)
@@ -83,19 +83,18 @@ namespace StellarGK.Database.Handlers
             {
                 return ErrorCode.IdAlreadyExists;
             }
-            else
-            {
-                var account = FindByName(guestName);
 
-                var password_hash = Crypto.ComputeSha256Hash(password);
+            var account = FindByName(guestName);
 
-                var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
-                var update = Builders<AccountScheme>.Update.Set("Name", changeName).Set("Password_Hash", password_hash).Set("PlatformId", platformId).Set("Channel", channel);
+            var password_hash = Crypto.ComputeSha256Hash(password);
 
-                Collection.UpdateOne(filter, update);
+            var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
+            var update = Builders<AccountScheme>.Update.Set("Name", changeName).Set("Password_Hash", password_hash).Set("PlatformId", platformId).Set("Channel", channel);
 
-                return ErrorCode.Success;
-            }
+            Collection.UpdateOne(filter, update);
+
+            return ErrorCode.Success;
+
         }
 
 
@@ -142,11 +141,9 @@ namespace StellarGK.Database.Handlers
             {
                 return ErrorCode.BannedOrSuspended;
             }
-            else
-            {
-                DatabaseManager.GameProfile.UpdateOnLogin(@params, session);
-                return ErrorCode.Success;
-            }
+
+            DatabaseManager.GameProfile.UpdateOnLogin(@params, session);
+            return ErrorCode.Success;
         }
 
         public bool AddBlockedUser(BlockUser toBeBlocked, string session)

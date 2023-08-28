@@ -1,4 +1,5 @@
 using Microsoft.Extensions.FileProviders;
+using StellarGK.Database;
 using StellarGK.Host;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -67,7 +68,7 @@ namespace StellarGK
                 CommandsLoaded = PacketHandler.CommandsMapped,
             };
 
-            var statusString = System.Text.Json.JsonSerializer.Serialize(status, new JsonSerializerOptions()
+            var statusString = JsonSerializer.Serialize(status, new JsonSerializerOptions()
             {
                 WriteIndented = true,
             });
@@ -139,7 +140,7 @@ namespace StellarGK
 
             //app.UseAuthorization();
 
-            //DatabaseManager.FirstCreate();
+            DatabaseManager.FirstCreate();
 
             app.Run();
         }

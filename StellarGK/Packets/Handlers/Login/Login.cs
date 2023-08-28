@@ -3,6 +3,8 @@ using StellarGK.Database;
 using StellarGK.Logic.Enums;
 using StellarGK.Logic.Protocols;
 using StellarGK.Tools;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.Login
@@ -21,7 +23,7 @@ namespace StellarGK.Host.Handlers.Login
             //@params.world
             // first we need to check if the world has a profile if not create a new one
 
-            string session = Constants.Session;
+            string session = Guid.NewGuid().ToString();
 
             var user = DatabaseManager.GameProfile.GetOrCreate(@params.memberId, @params.world);
 
@@ -37,6 +39,10 @@ namespace StellarGK.Host.Handlers.Login
             var goods = DatabaseManager.GameProfile.UserResourcesFromSession(session);
             var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(session);
             var guild = DatabaseManager.Guild.RequestGuild(user.GuildId);
+
+
+
+            string jsonCommanderData = JsonSerializer.Serialize(user.CommanderData);
 
             UserInformationResponse userInformationResponse = new()
             {
@@ -63,7 +69,7 @@ namespace StellarGK.Host.Handlers.Login
                 sweepClearData = user.SweepClearData,
                 preDeck = user.PreDeck,
                 weaponList = user.UserInventory.weaponList,
-                __commanderInfo = JObject.FromObject(user.CommanderData),
+                __commanderInfo = JsonObject.Parse(jsonCommanderData),            
             };
 
 
@@ -76,8 +82,6 @@ namespace StellarGK.Host.Handlers.Login
             response.Result = Login;
 
             return response;
-
-
         }
 
         private class LoginPacket

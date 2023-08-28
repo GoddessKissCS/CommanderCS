@@ -32,9 +32,21 @@ namespace StellarGK.Logic.ExcelReader
                     stageId = "" + s.id,
                     clearCount = 0,
                     star = 0
-                }).ToList()
-            );
+                }).ToList());
             }
+                return stages;
+        }
+
+
+        public Dictionary<string, int> AddDefaultWorldMapIsRewardCollected()
+        {
+            Dictionary<string, int> stages = new();
+
+            string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
+
+            var stageList = JsonConvert.DeserializeObject<List<WorldMapStageDataExcel>>(path);
+
+            stages = stageList.ToDictionary(stage => "" + stage.id, _ => 0);
 
             return stages;
         }

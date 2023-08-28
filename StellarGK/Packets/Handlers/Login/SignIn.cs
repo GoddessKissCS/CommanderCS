@@ -25,7 +25,6 @@ namespace StellarGK.Host.Handlers.Sign
             response.Id = BasePacket.Id;
             response.Result = SignInP;
 
-
             DatabaseManager.Account.UpdateLoginTime(@params.uid);
 
             return response;
@@ -40,22 +39,21 @@ namespace StellarGK.Host.Handlers.Sign
             {
                 return ErrorCode.IdNotFound;
             }
+
+            AccountScheme user = DatabaseManager.Account.FindByName(AccountName);
+            if (user.Password_Hash == password_hash)
+            {
+                DatabaseManager.Account.UpdateLoginTime(user.MemberId);
+                signInP.mIdx = user.MemberId;
+                signInP.tokn = user.Token;
+                signInP.srv = user.LastServerLoggedIn;
+                return ErrorCode.Success;
+            }
             else
             {
-                AccountScheme user = DatabaseManager.Account.FindByName(AccountName);
-                if (user.Password_Hash == password_hash)
-                {
-                    DatabaseManager.Account.UpdateLoginTime(user.MemberId);
-                    signInP.mIdx = user.MemberId;
-                    signInP.tokn = user.Token;
-                    signInP.srv = user.LastServerLoggedIn;
-                    return ErrorCode.Success;
-                }
-                else
-                {
-                    return ErrorCode.PasswordInvalid;
-                }
+                return ErrorCode.PasswordInvalid;
             }
+
         }
 
         private class SignInP

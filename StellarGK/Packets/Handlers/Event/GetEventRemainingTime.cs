@@ -7,28 +7,24 @@ namespace StellarGK.Host.Handlers.Event
     {
         public override object Handle(GetEventRemainingTimeRequest @params)
         {
-            var test = new Dictionary<string, int>()
-                    {
-                        {"test", 1}
-                    };
 
-            GetEventRemainingTimeM getEventRemainingTimeM = new()
+            GetEventRemainingTimeResponse remainingEventTime = new()
             {
-                buff = test,
+                buff = new() { }
             };
 
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = getEventRemainingTimeM,
+                Result = remainingEventTime,
             };
 
             return response;
         }
 
 
-        public class GetEventRemainingTimeM
+        public class GetEventRemainingTimeResponse
         {
             [JsonPropertyName("buff")]
             public Dictionary<string, int> buff { get; set; }

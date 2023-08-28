@@ -1,16 +1,82 @@
+using StellarGK.Host;
 using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.WorldMap
 {
-    public class WorldMapReward
+	[Packet(Id = Method.WorldMapReward)]
+    public class WorldMapReward : BaseMethodHandler<WorldMapRewardRequest>
     {
+
+        public override object Handle(WorldMapRewardRequest @params)
+        {
+
+			// Check all Pilots that exist
+			int commanderId;
+
+			switch (@params.world)
+			{
+				case 0:
+					break;
+				case 1:
+                    break;
+				case 2: 
+					break;
+				case 3: 
+					break;
+				case 4:
+                    break;
+				case 5:
+                    break;
+				case 6:
+					break;
+				case 7:
+					break;
+				case 8:
+					break;
+                case 9:
+                    break;
+                case 10:
+                    break;
+                case 11:
+                    break;
+                case 12:
+                    break;
+                case 13:
+                    break;
+                case 14:
+                    break;
+                case 15:
+                    break;
+                case 16:
+                    break;
+                case 17:
+                    break;
+                case 18:
+                    break;
+            }
+
+
+			Logic.Protocols.WorldMapReward worldMap = new()
+			{
+				
+			};
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+				Result = worldMap
+            };
+
+
+            return response;
+        }
 
     }
 
     public class WorldMapRewardRequest
     {
         [JsonPropertyName("world")]
-        public int World { get; set; }
+        public int world { get; set; }
     }
 }
 

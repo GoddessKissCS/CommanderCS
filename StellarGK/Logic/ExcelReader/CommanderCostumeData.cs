@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using StellarGK.Logic.Protocols;
 using StellarGK.Tools;
+using System.Security.Cryptography;
 
 namespace StellarGK.Logic.ExcelReader
 {
@@ -52,7 +53,7 @@ namespace StellarGK.Logic.ExcelReader
                         haveCostume = new() { item.ctid },
                         id = "" + cid,
                         marry = 0,
-                        medl = 0,
+                        medl = cid,
                         role = "A",
                         transcendence = new() { 0, 0, 0, 0 },
                         __cls = "1",
@@ -61,7 +62,6 @@ namespace StellarGK.Logic.ExcelReader
                         __rank = "1",
                     };
 
-                    // Add the new entry to the dictionary with cid as the key and CommanderData as the value
                     commanderDataDict.Add(cid.ToString(), commanderData);
                 }
 
@@ -69,6 +69,91 @@ namespace StellarGK.Logic.ExcelReader
 
             return commanderDataDict;
         }
+
+
+
+        public Dictionary<string, UserInformationResponse.Commander> AddSpecificCommander(int commanderID)
+        {
+            Dictionary<string, UserInformationResponse.Commander> commanderDataDict = new();
+
+            string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
+
+            List<CommanderCostumeExcel> items = JsonConvert.DeserializeObject<List<CommanderCostumeExcel>>(path);
+
+            CommanderCostumeExcel item = items.Where(c => c.cid == commanderID).FirstOrDefault();
+
+            UserInformationResponse.Commander commanderData = new()
+            {
+                state = "N",
+                __skv1 = "1",
+                __skv2 = "1",
+                __skv3 = "1",
+                __skv4 = "1",
+                favorRewardStep = 0,
+                favorStep = 0,
+                currentCostume = item.ctid,
+                equipItemInfo = new() { },
+                equipWeaponInfo = new() { },
+                eventCostume = new() { },
+                favorPoint = new() { },
+                favr = 0,
+                fvrd = 0,
+                haveCostume = new() { item.ctid },
+                id = "" + commanderID,
+                marry = 0,
+                medl = 0,
+                role = "A",
+                transcendence = new() { 0, 0, 0, 0 },
+                __cls = "1",
+                __exp = "0",
+                __level = "1",
+                __rank = "1",
+            };
+
+            commanderDataDict.Add(commanderID.ToString(), commanderData);
+
+
+            return commanderDataDict;
+        }
+
+        public Dictionary<string, int> GetAllCommandersMedalsWithDefaultValue()
+        {
+            Dictionary<string, int> commanderDataDict = new();
+
+            string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
+
+            List<CommanderCostumeExcel> items = JsonConvert.DeserializeObject<List<CommanderCostumeExcel>>(path);
+
+            foreach (var item in items)
+            {
+                int cid = item.cid;
+
+                // Check if the cid already exists in the dictionary to avoid duplicates
+                if (!commanderDataDict.ContainsKey(cid.ToString()))
+                {
+                    // Add the new entry to the dictionary with cid as the key and CommanderData as the value
+                    commanderDataDict.Add(cid.ToString(), cid);
+                }
+
+            }
+
+            return commanderDataDict;
+        }
+
+        public Dictionary<string, int> AddSpecificCommanderMedals(int commanderId)
+        {
+            Dictionary<string, int> commanderDataDict = new();
+
+            string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
+
+            List<CommanderCostumeExcel> items = JsonConvert.DeserializeObject<List<CommanderCostumeExcel>>(path);
+
+
+            commanderDataDict.Add("" + commanderId, 1);
+
+            return commanderDataDict;
+        }
+
 
     }
 

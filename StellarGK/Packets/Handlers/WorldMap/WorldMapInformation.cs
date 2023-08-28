@@ -1,4 +1,5 @@
 ﻿using StellarGK.Logic.Protocols;
+using System.Runtime.InteropServices.Marshalling;
 using System.Text.Json.Serialization;
 
 namespace StellarGK.Host.Handlers.WorldMap
@@ -10,9 +11,11 @@ namespace StellarGK.Host.Handlers.WorldMap
         {
 #warning TODO ???
 
-            GetUserGameProfile().Stages.TryGetValue(@params.world.ToString(), out List<WorldMapInformationResponse> worldMapStages);
+            var user = GetUserGameProfile();
 
-            int rwd = Convert.ToInt32(worldMapStages.All(c => c.star == 3));
+            user.WorldMapStages.TryGetValue(@params.world.ToString(), out List<WorldMapInformationResponse> worldMapStages);
+
+            user.WorldMapStagesReward.TryGetValue(@params.world.ToString(), out int rwd);
 
             // reward means if you complete the stage
             // maybe needs a rework if you already have it?
@@ -22,7 +25,7 @@ namespace StellarGK.Host.Handlers.WorldMap
             WorldMapResponse worldmap = new()
             {
                 stage = worldMapStages,
-                rwd = rwd,
+                rwd = Convert.ToInt32(rwd),
             };
 
             ResponsePacket response = new()

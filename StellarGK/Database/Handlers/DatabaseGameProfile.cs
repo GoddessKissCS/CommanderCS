@@ -23,7 +23,8 @@ namespace StellarGK.Database.Handlers
             GameProfileScheme user = new()
             {
                 Server = server,
-                Stages = WorldMapStageData.GetInstance().AddAllStagesAtDefault(),
+                WorldMapStages = WorldMapStageData.GetInstance().AddAllStagesAtDefault(),
+                WorldMapStagesReward = WorldMapStageData.GetInstance().AddDefaultWorldMapIsRewardCollected(),
                 SweepClearData = new() { },
                 LastStage = 0,
                 UserStatistics = new()
@@ -420,6 +421,14 @@ namespace StellarGK.Database.Handlers
             Collection.UpdateOne(filter, update);
         }
 
+        public void UpdateCommanderData(int id, Dictionary<string, UserInformationResponse.Commander> commanderList)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, id);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.CommanderData, commanderList);
+
+            Collection.UpdateOne(filter, update);
+        }
+
         public void UpdateMedalData(string session, Dictionary<string, int> medalsdata)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
@@ -427,6 +436,15 @@ namespace StellarGK.Database.Handlers
 
             Collection.UpdateOne(filter, update);
         }
+
+        public void UpdateMedalData(int id, Dictionary<string, int> medalsdata)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, id);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.medalData, medalsdata);
+
+            Collection.UpdateOne(filter, update);
+        }
+
 
         public void UpdateItemData(string session, Dictionary<string, int> goods)
         {
@@ -526,7 +544,6 @@ namespace StellarGK.Database.Handlers
             var updateResult = Collection.UpdateOne(filter, update);
 
             return updateResult.ModifiedCount > 0;
-
         }
 
 
@@ -538,7 +555,17 @@ namespace StellarGK.Database.Handlers
             var updateResult = Collection.UpdateOne(filter, update);
 
             return updateResult.ModifiedCount > 0;
+        }
 
+
+        public bool UpdateWorldMapReward(string session, int onoff)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq("session", session);
+            var update = Builders<GameProfileScheme>.Update.Set("Notifaction", Convert.ToBoolean(onoff));
+
+            var updateResult = Collection.UpdateOne(filter, update);
+
+            return updateResult.ModifiedCount > 0;
         }
 
     }

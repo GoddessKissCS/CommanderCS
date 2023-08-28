@@ -7,7 +7,10 @@ namespace StellarGK.Host
 {
     public partial class PacketHandler
     {
-        private static readonly JsonSerializerOptions JsonSerializerOptions = new();
+        private static readonly JsonSerializerOptions JsonSerializerOptions = new()
+        {
+            MaxDepth = 0,
+        };
         public static async Task<string> ProcessRequest(HttpContext context, IServiceProvider serviceProvider)
         {
             if (context.Request.Headers.UserAgent.Contains("BestHTTP"))
