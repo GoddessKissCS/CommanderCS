@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using StellarGKLibrary.Cryptography;
 using StellarGKLibrary.Shared.Regulation;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
 namespace StellarGKLibrary.Utils
 {
@@ -11,6 +8,7 @@ namespace StellarGKLibrary.Utils
     {
         public static Regulation regulation { get; set; }
 
+        public static List<string> arrDBFileName = new List<string>();
         public static DateTime ConvertToDateTime(string yyyymmddFormatString)
         {
             if (string.IsNullOrEmpty(yyyymmddFormatString) || yyyymmddFormatString.Length != 8)
@@ -40,9 +38,8 @@ namespace StellarGKLibrary.Utils
 
         public static void LoadRegulation()
         {
-            regulation = Regulation.Create();
-            Dictionary<string, List<string>> fileInfo = null;
-            List<string> arrDBFileName = new List<string>();
+            //regulation = Regulation.Create();
+            Dictionary<string, List<string>> fileInfo = null;         
 
             string dblist = Crypto.JSON_Decrypt($"FileCDN\\Test_Patch_DB\\DBList.txt");
             fileInfo = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(dblist);
@@ -54,23 +51,23 @@ namespace StellarGKLibrary.Utils
                     double datetime = double.Parse(keyValuePair.Value[0].ToString());
                     int fileSize = int.Parse(keyValuePair.Value[1].ToString());
 
-                    if (!key.EndsWith(".txt"))
-                    {
-                        arrDBFileName.Add(key);
-                    }
-
-                    //string key = keyValuePair.Key;
-                    //if (!arrDBFileName.Contains(key))
+                    //if (!key.EndsWith(".txt"))
                     //{
                     //    arrDBFileName.Add(key);
                     //}
+
+                    string key = keyValuePair.Key;
+                    if (!arrDBFileName.Contains(key))
+                    {
+                        arrDBFileName.Add(key);
+                    }
                 }
             }
 
-            for (int i = 0; i < arrDBFileName.Count; i++)
-            {
-                LoadDBFile(arrDBFileName[i]);
-            }
+            //for (int i = 0; i < arrDBFileName.Count; i++)
+            //{
+            //    LoadDBFile(arrDBFileName[i]);
+            //}
         }
         private static void LoadDBFile(string filename)
         {

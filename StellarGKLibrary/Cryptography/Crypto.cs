@@ -18,7 +18,7 @@ namespace StellarGKLibrary.Cryptography
             {
                  _encoding.GetBytes("Zb*!W-$&TA6mrIEU-F=ShH7=($ucOZdg"),
                  _encoding.GetBytes("IU is Korea Best Singer! really!"),
-                 _encoding.GetBytes("JSON134c4dabedcd462bad9d775873de"),
+                 _encoding.GetBytes("JSON134c4dabedcd462bad9d775873de")
             };
 
         }
@@ -112,9 +112,9 @@ namespace StellarGKLibrary.Cryptography
 
         public static object Object_DecryptFromFile(string filePath)
         {      
-            byte[] objectFile = _encoding.GetBytes(File.ReadAllText(filePath));
+            byte[] objectFile = File.ReadAllBytes(filePath);
 
-            string json =  DecryptInternal(objectFile, _keys[2]);
+            Decrypt(objectFile, out string json);
 
             object result = JsonConvert.DeserializeObject(json);
 
@@ -125,6 +125,7 @@ namespace StellarGKLibrary.Cryptography
         public static string JSON_Decrypt(string s)
         {
             string json = File.ReadAllText(s);
+
             Decrypt(json, out string value);
 
             return value;
