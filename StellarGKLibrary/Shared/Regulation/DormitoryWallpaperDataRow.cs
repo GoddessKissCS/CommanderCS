@@ -30,7 +30,7 @@ namespace StellarGKLibrary.Shared.Regulation
 			{
 				if (_itemExchangeDr == null)
 				{
-					_itemExchangeDr = Regulation.regulation.itemExchangeDtbl.Find((ItemExchangeDataRow item) => item.typeidx == id && item.type == EStorageType.DormitoryWallpaper);
+					_itemExchangeDr = Utility.regulation.itemExchangeDtbl.Find((ItemExchangeDataRow item) => item.typeidx == id && item.type == EStorageType.DormitoryWallpaper);
 				}
 				return _itemExchangeDr;
 			}

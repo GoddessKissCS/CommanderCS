@@ -227,13 +227,13 @@ namespace StellarGKLibrary.Shared.Regulation
 		//	{
 		//		int num2 = 0;
 		//		int num3 = tsdcCount;
-		//		for (int i = 0; i < RRegulation.regulation.transcendenceStepUpgradeDtbl.length; i++)
+		//		for (int i = 0; i < RUtility.regulation.transcendenceStepUpgradeDtbl.length; i++)
 		//		{
 		//			if (num3 <= 0)
 		//			{
 		//				break;
 		//			}
-		//			TranscendenceStepUpgradeDataRow transcendenceStepUpgradeDataRow = RRegulation.regulation.transcendenceStepUpgradeDtbl[i];
+		//			TranscendenceStepUpgradeDataRow transcendenceStepUpgradeDataRow = RUtility.regulation.transcendenceStepUpgradeDtbl[i];
 		//			int num4 = transcendenceStepUpgradeDataRow.stepPoint - num2;
 		//			int num5 = ((num3 >= num4) ? num4 : num3);
 		//			int num6 = num5 / transcendenceStepUpgradeDataRow.statAddMeasure * transcendenceStepUpgradeDataRow.statAddVolume;
@@ -247,7 +247,7 @@ namespace StellarGKLibrary.Shared.Regulation
 
 		//private int CurrentTranscendenceStep(int tsdcCount)
 		//{
-		//	List<TranscendenceStepUpgradeDataRow> list = RRegulation.regulation.FindTranscendenceStepUpgradeListPoint(tsdcCount);
+		//	List<TranscendenceStepUpgradeDataRow> list = RUtility.regulation.FindTranscendenceStepUpgradeListPoint(tsdcCount);
 		//	return list.Count;
 		//}
 
@@ -731,7 +731,7 @@ namespace StellarGKLibrary.Shared.Regulation
 		//				{
 		//					int group2 = enumerator7.Current;
 		//					bool flag = false;
-		//					GroupInfoDataRow groupInfoDataRow = Regulation.regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => data.groupIdx == group2.ToString() && data.rewardType >= ERewardType.GroupEff_1 && data.rewardType <= ERewardType.GroupEff_8);
+		//					GroupInfoDataRow groupInfoDataRow = Utility.regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => data.groupIdx == group2.ToString() && data.rewardType >= ERewardType.GroupEff_1 && data.rewardType <= ERewardType.GroupEff_8);
 		//					if (groupInfoDataRow != null)
 		//					{
 		//						if (groupInfoDataRow.rewardIdx == 1001)
@@ -757,7 +757,7 @@ namespace StellarGKLibrary.Shared.Regulation
 		//						}
 		//						else if (groupInfoDataRow.rewardIdx == 1004)
 		//						{
-		//							GroupMemberDataRow groupMemberDataRow = RRegulation.regulation.groupMemberDtbl.Find((GroupMemberDataRow row) => row.gidx == group2.ToString() && row.memberType == 1 && row.memberIdx == commanderId);
+		//							GroupMemberDataRow groupMemberDataRow = RUtility.regulation.groupMemberDtbl.Find((GroupMemberDataRow row) => row.gidx == group2.ToString() && row.memberType == 1 && row.memberIdx == commanderId);
 		//							if (groupMemberDataRow != null)
 		//							{
 		//								flag = true;
@@ -863,7 +863,7 @@ namespace StellarGKLibrary.Shared.Regulation
 		//					{
 		//						int group = enumerator8.Current;
 		//						bool flag2 = false;
-		//						GroupInfoDataRow groupInfoDataRow2 = RRegulation.regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => data.groupIdx == group.ToString() && data.rewardType >= ERewardType.GroupEff_1 && data.rewardType <= ERewardType.GroupEff_8);
+		//						GroupInfoDataRow groupInfoDataRow2 = RUtility.regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => data.groupIdx == group.ToString() && data.rewardType >= ERewardType.GroupEff_1 && data.rewardType <= ERewardType.GroupEff_8);
 		//						if (groupInfoDataRow2 != null)
 		//						{
 		//							if (groupInfoDataRow2.rewardIdx == 1001)
@@ -889,7 +889,7 @@ namespace StellarGKLibrary.Shared.Regulation
 		//							}
 		//							else if (groupInfoDataRow2.rewardIdx == 1004)
 		//							{
-		//								GroupMemberDataRow groupMemberDataRow2 = RRegulation.regulation.groupMemberDtbl.Find((GroupMemberDataRow row) => row.gidx == group.ToString() && row.memberType == 1 && row.memberIdx == commanderId);
+		//								GroupMemberDataRow groupMemberDataRow2 = RUtility.regulation.groupMemberDtbl.Find((GroupMemberDataRow row) => row.gidx == group.ToString() && row.memberType == 1 && row.memberIdx == commanderId);
 		//								if (groupMemberDataRow2 != null)
 		//								{
 		//									flag2 = true;

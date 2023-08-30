@@ -39,7 +39,7 @@ namespace StellarGKLibrary.Shared.Regulation
 			{
 				if (_goodsDr == null)
 				{
-					_goodsDr = Regulation.regulation.goodsDtbl[priceType];
+					_goodsDr = Utility.regulation.goodsDtbl[priceType];
 				}
 				return _goodsDr;
 			}

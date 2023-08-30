@@ -99,7 +99,7 @@ namespace StellarGKLibrary.Shared.Regulation
 		{
 			if (_voiceEvents == null)
 			{
-				Regulation regulation = Regulation.regulation;
+				Regulation regulation = Utility.regulation;
 				int length = Enum.GetValues(typeof(ECommanderVoiceEventType)).Length;
 				_voiceEvents = new CommanderVoiceDataRow[length];
 				for (int i = 0; i < length; i++)
@@ -116,7 +116,7 @@ namespace StellarGKLibrary.Shared.Regulation
 
 		public List<CommanderVoiceDataRow> GetVoiceDataList()
 		{
-			Regulation regulation = Regulation.regulation;
+			Regulation regulation = Utility.regulation;
 			int length = Enum.GetValues(typeof(ECommanderVoiceEventType)).Length;
 			List<CommanderVoiceDataRow> list = new List<CommanderVoiceDataRow>();
 			for (int i = 0; i < length; i++)

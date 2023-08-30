@@ -24,7 +24,7 @@ public class RoWeapon
 	public static RoWeapon Create(string idx, string wIdx, int lv, int commanderId = 0)
 	{
 		RoWeapon roWeapon = new RoWeapon();
-		WeaponDataRow weaponDataRow = Regulation.regulation.weaponDtbl.Find((WeaponDataRow row) => row.idx == wIdx);
+		WeaponDataRow weaponDataRow = Utility.regulation.weaponDtbl.Find((WeaponDataRow row) => row.idx == wIdx);
 		roWeapon.data = weaponDataRow;
 		roWeapon.idx = idx;
 		roWeapon.wIdx = wIdx;

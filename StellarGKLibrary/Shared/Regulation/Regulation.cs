@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using StellarGKLibrary.Cryptography;
-using System.Reflection.Metadata.Ecma335;
+using StellarGKLibrary.Utils;
 
 namespace StellarGKLibrary.Shared.Regulation
 {
@@ -16,7 +16,6 @@ namespace StellarGKLibrary.Shared.Regulation
 		public Regulation()
 		{
 		}
-		public static Regulation regulation { get; set; } = Create();
 
         public static Regulation Create()
 		{
@@ -196,7 +195,7 @@ namespace StellarGKLibrary.Shared.Regulation
 
 		public DataTable<RandomBoxRewardDataRow> randomBoxRewardDtbl { get; set; }
 
-		[TableAttribute("battleFieldSearch")]
+		[Table("battleFieldSearch")]
 		public DataTable<ExplorationDataRow> explorationDtbl { get; set; }
 
 		public DataTable<DormitoryUpgradeDataRow> dormitoryUpgradeDtbl { get; set; }
@@ -295,84 +294,28 @@ namespace StellarGKLibrary.Shared.Regulation
 		public DataTable<TranscendenceSlotDataRow> transcendenceSlotDtbl { get; set; }
 
 		public DataTable<TranscendenceStepUpgradeDataRow> transcendenceStepUpgradeDtbl { get; set; }
-
-        public static void LoadRegulation()
-        {
-            Dictionary<string, List<string>> fileInfo = null;
-            List<string> arrDBFileName = new List<string>();
-
-			string dblist = Crypto.JSON_Decrypt($"FileCDN\\Test_Patch_DB\\DBList.txt");
-            fileInfo = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(dblist);
-            if (fileInfo != null)
-            {
-                foreach (KeyValuePair<string, List<string>> keyValuePair in fileInfo)
-                {
-                    string key = keyValuePair.Key;
-                    double datetime = double.Parse(keyValuePair.Value[0].ToString());
-                    int fileSize = int.Parse(keyValuePair.Value[1].ToString());
-
-					if (!key.EndsWith(".txt"))
-					{
-                        arrDBFileName.Add(key);
-                    }
-
-                    //string key = keyValuePair.Key;
-                    //if (!arrDBFileName.Contains(key))
-                    //{
-                    //    arrDBFileName.Add(key);
-                    //}
-                }
-            }
-
-            for (int i = 0; i < arrDBFileName.Count; i++)
-            {
-                LoadDBFile(arrDBFileName[i]);
-            }
-        }
-        private static void LoadDBFile(string filename)
-        {
-            string key = filename.Substring(0, 1);
-            key = key.ToLower();
-            key += filename.Substring(1);
-            key = key.Replace("DataTable.json", string.Empty);
-            key = key.Replace(".json", string.Empty);
-            if (regulation.HasTable(key))
-            {
-                if (regulation.GetTable(key) == null)
-                {
-                    regulation.SetTable(key, Crypto.Object_DecryptFromFile($"FileCDN\\Test_Patch_DB\\" + filename));
-                }
-            }
-            else
-            {
-                string text = File.ReadAllText($"FileCDN\\Test_Patch_DB\\" + filename);
-                if (!string.IsNullOrEmpty(text))
-                {
-                    text = Crypto.JSON_Decrypt(text);
-                    RegulationFile.Add(key, text);
-                    regulation.SetFromLocalResources(key, text);
-                }
-            }
-        }
         public void InitProperty()
 		{
 			properties = new Dictionary<string, PropertyInfo>();
 			Type type = GetType();
-			string text = "Dtbl";
 			PropertyInfo[] array = type.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 			for (int i = 0; i < array.Length; i++)
 			{
-				if (array[i].Name.EndsWith(text))
+				if (array[i].Name.EndsWith("Dtbl"))
 				{
 					string text2 = string.Empty;
-					object[] customAttributes = array[i].GetCustomAttributes(typeof(TableAttribute), false);
-					if (customAttributes.Length != 0)
+                    object[] customAttributes = array[i].GetCustomAttributes(typeof(TableAttribute), false);
+                    if (customAttributes.Length != 0)
+                    {
+                        TableAttribute tableAttribute = (TableAttribute)customAttributes[0];
+                        if (tableAttribute != null)
+                        {
+                            text2 = tableAttribute.name;
+                        }
+                    }
+                    else
 					{
-						text2 = ((TableAttribute)customAttributes[0]).name;
-					}
-					else
-					{
-						text2 = array[i].Name.Replace(text, string.Empty);
+						text2 = array[i].Name.Replace("Dtbl", string.Empty);
 					}
 					properties.Add(text2, array[i]);
 				}
@@ -761,7 +704,7 @@ namespace StellarGKLibrary.Shared.Regulation
 			{
 				string text5 = tableNames[j] + "Dtbl";
 				string text6 = list[j];
-				string text7 = Regulation.RegulationFile[tableNames[j]];
+				string text7 = RegulationFile[tableNames[j]];
 				JArray jarray = JsonConvert.DeserializeObject<JArray>(text7, Regulation.SerializerSettings);
 				jobject.Add(text5, jarray);
 			}
@@ -1435,9 +1378,9 @@ namespace StellarGKLibrary.Shared.Regulation
 		[AttributeUsage(AttributeTargets.Property, Inherited = false)]
 		public class TableAttribute : Attribute
 		{
-			public TableAttribute(string name)
+			public TableAttribute(string tableName)
 			{
-				name = name;
+				name = tableName;
 			}
 
 			public string name { get; set; }

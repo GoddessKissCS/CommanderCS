@@ -76,7 +76,7 @@ namespace StellarGK
 
             app.MapGet("/", () => statusString);
 
-            Regulation.LoadRegulation();
+            Utility.LoadRegulation();
 
             app.MapGet("/", () => statusString);
 

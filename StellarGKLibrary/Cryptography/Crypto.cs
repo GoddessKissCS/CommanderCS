@@ -2,13 +2,9 @@
 using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.Crypto.Paddings;
 using Org.BouncyCastle.Crypto.Parameters;
-using Org.BouncyCastle.Utilities;
-using StellarGKLibrary.Shared.Battle;
-using System.Reflection.Metadata;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.Json;
 
 namespace StellarGKLibrary.Cryptography
 {
@@ -115,34 +111,14 @@ namespace StellarGKLibrary.Cryptography
 
 
         public static object Object_DecryptFromFile(string filePath)
-        {
-            RijndaelManaged rijndaelManaged = new RijndaelManaged
-            {
-                Mode = CipherMode.CFB,
-                Padding = PaddingMode.Zeros,
-                BlockSize = 256
-            };
+        {      
+            byte[] objectFile = _encoding.GetBytes(File.ReadAllText(filePath));
 
-            byte[] IV = Encoding.Default.GetBytes("JSON134c4dabedcd462bad9d775873de");
-            byte[] KEY = IV;
+            string json =  DecryptInternal(objectFile, _keys[2]);
 
-            object obj;
-            using (FileStream fileStream = new(filePath, FileMode.Open))
-            {
-                using (ICryptoTransform cryptoTransform = rijndaelManaged.CreateDecryptor(KEY, IV))
-                {
-                    using (CryptoStream cryptoStream = new(fileStream, cryptoTransform, CryptoStreamMode.Read))
-                    {
-                        using (StreamReader reader = new(cryptoStream))
-                        {
-                            string decryptedJson = reader.ReadToEnd();
-                            obj = JsonConvert.DeserializeObject<object>(decryptedJson);
-                        }
-                    }
-                }
-            }
-            rijndaelManaged.Clear();
-            return obj;
+            object result = JsonConvert.DeserializeObject(json);
+
+            return result;
         }
 
 

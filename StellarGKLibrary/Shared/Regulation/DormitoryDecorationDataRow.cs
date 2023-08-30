@@ -45,7 +45,7 @@ namespace StellarGKLibrary.Shared.Regulation
 			{
 				if (_itemExchangeDr == null)
 				{
-					_itemExchangeDr = Regulation.regulation.itemExchangeDtbl.Find((ItemExchangeDataRow item) => item.typeidx == id && item.type == EStorageType.DormitoryFurniture);
+					_itemExchangeDr = Utility.regulation.itemExchangeDtbl.Find((ItemExchangeDataRow item) => item.typeidx == id && item.type == EStorageType.DormitoryFurniture);
 				}
 				return _itemExchangeDr;
 			}

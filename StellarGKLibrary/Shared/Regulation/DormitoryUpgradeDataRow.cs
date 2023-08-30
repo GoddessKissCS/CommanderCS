@@ -36,7 +36,7 @@ namespace StellarGKLibrary.Shared.Regulation
 						}
 						else
 						{
-							_goods.Add(Regulation.regulation.goodsDtbl[goodsIdxs[i]]);
+							_goods.Add(Utility.regulation.goodsDtbl[goodsIdxs[i]]);
 						}
 					}
 				}
