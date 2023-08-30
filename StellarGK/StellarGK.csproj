@@ -6,6 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>StellarGK</RootNamespace>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<ApplicationIcon>crying.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -13,6 +14,10 @@
 	  <Content Remove="Logic\**" />
 	  <EmbeddedResource Remove="Logic\**" />
 	  <None Remove="Logic\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="crying.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
