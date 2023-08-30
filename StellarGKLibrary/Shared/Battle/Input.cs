@@ -11,17 +11,17 @@ namespace StellarGKLibrary.Shared.Battle
 
         public Input(int unitIndex, int skillIndex, int targetIndex)
         {
-            this._unitIndex = unitIndex;
-            this._skillIndex = skillIndex;
-            this._targetIndex = targetIndex;
-            this._result = false;
+            _unitIndex = unitIndex;
+            _skillIndex = skillIndex;
+            _targetIndex = targetIndex;
+            _result = false;
         }
 
         public int unitIndex
         {
             get
             {
-                return this._unitIndex;
+                return _unitIndex;
             }
         }
 
@@ -29,7 +29,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._skillIndex;
+                return _skillIndex;
             }
         }
 
@@ -37,7 +37,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._targetIndex;
+                return _targetIndex;
             }
         }
 
@@ -45,7 +45,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._result;
+                return _result;
             }
         }
 

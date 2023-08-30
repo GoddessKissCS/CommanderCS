@@ -11,15 +11,15 @@ namespace StellarGKLibrary.Shared
         {
             get
             {
-                return this._id;
+                return _id;
             }
         }
 
-        public IList<Troop.Slot> slots
+        public IList<Slot> slots
         {
             get
             {
-                return this._slots.AsReadOnly();
+                return _slots.AsReadOnly();
             }
         }
 
@@ -27,7 +27,7 @@ namespace StellarGKLibrary.Shared
         {
             get
             {
-                foreach (Troop.Slot slot in this.slots)
+                foreach (Slot slot in slots)
                 {
                     if (slot.health > 0)
                     {
@@ -40,23 +40,25 @@ namespace StellarGKLibrary.Shared
 
         public static Troop Copy(Troop src)
         {
-            Troop troop = new Troop();
-            troop._id = src._id;
-            troop._speed = src._speed;
-            troop._statsAttack = src._statsAttack;
-            troop._statsHealing = src._statsHealing;
-            troop._statsDefense = src._statsDefense;
-            troop._slots = new List<Troop.Slot>();
+            Troop troop = new()
+            {
+                _id = src._id,
+                _speed = src._speed,
+                _statsAttack = src._statsAttack,
+                _statsHealing = src._statsHealing,
+                _statsDefense = src._statsDefense,
+                _slots = new List<Slot>()
+            };
             for (int i = 0; i < src._slots.Count; i++)
             {
-                Troop.Slot slot = src._slots[i];
+                Slot slot = src._slots[i];
                 if (slot == null)
                 {
                     troop._slots.Add(null);
                 }
                 else
                 {
-                    troop._slots.Add(Troop.Slot.Copy(slot));
+                    troop._slots.Add(Slot.Copy(slot));
                 }
             }
             return troop;
@@ -64,8 +66,8 @@ namespace StellarGKLibrary.Shared
 
         public static explicit operator JToken(Troop value)
         {
-            JArray jarray = new JArray();
-            JArray jarray2 = new JArray();
+            JArray jarray = new();
+            JArray jarray2 = new();
             for (int i = 0; i < value._slots.Count; i++)
             {
                 jarray2.Add((JToken)value._slots[i]);
@@ -76,12 +78,14 @@ namespace StellarGKLibrary.Shared
 
         public static explicit operator Troop(JToken value)
         {
-            Troop troop = new Troop();
-            troop._slots = new List<Troop.Slot>();
+            Troop troop = new()
+            {
+                _slots = new List<Slot>()
+            };
             JArray jarray = (JArray)value[0];
             for (int i = 0; i < jarray.Count; i++)
             {
-                troop._slots.Add((Troop.Slot)jarray[i]);
+                troop._slots.Add((Slot)jarray[i]);
             }
             return troop;
         }
@@ -106,7 +110,7 @@ namespace StellarGKLibrary.Shared
             }
             for (int i = 0; i < f1.slots.Count; i++)
             {
-                if (!Troop.Slot.IsSame(f1.slots[i], f2.slots[i]))
+                if (!Slot.IsSame(f1.slots[i], f2.slots[i]))
                 {
                     return false;
                 }
@@ -147,37 +151,37 @@ namespace StellarGKLibrary.Shared
         internal long _statsDefense;
 
         [JsonProperty("slots")]
-        internal List<Troop.Slot> _slots;
+        internal List<Slot> _slots;
 
         [JsonObject]
         public class Slot
         {
             public Slot()
             {
-                this.id = string.Empty;
-                this.cid = string.Empty;
-                this.charType = 0;
-                this.rank = 1;
-                this.cls = 1;
-                this.level = 1;
-                this.costume = 0;
-                this.favorRewardStep = 0;
-                this.marry = 0;
-                this.exp = 0;
-                this.pos = 0;
-                this.health = 0;
-                this.damagedHealth = 0;
-                this.dropItemCnt = 0;
-                this.scale = 1f;
-                this.mainIdx = 0;
-                this.partIdx = 0;
-                this.statsAttack = 0L;
-                this.statsHealing = 0L;
-                this.statsDefense = 0L;
-                this.skills = new List<Troop.Slot.Skill>();
-                this.equipItem = new Dictionary<int, Troop.Slot.Item>();
-                this.weaponItem = new Dictionary<int, Troop.Slot.Item>();
-                this.transcendence = new List<int>();
+                id = string.Empty;
+                cid = string.Empty;
+                charType = 0;
+                rank = 1;
+                cls = 1;
+                level = 1;
+                costume = 0;
+                favorRewardStep = 0;
+                marry = 0;
+                exp = 0;
+                pos = 0;
+                health = 0;
+                damagedHealth = 0;
+                dropItemCnt = 0;
+                scale = 1f;
+                mainIdx = 0;
+                partIdx = 0;
+                statsAttack = 0L;
+                statsHealing = 0L;
+                statsDefense = 0L;
+                skills = new List<Skill>();
+                equipItem = new Dictionary<int, Item>();
+                weaponItem = new Dictionary<int, Item>();
+                transcendence = new List<int>();
             }
 
             [JsonIgnore]
@@ -185,25 +189,27 @@ namespace StellarGKLibrary.Shared
             {
                 get
                 {
-                    return string.IsNullOrEmpty(this.id);
+                    return string.IsNullOrEmpty(id);
                 }
             }
 
-            public static Troop.Slot Copy(Troop.Slot src)
+            public static Slot Copy(Slot src)
             {
-                Troop.Slot slot = new Troop.Slot();
-                slot.id = src.id;
-                slot.health = src.health;
-                slot.level = src.level;
-                slot.rank = src.rank;
-                slot.cid = src.cid;
-                slot.cls = src.cls;
-                slot.costume = src.costume;
-                slot.favorRewardStep = src.favorRewardStep;
-                slot.marry = src.marry;
-                slot.dropItemCnt = src.dropItemCnt;
-                slot.scale = src.scale;
-                slot.charType = src.charType;
+                Slot slot = new()
+                {
+                    id = src.id,
+                    health = src.health,
+                    level = src.level,
+                    rank = src.rank,
+                    cid = src.cid,
+                    cls = src.cls,
+                    costume = src.costume,
+                    favorRewardStep = src.favorRewardStep,
+                    marry = src.marry,
+                    dropItemCnt = src.dropItemCnt,
+                    scale = src.scale,
+                    charType = src.charType
+                };
                 slot.favorRewardStep = src.favorRewardStep;
                 slot.mainIdx = src.mainIdx;
                 slot.partIdx = src.partIdx;
@@ -214,31 +220,31 @@ namespace StellarGKLibrary.Shared
                 {
                     for (int i = 0; i < src.skills.Count; i++)
                     {
-                        slot.skills.Add(Troop.Slot.Skill.Copy(src.skills[i]));
+                        slot.skills.Add(Skill.Copy(src.skills[i]));
                     }
                 }
                 if (src.equipItem != null)
                 {
-                    Dictionary<int, Troop.Slot.Item>.Enumerator enumerator = src.equipItem.GetEnumerator();
+                    Dictionary<int, Item>.Enumerator enumerator = src.equipItem.GetEnumerator();
                     while (enumerator.MoveNext())
                     {
-                        Dictionary<int, Troop.Slot.Item> dictionary = slot.equipItem;
-                        KeyValuePair<int, Troop.Slot.Item> keyValuePair = enumerator.Current;
+                        Dictionary<int, Item> dictionary = slot.equipItem;
+                        KeyValuePair<int, Item> keyValuePair = enumerator.Current;
                         int key = keyValuePair.Key;
-                        KeyValuePair<int, Troop.Slot.Item> keyValuePair2 = enumerator.Current;
-                        dictionary.Add(key, Troop.Slot.Item.Copy(keyValuePair2.Value));
+                        KeyValuePair<int, Item> keyValuePair2 = enumerator.Current;
+                        dictionary.Add(key, Item.Copy(keyValuePair2.Value));
                     }
                 }
                 if (src.weaponItem != null)
                 {
-                    Dictionary<int, Troop.Slot.Item>.Enumerator enumerator2 = src.weaponItem.GetEnumerator();
+                    Dictionary<int, Item>.Enumerator enumerator2 = src.weaponItem.GetEnumerator();
                     while (enumerator2.MoveNext())
                     {
-                        Dictionary<int, Troop.Slot.Item> dictionary2 = slot.weaponItem;
-                        KeyValuePair<int, Troop.Slot.Item> keyValuePair3 = enumerator2.Current;
+                        Dictionary<int, Item> dictionary2 = slot.weaponItem;
+                        KeyValuePair<int, Item> keyValuePair3 = enumerator2.Current;
                         int key2 = keyValuePair3.Key;
-                        KeyValuePair<int, Troop.Slot.Item> keyValuePair4 = enumerator2.Current;
-                        dictionary2.Add(key2, Troop.Slot.Item.Copy(keyValuePair4.Value));
+                        KeyValuePair<int, Item> keyValuePair4 = enumerator2.Current;
+                        dictionary2.Add(key2, Item.Copy(keyValuePair4.Value));
                     }
                 }
                 if (src.transcendence != null)
@@ -248,7 +254,7 @@ namespace StellarGKLibrary.Shared
                 return slot;
             }
 
-            public static explicit operator JToken(Troop.Slot value)
+            public static explicit operator JToken(Slot value)
             {
                 if (value == null)
                 {
@@ -338,13 +344,13 @@ namespace StellarGKLibrary.Shared
                 return jarray;
             }
 
-            public static explicit operator Troop.Slot(JToken value)
+            public static explicit operator Slot(JToken value)
             {
                 if (value.Type != JTokenType.Array)
                 {
                     return null;
                 }
-                Troop.Slot slot = new Troop.Slot();
+                Slot slot = new Slot();
                 slot.id = (string)value[0];
                 slot.cid = (string)value[1];
                 slot.rank = (int)value[2];
@@ -361,7 +367,7 @@ namespace StellarGKLibrary.Shared
                     JArray jarray = (JArray)value[11];
                     for (int i = 0; i < jarray.Count; i++)
                     {
-                        slot.skills.Add((Troop.Slot.Skill)jarray[i]);
+                        slot.skills.Add((Skill)jarray[i]);
                     }
                 }
                 slot.charType = (int)value[12];
@@ -374,7 +380,7 @@ namespace StellarGKLibrary.Shared
                     for (int j = 0; j < jarray2.Count; j++)
                     {
                         int num = (int)jarray2[j++];
-                        slot.equipItem.Add(num, (Troop.Slot.Item)jarray2[j]);
+                        slot.equipItem.Add(num, (Item)jarray2[j]);
                     }
                 }
                 slot.marry = (int)value[17];
@@ -384,7 +390,7 @@ namespace StellarGKLibrary.Shared
                     for (int k = 0; k < jarray3.Count; k++)
                     {
                         int num2 = (int)jarray3[k++];
-                        slot.weaponItem.Add(num2, (Troop.Slot.Item)jarray3[k]);
+                        slot.weaponItem.Add(num2, (Slot.Item)jarray3[k]);
                     }
                 }
                 if (value[19].Type == JTokenType.Array)
@@ -398,7 +404,7 @@ namespace StellarGKLibrary.Shared
                 return slot;
             }
 
-            public static bool IsSame(Troop.Slot f1, Troop.Slot f2)
+            public static bool IsSame(Slot f1, Slot f2)
             {
                 return !(f1.id != f2.id) && f1.health == f2.health && f1.level == f2.level && f1.rank == f2.rank;
             }
@@ -452,13 +458,13 @@ namespace StellarGKLibrary.Shared
             public int dropItemCnt;
 
             [JsonProperty("skills")]
-            public List<Troop.Slot.Skill> skills;
+            public List<Skill> skills;
 
             [JsonProperty("itms")]
-            public Dictionary<int, Troop.Slot.Item> equipItem;
+            public Dictionary<int, Item> equipItem;
 
             [JsonProperty("wepns")]
-            public Dictionary<int, Troop.Slot.Item> weaponItem;
+            public Dictionary<int, Item> weaponItem;
 
             [JsonProperty("tsdc")]
             public List<int> transcendence;
@@ -478,9 +484,9 @@ namespace StellarGKLibrary.Shared
             [JsonObject]
             public class Skill
             {
-                public static Troop.Slot.Skill Copy(Troop.Slot.Skill src)
+                public static Skill Copy(Skill src)
                 {
-                    return new Troop.Slot.Skill
+                    return new Skill
                     {
                         id = src.id,
                         lv = src.lv,
@@ -488,14 +494,14 @@ namespace StellarGKLibrary.Shared
                     };
                 }
 
-                public static explicit operator JToken(Troop.Slot.Skill value)
+                public static explicit operator JToken(Skill value)
                 {
                     return new JArray { value.id, value.lv, value.sp };
                 }
 
-                public static explicit operator Troop.Slot.Skill(JToken value)
+                public static explicit operator Skill(JToken value)
                 {
-                    return new Troop.Slot.Skill
+                    return new Skill
                     {
                         id = (string)value[0],
                         lv = (int)value[1],
@@ -522,32 +528,32 @@ namespace StellarGKLibrary.Shared
             [JsonObject]
             public class Item
             {
-                public static Troop.Slot.Item Create(RoItem roItem)
+                public static Item Create(RoItem roItem)
                 {
-                    return new Troop.Slot.Item
+                    return new Item
                     {
                         id = roItem.id,
                         lv = roItem.level
                     };
                 }
 
-                public static Troop.Slot.Item Copy(Troop.Slot.Item src)
+                public static Item Copy(Item src)
                 {
-                    return new Troop.Slot.Item
+                    return new Item
                     {
                         id = src.id,
                         lv = src.lv
                     };
                 }
 
-                public static explicit operator JToken(Troop.Slot.Item value)
+                public static explicit operator JToken(Item value)
                 {
                     return new JArray { value.id, value.lv };
                 }
 
-                public static explicit operator Troop.Slot.Item(JToken value)
+                public static explicit operator Item(JToken value)
                 {
-                    return new Troop.Slot.Item
+                    return new Item
                     {
                         id = (string)value[0],
                         lv = (int)value[1]

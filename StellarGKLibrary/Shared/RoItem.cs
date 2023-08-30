@@ -10,7 +10,7 @@ public class RoItem
     //	RoItem roItem = new RoItem();
     //	roItem.id = id;
     //	roItem.level = lv;
-    //	EquipItemDataRow equipItemDataRow = RemoteObjectManager.instance.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key == id);
+    //	EquipItemDataRow equipItemDataRow = RRegulation.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key == id);
     //	roItem.nameIdx = equipItemDataRow.equipItemName;
     //	roItem.setType = equipItemDataRow.setItemType;
     //	roItem.pointType = equipItemDataRow.pointType;
@@ -33,11 +33,11 @@ public class RoItem
 
     //public void SetItemLevel(string id, int curLevel)
     //{
-    //	EquipItemDataRow equipItemDataRow = RemoteObjectManager.instance.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key == id);
+    //	EquipItemDataRow equipItemDataRow = RRegulation.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key == id);
     //	if (equipItemDataRow != null)
     //	{
-    //		this.level = curLevel;
-    //		this.statPoint = equipItemDataRow.statBasePoint + (curLevel - 1) * equipItemDataRow.statAddPoint;
+    //		level = curLevel;
+    //		statPoint = equipItemDataRow.statBasePoint + (curLevel - 1) * equipItemDataRow.statAddPoint;
     //	}
     //}
 

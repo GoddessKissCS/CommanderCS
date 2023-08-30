@@ -4,12 +4,12 @@ namespace StellarGKLibrary.Shared.Battle.Internal
     {
         //internal _SkillInitializer(Random random)
         //{
-        //	this._random = random;
+        //	_random = random;
         //}
 
         //public override bool OnFrameAccessStart()
         //{
-        //	this._reg = base.simulator.regulation;
+        //	_reg = base.simulator.regulation;
         //	return true;
         //}
 
@@ -17,7 +17,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //{
         //	if (base.simulator.option.playMode == Option.PlayMode.RealTime && base.skillIndex == 0)
         //	{
-        //		base.skill._sp = this._random.Next(0, base.skillDr.maxSp);
+        //		base.skill._sp = _random.Next(0, base.skillDr.maxSp);
         //	}
         //	return false;
         //}

@@ -6,22 +6,22 @@ namespace StellarGKLibrary.Shared.Battle
     {
         public ClearMissionItem(EBattleClearCondition condition, int id, string conditionValue = "0")
         {
-            this.id = id;
-            this._finish = false;
-            this._success = true;
-            this._condition = condition;
-            this._conditionValue = conditionValue;
+            id = id;
+            _finish = false;
+            _success = true;
+            _condition = condition;
+            _conditionValue = conditionValue;
         }
 
         public bool isFinish
         {
             get
             {
-                return this._finish;
+                return _finish;
             }
             set
             {
-                this._finish = value;
+                _finish = value;
             }
         }
 
@@ -29,11 +29,11 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._success;
+                return _success;
             }
             set
             {
-                this._success = value;
+                _success = value;
             }
         }
 
@@ -41,7 +41,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._condition;
+                return _condition;
             }
         }
 
@@ -49,7 +49,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._conditionValue;
+                return _conditionValue;
             }
         }
 

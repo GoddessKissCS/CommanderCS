@@ -12,7 +12,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._dr;
+        //		return _dr;
         //	}
         //}
 

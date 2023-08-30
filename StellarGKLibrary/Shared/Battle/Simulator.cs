@@ -1,4 +1,4 @@
-//using System;
+//using StellarGKLibrary.Enums;
 //using System.Collections.Generic;
 //using System.Security.Cryptography;
 //using System.Text;
@@ -6,7 +6,7 @@
 //using Newtonsoft.Json.Linq;
 //using StellarGKLibrary.Shared.Battle.Internal;
 //
-//using UnityEngine;
+//using System.Numerics;
 
 //namespace StellarGKLibrary.Shared.Battle
 //{
@@ -17,27 +17,27 @@
 //		{
 //		}
 
-//		public Regulation regulation { get; private set; }
+//		public Regulation regulation { get; set; }
 
-//		public Record record { get; private set; }
+//		public Record record { get; set; }
 
-//		public int frameNum { get; private set; }
+//		public int frameNum { get; set; }
 
-//		public bool isReplayMode { get; private set; }
+//		public bool isReplayMode { get; set; }
 
-//		public ClearMission mission { get; private set; }
+//		public ClearMission mission { get; set; }
 
 //		public bool isGiveUp
 //		{
 //			get
 //			{
-//				return this._isGiveUp;
+//				return _isGiveUp;
 //			}
 //			set
 //			{
-//				if (this.initState.battleType == EBattleType.Raid || this.initState.battleType == EBattleType.WaveBattle)
+//				if (initState.battleType == EBattleType.Raid || initState.battleType == EBattleType.WaveBattle)
 //				{
-//					this._isGiveUp = value;
+//					_isGiveUp = value;
 //				}
 //			}
 //		}
@@ -46,7 +46,7 @@
 //		{
 //			get
 //			{
-//				return this.record.initState;
+//				return record.initState;
 //			}
 //		}
 
@@ -54,7 +54,7 @@
 //		{
 //			get
 //			{
-//				return this.initState.lhsTroops;
+//				return initState.lhsTroops;
 //			}
 //		}
 
@@ -62,7 +62,7 @@
 //		{
 //			get
 //			{
-//				return this.initState.rhsTroops;
+//				return initState.rhsTroops;
 //			}
 //		}
 
@@ -70,7 +70,7 @@
 //		{
 //			get
 //			{
-//				return this.initState.battleItemDrks;
+//				return initState.battleItemDrks;
 //			}
 //		}
 
@@ -78,7 +78,7 @@
 //		{
 //			get
 //			{
-//				return this.initState.guildSkills;
+//				return initState.guildSkills;
 //			}
 //		}
 
@@ -86,23 +86,23 @@
 //		{
 //			get
 //			{
-//				return this.record.option;
+//				return record.option;
 //			}
 //		}
 
-//		public bool ableAuto { get; private set; }
+//		public bool ableAuto { get; set; }
 
-//		public bool isLhsAnnihilated { get; private set; }
+//		public bool isLhsAnnihilated { get; set; }
 
-//		public bool isRhsAnnihilated { get; private set; }
+//		public bool isRhsAnnihilated { get; set; }
 
-//		public bool isWaitingNextTurn { get; private set; }
+//		public bool isWaitingNextTurn { get; set; }
 
 //		public int unitCount
 //		{
 //			get
 //			{
-//				return (this.lhsTroops.Count + this.rhsTroops.Count) * 9;
+//				return (lhsTroops.Count + rhsTroops.Count) * 9;
 //			}
 //		}
 
@@ -110,7 +110,7 @@
 //		{
 //			get
 //			{
-//				return this.record.frames[this.frameNum];
+//				return record.frames[frameNum];
 //			}
 //		}
 
@@ -118,7 +118,7 @@
 //		{
 //			get
 //			{
-//				return this.record.result;
+//				return record.result;
 //			}
 //		}
 
@@ -126,7 +126,7 @@
 //		{
 //			get
 //			{
-//				return this.result != null;
+//				return result != null;
 //			}
 //		}
 
@@ -134,12 +134,12 @@
 //		{
 //			get
 //			{
-//				Option option = this.record.option;
+//				Option option = record.option;
 //				int[,] array = new int[2, 2];
 //				array[0, 0] = option.timeLimit;
-//				array[0, 1] = this.frame.time;
+//				array[0, 1] = frame.time;
 //				array[1, 0] = option.turnLimit;
-//				array[1, 1] = this.frame._waveTurn;
+//				array[1, 1] = frame._waveTurn;
 //				int[,] array2 = array;
 //				for (int i = 0; i < array2.GetLength(0); i++)
 //				{
@@ -156,8 +156,8 @@
 //		{
 //			get
 //			{
-//				Option option = this.record.option;
-//				return option.turnLimit > 0 && option.turnLimit <= this.frame._waveTurn;
+//				Option option = record.option;
+//				return option.turnLimit > 0 && option.turnLimit <= frame._waveTurn;
 //			}
 //		}
 
@@ -493,9 +493,9 @@
 //		private List<Unit> _CreateInitStateUnits()
 //		{
 //			List<Unit> list = new List<Unit>();
-//			for (int i = this.lhsTroops.Count - 1; i >= 0; i--)
+//			for (int i = lhsTroops.Count - 1; i >= 0; i--)
 //			{
-//				Troop troop = this.lhsTroops[i];
+//				Troop troop = lhsTroops[i];
 //				troop._activeSlotCount = 0;
 //				for (int j = 0; j < troop.slots.Count; j++)
 //				{
@@ -507,61 +507,61 @@
 //					else
 //					{
 //						troop._activeSlotCount++;
-//						Unit unit = Unit._Create(this.regulation, slot.id);
+//						Unit unit = Unit._Create(regulation, slot.id);
 //						unit._side = EBattleSide.Left;
 //						unit._unitIdx = list.Count;
-//						this._InitUnitSlotData(unit, slot);
+//						_InitUnitSlotData(unit, slot);
 //						troop._speed = troop._speed + unit.speed + unit._addSpeed;
 //						list.Add(unit);
-//						this.initState._lhsUnitCount++;
-//						if (unit.isDead && this.initState.battleType != EBattleType.WaveBattle && this.frameNum < this.record.frames.Count)
+//						initState._lhsUnitCount++;
+//						if (unit.isDead && initState.battleType != EBattleType.WaveBattle && frameNum < record.frames.Count)
 //						{
-//							this.frame._lhsDeadUnitCount++;
+//							frame._lhsDeadUnitCount++;
 //						}
-//						EJob job = this.regulation.unitDtbl[unit.dri].job;
+//						EJob job = regulation.unitDtbl[unit.dri].job;
 //						if (job != EJob.Attack)
 //						{
 //							if (job != EJob.Defense)
 //							{
 //								if (job == EJob.Support)
 //								{
-//									this.initState._lhsSupporterCount++;
+//									initState._lhsSupporterCount++;
 //								}
 //							}
 //							else
 //							{
-//								this.initState._lhsDefenderCount++;
+//								initState._lhsDefenderCount++;
 //							}
 //						}
 //						else
 //						{
-//							this.initState._lhsAttackerCount++;
+//							initState._lhsAttackerCount++;
 //						}
 //						if (unit._cdri >= 0)
 //						{
-//							CommanderDataRow commanderDataRow = this.regulation.commanderDtbl[unit._cdri];
+//							CommanderDataRow commanderDataRow = regulation.commanderDtbl[unit._cdri];
 //							switch (commanderDataRow.grade)
 //							{
 //							case 2:
-//								this.initState._lhsInitGrade2Count++;
+//								initState._lhsInitGrade2Count++;
 //								break;
 //							case 3:
-//								this.initState._lhsInitGrade3Count++;
+//								initState._lhsInitGrade3Count++;
 //								break;
 //							case 4:
-//								this.initState._lhsInitGrade4Count++;
+//								initState._lhsInitGrade4Count++;
 //								break;
 //							case 5:
-//								this.initState._lhsInitGrade5Count++;
+//								initState._lhsInitGrade5Count++;
 //								break;
 //							}
 //						}
 //					}
 //				}
 //			}
-//			for (int k = 0; k < this.rhsTroops.Count; k++)
+//			for (int k = 0; k < rhsTroops.Count; k++)
 //			{
-//				Troop troop2 = this.rhsTroops[k];
+//				Troop troop2 = rhsTroops[k];
 //				troop2._activeSlotCount = 0;
 //				for (int l = 0; l < troop2.slots.Count; l++)
 //				{
@@ -573,22 +573,22 @@
 //					else
 //					{
 //						troop2._activeSlotCount++;
-//						Unit unit2 = Unit._Create(this.regulation, slot2.id);
+//						Unit unit2 = Unit._Create(regulation, slot2.id);
 //						unit2._side = EBattleSide.Right;
 //						unit2._unitIdx = list.Count;
-//						this._InitUnitSlotData(unit2, slot2);
-//						this.initState._rhsTroopsHealth += (long)unit2._health;
-//						this.initState._rhsTroopsMaxHealth += (long)unit2._maxHealth;
+//						_InitUnitSlotData(unit2, slot2);
+//						initState._rhsTroopsHealth += (long)unit2._health;
+//						initState._rhsTroopsMaxHealth += (long)unit2._maxHealth;
 //						troop2._speed = troop2._speed + unit2.speed + unit2._addSpeed;
-//						if (this.initState.battleType == EBattleType.Plunder || this.initState.battleType == EBattleType.SeaRobber || this.initState.battleType == EBattleType.Guerrilla)
+//						if (initState.battleType == EBattleType.Plunder || initState.battleType == EBattleType.SeaRobber || initState.battleType == EBattleType.Guerrilla)
 //						{
-//							UnitDataRow unitDataRow = this.regulation.unitDtbl[unit2.dri];
+//							UnitDataRow unitDataRow = regulation.unitDtbl[unit2.dri];
 //							if (!string.IsNullOrEmpty(unitDataRow.dropGoldPattern) && unitDataRow.dropGoldPattern != "0")
 //							{
-//								int num = this.regulation.dropGoldPatternDtbl.FindIndex(unitDataRow.dropGoldPattern);
+//								int num = regulation.dropGoldPatternDtbl.FindIndex(unitDataRow.dropGoldPattern);
 //								if (num >= 0)
 //								{
-//									DropGoldPatternDataRow dropGoldPatternDataRow = this.regulation.dropGoldPatternDtbl[num];
+//									DropGoldPatternDataRow dropGoldPatternDataRow = regulation.dropGoldPatternDtbl[num];
 //									unit2._dropGold = (unit2._level - 1) / dropGoldPatternDataRow.levelStep * dropGoldPatternDataRow.goldStep;
 //								}
 //								else
@@ -612,7 +612,7 @@
 //			unit._cid = slot.cid;
 //			if (!string.IsNullOrEmpty(unit._cid))
 //			{
-//				unit._cdri = this.regulation.commanderDtbl.FindIndex(unit._cid);
+//				unit._cdri = regulation.commanderDtbl.FindIndex(unit._cid);
 //				if (unit._cdri < 0)
 //				{
 //				}
@@ -623,41 +623,41 @@
 //			unit._marry = slot.marry;
 //			unit._partIdx = slot.partIdx;
 //			unit._mainIdx = slot.mainIdx;
-//			this._InitUnitLevelPatternData(unit, slot);
-//			this._InitUnitTranscendenceData(unit, slot);
-//			this._InitUnitWorldDuelSkillData(unit, slot);
-//			this._InitUnitOpartsData(unit, slot);
-//			this._InitUnitCostumeData(unit, slot);
-//			this._InitUnitFavorData(unit, slot);
-//			this._InitUnitGuildSkillData(unit, slot);
-//			this._InitUnitGroupBuffData(unit, slot);
-//			this._InitUnitWeaponData(unit, slot);
-//			this._InitUnitHealthData(unit, slot);
-//			this._InitUnitSkillData(unit, slot);
+//			_InitUnitLevelPatternData(unit, slot);
+//			_InitUnitTranscendenceData(unit, slot);
+//			_InitUnitWorldDuelSkillData(unit, slot);
+//			_InitUnitOpartsData(unit, slot);
+//			_InitUnitCostumeData(unit, slot);
+//			_InitUnitFavorData(unit, slot);
+//			_InitUnitGuildSkillData(unit, slot);
+//			_InitUnitGroupBuffData(unit, slot);
+//			_InitUnitWeaponData(unit, slot);
+//			_InitUnitHealthData(unit, slot);
+//			_InitUnitSkillData(unit, slot);
 //		}
 
 //		private void _InitUnitLevelPatternData(Unit unit, Troop.Slot slot)
 //		{
-//			UnitDataRow unitDataRow = this.regulation.unitDtbl[unit.dri];
+//			UnitDataRow unitDataRow = regulation.unitDtbl[unit.dri];
 //			string text = string.Format("{0}_{1}", (unit.marry != 1) ? unitDataRow.levelPattern : unitDataRow.afterLevelPattern, unit._rank);
-//			int num = this.regulation.levelPatternDtbl.FindIndex(text);
+//			int num = regulation.levelPatternDtbl.FindIndex(text);
 //			if (num == -1)
 //			{
 //				throw new ArgumentException("Not found LevelPatternDri : " + text);
 //			}
-//			LevelPatternDataRow levelPatternDataRow = this.regulation.levelPatternDtbl[num];
+//			LevelPatternDataRow levelPatternDataRow = regulation.levelPatternDtbl[num];
 //			unit._addHp = unit._level * levelPatternDataRow.hp;
 //			unit._addAtk = unit._level * levelPatternDataRow.atk;
 //			unit._addDef = unit._level * levelPatternDataRow.def;
 //			unit._addAim = unit._level * levelPatternDataRow.aim;
 //			unit._addLuck = unit._level * levelPatternDataRow.luck;
 //			string text2 = string.Format("{0}_{1}", (unit.marry != 1) ? unitDataRow.classPattern : unitDataRow.afterClassPattern, unit._cls);
-//			int num2 = this.regulation.classPatternDtbl.FindIndex(text2);
+//			int num2 = regulation.classPatternDtbl.FindIndex(text2);
 //			if (num2 == -1)
 //			{
 //				throw new ArgumentException("Not found ClassPatternDri : " + text2);
 //			}
-//			ClassPatternDataRow classPatternDataRow = this.regulation.classPatternDtbl[num2];
+//			ClassPatternDataRow classPatternDataRow = regulation.classPatternDtbl[num2];
 //			unit._addHp += classPatternDataRow.hp;
 //			unit._addAtk += classPatternDataRow.atk;
 //			unit._addDef += classPatternDataRow.def;
@@ -670,7 +670,7 @@
 //			int num = 0;
 //			for (int i = 0; i < slot.transcendence.Count; i++)
 //			{
-//				TranscendenceSlotDataRow transcendenceSlotDataRow = this.regulation.transcendenceSlotDtbl[i];
+//				TranscendenceSlotDataRow transcendenceSlotDataRow = regulation.transcendenceSlotDtbl[i];
 //				switch (transcendenceSlotDataRow.stat)
 //				{
 //				case StatType.ATK:
@@ -704,13 +704,13 @@
 //			{
 //				int num2 = 0;
 //				int num3 = num;
-//				for (int j = 0; j < this.regulation.transcendenceStepUpgradeDtbl.length; j++)
+//				for (int j = 0; j < regulation.transcendenceStepUpgradeDtbl.length; j++)
 //				{
 //					if (num3 <= 0)
 //					{
 //						break;
 //					}
-//					TranscendenceStepUpgradeDataRow transcendenceStepUpgradeDataRow = this.regulation.transcendenceStepUpgradeDtbl[j];
+//					TranscendenceStepUpgradeDataRow transcendenceStepUpgradeDataRow = regulation.transcendenceStepUpgradeDtbl[j];
 //					int num4 = transcendenceStepUpgradeDataRow.stepPoint - num2;
 //					int num5 = ((num3 >= num4) ? num4 : num3);
 //					int num6 = num5 / transcendenceStepUpgradeDataRow.statAddMeasure * transcendenceStepUpgradeDataRow.statAddVolume;
@@ -749,13 +749,13 @@
 
 //		private void _InitUnitWorldDuelSkillData(Unit unit, Troop.Slot slot)
 //		{
-//			if (this.initState.battleType != EBattleType.WorldDuel)
+//			if (initState.battleType != EBattleType.WorldDuel)
 //			{
 //				return;
 //			}
-//			this.initState.dualData._worldDuelData.Init(this.regulation);
-//			UnitDataRow unitDataRow = this.regulation.unitDtbl[unit.dri];
-//			Dictionary<EWorldDuelBuff, int> dictionary = ((unit.side != EBattleSide.Left) ? this.initState.dualData._worldDuelData.enemyBuffs : this.initState.dualData._worldDuelData.plyerBuffs);
+//			initState.dualData._worldDuelData.Init(regulation);
+//			UnitDataRow unitDataRow = regulation.unitDtbl[unit.dri];
+//			Dictionary<EWorldDuelBuff, int> dictionary = ((unit.side != EBattleSide.Left) ? initState.dualData._worldDuelData.enemyBuffs : initState.dualData._worldDuelData.plyerBuffs);
 //			switch (unitDataRow.job)
 //			{
 //			case EJob.Attack:
@@ -797,7 +797,7 @@
 //			foreach (KeyValuePair<int, Troop.Slot.Item> keyValuePair in slot.equipItem)
 //			{
 //				Troop.Slot.Item value = keyValuePair.Value;
-//				EquipItemDataRow equipItemDataRow = this.regulation.equipItemDtbl[value.id];
+//				EquipItemDataRow equipItemDataRow = regulation.equipItemDtbl[value.id];
 //				int pointType = equipItemDataRow.pointType;
 //				Dictionary<int, Troop.Slot.Item>.Enumerator enumerator;
 //				KeyValuePair<int, Troop.Slot.Item> keyValuePair2 = enumerator.Current;
@@ -836,7 +836,7 @@
 //			if (num2 == 4)
 //			{
 //				Troop.Slot.Item item = slot.equipItem[1];
-//				EquipItemDataRow equipItemDataRow2 = this.regulation.equipItemDtbl[item.id];
+//				EquipItemDataRow equipItemDataRow2 = regulation.equipItemDtbl[item.id];
 //				switch (equipItemDataRow2.setItemType)
 //				{
 //				case EItemSetType.ATK:
@@ -868,12 +868,12 @@
 //				return;
 //			}
 //			unit._ctid = slot.costume.ToString();
-//			unit._ctdri = this.regulation.commanderCostumeDtbl.FindIndex(unit._ctid);
+//			unit._ctdri = regulation.commanderCostumeDtbl.FindIndex(unit._ctid);
 //			if (unit._ctdri < 0)
 //			{
 //				return;
 //			}
-//			CommanderCostumeDataRow commanderCostumeDataRow = this.regulation.commanderCostumeDtbl[unit._ctdri];
+//			CommanderCostumeDataRow commanderCostumeDataRow = regulation.commanderCostumeDtbl[unit._ctdri];
 //			if (commanderCostumeDataRow == null)
 //			{
 //				return;
@@ -983,7 +983,7 @@
 //			{
 //				return;
 //			}
-//			List<FavorDataRow> list = this.regulation.favorDtbl.FindAll((FavorDataRow row) => row.cid == int.Parse(unit._cid) && row.step <= unit.favorRewardStep);
+//			List<FavorDataRow> list = regulation.favorDtbl.FindAll((FavorDataRow row) => row.cid == int.Parse(unit._cid) && row.step <= unit.favorRewardStep);
 //			if (list == null)
 //			{
 //				return;
@@ -1027,15 +1027,15 @@
 
 //		private void _InitUnitGuildSkillData(Unit unit, Troop.Slot slot)
 //		{
-//			UnitDataRow unitDataRow = this.regulation.unitDtbl[unit.dri];
+//			UnitDataRow unitDataRow = regulation.unitDtbl[unit.dri];
 //			List<GuildSkillState> list = null;
 //			if (unit.side == EBattleSide.Left)
 //			{
-//				list = this.initState.guildSkills;
+//				list = initState.guildSkills;
 //			}
-//			else if (this.initState.battleType == EBattleType.Duel || this.initState.battleType == EBattleType.WaveDuel || this.initState.battleType == EBattleType.WorldDuel || this.initState.battleType == EBattleType.Conquest)
+//			else if (initState.battleType == EBattleType.Duel || initState.battleType == EBattleType.WaveDuel || initState.battleType == EBattleType.WorldDuel || initState.battleType == EBattleType.Conquest)
 //			{
-//				list = this.initState.dualData._enemyGuildSkills;
+//				list = initState.dualData._enemyGuildSkills;
 //			}
 //			if (list == null)
 //			{
@@ -1044,12 +1044,12 @@
 //			for (int i = 0; i < list.Count; i++)
 //			{
 //				string text = string.Format("{0}_{1}", list[i]._id, list[i]._skillLevel);
-//				int num = this.regulation.guildSkillDtbl.FindIndex(text);
+//				int num = regulation.guildSkillDtbl.FindIndex(text);
 //				if (num < 0)
 //				{
 //					throw new ArgumentException("Not found GuildData : " + text);
 //				}
-//				GuildSkillDataRow guildSkillDataRow = this.regulation.guildSkillDtbl[num];
+//				GuildSkillDataRow guildSkillDataRow = regulation.guildSkillDtbl[num];
 //				list[i]._dr = guildSkillDataRow;
 //				if (guildSkillDataRow.idx == 1)
 //				{
@@ -1097,15 +1097,15 @@
 //		{
 //			Simulator.<_InitUnitGroupBuffData>c__AnonStorey3 <_InitUnitGroupBuffData>c__AnonStorey = new Simulator.<_InitUnitGroupBuffData>c__AnonStorey3();
 //			<_InitUnitGroupBuffData>c__AnonStorey.unit = unit;
-//			UnitDataRow unitDataRow = this.regulation.unitDtbl[<_InitUnitGroupBuffData>c__AnonStorey.unit.dri];
+//			UnitDataRow unitDataRow = regulation.unitDtbl[<_InitUnitGroupBuffData>c__AnonStorey.unit.dri];
 //			<_InitUnitGroupBuffData>c__AnonStorey.groupBuffs = null;
 //			if (<_InitUnitGroupBuffData>c__AnonStorey.unit.side == EBattleSide.Left)
 //			{
-//				<_InitUnitGroupBuffData>c__AnonStorey.groupBuffs = this.initState._groupBuffs;
+//				<_InitUnitGroupBuffData>c__AnonStorey.groupBuffs = initState._groupBuffs;
 //			}
-//			else if (this.initState.battleType == EBattleType.Duel || this.initState.battleType == EBattleType.WaveDuel || this.initState.battleType == EBattleType.WorldDuel || this.initState.battleType == EBattleType.Conquest)
+//			else if (initState.battleType == EBattleType.Duel || initState.battleType == EBattleType.WaveDuel || initState.battleType == EBattleType.WorldDuel || initState.battleType == EBattleType.Conquest)
 //			{
-//				<_InitUnitGroupBuffData>c__AnonStorey.groupBuffs = this.initState.dualData._enemyGroupBuffs;
+//				<_InitUnitGroupBuffData>c__AnonStorey.groupBuffs = initState.dualData._enemyGroupBuffs;
 //			}
 //			if (<_InitUnitGroupBuffData>c__AnonStorey.groupBuffs == null)
 //			{
@@ -1115,7 +1115,7 @@
 //			for (gi = 0; gi < <_InitUnitGroupBuffData>c__AnonStorey.groupBuffs.Count; gi++)
 //			{
 //				bool flag = false;
-//				GroupInfoDataRow groupInfoDataRow = this.regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => data.groupIdx == <_InitUnitGroupBuffData>c__AnonStorey.groupBuffs[gi] && data.rewardType >= ERewardType.GroupEff_1 && data.rewardType <= ERewardType.GroupEff_8);
+//				GroupInfoDataRow groupInfoDataRow = regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => data.groupIdx == <_InitUnitGroupBuffData>c__AnonStorey.groupBuffs[gi] && data.rewardType >= ERewardType.GroupEff_1 && data.rewardType <= ERewardType.GroupEff_8);
 //				if (groupInfoDataRow != null)
 //				{
 //					if (groupInfoDataRow.rewardIdx == 1001)
@@ -1141,7 +1141,7 @@
 //					}
 //					else if (groupInfoDataRow.rewardIdx == 1004)
 //					{
-//						GroupMemberDataRow groupMemberDataRow = this.regulation.groupMemberDtbl.Find((GroupMemberDataRow row) => row.gidx == <_InitUnitGroupBuffData>c__AnonStorey.groupBuffs[gi] && row.memberType == 1 && row.memberIdx == <_InitUnitGroupBuffData>c__AnonStorey.unit.cid);
+//						GroupMemberDataRow groupMemberDataRow = regulation.groupMemberDtbl.Find((GroupMemberDataRow row) => row.gidx == <_InitUnitGroupBuffData>c__AnonStorey.groupBuffs[gi] && row.memberType == 1 && row.memberIdx == <_InitUnitGroupBuffData>c__AnonStorey.unit.cid);
 //						if (groupMemberDataRow != null)
 //						{
 //							flag = true;
@@ -1290,14 +1290,14 @@
 //			}
 //			int num = 0;
 //			string text = string.Empty;
-//			UnitDataRow unitDataRow = this.regulation.unitDtbl[unit.dri];
+//			UnitDataRow unitDataRow = regulation.unitDtbl[unit.dri];
 //			Dictionary<int, Troop.Slot.Item>.Enumerator enumerator = slot.weaponItem.GetEnumerator();
 //			while (enumerator.MoveNext())
 //			{
-//				DataTable<WeaponDataRow> weaponDtbl = this.regulation.weaponDtbl;
+//				DataTable<WeaponDataRow> weaponDtbl = regulation.weaponDtbl;
 //				KeyValuePair<int, Troop.Slot.Item> keyValuePair = enumerator.Current;
 //				WeaponDataRow weaponDataRow = weaponDtbl[keyValuePair.Value.id];
-//				if (!this._CheckWeaponData(unitDataRow, weaponDataRow))
+//				if (!_CheckWeaponData(unitDataRow, weaponDataRow))
 //				{
 //					throw new ArgumentNullException("Fail CheckWeaponData!! " + weaponDataRow.idx);
 //				}
@@ -1323,7 +1323,7 @@
 //				for (int i = 0; i < 4; i++)
 //				{
 //					KeyValuePair<int, Troop.Slot.Item> keyValuePair2 = enumerator.Current;
-//					this._ApplyUnitWeaponStatPoint(unit, keyValuePair2.Value.lv, weaponDataRow.statType[i], weaponDataRow.statBasePoint[i], weaponDataRow.statAddPoint[i], num2);
+//					_ApplyUnitWeaponStatPoint(unit, keyValuePair2.Value.lv, weaponDataRow.statType[i], weaponDataRow.statBasePoint[i], weaponDataRow.statAddPoint[i], num2);
 //				}
 //				if (weaponDataRow.weaponSetType != "0")
 //				{
@@ -1340,7 +1340,7 @@
 //			}
 //			if (num == 5)
 //			{
-//				WeaponSetDataRow weaponSetDataRow = this.regulation.weaponSetDtbl[text];
+//				WeaponSetDataRow weaponSetDataRow = regulation.weaponSetDtbl[text];
 //				if (weaponSetDataRow != null)
 //				{
 //					switch (weaponSetDataRow.weaponSetStatType)
@@ -1379,19 +1379,19 @@
 //			{
 //				return;
 //			}
-//			WeaponDataRow weaponDataRow = this.regulation.weaponDtbl[slot.weaponItem[count].id];
+//			WeaponDataRow weaponDataRow = regulation.weaponDtbl[slot.weaponItem[count].id];
 //			if ((skill.SkillDataRow.targetType == ESkillTargetType.Enemy || weaponDataRow.targetType == ESkillTargetType.Enemy) && skill.SkillDataRow.targetType != weaponDataRow.targetType)
 //			{
 //				return;
 //			}
-//			skill._weaponEffects = WeaponEffect._Create(this.regulation, weaponDataRow);
+//			skill._weaponEffects = WeaponEffect._Create(regulation, weaponDataRow);
 //		}
 
 //		private void _InitUnitHealthData(Unit unit, Troop.Slot slot)
 //		{
-//			UnitDataRow unitDataRow = this.regulation.unitDtbl[unit.dri];
+//			UnitDataRow unitDataRow = regulation.unitDtbl[unit.dri];
 //			unit._maxHealth = (int)((long)(unitDataRow.maxHealth + unit._addHp) * (100L + (long)unit.maxHealthBonus) / 100L);
-//			if (this.initState.battleType == EBattleType.Annihilation || this.initState.battleType == EBattleType.WaveBattle || (this.initState.battleType == EBattleType.EventRaid && unit.side == EBattleSide.Right) || this.initState.battleType == EBattleType.Conquest)
+//			if (initState.battleType == EBattleType.Annihilation || initState.battleType == EBattleType.WaveBattle || (initState.battleType == EBattleType.EventRaid && unit.side == EBattleSide.Right) || initState.battleType == EBattleType.Conquest)
 //			{
 //				unit._health = slot.health;
 //				if (unit._health > unit._maxHealth)
@@ -1401,13 +1401,13 @@
 //			}
 //			else
 //			{
-//				if (this.initState.battleType == EBattleType.Raid && (unit._charType == ECharacterType.RaidPart || unit._charType == ECharacterType.Raid))
+//				if (initState.battleType == EBattleType.Raid && (unit._charType == ECharacterType.RaidPart || unit._charType == ECharacterType.Raid))
 //				{
-//					string text = string.Format("{0}_{1}_{2}", this.initState.raidData.raidId, 0, unit._unitIdx % 9);
-//					int num = this.regulation.raidDtbl.FindIndex(text);
+//					string text = string.Format("{0}_{1}_{2}", initState.raidData.raidId, 0, unit._unitIdx % 9);
+//					int num = regulation.raidDtbl.FindIndex(text);
 //					if (num >= 0)
 //					{
-//						unit._maxHealth = this.regulation.raidDtbl[num].health;
+//						unit._maxHealth = regulation.raidDtbl[num].health;
 //					}
 //					else
 //					{
@@ -1483,13 +1483,13 @@
 //			if (slot != null)
 //			{
 //				int num = 0;
-//				if (this.initState.battleType == EBattleType.WaveBattle && this.initState.waveBattleData._wave > 1)
+//				if (initState.battleType == EBattleType.WaveBattle && initState.waveBattleData._wave > 1)
 //				{
 //					num += slot.sp;
 //				}
 //				else
 //				{
-//					if (skill.isActiveSkill && (this.initState.battleType == EBattleType.Annihilation || this.initState.battleType == EBattleType.Conquest || unit._charType == ECharacterType.SuperMercenary || unit._charType == ECharacterType.SuperNPCMercenary))
+//					if (skill.isActiveSkill && (initState.battleType == EBattleType.Annihilation || initState.battleType == EBattleType.Conquest || unit._charType == ECharacterType.SuperMercenary || unit._charType == ECharacterType.SuperNPCMercenary))
 //					{
 //						num += slot.sp;
 //					}
@@ -1521,13 +1521,13 @@
 
 //		private void _InitUnitSkillData(Unit unit, Troop.Slot slot)
 //		{
-//			UnitDataRow unitDataRow = this.regulation.unitDtbl[unit.dri];
+//			UnitDataRow unitDataRow = regulation.unitDtbl[unit.dri];
 //			for (int i = 0; i < 4; i++)
 //			{
 //				string skillDrk = unitDataRow.skillDrks[i];
 //				if (string.IsNullOrEmpty(skillDrk) || skillDrk == "0")
 //				{
-//					this._AddUnitSkill(unit, null);
+//					_AddUnitSkill(unit, null);
 //				}
 //				else
 //				{
@@ -1535,12 +1535,12 @@
 //					int count = unit.skills.Count;
 //					if (slot.weaponItem != null && slot.weaponItem.ContainsKey(count))
 //					{
-//						WeaponDataRow weaponDataRow = this.regulation.weaponDtbl[slot.weaponItem[count].id];
-//						if (!this._CheckWeaponData(weaponDataRow, Regulation.ParseWeaponSkillType(count)))
+//						WeaponDataRow weaponDataRow = regulation.weaponDtbl[slot.weaponItem[count].id];
+//						if (!_CheckWeaponData(weaponDataRow, Regulation.ParseWeaponSkillType(count)))
 //						{
 //							throw new ArgumentNullException("Fail CheckWeaponData!! " + weaponDataRow.idx);
 //						}
-//						SkillDataRow skillDataRow = this.regulation.skillDtbl[skillDrk];
+//						SkillDataRow skillDataRow = regulation.skillDtbl[skillDrk];
 //						if (unit._cls < skillDataRow.openGrade)
 //						{
 //							throw new ArgumentNullException("Fail OpenGrade CheckWeaponData!! " + weaponDataRow.idx);
@@ -1550,17 +1550,17 @@
 //							skillDrk = weaponDataRow.skillIdx;
 //						}
 //					}
-//					Skill skill2 = Skill._Create(this.regulation, skillDrk);
-//					this._InitSkillData(unit, skill2, skill);
-//					this._InitWeaponSkillData(unit, skill2, slot);
-//					this._AddUnitSkill(unit, skill2);
+//					Skill skill2 = Skill._Create(regulation, skillDrk);
+//					_InitSkillData(unit, skill2, skill);
+//					_InitWeaponSkillData(unit, skill2, slot);
+//					_AddUnitSkill(unit, skill2);
 //				}
 //			}
 //			string text = string.Empty;
 //			if (slot.weaponItem != null && slot.weaponItem.ContainsKey(4))
 //			{
-//				WeaponDataRow weaponDataRow2 = this.regulation.weaponDtbl[slot.weaponItem[4].id];
-//				if (!this._CheckWeaponData(weaponDataRow2, Regulation.ParseWeaponSkillType(4)))
+//				WeaponDataRow weaponDataRow2 = regulation.weaponDtbl[slot.weaponItem[4].id];
+//				if (!_CheckWeaponData(weaponDataRow2, Regulation.ParseWeaponSkillType(4)))
 //				{
 //					throw new ArgumentNullException("Fail CheckWeaponData!! " + weaponDataRow2.idx);
 //				}
@@ -1571,29 +1571,29 @@
 //			}
 //			if (string.IsNullOrEmpty(text))
 //			{
-//				this._AddUnitSkill(unit, null);
+//				_AddUnitSkill(unit, null);
 //			}
 //			else
 //			{
-//				Skill skill3 = Skill._Create(this.regulation, text);
-//				this._InitSkillData(unit, skill3, new Troop.Slot.Skill
+//				Skill skill3 = Skill._Create(regulation, text);
+//				_InitSkillData(unit, skill3, new Troop.Slot.Skill
 //				{
 //					id = text,
 //					lv = slot.level,
 //					sp = 0
 //				});
-//				this._InitWeaponSkillData(unit, skill3, slot);
-//				this._AddUnitSkill(unit, skill3);
+//				_InitWeaponSkillData(unit, skill3, slot);
+//				_AddUnitSkill(unit, skill3);
 //			}
 //		}
 
 //		private Frame _CreateInitFrame()
 //		{
-//			StellarGKLibrary.Shared.Battle.Random random = new StellarGKLibrary.Shared.Battle.Random(this.initState.randomSeed);
+//			StellarGKLibrary.Shared.Battle.Random random = new StellarGKLibrary.Shared.Battle.Random(initState.randomSeed);
 //			Frame frame = new Frame();
-//			frame._units = this._CreateInitStateUnits();
-//			frame._lhsTroopStartIndex = this.GetLhsTroopStartIndex(0);
-//			frame._rhsTroopStartIndex = this.GetRhsTroopStartIndex(0);
+//			frame._units = _CreateInitStateUnits();
+//			frame._lhsTroopStartIndex = GetLhsTroopStartIndex(0);
+//			frame._rhsTroopStartIndex = GetRhsTroopStartIndex(0);
 //			frame._lhsTimeLine = new List<int>();
 //			frame._rhsTimeLine = new List<int>();
 //			frame._isWaitingInput = false;
@@ -1610,11 +1610,11 @@
 //			frame._gold = 0;
 //			frame._armyDestoryCnt = 0;
 //			frame._navyDestoryCnt = 0;
-//			this._AccessFrame(new _StatusEffectCleaner(), frame);
-//			this._AccessFrame(new _SkillInitializer(random), frame);
-//			if (this.initState.battleType == EBattleType.WaveBattle)
+//			_AccessFrame(new _StatusEffectCleaner(), frame);
+//			_AccessFrame(new _SkillInitializer(random), frame);
+//			if (initState.battleType == EBattleType.WaveBattle)
 //			{
-//				WaveBattleData waveBattleData = this.initState.waveBattleData;
+//				WaveBattleData waveBattleData = initState.waveBattleData;
 //				frame._rhsWave = waveBattleData._wave;
 //				frame._waveTurn = waveBattleData._waveTurn;
 //				frame._lhsTimeLine = waveBattleData._lhsTurnLine;
@@ -1629,7 +1629,7 @@
 //						Skill skill = unit._skills[0];
 //						if (skill != null)
 //						{
-//							SkillDataRow skillDataRow = this.regulation.skillDtbl[skill.dri];
+//							SkillDataRow skillDataRow = regulation.skillDtbl[skill.dri];
 //							skill._sp = skillDataRow.maxSp;
 //							skill._curSp = skill._sp;
 //							skill._activeState = true;
@@ -1637,9 +1637,9 @@
 //					}
 //				}
 //			}
-//			if (this.option.playMode != Option.PlayMode.RealTime)
+//			if (option.playMode != Option.PlayMode.RealTime)
 //			{
-//				this._AccessFrame(new _TimeLineUpdater(random), frame);
+//				_AccessFrame(new _TimeLineUpdater(random), frame);
 //				frame._isWaitingNextTurn = true;
 //				frame._isWaitingNextWave = true;
 //			}
@@ -1680,7 +1680,7 @@
 //			frame._isWaitingInput = curr._isWaitingInput;
 //			frame._isWaitingNextWave = curr._isWaitingNextWave;
 //			frame._hasSkillActionUnit = curr._hasSkillActionUnit;
-//			frame._isWaitingNextTurn = this.isWaitingNextTurn;
+//			frame._isWaitingNextTurn = isWaitingNextTurn;
 //			frame._turnUnitIndex = curr._turnUnitIndex;
 //			frame._lhsTroopStartIndex = curr._lhsTroopStartIndex;
 //			frame._rhsTroopStartIndex = curr._rhsTroopStartIndex;
@@ -1691,9 +1691,9 @@
 //			frame._totalAttackDamage = curr._totalAttackDamage;
 //			frame._lhsActiveSkillUseCount = curr._lhsActiveSkillUseCount;
 //			frame._lhsDeadUnitCount = curr._lhsDeadUnitCount;
-//			this.isLhsAnnihilated = false;
-//			this.isRhsAnnihilated = false;
-//			bool flag = this.record.frames.Count == 1;
+//			isLhsAnnihilated = false;
+//			isRhsAnnihilated = false;
+//			bool flag = record.frames.Count == 1;
 //			if (flag)
 //			{
 //				if (frame._lhsTroopStartIndex >= 0)
@@ -1709,7 +1709,7 @@
 //						}
 //					}
 //				}
-//				if (frame._rhsTroopStartIndex < this.frame.units.Count)
+//				if (frame._rhsTroopStartIndex < frame.units.Count)
 //				{
 //					int rhsTroopStartIndex = frame._rhsTroopStartIndex;
 //					int num2 = rhsTroopStartIndex + 9;
@@ -1727,26 +1727,26 @@
 //			frame._lhsOnWave = false;
 //			frame._rhsOnWave = false;
 //			frame._isWaitingNextWave = true;
-//			this._unitUpdater.SetRandom(random);
-//			this._AccessFrame(this._unitUpdater, frame);
-//			this._AccessFrame(this._statusCleaner, frame);
-//			this._skillUpdater.SetRandom(random);
-//			this._AccessFrame(this._skillUpdater, frame);
-//			this._projectileUpdater.SetRandom(random);
-//			this._AccessFrame(this._projectileUpdater, frame);
+//			_unitUpdater.SetRandom(random);
+//			_AccessFrame(_unitUpdater, frame);
+//			_AccessFrame(_statusCleaner, frame);
+//			_skillUpdater.SetRandom(random);
+//			_AccessFrame(_skillUpdater, frame);
+//			_projectileUpdater.SetRandom(random);
+//			_AccessFrame(_projectileUpdater, frame);
 //			if (frame._isWaitingNextWave)
 //			{
-//				this.isLhsAnnihilated = true;
+//				isLhsAnnihilated = true;
 //				for (int l = 0; l < 9; l++)
 //				{
 //					Unit unit3 = frame._units[l + frame.lhsTroopStartIndex];
 //					if (unit3 != null && !unit3.isDead)
 //					{
-//						this.isLhsAnnihilated = false;
+//						isLhsAnnihilated = false;
 //						break;
 //					}
 //				}
-//				if (this.isLhsAnnihilated && !frame._isWaitingNextTurn)
+//				if (isLhsAnnihilated && !frame._isWaitingNextTurn)
 //				{
 //					bool flag2 = true;
 //					if (flag2)
@@ -1754,26 +1754,26 @@
 //						bool flag3 = frame._lhsTroopStartIndex - 9 >= 0;
 //						if (flag3)
 //						{
-//							this.isLhsAnnihilated = false;
+//							isLhsAnnihilated = false;
 //							frame._isWaitingNextTurn = false;
 //						}
 //					}
 //				}
-//				this.isRhsAnnihilated = true;
+//				isRhsAnnihilated = true;
 //				for (int m = 0; m < 9; m++)
 //				{
 //					Unit unit4 = frame._units[m + frame.rhsTroopStartIndex];
 //					if (unit4 != null && !unit4.isDead)
 //					{
-//						this.isRhsAnnihilated = false;
+//						isRhsAnnihilated = false;
 //						break;
 //					}
 //				}
-//				if (this.isRhsAnnihilated && !frame._isWaitingNextTurn)
+//				if (isRhsAnnihilated && !frame._isWaitingNextTurn)
 //				{
-//					if (this.initState.battleType == EBattleType.WaveBattle)
+//					if (initState.battleType == EBattleType.WaveBattle)
 //					{
-//						this.isRhsAnnihilated = false;
+//						isRhsAnnihilated = false;
 //						frame._isWaitingNextTurn = false;
 //					}
 //					else
@@ -1784,23 +1784,23 @@
 //							bool flag5 = frame._rhsTroopStartIndex + 9 < frame.units.Count;
 //							if (flag5)
 //							{
-//								this.isRhsAnnihilated = false;
+//								isRhsAnnihilated = false;
 //								frame._isWaitingNextTurn = false;
 //							}
 //						}
 //					}
 //				}
-//				if (this.isRhsAnnihilated || this.isLhsAnnihilated)
+//				if (isRhsAnnihilated || isLhsAnnihilated)
 //				{
 //					random.Next(0, 32767);
 //					frame._randomSeed = random.seed;
 //					return frame;
 //				}
 //			}
-//			if (this.option.playMode != Option.PlayMode.RealTime)
+//			if (option.playMode != Option.PlayMode.RealTime)
 //			{
-//				this._timeLineUpdater.SetRandom(random);
-//				this._AccessFrame(this._timeLineUpdater, frame);
+//				_timeLineUpdater.SetRandom(random);
+//				_AccessFrame(_timeLineUpdater, frame);
 //			}
 //			else
 //			{
@@ -1856,36 +1856,36 @@
 
 //		private bool _TryMakeResult()
 //		{
-//			bool flag = this.frame._lhsTroopStartIndex < 0;
-//			bool flag2 = this.frame._rhsTroopStartIndex >= this.unitCount;
-//			if (!this.isTimeOut && !flag && !flag2)
+//			bool flag = frame._lhsTroopStartIndex < 0;
+//			bool flag2 = frame._rhsTroopStartIndex >= unitCount;
+//			if (!isTimeOut && !flag && !flag2)
 //			{
-//				if (this.isReplayMode && this.frameNum == this.record._length - 1)
+//				if (isReplayMode && frameNum == record._length - 1)
 //				{
-//					this.isGiveUp = true;
+//					isGiveUp = true;
 //				}
-//				if (!this.isGiveUp)
+//				if (!isGiveUp)
 //				{
 //					return false;
 //				}
 //			}
 //			List<Troop> list = new List<Troop>();
-//			for (int i = 0; i < this.lhsTroops.Count; i++)
+//			for (int i = 0; i < lhsTroops.Count; i++)
 //			{
-//				int lhsTroopStartIndex = this.GetLhsTroopStartIndex(i);
+//				int lhsTroopStartIndex = GetLhsTroopStartIndex(i);
 //				int num = lhsTroopStartIndex + 9;
-//				Troop troop = Troop.Copy(this.lhsTroops[i]);
+//				Troop troop = Troop.Copy(lhsTroops[i]);
 //				for (int j = lhsTroopStartIndex; j < num; j++)
 //				{
 //					Troop.Slot slot = troop._slots[j - lhsTroopStartIndex];
-//					if (this.frame._units[j] == null)
+//					if (frame._units[j] == null)
 //					{
 //						slot = null;
 //					}
 //					else
 //					{
-//						Unit unit = this.frame._units[j];
-//						UnitDataRow unitDataRow = this.regulation.unitDtbl[this.frame._units[j].dri];
+//						Unit unit = frame._units[j];
+//						UnitDataRow unitDataRow = regulation.unitDtbl[frame._units[j].dri];
 //						int num2 = unitDataRow.maxHealth + unit._addHp;
 //						slot.health = unit._health;
 //						if (slot.health > num2)
@@ -1896,7 +1896,7 @@
 //						{
 //							slot.health = 0;
 //						}
-//						if (this.initState.battleType == EBattleType.Annihilation && this.isTimeOut)
+//						if (initState.battleType == EBattleType.Annihilation && isTimeOut)
 //						{
 //							slot.health = 0;
 //						}
@@ -1986,22 +1986,22 @@
 //				list.Add(troop);
 //			}
 //			List<Troop> list2 = new List<Troop>();
-//			for (int num3 = 0; num3 < this.rhsTroops.Count; num3++)
+//			for (int num3 = 0; num3 < rhsTroops.Count; num3++)
 //			{
-//				int rhsTroopStartIndex = this.GetRhsTroopStartIndex(num3);
+//				int rhsTroopStartIndex = GetRhsTroopStartIndex(num3);
 //				int num4 = rhsTroopStartIndex + 9;
-//				Troop troop2 = Troop.Copy(this.rhsTroops[num3]);
+//				Troop troop2 = Troop.Copy(rhsTroops[num3]);
 //				for (int num5 = rhsTroopStartIndex; num5 < num4; num5++)
 //				{
 //					Troop.Slot slot2 = troop2._slots[num5 - rhsTroopStartIndex];
-//					if (this.frame._units[num5] == null)
+//					if (frame._units[num5] == null)
 //					{
 //						slot2 = null;
 //					}
 //					else
 //					{
-//						Unit unit2 = this.frame._units[num5];
-//						UnitDataRow unitDataRow2 = this.regulation.unitDtbl[this.frame._units[num5].dri];
+//						Unit unit2 = frame._units[num5];
+//						UnitDataRow unitDataRow2 = regulation.unitDtbl[frame._units[num5].dri];
 //						int num6 = unitDataRow2.maxHealth + unit2._addHp;
 //						slot2.health = unit2._health;
 //						if (slot2.health > num6)
@@ -2012,7 +2012,7 @@
 //						{
 //							slot2.health = 0;
 //						}
-//						if (this.initState.battleType == EBattleType.Annihilation && this.isTimeOut)
+//						if (initState.battleType == EBattleType.Annihilation && isTimeOut)
 //						{
 //							slot2.health = 0;
 //						}
@@ -2074,7 +2074,7 @@
 //						{
 //							slot2.damagedHealth = 0;
 //						}
-//						if (this.initState.battleType == EBattleType.Conquest)
+//						if (initState.battleType == EBattleType.Conquest)
 //						{
 //							slot2.skills = new List<Troop.Slot.Skill>();
 //							for (int num10 = 1; num10 < 4; num10++)
@@ -2108,96 +2108,96 @@
 //			Result result = new Result();
 //			if (!flag3)
 //			{
-//				result._isTimeOut = this.isTimeOut;
-//				if (!this.isTimeOut)
+//				result._isTimeOut = isTimeOut;
+//				if (!isTimeOut)
 //				{
 //					result._winSide = ((!flag) ? (-1) : 1);
-//					if (this.initState.battleType == EBattleType.Annihilation)
+//					if (initState.battleType == EBattleType.Annihilation)
 //					{
 //						if (flag2)
 //						{
 //							result._winSide = -1;
 //						}
 //					}
-//					else if (this.initState.battleType == EBattleType.Conquest && flag && flag2)
+//					else if (initState.battleType == EBattleType.Conquest && flag && flag2)
 //					{
 //						result._winSide = 0;
 //					}
 //				}
 //				else
 //				{
-//					result._winSide = this.option.winSideByTimeOut;
-//					if (this.initState.battleType == EBattleType.Annihilation)
+//					result._winSide = option.winSideByTimeOut;
+//					if (initState.battleType == EBattleType.Annihilation)
 //					{
 //						result._winSide = -1;
 //					}
-//					else if (this.initState.battleType == EBattleType.Conquest)
+//					else if (initState.battleType == EBattleType.Conquest)
 //					{
 //						result._winSide = 0;
 //					}
 //				}
-//				if (this.isGiveUp)
+//				if (isGiveUp)
 //				{
 //					result._winSide = 1;
 //				}
 //			}
 //			if (result._winSide > 0)
 //			{
-//				this.mission.MissionAllFail();
+//				mission.MissionAllFail();
 //			}
-//			this.mission.Update();
-//			result._clearRank = this.mission.clearCount;
-//			if (this.initState.battleType == EBattleType.InfinityBattle)
+//			mission.Update();
+//			result._clearRank = mission.clearCount;
+//			if (initState.battleType == EBattleType.InfinityBattle)
 //			{
-//				result._clearRank = this.mission.clearValue;
+//				result._clearRank = mission.clearValue;
 //			}
-//			result._gold = this.frame.gold;
-//			result._armyDestoryCnt = this.frame.armyDestoryCnt;
-//			result._navyDestoryCnt = this.frame.navyDestoryCnt;
+//			result._gold = frame.gold;
+//			result._armyDestoryCnt = frame.armyDestoryCnt;
+//			result._navyDestoryCnt = frame.navyDestoryCnt;
 //			result._lhsTroops = list;
 //			result._rhsTroops = list2;
-//			result._totalAttackDamage = this.frame._totalAttackDamage;
-//			this.record._result = result;
-//			this.record._length = this.frameNum + 1;
-//			this.record._result._checksum = this._MakeChecksum(this.record);
+//			result._totalAttackDamage = frame._totalAttackDamage;
+//			record._result = result;
+//			record._length = frameNum + 1;
+//			record._result._checksum = _MakeChecksum(record);
 //			return true;
 //		}
 
 //		public void Step(Input lhsInput, Input rhsInput)
 //		{
-//			if (this.isEnded)
+//			if (isEnded)
 //			{
 //				return;
 //			}
-//			if (this.isReplayMode)
+//			if (isReplayMode)
 //			{
 //				if (lhsInput != null || rhsInput != null)
 //				{
 //					throw new ArgumentException("Input Error");
 //				}
-//				this.record._lhsInputMap.TryGetValue(this.frameNum, out lhsInput);
-//				this.record._rhsInputMap.TryGetValue(this.frameNum, out rhsInput);
+//				record._lhsInputMap.TryGetValue(frameNum, out lhsInput);
+//				record._rhsInputMap.TryGetValue(frameNum, out rhsInput);
 //			}
-//			else if (this.option.waitingInputMode)
+//			else if (option.waitingInputMode)
 //			{
 //			}
-//			Frame frame = this.record.frames[this.frameNum];
-//			Frame frame2 = this._CreateNextFrame(frame, lhsInput, rhsInput);
-//			this.record._frames.Add(frame2);
-//			this.frameNum++;
-//			if (!this.isReplayMode)
+//			Frame frame = record.frames[frameNum];
+//			Frame frame2 = _CreateNextFrame(frame, lhsInput, rhsInput);
+//			record._frames.Add(frame2);
+//			frameNum++;
+//			if (!isReplayMode)
 //			{
 //				if (frame2.lhsInput != null && frame2.lhsInput.result)
 //				{
-//					this.record._lhsInputMap.Add(this.frameNum - 1, Input.Copy(frame2.lhsInput));
+//					record._lhsInputMap.Add(frameNum - 1, Input.Copy(frame2.lhsInput));
 //				}
 //				if (frame2.rhsInput != null && frame2.rhsInput.result)
 //				{
-//					this.record._rhsInputMap.Add(this.frameNum - 1, Input.Copy(frame2.rhsInput));
+//					record._rhsInputMap.Add(frameNum - 1, Input.Copy(frame2.rhsInput));
 //				}
-//				this.record._length = this.frameNum + 1;
+//				record._length = frameNum + 1;
 //			}
-//			if (this.isLhsAnnihilated)
+//			if (isLhsAnnihilated)
 //			{
 //				frame2._lhsTroopStartIndex -= 9;
 //				if (frame2._lhsTroopStartIndex >= 0)
@@ -2214,7 +2214,7 @@
 //					}
 //					frame2._lhsWave++;
 //					frame2._lhsOnWave = true;
-//					if (!this.isRhsAnnihilated && frame2._rhsTroopStartIndex < frame2.units.Count)
+//					if (!isRhsAnnihilated && frame2._rhsTroopStartIndex < frame2.units.Count)
 //					{
 //						num = frame2._rhsTroopStartIndex;
 //						num2 = num + 9;
@@ -2229,7 +2229,7 @@
 //					}
 //				}
 //			}
-//			if (this.isRhsAnnihilated)
+//			if (isRhsAnnihilated)
 //			{
 //				frame2._rhsTroopStartIndex += 9;
 //				if (frame2._rhsTroopStartIndex < frame2.units.Count)
@@ -2246,7 +2246,7 @@
 //					}
 //					frame2._rhsWave++;
 //					frame2._rhsOnWave = true;
-//					if (!this.isLhsAnnihilated && frame2._lhsTroopStartIndex >= 0)
+//					if (!isLhsAnnihilated && frame2._lhsTroopStartIndex >= 0)
 //					{
 //						num3 = frame2._lhsTroopStartIndex;
 //						num4 = num3 + 9;
@@ -2261,8 +2261,8 @@
 //					}
 //				}
 //			}
-//			this._TryMakeResult();
-//			this.mission.Update();
+//			_TryMakeResult();
+//			mission.Update();
 //		}
 
 //		public int GetUnitIndexByOffset(int unitIndex, int x, int z)
@@ -2285,24 +2285,24 @@
 
 //		public int GetLhsTroopStartIndex(int troopIndex)
 //		{
-//			int num = this.lhsTroops.Count - troopIndex - 1;
+//			int num = lhsTroops.Count - troopIndex - 1;
 //			return num * 9;
 //		}
 
 //		public int GetLhsUnitIndex(int troopIndex, int slotIndex)
 //		{
-//			int lhsTroopStartIndex = this.GetLhsTroopStartIndex(troopIndex);
+//			int lhsTroopStartIndex = GetLhsTroopStartIndex(troopIndex);
 //			return lhsTroopStartIndex + slotIndex;
 //		}
 
 //		public int GetLhsTroopIndex(int unitIndex)
 //		{
-//			int count = this.initState._lhsTroops.Count;
-//			if (unitIndex < this.GetLhsTroopStartIndex(count - 1))
+//			int count = initState._lhsTroops.Count;
+//			if (unitIndex < GetLhsTroopStartIndex(count - 1))
 //			{
 //				return -1;
 //			}
-//			if (unitIndex >= this.GetRhsTroopStartIndex(0))
+//			if (unitIndex >= GetRhsTroopStartIndex(0))
 //			{
 //				return -1;
 //			}
@@ -2311,42 +2311,42 @@
 
 //		public int GetRhsTroopStartIndex(int troopIndex)
 //		{
-//			int num = this.lhsTroops.Count + troopIndex;
+//			int num = lhsTroops.Count + troopIndex;
 //			return num * 9;
 //		}
 
 //		public int GetRhsUnitIndex(int troopIndex, int slotIndex)
 //		{
-//			int rhsTroopStartIndex = this.GetRhsTroopStartIndex(troopIndex);
+//			int rhsTroopStartIndex = GetRhsTroopStartIndex(troopIndex);
 //			return rhsTroopStartIndex + slotIndex;
 //		}
 
 //		public int GetRhsTroopIndex(int unitIndex)
 //		{
-//			if (unitIndex < this.GetRhsTroopStartIndex(0))
+//			if (unitIndex < GetRhsTroopStartIndex(0))
 //			{
 //				return -1;
 //			}
-//			if (unitIndex >= this.unitCount)
+//			if (unitIndex >= unitCount)
 //			{
 //				return -1;
 //			}
-//			return unitIndex / 9 - this.lhsTroops.Count;
+//			return unitIndex / 9 - lhsTroops.Count;
 //		}
 
 //		public void AccessFrame(FrameAccessor accessor)
 //		{
-//			this.AccessFrame(accessor, this.frameNum);
+//			AccessFrame(accessor, frameNum);
 //		}
 
 //		public void AccessFrame(FrameAccessor accessor, int frameNum)
 //		{
-//			if (frameNum < 0 || frameNum + 1 > this.record.frames.Count)
+//			if (frameNum < 0 || frameNum + 1 > record.frames.Count)
 //			{
 //				throw new ArgumentOutOfRangeException("frameNum");
 //			}
-//			Frame frame = this.record.frames[frameNum];
-//			this._AccessFrame(accessor, frame);
+//			Frame frame = record.frames[frameNum];
+//			_AccessFrame(accessor, frame);
 //		}
 
 //		private void _AccessFrame(FrameAccessor accessor, Frame frame)
@@ -2362,7 +2362,7 @@
 //					Unit unit = frame._units[i];
 //					if (unit != null)
 //					{
-//						this._AccessUnit(accessor, i, unit);
+//						_AccessUnit(accessor, i, unit);
 //					}
 //				}
 //			}
@@ -2378,7 +2378,7 @@
 //					Skill skill = unit._skills[i];
 //					if (skill != null)
 //					{
-//						this._AccessSkill(accessor, i, skill);
+//						_AccessSkill(accessor, i, skill);
 //					}
 //				}
 //			}
@@ -2396,7 +2396,7 @@
 //					if (firePoint != null)
 //					{
 //						num = i;
-//						this._AccessFirePoint(accessor, i, firePoint);
+//						_AccessFirePoint(accessor, i, firePoint);
 //					}
 //				}
 //				for (int j = 0; j < skill._fireSubPoints.Count; j++)
@@ -2404,7 +2404,7 @@
 //					FirePoint firePoint2 = skill._fireSubPoints[j];
 //					if (firePoint2 != null)
 //					{
-//						this._AccessFirePoint(accessor, num, firePoint2);
+//						_AccessFirePoint(accessor, num, firePoint2);
 //					}
 //				}
 //			}
@@ -2430,36 +2430,36 @@
 
 //		public bool CanUnitControl(Unit unit)
 //		{
-//			return !unit.isEnemyType || this.option.canEnemyUnitCtl;
+//			return !unit.isEnemyType || option.canEnemyUnitCtl;
 //		}
 
 //		public bool CanSkillAction(Unit unit, int skillIdx)
 //		{
-//			return (this.option.immediatelyUseActiveSkill || this.frame.turnUnitIndex == unit._unitIdx) && !unit.isWaitingReturnMotion && (this.option.canInterfereSkill || !unit.isUsingSkill) && unit.CanSkillAction(skillIdx);
+//			return (option.immediatelyUseActiveSkill || frame.turnUnitIndex == unit._unitIdx) && !unit.isWaitingReturnMotion && (option.canInterfereSkill || !unit.isUsingSkill) && unit.CanSkillAction(skillIdx);
 //		}
 
 //		public bool CanUnitInput(Unit unit)
 //		{
-//			return this.CanUnitControl(unit) && unit.hasActiveSkill && this.CanSkillAction(unit, unit._activeSkillIdx) && this.frame.FindSkillTarget(this.regulation, unit._unitIdx, unit._activeSkillIdx, 0) >= 0;
+//			return CanUnitControl(unit) && unit.hasActiveSkill && CanSkillAction(unit, unit._activeSkillIdx) && frame.FindSkillTarget(regulation, unit._unitIdx, unit._activeSkillIdx, 0) >= 0;
 //		}
 
 //		public bool CanUnitInput(int unitIdx)
 //		{
-//			Unit unit = this.frame.units[unitIdx];
-//			return unit != null && this.CanUnitInput(unit);
+//			Unit unit = frame.units[unitIdx];
+//			return unit != null && CanUnitInput(unit);
 //		}
 
 //		public bool CanEnableFireAction(Unit unit)
 //		{
-//			bool flag = this.option.enableEffect;
+//			bool flag = option.enableEffect;
 //			if (unit.side == EBattleSide.Right)
 //			{
-//				if (!this.option.enableRhsFireAction)
+//				if (!option.enableRhsFireAction)
 //				{
 //					flag = false;
 //				}
 //			}
-//			else if (!this.option.enableLhsFireAction)
+//			else if (!option.enableLhsFireAction)
 //			{
 //				flag = false;
 //			}
@@ -2534,17 +2534,17 @@
 
 //		public Unit FindLhsUnitByCmdResId(string resourceId)
 //		{
-//			for (int i = 0; i < this.lhsTroops.Count; i++)
+//			for (int i = 0; i < lhsTroops.Count; i++)
 //			{
-//				int lhsTroopStartIndex = this.GetLhsTroopStartIndex(i);
+//				int lhsTroopStartIndex = GetLhsTroopStartIndex(i);
 //				for (int j = 0; j < 9; j++)
 //				{
-//					Unit unit = this.frame.units[j + lhsTroopStartIndex];
+//					Unit unit = frame.units[j + lhsTroopStartIndex];
 //					if (unit != null)
 //					{
 //						if (unit._cdri >= 0)
 //						{
-//							if (this.regulation.commanderDtbl[unit._cdri].resourceId == resourceId)
+//							if (regulation.commanderDtbl[unit._cdri].resourceId == resourceId)
 //							{
 //								return unit;
 //							}

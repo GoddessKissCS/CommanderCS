@@ -14,7 +14,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._dri;
+                return _dri;
             }
         }
 
@@ -22,7 +22,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._attackDamage;
+                return _attackDamage;
             }
         }
 
@@ -30,7 +30,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._attackDamageIgnoreDefense;
+                return _attackDamageIgnoreDefense;
             }
         }
 
@@ -38,7 +38,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._defensePenetrationRate;
+                return _defensePenetrationRate;
             }
         }
 
@@ -46,7 +46,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._healing;
+                return _healing;
             }
         }
 
@@ -54,7 +54,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._shield;
+                return _shield;
             }
         }
 
@@ -62,7 +62,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._shieldCount;
+                return _shieldCount;
             }
         }
 
@@ -70,7 +70,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._bloodsucking;
+                return _bloodsucking;
             }
         }
 
@@ -78,7 +78,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._removeStatusCount;
+                return _removeStatusCount;
             }
         }
 
@@ -86,7 +86,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._removeStatusTurn;
+                return _removeStatusTurn;
             }
         }
 
@@ -94,7 +94,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._preventStatusRate;
+                return _preventStatusRate;
             }
         }
 
@@ -102,7 +102,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._spVal;
+                return _spVal;
             }
         }
 
@@ -110,7 +110,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._dotDamage;
+                return _dotDamage;
             }
         }
 
@@ -118,7 +118,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._dotHealing;
+                return _dotHealing;
             }
         }
 
@@ -126,7 +126,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._attackDamageBonus;
+                return _attackDamageBonus;
             }
         }
 
@@ -134,7 +134,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._recvHealBonus;
+                return _recvHealBonus;
             }
         }
 
@@ -142,7 +142,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._maxHealthBonus;
+                return _maxHealthBonus;
             }
         }
 
@@ -150,7 +150,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._speedBonus;
+                return _speedBonus;
             }
         }
 
@@ -158,7 +158,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._accuracyBonus;
+                return _accuracyBonus;
             }
         }
 
@@ -166,7 +166,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._luckBonus;
+                return _luckBonus;
             }
         }
 
@@ -174,7 +174,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._defenseBonus;
+                return _defenseBonus;
             }
         }
 
@@ -182,7 +182,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._criticalChanceBonus;
+                return _criticalChanceBonus;
             }
         }
 
@@ -190,7 +190,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._criticalDamageBonus;
+                return _criticalDamageBonus;
             }
         }
 
@@ -198,7 +198,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._fixedEvasionRate;
+                return _fixedEvasionRate;
             }
         }
 
@@ -206,7 +206,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._damageRecoveryRate;
+                return _damageRecoveryRate;
             }
         }
 
@@ -214,7 +214,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._projectileTargetAttackerScale;
+                return _projectileTargetAttackerScale;
             }
         }
 
@@ -222,7 +222,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._projectileTargetDefenderScale;
+                return _projectileTargetDefenderScale;
             }
         }
 
@@ -230,7 +230,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._projectileTargetSupporterScale;
+                return _projectileTargetSupporterScale;
             }
         }
 
@@ -238,7 +238,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._buffTargetAttackerScale;
+                return _buffTargetAttackerScale;
             }
         }
 
@@ -246,7 +246,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._buffTargetDefenderScale;
+                return _buffTargetDefenderScale;
             }
         }
 
@@ -254,7 +254,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._buffTargetSupporterScale;
+                return _buffTargetSupporterScale;
             }
         }
 
@@ -262,7 +262,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._skillUpgradeDataRow;
+        //		return _skillUpgradeDataRow;
         //	}
         //}
 
@@ -349,7 +349,7 @@ namespace StellarGKLibrary.Shared.Battle
 
         //public void SetLevelFormal(int skillLv)
         //{
-        //	if (this._skillUpgradeDataRow == null)
+        //	if (_skillUpgradeDataRow == null)
         //	{
         //		return;
         //	}
@@ -358,36 +358,36 @@ namespace StellarGKLibrary.Shared.Battle
         //	{
         //		skillLv = 0;
         //	}
-        //	this._attackDamage = skillLv * this._skillUpgradeDataRow.attackDamage;
-        //	this._attackDamageIgnoreDefense = skillLv * this._skillUpgradeDataRow.attackDamageIgnoreDefense;
-        //	this._defensePenetrationRate = skillLv * this._skillUpgradeDataRow.defensePenetrationRate;
-        //	this._healing = skillLv * this._skillUpgradeDataRow.healing;
-        //	this._shield = skillLv * this._skillUpgradeDataRow.shieldBonus;
-        //	this._shieldCount = skillLv * this._skillUpgradeDataRow.shieldCount;
-        //	this._bloodsucking = skillLv * this._skillUpgradeDataRow.bloodsucking;
-        //	this._removeStatusCount = skillLv * this._skillUpgradeDataRow.removeStatusCount;
-        //	this._removeStatusTurn = skillLv * this._skillUpgradeDataRow.removeStatusTurn;
-        //	this._preventStatusRate = skillLv * this._skillUpgradeDataRow.preventStatusRate;
-        //	this._spVal = skillLv * this._skillUpgradeDataRow.spVal;
-        //	this._dotDamage = skillLv * this._skillUpgradeDataRow.dotDamage;
-        //	this._dotHealing = skillLv * this._skillUpgradeDataRow.dotHealing;
-        //	this._attackDamageBonus = skillLv * this._skillUpgradeDataRow.attackDamageBonus;
-        //	this._recvHealBonus = skillLv * this._skillUpgradeDataRow.recvHealBonus;
-        //	this._maxHealthBonus = skillLv * this._skillUpgradeDataRow.maxHealthBonus;
-        //	this._speedBonus = skillLv * this._skillUpgradeDataRow.speedBonus;
-        //	this._accuracyBonus = skillLv * this._skillUpgradeDataRow.accuracyBonus;
-        //	this._luckBonus = skillLv * this._skillUpgradeDataRow.luckBonus;
-        //	this._defenseBonus = skillLv * this._skillUpgradeDataRow.defenseBonus;
-        //	this._criticalChanceBonus = skillLv * this._skillUpgradeDataRow.criticalChanceBonus;
-        //	this._criticalDamageBonus = skillLv * this._skillUpgradeDataRow.criticalDamageBonus;
-        //	this._fixedEvasionRate = skillLv * this._skillUpgradeDataRow.fixedEvasionRate;
-        //	this._damageRecoveryRate = skillLv * this._skillUpgradeDataRow.damageRecoveryRate;
-        //	this._projectileTargetAttackerScale = skillLv * this._skillUpgradeDataRow.projectileTargetAttackerScale;
-        //	this._projectileTargetDefenderScale = skillLv * this._skillUpgradeDataRow.projectileTargetDefenderScale;
-        //	this._projectileTargetSupporterScale = skillLv * this._skillUpgradeDataRow.projectileTargetSupporterScale;
-        //	this._buffTargetAttackerScale = skillLv * this._skillUpgradeDataRow.buffTargetAttackerScale;
-        //	this._buffTargetDefenderScale = skillLv * this._skillUpgradeDataRow.buffTargetDefenderScale;
-        //	this._buffTargetSupporterScale = skillLv * this._skillUpgradeDataRow.buffTargetSupporterScale;
+        //	_attackDamage = skillLv * _skillUpgradeDataRow.attackDamage;
+        //	_attackDamageIgnoreDefense = skillLv * _skillUpgradeDataRow.attackDamageIgnoreDefense;
+        //	_defensePenetrationRate = skillLv * _skillUpgradeDataRow.defensePenetrationRate;
+        //	_healing = skillLv * _skillUpgradeDataRow.healing;
+        //	_shield = skillLv * _skillUpgradeDataRow.shieldBonus;
+        //	_shieldCount = skillLv * _skillUpgradeDataRow.shieldCount;
+        //	_bloodsucking = skillLv * _skillUpgradeDataRow.bloodsucking;
+        //	_removeStatusCount = skillLv * _skillUpgradeDataRow.removeStatusCount;
+        //	_removeStatusTurn = skillLv * _skillUpgradeDataRow.removeStatusTurn;
+        //	_preventStatusRate = skillLv * _skillUpgradeDataRow.preventStatusRate;
+        //	_spVal = skillLv * _skillUpgradeDataRow.spVal;
+        //	_dotDamage = skillLv * _skillUpgradeDataRow.dotDamage;
+        //	_dotHealing = skillLv * _skillUpgradeDataRow.dotHealing;
+        //	_attackDamageBonus = skillLv * _skillUpgradeDataRow.attackDamageBonus;
+        //	_recvHealBonus = skillLv * _skillUpgradeDataRow.recvHealBonus;
+        //	_maxHealthBonus = skillLv * _skillUpgradeDataRow.maxHealthBonus;
+        //	_speedBonus = skillLv * _skillUpgradeDataRow.speedBonus;
+        //	_accuracyBonus = skillLv * _skillUpgradeDataRow.accuracyBonus;
+        //	_luckBonus = skillLv * _skillUpgradeDataRow.luckBonus;
+        //	_defenseBonus = skillLv * _skillUpgradeDataRow.defenseBonus;
+        //	_criticalChanceBonus = skillLv * _skillUpgradeDataRow.criticalChanceBonus;
+        //	_criticalDamageBonus = skillLv * _skillUpgradeDataRow.criticalDamageBonus;
+        //	_fixedEvasionRate = skillLv * _skillUpgradeDataRow.fixedEvasionRate;
+        //	_damageRecoveryRate = skillLv * _skillUpgradeDataRow.damageRecoveryRate;
+        //	_projectileTargetAttackerScale = skillLv * _skillUpgradeDataRow.projectileTargetAttackerScale;
+        //	_projectileTargetDefenderScale = skillLv * _skillUpgradeDataRow.projectileTargetDefenderScale;
+        //	_projectileTargetSupporterScale = skillLv * _skillUpgradeDataRow.projectileTargetSupporterScale;
+        //	_buffTargetAttackerScale = skillLv * _skillUpgradeDataRow.buffTargetAttackerScale;
+        //	_buffTargetDefenderScale = skillLv * _skillUpgradeDataRow.buffTargetDefenderScale;
+        //	_buffTargetSupporterScale = skillLv * _skillUpgradeDataRow.buffTargetSupporterScale;
         //}
 
         internal int _dri;

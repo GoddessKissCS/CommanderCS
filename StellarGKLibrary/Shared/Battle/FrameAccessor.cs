@@ -2,53 +2,53 @@ namespace StellarGKLibrary.Shared.Battle
 {
     public class FrameAccessor
     {
-        //public Simulator simulator { get; private set; }
+        //public Simulator simulator { get; set; }
 
-        public Frame frame { get; private set; }
+        public Frame frame { get; set; }
 
-        public int unitIndex { get; private set; }
+        public int unitIndex { get; set; }
 
-        public Unit unit { get; private set; }
+        public Unit unit { get; set; }
 
-        //public UnitDataRow unitDr { get; private set; }
+        //public UnitDataRow unitDr { get; set; }
 
-        public int skillIndex { get; private set; }
+        public int skillIndex { get; set; }
 
-        public Skill skill { get; private set; }
+        public Skill skill { get; set; }
 
-        //public SkillDataRow skillDr { get; private set; }
+        //public SkillDataRow skillDr { get; set; }
 
-        //public UnitMotionDataRow unitMotionDr { get; private set; }
+        //public UnitMotionDataRow unitMotionDr { get; set; }
 
-        public int firePointIndex { get; private set; }
+        public int firePointIndex { get; set; }
 
-        public int firePointSubIndex { get; private set; }
+        public int firePointSubIndex { get; set; }
 
-        public FirePoint firePoint { get; private set; }
+        public FirePoint firePoint { get; set; }
 
-        public int projectileIndex { get; private set; }
+        public int projectileIndex { get; set; }
 
-        public Projectile projectile { get; private set; }
+        public Projectile projectile { get; set; }
 
-        //public ProjectileDataRow projectileDr { get; private set; }
+        //public ProjectileDataRow projectileDr { get; set; }
 
-        public IList<int> statusEffectDrs { get; private set; }
+        public IList<int> statusEffectDrs { get; set; }
 
-        public int projectileMotionDuration { get; private set; }
+        public int projectileMotionDuration { get; set; }
 
-        public int projectileFireTime { get; private set; }
+        public int projectileFireTime { get; set; }
 
-        public int projectileHitTime { get; private set; }
+        public int projectileHitTime { get; set; }
 
-        public int projectileHitDelayTime { get; private set; }
+        public int projectileHitDelayTime { get; set; }
 
-        public bool isMissedProjectile { get; private set; }
+        public bool isMissedProjectile { get; set; }
 
         //internal bool _AccessFrame(Simulator simulator, Frame frame)
         //{
-        //	this.simulator = simulator;
-        //	this.frame = frame;
-        //	return this.OnFrameAccessStart();
+        //	simulator = simulator;
+        //	frame = frame;
+        //	return OnFrameAccessStart();
         //}
 
         public virtual bool OnFrameAccessStart()
@@ -62,11 +62,11 @@ namespace StellarGKLibrary.Shared.Battle
 
         //internal bool _AccessUnit(int index, Unit unit)
         //{
-        //	Regulation regulation = this.simulator.regulation;
-        //	this.unitIndex = index;
-        //	this.unit = unit;
-        //	this.unitDr = regulation.unitDtbl[unit.dri];
-        //	return this.OnUnitAccessStart();
+        //	Regulation regulation = simulator.regulation;
+        //	unitIndex = index;
+        //	unit = unit;
+        //	unitDr = regulation.unitDtbl[unit.dri];
+        //	return OnUnitAccessStart();
         //}
 
         public virtual bool OnUnitAccessStart()
@@ -80,18 +80,18 @@ namespace StellarGKLibrary.Shared.Battle
 
         //internal bool _AccessSkill(int index, Skill skill)
         //{
-        //	Regulation regulation = this.simulator.regulation;
-        //	this.skillIndex = index;
-        //	this.skill = skill;
-        //	this.skillDr = regulation.skillDtbl[skill.dri];
-        //	this.unitMotionDr = regulation.unitMotionDtbl[skill.unitMotionDri];
-        //	this.projectileHitDelayTime = 0;
+        //	Regulation regulation = simulator.regulation;
+        //	skillIndex = index;
+        //	skill = skill;
+        //	skillDr = regulation.skillDtbl[skill.dri];
+        //	unitMotionDr = regulation.unitMotionDtbl[skill.unitMotionDri];
+        //	projectileHitDelayTime = 0;
         //	if (skill.FireActionDr != null)
         //	{
-        //		FireActionDataRow.TimeSet timeSet = skill.FireActionDr.GetTimeSet(this.simulator.CanEnableFireAction(this.unit));
-        //		this.projectileHitDelayTime = timeSet.hitDelayTime;
+        //		FireActionDataRow.TimeSet timeSet = skill.FireActionDr.GetTimeSet(simulator.CanEnableFireAction(unit));
+        //		projectileHitDelayTime = timeSet.hitDelayTime;
         //	}
-        //	return this.OnSkillAccessStart();
+        //	return OnSkillAccessStart();
         //}
 
         public virtual bool OnSkillAccessStart()
@@ -105,13 +105,13 @@ namespace StellarGKLibrary.Shared.Battle
 
         //internal bool _AccessFirePoint(int index, FirePoint firePoint)
         //{
-        //	Regulation regulation = this.simulator.regulation;
-        //	this.firePointIndex = index;
-        //	this.firePointSubIndex = firePoint.subIdx;
-        //	this.firePoint = firePoint;
-        //	this.projectileDr = regulation.projectileDtbl[firePoint.projectileDri];
-        //	this.statusEffectDrs = firePoint.statusEffectDris;
-        //	return this.OnFirePointAccessStart();
+        //	Regulation regulation = simulator.regulation;
+        //	firePointIndex = index;
+        //	firePointSubIndex = firePoint.subIdx;
+        //	firePoint = firePoint;
+        //	projectileDr = regulation.projectileDtbl[firePoint.projectileDri];
+        //	statusEffectDrs = firePoint.statusEffectDris;
+        //	return OnFirePointAccessStart();
         //}
 
         public virtual bool OnFirePointAccessStart()
@@ -125,20 +125,20 @@ namespace StellarGKLibrary.Shared.Battle
 
         //internal void _AccessProjectile(int index, Projectile projectile)
         //{
-        //	Regulation regulation = this.simulator.regulation;
+        //	Regulation regulation = simulator.regulation;
         //	DataTable<ProjectileMotionPhaseDataRow> projectileMotionPhaseDtbl = regulation.projectileMotionPhaseDtbl;
         //	int num = projectile.id / 100000;
         //	int num2 = projectile.id % 10000;
         //	ProjectileMotionPhaseDataRow projectileMotionPhaseDataRow = projectileMotionPhaseDtbl[num];
         //	ProjectileMotionPhaseDataRow projectileMotionPhaseDataRow2 = projectileMotionPhaseDtbl[num2];
-        //	this.projectileIndex = index;
-        //	this.projectile = projectile;
-        //	this.projectileMotionDuration = projectileMotionPhaseDataRow.duration + projectileMotionPhaseDataRow2.duration + this.projectileHitDelayTime;
-        //	this.projectileFireTime = projectileMotionPhaseDataRow.eventTime;
-        //	this.projectileHitTime = projectileMotionPhaseDataRow.eventTime + projectileMotionPhaseDataRow2.eventTime + this.projectileHitDelayTime;
+        //	projectileIndex = index;
+        //	projectile = projectile;
+        //	projectileMotionDuration = projectileMotionPhaseDataRow.duration + projectileMotionPhaseDataRow2.duration + projectileHitDelayTime;
+        //	projectileFireTime = projectileMotionPhaseDataRow.eventTime;
+        //	projectileHitTime = projectileMotionPhaseDataRow.eventTime + projectileMotionPhaseDataRow2.eventTime + projectileHitDelayTime;
         //	string text = projectileMotionPhaseDataRow2.key.Split(new char[] { '/' })[1];
-        //	this.isMissedProjectile = text == "MissPhase";
-        //	this.OnProjectileAccessStart();
+        //	isMissedProjectile = text == "MissPhase";
+        //	OnProjectileAccessStart();
         //}
 
         public virtual void OnProjectileAccessStart()

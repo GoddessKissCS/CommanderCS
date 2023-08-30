@@ -8,17 +8,17 @@ namespace StellarGKLibrary.Shared.Battle.Internal
 
         //internal _SkillUpdater(Random random)
         //{
-        //	this.SetRandom(random);
+        //	SetRandom(random);
         //}
 
         //public void SetRandom(Random random)
         //{
-        //	this._random = random;
+        //	_random = random;
         //}
 
         //public override bool OnFrameAccessStart()
         //{
-        //	this._rg = base.simulator.regulation;
+        //	_rg = base.simulator.regulation;
         //	base.frame._hasSkillActionUnit = false;
         //	return true;
         //}
@@ -31,15 +31,15 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	}
         //	base.unit._hasEnabledSkill = false;
         //	base.unit._isPlayingFire = false;
-        //	this._subFireFirst = false;
-        //	this._subFireSecond = false;
+        //	_subFireFirst = false;
+        //	_subFireSecond = false;
         //	return true;
         //}
 
         //public override bool OnSkillAccessStart()
         //{
-        //	this._subFireFirst = false;
-        //	this._subFireSecond = false;
+        //	_subFireFirst = false;
+        //	_subFireSecond = false;
         //	int num = base.skill._sp - base.skill._curSp;
         //	if (num > 0)
         //	{
@@ -75,7 +75,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	{
         //		if (base.skill._initMotionTime == base.skill.remainedMotionTime)
         //		{
-        //			this._subFireFirst = true;
+        //			_subFireFirst = true;
         //		}
         //		base.frame._isWaitingNextWave = false;
         //		base.frame._isWaitingNextTurn = false;
@@ -137,7 +137,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //				{
         //					if (i + 1 == base.unitMotionDr.totalFireCount)
         //					{
-        //						this._subFireSecond = true;
+        //						_subFireSecond = true;
         //					}
         //					if (base.skill.isActiveSkill)
         //					{
@@ -149,13 +149,13 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //					}
         //					if (base.skill.targetIndex >= 0)
         //					{
-        //						Projectile projectile = this._CreateProjectile(i, base.skill.targetIndex);
-        //						this._ApplyFirePattern(projectile, base.skillDr.firePatterns[base.firePointIndex]);
-        //						List<Projectile> list = this._CreateSplashes(projectile, base.projectileDr.splashPattern);
-        //						this._newProjectiles.Add(projectile);
+        //						Projectile projectile = _CreateProjectile(i, base.skill.targetIndex);
+        //						_ApplyFirePattern(projectile, base.skillDr.firePatterns[base.firePointIndex]);
+        //						List<Projectile> list = _CreateSplashes(projectile, base.projectileDr.splashPattern);
+        //						_newProjectiles.Add(projectile);
         //						foreach (Projectile projectile2 in list)
         //						{
-        //							this._newProjectiles.Add(projectile2);
+        //							_newProjectiles.Add(projectile2);
         //						}
         //					}
         //				}
@@ -168,34 +168,34 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //public bool OnSubFirePointAccessStart()
         //{
         //	bool flag = false;
-        //	if (this._subFireFirst && base.firePointSubIndex == 1)
+        //	if (_subFireFirst && base.firePointSubIndex == 1)
         //	{
-        //		int num = base.frame.FindSkillTarget(this._rg, base.unitIndex, base.skillIndex, base.firePointSubIndex);
+        //		int num = base.frame.FindSkillTarget(_rg, base.unitIndex, base.skillIndex, base.firePointSubIndex);
         //		if (num >= 0)
         //		{
-        //			Projectile projectile = this._CreateProjectile(0, num);
-        //			this._ApplyFirePattern(projectile, base.firePoint.firePattern);
-        //			List<Projectile> list = this._CreateSplashes(projectile, base.projectileDr.splashPattern);
-        //			this._newProjectiles.Add(projectile);
+        //			Projectile projectile = _CreateProjectile(0, num);
+        //			_ApplyFirePattern(projectile, base.firePoint.firePattern);
+        //			List<Projectile> list = _CreateSplashes(projectile, base.projectileDr.splashPattern);
+        //			_newProjectiles.Add(projectile);
         //			foreach (Projectile projectile2 in list)
         //			{
-        //				this._newProjectiles.Add(projectile2);
+        //				_newProjectiles.Add(projectile2);
         //			}
         //			flag = true;
         //		}
         //	}
-        //	if (this._subFireSecond && base.firePointSubIndex == 2)
+        //	if (_subFireSecond && base.firePointSubIndex == 2)
         //	{
-        //		int num2 = base.frame.FindSkillTarget(this._rg, base.unitIndex, base.skillIndex, base.firePointSubIndex);
+        //		int num2 = base.frame.FindSkillTarget(_rg, base.unitIndex, base.skillIndex, base.firePointSubIndex);
         //		if (num2 >= 0)
         //		{
-        //			Projectile projectile3 = this._CreateProjectile(0, num2);
-        //			this._ApplyFirePattern(projectile3, base.firePoint.firePattern);
-        //			List<Projectile> list2 = this._CreateSplashes(projectile3, base.projectileDr.splashPattern);
-        //			this._newProjectiles.Add(projectile3);
+        //			Projectile projectile3 = _CreateProjectile(0, num2);
+        //			_ApplyFirePattern(projectile3, base.firePoint.firePattern);
+        //			List<Projectile> list2 = _CreateSplashes(projectile3, base.projectileDr.splashPattern);
+        //			_newProjectiles.Add(projectile3);
         //			foreach (Projectile projectile4 in list2)
         //			{
-        //				this._newProjectiles.Add(projectile4);
+        //				_newProjectiles.Add(projectile4);
         //			}
         //			flag = true;
         //		}
@@ -205,21 +205,21 @@ namespace StellarGKLibrary.Shared.Battle.Internal
 
         //public override bool OnFirePointAccessStart()
         //{
-        //	this._newProjectiles = new List<Projectile>();
+        //	_newProjectiles = new List<Projectile>();
         //	if (base.firePointSubIndex != 0)
         //	{
-        //		return this.OnSubFirePointAccessStart();
+        //		return OnSubFirePointAccessStart();
         //	}
-        //	return this.OnMainFirePointAccessStart();
+        //	return OnMainFirePointAccessStart();
         //}
 
         //public override void OnFirePointAccessEnd()
         //{
-        //	if (this._newProjectiles == null || this._newProjectiles.Count == 0)
+        //	if (_newProjectiles == null || _newProjectiles.Count == 0)
         //	{
         //		return;
         //	}
-        //	base.firePoint._projectiles.AddRange(this._newProjectiles);
+        //	base.firePoint._projectiles.AddRange(_newProjectiles);
         //}
 
         //private Projectile _CreateProjectile(int fireEventIndex, int targetIndex)
@@ -228,21 +228,21 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	if (base.skillDr.targetJobType != 0)
         //	{
         //		Unit unit = base.frame._units[targetIndex];
-        //		UnitDataRow unitDataRow = this._rg.unitDtbl[unit.dri];
+        //		UnitDataRow unitDataRow = _rg.unitDtbl[unit.dri];
         //		flag = !Skill.IsTargetJobType(unitDataRow.job, base.skillDr.targetJobType);
         //	}
         //	if (!flag)
         //	{
         //		if (base.skillDr.coercionAccuracy > 0)
         //		{
-        //			flag = base.skillDr.coercionAccuracy < this._random.Next(1, 101);
+        //			flag = base.skillDr.coercionAccuracy < _random.Next(1, 101);
         //		}
         //		else if (base.skill.isDamageSkill(base.firePointSubIndex))
         //		{
         //			Unit unit2 = base.frame._units[targetIndex];
         //			if (unit2._fixedEvasionRate > 0)
         //			{
-        //				flag = unit2._fixedEvasionRate > this._random.Next(0, 100);
+        //				flag = unit2._fixedEvasionRate > _random.Next(0, 100);
         //			}
         //			else
         //			{
@@ -259,12 +259,12 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //					num2 = 1;
         //				}
         //				int num3 = accuracy * accuracyScale / num2;
-        //				flag = num3 < this._random.Next(1, 101);
+        //				flag = num3 < _random.Next(1, 101);
         //			}
         //		}
         //	}
         //	string motionSetId = base.projectileDr.motionSetId;
-        //	DataTable<ProjectileMotionPhaseDataRow> projectileMotionPhaseDtbl = this._rg.projectileMotionPhaseDtbl;
+        //	DataTable<ProjectileMotionPhaseDataRow> projectileMotionPhaseDtbl = _rg.projectileMotionPhaseDtbl;
         //	string text = motionSetId + "/FirePhase";
         //	int num4 = projectileMotionPhaseDtbl.FindIndex(text);
         //	if (num4 == -1)
@@ -272,7 +272,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //		throw new ArgumentException("projectileMotionPhaseDtbl Not Found Idx : " + text);
         //	}
         //	ProjectileMotionPhaseDataRow projectileMotionPhaseDataRow = projectileMotionPhaseDtbl[num4];
-        //	num4 += this._random.Next(0, projectileMotionPhaseDataRow.patternCount) + 1;
+        //	num4 += _random.Next(0, projectileMotionPhaseDataRow.patternCount) + 1;
         //	string text2 = motionSetId + ((!flag) ? "/HitPhase" : "/MissPhase");
         //	int num5 = projectileMotionPhaseDtbl.FindIndex(text2);
         //	if (num5 == -1)
@@ -280,13 +280,13 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //		throw new ArgumentException("projectileMotionPhaseDtbl Not Found Idx : " + text2);
         //	}
         //	ProjectileMotionPhaseDataRow projectileMotionPhaseDataRow2 = projectileMotionPhaseDtbl[num5];
-        //	num5 += this._random.Next(0, projectileMotionPhaseDataRow2.patternCount) + 1;
+        //	num5 += _random.Next(0, projectileMotionPhaseDataRow2.patternCount) + 1;
         //	string text3 = motionSetId + "/BeHitPhase";
         //	int num6 = projectileMotionPhaseDtbl.FindIndex(text3);
         //	if (num6 >= 0)
         //	{
         //		ProjectileMotionPhaseDataRow projectileMotionPhaseDataRow3 = projectileMotionPhaseDtbl[num6];
-        //		num6 += this._random.Next(0, projectileMotionPhaseDataRow3.patternCount) + 1;
+        //		num6 += _random.Next(0, projectileMotionPhaseDataRow3.patternCount) + 1;
         //	}
         //	int num7 = num4 * 100000 + num5;
         //	Projectile projectile = Projectile._Create(num7, targetIndex, fireEventIndex, base.frame.turn);
@@ -297,7 +297,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	int criticalChance = base.skill.criticalChance;
         //	int criticalChanceScale = base.projectileDr.criticalChanceScale;
         //	int num8 = criticalChance * criticalChanceScale / 100;
-        //	projectile._isCritical = num8 > this._random.Next(0, 100);
+        //	projectile._isCritical = num8 > _random.Next(0, 100);
         //	return projectile;
         //}
 
@@ -344,7 +344,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	}
         //	if (list.Count > 0)
         //	{
-        //		this._random.Shuffle<int>(list);
+        //		_random.Shuffle<int>(list);
         //		projectile._targetIndex = list[0];
         //	}
         //}
@@ -385,7 +385,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //				Unit unit = base.simulator.frame._units[unitIndexByOffset];
         //				if (unit != null && unit.health > 0)
         //				{
-        //					Projectile projectile2 = this._CreateProjectile(projectile.fireEventIndex, unitIndexByOffset);
+        //					Projectile projectile2 = _CreateProjectile(projectile.fireEventIndex, unitIndexByOffset);
         //					projectile2._isSplash = true;
         //					projectile2._targetIndex = unitIndexByOffset;
         //					list.Add(projectile2);

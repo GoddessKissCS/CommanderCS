@@ -1,6 +1,8 @@
 using Microsoft.Extensions.FileProviders;
 using StellarGK.Database;
 using StellarGK.Host;
+using StellarGKLibrary.Shared.Regulation;
+using StellarGKLibrary.Utils;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 namespace StellarGK
@@ -74,6 +76,10 @@ namespace StellarGK
 
             app.MapGet("/", () => statusString);
 
+            Regulation.LoadRegulation();
+
+            app.MapGet("/", () => statusString);
+
             app.MapPost("/checkData.php", (HttpContext context, IServiceProvider provider) =>
             {
                 return PacketHandler.ProcessRequest(context, provider);
@@ -139,7 +145,7 @@ namespace StellarGK
 
             //app.UseAuthorization();
 
-            DatabaseManager.FirstCreate();
+            //DatabaseManager.FirstCreate();
 
             app.Run();
         }

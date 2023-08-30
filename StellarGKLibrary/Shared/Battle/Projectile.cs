@@ -13,7 +13,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._id;
+                return _id;
             }
         }
 
@@ -21,7 +21,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._isCritical;
+                return _isCritical;
             }
         }
 
@@ -29,7 +29,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._isSplash;
+                return _isSplash;
             }
         }
 
@@ -37,7 +37,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._targetIndex;
+                return _targetIndex;
             }
         }
 
@@ -45,7 +45,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._fireEventIndex;
+                return _fireEventIndex;
             }
         }
 
@@ -53,7 +53,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._createdTurn;
+                return _createdTurn;
             }
         }
 
@@ -61,7 +61,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._elapsedTime;
+                return _elapsedTime;
             }
         }
 
@@ -69,7 +69,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._fireKey;
+                return _fireKey;
             }
         }
 
@@ -77,7 +77,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._hitKey;
+                return _hitKey;
             }
         }
 
@@ -85,7 +85,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._beHitKey;
+                return _beHitKey;
             }
         }
 

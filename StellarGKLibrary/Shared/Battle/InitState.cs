@@ -15,7 +15,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._lhsTroops.AsReadOnly();
+                return _lhsTroops.AsReadOnly();
             }
         }
 
@@ -23,7 +23,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._rhsTroops.AsReadOnly();
+                return _rhsTroops.AsReadOnly();
             }
         }
 
@@ -31,7 +31,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._guildSkills;
+                return _guildSkills;
             }
         }
 
@@ -39,7 +39,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._battleItemDrks;
+                return _battleItemDrks;
             }
         }
 
@@ -47,7 +47,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._randomSeed;
+                return _randomSeed;
             }
         }
 
@@ -55,7 +55,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return (EBattleType)this._battleType;
+                return (EBattleType)_battleType;
             }
         }
 
@@ -63,7 +63,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._stageId;
+                return _stageId;
             }
         }
 
@@ -71,7 +71,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._raidData;
+                return _raidData;
             }
         }
 
@@ -79,7 +79,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._dualData;
+                return _dualData;
             }
         }
 
@@ -87,7 +87,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._rhsTroopsHealth;
+                return _rhsTroopsHealth;
             }
         }
 
@@ -95,7 +95,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._rhsTroopsMaxHealth;
+                return _rhsTroopsMaxHealth;
             }
         }
 
@@ -103,7 +103,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._waveBattleData;
+                return _waveBattleData;
             }
         }
 

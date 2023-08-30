@@ -14,7 +14,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._subIdx;
+                return _subIdx;
             }
         }
 
@@ -22,7 +22,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._projectileDri;
+                return _projectileDri;
             }
         }
 
@@ -30,7 +30,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._firePattern;
+                return _firePattern;
             }
         }
 
@@ -38,7 +38,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._statusEffectDris.AsReadOnly();
+                return _statusEffectDris.AsReadOnly();
             }
         }
 
@@ -46,7 +46,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._projectiles.AsReadOnly();
+                return _projectiles.AsReadOnly();
             }
         }
 

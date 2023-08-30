@@ -1,8 +1,14 @@
-﻿using Org.BouncyCastle.Crypto.Engines;
+﻿using Newtonsoft.Json;
+using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.Crypto.Paddings;
 using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Utilities;
+using StellarGKLibrary.Shared.Battle;
+using System.Reflection.Metadata;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 
 namespace StellarGKLibrary.Cryptography
 {
@@ -16,6 +22,7 @@ namespace StellarGKLibrary.Cryptography
             {
                  _encoding.GetBytes("Zb*!W-$&TA6mrIEU-F=ShH7=($ucOZdg"),
                  _encoding.GetBytes("IU is Korea Best Singer! really!"),
+                 _encoding.GetBytes("JSON134c4dabedcd462bad9d775873de"),
             };
 
         }
@@ -104,6 +111,47 @@ namespace StellarGKLibrary.Cryptography
                 builder.Append(hash[i].ToString("x2"));
             }
             return builder.ToString();
+        }
+
+
+        public static object Object_DecryptFromFile(string filePath)
+        {
+            RijndaelManaged rijndaelManaged = new RijndaelManaged
+            {
+                Mode = CipherMode.CFB,
+                Padding = PaddingMode.Zeros,
+                BlockSize = 256
+            };
+
+            byte[] IV = Encoding.Default.GetBytes("JSON134c4dabedcd462bad9d775873de");
+            byte[] KEY = IV;
+
+            object obj;
+            using (FileStream fileStream = new(filePath, FileMode.Open))
+            {
+                using (ICryptoTransform cryptoTransform = rijndaelManaged.CreateDecryptor(KEY, IV))
+                {
+                    using (CryptoStream cryptoStream = new(fileStream, cryptoTransform, CryptoStreamMode.Read))
+                    {
+                        using (StreamReader reader = new(cryptoStream))
+                        {
+                            string decryptedJson = reader.ReadToEnd();
+                            obj = JsonConvert.DeserializeObject<object>(decryptedJson);
+                        }
+                    }
+                }
+            }
+            rijndaelManaged.Clear();
+            return obj;
+        }
+
+
+        public static string JSON_Decrypt(string s)
+        {
+            string json = File.ReadAllText(s);
+            Decrypt(json, out string value);
+
+            return value;
         }
     }
 }

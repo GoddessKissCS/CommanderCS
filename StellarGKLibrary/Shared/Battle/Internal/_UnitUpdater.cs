@@ -8,12 +8,12 @@ namespace StellarGKLibrary.Shared.Battle.Internal
 
         //internal _UnitUpdater(Random random)
         //{
-        //	this.SetRandom(random);
+        //	SetRandom(random);
         //}
 
         //public void SetRandom(Random random)
         //{
-        //	this._random = random;
+        //	_random = random;
         //}
 
         //public override bool OnFrameAccessStart()
@@ -42,7 +42,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //		{
         //			if (base.unit._status.Remove(list[i].Dri))
         //			{
-        //				this.RemoveUnitStatus(list[i]);
+        //				RemoveUnitStatus(list[i]);
         //			}
         //		}
         //	}
@@ -61,7 +61,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	foreach (KeyValuePair<int, Status> keyValuePair in base.unit._status)
         //	{
         //		Status value = keyValuePair.Value;
-        //		this.RemoveUnitStatus(value);
+        //		RemoveUnitStatus(value);
         //	}
         //	base.unit._status.Clear();
         //}
@@ -188,7 +188,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
 
         //public void UpdateUnitStatus()
         //{
-        //	this.StautsLifeCheck();
+        //	StautsLifeCheck();
         //	if (base.unit._charType != ECharacterType.RaidPart && base.unit._charType != ECharacterType.Raid)
         //	{
         //		base.unit._maxHealth = (int)((long)(base.unitDr.maxHealth + base.unit._addHp) * (100L + (long)base.unit.maxHealthBonus) / 100L);
@@ -204,16 +204,16 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //				num = (long)(-(long)base.unit._shiled);
         //				base.unit._shiled = 0;
         //				base.unit._maxShiled = 0;
-        //				this.RemoveUnitShield(base.unit);
+        //				RemoveUnitShield(base.unit);
         //			}
         //			else
         //			{
         //				num = 0L;
         //			}
         //		}
-        //		if (this._isRhsUnit)
+        //		if (_isRhsUnit)
         //		{
-        //			if (this._isRaidUnit)
+        //			if (_isRaidUnit)
         //			{
         //				base.frame._totalAttackDamage += num;
         //			}
@@ -229,7 +229,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //				}
         //			}
         //		}
-        //		if (!this._isRaidUnit)
+        //		if (!_isRaidUnit)
         //		{
         //			base.unit._health = (int)Math.Max((long)base.unit._health - num, -2147483648L);
         //		}
@@ -256,7 +256,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //				if (num4 >= 0)
         //				{
         //					int spCostOnBeHit = base.unit.skills[num4].SkillDataRow.spCostOnBeHit;
-        //					if (spCostOnBeHit > this._random.Next(0, 100))
+        //					if (spCostOnBeHit > _random.Next(0, 100))
         //					{
         //						base.unit._eventSkillType = EventSkillType.OnBeHit;
         //						base.unit._eventSkillIndex = num4;
@@ -273,7 +273,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //		if (num5 > 0L)
         //		{
         //			base.unit._health = (int)Math.Min((long)base.unit._health + num5, 2147483647L);
-        //			if (base.unit._health > base.unit.maxHealth && !this._isRaidUnit)
+        //			if (base.unit._health > base.unit.maxHealth && !_isRaidUnit)
         //			{
         //				base.unit._health = base.unit.maxHealth;
         //			}
@@ -283,14 +283,14 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	{
         //		if (!base.unit._isDead)
         //		{
-        //			if (!this._isRaidUnit)
+        //			if (!_isRaidUnit)
         //			{
         //				base.unit._isDead = true;
         //				base.unit._onDead = true;
         //			}
         //			if (base.unit._isDead)
         //			{
-        //				if (!this._isRhsUnit)
+        //				if (!_isRhsUnit)
         //				{
         //					base.frame._lhsDeadUnitCount++;
         //				}
@@ -323,7 +323,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //						}
         //					}
         //				}
-        //				if (this._isRhsUnit)
+        //				if (_isRhsUnit)
         //				{
         //					base.frame._gold += base.unit._dropGold;
         //					EBranch branch = base.unitDr.branch;
@@ -364,7 +364,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	else if (base.unit._takenDamageRecovery > 0L)
         //	{
         //		base.unit._health = (int)Math.Min((long)base.unit._health + base.unit._takenDamageRecovery, 2147483647L);
-        //		if (base.unit._health > base.unit.maxHealth && !this._isRaidUnit)
+        //		if (base.unit._health > base.unit.maxHealth && !_isRaidUnit)
         //		{
         //			base.unit._health = base.unit.maxHealth;
         //		}
@@ -375,15 +375,15 @@ namespace StellarGKLibrary.Shared.Battle.Internal
 
         //public override bool OnUnitAccessStart()
         //{
-        //	this._hasActivatedSkills = false;
-        //	this._selectedSkillIndex = -1;
-        //	this._selectedTargetIndex = -1;
-        //	this._activatableSkills = null;
-        //	this._hasInputs = false;
-        //	this._hasEventInputs = false;
-        //	this._isRhsUnit = false;
-        //	this._isTurnUnit = false;
-        //	this._isRaidUnit = false;
+        //	_hasActivatedSkills = false;
+        //	_selectedSkillIndex = -1;
+        //	_selectedTargetIndex = -1;
+        //	_activatableSkills = null;
+        //	_hasInputs = false;
+        //	_hasEventInputs = false;
+        //	_isRhsUnit = false;
+        //	_isTurnUnit = false;
+        //	_isRaidUnit = false;
         //	base.unit._enableEventSkill = false;
         //	base.unit._isTurn = false;
         //	base.unit._onDead = false;
@@ -399,19 +399,19 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	}
         //	if (base.frame.turnUnitIndex == base.unitIndex)
         //	{
-        //		this._isTurnUnit = true;
+        //		_isTurnUnit = true;
         //		base.unit._isTurn = true;
         //	}
-        //	this._isRhsUnit = base.frame.IsRhsUnitInBattle(base.unitIndex);
-        //	if (this._isRhsUnit)
+        //	_isRhsUnit = base.frame.IsRhsUnitInBattle(base.unitIndex);
+        //	if (_isRhsUnit)
         //	{
         //		if (base.simulator.initState.battleType == EBattleType.Raid)
         //		{
-        //			this._isRaidUnit = base.unit._charType == ECharacterType.Raid;
+        //			_isRaidUnit = base.unit._charType == ECharacterType.Raid;
         //		}
         //		else if (base.simulator.initState.battleType == EBattleType.CooperateBattle)
         //		{
-        //			this._isRaidUnit = base.unit._charType == ECharacterType.Raid || base.unit._charType == ECharacterType.RaidPart;
+        //			_isRaidUnit = base.unit._charType == ECharacterType.Raid || base.unit._charType == ECharacterType.RaidPart;
         //		}
         //	}
         //	if (base.unit.isEnteredNow && base.unit._hasEventEnterSkill)
@@ -425,25 +425,25 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //		}
         //		base.unit._isEnteredNow = false;
         //	}
-        //	this.UpdateUnitStatus();
-        //	this.UpdateInputData();
+        //	UpdateUnitStatus();
+        //	UpdateInputData();
         //	if (base.unit._delayActiveTime > 0)
         //	{
         //		base.unit._delayActiveTime -= 66;
         //		return false;
         //	}
-        //	return this.CanUpdateUnit();
+        //	return CanUpdateUnit();
         //}
 
         //protected bool CanUpdateUnit()
         //{
-        //	if (base.simulator.option.immediatelyUseActiveSkill && !this._isTurnUnit && this._isRhsUnit)
+        //	if (base.simulator.option.immediatelyUseActiveSkill && !_isTurnUnit && _isRhsUnit)
         //	{
         //		if (!base.unit.isPlayingAction)
         //		{
         //			return true;
         //		}
-        //		if (this._hasEventInputs && base.unit.skills[this._selectedSkillIndex].isIgnoreDeathType)
+        //		if (_hasEventInputs && base.unit.skills[_selectedSkillIndex].isIgnoreDeathType)
         //		{
         //			return true;
         //		}
@@ -452,13 +452,13 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	{
         //		return true;
         //	}
-        //	if (!base.frame.isWaitingInput || !this._isTurnUnit)
+        //	if (!base.frame.isWaitingInput || !_isTurnUnit)
         //	{
         //		if (base.simulator.option.playMode == Option.PlayMode.PureTurn)
         //		{
         //			return false;
         //		}
-        //		if (!this._hasInputs && !this._hasEventInputs)
+        //		if (!_hasInputs && !_hasEventInputs)
         //		{
         //			return false;
         //		}
@@ -470,8 +470,8 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //{
         //	if (base.unit.hasEventSkill && base.unit.eventSkillType == EventSkillType.OnBattleEnter)
         //	{
-        //		this._hasEventInputs = true;
-        //		this._selectedSkillIndex = base.unit._eventSkillIndex;
+        //		_hasEventInputs = true;
+        //		_selectedSkillIndex = base.unit._eventSkillIndex;
         //	}
         //	else
         //	{
@@ -481,29 +481,29 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //		{
         //			if ((lhsInput.targetIndex == -1 || base.frame.IsRhsUnitInBattle(lhsInput.targetIndex)) && base.unit.hasActiveSkill && base.unit._activeSkillIdx == lhsInput.skillIndex && base.frame.CanUseSkill(base.simulator.option) && base.simulator.CanSkillAction(base.unit, lhsInput.skillIndex))
         //			{
-        //				this._hasInputs = true;
-        //				this._selectedSkillIndex = lhsInput.skillIndex;
-        //				this._selectedTargetIndex = lhsInput.targetIndex;
+        //				_hasInputs = true;
+        //				_selectedSkillIndex = lhsInput.skillIndex;
+        //				_selectedTargetIndex = lhsInput.targetIndex;
         //				if (!base.simulator.option.canSelectTarget)
         //				{
-        //					this._selectedTargetIndex = -1;
+        //					_selectedTargetIndex = -1;
         //				}
         //			}
         //		}
         //		else if (rhsInput != null && rhsInput.unitIndex == base.unitIndex && base.simulator.CanUnitControl(base.unit) && (rhsInput.targetIndex == -1 || base.frame.IsRhsUnitInBattle(rhsInput.targetIndex)) && base.unit.hasActiveSkill && base.unit._activeSkillIdx == lhsInput.skillIndex && base.simulator.CanSkillAction(base.unit, rhsInput.skillIndex))
         //		{
-        //			this._hasInputs = true;
-        //			this._selectedSkillIndex = rhsInput.skillIndex;
-        //			this._selectedTargetIndex = rhsInput.targetIndex;
+        //			_hasInputs = true;
+        //			_selectedSkillIndex = rhsInput.skillIndex;
+        //			_selectedTargetIndex = rhsInput.targetIndex;
         //			if (!base.simulator.option.canSelectTarget)
         //			{
-        //				this._selectedTargetIndex = -1;
+        //				_selectedTargetIndex = -1;
         //			}
         //		}
-        //		if (!this._hasInputs && base.unit.hasEventSkill)
+        //		if (!_hasInputs && base.unit.hasEventSkill)
         //		{
-        //			this._hasEventInputs = true;
-        //			this._selectedSkillIndex = base.unit._eventSkillIndex;
+        //			_hasEventInputs = true;
+        //			_selectedSkillIndex = base.unit._eventSkillIndex;
         //		}
         //	}
         //	if (base.unit.aggro > 0)
@@ -511,11 +511,11 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //		Unit unit = base.frame.units[base.unit.aggroUnitIdx];
         //		if (unit.isDead)
         //		{
-        //			this.RemoveUnitAggro(base.unit);
+        //			RemoveUnitAggro(base.unit);
         //		}
         //		else
         //		{
-        //			this._selectedTargetIndex = base.unit.aggroUnitIdx;
+        //			_selectedTargetIndex = base.unit.aggroUnitIdx;
         //		}
         //	}
         //	return false;
@@ -528,14 +528,14 @@ namespace StellarGKLibrary.Shared.Battle.Internal
 
         //public override void OnUnitAccessEnd()
         //{
-        //	if (this._activatableSkills == null || this._activatableSkills.Count <= 0)
+        //	if (_activatableSkills == null || _activatableSkills.Count <= 0)
         //	{
         //		base.unit._eventSkillIndex = -1;
         //		return;
         //	}
-        //	if (this._hasActivatedSkills || (this._selectedSkillIndex >= 0 && this._activatableSkills[this._selectedSkillIndex] == null))
+        //	if (_hasActivatedSkills || (_selectedSkillIndex >= 0 && _activatableSkills[_selectedSkillIndex] == null))
         //	{
-        //		foreach (Skill skill in this._activatableSkills)
+        //		foreach (Skill skill in _activatableSkills)
         //		{
         //			if (skill != null)
         //			{
@@ -545,55 +545,55 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //		base.unit._eventSkillIndex = -1;
         //		return;
         //	}
-        //	if (this._selectedSkillIndex < 0)
+        //	if (_selectedSkillIndex < 0)
         //	{
         //		if (base.unit.isEnemyType)
         //		{
-        //			for (int i = 1; i < this._activatableSkills.Count; i++)
+        //			for (int i = 1; i < _activatableSkills.Count; i++)
         //			{
-        //				if (this._activatableSkills[i] != null && this._activatableSkills[i].isActiveSkill)
+        //				if (_activatableSkills[i] != null && _activatableSkills[i].isActiveSkill)
         //				{
         //					int num = base.frame.FindSkillTarget(base.simulator.regulation, base.unitIndex, i, 0);
         //					if (num >= 0)
         //					{
-        //						this._selectedSkillIndex = i;
+        //						_selectedSkillIndex = i;
         //						if (base.unit.aggro <= 0)
         //						{
-        //							this._selectedTargetIndex = num;
+        //							_selectedTargetIndex = num;
         //						}
         //						break;
         //					}
         //				}
         //			}
         //		}
-        //		if (this._selectedSkillIndex < 0 && this._isTurnUnit)
+        //		if (_selectedSkillIndex < 0 && _isTurnUnit)
         //		{
-        //			if (this._activatableSkills[0] != null)
+        //			if (_activatableSkills[0] != null)
         //			{
         //				int num2 = base.frame.FindSkillTarget(base.simulator.regulation, base.unitIndex, 0, 0);
         //				if (num2 >= 0)
         //				{
-        //					this._selectedSkillIndex = 0;
+        //					_selectedSkillIndex = 0;
         //					if (base.unit.aggro <= 0)
         //					{
-        //						this._selectedTargetIndex = num2;
+        //						_selectedTargetIndex = num2;
         //					}
         //				}
         //			}
-        //			for (int j = 1; j < this._activatableSkills.Count; j++)
+        //			for (int j = 1; j < _activatableSkills.Count; j++)
         //			{
-        //				if (this._activatableSkills[j] != null && this._activatableSkills[j].HasEventOccurrenceProbability)
+        //				if (_activatableSkills[j] != null && _activatableSkills[j].HasEventOccurrenceProbability)
         //				{
-        //					int occurrenceProbability = this._activatableSkills[j].SkillDataRow.occurrenceProbability;
-        //					if (occurrenceProbability > this._random.Next(0, 100))
+        //					int occurrenceProbability = _activatableSkills[j].SkillDataRow.occurrenceProbability;
+        //					if (occurrenceProbability > _random.Next(0, 100))
         //					{
         //						int num3 = base.frame.FindSkillTarget(base.simulator.regulation, base.unitIndex, j, 0);
         //						if (num3 >= 0)
         //						{
-        //							this._selectedSkillIndex = j;
+        //							_selectedSkillIndex = j;
         //							if (base.unit.aggro <= 0)
         //							{
-        //								this._selectedTargetIndex = num3;
+        //								_selectedTargetIndex = num3;
         //							}
         //						}
         //						break;
@@ -601,9 +601,9 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //				}
         //			}
         //		}
-        //		if (this._selectedSkillIndex < 0)
+        //		if (_selectedSkillIndex < 0)
         //		{
-        //			foreach (Skill skill2 in this._activatableSkills)
+        //			foreach (Skill skill2 in _activatableSkills)
         //			{
         //				if (skill2 != null)
         //				{
@@ -614,33 +614,33 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //			return;
         //		}
         //	}
-        //	for (int k = 0; k < this._activatableSkills.Count; k++)
+        //	for (int k = 0; k < _activatableSkills.Count; k++)
         //	{
-        //		Skill skill3 = this._activatableSkills[k];
+        //		Skill skill3 = _activatableSkills[k];
         //		if (skill3 != null)
         //		{
         //			SkillDataRow skillDataRow = base.simulator.regulation.skillDtbl[skill3.dri];
         //			if (skillDataRow != null)
         //			{
-        //				if (k != this._selectedSkillIndex)
+        //				if (k != _selectedSkillIndex)
         //				{
         //					skill3._remainedMotionTime = 0;
         //				}
         //				else
         //				{
-        //					if (this._selectedTargetIndex < 0)
+        //					if (_selectedTargetIndex < 0)
         //					{
-        //						int num4 = base.frame.FindSkillTarget(base.simulator.regulation, base.unitIndex, this._selectedSkillIndex, 0);
+        //						int num4 = base.frame.FindSkillTarget(base.simulator.regulation, base.unitIndex, _selectedSkillIndex, 0);
         //						if (num4 >= 0)
         //						{
-        //							this._selectedTargetIndex = num4;
+        //							_selectedTargetIndex = num4;
         //						}
         //					}
-        //					if (this._selectedTargetIndex < 0)
+        //					if (_selectedTargetIndex < 0)
         //					{
         //						base.unit._eventSkillIndex = -1;
         //						skill3._remainedMotionTime = 0;
-        //						if (base.unit.skills[this._selectedSkillIndex].isIgnoreDeathType)
+        //						if (base.unit.skills[_selectedSkillIndex].isIgnoreDeathType)
         //						{
         //							base.unit._hasEventDeathSkill = false;
         //							return;
@@ -648,18 +648,18 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //					}
         //					else
         //					{
-        //						if (this._hasInputs)
+        //						if (_hasInputs)
         //						{
-        //							if (base.frame.lhsInput != null && base.frame.lhsInput.unitIndex == base.unitIndex && this._selectedSkillIndex == base.frame.lhsInput.skillIndex)
+        //							if (base.frame.lhsInput != null && base.frame.lhsInput.unitIndex == base.unitIndex && _selectedSkillIndex == base.frame.lhsInput.skillIndex)
         //							{
         //								base.frame.lhsInput._result = true;
         //							}
-        //							if (base.frame.rhsInput != null && base.frame.rhsInput.unitIndex == base.unitIndex && this._selectedSkillIndex == base.frame.rhsInput.skillIndex)
+        //							if (base.frame.rhsInput != null && base.frame.rhsInput.unitIndex == base.unitIndex && _selectedSkillIndex == base.frame.rhsInput.skillIndex)
         //							{
         //								base.frame.rhsInput._result = true;
         //							}
         //						}
-        //						if (this._isTurnUnit)
+        //						if (_isTurnUnit)
         //						{
         //							base.frame._isWaitingInput = false;
         //						}
@@ -667,9 +667,9 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //						{
         //							base.frame._hasSkillActionUnit = true;
         //						}
-        //						base.unit._playingActionIndex = this._selectedSkillIndex;
+        //						base.unit._playingActionIndex = _selectedSkillIndex;
         //						skill3._activeState = false;
-        //						skill3._targetIndex = this._selectedTargetIndex;
+        //						skill3._targetIndex = _selectedTargetIndex;
         //						if (base.unit.eventSkillType == EventSkillType.OnCombo)
         //						{
         //							skill3._remainedMotionTime += 660;
@@ -702,7 +702,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //							skill3._remainedMotionTime += 66;
         //						}
         //						skill3._initMotionTime = skill3._remainedMotionTime;
-        //						if (!this._isRhsUnit && skill3.isActiveSkill)
+        //						if (!_isRhsUnit && skill3.isActiveSkill)
         //						{
         //							base.frame._lhsActiveSkillUseCount++;
         //						}
@@ -739,9 +739,9 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //						{
         //							skill3._criticalDamage = skill3.attackDamage;
         //						}
-        //						if (this._hasEventInputs)
+        //						if (_hasEventInputs)
         //						{
-        //							if (base.unit.eventSkillIndex != this._selectedSkillIndex)
+        //							if (base.unit.eventSkillIndex != _selectedSkillIndex)
         //							{
         //								if (base.unit.eventSkillType != EventSkillType.OnHealthRate)
         //								{
@@ -794,9 +794,9 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	{
         //		base.skill._sp++;
         //	}
-        //	if (base.skill._remainedMotionTime > 0 && !this._hasInputs)
+        //	if (base.skill._remainedMotionTime > 0 && !_hasInputs)
         //	{
-        //		this._hasActivatedSkills = true;
+        //		_hasActivatedSkills = true;
         //		return false;
         //	}
         //	if (base.unit._cls < base.skill.SkillDataRow.openGrade)
@@ -826,11 +826,11 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //			{
         //				return false;
         //			}
-        //			if (this._hasInputs)
+        //			if (_hasInputs)
         //			{
         //				return false;
         //			}
-        //			if (this._hasEventInputs && base.unit.eventSkillType != EventSkillType.OnBeHit && base.unit.eventSkillType != EventSkillType.OnCombo)
+        //			if (_hasEventInputs && base.unit.eventSkillType != EventSkillType.OnBeHit && base.unit.eventSkillType != EventSkillType.OnCombo)
         //			{
         //				return false;
         //			}
@@ -848,12 +848,12 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	{
         //		return false;
         //	}
-        //	if (this._activatableSkills == null)
+        //	if (_activatableSkills == null)
         //	{
-        //		Regulation.ExtendList<Skill>(ref this._activatableSkills, 5);
+        //		Regulation.ExtendList<Skill>(ref _activatableSkills, 5);
         //	}
         //	base.skill._remainedMotionTime = base.unitMotionDr.playTime + 66;
-        //	this._activatableSkills[base.skillIndex] = base.skill;
+        //	_activatableSkills[base.skillIndex] = base.skill;
         //	return false;
         //}
 

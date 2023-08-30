@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="StellarGKLibrary.Shared\**" />
+    <EmbeddedResource Remove="StellarGKLibrary.Shared\**" />
+    <None Remove="StellarGKLibrary.Shared\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\ExcelOutputAsset\AchievementTable.json" />
     <None Remove="Resources\ExcelOutputAsset\AnnihilateBattleDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\BattleFieldSearchDataTable.json" />
@@ -616,10 +622,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
     <PackageReference Include="Tival.GZipCompressor" Version="1.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Shared\Battle\" />
   </ItemGroup>
 
 </Project>

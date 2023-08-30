@@ -1,4 +1,4 @@
-using System;
+using StellarGKLibrary.Enums;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -16,66 +16,66 @@ namespace StellarGKLibrary.Shared.Battle
 		{
 			get
 			{
-				return this._simulatorVersion;
+				return _simulatorVersion;
 			}
 		}
 		public double regulationVersion
 		{
 			get
 			{
-				return this._regulationVersion;
+				return _regulationVersion;
 			}
 		}
 		public Option option
 		{
 			get
 			{
-				return this._option;
+				return _option;
 			}
 		}
 		public InitState initState
 		{
 			get
 			{
-				return this._initState;
+				return _initState;
 			}
 		}
 		public int length
 		{
 			get
 			{
-				return this._length;
+				return _length;
 			}
 		}
 		public IList<Frame> frames
 		{
 			get
 			{
-				return this._frames.AsReadOnly();
+				return _frames.AsReadOnly();
 			}
 		}
 		public Result result
 		{
 			get
 			{
-				return this._result;
+				return _result;
 			}
 		}
 		public bool HasLhsInput(int frameNum)
 		{
-			return this._lhsInputMap.ContainsKey(frameNum);
+			return _lhsInputMap.ContainsKey(frameNum);
 		}
 		public Input GetLhsInput(int frameNum)
 		{
-			return this._lhsInputMap[frameNum];
+			return _lhsInputMap[frameNum];
 		}
 		public bool HasRhsInput(int frameNum)
 		{
-			return this._rhsInputMap.ContainsKey(frameNum);
+			return _rhsInputMap.ContainsKey(frameNum);
 		}
 		public Input GetRhsInput(int frameNum)
 		{
-			return this._rhsInputMap[frameNum];
+			return _rhsInputMap[frameNum];
 		}
 		public static Record Copy(Record src)
 		{

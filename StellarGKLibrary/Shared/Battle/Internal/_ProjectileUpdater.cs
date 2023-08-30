@@ -8,17 +8,17 @@ namespace StellarGKLibrary.Shared.Battle.Internal
 
         internal _ProjectileUpdater(Random random)
         {
-            this.SetRandom(random);
+            SetRandom(random);
         }
 
         public void SetRandom(Random random)
         {
-            this._random = random;
+            _random = random;
         }
 
         //public override bool OnFrameAccessStart()
         //{
-        //	this._rg = base.simulator.regulation;
+        //	_rg = base.simulator.regulation;
         //	return true;
         //}
 
@@ -29,19 +29,19 @@ namespace StellarGKLibrary.Shared.Battle.Internal
 
         public override bool OnSkillAccessStart()
         {
-            this._hasProjectile = false;
-            this._hasAliveProjectile = false;
+            _hasProjectile = false;
+            _hasAliveProjectile = false;
             return true;
         }
 
         //public override void OnSkillAccessEnd()
         //{
-        //	if (this._hasProjectile)
+        //	if (_hasProjectile)
         //	{
         //		base.unit._playingActionIndex = base.skillIndex;
-        //		if (!this._hasAliveProjectile && base.skill.returnMotionDri >= 0)
+        //		if (!_hasAliveProjectile && base.skill.returnMotionDri >= 0)
         //		{
-        //			UnitMotionDataRow unitMotionDataRow = this._rg.unitMotionDtbl[base.skill.returnMotionDri];
+        //			UnitMotionDataRow unitMotionDataRow = _rg.unitMotionDtbl[base.skill.returnMotionDri];
         //			base.skill._remainedReturnMotionTime = unitMotionDataRow.playTime;
         //			base.frame._isWaitingNextTurn = false;
         //		}
@@ -50,18 +50,18 @@ namespace StellarGKLibrary.Shared.Battle.Internal
 
         public override bool OnFirePointAccessStart()
         {
-            this._aliveProjectiles = new List<Projectile>();
+            _aliveProjectiles = new List<Projectile>();
             return true;
         }
 
         public override void OnFirePointAccessEnd()
         {
-            base.firePoint._projectiles = this._aliveProjectiles;
+            base.firePoint._projectiles = _aliveProjectiles;
         }
 
         //public override void OnProjectileAccessStart()
         //{
-        //	this._hasProjectile = true;
+        //	_hasProjectile = true;
         //	if (base.projectile._elapsedTime < base.projectileHitTime)
         //	{
         //		base.frame._isWaitingNextTurn = false;
@@ -71,11 +71,11 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	if (flag)
         //	{
         //		Unit unit = base.frame._units[base.projectile.targetIndex];
-        //		this._ApplyHit(unit);
+        //		_ApplyHit(unit);
         //	}
         //	if (base.projectile.elapsedTime < base.projectileMotionDuration || flag)
         //	{
-        //		this._hasAliveProjectile = true;
+        //		_hasAliveProjectile = true;
         //		if (base.skill.isActiveSkill)
         //		{
         //			base.frame._hasSkillActionUnit = true;
@@ -89,7 +89,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //		{
         //			base.frame._isWaitingNextTurn = false;
         //		}
-        //		this._aliveProjectiles.Add(Projectile._Copy(base.projectile));
+        //		_aliveProjectiles.Add(Projectile._Copy(base.projectile));
         //	}
         //}
 
@@ -101,20 +101,20 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	}
         //	if (base.isMissedProjectile)
         //	{
-        //		this._ApplyMissDamage(target);
+        //		_ApplyMissDamage(target);
         //	}
         //	else
         //	{
         //		if (base.skillDr.healing > 0)
         //		{
-        //			this._ApplyHealing(target);
+        //			_ApplyHealing(target);
         //		}
         //		else
         //		{
-        //			this._ApplyHitDamage(target);
+        //			_ApplyHitDamage(target);
         //		}
-        //		this._ApplySkillEffect(target);
-        //		this._ApplyWeaponEffect(target);
+        //		_ApplySkillEffect(target);
+        //		_ApplyWeaponEffect(target);
         //	}
         //}
 
@@ -124,7 +124,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	base.unit._hitCount++;
         //	int num = ((base.firePointSubIndex != 0) ? 1 : base.unitMotionDr.totalFireCount);
         //	long num2 = (long)base.skill.attackDamage * (long)base.projectileDr.attackDamageScale / (long)(num * 100);
-        //	UnitDataRow unitDataRow = this._rg.unitDtbl[target.dri];
+        //	UnitDataRow unitDataRow = _rg.unitDtbl[target.dri];
         //	if (base.unitDr.typeDown == unitDataRow.type)
         //	{
         //		num2 = num2 * (long)base.unitDr.typeHandicap / 100L;
@@ -161,11 +161,11 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //		num2 = (long)base.skill.attackDamage;
         //		num3 = 1;
         //	}
-        //	UnitDataRow unitDataRow = this._rg.unitDtbl[target.dri];
+        //	UnitDataRow unitDataRow = _rg.unitDtbl[target.dri];
         //	num2 = num2 * (long)base.projectileDr.attackDamageScale / (long)(num * 100);
         //	if (base.projectileDr.targetScaleType == EProjectileTargetScaleType.Attack)
         //	{
-        //		int projectileTargetScaleValue = this.GetProjectileTargetScaleValue(unitDataRow.job);
+        //		int projectileTargetScaleValue = GetProjectileTargetScaleValue(unitDataRow.job);
         //		num2 = num2 * (long)projectileTargetScaleValue / 100L;
         //	}
         //	if (base.unitDr.typeDown == unitDataRow.type)
@@ -197,7 +197,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	num2 += (long)(num9 / num);
         //	if (base.projectileDr.damagePattern > 0)
         //	{
-        //		SkillDamagePattern skillDamagePattern = this._rg.skillDamagePattern.Get(base.projectileDr.damagePattern);
+        //		SkillDamagePattern skillDamagePattern = _rg.skillDamagePattern.Get(base.projectileDr.damagePattern);
         //		if (skillDamagePattern != null)
         //		{
         //			int num10 = (int)((long)base.unit._health * 100L / (long)base.unit._maxHealth);
@@ -324,7 +324,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	num2 = num2 * (long)base.projectileDr.attackDamageScale / (long)(num * 100);
         //	if (base.projectileDr.damagePattern > 0)
         //	{
-        //		SkillDamagePattern skillDamagePattern = this._rg.skillDamagePattern.Get(base.projectileDr.damagePattern);
+        //		SkillDamagePattern skillDamagePattern = _rg.skillDamagePattern.Get(base.projectileDr.damagePattern);
         //		if (skillDamagePattern != null)
         //		{
         //			int num4 = (int)((long)base.unit._health * 100L / (long)base.unit._maxHealth);
@@ -342,10 +342,10 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	int num5 = base.skillDr.healing * base.skill.SkillLevelFormal.Healing / 1000;
         //	int num6 = base.skillDr.healing + num5;
         //	num2 = num2 * (long)num6 / 100L * (long)base.projectileDr.healingScale / 100L;
-        //	UnitDataRow unitDataRow = this._rg.unitDtbl[target.dri];
+        //	UnitDataRow unitDataRow = _rg.unitDtbl[target.dri];
         //	if (base.projectileDr.targetScaleType == EProjectileTargetScaleType.Healing)
         //	{
-        //		int projectileTargetScaleValue = this.GetProjectileTargetScaleValue(unitDataRow.job);
+        //		int projectileTargetScaleValue = GetProjectileTargetScaleValue(unitDataRow.job);
         //		num2 = num2 * (long)projectileTargetScaleValue / 100L;
         //	}
         //	if (base.projectile.isCritical)
@@ -367,7 +367,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	}
         //	for (int i = 0; i < base.statusEffectDrs.Count; i++)
         //	{
-        //		this._ApplyStatusEffect(target, base.statusEffectDrs[i], base.projectileDr.clingingTurns[i], base.projectileDr.clingingTime * 1000, false);
+        //		_ApplyStatusEffect(target, base.statusEffectDrs[i], base.projectileDr.clingingTurns[i], base.projectileDr.clingingTime * 1000, false);
         //	}
         //}
 
@@ -383,22 +383,22 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	}
         //	for (int i = 0; i < base.skill._weaponEffects.Count; i++)
         //	{
-        //		this._ApplyStatusEffect(target, base.skill._weaponEffects[i]._statusDri, base.skill._weaponEffects[i]._clingingTurn, 0, true);
+        //		_ApplyStatusEffect(target, base.skill._weaponEffects[i]._statusDri, base.skill._weaponEffects[i]._clingingTurn, 0, true);
         //	}
         //}
 
         //private void _ApplyStatusEffect(Unit target, int statusDri, int clingingTurn, int clingingTime, bool isWeapon)
         //{
-        //	StatusEffectDataRow statusEffectDataRow = this._rg.statusEffectDtbl[statusDri];
+        //	StatusEffectDataRow statusEffectDataRow = _rg.statusEffectDtbl[statusDri];
         //	string sid = string.Format("{0}_{1}_{2}", base.unitIndex, base.skillIndex, statusEffectDataRow.key);
         //	if (target._takenProjectilesOnTurn.FindIndex((string x) => x == sid) < 0)
         //	{
         //		target._takenProjectilesOnTurn.Add(sid);
-        //		if (statusEffectDataRow.chance < 100 && statusEffectDataRow.chance < this._random.Next(1, 101))
+        //		if (statusEffectDataRow.chance < 100 && statusEffectDataRow.chance < _random.Next(1, 101))
         //		{
         //			return;
         //		}
-        //		UnitDataRow unitDataRow = this._rg.unitDtbl[target.dri];
+        //		UnitDataRow unitDataRow = _rg.unitDtbl[target.dri];
         //		if (!Skill.IsTargetJobType(unitDataRow.job, statusEffectDataRow.targetJobType))
         //		{
         //			return;
@@ -422,7 +422,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //			if ((keyValuePair.Value.preventStatusGroup & statusEffectDataRow.group) != 0)
         //			{
         //				KeyValuePair<int, Status> keyValuePair2 = statusItr.Current;
-        //				if (keyValuePair2.Value.preventStatusRate > this._random.Next(0, 100))
+        //				if (keyValuePair2.Value.preventStatusRate > _random.Next(0, 100))
         //				{
         //					flag = true;
         //					break;
@@ -433,14 +433,14 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //		{
         //			return;
         //		}
-        //		Status status = Status._Create(this._rg, base.unitIndex, statusDri, target._turn, clingingTurn, clingingTime * 1000, base.skill.SkillLevelFormal, isWeapon);
-        //		this._ApplyStatusEffect(target, status);
+        //		Status status = Status._Create(_rg, base.unitIndex, statusDri, target._turn, clingingTurn, clingingTime * 1000, base.skill.SkillLevelFormal, isWeapon);
+        //		_ApplyStatusEffect(target, status);
         //	}
         //}
 
         //public void _ApplyStatusEffect(Unit target, Status status)
         //{
-        //	status.SetTargetBuffScale(this._rg, target);
+        //	status.SetTargetBuffScale(_rg, target);
         //	if (status.SpVal != 0)
         //	{
         //		for (int i = 1; i < target.skills.Count; i++)
@@ -508,7 +508,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //						status3._isAlive = true;
         //						status3._elapsedTurn = 0;
         //						status3._elapsedTimeTick = -66;
-        //						this._ApplyStatusEffect(base.unit, status3);
+        //						_ApplyStatusEffect(base.unit, status3);
         //					}
         //					KeyValuePair<int, Status> keyValuePair5 = statusItr.Current;
         //					keyValuePair5.Value._clingingTurn -= status.RemoveStatusTurn;
@@ -542,7 +542,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //				status4._isAlive = true;
         //				status4._elapsedTurn = 0;
         //				status4._elapsedTimeTick = -66;
-        //				this._ApplyStatusEffect(base.unit, status4);
+        //				_ApplyStatusEffect(base.unit, status4);
         //				if (++num >= status.RemoveStatusCount)
         //				{
         //					break;
@@ -655,7 +655,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //			}
         //			return;
         //		}
-        //		UnitDataRow unitDataRow = this._rg.unitDtbl[target.dri];
+        //		UnitDataRow unitDataRow = _rg.unitDtbl[target.dri];
         //		if (unitDataRow.stateAllImmunity > 0)
         //		{
         //			if (status.StunVal > 0)

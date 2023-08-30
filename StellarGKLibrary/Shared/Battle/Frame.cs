@@ -14,7 +14,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._randomSeed;
+                return _randomSeed;
             }
         }
 
@@ -22,7 +22,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._lhsInput;
+                return _lhsInput;
             }
         }
 
@@ -30,7 +30,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._rhsInput;
+                return _rhsInput;
             }
         }
 
@@ -38,7 +38,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._units.AsReadOnly();
+                return _units.AsReadOnly();
             }
         }
 
@@ -46,7 +46,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._time;
+                return _time;
             }
         }
 
@@ -54,7 +54,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._turn;
+                return _turn;
             }
         }
 
@@ -62,7 +62,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._lhsTimeLine.AsReadOnly();
+                return _lhsTimeLine.AsReadOnly();
             }
         }
 
@@ -70,7 +70,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._rhsTimeLine.AsReadOnly();
+                return _rhsTimeLine.AsReadOnly();
             }
         }
 
@@ -78,7 +78,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._isWaitingInput;
+                return _isWaitingInput;
             }
         }
 
@@ -86,7 +86,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._turnUnitIndex;
+                return _turnUnitIndex;
             }
         }
 
@@ -94,7 +94,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._lhsTroopStartIndex;
+                return _lhsTroopStartIndex;
             }
         }
 
@@ -102,7 +102,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._rhsTroopStartIndex;
+                return _rhsTroopStartIndex;
             }
         }
 
@@ -110,7 +110,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._gold;
+                return _gold;
             }
         }
 
@@ -118,7 +118,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._armyDestoryCnt;
+                return _armyDestoryCnt;
             }
         }
 
@@ -126,7 +126,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._navyDestoryCnt;
+                return _navyDestoryCnt;
             }
         }
 
@@ -134,7 +134,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._totalAttackDamage;
+                return _totalAttackDamage;
             }
         }
 
@@ -142,7 +142,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._onTurn;
+                return _onTurn;
             }
         }
 
@@ -150,7 +150,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._lhsOnWave;
+                return _lhsOnWave;
             }
         }
 
@@ -158,7 +158,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._rhsOnWave;
+                return _rhsOnWave;
             }
         }
 
@@ -166,7 +166,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._onWaveTurn;
+                return _onWaveTurn;
             }
         }
 
@@ -174,7 +174,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._isWaitingInput && this.IsLhsUnitInBattle(this._turnUnitIndex);
+                return _isWaitingInput && IsLhsUnitInBattle(_turnUnitIndex);
             }
         }
 
@@ -182,7 +182,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._isWaitingInput && this.IsRhsUnitInBattle(this._turnUnitIndex);
+                return _isWaitingInput && IsRhsUnitInBattle(_turnUnitIndex);
             }
         }
 
@@ -193,12 +193,12 @@ namespace StellarGKLibrary.Shared.Battle
 
         public bool IsUnitInBattle(int unitIndex)
         {
-            return this.IsLhsUnitInBattle(unitIndex) || this.IsRhsUnitInBattle(unitIndex);
+            return IsLhsUnitInBattle(unitIndex) || IsRhsUnitInBattle(unitIndex);
         }
 
         public bool IsLhsUnit(int unitIndex)
         {
-            for (int i = this._lhsTroopStartIndex; i >= 0; i -= 9)
+            for (int i = _lhsTroopStartIndex; i >= 0; i -= 9)
             {
                 int num = i + 9;
                 if (unitIndex >= i && unitIndex < num)
@@ -211,8 +211,8 @@ namespace StellarGKLibrary.Shared.Battle
 
         public bool IsRhsUnit(int unitIndex)
         {
-            int i = this._rhsTroopStartIndex;
-            int count = this.units.Count;
+            int i = _rhsTroopStartIndex;
+            int count = units.Count;
             while (i >= count)
             {
                 int num = i + 9;
@@ -227,21 +227,21 @@ namespace StellarGKLibrary.Shared.Battle
 
         public bool IsLhsUnitInBattle(int unitIndex)
         {
-            int lhsTroopStartIndex = this._lhsTroopStartIndex;
+            int lhsTroopStartIndex = _lhsTroopStartIndex;
             int num = lhsTroopStartIndex + 9;
             return unitIndex >= lhsTroopStartIndex && unitIndex < num;
         }
 
         public bool IsRhsUnitInBattle(int unitIndex)
         {
-            int rhsTroopStartIndex = this._rhsTroopStartIndex;
+            int rhsTroopStartIndex = _rhsTroopStartIndex;
             int num = rhsTroopStartIndex + 9;
             return unitIndex >= rhsTroopStartIndex && unitIndex < num;
         }
 
         //public int FindSkillTarget(Regulation rg, int unitIndex, int skillIndex, int subIndex = 0)
         //{
-        //	Unit unit = this._units[unitIndex];
+        //	Unit unit = _units[unitIndex];
         //	Skill skill = ((unit != null) ? unit.skills[skillIndex] : null);
         //	if (skill == null)
         //	{
@@ -258,21 +258,21 @@ namespace StellarGKLibrary.Shared.Battle
         //			{
         //				if (unit.side == EBattleSide.Left)
         //				{
-        //					num = this._rhsTroopStartIndex;
+        //					num = _rhsTroopStartIndex;
         //				}
         //				else
         //				{
-        //					num = this._lhsTroopStartIndex;
+        //					num = _lhsTroopStartIndex;
         //				}
         //			}
         //		}
         //		else if (unit.side == EBattleSide.Left)
         //		{
-        //			num = this._lhsTroopStartIndex;
+        //			num = _lhsTroopStartIndex;
         //		}
         //		else
         //		{
-        //			num = this._rhsTroopStartIndex;
+        //			num = _rhsTroopStartIndex;
         //		}
         //		int[,] array = null;
         //		switch (unitIndex % 9)
@@ -295,7 +295,7 @@ namespace StellarGKLibrary.Shared.Battle
         //				array = Frame._PriorityFrontTable036;
         //				break;
         //			case ESkillTargetPattern.Random:
-        //				array = this.GetRandomPriorityTable();
+        //				array = GetRandomPriorityTable();
         //				break;
         //			default:
         //				array = Frame._PriorityTable036;
@@ -320,7 +320,7 @@ namespace StellarGKLibrary.Shared.Battle
         //				array = Frame._PriorityFrontTable036;
         //				break;
         //			case ESkillTargetPattern.Random:
-        //				array = this.GetRandomPriorityTable();
+        //				array = GetRandomPriorityTable();
         //				break;
         //			default:
         //				array = Frame._PriorityTable147;
@@ -345,7 +345,7 @@ namespace StellarGKLibrary.Shared.Battle
         //				array = Frame._PriorityFrontTable036;
         //				break;
         //			case ESkillTargetPattern.Random:
-        //				array = this.GetRandomPriorityTable();
+        //				array = GetRandomPriorityTable();
         //				break;
         //			default:
         //				array = Frame._PriorityTable258;
@@ -367,9 +367,9 @@ namespace StellarGKLibrary.Shared.Battle
         //			{
         //				int num2 = array[i, j];
         //				int num3 = num + num2;
-        //				if (num3 >= 0 && num3 < this._units.Count)
+        //				if (num3 >= 0 && num3 < _units.Count)
         //				{
-        //					Unit unit4 = this._units[num3];
+        //					Unit unit4 = _units[num3];
         //					if (unit4 != null && unit4.health > 0)
         //					{
         //						if (unit2 == null)
@@ -384,7 +384,7 @@ namespace StellarGKLibrary.Shared.Battle
         //						}
         //						if (!flag2)
         //						{
-        //							if (this.IsTargetStatusCondition(unit4, skillDataRow.targetStatusConditions[subIndex], skillDataRow.conditionValues[subIndex]))
+        //							if (IsTargetStatusCondition(unit4, skillDataRow.targetStatusConditions[subIndex], skillDataRow.conditionValues[subIndex]))
         //							{
         //								flag2 = true;
         //								bool flag3 = true;
@@ -394,11 +394,11 @@ namespace StellarGKLibrary.Shared.Battle
         //									flag2 = false;
         //									if (unit3 != null)
         //									{
-        //										int num4 = this.JobCondition(rg, skillDataRow.targetJobConditions[subIndex], unit3, unit4);
+        //										int num4 = JobCondition(rg, skillDataRow.targetJobConditions[subIndex], unit3, unit4);
         //										if (num4 > 0)
         //										{
         //											flag4 = false;
-        //											if (this.IsHighJobCondition(rg, skillDataRow.targetJobConditions[subIndex], unit4) && skillDataRow.targetStatisticConditions[subIndex] == ESkillTargetStatisticCondition.None)
+        //											if (IsHighJobCondition(rg, skillDataRow.targetJobConditions[subIndex], unit4) && skillDataRow.targetStatisticConditions[subIndex] == ESkillTargetStatisticCondition.None)
         //											{
         //												flag2 = true;
         //											}
@@ -417,7 +417,7 @@ namespace StellarGKLibrary.Shared.Battle
         //									else
         //									{
         //										flag4 = false;
-        //										if (this.IsHighJobCondition(rg, skillDataRow.targetJobConditions[subIndex], unit4) && skillDataRow.targetStatisticConditions[subIndex] == ESkillTargetStatisticCondition.None)
+        //										if (IsHighJobCondition(rg, skillDataRow.targetJobConditions[subIndex], unit4) && skillDataRow.targetStatisticConditions[subIndex] == ESkillTargetStatisticCondition.None)
         //										{
         //											flag2 = true;
         //										}
@@ -429,7 +429,7 @@ namespace StellarGKLibrary.Shared.Battle
         //									if (unit3 != null)
         //									{
         //										flag3 = false;
-        //										if (this.StatisticCondition(rg, skillDataRow.targetStatisticConditions[subIndex], unit3, unit4))
+        //										if (StatisticCondition(rg, skillDataRow.targetStatisticConditions[subIndex], unit3, unit4))
         //										{
         //											flag3 = true;
         //										}
@@ -471,7 +471,7 @@ namespace StellarGKLibrary.Shared.Battle
         //		{
         //			return unitIndex;
         //		}
-        //		if (this.IsTargetStatusCondition(unit, skillDataRow.targetStatusConditions[subIndex], skillDataRow.conditionValues[subIndex]))
+        //		if (IsTargetStatusCondition(unit, skillDataRow.targetStatusConditions[subIndex], skillDataRow.conditionValues[subIndex]))
         //		{
         //			return unitIndex;
         //		}
@@ -745,7 +745,7 @@ namespace StellarGKLibrary.Shared.Battle
 
         //public List<int> FindSkillTargetCandidates(Regulation rg, int unitIndex, int skillIndex)
         //{
-        //	Unit unit = this._units[unitIndex];
+        //	Unit unit = _units[unitIndex];
         //	Skill skill = ((unit != null) ? unit._skills[skillIndex] : null);
         //	if (skill == null)
         //	{
@@ -755,38 +755,38 @@ namespace StellarGKLibrary.Shared.Battle
         //	ESkillTargetType targetType = skillDataRow.targetType;
         //	if (targetType == ESkillTargetType.Friend)
         //	{
-        //		return this.FindFriendTargetCandidates(unitIndex);
+        //		return FindFriendTargetCandidates(unitIndex);
         //	}
         //	if (targetType != ESkillTargetType.Enemy)
         //	{
-        //		return this.FindEnemyTargetCandidates(unitIndex, false);
+        //		return FindEnemyTargetCandidates(unitIndex, false);
         //	}
-        //	return this.FindEnemyTargetCandidates(unitIndex, true);
+        //	return FindEnemyTargetCandidates(unitIndex, true);
         //}
 
         public List<int> FindFriendTargetCandidates(int unitIndex)
         {
-            int num = this._rhsTroopStartIndex;
-            if (!this.IsRhsUnitInBattle(unitIndex))
+            int num = _rhsTroopStartIndex;
+            if (!IsRhsUnitInBattle(unitIndex))
             {
-                num = this._lhsTroopStartIndex;
+                num = _lhsTroopStartIndex;
             }
-            return this._FindTargetCandidates(unitIndex, num, true);
+            return _FindTargetCandidates(unitIndex, num, true);
         }
 
         public List<int> FindEnemyTargetCandidates(int unitIndex, bool shouldIgnoreBlocking = false)
         {
-            int num = this._rhsTroopStartIndex;
-            if (this.IsRhsUnitInBattle(unitIndex))
+            int num = _rhsTroopStartIndex;
+            if (IsRhsUnitInBattle(unitIndex))
             {
-                num = this._lhsTroopStartIndex;
+                num = _lhsTroopStartIndex;
             }
-            return this._FindTargetCandidates(unitIndex, num, true);
+            return _FindTargetCandidates(unitIndex, num, true);
         }
 
         private int[,] GetRandomPriorityTable()
         {
-            Random random = new Random(this._randomSeed);
+            Random random = new Random(_randomSeed);
             switch (random.Next(0, 9))
             {
                 case 0:
@@ -836,9 +836,9 @@ namespace StellarGKLibrary.Shared.Battle
                 {
                     int num2 = array[i, j];
                     int num3 = targetTroopStartIndex + num2;
-                    if (num3 >= 0 && num3 < this._units.Count)
+                    if (num3 >= 0 && num3 < _units.Count)
                     {
-                        Unit unit = this._units[num3];
+                        Unit unit = _units[num3];
                         if (unit != null && unit.health > 0)
                         {
                             list.Add(num3);
@@ -855,7 +855,7 @@ namespace StellarGKLibrary.Shared.Battle
 
         //public int FindActivatableEventSkill(Regulation rg, EventSkillType type, int unitIndex)
         //{
-        //	Unit unit = this._units[unitIndex];
+        //	Unit unit = _units[unitIndex];
         //	if (unit == null)
         //	{
         //		return -1;
@@ -866,7 +866,7 @@ namespace StellarGKLibrary.Shared.Battle
         //		if (skill != null && skill.remainedMotionTime <= 0)
         //		{
         //			SkillDataRow skillDataRow = rg.skillDtbl[skill.dri];
-        //			bool flag = this.IsEnableEventSkillType(type, skillDataRow);
+        //			bool flag = IsEnableEventSkillType(type, skillDataRow);
         //			if (flag && skill.sp >= skillDataRow.maxSp)
         //			{
         //				return i;
@@ -895,7 +895,7 @@ namespace StellarGKLibrary.Shared.Battle
 
         public bool CanUseSkill(Option option)
         {
-            return option.canInterfereSkill || !this._hasSkillActionUnit;
+            return option.canInterfereSkill || !_hasSkillActionUnit;
         }
 
         [JsonProperty]

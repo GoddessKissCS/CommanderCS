@@ -1,10 +1,15 @@
-﻿
+﻿using Newtonsoft.Json;
+using StellarGKLibrary.Cryptography;
+using StellarGKLibrary.Shared.Regulation;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace StellarGKLibrary.Utils
 {
-
-    internal class Utility
+    public class Utility
     {
+        private List<string> arrDBFileName = new();
         public static DateTime ConvertToDateTime(string yyyymmddFormatString)
         {
             if (string.IsNullOrEmpty(yyyymmddFormatString) || yyyymmddFormatString.Length != 8)
@@ -30,11 +35,6 @@ namespace StellarGKLibrary.Utils
                 return default(DateTime);
             }
             return new DateTime(num, num2, num3);
-        }
-        public void LoadRegulation()
-        {
-
-
         }
     }
 }

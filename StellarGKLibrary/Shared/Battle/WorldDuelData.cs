@@ -9,13 +9,13 @@ namespace StellarGKLibrary.Shared.Battle
     {
         //public void Init(Regulation regulation)
         //{
-        //	if (this._init)
+        //	if (_init)
         //	{
         //		return;
         //	}
-        //	this.plyerBuffs = this.InitBuffs(regulation, this._playerBuffs, this._enemyBuffs);
-        //	this.enemyBuffs = this.InitBuffs(regulation, this._enemyBuffs, this._playerBuffs);
-        //	this._init = true;
+        //	plyerBuffs = InitBuffs(regulation, _playerBuffs, _enemyBuffs);
+        //	enemyBuffs = InitBuffs(regulation, _enemyBuffs, _playerBuffs);
+        //	_init = true;
         //}
 
         //private Dictionary<EWorldDuelBuff, int> InitBuffs(Regulation regulation, List<string> ownerBuffs, List<string> enemyBuffs)

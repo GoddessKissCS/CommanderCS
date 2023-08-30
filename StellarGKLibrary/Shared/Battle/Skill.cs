@@ -13,7 +13,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._dri;
+                return _dri;
             }
         }
 
@@ -21,7 +21,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._level;
+                return _level;
             }
         }
 
@@ -29,7 +29,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._unitMotionDri;
+                return _unitMotionDri;
             }
         }
 
@@ -37,7 +37,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._returnMotionDri;
+                return _returnMotionDri;
             }
         }
 
@@ -45,7 +45,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._firePoints.AsReadOnly();
+                return _firePoints.AsReadOnly();
             }
         }
 
@@ -53,7 +53,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._skillDataRow;
+        //		return _skillDataRow;
         //	}
         //}
 
@@ -61,7 +61,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._skillLevelFormal;
+                return _skillLevelFormal;
             }
         }
 
@@ -69,7 +69,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._bCutInSkill;
+                return _bCutInSkill;
             }
         }
 
@@ -77,7 +77,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._fireActionDri;
+                return _fireActionDri;
             }
         }
 
@@ -85,7 +85,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._fireActionDr;
+        //		return _fireActionDr;
         //	}
         //}
 
@@ -93,7 +93,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._targetIndex;
+                return _targetIndex;
             }
         }
 
@@ -101,7 +101,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._sp;
+                return _sp;
             }
         }
 
@@ -109,7 +109,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._curSp;
+                return _curSp;
             }
         }
 
@@ -117,7 +117,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._perCurSp;
+                return _perCurSp;
             }
         }
 
@@ -125,7 +125,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._attackDamage;
+                return _attackDamage;
             }
         }
 
@@ -133,7 +133,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._accuracy;
+                return _accuracy;
             }
         }
 
@@ -141,7 +141,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._criticalChance;
+                return _criticalChance;
             }
         }
 
@@ -149,7 +149,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._criticalDamage;
+                return _criticalDamage;
             }
         }
 
@@ -157,7 +157,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._bloodsucking;
+                return _bloodsucking;
             }
         }
 
@@ -165,7 +165,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._remainedMotionTime;
+                return _remainedMotionTime;
             }
         }
 
@@ -173,7 +173,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._remainedReturnMotionTime;
+                return _remainedReturnMotionTime;
             }
         }
 
@@ -181,7 +181,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._activeState;
+                return _activeState;
             }
         }
 
@@ -189,7 +189,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._skillDataRow.spCostOnTurn > 0;
+        //		return _skillDataRow.spCostOnTurn > 0;
         //	}
         //}
 
@@ -197,7 +197,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return (float)this._curSp / (float)this._skillDataRow.maxSp;
+        //		return (float)_curSp / (float)_skillDataRow.maxSp;
         //	}
         //}
 
@@ -205,7 +205,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._skillDataRow.openGrade;
+        //		return _skillDataRow.openGrade;
         //	}
         //}
 
@@ -213,7 +213,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._skillDataRow.remainedHealthRate == 0;
+        //		return _skillDataRow.remainedHealthRate == 0;
         //	}
         //}
 
@@ -221,7 +221,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this.isIgnoreDeathType && this.returnMotionDri >= 0;
+        //		return isIgnoreDeathType && returnMotionDri >= 0;
         //	}
         //}
 
@@ -229,7 +229,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._skillDataRow.occurrenceProbability;
+        //		return _skillDataRow.occurrenceProbability;
         //	}
         //}
 
@@ -237,7 +237,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._sp >= this._skillDataRow.maxSp && this._curSp == this._sp;
+        //		return _sp >= _skillDataRow.maxSp && _curSp == _sp;
         //	}
         //}
 
@@ -245,7 +245,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._skillDataRow.spCostOnBeHit > 0 || this._skillDataRow.spCostOnCombo > 0 || this._skillDataRow.spCostOnEnter > 0 || this._skillDataRow.remainedHealthRate >= 0 || this._skillDataRow.occurrenceProbability > 0;
+        //		return _skillDataRow.spCostOnBeHit > 0 || _skillDataRow.spCostOnCombo > 0 || _skillDataRow.spCostOnEnter > 0 || _skillDataRow.remainedHealthRate >= 0 || _skillDataRow.occurrenceProbability > 0;
         //	}
         //}
 
@@ -253,7 +253,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._skillDataRow.spCostOnBeHit > 0;
+        //		return _skillDataRow.spCostOnBeHit > 0;
         //	}
         //}
 
@@ -261,7 +261,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._skillDataRow.spCostOnCombo > 0;
+        //		return _skillDataRow.spCostOnCombo > 0;
         //	}
         //}
 
@@ -269,7 +269,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._skillDataRow.spCostOnEnter > 0;
+        //		return _skillDataRow.spCostOnEnter > 0;
         //	}
         //}
 
@@ -277,7 +277,7 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._skillDataRow.remainedHealthRate >= 0;
+        //		return _skillDataRow.remainedHealthRate >= 0;
         //	}
         //}
 
@@ -285,13 +285,13 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._skillDataRow.occurrenceProbability > 0;
+        //		return _skillDataRow.occurrenceProbability > 0;
         //	}
         //}
 
         //public bool isDamageSkill(int subIdx = 0)
         //{
-        //	return this._skillDataRow.fireTypes[subIdx] != ESkillType.Buff && this._skillDataRow.fireTypes[subIdx] != ESkillType.DeBuff && this._skillDataRow.fireTypes[subIdx] != ESkillType.Heal && (subIdx != 0 || this._skillDataRow.healing <= 0);
+        //	return _skillDataRow.fireTypes[subIdx] != ESkillType.Buff && _skillDataRow.fireTypes[subIdx] != ESkillType.DeBuff && _skillDataRow.fireTypes[subIdx] != ESkillType.Heal && (subIdx != 0 || _skillDataRow.healing <= 0);
         //}
 
         //internal static Skill _Create(Regulation rg, string drk)

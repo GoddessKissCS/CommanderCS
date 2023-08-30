@@ -1,4 +1,4 @@
-using System;
+using StellarGKLibrary.Enums;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -16,93 +16,93 @@ namespace StellarGKLibrary.Shared.Battle
 		{
 			get
 			{
-				return this._checksum;
+				return _checksum;
 			}
 		}
 		public bool isTimeOut
 		{
 			get
 			{
-				return this._isTimeOut;
+				return _isTimeOut;
 			}
 		}
 		public int winSide
 		{
 			get
 			{
-				return this._winSide;
+				return _winSide;
 			}
 		}
 		public int clearRank
 		{
 			get
 			{
-				return this._clearRank;
+				return _clearRank;
 			}
 		}
 		public int gold
 		{
 			get
 			{
-				return this._gold;
+				return _gold;
 			}
 		}
 		public int armyDestoryCnt
 		{
 			get
 			{
-				return this._armyDestoryCnt;
+				return _armyDestoryCnt;
 			}
 		}
 		public int armyCmdDestoryCnt
 		{
 			get
 			{
-				return this._armyCmdDestoryCnt;
+				return _armyCmdDestoryCnt;
 			}
 		}
 		public int navyDestoryCnt
 		{
 			get
 			{
-				return this._navyDestoryCnt;
+				return _navyDestoryCnt;
 			}
 		}
 		public int navyCmdDestoryCnt
 		{
 			get
 			{
-				return this._navyCmdDestoryCnt;
+				return _navyCmdDestoryCnt;
 			}
 		}
 		public long totalAttackDamage
 		{
 			get
 			{
-				return this._totalAttackDamage;
+				return _totalAttackDamage;
 			}
 		}
 		public IList<Troop> lhsTroops
 		{
 			get
 			{
-				return this._lhsTroops.AsReadOnly();
+				return _lhsTroops.AsReadOnly();
 			}
 		}
 		public IList<Troop> rhsTroops
 		{
 			get
 			{
-				return this._rhsTroops.AsReadOnly();
+				return _rhsTroops.AsReadOnly();
 			}
 		}
 		public Troop victoryTroop
 		{
 			get
 			{
-				if (this._winSide < 0)
+				if (_winSide < 0)
 				{
-					foreach (Troop troop in this._lhsTroops)
+					foreach (Troop troop in _lhsTroops)
 					{
 						if (!troop.isAnnihilated)
 						{
@@ -110,9 +110,9 @@ namespace StellarGKLibrary.Shared.Battle
 						}
 					}
 				}
-				if (this._winSide > 0)
+				if (_winSide > 0)
 				{
-					foreach (Troop troop2 in this._rhsTroops)
+					foreach (Troop troop2 in _rhsTroops)
 					{
 						if (!troop2.isAnnihilated)
 						{
@@ -127,7 +127,7 @@ namespace StellarGKLibrary.Shared.Battle
 		{
 			get
 			{
-				foreach (Troop troop in this._lhsTroops)
+				foreach (Troop troop in _lhsTroops)
 				{
 					if (troop.isAnnihilated)
 					{
@@ -141,7 +141,7 @@ namespace StellarGKLibrary.Shared.Battle
 		{
 			get
 			{
-				return this._winSide < 0;
+				return _winSide < 0;
 			}
 		}
 

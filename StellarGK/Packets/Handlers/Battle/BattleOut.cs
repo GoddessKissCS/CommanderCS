@@ -15,10 +15,6 @@ namespace StellarGK.Host.Handlers.Battle
             Record record = (Record)@params.info;
             Result result = (Result)@params.result;
 
-			UserInformationResponse.BattleResult battleResult = new()
-			{
-				save = true,
-			};
 
             //string serializedRecord = JsonConvert.SerializeObject(record, Formatting.Indented);
             //string serializedResult = JsonConvert.SerializeObject(result, Formatting.Indented);

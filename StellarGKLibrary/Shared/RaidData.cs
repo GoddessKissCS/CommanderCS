@@ -10,7 +10,7 @@ namespace StellarGKLibrary.Shared
         {
             get
             {
-                return this._raidId;
+                return _raidId;
             }
         }
 
@@ -18,7 +18,7 @@ namespace StellarGKLibrary.Shared
         {
             get
             {
-                return (float)((this._raidEndTime - this._raidStartTime) / (this._raidEndTime - this._raidCurTime));
+                return (float)((_raidEndTime - _raidStartTime) / (_raidEndTime - _raidCurTime));
             }
         }
         public static RaidData Create(int raidId, double startTime, double endTime, double curTime)

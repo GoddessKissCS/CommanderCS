@@ -8,12 +8,12 @@ namespace StellarGKLibrary.Shared.Battle.Internal
 
         //internal _TimeLineUpdater(Random random)
         //{
-        //	this.SetRandom(random);
+        //	SetRandom(random);
         //}
 
         //public void SetRandom(Random random)
         //{
-        //	this._random = random;
+        //	_random = random;
         //}
 
         //public override bool OnFrameAccessStart()
@@ -302,7 +302,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //		}
         //		base.unit._takenProjectilesOnTurn.Clear();
         //	}
-        //	this.UpdateUnitStatus();
+        //	UpdateUnitStatus();
         //	return false;
         //}
 
@@ -317,7 +317,7 @@ namespace StellarGKLibrary.Shared.Battle.Internal
         //	{
         //		KeyValuePair<int, Status> keyValuePair = statusItr.Current;
         //		Status value = keyValuePair.Value;
-        //		this.UpdateUnitStatus(value);
+        //		UpdateUnitStatus(value);
         //	}
         //}
 

@@ -13,14 +13,14 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._eventSkillIndex >= 0;
+                return _eventSkillIndex >= 0;
             }
         }
         public bool hasActiveSkill
         {
             get
             {
-                return this._activeSkillIdx >= 0;
+                return _activeSkillIdx >= 0;
             }
         }
 
@@ -29,50 +29,50 @@ namespace StellarGKLibrary.Shared.Battle
         //{
         //	get
         //	{
-        //		return this._activeSkillIdx >= 0 && this.skills[this._activeSkillIdx].CanUse;
+        //		return _activeSkillIdx >= 0 && skills[_activeSkillIdx].CanUse;
         //	}
         //}
         public bool isPlayingAction
         {
             get
             {
-                return this._playingActionIndex >= 0;
+                return _playingActionIndex >= 0;
             }
         }
         public bool isWaitingReturnMotion
         {
             get
             {
-                return this._playingActionIndex >= 0 && this.skills[this._playingActionIndex].returnMotionDri >= 0;
+                return _playingActionIndex >= 0 && skills[_playingActionIndex].returnMotionDri >= 0;
             }
         }
         public bool isUsingSkill
         {
             get
             {
-                return this._playingActionIndex > 0;
+                return _playingActionIndex > 0;
             }
         }
         public bool isPlayingFire
         {
             get
             {
-                return this._isPlayingFire;
+                return _isPlayingFire;
             }
         }
 
         //public bool CanSkillAction(int skillIdx)
         //{
-        //	if (skillIdx >= this.skills.Count)
+        //	if (skillIdx >= skills.Count)
         //	{
         //		return false;
         //	}
-        //	Skill skill = this.skills[skillIdx];
+        //	Skill skill = skills[skillIdx];
         //	if (skill == null)
         //	{
         //		return false;
         //	}
-        //	if (this._cls < skill.SkillDataRow.openGrade)
+        //	if (_cls < skill.SkillDataRow.openGrade)
         //	{
         //		return false;
         //	}
@@ -80,7 +80,7 @@ namespace StellarGKLibrary.Shared.Battle
         //	{
         //		return false;
         //	}
-        //	if (this.isDead)
+        //	if (isDead)
         //	{
         //		if (!skill.isIgnoreDeathType)
         //		{
@@ -89,15 +89,15 @@ namespace StellarGKLibrary.Shared.Battle
         //	}
         //	else
         //	{
-        //		if (this.isStatusStun)
+        //		if (isStatusStun)
         //		{
         //			return false;
         //		}
-        //		if (this.isStatusSilence && skillIdx != 0)
+        //		if (isStatusSilence && skillIdx != 0)
         //		{
         //			return false;
         //		}
-        //		if (this.isStatusAggro && (skill.SkillDataRow.targetType == ESkillTargetType.Own || skill.SkillDataRow.targetType == ESkillTargetType.Friend))
+        //		if (isStatusAggro && (skill.SkillDataRow.targetType == ESkillTargetType.Own || skill.SkillDataRow.targetType == ESkillTargetType.Friend))
         //		{
         //			return false;
         //		}
@@ -108,462 +108,462 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._dri;
+                return _dri;
             }
         }
         public bool isEnableEventSkill
         {
             get
             {
-                return this._enableEventSkill;
+                return _enableEventSkill;
             }
         }
         public EventSkillType eventSkillType
         {
             get
             {
-                return this._eventSkillType;
+                return _eventSkillType;
             }
         }
         public int eventSkillIndex
         {
             get
             {
-                return this._eventSkillIndex;
+                return _eventSkillIndex;
             }
         }
         public bool isEnteredNow
         {
             get
             {
-                return this._isEnteredNow;
+                return _isEnteredNow;
             }
         }
         public bool isTurn
         {
             get
             {
-                return this._isTurn;
+                return _isTurn;
             }
         }
         public int level
         {
             get
             {
-                return this._level;
+                return _level;
             }
         }
         public int rank
         {
             get
             {
-                return this._rank;
+                return _rank;
             }
         }
         public string cid
         {
             get
             {
-                return this._cid;
+                return _cid;
             }
         }
         public int cls
         {
             get
             {
-                return this._cls;
+                return _cls;
             }
         }
         public string ctid
         {
             get
             {
-                return this._ctid;
+                return _ctid;
             }
         }
         public int favorRewardStep
         {
             get
             {
-                return this._favorRewardStep;
+                return _favorRewardStep;
             }
         }
         public int marry
         {
             get
             {
-                return this._marry;
+                return _marry;
             }
         }
         public bool isDead
         {
             get
             {
-                return this._isDead;
+                return _isDead;
             }
         }
         public int maxHealth
         {
             get
             {
-                return this._maxHealth;
+                return _maxHealth;
             }
         }
         public int health
         {
             get
             {
-                return this._health;
+                return _health;
             }
         }
         public int maxShield
         {
             get
             {
-                return this._maxShiled;
+                return _maxShiled;
             }
         }
         public int shiled
         {
             get
             {
-                return this._shiled;
+                return _shiled;
             }
         }
         public int speed
         {
             get
             {
-                return this._speed;
+                return _speed;
             }
         }
         public int defense
         {
             get
             {
-                return this._defense;
+                return _defense;
             }
         }
         public int luck
         {
             get
             {
-                return this._luck;
+                return _luck;
             }
         }
         public long takenDamage
         {
             get
             {
-                return this._takenDamage;
+                return _takenDamage;
             }
         }
         public long takenCriticalDamage
         {
             get
             {
-                return this._takenCriticalDamage;
+                return _takenCriticalDamage;
             }
         }
         public long dealtDamage
         {
             get
             {
-                return this._dealtDamage;
+                return _dealtDamage;
             }
         }
         public long dealtCriticalDamage
         {
             get
             {
-                return this._dealtCriticalDamage;
+                return _dealtCriticalDamage;
             }
         }
         public long takenHealing
         {
             get
             {
-                return this._takenHealing;
+                return _takenHealing;
             }
         }
         public long takenCriticalHealing
         {
             get
             {
-                return this._takenCriticalHealing;
+                return _takenCriticalHealing;
             }
         }
         public long takenDamageRecovery
         {
             get
             {
-                return this._takenDamageRecovery;
+                return _takenDamageRecovery;
             }
         }
         public long uiTakenDamage
         {
             get
             {
-                return this._uiTakenDamage;
+                return _uiTakenDamage;
             }
         }
         public long uiTakenHealing
         {
             get
             {
-                return this._uiTakenHealing;
+                return _uiTakenHealing;
             }
         }
         public int hitCount
         {
             get
             {
-                return this._hitCount;
+                return _hitCount;
             }
         }
         public int criticalHitCount
         {
             get
             {
-                return this._criticalHitCount;
+                return _criticalHitCount;
             }
         }
         public int avoidanceCount
         {
             get
             {
-                return this._avoidanceCount;
+                return _avoidanceCount;
             }
         }
         public int beHitCount
         {
             get
             {
-                return this._beHitCount;
+                return _beHitCount;
             }
         }
         public int dropGold
         {
             get
             {
-                return this._dropGold;
+                return _dropGold;
             }
         }
         public int dropItemCnt
         {
             get
             {
-                return this._dropItemCnt;
+                return _dropItemCnt;
             }
         }
         public int enemyAttackerUnitIdx
         {
             get
             {
-                return this._enemyAttackerUnitIdx;
+                return _enemyAttackerUnitIdx;
             }
         }
         public int maxHealthBonus
         {
             get
             {
-                return this._maxHealthBonus;
+                return _maxHealthBonus;
             }
         }
         public int speedBonus
         {
             get
             {
-                return this._speedBonus;
+                return _speedBonus;
             }
         }
         public int accuracyBonus
         {
             get
             {
-                return this._accuracyBonus;
+                return _accuracyBonus;
             }
         }
         public int luckBonus
         {
             get
             {
-                return this._luckBonus;
+                return _luckBonus;
             }
         }
         public int attackDamageBonus
         {
             get
             {
-                return this._attackDamageBonus;
+                return _attackDamageBonus;
             }
         }
         public int defenseBonus
         {
             get
             {
-                return this._defenseBonus;
+                return _defenseBonus;
             }
         }
         public int criticalChanceBonus
         {
             get
             {
-                return this._criticalChanceBonus;
+                return _criticalChanceBonus;
             }
         }
         public int criticalDamageBonus
         {
             get
             {
-                return this._criticalDamageBonus;
+                return _criticalDamageBonus;
             }
         }
         public int shiledCount
         {
             get
             {
-                return this._shiledCount;
+                return _shiledCount;
             }
         }
         public bool attackPoint
         {
             get
             {
-                return this._attackPoint;
+                return _attackPoint;
             }
         }
         public int stun
         {
             get
             {
-                return this._stun;
+                return _stun;
             }
         }
         public bool isStatusStun
         {
             get
             {
-                return this._stun > 0;
+                return _stun > 0;
             }
         }
         public int aggro
         {
             get
             {
-                return this._aggro;
+                return _aggro;
             }
         }
         public int aggroUnitIdx
         {
             get
             {
-                return this._aggroUnitIdx;
+                return _aggroUnitIdx;
             }
         }
         public bool isStatusAggro
         {
             get
             {
-                return this._aggro > 0;
+                return _aggro > 0;
             }
         }
         public int unbeatableVal
         {
             get
             {
-                return this._unbeatableVal;
+                return _unbeatableVal;
             }
         }
         public bool isStatusUnbeatable
         {
             get
             {
-                return this._unbeatableVal > 0;
+                return _unbeatableVal > 0;
             }
         }
         public int silenceVal
         {
             get
             {
-                return this._silenceVal;
+                return _silenceVal;
             }
         }
         public bool isStatusSilence
         {
             get
             {
-                return this._silenceVal > 0;
+                return _silenceVal > 0;
             }
         }
         public int dotDamangeVal
         {
             get
             {
-                return this._dotDamangeVal;
+                return _dotDamangeVal;
             }
         }
         public bool isStatusDotDamage
         {
             get
             {
-                return this._dotDamangeVal > 0;
+                return _dotDamangeVal > 0;
             }
         }
         public bool takenRevival
         {
             get
             {
-                return this._takenRevival;
+                return _takenRevival;
             }
         }
         public int statusShieldVal
         {
             get
             {
-                return this._statusShieldVal;
+                return _statusShieldVal;
             }
         }
         public long statsAttack
         {
             get
             {
-                return this._statsAttack;
+                return _statsAttack;
             }
         }
         public long statsHealing
         {
             get
             {
-                return this._statsHealing;
+                return _statsHealing;
             }
         }
         public long statsDefense
         {
             get
             {
-                return this._statsDefense;
+                return _statsDefense;
             }
         }
         public EBattleSide side
         {
             get
             {
-                return this._side;
+                return _side;
             }
         }
         public bool isEnemyType
         {
             get
             {
-                return this.side == EBattleSide.Right;
+                return side == EBattleSide.Right;
             }
         }
         public IList<Skill> skills
         {
             get
             {
-                return this._skills.AsReadOnly();
+                return _skills.AsReadOnly();
             }
         }
 
@@ -571,7 +571,7 @@ namespace StellarGKLibrary.Shared.Battle
         {
             get
             {
-                return this._status.GetEnumerator();
+                return _status.GetEnumerator();
             }
         }
         public static bool IsSame(Unit arg1, Unit arg2)
