@@ -9,6 +9,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Logic\**" />
+	  <Content Remove="Logic\**" />
+	  <EmbeddedResource Remove="Logic\**" />
+	  <None Remove="Logic\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="MongoDB.Bson" Version="2.20.0" />
 		<PackageReference Include="MongoDB.Driver" Version="2.20.0" />
 		<PackageReference Include="MongoDB.Driver.Core" Version="2.20.0" />
@@ -25,5 +32,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\CommandHandlerMappingsSourceGenerator\CommandHandlerMappingsSourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<ProjectReference Include="..\StellarGKLibrary\StellarGKLibrary.csproj" />
 	</ItemGroup>
 </Project>

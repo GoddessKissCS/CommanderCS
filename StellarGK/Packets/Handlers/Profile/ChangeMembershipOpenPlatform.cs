@@ -1,6 +1,6 @@
-﻿using StellarGK.Host;
-using StellarGK.Logic.Enums;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Host;
+using StellarGKLibrary.Enums;
 
 namespace StellarGK.Packets.Handlers.Profile
 {
@@ -68,16 +68,16 @@ namespace StellarGK.Packets.Handlers.Profile
 
     public class ChangeMembershipOpenPlatformRequest
     {
-        [JsonPropertyName("tokn")]
+        [JsonProperty("tokn")]
         public string tokn { get; set; }
 
-        [JsonPropertyName("plfm")]
+        [JsonProperty("plfm")]
         public Platform plfm { get; set; }
 
-        [JsonPropertyName("puid")]
+        [JsonProperty("puid")]
         public string puid { get; set; }
 
-        [JsonPropertyName("ch")]
+        [JsonProperty("ch")]
         public int ch { get; set; }
     }
 }

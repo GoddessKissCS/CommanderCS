@@ -1,6 +1,6 @@
-﻿using StellarGK.Database;
-using StellarGK.Logic.Protocols;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGKLibrary.Protocols;
 
 
 namespace StellarGK.Host.Handlers.Tutorial
@@ -37,7 +37,7 @@ namespace StellarGK.Host.Handlers.Tutorial
 
         public class TutorialStep
         {
-            [JsonPropertyName("ttrl")]
+            [JsonProperty("ttrl")]
             public UserInformationResponse.TutorialData ttrl { get; set; }
         }
     }

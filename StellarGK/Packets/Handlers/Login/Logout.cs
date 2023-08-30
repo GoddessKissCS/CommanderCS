@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace StellarGK.Host.Handlers.Login
 {
@@ -19,7 +19,7 @@ namespace StellarGK.Host.Handlers.Login
 
         private class logout
         {
-            [JsonPropertyName("success")]
+            [JsonProperty("success")]
             public bool success { get; set; }
         }
     }

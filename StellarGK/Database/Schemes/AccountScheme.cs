@@ -1,5 +1,5 @@
 ﻿using MongoDB.Bson;
-using StellarGK.Logic.Enums;
+using StellarGKLibrary.Enums;
 
 namespace StellarGK.Database.Schemes
 {

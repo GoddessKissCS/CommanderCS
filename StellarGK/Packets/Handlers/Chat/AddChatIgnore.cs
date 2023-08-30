@@ -1,7 +1,7 @@
+using Newtonsoft.Json;
 using StellarGK.Database;
 using StellarGK.Host;
-using StellarGK.Logic.Protocols;
-using System.Text.Json.Serialization;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Packets.Handlers.Chat
 {
@@ -36,16 +36,16 @@ namespace StellarGK.Packets.Handlers.Chat
     public class AddChatIgnoreRequest
     {
 
-        [JsonPropertyName("ch")]
+        [JsonProperty("ch")]
         public int ch { get; set; }
 
-        [JsonPropertyName("uno")]
+        [JsonProperty("uno")]
         public string uno { get; set; }
 
-        [JsonPropertyName("nick")]
+        [JsonProperty("nick")]
         public string nick { get; set; }
 
-        [JsonPropertyName("thumb")]
+        [JsonProperty("thumb")]
         public string thumb { get; set; }
     }
 

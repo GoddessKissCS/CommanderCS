@@ -1,5 +1,5 @@
-﻿using StellarGK.Database;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.Profile
 {
@@ -36,19 +36,19 @@ namespace StellarGK.Host.Handlers.Profile
 
     public class ChangeMemberShipRequest
     {
-        [JsonPropertyName("uid")]
+        [JsonProperty("uid")]
         public string uid { get; set; }
 
-        [JsonPropertyName("pwd")]
+        [JsonProperty("pwd")]
         public string pwd { get; set; }
 
-        [JsonPropertyName("plfm")]
+        [JsonProperty("plfm")]
         public int plfm { get; set; }
 
-        [JsonPropertyName("ch")]
+        [JsonProperty("ch")]
         public int ch { get; set; }
 
-        [JsonPropertyName("puid")]
+        [JsonProperty("puid")]
         public string puid { get; set; }
     }
 }

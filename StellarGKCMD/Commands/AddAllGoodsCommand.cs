@@ -1,4 +1,4 @@
-﻿using StellarGK.Logic.ExcelReader;
+﻿using StellarGKLibrary.ExcelReader;
 
 namespace StellarGK.Commands
 {
@@ -11,7 +11,7 @@ namespace StellarGK.Commands
 
             int accountId = int.Parse(args[0]);
 
-            #warning TODO UPDATE
+#warning TODO UPDATE
             //DatabaseManager.GameData.UpdateItemData(accountId, itemData);
 
             Console.WriteLine($"Added All Goods to id {args[0]}");

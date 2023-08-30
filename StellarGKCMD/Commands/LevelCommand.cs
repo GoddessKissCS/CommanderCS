@@ -1,4 +1,4 @@
-﻿using StellarGK.Logic.ExcelReader;
+﻿using StellarGKLibrary.ExcelReader;
 
 namespace StellarGK.Commands
 {
@@ -12,7 +12,7 @@ namespace StellarGK.Commands
 
             int exp = UserLevelData.GetInstance().FromLevel(level).uExp;
 
-            #warning TODO UPDATE
+#warning TODO UPDATE
             //DatabaseManager.Resources.UpdateExpAndLevel(accountId, exp, level);
 
             Console.WriteLine($"Changed {args[0]}, exp and level to {exp} & {level}");

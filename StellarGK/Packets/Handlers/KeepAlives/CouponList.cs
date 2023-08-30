@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace StellarGK.Host.Handlers.KeepAlives
 {
@@ -27,7 +27,7 @@ namespace StellarGK.Host.Handlers.KeepAlives
 
         public class CouponList
         {
-            [JsonPropertyName("list")]
+            [JsonProperty("list")]
             public List<string> list { get; set; }
         }
     }

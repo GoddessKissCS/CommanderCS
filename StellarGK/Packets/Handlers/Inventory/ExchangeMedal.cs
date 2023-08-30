@@ -1,8 +1,35 @@
+using Newtonsoft.Json;
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Inventory
 {
-    public class ExchangeMedal
+    //[Packet(Id = Method.ExchangeMedal)]
+    public class ExchangeMedal : BaseMethodHandler<ExchangeMedalRequest>
     {
+        public override object Handle(ExchangeMedalRequest @params)
+        {
+            var user = GetUserGameProfile();
 
+            user.CommanderData.TryGetValue("" + @params.cid, out var commanderData);
+            user.UserInventory.medalData.TryGetValue("" + @params.cid, out int medal);
+
+
+            commanderData.medl = commanderData.medl + @params.amnt;
+            medal = medal + @params.amnt;
+
+            // AND THEN WE NEED TO SUBSTRACT THE EXCHANGEMEDALS FROM THE USER
+
+            return "";
+        }
+    }
+
+    public class ExchangeMedalRequest
+    {
+        [JsonProperty("amnt")]
+        public int amnt { get; set; }
+
+        [JsonProperty("cid")]
+        public int cid { get; set; }
     }
 }
 /*	// Token: 0x06006096 RID: 24726 RVA: 0x000120F8 File Offset: 0x000102F8

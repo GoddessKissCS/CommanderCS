@@ -1,39 +1,39 @@
+using Newtonsoft.Json;
 using StellarGK.Database;
 using StellarGK.Host;
-using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.WorldMap
 {
-	[Packet(Id = Method.WorldMapReward)]
+    [Packet(Id = Method.WorldMapReward)]
     public class WorldMapReward : BaseMethodHandler<WorldMapRewardRequest>
     {
         public override object Handle(WorldMapRewardRequest @params)
         {
-			// Check all Pilots that exist
-			int commanderId;
+            // Check all Pilots that exist
+            int commanderId;
 
-			var user = GetUserGameProfile();
+            var user = GetUserGameProfile();
 
-			switch (@params.world)
-			{
-				case 0:
-					break;
-				case 1:
+            switch (@params.world)
+            {
+                case 0:
                     break;
-				case 2: 
-					break;
-				case 3: 
-					break;
-				case 4:
+                case 1:
                     break;
-				case 5:
+                case 2:
                     break;
-				case 6:
-					break;
-				case 7:
-					break;
-				case 8:
-					break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
                 case 9:
                     break;
                 case 10:
@@ -56,17 +56,17 @@ namespace StellarGK.Packets.Handlers.WorldMap
                     break;
             }
 
-			DatabaseManager.GameProfile.UpdateWorldMapReward(GetSession(), @params.world);
+            DatabaseManager.GameProfile.UpdateWorldMapReward(GetSession(), @params.world);
 
-			Logic.Protocols.WorldMapReward worldMap = new()
-			{
-				
-			};
+            StellarGKLibrary.Protocols.WorldMapReward worldMap = new()
+            {
+
+            };
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-				Result = worldMap
+                Result = worldMap
             };
 
 
@@ -77,7 +77,7 @@ namespace StellarGK.Packets.Handlers.WorldMap
 
     public class WorldMapRewardRequest
     {
-        [JsonPropertyName("world")]
+        [JsonProperty("world")]
         public int world { get; set; }
     }
 }

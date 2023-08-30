@@ -1,4 +1,5 @@
-﻿using StellarGK.Logic.Protocols;
+﻿using StellarGKLibrary.Enums;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Shop
 {
@@ -20,7 +21,7 @@ namespace StellarGK.Host.Handlers.Shop
                 remainTime = 0,
                 buyCount = 1,
                 priceId = "gk.dia.100",
-                pType = Logic.Enums.ECashRechargePriceType.Dollars
+                pType = ECashRechargePriceType.Dollars
             };
 
             csl.Add(c);

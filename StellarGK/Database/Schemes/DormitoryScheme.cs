@@ -1,5 +1,5 @@
 ﻿using MongoDB.Bson;
-using StellarGK.Logic.Protocols;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Database.Schemes
 {

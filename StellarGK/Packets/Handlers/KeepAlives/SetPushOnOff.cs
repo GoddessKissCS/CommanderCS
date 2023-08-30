@@ -1,30 +1,30 @@
+using Newtonsoft.Json;
 using StellarGK.Database;
 using StellarGK.Host;
-using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.KeepAlives
 {
-	[Packet(Id = Method.SetPushOnOff)]
+    [Packet(Id = Method.SetPushOnOff)]
     public class SetPushOnOff : BaseMethodHandler<SetPushOnOffRequest>
     {
         public override object Handle(SetPushOnOffRequest @params)
         {
-			var result = DatabaseManager.GameProfile.UpdateNotifaction(GetSession(), @params.onoff);
+            var result = DatabaseManager.GameProfile.UpdateNotifaction(GetSession(), @params.onoff);
 
             ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = result.ToString(),
-			};
+            {
+                Id = BasePacket.Id,
+                Result = result.ToString(),
+            };
 
-			return response;
+            return response;
         }
     }
 
-	public class SetPushOnOffRequest
-	{
-		[JsonPropertyName("onoff")]
-		public int onoff { get; set; }
-	}
+    public class SetPushOnOffRequest
+    {
+        [JsonProperty("onoff")]
+        public int onoff { get; set; }
+    }
 
 }

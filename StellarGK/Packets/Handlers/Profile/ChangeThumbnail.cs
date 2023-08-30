@@ -1,5 +1,5 @@
-﻿using StellarGK.Database;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.Profile
 {
@@ -25,7 +25,7 @@ namespace StellarGK.Host.Handlers.Profile
     }
     public class ChangeThumbnailRequest
     {
-        [JsonPropertyName("idx")]
+        [JsonProperty("idx")]
         public int idx { get; set; }
     }
 }

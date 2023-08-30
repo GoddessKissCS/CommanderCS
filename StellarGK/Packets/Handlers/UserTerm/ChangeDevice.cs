@@ -1,10 +1,7 @@
-using MongoDB.Driver;
+using Newtonsoft.Json;
 using StellarGK.Database;
-using StellarGK.Database.Schemes;
 using StellarGK.Host;
-using StellarGK.Logic.Enums;
-using StellarGK.Tools;
-using System.Text.Json.Serialization;
+using StellarGKLibrary.Enums;
 
 namespace StellarGK.Packets.Handlers.UserTerm
 {
@@ -35,56 +32,56 @@ namespace StellarGK.Packets.Handlers.UserTerm
 
     public class ChangeDeviceRequest
     {
-        [JsonPropertyName("ch")]
+        [JsonProperty("ch")]
         public int ch { get; set; }
 
-        [JsonPropertyName("dac")]
+        [JsonProperty("dac")]
         public string dac { get; set; }
 
-        [JsonPropertyName("uid")]
+        [JsonProperty("uid")]
         public string uid { get; set; }
 
-        [JsonPropertyName("pwd")]
+        [JsonProperty("pwd")]
         public string pwd { get; set; }
 
-        [JsonPropertyName("plfm")]
+        [JsonProperty("plfm")]
         public Platform plfm { get; set; }
 
-        [JsonPropertyName("devc")]
+        [JsonProperty("devc")]
         public string devc { get; set; }
 
-        [JsonPropertyName("dvid")]
+        [JsonProperty("dvid")]
         public string dvid { get; set; }
 
-        [JsonPropertyName("ptype")]
+        [JsonProperty("ptype")]
         public int ptype { get; set; }
 
-        [JsonPropertyName("oscd")]
+        [JsonProperty("oscd")]
         public OSCode oscd { get; set; }
 
-        [JsonPropertyName("osvr")]
+        [JsonProperty("osvr")]
         public string osvr { get; set; }
 
-        [JsonPropertyName("gmvr")]
+        [JsonProperty("gmvr")]
         public string gmvr { get; set; }
 
-        [JsonPropertyName("apk")]
+        [JsonProperty("apk")]
         public string apk { get; set; }
 
-        [JsonPropertyName("lang")]
+        [JsonProperty("lang")]
         public string lang { get; set; }
 
-        [JsonPropertyName("gpid")]
+        [JsonProperty("gpid")]
         public string gpid { get; set; }
     }
 
 
     internal class ChangeDeviceResponse
     {
-        [JsonPropertyName("mIdx")]
+        [JsonProperty("mIdx")]
         public int mIdx { get; set; }
 
-        [JsonPropertyName("tokn")]
+        [JsonProperty("tokn")]
         public string tokn { get; set; }
     }
 }

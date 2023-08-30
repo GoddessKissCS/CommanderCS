@@ -1,5 +1,5 @@
-using StellarGK.Logic.Enums;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using StellarGKLibrary.Enums;
 
 namespace StellarGK.Packets.Handlers.Profile
 {
@@ -10,13 +10,13 @@ namespace StellarGK.Packets.Handlers.Profile
 
     public class CheckOpenPlatformExistRequest
     {
-        [JsonPropertyName("plfm")]
+        [JsonProperty("plfm")]
         public Platform Plfm { get; set; }
 
-        [JsonPropertyName("tokn")]
+        [JsonProperty("tokn")]
         public string Tokn { get; set; }
 
-        [JsonPropertyName("ch")]
+        [JsonProperty("ch")]
         public int Ch { get; set; }
     }
 

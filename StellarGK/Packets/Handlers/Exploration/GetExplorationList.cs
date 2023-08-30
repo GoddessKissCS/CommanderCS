@@ -1,5 +1,5 @@
 ﻿using StellarGK.Host;
-using StellarGK.Logic.Protocols;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Packets.Handlers.Exploration
 {

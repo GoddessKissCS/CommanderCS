@@ -1,5 +1,5 @@
-﻿using StellarGK.Database;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.VersionCheck
 {
@@ -11,7 +11,7 @@ namespace StellarGK.Host.Handlers.VersionCheck
         {
             var gametable = DatabaseManager.GameTableVersion.Get();
 
-            VersionInfo res = new()
+            DatabaseVersionCheckResponse res = new()
             {
                 ver = gametable.Version,
             };
@@ -25,9 +25,9 @@ namespace StellarGK.Host.Handlers.VersionCheck
             return response;
         }
 
-        internal class VersionInfo
+        internal class DatabaseVersionCheckResponse
         {
-            [JsonPropertyName("ver")]
+            [JsonProperty("ver")]
             public double ver { get; set; }
         }
 

@@ -1,7 +1,5 @@
 ﻿using StellarGK.Database;
-using StellarGK.Logic.ExcelReader;
-using StellarGK.Logic.Protocols;
-using System.Security.Cryptography;
+using StellarGKLibrary.ExcelReader;
 
 namespace StellarGK.Commands
 {

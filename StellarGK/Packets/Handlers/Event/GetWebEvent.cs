@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace StellarGK.Host.Handlers.Event
 {
@@ -24,7 +24,7 @@ namespace StellarGK.Host.Handlers.Event
 
         public class GetWebEventPacket
         {
-            [JsonPropertyName("wev")]
+            [JsonProperty("wev")]
             public List<string> wev { get; set; }
         }
     }

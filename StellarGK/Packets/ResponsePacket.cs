@@ -1,22 +1,21 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace StellarGK.Host
 {
     public class ResponsePacket
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        [JsonPropertyName("result")]
+        [JsonProperty(propertyName: "result", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public object Result { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        [JsonPropertyName("error")]
+        [JsonProperty(propertyName: "error", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public ErrorMessageId Error { get; set; }
     }
     public class ErrorMessageId
     {
+        [JsonProperty("code")]
         public ErrorCode code { get; set; }
 
     }

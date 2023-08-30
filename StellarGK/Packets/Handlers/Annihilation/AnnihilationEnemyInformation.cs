@@ -1,5 +1,5 @@
+using Newtonsoft.Json;
 using StellarGK.Host;
-using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Annihilation
 {
@@ -15,7 +15,7 @@ namespace StellarGK.Packets.Handlers.Annihilation
     }
     public class AnnihilationEnemyInformationRequest
     {
-        [JsonPropertyName("stage")]
+        [JsonProperty("stage")]
         public int stage
         {
             get; set;

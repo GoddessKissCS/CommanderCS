@@ -1,5 +1,5 @@
-﻿using StellarGK.Logic.Protocols;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Gacha
 {
@@ -34,7 +34,7 @@ namespace StellarGK.Host.Handlers.Gacha
 
         public class GetVIPBuyCountInv
         {
-            [JsonPropertyName("rchg")]
+            [JsonProperty("rchg")]
             public List<UserInformationResponse.VipRechargeData> rchg { get; set; }
 
         }
@@ -43,10 +43,10 @@ namespace StellarGK.Host.Handlers.Gacha
 
     public class GetVipBuyCountRequest
     {
-        [JsonPropertyName("type")]
+        [JsonProperty("type")]
         public List<string> type { get; set; }
 
-        [JsonPropertyName("renewType")]
+        [JsonProperty("renewType")]
         public int renewType { get; set; }
 
     }

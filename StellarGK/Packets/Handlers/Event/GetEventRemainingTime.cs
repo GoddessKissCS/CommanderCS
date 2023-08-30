@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace StellarGK.Host.Handlers.Event
 {
@@ -26,7 +26,7 @@ namespace StellarGK.Host.Handlers.Event
 
         public class GetEventRemainingTimeResponse
         {
-            [JsonPropertyName("buff")]
+            [JsonProperty("buff")]
             public Dictionary<string, int> buff { get; set; }
         }
     }

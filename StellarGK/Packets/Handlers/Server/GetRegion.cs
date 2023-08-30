@@ -1,5 +1,5 @@
-﻿using StellarGK.Database;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.Server
 {
@@ -44,15 +44,15 @@ namespace StellarGK.Host.Handlers.Server
 
         internal class ServerInfo
         {
-            [JsonPropertyName("openDt")]
+            [JsonProperty("openDt")]
             public double openDt { get; set; }
-            [JsonPropertyName("maxLv")]
+            [JsonProperty("maxLv")]
             public int maxLv { get; set; }
-            [JsonPropertyName("maxSt")]
+            [JsonProperty("maxSt")]
             public string maxSt { get; set; }
-            [JsonPropertyName("plcnt")]
+            [JsonProperty("plcnt")]
             public string plcnt { get; set; }
-            [JsonPropertyName("svcnt")]
+            [JsonProperty("svcnt")]
             public string svcnt { get; set; }
         }
 

@@ -1,11 +1,11 @@
 ﻿//#define EnableSourceGeneratorDebug
 
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Text;
 using System.Threading;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace CommandHandlerMappingsSourceGenerator
 {

@@ -9,7 +9,7 @@ namespace StellarGK.Host.Handlers.Guild
         public override object Handle(GuildListRequest @params)
         {
 
-            Logic.Protocols.GuildInfo guildList = new()
+            StellarGKLibrary.Protocols.GuildInfo guildList = new()
             {
                 resource = null,
                 guildInfo = null,

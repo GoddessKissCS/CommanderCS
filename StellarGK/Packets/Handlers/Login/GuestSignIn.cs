@@ -1,5 +1,5 @@
-﻿using StellarGK.Database;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.Sign
 {
@@ -44,18 +44,18 @@ namespace StellarGK.Host.Handlers.Sign
 
         private class SignInP
         {
-            [JsonPropertyName("mIdx")]
+            [JsonProperty("mIdx")]
             public int mIdx { get; set; }
-            [JsonPropertyName("tokn")]
+            [JsonProperty("tokn")]
             public string tokn { get; set; }
-            [JsonPropertyName("srv")]
+            [JsonProperty("srv")]
             public int srv { get; set; }
         }
     }
 
     public class GuestSignInRequest
     {
-        [JsonPropertyName("uid")]
+        [JsonProperty("uid")]
         public string uid { get; set; }
     }
 }

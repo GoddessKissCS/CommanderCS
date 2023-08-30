@@ -1,9 +1,9 @@
 ﻿using MongoDB.Driver;
 using StellarGK.Database.Schemes;
 using StellarGK.Host.Handlers.Login;
-using StellarGK.Logic.ExcelReader;
-using StellarGK.Logic.Protocols;
-using StellarGK.Tools;
+using StellarGKLibrary.Utils;
+using StellarGKLibrary.ExcelReader;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Database.Handlers
 {

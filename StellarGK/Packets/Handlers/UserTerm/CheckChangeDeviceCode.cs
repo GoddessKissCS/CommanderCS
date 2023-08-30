@@ -1,6 +1,6 @@
-﻿using StellarGK.Database;
-using StellarGK.Logic.Enums;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGKLibrary.Enums;
 
 namespace StellarGK.Host.Handlers.UserTerm
 {
@@ -16,11 +16,11 @@ namespace StellarGK.Host.Handlers.UserTerm
 
             var result = DatabaseManager.DeviceCode.FindByDeviceCode(@params.dac);
 
-			if(result == null)
-			{
-				response.Error = new() { code = ErrorCode.InvalidDeviceCode };
+            if (result == null)
+            {
+                response.Error = new() { code = ErrorCode.InvalidDeviceCode };
 
-				return response;
+                return response;
             }
 
             var user = DatabaseManager.Account.FindByUid(result.MemberId);
@@ -38,16 +38,16 @@ namespace StellarGK.Host.Handlers.UserTerm
 
     internal class CheckChangeDeviceCodeResponse
     {
-        [JsonPropertyName("plfm")]
+        [JsonProperty("plfm")]
         public Platform plfm { get; set; }
     }
 
     public class CheckChangeDeviceCodeRequest
-	{
-		[JsonPropertyName("dac")]
+    {
+        [JsonProperty("dac")]
         public string dac { get; set; }
 
-        [JsonPropertyName("ch")]
+        [JsonProperty("ch")]
         public int ch { get; set; }
 
     }

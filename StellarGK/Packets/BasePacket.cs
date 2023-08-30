@@ -1,7 +1,7 @@
-﻿using StellarGK.Database;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using StellarGK.Database;
 using StellarGK.Database.Schemes;
-using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
 
 namespace StellarGK.Host
 {
@@ -13,19 +13,19 @@ namespace StellarGK.Host
 
     public class ParamsPacket : BasePacket
     {
-        [JsonPropertyName("params")]
-        public JsonNode Params { get; set; }
+        [JsonProperty("params")]
+        public JToken Params { get; set; }
     }
 
     public class BasePacket
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonPropertyName("method")]
+        [JsonProperty("method")]
         public int Method { get; set; }
 
-        [JsonPropertyName("sess")]
+        [JsonProperty("sess")]
         public string Session { get; set; }
     }
 
@@ -49,7 +49,6 @@ namespace StellarGK.Host
         {
             return DatabaseManager.Dormitory.FindBySession(BasePacket.Session);
         }
-
     }
 
     public enum Method : int
@@ -342,6 +341,4 @@ namespace StellarGK.Host
         InfinityBattleGetReward = 8704,
 
     }
-
-
 }

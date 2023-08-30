@@ -1,6 +1,6 @@
-﻿using StellarGK.Database;
-using StellarGK.Logic.Protocols;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGKLibrary.Protocols;
 
 
 namespace StellarGK.Host.Handlers.Server
@@ -73,13 +73,13 @@ namespace StellarGK.Host.Handlers.Server
     }
     public class ServerStatusRequest
     {
-        [JsonPropertyName("mIdx")]
+        [JsonProperty("mIdx")]
         public string mIdx { get; set; }
 
-        [JsonPropertyName("tokn")]
+        [JsonProperty("tokn")]
         public string tokn { get; set; }
 
-        [JsonPropertyName("srv")]
+        [JsonProperty("srv")]
         public int srv { get; set; }
     }
 }

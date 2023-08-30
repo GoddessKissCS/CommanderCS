@@ -1,5 +1,5 @@
+using Newtonsoft.Json;
 using StellarGK.Host;
-using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Annihilation
 {
@@ -15,7 +15,7 @@ namespace StellarGK.Packets.Handlers.Annihilation
 
     public class GetAnnihilationMapInfoRequest
     {
-        [JsonPropertyName("goReady")]
+        [JsonProperty("goReady")]
         public int goReady { get; set; }
     }
 

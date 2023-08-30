@@ -34,7 +34,7 @@ namespace StellarGK.Database.Handlers
                             .Where(d => d.GuildId == guildIdx)
                             .FirstOrDefault();
 
-            if (tryGuild != null) {  return "reg";  }
+            if (tryGuild != null) { return "reg"; }
 
             return string.Empty;
 

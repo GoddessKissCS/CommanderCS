@@ -1,5 +1,5 @@
-﻿using StellarGK.Logic.Enums;
-using StellarGK.Logic.Protocols;
+﻿using StellarGKLibrary.Enums;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Gacha
 {

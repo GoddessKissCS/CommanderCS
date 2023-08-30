@@ -1,6 +1,6 @@
+using Newtonsoft.Json;
 using StellarGK.Database;
 using StellarGK.Host;
-using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Chat
 {
@@ -24,9 +24,9 @@ namespace StellarGK.Packets.Handlers.Chat
     public class DelChatIgnoreRequest
     {
 
-        [JsonPropertyName("ch")]
+        [JsonProperty("ch")]
         public int ch { get; set; }
-        [JsonPropertyName("uno")]
+        [JsonProperty("uno")]
         public string uno { get; set; }
     }
 

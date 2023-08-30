@@ -2,13 +2,11 @@
 using StellarGK.Database.Schemes;
 using StellarGK.Host;
 using StellarGK.Host.Handlers.Login;
-using StellarGK.Logic.Enums;
-using StellarGK.Logic.Protocols;
-using StellarGK.Tools;
-using System.Threading.Channels;
-using System;
 using StellarGK.Packets.Handlers.UserTerm;
-using MongoDB.Driver.Core.Bindings;
+using StellarGKLibrary.Utils;
+using StellarGKLibrary.Enums;
+using StellarGKLibrary.Protocols;
+using static StellarGKLibrary.Cryptography.Crypto;
 
 namespace StellarGK.Database.Handlers
 {
@@ -45,7 +43,7 @@ namespace StellarGK.Database.Handlers
             else
             {
                 user.Name = name;
-                user.Password_Hash = Crypto.ComputeSha256Hash(password);
+                user.Password_Hash = ComputeSha256Hash(password);
                 user.Clearance = Clearance.Player;
             }
 
@@ -88,7 +86,7 @@ namespace StellarGK.Database.Handlers
 
             var account = FindByName(guestName);
 
-            var password_hash = Crypto.ComputeSha256Hash(password);
+            var password_hash = ComputeSha256Hash(password);
 
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
             var update = Builders<AccountScheme>.Update.Set("Name", changeName).Set("Password_Hash", password_hash).Set("PlatformId", platformId).Set("Channel", channel);

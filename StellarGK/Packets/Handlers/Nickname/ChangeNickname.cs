@@ -1,7 +1,7 @@
-﻿using StellarGK.Database;
-using StellarGK.Logic.Protocols;
-using StellarGK.Tools;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGKLibrary.Utils;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Nickname
 {
@@ -63,7 +63,7 @@ namespace StellarGK.Host.Handlers.Nickname
 
         internal class ChangeNicknameResponse
         {
-            [JsonPropertyName("rsoc")]
+            [JsonProperty("rsoc")]
             public UserInformationResponse.Resource rsoc { get; set; }
         }
 
@@ -71,7 +71,7 @@ namespace StellarGK.Host.Handlers.Nickname
 
     public class ChangeNicknameRequest
     {
-        [JsonPropertyName("unm")]
+        [JsonProperty("unm")]
         public string nickname { get; set; }
 
     }

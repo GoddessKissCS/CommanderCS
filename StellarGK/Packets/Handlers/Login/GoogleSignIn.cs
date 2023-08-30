@@ -1,5 +1,5 @@
-﻿using StellarGK.Host;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Host;
 
 namespace StellarGK.Packets.Handlers.Login
 {
@@ -20,13 +20,13 @@ namespace StellarGK.Packets.Handlers.Login
 
     public class GoogleSignInRequest
     {
-        [JsonPropertyName("tokn")]
+        [JsonProperty("tokn")]
         public string tokn { get; set; }
 
-        [JsonPropertyName("plfm")]
+        [JsonProperty("plfm")]
         public int plfm { get; set; }
 
-        [JsonPropertyName("ch")]
+        [JsonProperty("ch")]
         public int ch { get; set; }
     }
 }

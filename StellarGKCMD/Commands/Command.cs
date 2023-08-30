@@ -1,5 +1,5 @@
+using StellarGKLibrary.Utils;
 using System.Reflection;
-using StellarGK.Tools;
 
 namespace StellarGK.Commands
 {

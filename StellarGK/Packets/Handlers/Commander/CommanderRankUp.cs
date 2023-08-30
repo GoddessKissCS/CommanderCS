@@ -1,7 +1,7 @@
-﻿using StellarGK.Database;
-using StellarGK.Logic.ExcelReader;
-using StellarGK.Logic.Protocols;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGKLibrary.ExcelReader;
+using StellarGKLibrary.Protocols;
 
 
 namespace StellarGK.Host.Handlers.Commander
@@ -180,7 +180,7 @@ namespace StellarGK.Host.Handlers.Commander
 
     public class CommanderRankUpRequest
     {
-        [JsonPropertyName("cid")]
+        [JsonProperty("cid")]
         public int cid { get; set; }
     }
 }

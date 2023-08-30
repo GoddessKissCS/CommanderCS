@@ -1,6 +1,6 @@
-﻿using StellarGK.Database;
-using StellarGK.Tools;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGKLibrary.Utils;
 
 namespace StellarGK.Host.Handlers.Nickname
 {
@@ -71,7 +71,7 @@ namespace StellarGK.Host.Handlers.Nickname
 
         internal class SetNickNameResponse
         {
-            [JsonPropertyName("step")]
+            [JsonProperty("step")]
             public int step { get; set; }
         }
     }
@@ -79,10 +79,10 @@ namespace StellarGK.Host.Handlers.Nickname
 
     public class SetNickNameFromTutorialRequest
     {
-        [JsonPropertyName("unm")]
+        [JsonProperty("unm")]
         public string Unm { get; set; }
 
-        [JsonPropertyName("step")]
+        [JsonProperty("step")]
         public int Step { get; set; }
     }
 }

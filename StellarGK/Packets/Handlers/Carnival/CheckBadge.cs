@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace StellarGK.Host.Handlers.Carnival
 {
@@ -39,39 +39,39 @@ namespace StellarGK.Host.Handlers.Carnival
 
         public class CheckBadgeMaster
         {
-            [JsonPropertyName("id")]
+            [JsonProperty("id")]
             public string id { get; set; }
-            [JsonPropertyName("arena")]
+            [JsonProperty("arena")]
             public int arena { get; set; }
-            [JsonPropertyName("dlms")]
+            [JsonProperty("dlms")]
             public int dlms { get; set; }
-            [JsonPropertyName("achv")]
+            [JsonProperty("achv")]
             public int achv { get; set; }
-            [JsonPropertyName("rwd")]
+            [JsonProperty("rwd")]
             public int rwd { get; set; }
-            [JsonPropertyName("shop")]
+            [JsonProperty("shop")]
             public Dictionary<string, int> shop { get; set; }
-            [JsonPropertyName("cnvl")]
+            [JsonProperty("cnvl")]
             public List<string> cnvl { get; set; }
-            [JsonPropertyName("ccnv")]
+            [JsonProperty("ccnv")]
             public int ccnv { get; set; }
-            [JsonPropertyName("cnvl2")]
+            [JsonProperty("cnvl2")]
             public List<string> cnvl2 { get; set; }
-            [JsonPropertyName("ccvn2")]
+            [JsonProperty("ccvn2")]
             public int ccvn2 { get; set; }
-            [JsonPropertyName("cnvl3")]
+            [JsonProperty("cnvl3")]
             public List<string> cnvl3 { get; set; }
-            [JsonPropertyName("ccvn3")]
+            [JsonProperty("ccvn3")]
             public int ccvn3 { get; set; }
-            [JsonPropertyName("wb")]
+            [JsonProperty("wb")]
             public int wb { get; set; }
-            [JsonPropertyName("gb")]
+            [JsonProperty("gb")]
             public int gb { get; set; }
-            [JsonPropertyName("grp")]
+            [JsonProperty("grp")]
             public int grp { get; set; }
-            [JsonPropertyName("ercnt")]
+            [JsonProperty("ercnt")]
             public int ercnt { get; set; }
-            [JsonPropertyName("iftw")]
+            [JsonProperty("iftw")]
             public int iftw { get; set; }
         }
     }

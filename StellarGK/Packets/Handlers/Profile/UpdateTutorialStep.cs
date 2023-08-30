@@ -1,5 +1,5 @@
-﻿using StellarGK.Database;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.Profile
 {
@@ -27,7 +27,7 @@ namespace StellarGK.Host.Handlers.Profile
 
         public class UpdateTutorialStepInfo
         {
-            [JsonPropertyName("step")]
+            [JsonProperty("step")]
             public int step { get; set; }
         }
 
@@ -35,10 +35,10 @@ namespace StellarGK.Host.Handlers.Profile
 
     public class UpdateTutorialStepRequest
     {
-        [JsonPropertyName("mIdx")]
+        [JsonProperty("mIdx")]
         public int mIdx { get; set; }
 
-        [JsonPropertyName("step")]
+        [JsonProperty("step")]
         public int step { get; set; }
     }
 }

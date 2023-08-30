@@ -1,6 +1,6 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using StellarGK.Host;
-using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Annihilation
 {
@@ -15,19 +15,19 @@ namespace StellarGK.Packets.Handlers.Annihilation
 
     public class AnnihilationStageStartRequest
     {
-        [JsonPropertyName("type")]
+        [JsonProperty("type")]
         public int Type { get; set; }
 
-        [JsonPropertyName("deck")]
-        public JsonObject Deck { get; set; }
+        [JsonProperty("deck")]
+        public JObject Deck { get; set; }
 
-        [JsonPropertyName("gdp")]
-        public JsonObject Gdp { get; set; }
+        [JsonProperty("gdp")]
+        public JObject Gdp { get; set; }
 
-        [JsonPropertyName("ucash")]
+        [JsonProperty("ucash")]
         public int Ucash { get; set; }
 
-        [JsonPropertyName("mst")]
+        [JsonProperty("mst")]
         public int mst { get; set; }
 
     }

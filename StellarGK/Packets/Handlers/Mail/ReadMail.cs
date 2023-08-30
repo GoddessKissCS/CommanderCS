@@ -1,6 +1,6 @@
+using Newtonsoft.Json;
 using StellarGK.Database;
 using StellarGK.Host;
-using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Mail
 {
@@ -25,7 +25,7 @@ namespace StellarGK.Packets.Handlers.Mail
     }
     public class ReadMailRequest
     {
-        [JsonPropertyName("idx")]
+        [JsonProperty("idx")]
         public int Idx { get; set; }
     }
 }

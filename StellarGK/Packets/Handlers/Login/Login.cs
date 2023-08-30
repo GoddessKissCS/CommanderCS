@@ -1,11 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using StellarGK.Database;
-using StellarGK.Logic.Enums;
-using StellarGK.Logic.Protocols;
-using StellarGK.Tools;
-using System.Text.Json;
-using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
+using StellarGKLibrary.Enums;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Login
 {
@@ -40,8 +37,6 @@ namespace StellarGK.Host.Handlers.Login
             var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(session);
             var guild = DatabaseManager.Guild.RequestGuild(user.GuildId);
 
-            string jsonCommanderData = JsonSerializer.Serialize(user.CommanderData);
-
             UserInformationResponse userInformationResponse = new()
             {
                 goodsInfo = goods,
@@ -67,7 +62,7 @@ namespace StellarGK.Host.Handlers.Login
                 sweepClearData = user.SweepClearData,
                 preDeck = user.PreDeck,
                 weaponList = user.UserInventory.weaponList,
-                __commanderInfo = JsonObject.Parse(jsonCommanderData),            
+                __commanderInfo = JObject.FromObject(user.CommanderData),
             };
 
 
@@ -84,62 +79,62 @@ namespace StellarGK.Host.Handlers.Login
 
         private class LoginPacket
         {
-            [JsonPropertyName("sess")]
+            [JsonProperty("sess")]
             public string sess { get; set; }
-            [JsonPropertyName("info")]
+            [JsonProperty("info")]
             public UserInformationResponse info { get; set; }
         }
     }
 
     public class LoginRequest
     {
-        [JsonPropertyName("mIdx")]
+        [JsonProperty("mIdx")]
         public int memberId { get; set; }
 
-        [JsonPropertyName("tokn")]
+        [JsonProperty("tokn")]
         public string token { get; set; }
 
-        [JsonPropertyName("wld")]
+        [JsonProperty("wld")]
         public int world { get; set; }
 
-        [JsonPropertyName("unm")]
+        [JsonProperty("unm")]
         public string userName { get; set; }
 
-        [JsonPropertyName("plfm")]
+        [JsonProperty("plfm")]
         public Platform platform { get; set; }
 
-        [JsonPropertyName("devc")]
+        [JsonProperty("devc")]
         public string deviceName { get; set; }
 
-        [JsonPropertyName("dvid")]
+        [JsonProperty("dvid")]
         public string deviceId { get; set; }
-        [JsonPropertyName("ptype")]
+        [JsonProperty("ptype")]
         public int patchType { get; set; }
 
-        [JsonPropertyName("oscd")]
+        [JsonProperty("oscd")]
         public OSCode osCode { get; set; }
 
-        [JsonPropertyName("osvr")]
+        [JsonProperty("osvr")]
         public string osVersion { get; set; }
 
-        [JsonPropertyName("gmvr")]
+        [JsonProperty("gmvr")]
         public string gameVersion { get; set; }
-        [JsonPropertyName("apk")]
+        [JsonProperty("apk")]
         public string apkFileName { get; set; }
 
-        [JsonPropertyName("psId")]
+        [JsonProperty("psId")]
         public string pushRegistrationId { get; set; }
 
-        [JsonPropertyName("lang")]
+        [JsonProperty("lang")]
         public string languageCode { get; set; }
 
-        [JsonPropertyName("ctry")]
+        [JsonProperty("ctry")]
         public string countryCode { get; set; }
 
-        [JsonPropertyName("gpid")]
+        [JsonProperty("gpid")]
         public string largoId { get; set; }
 
-        [JsonPropertyName("ch")]
+        [JsonProperty("ch")]
         public int channel { get; set; }
     }
 }

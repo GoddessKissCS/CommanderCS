@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 using StellarGK.Database.Schemes;
-using StellarGK.Logic.Protocols;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Database.Handlers
 {

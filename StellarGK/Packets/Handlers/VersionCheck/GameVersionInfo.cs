@@ -1,5 +1,5 @@
-﻿using StellarGK.Database;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.VersionCheck
 {
@@ -12,7 +12,7 @@ namespace StellarGK.Host.Handlers.VersionCheck
 
             var info = DatabaseManager.GameVersionInfo.Get(@params.ch);
 
-            GameInfoToSent game = new()
+            GameVersionInfoResponse game = new()
             {
                 policy = Convert.ToDouble(info.showPolicy),
                 chat = info.Chat_Url,
@@ -31,25 +31,25 @@ namespace StellarGK.Host.Handlers.VersionCheck
             return ResponsePacket;
         }
 
-        internal class GameInfoToSent
+        internal class GameVersionInfoResponse
         {
-            [JsonPropertyName("ver")]
+            [JsonProperty("ver")]
             public string ver { get; set; }
-            [JsonPropertyName("stat")]
+            [JsonProperty("stat")]
             public int stat { get; set; }
-            [JsonPropertyName("cdn")]
+            [JsonProperty("cdn")]
             public string cdn { get; set; }
-            [JsonPropertyName("game")]
+            [JsonProperty("game")]
             public string game { get; set; }
-            [JsonPropertyName("chat")]
+            [JsonProperty("chat")]
             public string chat { get; set; }
-            [JsonPropertyName("policy")]
+            [JsonProperty("policy")]
             public double policy { get; set; }
-            [JsonPropertyName("word")]
+            [JsonProperty("word")]
             public Dictionary<string, double> word { get; set; }
-            [JsonPropertyName("fc")]
+            [JsonProperty("fc")]
             public int fc { get; set; }
-            [JsonPropertyName("gglogin")]
+            [JsonProperty("gglogin")]
             public int gglogin { get; set; }
         }
 
@@ -57,7 +57,7 @@ namespace StellarGK.Host.Handlers.VersionCheck
 
     public class GameVersionInfoRequest
     {
-        [JsonPropertyName("ch")]
+        [JsonProperty("ch")]
         public int ch { get; set; }
     }
 }

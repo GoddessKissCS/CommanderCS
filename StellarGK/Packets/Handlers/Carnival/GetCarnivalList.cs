@@ -1,5 +1,5 @@
-﻿using StellarGK.Logic.Protocols;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Carnival
 {
@@ -26,9 +26,9 @@ namespace StellarGK.Host.Handlers.Carnival
 
     public class GetCarnivalListRequest
     {
-        [JsonPropertyName("cctype")]
+        [JsonProperty("cctype")]
         public int cctype { get; set; }
-        [JsonPropertyName("eidx")]
+        [JsonProperty("eidx")]
         public int eidx { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace StellarGK.Packets.Handlers.Profile
 {
@@ -8,7 +8,7 @@ namespace StellarGK.Packets.Handlers.Profile
 
     public class GetUserInformationRequest
     {
-        [JsonPropertyName("type")]
+        [JsonProperty("type")]
         public List<string> Type { get; set; }
     }
 

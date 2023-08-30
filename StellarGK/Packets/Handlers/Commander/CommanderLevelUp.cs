@@ -1,6 +1,6 @@
-﻿using StellarGK.Logic.ExcelReader;
-using StellarGK.Logic.Protocols;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGKLibrary.ExcelReader;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Commander
 {
@@ -74,13 +74,13 @@ namespace StellarGK.Host.Handlers.Commander
 
     public class CommanderLevelUpRequest
     {
-        [JsonPropertyName("cid")]
+        [JsonProperty("cid")]
         public int commanderId { get; set; }
 
-        [JsonPropertyName("cnt")]
+        [JsonProperty("cnt")]
         public int count { get; set; }
 
-        [JsonPropertyName("ctt")]
+        [JsonProperty("ctt")]
         public string commanderTrainingTicket { get; set; }
     }
 }

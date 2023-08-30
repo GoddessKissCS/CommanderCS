@@ -1,5 +1,5 @@
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.WaveDuel
 {
@@ -9,7 +9,7 @@ namespace StellarGK.Packets.Handlers.WaveDuel
     }
     public class WaveDuelDefenderSettingRequest
     {
-        [JsonPropertyName("decks")]
+        [JsonProperty("decks")]
         public JObject Decks { get; set; }
     }
 }

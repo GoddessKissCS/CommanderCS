@@ -1,7 +1,7 @@
-﻿using StellarGK.Database;
-using StellarGK.Logic.ExcelReader;
-using StellarGK.Logic.Protocols;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGKLibrary.ExcelReader;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Gacha
 {
@@ -75,11 +75,11 @@ namespace StellarGK.Host.Handlers.Gacha
 
         public class BankRoullet
         {
-            [JsonPropertyName("rsoc")]
+            [JsonProperty("rsoc")]
             public UserInformationResponse.Resource rsoc { get; set; }
-            [JsonPropertyName("cnt")]
+            [JsonProperty("cnt")]
             public int cnt { get; set; }
-            [JsonPropertyName("luck")]
+            [JsonProperty("luck")]
             public List<int> luck { get; set; }
 
         }
@@ -88,13 +88,13 @@ namespace StellarGK.Host.Handlers.Gacha
 
     public class BankRoulletStartRequest
     {
-        [JsonPropertyName("cnt")]
+        [JsonProperty("cnt")]
         public int count { get; set; }
 
-        [JsonPropertyName("vidx")]
+        [JsonProperty("vidx")]
         public int vidx { get; set; }
 
-        [JsonPropertyName("vcnt")]
+        [JsonProperty("vcnt")]
         public int vcnt { get; set; }
     }
 }

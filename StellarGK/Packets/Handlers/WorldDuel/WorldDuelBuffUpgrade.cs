@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace StellarGK.Packets.Handlers.WorldDuel
 {
@@ -8,7 +8,7 @@ namespace StellarGK.Packets.Handlers.WorldDuel
     }
     public class WorldDuelBuffUpgradeRequest
     {
-        [JsonPropertyName("type")]
+        [JsonProperty("type")]
         public string Type { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace StellarGK.Host.Handlers.Dormitory
 {
@@ -9,7 +9,7 @@ namespace StellarGK.Host.Handlers.Dormitory
         {
             var dormitoryInfo = GetUserDormitory();
 
-            Logic.Protocols.Dormitory.Info DormitoryInfo = new()
+            StellarGKLibrary.Protocols.Dormitory.Info DormitoryInfo = new()
             {
                 costumeBody = dormitoryInfo.CostumeBody,
                 itemNormal = dormitoryInfo.ItemNormal,
@@ -32,7 +32,7 @@ namespace StellarGK.Host.Handlers.Dormitory
 
     public class GetDormitoryInfoRequest
     {
-        [JsonPropertyName("type")]
+        [JsonProperty("type")]
         public List<string> type { get; set; }
     }
 }

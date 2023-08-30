@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace StellarGK.Host.Handlers.Event
 {
@@ -23,10 +23,10 @@ namespace StellarGK.Host.Handlers.Event
 
         public class GetPlugEventInfoPacket
         {
-            [JsonPropertyName("pst")]
+            [JsonProperty("pst")]
             public List<int> pst { get; set; }
 
-            [JsonPropertyName("cmt")]
+            [JsonProperty("cmt")]
             public List<int> cmt { get; set; }
         }
     }

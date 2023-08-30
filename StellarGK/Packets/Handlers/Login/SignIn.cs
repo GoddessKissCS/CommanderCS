@@ -1,7 +1,7 @@
-﻿using StellarGK.Database;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
 using StellarGK.Database.Schemes;
-using StellarGK.Tools;
-using System.Text.Json.Serialization;
+using static StellarGKLibrary.Cryptography.Crypto;
 
 namespace StellarGK.Host.Handlers.Sign
 {
@@ -32,7 +32,7 @@ namespace StellarGK.Host.Handlers.Sign
         }
         private static ErrorCode RequestSignIn(string AccountName, string password, out SignInP signInP)
         {
-            var password_hash = Crypto.ComputeSha256Hash(password);
+            var password_hash = ComputeSha256Hash(password);
 
             signInP = new();
             if (!DatabaseManager.Account.AccountExists(AccountName))
@@ -58,11 +58,11 @@ namespace StellarGK.Host.Handlers.Sign
 
         private class SignInP
         {
-            [JsonPropertyName("mIdx")]
+            [JsonProperty("mIdx")]
             public int mIdx { get; set; }
-            [JsonPropertyName("tokn")]
+            [JsonProperty("tokn")]
             public string tokn { get; set; }
-            [JsonPropertyName("srv")]
+            [JsonProperty("srv")]
             public int srv { get; set; }
         }
 
@@ -70,10 +70,10 @@ namespace StellarGK.Host.Handlers.Sign
 
     public class SignInRequest
     {
-        [JsonPropertyName("uid")]
+        [JsonProperty("uid")]
         public string uid { get; set; }
 
-        [JsonPropertyName("pwd")]
+        [JsonProperty("pwd")]
         public string pwd { get; set; }
     }
 }

@@ -1,6 +1,6 @@
-﻿using StellarGK.Database;
-using StellarGK.Tools;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGKLibrary.Utils;
 
 namespace StellarGK.Host.Handlers.Sign
 {
@@ -59,7 +59,7 @@ namespace StellarGK.Host.Handlers.Sign
 
         private class SignUpPacket
         {
-            [JsonPropertyName("uid")]
+            [JsonProperty("uid")]
             public string uid { get; set; }
         }
 
@@ -67,16 +67,16 @@ namespace StellarGK.Host.Handlers.Sign
 
     public class SignUpRequest
     {
-        [JsonPropertyName("uid")]
+        [JsonProperty("uid")]
         public string uid { get; set; }
 
-        [JsonPropertyName("pwd")]
+        [JsonProperty("pwd")]
         public string pwd { get; set; }
 
-        [JsonPropertyName("plfm")]
+        [JsonProperty("plfm")]
         public int plfm { get; set; }
 
-        [JsonPropertyName("ch")]
+        [JsonProperty("ch")]
         public int ch { get; set; }
     }
 }

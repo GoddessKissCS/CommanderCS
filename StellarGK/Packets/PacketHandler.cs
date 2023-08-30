@@ -1,16 +1,12 @@
-﻿using System.Text.Json;
-using System.Text.Json.Nodes;
-using static StellarGK.Tools.Compression;
-using static StellarGK.Tools.Crypto;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using static StellarGKLibrary.Cryptography.Crypto;
+using static StellarGKLibrary.Cryptography.Compression;
 
 namespace StellarGK.Host
 {
     public partial class PacketHandler
     {
-        private static readonly JsonSerializerOptions JsonSerializerOptions = new()
-        {
-            MaxDepth = 0,
-        };
         public static async Task<string> ProcessRequest(HttpContext context, IServiceProvider serviceProvider)
         {
             if (context.Request.Headers.UserAgent.Contains("BestHTTP"))
@@ -21,7 +17,8 @@ namespace StellarGK.Host
 
                 var keyIndex = Decrypt(decompressedRequest, out var decryptedRequest);
 
-                var node = JsonSerializer.Deserialize<JsonNode>(decryptedRequest, JsonSerializerOptions);
+                var node = JsonConvert.DeserializeObject<JToken>(decryptedRequest);
+
 
                 if (node is null)
                 {
@@ -30,7 +27,7 @@ namespace StellarGK.Host
 
                 object response;
 
-                if (node is JsonArray array)
+                if (node is JArray array)
                 {
                     var responses = new List<object>();
 
@@ -58,7 +55,7 @@ namespace StellarGK.Host
                     return Encrypt("{}", keyIndex);
                 }
 
-                var serialized = JsonSerializer.Serialize(response, JsonSerializerOptions);
+                var serialized = JsonConvert.SerializeObject(response);
 
                 var encrypted = Encrypt(serialized, keyIndex);
 
@@ -67,9 +64,10 @@ namespace StellarGK.Host
 
             return "shouldnt happen";
         }
-        private static object ProcessPacket(JsonNode raw, IServiceProvider serviceProvider)
+
+        private static object ProcessPacket(JToken raw, IServiceProvider serviceProvider)
         {
-            var paramsPacket = raw.Deserialize<ParamsPacket>();
+            var paramsPacket = raw.ToObject<ParamsPacket>();
 
             if (!CommandsMapper.TryGetValue(paramsPacket.Method, out var endpointMapping))
             {
@@ -80,9 +78,10 @@ namespace StellarGK.Host
 
             return result;
         }
+
         internal static object CommandMapping<TEndpoint, TParams>(ParamsPacket paramsPacket, IServiceProvider serviceProvider) where TEndpoint : BaseMethodHandler<TParams>
         {
-            var @params = paramsPacket.Params.Deserialize<TParams>();
+            var @params = paramsPacket.Params.ToObject<TParams>();
 
             var commandHandler = ActivatorUtilities.CreateInstance<TEndpoint>(serviceProvider);
 

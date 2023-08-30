@@ -1,6 +1,5 @@
-﻿using StellarGK.Logic.Protocols;
-using System.Runtime.InteropServices.Marshalling;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.WorldMap
 {
@@ -38,15 +37,15 @@ namespace StellarGK.Host.Handlers.WorldMap
     }
     public class WorldMapInformationRequest
     {
-        [JsonPropertyName("world")]
+        [JsonProperty("world")]
         public int world { get; set; }
     }
 
     public class WorldMapResponse
     {
-        [JsonPropertyName("stage")]
+        [JsonProperty("stage")]
         public List<WorldMapInformationResponse> stage { get; set; }
-        [JsonPropertyName("rwd")]
+        [JsonProperty("rwd")]
         public int rwd { get; set; }
     }
 }

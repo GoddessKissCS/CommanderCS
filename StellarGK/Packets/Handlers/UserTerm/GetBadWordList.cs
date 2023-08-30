@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace StellarGK.Host.Handlers.UserTerm
 {
@@ -31,7 +31,7 @@ namespace StellarGK.Host.Handlers.UserTerm
 
         internal class BadWordListResponse
         {
-            [JsonPropertyName("word")]
+            [JsonProperty("word")]
             public Dictionary<string, List<string>> word { get; set; }
         }
     }

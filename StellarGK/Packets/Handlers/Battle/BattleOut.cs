@@ -1,5 +1,6 @@
-﻿using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 
 namespace StellarGK.Host.Handlers.Battle
 {
@@ -8,6 +9,19 @@ namespace StellarGK.Host.Handlers.Battle
     {
         public override object Handle(BattleOutRequest @params)
         {
+            string serializedJson = JsonConvert.SerializeObject(@params, Formatting.Indented);
+
+            //Record record = (Record)@params.info;
+            //Result result = (Result)@params.result;
+
+
+            //string serializedRecord = JsonConvert.SerializeObject(record, Formatting.Indented);
+            //string serializedResult = JsonConvert.SerializeObject(result, Formatting.Indented);
+
+            string filePath = "output.json";
+            File.WriteAllText(filePath, serializedJson);
+            //File.WriteAllText("record.json", serializedRecord);
+            //File.WriteAllText("result.json", serializedResult);
 
             return "{}";
         }
@@ -16,14 +30,14 @@ namespace StellarGK.Host.Handlers.Battle
 
     public class BattleOutRequest
     {
-        [JsonPropertyName("type")]
+        [JsonProperty("type")]
         public int type { get; set; }
-        [JsonPropertyName("checkSum")]
+        [JsonProperty("checkSum")]
         public string checkSum { get; set; }
-        [JsonPropertyName("info")]
-        public JsonArray info { get; set; }
-        [JsonPropertyName("result")]
-        public JsonArray result { get; set; }
+        [JsonProperty("info")]
+        public JArray info { get; set; }
+        [JsonProperty("result")]
+        public JArray result { get; set; }
     }
 }
 

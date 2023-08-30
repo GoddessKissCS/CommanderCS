@@ -1,5 +1,5 @@
-﻿using StellarGK.Logic.ExcelReader;
-using StellarGK.Logic.Protocols;
+﻿using StellarGKLibrary.ExcelReader;
+using StellarGKLibrary.Protocols;
 
 
 namespace StellarGK.Host.Handlers.KeepAlives

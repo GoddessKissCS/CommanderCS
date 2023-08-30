@@ -1,6 +1,6 @@
+using Newtonsoft.Json;
 using StellarGK.Host;
-using StellarGK.Logic.Enums;
-using System.Text.Json.Serialization;
+using StellarGKLibrary.Enums;
 
 namespace StellarGK.Packets.Handlers.Annihilation
 {
@@ -16,7 +16,7 @@ namespace StellarGK.Packets.Handlers.Annihilation
 
     public class ResetAnnihilationStageRequest
     {
-        [JsonPropertyName("mode")]
+        [JsonProperty("mode")]
         public AnnihilationMode mode { get; set; }
     }
 

@@ -1,5 +1,5 @@
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.WorldDuel
 {
@@ -9,7 +9,7 @@ namespace StellarGK.Packets.Handlers.WorldDuel
     }
     public class WorldDuelDefenderSettingRequest
     {
-        [JsonPropertyName("deck")]
+        [JsonProperty("deck")]
         public JObject Deck { get; set; }
     }
 }

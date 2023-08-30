@@ -1,5 +1,5 @@
 ﻿using StellarGK.Database;
-using StellarGK.Logic.Protocols;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Guild
 {

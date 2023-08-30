@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace StellarGK.Host.Handlers.UserTerm
 {
@@ -23,9 +23,9 @@ namespace StellarGK.Host.Handlers.UserTerm
 
         internal class UserTermResponse
         {
-            [JsonPropertyName("member")]
+            [JsonProperty("member")]
             public string member { get; set; }
-            [JsonPropertyName("wemade")]
+            [JsonProperty("wemade")]
             public string wemade { get; set; }
 
         }

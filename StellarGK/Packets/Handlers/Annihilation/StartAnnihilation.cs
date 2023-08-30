@@ -1,5 +1,5 @@
+using Newtonsoft.Json;
 using StellarGK.Host;
-using System.Text.Json.Serialization;
 
 namespace StellarGK.Packets.Handlers.Annihilation
 {
@@ -15,11 +15,11 @@ namespace StellarGK.Packets.Handlers.Annihilation
 
     public class StartAnnihilationRequest
     {
-        [JsonPropertyName("type")]
+        [JsonProperty("type")]
         public int type { get; set; }
-        [JsonPropertyName("cid")]
-        public int checkSum { get; set; }
-        [JsonPropertyName("stage")]
+        [JsonProperty("cid")]
+        public int cid { get; set; }
+        [JsonProperty("stage")]
         public int stage { get; set; }
     }
 }
