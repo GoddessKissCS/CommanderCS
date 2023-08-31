@@ -74,11 +74,7 @@ namespace StellarGK
                 WriteIndented = true,
             });
 
-            //app.MapGet("/", () => statusString);
-
-            Utility.LoadRegulation();
-
-            app.MapGet("/", () => Utility.arrDBFileName);
+            app.MapGet("/", () => statusString);
 
             app.MapPost("/checkData.php", (HttpContext context, IServiceProvider provider) =>
             {

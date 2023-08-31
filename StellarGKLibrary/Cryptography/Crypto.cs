@@ -121,14 +121,18 @@ namespace StellarGKLibrary.Cryptography
             return result;
         }
 
-
-        public static string JSON_Decrypt(string s)
+        public static string JSON_Decrypt(string pathOrFile, bool readFromPath)
         {
-            string json = File.ReadAllText(s);
+            string json = pathOrFile;
+            if (readFromPath)
+            {
+                json = File.ReadAllText(pathOrFile);
+            }
 
             Decrypt(json, out string value);
 
             return value;
         }
+
     }
 }
