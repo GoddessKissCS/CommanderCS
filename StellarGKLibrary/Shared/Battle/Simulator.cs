@@ -5,7 +5,7 @@
 //using Newtonsoft.Json;
 //using Newtonsoft.Json.Linq;
 //using StellarGKLibrary.Shared.Battle.Internal;
-//
+
 //using System.Numerics;
 
 //namespace StellarGKLibrary.Shared.Battle
@@ -442,7 +442,7 @@
 //			else if (simulator.initState.battleType == EBattleType.Raid)
 //			{
 //				int endPhase = 0;
-//				rg.raidDtbl.FindAll(delegate(RaidDataRow x)
+//				rg.raidDtbl.FindAll(delegate (RaidDataRow x)
 //				{
 //					if (x.key == record.initState.raidData.raidId)
 //					{
@@ -542,18 +542,18 @@
 //							CommanderDataRow commanderDataRow = regulation.commanderDtbl[unit._cdri];
 //							switch (commanderDataRow.grade)
 //							{
-//							case 2:
-//								initState._lhsInitGrade2Count++;
-//								break;
-//							case 3:
-//								initState._lhsInitGrade3Count++;
-//								break;
-//							case 4:
-//								initState._lhsInitGrade4Count++;
-//								break;
-//							case 5:
-//								initState._lhsInitGrade5Count++;
-//								break;
+//								case 2:
+//									initState._lhsInitGrade2Count++;
+//									break;
+//								case 3:
+//									initState._lhsInitGrade3Count++;
+//									break;
+//								case 4:
+//									initState._lhsInitGrade4Count++;
+//									break;
+//								case 5:
+//									initState._lhsInitGrade5Count++;
+//									break;
 //							}
 //						}
 //					}
@@ -673,30 +673,30 @@
 //				TranscendenceSlotDataRow transcendenceSlotDataRow = regulation.transcendenceSlotDtbl[i];
 //				switch (transcendenceSlotDataRow.stat)
 //				{
-//				case StatType.ATK:
-//					unit._addAtk += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
-//					break;
-//				case StatType.DEF:
-//					unit._addDef += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
-//					break;
-//				case StatType.HP:
-//					unit._addHp += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
-//					break;
-//				case StatType.ACCUR:
-//					unit._addAim += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
-//					break;
-//				case StatType.LUCK:
-//					unit._addLuck += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
-//					break;
-//				case StatType.CRITR:
-//					unit._addCitr += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
-//					break;
-//				case StatType.CRITDMG:
-//					unit._addCitDmg += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
-//					break;
-//				case StatType.MOB:
-//					unit._addSpeed += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
-//					break;
+//					case StatType.ATK:
+//						unit._addAtk += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
+//						break;
+//					case StatType.DEF:
+//						unit._addDef += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
+//						break;
+//					case StatType.HP:
+//						unit._addHp += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
+//						break;
+//					case StatType.ACCUR:
+//						unit._addAim += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
+//						break;
+//					case StatType.LUCK:
+//						unit._addLuck += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
+//						break;
+//					case StatType.CRITR:
+//						unit._addCitr += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
+//						break;
+//					case StatType.CRITDMG:
+//						unit._addCitDmg += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
+//						break;
+//					case StatType.MOB:
+//						unit._addSpeed += slot.transcendence[i] * transcendenceSlotDataRow.addStat;
+//						break;
 //				}
 //				num += slot.transcendence[i];
 //			}
@@ -716,30 +716,30 @@
 //					int num6 = num5 / transcendenceStepUpgradeDataRow.statAddMeasure * transcendenceStepUpgradeDataRow.statAddVolume;
 //					switch (transcendenceStepUpgradeDataRow.stat)
 //					{
-//					case StatType.ATK:
-//						unit._addAtk += num6;
-//						break;
-//					case StatType.DEF:
-//						unit._addDef += num6;
-//						break;
-//					case StatType.HP:
-//						unit._addHp += num6;
-//						break;
-//					case StatType.ACCUR:
-//						unit._addAim += num6;
-//						break;
-//					case StatType.LUCK:
-//						unit._addLuck += num6;
-//						break;
-//					case StatType.CRITR:
-//						unit._addCitr += num6;
-//						break;
-//					case StatType.CRITDMG:
-//						unit._addCitDmg += num6;
-//						break;
-//					case StatType.MOB:
-//						unit._addSpeed += num6;
-//						break;
+//						case StatType.ATK:
+//							unit._addAtk += num6;
+//							break;
+//						case StatType.DEF:
+//							unit._addDef += num6;
+//							break;
+//						case StatType.HP:
+//							unit._addHp += num6;
+//							break;
+//						case StatType.ACCUR:
+//							unit._addAim += num6;
+//							break;
+//						case StatType.LUCK:
+//							unit._addLuck += num6;
+//							break;
+//						case StatType.CRITR:
+//							unit._addCitr += num6;
+//							break;
+//						case StatType.CRITDMG:
+//							unit._addCitDmg += num6;
+//							break;
+//						case StatType.MOB:
+//							unit._addSpeed += num6;
+//							break;
 //					}
 //					num3 -= num5;
 //					num2 = transcendenceStepUpgradeDataRow.stepPoint;
@@ -758,30 +758,30 @@
 //			Dictionary<EWorldDuelBuff, int> dictionary = ((unit.side != EBattleSide.Left) ? initState.dualData._worldDuelData.enemyBuffs : initState.dualData._worldDuelData.plyerBuffs);
 //			switch (unitDataRow.job)
 //			{
-//			case EJob.Attack:
-//			case EJob.Attack_x:
-//				unit._addAtk += (int)((long)(unitDataRow.attackDamage + unit._addAtk) * (long)dictionary[EWorldDuelBuff.att] / 10000L);
-//				if (unit._addAtk < 0)
-//				{
-//					unit._addAtk = 0;
-//				}
-//				break;
-//			case EJob.Defense:
-//			case EJob.Defense_x:
-//				unit._addDef += (int)((long)(unitDataRow.defense + unit._addDef) * (long)dictionary[EWorldDuelBuff.def] / 10000L);
-//				if (unit._addDef < 0)
-//				{
-//					unit._addDef = 0;
-//				}
-//				break;
-//			case EJob.Support:
-//			case EJob.Support_x:
-//				unit._addAtk += (int)((long)(unitDataRow.attackDamage + unit._addAtk) * (long)dictionary[EWorldDuelBuff.sup] / 10000L);
-//				if (unit._addAtk < 0)
-//				{
-//					unit._addAtk = 0;
-//				}
-//				break;
+//				case EJob.Attack:
+//				case EJob.Attack_x:
+//					unit._addAtk += (int)((long)(unitDataRow.attackDamage + unit._addAtk) * (long)dictionary[EWorldDuelBuff.att] / 10000L);
+//					if (unit._addAtk < 0)
+//					{
+//						unit._addAtk = 0;
+//					}
+//					break;
+//				case EJob.Defense:
+//				case EJob.Defense_x:
+//					unit._addDef += (int)((long)(unitDataRow.defense + unit._addDef) * (long)dictionary[EWorldDuelBuff.def] / 10000L);
+//					if (unit._addDef < 0)
+//					{
+//						unit._addDef = 0;
+//					}
+//					break;
+//				case EJob.Support:
+//				case EJob.Support_x:
+//					unit._addAtk += (int)((long)(unitDataRow.attackDamage + unit._addAtk) * (long)dictionary[EWorldDuelBuff.sup] / 10000L);
+//					if (unit._addAtk < 0)
+//					{
+//						unit._addAtk = 0;
+//					}
+//					break;
 //			}
 //		}
 
@@ -817,18 +817,18 @@
 //					}
 //					switch (equipItemDataRow.statType)
 //					{
-//					case EItemStatType.ATK:
-//						unit._addAtk += equipItemDataRow.GetStatPoint(value.lv);
-//						break;
-//					case EItemStatType.DEF:
-//						unit._addDef += equipItemDataRow.GetStatPoint(value.lv);
-//						break;
-//					case EItemStatType.ACCUR:
-//						unit._addAim += equipItemDataRow.GetStatPoint(value.lv);
-//						break;
-//					case EItemStatType.LUCK:
-//						unit._addLuck += equipItemDataRow.GetStatPoint(value.lv);
-//						break;
+//						case EItemStatType.ATK:
+//							unit._addAtk += equipItemDataRow.GetStatPoint(value.lv);
+//							break;
+//						case EItemStatType.DEF:
+//							unit._addDef += equipItemDataRow.GetStatPoint(value.lv);
+//							break;
+//						case EItemStatType.ACCUR:
+//							unit._addAim += equipItemDataRow.GetStatPoint(value.lv);
+//							break;
+//						case EItemStatType.LUCK:
+//							unit._addLuck += equipItemDataRow.GetStatPoint(value.lv);
+//							break;
 //					}
 //					num++;
 //				}
@@ -839,24 +839,24 @@
 //				EquipItemDataRow equipItemDataRow2 = regulation.equipItemDtbl[item.id];
 //				switch (equipItemDataRow2.setItemType)
 //				{
-//				case EItemSetType.ATK:
-//					unit._addAtk += equipItemDataRow2.statEffect;
-//					break;
-//				case EItemSetType.DEF:
-//					unit._addDef += equipItemDataRow2.statEffect;
-//					break;
-//				case EItemSetType.ACCUR:
-//					unit._addAim += equipItemDataRow2.statEffect;
-//					break;
-//				case EItemSetType.LUCK:
-//					unit._addLuck += equipItemDataRow2.statEffect;
-//					break;
-//				case EItemSetType.CRITR:
-//					unit._addCitr += equipItemDataRow2.statEffect;
-//					break;
-//				case EItemSetType.CRITDMG:
-//					unit._addCitDmg += equipItemDataRow2.statEffect;
-//					break;
+//					case EItemSetType.ATK:
+//						unit._addAtk += equipItemDataRow2.statEffect;
+//						break;
+//					case EItemSetType.DEF:
+//						unit._addDef += equipItemDataRow2.statEffect;
+//						break;
+//					case EItemSetType.ACCUR:
+//						unit._addAim += equipItemDataRow2.statEffect;
+//						break;
+//					case EItemSetType.LUCK:
+//						unit._addLuck += equipItemDataRow2.statEffect;
+//						break;
+//					case EItemSetType.CRITR:
+//						unit._addCitr += equipItemDataRow2.statEffect;
+//						break;
+//					case EItemSetType.CRITDMG:
+//						unit._addCitDmg += equipItemDataRow2.statEffect;
+//						break;
 //				}
 //			}
 //		}
@@ -1095,27 +1095,27 @@
 
 //		private void _InitUnitGroupBuffData(Unit unit, Troop.Slot slot)
 //		{
-//			Simulator.<_InitUnitGroupBuffData>c__AnonStorey3 <_InitUnitGroupBuffData>c__AnonStorey = new Simulator.<_InitUnitGroupBuffData>c__AnonStorey3();
-//			<_InitUnitGroupBuffData>c__AnonStorey.unit = unit;
-//			UnitDataRow unitDataRow = regulation.unitDtbl[<_InitUnitGroupBuffData>c__AnonStorey.unit.dri];
-//			<_InitUnitGroupBuffData>c__AnonStorey.groupBuffs = null;
-//			if (<_InitUnitGroupBuffData>c__AnonStorey.unit.side == EBattleSide.Left)
+//			Simulator.< _InitUnitGroupBuffData > c__AnonStorey3 < _InitUnitGroupBuffData > c__AnonStorey = new Simulator.< _InitUnitGroupBuffData > c__AnonStorey3();
+//			< _InitUnitGroupBuffData > c__AnonStorey.unit = unit;
+//			UnitDataRow unitDataRow = regulation.unitDtbl[< _InitUnitGroupBuffData > c__AnonStorey.unit.dri];
+//			< _InitUnitGroupBuffData > c__AnonStorey.groupBuffs = null;
+//			if (< _InitUnitGroupBuffData > c__AnonStorey.unit.side == EBattleSide.Left)
 //			{
-//				<_InitUnitGroupBuffData>c__AnonStorey.groupBuffs = initState._groupBuffs;
+//				< _InitUnitGroupBuffData > c__AnonStorey.groupBuffs = initState._groupBuffs;
 //			}
 //			else if (initState.battleType == EBattleType.Duel || initState.battleType == EBattleType.WaveDuel || initState.battleType == EBattleType.WorldDuel || initState.battleType == EBattleType.Conquest)
 //			{
-//				<_InitUnitGroupBuffData>c__AnonStorey.groupBuffs = initState.dualData._enemyGroupBuffs;
+//				< _InitUnitGroupBuffData > c__AnonStorey.groupBuffs = initState.dualData._enemyGroupBuffs;
 //			}
-//			if (<_InitUnitGroupBuffData>c__AnonStorey.groupBuffs == null)
+//			if (< _InitUnitGroupBuffData > c__AnonStorey.groupBuffs == null)
 //			{
 //				return;
 //			}
 //			int gi;
-//			for (gi = 0; gi < <_InitUnitGroupBuffData>c__AnonStorey.groupBuffs.Count; gi++)
+//			for (gi = 0; gi < < _InitUnitGroupBuffData > c__AnonStorey.groupBuffs.Count; gi++)
 //			{
 //				bool flag = false;
-//				GroupInfoDataRow groupInfoDataRow = regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => data.groupIdx == <_InitUnitGroupBuffData>c__AnonStorey.groupBuffs[gi] && data.rewardType >= ERewardType.GroupEff_1 && data.rewardType <= ERewardType.GroupEff_8);
+//				GroupInfoDataRow groupInfoDataRow = regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => data.groupIdx == < _InitUnitGroupBuffData > c__AnonStorey.groupBuffs[gi] && data.rewardType >= ERewardType.GroupEff_1 && data.rewardType <= ERewardType.GroupEff_8);
 //				if (groupInfoDataRow != null)
 //				{
 //					if (groupInfoDataRow.rewardIdx == 1001)
@@ -1141,7 +1141,7 @@
 //					}
 //					else if (groupInfoDataRow.rewardIdx == 1004)
 //					{
-//						GroupMemberDataRow groupMemberDataRow = regulation.groupMemberDtbl.Find((GroupMemberDataRow row) => row.gidx == <_InitUnitGroupBuffData>c__AnonStorey.groupBuffs[gi] && row.memberType == 1 && row.memberIdx == <_InitUnitGroupBuffData>c__AnonStorey.unit.cid);
+//						GroupMemberDataRow groupMemberDataRow = regulation.groupMemberDtbl.Find((GroupMemberDataRow row) => row.gidx == < _InitUnitGroupBuffData > c__AnonStorey.groupBuffs[gi] && row.memberType == 1 && row.memberIdx == < _InitUnitGroupBuffData > c__AnonStorey.unit.cid);
 //						if (groupMemberDataRow != null)
 //						{
 //							flag = true;
@@ -1151,7 +1151,7 @@
 //					{
 //						flag = true;
 //					}
-//					else if (<_InitUnitGroupBuffData>c__AnonStorey.unit.cid == groupInfoDataRow.rewardIdx.ToString())
+//					else if (< _InitUnitGroupBuffData > c__AnonStorey.unit.cid == groupInfoDataRow.rewardIdx.ToString())
 //					{
 //						flag = true;
 //					}
@@ -1161,70 +1161,70 @@
 //						{
 //							if (groupInfoDataRow.rewardType == ERewardType.GroupEff_1)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addAtk += (unitDataRow.attackDamage + <_InitUnitGroupBuffData>c__AnonStorey.unit._addAtk) * groupInfoDataRow.minCount / 100;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addAtk += (unitDataRow.attackDamage + < _InitUnitGroupBuffData > c__AnonStorey.unit._addAtk) * groupInfoDataRow.minCount / 100;
 //							}
 //							else if (groupInfoDataRow.rewardType == ERewardType.GroupEff_2)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addDef += (unitDataRow.defense + <_InitUnitGroupBuffData>c__AnonStorey.unit._addDef) * groupInfoDataRow.minCount / 100;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addDef += (unitDataRow.defense + < _InitUnitGroupBuffData > c__AnonStorey.unit._addDef) * groupInfoDataRow.minCount / 100;
 //							}
 //							else if (groupInfoDataRow.rewardType == ERewardType.GroupEff_3)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addHp += (unitDataRow.maxHealth + <_InitUnitGroupBuffData>c__AnonStorey.unit._addHp) * groupInfoDataRow.minCount / 100;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addHp += (unitDataRow.maxHealth + < _InitUnitGroupBuffData > c__AnonStorey.unit._addHp) * groupInfoDataRow.minCount / 100;
 //							}
 //							else if (groupInfoDataRow.rewardType == ERewardType.GroupEff_4)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addAim += (unitDataRow.accuracy + <_InitUnitGroupBuffData>c__AnonStorey.unit._addAim) * groupInfoDataRow.minCount / 100;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addAim += (unitDataRow.accuracy + < _InitUnitGroupBuffData > c__AnonStorey.unit._addAim) * groupInfoDataRow.minCount / 100;
 //							}
 //							else if (groupInfoDataRow.rewardType == ERewardType.GroupEff_5)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addLuck += (unitDataRow.luck + <_InitUnitGroupBuffData>c__AnonStorey.unit._addLuck) * groupInfoDataRow.minCount / 100;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addLuck += (unitDataRow.luck + < _InitUnitGroupBuffData > c__AnonStorey.unit._addLuck) * groupInfoDataRow.minCount / 100;
 //							}
 //							else if (groupInfoDataRow.rewardType == ERewardType.GroupEff_6)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addCitr += (unitDataRow.criticalChance + <_InitUnitGroupBuffData>c__AnonStorey.unit._addCitr) * groupInfoDataRow.minCount / 100;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addCitr += (unitDataRow.criticalChance + < _InitUnitGroupBuffData > c__AnonStorey.unit._addCitr) * groupInfoDataRow.minCount / 100;
 //							}
 //							else if (groupInfoDataRow.rewardType == ERewardType.GroupEff_7)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addCitDmg += (unitDataRow.criticalDamage + <_InitUnitGroupBuffData>c__AnonStorey.unit._addCitDmg) * groupInfoDataRow.minCount / 100;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addCitDmg += (unitDataRow.criticalDamage + < _InitUnitGroupBuffData > c__AnonStorey.unit._addCitDmg) * groupInfoDataRow.minCount / 100;
 //							}
 //							else if (groupInfoDataRow.rewardType == ERewardType.GroupEff_8)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addSpeed += (unitDataRow.speed + <_InitUnitGroupBuffData>c__AnonStorey.unit._addSpeed) * groupInfoDataRow.minCount / 100;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addSpeed += (unitDataRow.speed + < _InitUnitGroupBuffData > c__AnonStorey.unit._addSpeed) * groupInfoDataRow.minCount / 100;
 //							}
 //						}
 //						else if (groupInfoDataRow.typeIndex == 2)
 //						{
 //							if (groupInfoDataRow.rewardType == ERewardType.GroupEff_1)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addAtk = <_InitUnitGroupBuffData>c__AnonStorey.unit._addAtk + groupInfoDataRow.minCount;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addAtk = < _InitUnitGroupBuffData > c__AnonStorey.unit._addAtk + groupInfoDataRow.minCount;
 //							}
 //							else if (groupInfoDataRow.rewardType == ERewardType.GroupEff_2)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addDef = <_InitUnitGroupBuffData>c__AnonStorey.unit._addDef + groupInfoDataRow.minCount;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addDef = < _InitUnitGroupBuffData > c__AnonStorey.unit._addDef + groupInfoDataRow.minCount;
 //							}
 //							else if (groupInfoDataRow.rewardType == ERewardType.GroupEff_3)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addHp = <_InitUnitGroupBuffData>c__AnonStorey.unit._addHp + groupInfoDataRow.minCount;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addHp = < _InitUnitGroupBuffData > c__AnonStorey.unit._addHp + groupInfoDataRow.minCount;
 //							}
 //							else if (groupInfoDataRow.rewardType == ERewardType.GroupEff_4)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addAim = <_InitUnitGroupBuffData>c__AnonStorey.unit._addAim + groupInfoDataRow.minCount;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addAim = < _InitUnitGroupBuffData > c__AnonStorey.unit._addAim + groupInfoDataRow.minCount;
 //							}
 //							else if (groupInfoDataRow.rewardType == ERewardType.GroupEff_5)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addLuck = <_InitUnitGroupBuffData>c__AnonStorey.unit._addLuck + groupInfoDataRow.minCount;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addLuck = < _InitUnitGroupBuffData > c__AnonStorey.unit._addLuck + groupInfoDataRow.minCount;
 //							}
 //							else if (groupInfoDataRow.rewardType == ERewardType.GroupEff_6)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addCitr = <_InitUnitGroupBuffData>c__AnonStorey.unit._addCitr + groupInfoDataRow.minCount;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addCitr = < _InitUnitGroupBuffData > c__AnonStorey.unit._addCitr + groupInfoDataRow.minCount;
 //							}
 //							else if (groupInfoDataRow.rewardType == ERewardType.GroupEff_7)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addCitDmg = <_InitUnitGroupBuffData>c__AnonStorey.unit._addCitDmg + groupInfoDataRow.minCount;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addCitDmg = < _InitUnitGroupBuffData > c__AnonStorey.unit._addCitDmg + groupInfoDataRow.minCount;
 //							}
 //							else if (groupInfoDataRow.rewardType == ERewardType.GroupEff_8)
 //							{
-//								<_InitUnitGroupBuffData>c__AnonStorey.unit._addSpeed = <_InitUnitGroupBuffData>c__AnonStorey.unit._addSpeed + groupInfoDataRow.minCount;
+//								< _InitUnitGroupBuffData > c__AnonStorey.unit._addSpeed = < _InitUnitGroupBuffData > c__AnonStorey.unit._addSpeed + groupInfoDataRow.minCount;
 //							}
 //						}
 //					}
@@ -1257,24 +1257,24 @@
 //		{
 //			switch (type)
 //			{
-//			case EItemStatType.ATK:
-//				unit._addAtk += WeaponDataRow.GetStatPoint(weaponlevel, basePoint, addPoint) * pointRate / 100;
-//				break;
-//			case EItemStatType.DEF:
-//				unit._addDef += WeaponDataRow.GetStatPoint(weaponlevel, basePoint, addPoint) * pointRate / 100;
-//				break;
-//			case EItemStatType.ACCUR:
-//				unit._addAim += WeaponDataRow.GetStatPoint(weaponlevel, basePoint, addPoint) * pointRate / 100;
-//				break;
-//			case EItemStatType.LUCK:
-//				unit._addLuck += WeaponDataRow.GetStatPoint(weaponlevel, basePoint, addPoint) * pointRate / 100;
-//				break;
-//			case EItemStatType.CRITDMG:
-//				unit._addCitDmg += WeaponDataRow.GetStatPoint(weaponlevel, basePoint, addPoint) * pointRate / 100;
-//				break;
-//			case EItemStatType.MOB:
-//				unit._addSpeed += WeaponDataRow.GetStatPoint(weaponlevel, basePoint, addPoint) * pointRate / 100;
-//				break;
+//				case EItemStatType.ATK:
+//					unit._addAtk += WeaponDataRow.GetStatPoint(weaponlevel, basePoint, addPoint) * pointRate / 100;
+//					break;
+//				case EItemStatType.DEF:
+//					unit._addDef += WeaponDataRow.GetStatPoint(weaponlevel, basePoint, addPoint) * pointRate / 100;
+//					break;
+//				case EItemStatType.ACCUR:
+//					unit._addAim += WeaponDataRow.GetStatPoint(weaponlevel, basePoint, addPoint) * pointRate / 100;
+//					break;
+//				case EItemStatType.LUCK:
+//					unit._addLuck += WeaponDataRow.GetStatPoint(weaponlevel, basePoint, addPoint) * pointRate / 100;
+//					break;
+//				case EItemStatType.CRITDMG:
+//					unit._addCitDmg += WeaponDataRow.GetStatPoint(weaponlevel, basePoint, addPoint) * pointRate / 100;
+//					break;
+//				case EItemStatType.MOB:
+//					unit._addSpeed += WeaponDataRow.GetStatPoint(weaponlevel, basePoint, addPoint) * pointRate / 100;
+//					break;
 //			}
 //		}
 
@@ -1304,21 +1304,21 @@
 //				int num2 = 100;
 //				switch (weaponDataRow.slotType)
 //				{
-//				case 1:
-//					num2 = unitDataRow.partHead;
-//					break;
-//				case 2:
-//					num2 = unitDataRow.partRightHand;
-//					break;
-//				case 3:
-//					num2 = unitDataRow.partLeftHand;
-//					break;
-//				case 4:
-//					num2 = unitDataRow.partBody;
-//					break;
-//				case 5:
-//					num2 = unitDataRow.partSpecial;
-//					break;
+//					case 1:
+//						num2 = unitDataRow.partHead;
+//						break;
+//					case 2:
+//						num2 = unitDataRow.partRightHand;
+//						break;
+//					case 3:
+//						num2 = unitDataRow.partLeftHand;
+//						break;
+//					case 4:
+//						num2 = unitDataRow.partBody;
+//						break;
+//					case 5:
+//						num2 = unitDataRow.partSpecial;
+//						break;
 //				}
 //				for (int i = 0; i < 4; i++)
 //				{
@@ -1345,24 +1345,24 @@
 //				{
 //					switch (weaponSetDataRow.weaponSetStatType)
 //					{
-//					case EItemSetType.ATK:
-//						unit._addAtk += weaponSetDataRow.weaponSetStatAddPoint;
-//						break;
-//					case EItemSetType.DEF:
-//						unit._addDef += weaponSetDataRow.weaponSetStatAddPoint;
-//						break;
-//					case EItemSetType.ACCUR:
-//						unit._addAim += weaponSetDataRow.weaponSetStatAddPoint;
-//						break;
-//					case EItemSetType.LUCK:
-//						unit._addLuck += weaponSetDataRow.weaponSetStatAddPoint;
-//						break;
-//					case EItemSetType.CRITR:
-//						unit._addCitr += weaponSetDataRow.weaponSetStatAddPoint;
-//						break;
-//					case EItemSetType.CRITDMG:
-//						unit._addCitDmg += weaponSetDataRow.weaponSetStatAddPoint;
-//						break;
+//						case EItemSetType.ATK:
+//							unit._addAtk += weaponSetDataRow.weaponSetStatAddPoint;
+//							break;
+//						case EItemSetType.DEF:
+//							unit._addDef += weaponSetDataRow.weaponSetStatAddPoint;
+//							break;
+//						case EItemSetType.ACCUR:
+//							unit._addAim += weaponSetDataRow.weaponSetStatAddPoint;
+//							break;
+//						case EItemSetType.LUCK:
+//							unit._addLuck += weaponSetDataRow.weaponSetStatAddPoint;
+//							break;
+//						case EItemSetType.CRITR:
+//							unit._addCitr += weaponSetDataRow.weaponSetStatAddPoint;
+//							break;
+//						case EItemSetType.CRITDMG:
+//							unit._addCitDmg += weaponSetDataRow.weaponSetStatAddPoint;
+//							break;
 //					}
 //				}
 //			}
@@ -1823,7 +1823,7 @@
 
 //		private string _MakeChecksum(Record record)
 //		{
-//			StringBuilder stringBuilder = new StringBuilder();
+//			StringBuilder stringBuilder = new();
 //			stringBuilder.Append(record.length + ",");
 //			Frame frame = record.frames[0];
 //			stringBuilder.Append(frame.randomSeed + ",");

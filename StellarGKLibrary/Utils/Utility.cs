@@ -7,6 +7,9 @@ namespace StellarGKLibrary.Utils
 {
     public class Utility
     {
+
+        internal static Regulation regulation;
+
         public static DateTime ConvertToDateTime(string yyyymmddFormatString)
         {
             if (string.IsNullOrEmpty(yyyymmddFormatString) || yyyymmddFormatString.Length != 8)

@@ -13,14 +13,14 @@ namespace StellarGKLibrary.Shared.Battle
 
         public static explicit operator Option(JToken value)
         {
-            Option @default = Option.Default;
+            Option @default = Default;
             @default.enableEffect = (bool)value[0];
             return @default;
         }
 
-        public static Option Default = new Option
+        public static Option Default = new()
         {
-            playMode = Option.PlayMode.Default,
+            playMode = PlayMode.Default,
             timeLimit = 900000,
             turnLimit = -1,
             winSideByTimeOut = 1,
@@ -39,7 +39,7 @@ namespace StellarGKLibrary.Shared.Battle
         };
 
         [JsonIgnore]
-        public Option.PlayMode playMode;
+        public PlayMode playMode;
 
         [JsonIgnore]
         public int timeLimit;
