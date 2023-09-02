@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using StellarGKLibrary.Shared.Battle;
-using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Battle
 {
@@ -12,8 +10,8 @@ namespace StellarGK.Host.Handlers.Battle
         {
             string serializedJson = JsonConvert.SerializeObject(@params, Formatting.Indented);
 
-            Record record = (Record)@params.info;
-            Result result = (Result)@params.result;
+            //Record record = (Record)@params.info;
+            //Result result = (Result)@params.result;
 
 
             //string serializedRecord = JsonConvert.SerializeObject(record, Formatting.Indented);
