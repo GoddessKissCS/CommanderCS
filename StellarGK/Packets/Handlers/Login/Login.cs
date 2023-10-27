@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using StellarGK.Database;
-using StellarGKLibrary.Enums;
+using StellarGKLibrary.Enum;
 using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Login

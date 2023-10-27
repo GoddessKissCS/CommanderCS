@@ -1,5 +1,5 @@
 using Newtonsoft.Json;
-using StellarGKLibrary.Enums;
+using StellarGKLibrary.Enum;
 
 namespace StellarGK.Packets.Handlers.Profile
 {

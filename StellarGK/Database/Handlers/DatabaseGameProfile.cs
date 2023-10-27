@@ -403,11 +403,12 @@ namespace StellarGK.Database.Handlers
                 PushRegistrationId = @params.pushRegistrationId,
             };
 
+            var CurrTimeStamp = Utility.CurrentTimeStamp();
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("MemberId", @params.memberId) &
                          Builders<GameProfileScheme>.Filter.Eq("Server", @params.world);
 
-            var update = Builders<GameProfileScheme>.Update.Set("Session", session).Set("UserDevice", userDevice).Set("LastLoginTime", Constants.CurrentTimeStamp);
+            var update = Builders<GameProfileScheme>.Update.Set("Session", session).Set("UserDevice", userDevice).Set("LastLoginTime", CurrTimeStamp);
 
             Collection.UpdateOne(filter, update);
 

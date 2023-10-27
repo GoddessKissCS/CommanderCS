@@ -1,5 +1,5 @@
 using Microsoft.Extensions.FileProviders;
-
+using StellarGK.Database;
 using StellarGK.Host;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -144,10 +144,12 @@ namespace StellarGK
             app.Run();
         }
     }
+
+    class Status
+    {
+        public string Message { get; set; }
+        public List<string> CommandsLoaded { get; set; }
+    }
+
 }
 
-class Status
-{
-    public string Message { get; set; }
-    public List<string> CommandsLoaded { get; set; }
-}

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using StellarGK.Host;
-using StellarGKLibrary.Enums;
+using StellarGKLibrary.Enum;
 
 namespace StellarGK.Packets.Handlers.Profile
 {

@@ -2,7 +2,6 @@
 using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.Crypto.Paddings;
 using Org.BouncyCastle.Crypto.Parameters;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -121,17 +120,13 @@ namespace StellarGKLibrary.Cryptography
             return result;
         }
 
-        public static string JSON_Decrypt(string pathOrFile, bool readFromPath)
+        public static string JSON_Decrypt(string text)
         {
-            string json = pathOrFile;
-            if (readFromPath)
-            {
-                json = File.ReadAllText(pathOrFile);
-            }
+            var json = File.ReadAllText(text);
 
-            Decrypt(json, out string value);
+            string decrypted = DecryptInternal(Convert.FromBase64String(json), _keys[2]);
 
-            return value;
+            return decrypted;
         }
 
     }

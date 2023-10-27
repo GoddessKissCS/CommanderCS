@@ -10,11 +10,15 @@ namespace StellarGK.Database.Handlers
 
         public DeviceChangeCodeScheme Create(int id)
         {
+
+            var Code = Utility.ChangeDeviceCode();
+            var CreateTime = Utility.CurrentTimeStamp();
+
             DeviceChangeCodeScheme deviceCode = new()
             {
                 MemberId = id,
-                Code = Constants.ChangeDeviceCode,
-                CreateTime = Constants.CurrentTimeStamp,
+                Code = Code,
+                CreateTime = CreateTime,
             };
 
             Collection.InsertOne(deviceCode);

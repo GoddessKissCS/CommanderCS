@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using StellarGK.Database;
-using StellarGKLibrary.Enums;
+using StellarGKLibrary.Enum;
 
 namespace StellarGK.Host.Handlers.UserTerm
 {

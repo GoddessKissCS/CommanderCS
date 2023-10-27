@@ -11,8 +11,8 @@ namespace StellarGK.Host.Handlers.UserTerm
 
             UserTermResponse userterm = new()
             {
-                wemade = File.ReadAllText($"Resources\\Shared\\terms.txt"),
-                member = File.ReadAllText($"Resources\\Shared\\privacy.txt")
+                wemade = File.ReadAllText($"Resources\\PrivacyPolicy\\TermsOfService.txt"),
+                member = File.ReadAllText($"Resources\\PrivacyPolicy\\PrivacyPolicy.txt")
             };
 
             response.Id = BasePacket.Id;

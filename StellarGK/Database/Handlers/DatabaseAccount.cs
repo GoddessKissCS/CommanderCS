@@ -4,7 +4,7 @@ using StellarGK.Host;
 using StellarGK.Host.Handlers.Login;
 using StellarGK.Packets.Handlers.UserTerm;
 using StellarGKLibrary.Utils;
-using StellarGKLibrary.Enums;
+using StellarGKLibrary.Enum;
 using StellarGKLibrary.Protocols;
 using static StellarGKLibrary.Cryptography.Crypto;
 
@@ -20,13 +20,15 @@ namespace StellarGK.Database.Handlers
 
             int memberId = DatabaseManager.AutoIncrements.GetNextNumber("MemberId", 1000);
 
+            var CurrTimeStamp = Utility.CurrentTimeStamp();
+
             AccountScheme user = new()
             {
                 MemberId = memberId,
                 Token = Guid.NewGuid().ToString(),
                 Channel = channel,
-                CreationTime = Constants.CurrentTimeStamp,
-                LastLoginTime = Constants.CurrentTimeStamp,
+                CreationTime = CurrTimeStamp,
+                LastLoginTime = CurrTimeStamp,
                 isBanned = null,
                 BanReason = null,
                 LastServerLoggedIn = 1,
@@ -35,7 +37,7 @@ namespace StellarGK.Database.Handlers
 
             if (platformid == 0)
             {
-                string guestName = Constants.CreateGuestName;
+                string guestName = Utility.CreateGuestName();
                 user.Clearance = Clearance.Guest;
                 user.Name = guestName;
 
@@ -100,8 +102,11 @@ namespace StellarGK.Database.Handlers
 
         public void UpdateLoginTime(int id)
         {
+
+            var CurrTimeStamp = Utility.CurrentTimeStamp();
+
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", id);
-            var update = Builders<AccountScheme>.Update.Set("LastLoginTime", Constants.CurrentTimeStamp);
+            var update = Builders<AccountScheme>.Update.Set("LastLoginTime", CurrTimeStamp);
 
             Collection.UpdateOne(filter, update);
         }
@@ -110,8 +115,10 @@ namespace StellarGK.Database.Handlers
         {
             var account = FindByName(name);
 
+            var CurrTimeStamp = Utility.CurrentTimeStamp();
+
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
-            var update = Builders<AccountScheme>.Update.Set("LastLoginTime", Constants.CurrentTimeStamp);
+            var update = Builders<AccountScheme>.Update.Set("LastLoginTime", CurrTimeStamp);
 
             Collection.UpdateOne(filter, update);
         }

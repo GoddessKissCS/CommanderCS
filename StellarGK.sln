@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StellarGK", "StellarGK\Stel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandHandlerMappingsSourceGenerator", "CommandHandlerMappingsSourceGenerator\CommandHandlerMappingsSourceGenerator.csproj", "{60F44908-2161-4619-91C5-418D9B388983}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StellarGKCMD", "StellarGKCMD\StellarGKCMD.csproj", "{6AE7F229-E898-41D1-A7C5-F8A85830DBE5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StellarGKLibrary", "StellarGKLibrary\StellarGKLibrary.csproj", "{306DA463-D99A-4A0E-A96A-F284B5C9B973}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{60F44908-2161-4619-91C5-418D9B388983}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60F44908-2161-4619-91C5-418D9B388983}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60F44908-2161-4619-91C5-418D9B388983}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6AE7F229-E898-41D1-A7C5-F8A85830DBE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6AE7F229-E898-41D1-A7C5-F8A85830DBE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6AE7F229-E898-41D1-A7C5-F8A85830DBE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6AE7F229-E898-41D1-A7C5-F8A85830DBE5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{306DA463-D99A-4A0E-A96A-F284B5C9B973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{306DA463-D99A-4A0E-A96A-F284B5C9B973}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{306DA463-D99A-4A0E-A96A-F284B5C9B973}.Release|Any CPU.ActiveCfg = Release|Any CPU

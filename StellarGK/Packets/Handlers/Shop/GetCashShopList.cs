@@ -1,4 +1,4 @@
-﻿using StellarGKLibrary.Enums;
+﻿using StellarGKLibrary.Enum;
 using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Shop

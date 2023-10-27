@@ -21,6 +21,7 @@ namespace StellarGK.Host
     }
     public enum ErrorCode : int
     {
+        UserNotFound = -1,
         Failure = 0,
         Success = 1,
         UnableToJoin = 10015,

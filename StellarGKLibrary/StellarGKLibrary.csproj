@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Ro\**" />
     <Compile Remove="StellarGKLibrary.Shared\**" />
+    <EmbeddedResource Remove="Ro\**" />
     <EmbeddedResource Remove="StellarGKLibrary.Shared\**" />
+    <None Remove="Ro\**" />
     <None Remove="StellarGKLibrary.Shared\**" />
   </ItemGroup>
 
@@ -1034,6 +1037,15 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
     <PackageReference Include="Tival.GZipCompressor" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\PrivayAndTerms\PrivacyPolicy.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\PrivayAndTerms\TermsofService.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,46 @@
+using System;
+using Newtonsoft.Json;
+using StellarGKLibrary.DataTables;
+
+namespace BattleSimulator.DataTables.DataRowTable
+{
+    [JsonObject]
+	[Serializable]
+	public class DormitoryWallpaperDataRow : DataRow
+	{
+		[JsonProperty("type")]
+		public string id { get; private set; }
+
+		[JsonProperty("wallpaperName")]
+		public string name { get; private set; }
+
+		[JsonProperty("image")]
+		public string resource { get; private set; }
+
+		public string thumbnail { get; private set; }
+
+		public int atlasNumber { get; private set; }
+
+		[JsonProperty("desc")]
+		public string description { get; private set; }
+
+		public ItemExchangeDataRow itemExchangeDr
+		{
+			get
+			{
+				if (_itemExchangeDr == null)
+				{
+					_itemExchangeDr = RemoteObjectManager.instance.regulation.itemExchangeDtbl.Find((ItemExchangeDataRow item) => item.typeidx == id && item.type == EStorageType.DormitoryWallpaper);
+				}
+				return _itemExchangeDr;
+			}
+		}
+
+		public string GetKey()
+		{
+			return id;
+		}
+
+		private ItemExchangeDataRow _itemExchangeDr;
+	}
+}

@@ -21,9 +21,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="MongoDB.Bson" Version="2.20.0" />
-		<PackageReference Include="MongoDB.Driver" Version="2.20.0" />
-		<PackageReference Include="MongoDB.Driver.Core" Version="2.20.0" />
+		<PackageReference Include="MongoDB.Bson" Version="2.21.0" />
+		<PackageReference Include="MongoDB.Driver" Version="2.21.0" />
+		<PackageReference Include="MongoDB.Driver.Core" Version="2.21.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
 		<PackageReference Include="Tival.GZipCompressor" Version="1.0.1" />
