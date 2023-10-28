@@ -1,1 +1,1247 @@
-[{"typeCost":[160,160,480,1200],"typeLimitLevel":[2,2,3,11],"level":1},{"typeCost":[200,200,560,1440],"typeLimitLevel":[3,3,4,12],"level":2},{"typeCost":[240,240,640,1840],"typeLimitLevel":[4,4,5,13],"level":3},{"typeCost":[280,280,720,2000],"typeLimitLevel":[5,5,6,14],"level":4},{"typeCost":[320,320,800,2320],"typeLimitLevel":[6,6,7,15],"level":5},{"typeCost":[360,360,880,2560],"typeLimitLevel":[7,7,8,16],"level":6},{"typeCost":[400,400,1120,2880],"typeLimitLevel":[8,8,9,17],"level":7},{"typeCost":[440,440,1280,3040],"typeLimitLevel":[9,9,10,18],"level":8},{"typeCost":[480,480,1600,3360],"typeLimitLevel":[10,10,11,19],"level":9},{"typeCost":[600,600,1760,3520],"typeLimitLevel":[11,11,12,20],"level":10},{"typeCost":[720,720,2000,3840],"typeLimitLevel":[12,12,13,21],"level":11},{"typeCost":[880,880,2160,4000],"typeLimitLevel":[13,13,14,22],"level":12},{"typeCost":[960,960,2480,4400],"typeLimitLevel":[14,14,15,23],"level":13},{"typeCost":[1120,1120,2560,4560],"typeLimitLevel":[15,15,16,24],"level":14},{"typeCost":[1200,1200,2880,4880],"typeLimitLevel":[16,16,17,25],"level":15},{"typeCost":[1360,1360,3040,5360],"typeLimitLevel":[17,17,18,26],"level":16},{"typeCost":[1440,1440,3280,6080],"typeLimitLevel":[18,18,19,27],"level":17},{"typeCost":[1600,1600,3440,6560],"typeLimitLevel":[19,19,20,28],"level":18},{"typeCost":[1680,1680,3760,7200],"typeLimitLevel":[20,20,21,29],"level":19},{"typeCost":[1840,1840,3920,7760],"typeLimitLevel":[21,21,22,30],"level":20},{"typeCost":[1920,1920,4160,8800],"typeLimitLevel":[22,22,23,31],"level":21},{"typeCost":[2080,2080,4640,8800],"typeLimitLevel":[23,23,24,32],"level":22},{"typeCost":[2160,2160,5200,9600],"typeLimitLevel":[24,24,25,33],"level":23},{"typeCost":[2320,2320,5600,10400],"typeLimitLevel":[25,25,26,34],"level":24},{"typeCost":[2560,2560,6160,10400],"typeLimitLevel":[26,26,27,35],"level":25},{"typeCost":[2880,2880,6640,11200],"typeLimitLevel":[27,27,28,36],"level":26},{"typeCost":[3120,3120,7200,12000],"typeLimitLevel":[28,28,29,37],"level":27},{"typeCost":[3440,3440,7600,12800],"typeLimitLevel":[29,29,30,38],"level":28},{"typeCost":[3680,3680,8000,12800],"typeLimitLevel":[30,30,31,39],"level":29},{"typeCost":[4000,4000,8800,13600],"typeLimitLevel":[31,31,32,40],"level":30},{"typeCost":[4240,4240,9600,14400],"typeLimitLevel":[32,32,33,41],"level":31},{"typeCost":[4560,4560,9600,14400],"typeLimitLevel":[33,33,34,42],"level":32},{"typeCost":[4800,4800,10400,15200],"typeLimitLevel":[34,34,35,43],"level":33},{"typeCost":[5120,5120,10400,16000],"typeLimitLevel":[35,35,36,44],"level":34},{"typeCost":[5360,5360,11200,16800],"typeLimitLevel":[36,36,37,45],"level":35},{"typeCost":[5680,5680,12000,16800],"typeLimitLevel":[37,37,38,46],"level":36},{"typeCost":[5920,5920,12000,18400],"typeLimitLevel":[38,38,39,47],"level":37},{"typeCost":[6240,6240,12800,18400],"typeLimitLevel":[39,39,40,48],"level":38},{"typeCost":[6480,6480,13600,18400],"typeLimitLevel":[40,40,41,49],"level":39},{"typeCost":[6800,6800,13600,20000],"typeLimitLevel":[41,41,42,50],"level":40},{"typeCost":[7040,7040,14400,20000],"typeLimitLevel":[42,42,43,51],"level":41},{"typeCost":[7360,7360,14400,20000],"typeLimitLevel":[43,43,44,52],"level":42},{"typeCost":[7600,7600,16000,21600],"typeLimitLevel":[44,44,45,53],"level":43},{"typeCost":[7920,7920,16000,21600],"typeLimitLevel":[45,45,46,54],"level":44},{"typeCost":[8000,8000,16000,21600],"typeLimitLevel":[46,46,47,55],"level":45},{"typeCost":[8800,8800,17600,23200],"typeLimitLevel":[47,47,48,56],"level":46},{"typeCost":[8800,8800,17600,23200],"typeLimitLevel":[48,48,49,57],"level":47},{"typeCost":[8800,8800,17600,23200],"typeLimitLevel":[49,49,50,58],"level":48},{"typeCost":[9600,9600,18400,25600],"typeLimitLevel":[50,50,51,59],"level":49},{"typeCost":[9600,9600,18400,25600],"typeLimitLevel":[51,51,52,60],"level":50},{"typeCost":[9600,9600,18400,25600],"typeLimitLevel":[52,52,53,61],"level":51},{"typeCost":[10400,10400,20000,27200],"typeLimitLevel":[53,53,54,62],"level":52},{"typeCost":[10400,10400,20000,27200],"typeLimitLevel":[54,54,55,63],"level":53},{"typeCost":[10400,10400,20000,28800],"typeLimitLevel":[55,55,56,64],"level":54},{"typeCost":[11200,11200,21600,28800],"typeLimitLevel":[56,56,57,65],"level":55},{"typeCost":[11200,11200,21600,28800],"typeLimitLevel":[57,57,58,66],"level":56},{"typeCost":[11200,11200,21600,30400],"typeLimitLevel":[58,58,59,67],"level":57},{"typeCost":[12000,12000,23200,32000],"typeLimitLevel":[59,59,60,68],"level":58},{"typeCost":[12000,12000,23200,32000],"typeLimitLevel":[60,60,61,69],"level":59},{"typeCost":[12000,12000,24800,33600],"typeLimitLevel":[61,61,62,70],"level":60},{"typeCost":[12800,12800,24800,43200],"typeLimitLevel":[62,62,63,71],"level":61},{"typeCost":[12800,12800,24800,57600],"typeLimitLevel":[63,63,64,72],"level":62},{"typeCost":[13600,13600,25600,70400],"typeLimitLevel":[64,64,65,73],"level":63},{"typeCost":[13600,13600,27200,84000],"typeLimitLevel":[65,65,66,74],"level":64},{"typeCost":[13600,13600,27200,96800],"typeLimitLevel":[66,66,67,75],"level":65},{"typeCost":[14400,14400,28800,110400],"typeLimitLevel":[67,67,68,76],"level":66},{"typeCost":[15200,15200,28800,124000],"typeLimitLevel":[68,68,69,77],"level":67},{"typeCost":[15200,15200,30400,137600],"typeLimitLevel":[69,69,70,78],"level":68},{"typeCost":[16000,16000,39200,150400],"typeLimitLevel":[70,70,71,79],"level":69},{"typeCost":[20800,20800,52000,165600],"typeLimitLevel":[71,71,72,80],"level":70},{"typeCost":[27200,27200,64000,180800],"typeLimitLevel":[72,72,73,81],"level":71},{"typeCost":[33600,33600,76000,196800],"typeLimitLevel":[73,73,74,82],"level":72},{"typeCost":[40000,40000,88000,216000],"typeLimitLevel":[74,74,75,83],"level":73},{"typeCost":[46400,46400,100000,236000],"typeLimitLevel":[75,75,76,84],"level":74},{"typeCost":[52800,52800,112800,257600],"typeLimitLevel":[76,76,77,85],"level":75},{"typeCost":[59200,59200,124800,280800],"typeLimitLevel":[77,77,78,86],"level":76},{"typeCost":[65600,65600,136800,308000],"typeLimitLevel":[78,78,79,87],"level":77},{"typeCost":[72000,72000,150400,336000],"typeLimitLevel":[79,79,80,88],"level":78},{"typeCost":[79200,79200,164000,368000],"typeLimitLevel":[80,80,81,89],"level":79},{"typeCost":[86400,86400,179200,401600],"typeLimitLevel":[81,81,82,90],"level":80},{"typeCost":[94400,94400,196000,438400],"typeLimitLevel":[82,82,83,91],"level":81},{"typeCost":[103200,103200,214400,477600],"typeLimitLevel":[83,83,84,92],"level":82},{"typeCost":[112800,112800,234400,521600],"typeLimitLevel":[84,84,85,93],"level":83},{"typeCost":[123200,123200,255200,570400],"typeLimitLevel":[85,85,86,94],"level":84},{"typeCost":[134400,134400,280000,622400],"typeLimitLevel":[86,86,87,95],"level":85},{"typeCost":[147200,147200,305600,678400],"typeLimitLevel":[87,87,88,96],"level":86},{"typeCost":[160800,160800,334400,740800],"typeLimitLevel":[88,88,89,97],"level":87},{"typeCost":[176000,176000,364800,808000],"typeLimitLevel":[89,89,90,98],"level":88},{"typeCost":[192000,192000,398400,880000],"typeLimitLevel":[90,90,91,99],"level":89},{"typeCost":[209600,209600,434400,960000],"typeLimitLevel":[91,91,92,100],"level":90},{"typeCost":[228800,228800,474400,1040000],"typeLimitLevel":[92,92,93,101],"level":91},{"typeCost":[249600,249600,518400,1120000],"typeLimitLevel":[93,93,94,102],"level":92},{"typeCost":[272800,272800,565600,1200000],"typeLimitLevel":[94,94,95,103],"level":93},{"typeCost":[297600,297600,616800,1280000],"typeLimitLevel":[95,95,96,104],"level":94},{"typeCost":[324800,324800,673600,1360000],"typeLimitLevel":[96,96,97,105],"level":95},{"typeCost":[354400,354400,734400,1456000],"typeLimitLevel":[97,97,98,106],"level":96},{"typeCost":[386400,386400,800800,1552000],"typeLimitLevel":[98,98,99,107],"level":97},{"typeCost":[421600,421600,874400,1648000],"typeLimitLevel":[99,99,100,108],"level":98},{"typeCost":[460000,460000,956800,1744000],"typeLimitLevel":[100,100,101,109],"level":99},{"typeCost":[501600,501600,1049600,1840000],"typeLimitLevel":[101,101,102,110],"level":100},{"typeCost":[546400,546400,1154400,1936000],"typeLimitLevel":[102,102,103,111],"level":101},{"typeCost":[594400,594400,1272800,2032000],"typeLimitLevel":[103,103,104,112],"level":102},{"typeCost":[645600,645600,1406400,2128000],"typeLimitLevel":[104,104,105,113],"level":103},{"typeCost":[700000,700000,1556800,2224000],"typeLimitLevel":[105,105,106,114],"level":104},{"typeCost":[757600,757600,1725600,2320000],"typeLimitLevel":[106,106,107,115],"level":105},{"typeCost":[818400,818400,1914400,2416000],"typeLimitLevel":[107,107,108,116],"level":106},{"typeCost":[882400,882400,2124800,2512000],"typeLimitLevel":[108,108,109,117],"level":107},{"typeCost":[949600,949600,2358400,2608000],"typeLimitLevel":[109,109,110,118],"level":108},{"typeCost":[1020000,1020000,2616800,2704000],"typeLimitLevel":[110,110,111,119],"level":109},{"typeCost":[1093600,1093600,2901600,2800000],"typeLimitLevel":[111,111,112,120],"level":110},{"typeCost":[1170400,1170400,3214400,2896000],"typeLimitLevel":[112,112,113,121],"level":111},{"typeCost":[1250400,1250400,3556800,2992000],"typeLimitLevel":[113,113,114,122],"level":112},{"typeCost":[1333600,1333600,3930400,3088000],"typeLimitLevel":[114,114,115,123],"level":113},{"typeCost":[1420000,1420000,4336800,3184000],"typeLimitLevel":[115,115,116,124],"level":114},{"typeCost":[1509600,1509600,4777600,3280000],"typeLimitLevel":[116,116,117,125],"level":115},{"typeCost":[1602400,1602400,5254400,3376000],"typeLimitLevel":[117,117,118,126],"level":116},{"typeCost":[1698400,1698400,5768800,3472000],"typeLimitLevel":[118,118,119,127],"level":117},{"typeCost":[1797600,1797600,6322400,3568000],"typeLimitLevel":[119,119,120,128],"level":118},{"typeCost":[1900000,1900000,6916800,3664000],"typeLimitLevel":[120,120,121,129],"level":119},{"typeCost":[2005600,2005600,7553600,3760000],"typeLimitLevel":[121,121,122,130],"level":120},{"typeCost":[2114400,2114400,8234400,3856000],"typeLimitLevel":[122,122,123,131],"level":121},{"typeCost":[2226400,2226400,8960800,3952000],"typeLimitLevel":[123,123,124,132],"level":122},{"typeCost":[2341600,2341600,9734400,4048000],"typeLimitLevel":[124,124,125,133],"level":123},{"typeCost":[2460000,2460000,10556800,4144000],"typeLimitLevel":[125,125,126,134],"level":124},{"typeCost":[2581600,2581600,11429600,4240000],"typeLimitLevel":[126,126,127,135],"level":125},{"typeCost":[2706400,2706400,12354400,4336000],"typeLimitLevel":[127,127,128,136],"level":126},{"typeCost":[2834400,2834400,13332800,4432000],"typeLimitLevel":[128,128,129,137],"level":127},{"typeCost":[2965600,2965600,14366400,4528000],"typeLimitLevel":[129,129,130,138],"level":128},{"typeCost":[3100000,3100000,15456800,4624000],"typeLimitLevel":[130,130,131,139],"level":129},{"typeCost":[3237600,3237600,16605600,4720000],"typeLimitLevel":[131,131,132,140],"level":130},{"typeCost":[3378400,3378400,17814400,4816000],"typeLimitLevel":[132,132,133,141],"level":131},{"typeCost":[3522400,3522400,19084800,0],"typeLimitLevel":[133,133,134,142],"level":132},{"typeCost":[3669600,3669600,20418400,0],"typeLimitLevel":[134,134,135,143],"level":133},{"typeCost":[3820000,3820000,21816800,0],"typeLimitLevel":[135,135,136,144],"level":134},{"typeCost":[3973600,3973600,23281600,0],"typeLimitLevel":[136,136,137,145],"level":135},{"typeCost":[4130400,4130400,24814400,0],"typeLimitLevel":[137,137,138,146],"level":136},{"typeCost":[4290400,4290400,26416800,0],"typeLimitLevel":[138,138,139,147],"level":137},{"typeCost":[4453600,4453600,28090400,0],"typeLimitLevel":[139,139,140,148],"level":138},{"typeCost":[4620000,4620000,29836800,0],"typeLimitLevel":[140,140,141,149],"level":139},{"typeCost":[4789600,4789600,0,0],"typeLimitLevel":[141,141,142,150],"level":140},{"typeCost":[0,0,0,0],"typeLimitLevel":[142,142,143,151],"level":141},{"typeCost":[0,0,0,0],"typeLimitLevel":[143,143,144,152],"level":142},{"typeCost":[0,0,0,0],"typeLimitLevel":[144,144,145,153],"level":143},{"typeCost":[0,0,0,0],"typeLimitLevel":[145,145,146,154],"level":144},{"typeCost":[0,0,0,0],"typeLimitLevel":[146,146,147,155],"level":145},{"typeCost":[0,0,0,0],"typeLimitLevel":[147,147,148,156],"level":146},{"typeCost":[0,0,0,0],"typeLimitLevel":[148,148,149,157],"level":147},{"typeCost":[0,0,0,0],"typeLimitLevel":[149,149,150,158],"level":148},{"typeCost":[0,0,0,0],"typeLimitLevel":[150,150,151,159],"level":149},{"typeCost":[0,0,0,0],"typeLimitLevel":[151,151,152,160],"level":150},{"typeCost":[0,0,0,0],"typeLimitLevel":[152,152,153,161],"level":151},{"typeCost":[0,0,0,0],"typeLimitLevel":[153,153,154,162],"level":152},{"typeCost":[0,0,0,0],"typeLimitLevel":[154,154,155,163],"level":153},{"typeCost":[0,0,0,0],"typeLimitLevel":[155,155,156,164],"level":154},{"typeCost":[0,0,0,0],"typeLimitLevel":[156,156,157,165],"level":155},{"typeCost":[0,0,0,0],"typeLimitLevel":[157,157,158,166],"level":156},{"typeCost":[0,0,0,0],"typeLimitLevel":[158,158,159,167],"level":157},{"typeCost":[0,0,0,0],"typeLimitLevel":[159,159,160,168],"level":158},{"typeCost":[0,0,0,0],"typeLimitLevel":[160,160,161,169],"level":159},{"typeCost":[0,0,0,0],"typeLimitLevel":[161,161,162,170],"level":160},{"typeCost":[0,0,0,0],"typeLimitLevel":[162,162,163,171],"level":161},{"typeCost":[0,0,0,0],"typeLimitLevel":[163,163,164,172],"level":162},{"typeCost":[0,0,0,0],"typeLimitLevel":[164,164,165,173],"level":163},{"typeCost":[0,0,0,0],"typeLimitLevel":[165,165,166,174],"level":164},{"typeCost":[0,0,0,0],"typeLimitLevel":[166,166,167,175],"level":165},{"typeCost":[0,0,0,0],"typeLimitLevel":[167,167,168,176],"level":166},{"typeCost":[0,0,0,0],"typeLimitLevel":[168,168,169,177],"level":167},{"typeCost":[0,0,0,0],"typeLimitLevel":[169,169,170,178],"level":168},{"typeCost":[0,0,0,0],"typeLimitLevel":[170,170,171,179],"level":169},{"typeCost":[0,0,0,0],"typeLimitLevel":[171,171,172,180],"level":170},{"typeCost":[0,0,0,0],"typeLimitLevel":[172,172,173,181],"level":171},{"typeCost":[0,0,0,0],"typeLimitLevel":[173,173,174,182],"level":172},{"typeCost":[0,0,0,0],"typeLimitLevel":[174,174,175,183],"level":173},{"typeCost":[0,0,0,0],"typeLimitLevel":[175,175,176,184],"level":174},{"typeCost":[0,0,0,0],"typeLimitLevel":[176,176,177,185],"level":175},{"typeCost":[0,0,0,0],"typeLimitLevel":[177,177,178,186],"level":176},{"typeCost":[0,0,0,0],"typeLimitLevel":[178,178,179,187],"level":177},{"typeCost":[0,0,0,0],"typeLimitLevel":[179,179,180,188],"level":178},{"typeCost":[0,0,0,0],"typeLimitLevel":[180,180,181,189],"level":179},{"typeCost":[0,0,0,0],"typeLimitLevel":[181,181,182,190],"level":180},{"typeCost":[0,0,0,0],"typeLimitLevel":[182,182,183,191],"level":181},{"typeCost":[0,0,0,0],"typeLimitLevel":[183,183,184,192],"level":182},{"typeCost":[0,0,0,0],"typeLimitLevel":[184,184,185,193],"level":183},{"typeCost":[0,0,0,0],"typeLimitLevel":[185,185,186,194],"level":184},{"typeCost":[0,0,0,0],"typeLimitLevel":[186,186,187,195],"level":185},{"typeCost":[0,0,0,0],"typeLimitLevel":[187,187,188,196],"level":186},{"typeCost":[0,0,0,0],"typeLimitLevel":[188,188,189,197],"level":187},{"typeCost":[0,0,0,0],"typeLimitLevel":[189,189,190,198],"level":188},{"typeCost":[0,0,0,0],"typeLimitLevel":[190,190,191,199],"level":189},{"typeCost":[0,0,0,0],"typeLimitLevel":[191,191,192,200],"level":190},{"typeCost":[0,0,0,0],"typeLimitLevel":[192,192,193,201],"level":191},{"typeCost":[0,0,0,0],"typeLimitLevel":[193,193,194,202],"level":192},{"typeCost":[0,0,0,0],"typeLimitLevel":[194,194,195,203],"level":193},{"typeCost":[0,0,0,0],"typeLimitLevel":[195,195,196,204],"level":194},{"typeCost":[0,0,0,0],"typeLimitLevel":[196,196,197,205],"level":195},{"typeCost":[0,0,0,0],"typeLimitLevel":[197,197,198,206],"level":196},{"typeCost":[0,0,0,0],"typeLimitLevel":[198,198,199,207],"level":197},{"typeCost":[0,0,0,0],"typeLimitLevel":[199,199,200,208],"level":198},{"typeCost":[0,0,0,0],"typeLimitLevel":[200,200,201,209],"level":199},{"typeCost":[0,0,0,0],"typeLimitLevel":[201,201,202,210],"level":200},{"typeCost":[0,0,0,0],"typeLimitLevel":[202,202,203,211],"level":201},{"typeCost":[0,0,0,0],"typeLimitLevel":[203,203,204,212],"level":202},{"typeCost":[0,0,0,0],"typeLimitLevel":[204,204,205,213],"level":203},{"typeCost":[0,0,0,0],"typeLimitLevel":[205,205,206,214],"level":204},{"typeCost":[0,0,0,0],"typeLimitLevel":[206,206,207,215],"level":205},{"typeCost":[0,0,0,0],"typeLimitLevel":[207,207,208,216],"level":206},{"typeCost":[0,0,0,0],"typeLimitLevel":[208,208,209,217],"level":207},{"typeCost":[0,0,0,0],"typeLimitLevel":[209,209,210,218],"level":208},{"typeCost":[0,0,0,0],"typeLimitLevel":[210,210,211,219],"level":209},{"typeCost":[0,0,0,0],"typeLimitLevel":[211,211,212,220],"level":210},{"typeCost":[0,0,0,0],"typeLimitLevel":[212,212,213,221],"level":211},{"typeCost":[0,0,0,0],"typeLimitLevel":[213,213,214,222],"level":212},{"typeCost":[0,0,0,0],"typeLimitLevel":[214,214,215,223],"level":213},{"typeCost":[0,0,0,0],"typeLimitLevel":[215,215,216,224],"level":214},{"typeCost":[0,0,0,0],"typeLimitLevel":[216,216,217,225],"level":215},{"typeCost":[0,0,0,0],"typeLimitLevel":[217,217,218,226],"level":216},{"typeCost":[0,0,0,0],"typeLimitLevel":[218,218,219,227],"level":217},{"typeCost":[0,0,0,0],"typeLimitLevel":[219,219,220,228],"level":218},{"typeCost":[0,0,0,0],"typeLimitLevel":[220,220,221,229],"level":219},{"typeCost":[0,0,0,0],"typeLimitLevel":[221,221,222,230],"level":220},{"typeCost":[0,0,0,0],"typeLimitLevel":[222,222,223,231],"level":221},{"typeCost":[0,0,0,0],"typeLimitLevel":[223,223,224,232],"level":222},{"typeCost":[0,0,0,0],"typeLimitLevel":[224,224,225,233],"level":223},{"typeCost":[0,0,0,0],"typeLimitLevel":[225,225,226,234],"level":224},{"typeCost":[0,0,0,0],"typeLimitLevel":[226,226,227,235],"level":225},{"typeCost":[0,0,0,0],"typeLimitLevel":[227,227,228,236],"level":226},{"typeCost":[0,0,0,0],"typeLimitLevel":[228,228,229,237],"level":227},{"typeCost":[0,0,0,0],"typeLimitLevel":[229,229,230,238],"level":228},{"typeCost":[0,0,0,0],"typeLimitLevel":[230,230,231,239],"level":229},{"typeCost":[0,0,0,0],"typeLimitLevel":[231,231,232,240],"level":230},{"typeCost":[0,0,0,0],"typeLimitLevel":[232,232,233,241],"level":231},{"typeCost":[0,0,0,0],"typeLimitLevel":[233,233,234,242],"level":232},{"typeCost":[0,0,0,0],"typeLimitLevel":[234,234,235,243],"level":233},{"typeCost":[0,0,0,0],"typeLimitLevel":[235,235,236,244],"level":234},{"typeCost":[0,0,0,0],"typeLimitLevel":[236,236,237,245],"level":235},{"typeCost":[0,0,0,0],"typeLimitLevel":[237,237,238,246],"level":236},{"typeCost":[0,0,0,0],"typeLimitLevel":[238,238,239,247],"level":237},{"typeCost":[0,0,0,0],"typeLimitLevel":[239,239,240,248],"level":238},{"typeCost":[0,0,0,0],"typeLimitLevel":[240,240,241,249],"level":239},{"typeCost":[0,0,0,0],"typeLimitLevel":[241,241,242,250],"level":240},{"typeCost":[0,0,0,0],"typeLimitLevel":[242,242,243,0],"level":241},{"typeCost":[0,0,0,0],"typeLimitLevel":[243,243,244,0],"level":242},{"typeCost":[0,0,0,0],"typeLimitLevel":[244,244,245,0],"level":243},{"typeCost":[0,0,0,0],"typeLimitLevel":[245,245,246,0],"level":244},{"typeCost":[0,0,0,0],"typeLimitLevel":[246,246,247,0],"level":245},{"typeCost":[0,0,0,0],"typeLimitLevel":[247,247,248,0],"level":246},{"typeCost":[0,0,0,0],"typeLimitLevel":[248,248,249,0],"level":247},{"typeCost":[0,0,0,0],"typeLimitLevel":[249,249,250,0],"level":248},{"typeCost":[0,0,0,0],"typeLimitLevel":[250,250,0,0],"level":249}]
+[
+  {
+    "typeCost": [ 160, 160, 480, 1200 ],
+    "typeLimitLevel": [ 2, 2, 3, 11 ],
+    "level": 1
+  },
+  {
+    "typeCost": [ 200, 200, 560, 1440 ],
+    "typeLimitLevel": [ 3, 3, 4, 12 ],
+    "level": 2
+  },
+  {
+    "typeCost": [ 240, 240, 640, 1840 ],
+    "typeLimitLevel": [ 4, 4, 5, 13 ],
+    "level": 3
+  },
+  {
+    "typeCost": [ 280, 280, 720, 2000 ],
+    "typeLimitLevel": [ 5, 5, 6, 14 ],
+    "level": 4
+  },
+  {
+    "typeCost": [ 320, 320, 800, 2320 ],
+    "typeLimitLevel": [ 6, 6, 7, 15 ],
+    "level": 5
+  },
+  {
+    "typeCost": [ 360, 360, 880, 2560 ],
+    "typeLimitLevel": [ 7, 7, 8, 16 ],
+    "level": 6
+  },
+  {
+    "typeCost": [ 400, 400, 1120, 2880 ],
+    "typeLimitLevel": [ 8, 8, 9, 17 ],
+    "level": 7
+  },
+  {
+    "typeCost": [ 440, 440, 1280, 3040 ],
+    "typeLimitLevel": [ 9, 9, 10, 18 ],
+    "level": 8
+  },
+  {
+    "typeCost": [ 480, 480, 1600, 3360 ],
+    "typeLimitLevel": [ 10, 10, 11, 19 ],
+    "level": 9
+  },
+  {
+    "typeCost": [ 600, 600, 1760, 3520 ],
+    "typeLimitLevel": [ 11, 11, 12, 20 ],
+    "level": 10
+  },
+  {
+    "typeCost": [ 720, 720, 2000, 3840 ],
+    "typeLimitLevel": [ 12, 12, 13, 21 ],
+    "level": 11
+  },
+  {
+    "typeCost": [ 880, 880, 2160, 4000 ],
+    "typeLimitLevel": [ 13, 13, 14, 22 ],
+    "level": 12
+  },
+  {
+    "typeCost": [ 960, 960, 2480, 4400 ],
+    "typeLimitLevel": [ 14, 14, 15, 23 ],
+    "level": 13
+  },
+  {
+    "typeCost": [ 1120, 1120, 2560, 4560 ],
+    "typeLimitLevel": [ 15, 15, 16, 24 ],
+    "level": 14
+  },
+  {
+    "typeCost": [ 1200, 1200, 2880, 4880 ],
+    "typeLimitLevel": [ 16, 16, 17, 25 ],
+    "level": 15
+  },
+  {
+    "typeCost": [ 1360, 1360, 3040, 5360 ],
+    "typeLimitLevel": [ 17, 17, 18, 26 ],
+    "level": 16
+  },
+  {
+    "typeCost": [ 1440, 1440, 3280, 6080 ],
+    "typeLimitLevel": [ 18, 18, 19, 27 ],
+    "level": 17
+  },
+  {
+    "typeCost": [ 1600, 1600, 3440, 6560 ],
+    "typeLimitLevel": [ 19, 19, 20, 28 ],
+    "level": 18
+  },
+  {
+    "typeCost": [ 1680, 1680, 3760, 7200 ],
+    "typeLimitLevel": [ 20, 20, 21, 29 ],
+    "level": 19
+  },
+  {
+    "typeCost": [ 1840, 1840, 3920, 7760 ],
+    "typeLimitLevel": [ 21, 21, 22, 30 ],
+    "level": 20
+  },
+  {
+    "typeCost": [ 1920, 1920, 4160, 8800 ],
+    "typeLimitLevel": [ 22, 22, 23, 31 ],
+    "level": 21
+  },
+  {
+    "typeCost": [ 2080, 2080, 4640, 8800 ],
+    "typeLimitLevel": [ 23, 23, 24, 32 ],
+    "level": 22
+  },
+  {
+    "typeCost": [ 2160, 2160, 5200, 9600 ],
+    "typeLimitLevel": [ 24, 24, 25, 33 ],
+    "level": 23
+  },
+  {
+    "typeCost": [ 2320, 2320, 5600, 10400 ],
+    "typeLimitLevel": [ 25, 25, 26, 34 ],
+    "level": 24
+  },
+  {
+    "typeCost": [ 2560, 2560, 6160, 10400 ],
+    "typeLimitLevel": [ 26, 26, 27, 35 ],
+    "level": 25
+  },
+  {
+    "typeCost": [ 2880, 2880, 6640, 11200 ],
+    "typeLimitLevel": [ 27, 27, 28, 36 ],
+    "level": 26
+  },
+  {
+    "typeCost": [ 3120, 3120, 7200, 12000 ],
+    "typeLimitLevel": [ 28, 28, 29, 37 ],
+    "level": 27
+  },
+  {
+    "typeCost": [ 3440, 3440, 7600, 12800 ],
+    "typeLimitLevel": [ 29, 29, 30, 38 ],
+    "level": 28
+  },
+  {
+    "typeCost": [ 3680, 3680, 8000, 12800 ],
+    "typeLimitLevel": [ 30, 30, 31, 39 ],
+    "level": 29
+  },
+  {
+    "typeCost": [ 4000, 4000, 8800, 13600 ],
+    "typeLimitLevel": [ 31, 31, 32, 40 ],
+    "level": 30
+  },
+  {
+    "typeCost": [ 4240, 4240, 9600, 14400 ],
+    "typeLimitLevel": [ 32, 32, 33, 41 ],
+    "level": 31
+  },
+  {
+    "typeCost": [ 4560, 4560, 9600, 14400 ],
+    "typeLimitLevel": [ 33, 33, 34, 42 ],
+    "level": 32
+  },
+  {
+    "typeCost": [ 4800, 4800, 10400, 15200 ],
+    "typeLimitLevel": [ 34, 34, 35, 43 ],
+    "level": 33
+  },
+  {
+    "typeCost": [ 5120, 5120, 10400, 16000 ],
+    "typeLimitLevel": [ 35, 35, 36, 44 ],
+    "level": 34
+  },
+  {
+    "typeCost": [ 5360, 5360, 11200, 16800 ],
+    "typeLimitLevel": [ 36, 36, 37, 45 ],
+    "level": 35
+  },
+  {
+    "typeCost": [ 5680, 5680, 12000, 16800 ],
+    "typeLimitLevel": [ 37, 37, 38, 46 ],
+    "level": 36
+  },
+  {
+    "typeCost": [ 5920, 5920, 12000, 18400 ],
+    "typeLimitLevel": [ 38, 38, 39, 47 ],
+    "level": 37
+  },
+  {
+    "typeCost": [ 6240, 6240, 12800, 18400 ],
+    "typeLimitLevel": [ 39, 39, 40, 48 ],
+    "level": 38
+  },
+  {
+    "typeCost": [ 6480, 6480, 13600, 18400 ],
+    "typeLimitLevel": [ 40, 40, 41, 49 ],
+    "level": 39
+  },
+  {
+    "typeCost": [ 6800, 6800, 13600, 20000 ],
+    "typeLimitLevel": [ 41, 41, 42, 50 ],
+    "level": 40
+  },
+  {
+    "typeCost": [ 7040, 7040, 14400, 20000 ],
+    "typeLimitLevel": [ 42, 42, 43, 51 ],
+    "level": 41
+  },
+  {
+    "typeCost": [ 7360, 7360, 14400, 20000 ],
+    "typeLimitLevel": [ 43, 43, 44, 52 ],
+    "level": 42
+  },
+  {
+    "typeCost": [ 7600, 7600, 16000, 21600 ],
+    "typeLimitLevel": [ 44, 44, 45, 53 ],
+    "level": 43
+  },
+  {
+    "typeCost": [ 7920, 7920, 16000, 21600 ],
+    "typeLimitLevel": [ 45, 45, 46, 54 ],
+    "level": 44
+  },
+  {
+    "typeCost": [ 8000, 8000, 16000, 21600 ],
+    "typeLimitLevel": [ 46, 46, 47, 55 ],
+    "level": 45
+  },
+  {
+    "typeCost": [ 8800, 8800, 17600, 23200 ],
+    "typeLimitLevel": [ 47, 47, 48, 56 ],
+    "level": 46
+  },
+  {
+    "typeCost": [ 8800, 8800, 17600, 23200 ],
+    "typeLimitLevel": [ 48, 48, 49, 57 ],
+    "level": 47
+  },
+  {
+    "typeCost": [ 8800, 8800, 17600, 23200 ],
+    "typeLimitLevel": [ 49, 49, 50, 58 ],
+    "level": 48
+  },
+  {
+    "typeCost": [ 9600, 9600, 18400, 25600 ],
+    "typeLimitLevel": [ 50, 50, 51, 59 ],
+    "level": 49
+  },
+  {
+    "typeCost": [ 9600, 9600, 18400, 25600 ],
+    "typeLimitLevel": [ 51, 51, 52, 60 ],
+    "level": 50
+  },
+  {
+    "typeCost": [ 9600, 9600, 18400, 25600 ],
+    "typeLimitLevel": [ 52, 52, 53, 61 ],
+    "level": 51
+  },
+  {
+    "typeCost": [ 10400, 10400, 20000, 27200 ],
+    "typeLimitLevel": [ 53, 53, 54, 62 ],
+    "level": 52
+  },
+  {
+    "typeCost": [ 10400, 10400, 20000, 27200 ],
+    "typeLimitLevel": [ 54, 54, 55, 63 ],
+    "level": 53
+  },
+  {
+    "typeCost": [ 10400, 10400, 20000, 28800 ],
+    "typeLimitLevel": [ 55, 55, 56, 64 ],
+    "level": 54
+  },
+  {
+    "typeCost": [ 11200, 11200, 21600, 28800 ],
+    "typeLimitLevel": [ 56, 56, 57, 65 ],
+    "level": 55
+  },
+  {
+    "typeCost": [ 11200, 11200, 21600, 28800 ],
+    "typeLimitLevel": [ 57, 57, 58, 66 ],
+    "level": 56
+  },
+  {
+    "typeCost": [ 11200, 11200, 21600, 30400 ],
+    "typeLimitLevel": [ 58, 58, 59, 67 ],
+    "level": 57
+  },
+  {
+    "typeCost": [ 12000, 12000, 23200, 32000 ],
+    "typeLimitLevel": [ 59, 59, 60, 68 ],
+    "level": 58
+  },
+  {
+    "typeCost": [ 12000, 12000, 23200, 32000 ],
+    "typeLimitLevel": [ 60, 60, 61, 69 ],
+    "level": 59
+  },
+  {
+    "typeCost": [ 12000, 12000, 24800, 33600 ],
+    "typeLimitLevel": [ 61, 61, 62, 70 ],
+    "level": 60
+  },
+  {
+    "typeCost": [ 12800, 12800, 24800, 43200 ],
+    "typeLimitLevel": [ 62, 62, 63, 71 ],
+    "level": 61
+  },
+  {
+    "typeCost": [ 12800, 12800, 24800, 57600 ],
+    "typeLimitLevel": [ 63, 63, 64, 72 ],
+    "level": 62
+  },
+  {
+    "typeCost": [ 13600, 13600, 25600, 70400 ],
+    "typeLimitLevel": [ 64, 64, 65, 73 ],
+    "level": 63
+  },
+  {
+    "typeCost": [ 13600, 13600, 27200, 84000 ],
+    "typeLimitLevel": [ 65, 65, 66, 74 ],
+    "level": 64
+  },
+  {
+    "typeCost": [ 13600, 13600, 27200, 96800 ],
+    "typeLimitLevel": [ 66, 66, 67, 75 ],
+    "level": 65
+  },
+  {
+    "typeCost": [ 14400, 14400, 28800, 110400 ],
+    "typeLimitLevel": [ 67, 67, 68, 76 ],
+    "level": 66
+  },
+  {
+    "typeCost": [ 15200, 15200, 28800, 124000 ],
+    "typeLimitLevel": [ 68, 68, 69, 77 ],
+    "level": 67
+  },
+  {
+    "typeCost": [ 15200, 15200, 30400, 137600 ],
+    "typeLimitLevel": [ 69, 69, 70, 78 ],
+    "level": 68
+  },
+  {
+    "typeCost": [ 16000, 16000, 39200, 150400 ],
+    "typeLimitLevel": [ 70, 70, 71, 79 ],
+    "level": 69
+  },
+  {
+    "typeCost": [ 20800, 20800, 52000, 165600 ],
+    "typeLimitLevel": [ 71, 71, 72, 80 ],
+    "level": 70
+  },
+  {
+    "typeCost": [ 27200, 27200, 64000, 180800 ],
+    "typeLimitLevel": [ 72, 72, 73, 81 ],
+    "level": 71
+  },
+  {
+    "typeCost": [ 33600, 33600, 76000, 196800 ],
+    "typeLimitLevel": [ 73, 73, 74, 82 ],
+    "level": 72
+  },
+  {
+    "typeCost": [ 40000, 40000, 88000, 216000 ],
+    "typeLimitLevel": [ 74, 74, 75, 83 ],
+    "level": 73
+  },
+  {
+    "typeCost": [ 46400, 46400, 100000, 236000 ],
+    "typeLimitLevel": [ 75, 75, 76, 84 ],
+    "level": 74
+  },
+  {
+    "typeCost": [ 52800, 52800, 112800, 257600 ],
+    "typeLimitLevel": [ 76, 76, 77, 85 ],
+    "level": 75
+  },
+  {
+    "typeCost": [ 59200, 59200, 124800, 280800 ],
+    "typeLimitLevel": [ 77, 77, 78, 86 ],
+    "level": 76
+  },
+  {
+    "typeCost": [ 65600, 65600, 136800, 308000 ],
+    "typeLimitLevel": [ 78, 78, 79, 87 ],
+    "level": 77
+  },
+  {
+    "typeCost": [ 72000, 72000, 150400, 336000 ],
+    "typeLimitLevel": [ 79, 79, 80, 88 ],
+    "level": 78
+  },
+  {
+    "typeCost": [ 79200, 79200, 164000, 368000 ],
+    "typeLimitLevel": [ 80, 80, 81, 89 ],
+    "level": 79
+  },
+  {
+    "typeCost": [ 86400, 86400, 179200, 401600 ],
+    "typeLimitLevel": [ 81, 81, 82, 90 ],
+    "level": 80
+  },
+  {
+    "typeCost": [ 94400, 94400, 196000, 438400 ],
+    "typeLimitLevel": [ 82, 82, 83, 91 ],
+    "level": 81
+  },
+  {
+    "typeCost": [ 103200, 103200, 214400, 477600 ],
+    "typeLimitLevel": [ 83, 83, 84, 92 ],
+    "level": 82
+  },
+  {
+    "typeCost": [ 112800, 112800, 234400, 521600 ],
+    "typeLimitLevel": [ 84, 84, 85, 93 ],
+    "level": 83
+  },
+  {
+    "typeCost": [ 123200, 123200, 255200, 570400 ],
+    "typeLimitLevel": [ 85, 85, 86, 94 ],
+    "level": 84
+  },
+  {
+    "typeCost": [ 134400, 134400, 280000, 622400 ],
+    "typeLimitLevel": [ 86, 86, 87, 95 ],
+    "level": 85
+  },
+  {
+    "typeCost": [ 147200, 147200, 305600, 678400 ],
+    "typeLimitLevel": [ 87, 87, 88, 96 ],
+    "level": 86
+  },
+  {
+    "typeCost": [ 160800, 160800, 334400, 740800 ],
+    "typeLimitLevel": [ 88, 88, 89, 97 ],
+    "level": 87
+  },
+  {
+    "typeCost": [ 176000, 176000, 364800, 808000 ],
+    "typeLimitLevel": [ 89, 89, 90, 98 ],
+    "level": 88
+  },
+  {
+    "typeCost": [ 192000, 192000, 398400, 880000 ],
+    "typeLimitLevel": [ 90, 90, 91, 99 ],
+    "level": 89
+  },
+  {
+    "typeCost": [ 209600, 209600, 434400, 960000 ],
+    "typeLimitLevel": [ 91, 91, 92, 100 ],
+    "level": 90
+  },
+  {
+    "typeCost": [ 228800, 228800, 474400, 1040000 ],
+    "typeLimitLevel": [ 92, 92, 93, 101 ],
+    "level": 91
+  },
+  {
+    "typeCost": [ 249600, 249600, 518400, 1120000 ],
+    "typeLimitLevel": [ 93, 93, 94, 102 ],
+    "level": 92
+  },
+  {
+    "typeCost": [ 272800, 272800, 565600, 1200000 ],
+    "typeLimitLevel": [ 94, 94, 95, 103 ],
+    "level": 93
+  },
+  {
+    "typeCost": [ 297600, 297600, 616800, 1280000 ],
+    "typeLimitLevel": [ 95, 95, 96, 104 ],
+    "level": 94
+  },
+  {
+    "typeCost": [ 324800, 324800, 673600, 1360000 ],
+    "typeLimitLevel": [ 96, 96, 97, 105 ],
+    "level": 95
+  },
+  {
+    "typeCost": [ 354400, 354400, 734400, 1456000 ],
+    "typeLimitLevel": [ 97, 97, 98, 106 ],
+    "level": 96
+  },
+  {
+    "typeCost": [ 386400, 386400, 800800, 1552000 ],
+    "typeLimitLevel": [ 98, 98, 99, 107 ],
+    "level": 97
+  },
+  {
+    "typeCost": [ 421600, 421600, 874400, 1648000 ],
+    "typeLimitLevel": [ 99, 99, 100, 108 ],
+    "level": 98
+  },
+  {
+    "typeCost": [ 460000, 460000, 956800, 1744000 ],
+    "typeLimitLevel": [ 100, 100, 101, 109 ],
+    "level": 99
+  },
+  {
+    "typeCost": [ 501600, 501600, 1049600, 1840000 ],
+    "typeLimitLevel": [ 101, 101, 102, 110 ],
+    "level": 100
+  },
+  {
+    "typeCost": [ 546400, 546400, 1154400, 1936000 ],
+    "typeLimitLevel": [ 102, 102, 103, 111 ],
+    "level": 101
+  },
+  {
+    "typeCost": [ 594400, 594400, 1272800, 2032000 ],
+    "typeLimitLevel": [ 103, 103, 104, 112 ],
+    "level": 102
+  },
+  {
+    "typeCost": [ 645600, 645600, 1406400, 2128000 ],
+    "typeLimitLevel": [ 104, 104, 105, 113 ],
+    "level": 103
+  },
+  {
+    "typeCost": [ 700000, 700000, 1556800, 2224000 ],
+    "typeLimitLevel": [ 105, 105, 106, 114 ],
+    "level": 104
+  },
+  {
+    "typeCost": [ 757600, 757600, 1725600, 2320000 ],
+    "typeLimitLevel": [ 106, 106, 107, 115 ],
+    "level": 105
+  },
+  {
+    "typeCost": [ 818400, 818400, 1914400, 2416000 ],
+    "typeLimitLevel": [ 107, 107, 108, 116 ],
+    "level": 106
+  },
+  {
+    "typeCost": [ 882400, 882400, 2124800, 2512000 ],
+    "typeLimitLevel": [ 108, 108, 109, 117 ],
+    "level": 107
+  },
+  {
+    "typeCost": [ 949600, 949600, 2358400, 2608000 ],
+    "typeLimitLevel": [ 109, 109, 110, 118 ],
+    "level": 108
+  },
+  {
+    "typeCost": [ 1020000, 1020000, 2616800, 2704000 ],
+    "typeLimitLevel": [ 110, 110, 111, 119 ],
+    "level": 109
+  },
+  {
+    "typeCost": [ 1093600, 1093600, 2901600, 2800000 ],
+    "typeLimitLevel": [ 111, 111, 112, 120 ],
+    "level": 110
+  },
+  {
+    "typeCost": [ 1170400, 1170400, 3214400, 2896000 ],
+    "typeLimitLevel": [ 112, 112, 113, 121 ],
+    "level": 111
+  },
+  {
+    "typeCost": [ 1250400, 1250400, 3556800, 2992000 ],
+    "typeLimitLevel": [ 113, 113, 114, 122 ],
+    "level": 112
+  },
+  {
+    "typeCost": [ 1333600, 1333600, 3930400, 3088000 ],
+    "typeLimitLevel": [ 114, 114, 115, 123 ],
+    "level": 113
+  },
+  {
+    "typeCost": [ 1420000, 1420000, 4336800, 3184000 ],
+    "typeLimitLevel": [ 115, 115, 116, 124 ],
+    "level": 114
+  },
+  {
+    "typeCost": [ 1509600, 1509600, 4777600, 3280000 ],
+    "typeLimitLevel": [ 116, 116, 117, 125 ],
+    "level": 115
+  },
+  {
+    "typeCost": [ 1602400, 1602400, 5254400, 3376000 ],
+    "typeLimitLevel": [ 117, 117, 118, 126 ],
+    "level": 116
+  },
+  {
+    "typeCost": [ 1698400, 1698400, 5768800, 3472000 ],
+    "typeLimitLevel": [ 118, 118, 119, 127 ],
+    "level": 117
+  },
+  {
+    "typeCost": [ 1797600, 1797600, 6322400, 3568000 ],
+    "typeLimitLevel": [ 119, 119, 120, 128 ],
+    "level": 118
+  },
+  {
+    "typeCost": [ 1900000, 1900000, 6916800, 3664000 ],
+    "typeLimitLevel": [ 120, 120, 121, 129 ],
+    "level": 119
+  },
+  {
+    "typeCost": [ 2005600, 2005600, 7553600, 3760000 ],
+    "typeLimitLevel": [ 121, 121, 122, 130 ],
+    "level": 120
+  },
+  {
+    "typeCost": [ 2114400, 2114400, 8234400, 3856000 ],
+    "typeLimitLevel": [ 122, 122, 123, 131 ],
+    "level": 121
+  },
+  {
+    "typeCost": [ 2226400, 2226400, 8960800, 3952000 ],
+    "typeLimitLevel": [ 123, 123, 124, 132 ],
+    "level": 122
+  },
+  {
+    "typeCost": [ 2341600, 2341600, 9734400, 4048000 ],
+    "typeLimitLevel": [ 124, 124, 125, 133 ],
+    "level": 123
+  },
+  {
+    "typeCost": [ 2460000, 2460000, 10556800, 4144000 ],
+    "typeLimitLevel": [ 125, 125, 126, 134 ],
+    "level": 124
+  },
+  {
+    "typeCost": [ 2581600, 2581600, 11429600, 4240000 ],
+    "typeLimitLevel": [ 126, 126, 127, 135 ],
+    "level": 125
+  },
+  {
+    "typeCost": [ 2706400, 2706400, 12354400, 4336000 ],
+    "typeLimitLevel": [ 127, 127, 128, 136 ],
+    "level": 126
+  },
+  {
+    "typeCost": [ 2834400, 2834400, 13332800, 4432000 ],
+    "typeLimitLevel": [ 128, 128, 129, 137 ],
+    "level": 127
+  },
+  {
+    "typeCost": [ 2965600, 2965600, 14366400, 4528000 ],
+    "typeLimitLevel": [ 129, 129, 130, 138 ],
+    "level": 128
+  },
+  {
+    "typeCost": [ 3100000, 3100000, 15456800, 4624000 ],
+    "typeLimitLevel": [ 130, 130, 131, 139 ],
+    "level": 129
+  },
+  {
+    "typeCost": [ 3237600, 3237600, 16605600, 4720000 ],
+    "typeLimitLevel": [ 131, 131, 132, 140 ],
+    "level": 130
+  },
+  {
+    "typeCost": [ 3378400, 3378400, 17814400, 4816000 ],
+    "typeLimitLevel": [ 132, 132, 133, 141 ],
+    "level": 131
+  },
+  {
+    "typeCost": [ 3522400, 3522400, 19084800, 0 ],
+    "typeLimitLevel": [ 133, 133, 134, 142 ],
+    "level": 132
+  },
+  {
+    "typeCost": [ 3669600, 3669600, 20418400, 0 ],
+    "typeLimitLevel": [ 134, 134, 135, 143 ],
+    "level": 133
+  },
+  {
+    "typeCost": [ 3820000, 3820000, 21816800, 0 ],
+    "typeLimitLevel": [ 135, 135, 136, 144 ],
+    "level": 134
+  },
+  {
+    "typeCost": [ 3973600, 3973600, 23281600, 0 ],
+    "typeLimitLevel": [ 136, 136, 137, 145 ],
+    "level": 135
+  },
+  {
+    "typeCost": [ 4130400, 4130400, 24814400, 0 ],
+    "typeLimitLevel": [ 137, 137, 138, 146 ],
+    "level": 136
+  },
+  {
+    "typeCost": [ 4290400, 4290400, 26416800, 0 ],
+    "typeLimitLevel": [ 138, 138, 139, 147 ],
+    "level": 137
+  },
+  {
+    "typeCost": [ 4453600, 4453600, 28090400, 0 ],
+    "typeLimitLevel": [ 139, 139, 140, 148 ],
+    "level": 138
+  },
+  {
+    "typeCost": [ 4620000, 4620000, 29836800, 0 ],
+    "typeLimitLevel": [ 140, 140, 141, 149 ],
+    "level": 139
+  },
+  {
+    "typeCost": [ 4789600, 4789600, 0, 0 ],
+    "typeLimitLevel": [ 141, 141, 142, 150 ],
+    "level": 140
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 142, 142, 143, 151 ],
+    "level": 141
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 143, 143, 144, 152 ],
+    "level": 142
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 144, 144, 145, 153 ],
+    "level": 143
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 145, 145, 146, 154 ],
+    "level": 144
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 146, 146, 147, 155 ],
+    "level": 145
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 147, 147, 148, 156 ],
+    "level": 146
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 148, 148, 149, 157 ],
+    "level": 147
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 149, 149, 150, 158 ],
+    "level": 148
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 150, 150, 151, 159 ],
+    "level": 149
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 151, 151, 152, 160 ],
+    "level": 150
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 152, 152, 153, 161 ],
+    "level": 151
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 153, 153, 154, 162 ],
+    "level": 152
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 154, 154, 155, 163 ],
+    "level": 153
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 155, 155, 156, 164 ],
+    "level": 154
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 156, 156, 157, 165 ],
+    "level": 155
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 157, 157, 158, 166 ],
+    "level": 156
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 158, 158, 159, 167 ],
+    "level": 157
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 159, 159, 160, 168 ],
+    "level": 158
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 160, 160, 161, 169 ],
+    "level": 159
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 161, 161, 162, 170 ],
+    "level": 160
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 162, 162, 163, 171 ],
+    "level": 161
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 163, 163, 164, 172 ],
+    "level": 162
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 164, 164, 165, 173 ],
+    "level": 163
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 165, 165, 166, 174 ],
+    "level": 164
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 166, 166, 167, 175 ],
+    "level": 165
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 167, 167, 168, 176 ],
+    "level": 166
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 168, 168, 169, 177 ],
+    "level": 167
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 169, 169, 170, 178 ],
+    "level": 168
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 170, 170, 171, 179 ],
+    "level": 169
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 171, 171, 172, 180 ],
+    "level": 170
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 172, 172, 173, 181 ],
+    "level": 171
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 173, 173, 174, 182 ],
+    "level": 172
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 174, 174, 175, 183 ],
+    "level": 173
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 175, 175, 176, 184 ],
+    "level": 174
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 176, 176, 177, 185 ],
+    "level": 175
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 177, 177, 178, 186 ],
+    "level": 176
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 178, 178, 179, 187 ],
+    "level": 177
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 179, 179, 180, 188 ],
+    "level": 178
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 180, 180, 181, 189 ],
+    "level": 179
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 181, 181, 182, 190 ],
+    "level": 180
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 182, 182, 183, 191 ],
+    "level": 181
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 183, 183, 184, 192 ],
+    "level": 182
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 184, 184, 185, 193 ],
+    "level": 183
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 185, 185, 186, 194 ],
+    "level": 184
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 186, 186, 187, 195 ],
+    "level": 185
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 187, 187, 188, 196 ],
+    "level": 186
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 188, 188, 189, 197 ],
+    "level": 187
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 189, 189, 190, 198 ],
+    "level": 188
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 190, 190, 191, 199 ],
+    "level": 189
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 191, 191, 192, 200 ],
+    "level": 190
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 192, 192, 193, 201 ],
+    "level": 191
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 193, 193, 194, 202 ],
+    "level": 192
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 194, 194, 195, 203 ],
+    "level": 193
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 195, 195, 196, 204 ],
+    "level": 194
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 196, 196, 197, 205 ],
+    "level": 195
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 197, 197, 198, 206 ],
+    "level": 196
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 198, 198, 199, 207 ],
+    "level": 197
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 199, 199, 200, 208 ],
+    "level": 198
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 200, 200, 201, 209 ],
+    "level": 199
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 201, 201, 202, 210 ],
+    "level": 200
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 202, 202, 203, 211 ],
+    "level": 201
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 203, 203, 204, 212 ],
+    "level": 202
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 204, 204, 205, 213 ],
+    "level": 203
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 205, 205, 206, 214 ],
+    "level": 204
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 206, 206, 207, 215 ],
+    "level": 205
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 207, 207, 208, 216 ],
+    "level": 206
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 208, 208, 209, 217 ],
+    "level": 207
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 209, 209, 210, 218 ],
+    "level": 208
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 210, 210, 211, 219 ],
+    "level": 209
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 211, 211, 212, 220 ],
+    "level": 210
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 212, 212, 213, 221 ],
+    "level": 211
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 213, 213, 214, 222 ],
+    "level": 212
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 214, 214, 215, 223 ],
+    "level": 213
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 215, 215, 216, 224 ],
+    "level": 214
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 216, 216, 217, 225 ],
+    "level": 215
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 217, 217, 218, 226 ],
+    "level": 216
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 218, 218, 219, 227 ],
+    "level": 217
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 219, 219, 220, 228 ],
+    "level": 218
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 220, 220, 221, 229 ],
+    "level": 219
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 221, 221, 222, 230 ],
+    "level": 220
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 222, 222, 223, 231 ],
+    "level": 221
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 223, 223, 224, 232 ],
+    "level": 222
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 224, 224, 225, 233 ],
+    "level": 223
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 225, 225, 226, 234 ],
+    "level": 224
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 226, 226, 227, 235 ],
+    "level": 225
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 227, 227, 228, 236 ],
+    "level": 226
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 228, 228, 229, 237 ],
+    "level": 227
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 229, 229, 230, 238 ],
+    "level": 228
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 230, 230, 231, 239 ],
+    "level": 229
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 231, 231, 232, 240 ],
+    "level": 230
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 232, 232, 233, 241 ],
+    "level": 231
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 233, 233, 234, 242 ],
+    "level": 232
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 234, 234, 235, 243 ],
+    "level": 233
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 235, 235, 236, 244 ],
+    "level": 234
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 236, 236, 237, 245 ],
+    "level": 235
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 237, 237, 238, 246 ],
+    "level": 236
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 238, 238, 239, 247 ],
+    "level": 237
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 239, 239, 240, 248 ],
+    "level": 238
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 240, 240, 241, 249 ],
+    "level": 239
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 241, 241, 242, 250 ],
+    "level": 240
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 242, 242, 243, 0 ],
+    "level": 241
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 243, 243, 244, 0 ],
+    "level": 242
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 244, 244, 245, 0 ],
+    "level": 243
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 245, 245, 246, 0 ],
+    "level": 244
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 246, 246, 247, 0 ],
+    "level": 245
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 247, 247, 248, 0 ],
+    "level": 246
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 248, 248, 249, 0 ],
+    "level": 247
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 249, 249, 250, 0 ],
+    "level": 248
+  },
+  {
+    "typeCost": [ 0, 0, 0, 0 ],
+    "typeLimitLevel": [ 250, 250, 0, 0 ],
+    "level": 249
+  }
+]

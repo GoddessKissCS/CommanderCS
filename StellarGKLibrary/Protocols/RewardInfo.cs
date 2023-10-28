@@ -3,7 +3,6 @@ using StellarGKLibrary.Enum;
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class RewardInfo
     {
         [JsonProperty("reward")]
@@ -90,7 +89,6 @@ namespace StellarGKLibrary.Protocols
         [JsonProperty("exps")]
         public List<ExplorationExp> explorationExp { get; set; }
 
-
         public class RewardData
         {
             [JsonProperty("rwdType")]
@@ -106,13 +104,11 @@ namespace StellarGKLibrary.Protocols
             public int effect { get; set; }
         }
 
-
         public class CommanderMedal
         {
             [JsonProperty("medl")]
             public int medal { get; set; }
         }
-
 
         public class AchievementData
         {
@@ -132,13 +128,11 @@ namespace StellarGKLibrary.Protocols
             public int receive { get; set; }
         }
 
-
         public class HaveCostumeInfo
         {
             [JsonProperty("clst")]
             public List<int> haveCostume { get; set; }
         }
-
 
         public class ExplorationExp
         {

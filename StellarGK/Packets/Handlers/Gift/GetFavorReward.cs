@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Gift
 {
     public class GetFavorReward
     {
-
     }
 }
+
 /*	// Token: 0x0600608E RID: 24718 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "4308", true, true)]
 	public void GetFavorReward(int cid, int step)

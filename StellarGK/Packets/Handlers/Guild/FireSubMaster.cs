@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Guild
 {
     public class FireSubMaster
     {
-
     }
 }
+
 /*	// Token: 0x06006049 RID: 24649 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7258", true, true)]
 	public void FireSubMaster(int tuno)

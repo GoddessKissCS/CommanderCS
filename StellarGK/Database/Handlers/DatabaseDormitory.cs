@@ -5,7 +5,9 @@ namespace StellarGK.Database.Handlers
 {
     public class DatabaseDormitory : DatabaseTable<DormitoryScheme>
     {
-        public DatabaseDormitory() : base("Dormitory") { }
+        public DatabaseDormitory() : base("Dormitory")
+        {
+        }
 
         public DormitoryScheme Create(int id)
         {
@@ -18,7 +20,6 @@ namespace StellarGK.Database.Handlers
                 memberId = id,
                 CostumeHead = new()
                 {
-
                 },
                 DormitoryInfo = new()
                 {
@@ -33,19 +34,15 @@ namespace StellarGK.Database.Handlers
                 },
                 ItemAdvanced = new()
                 {
-
                 },
                 CostumeBody = new()
                 {
-
                 },
                 ItemNormal = new()
                 {
-
                 },
                 ItemWallpaper = new()
                 {
-
                 }
             };
 
@@ -58,6 +55,7 @@ namespace StellarGK.Database.Handlers
         {
             return Collection.AsQueryable().Where(d => d.memberId == uid).FirstOrDefault();
         }
+
         public DormitoryScheme? FindBySession(string session)
         {
             GameProfileScheme? user = DatabaseManager.GameProfile.FindBySession(session);
@@ -66,6 +64,5 @@ namespace StellarGK.Database.Handlers
 
             return dormitory;
         }
-
     }
 }

@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class FavorUpData
     {
         [JsonProperty("todayFavr")]
@@ -10,7 +9,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("favr")]
         public List<CommanderFavor> commanderFavor { get; set; }
-
 
         public class CommanderFavor
         {

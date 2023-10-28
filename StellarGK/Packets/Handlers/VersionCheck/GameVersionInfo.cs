@@ -35,24 +35,31 @@ namespace StellarGK.Host.Handlers.VersionCheck
         {
             [JsonProperty("ver")]
             public string ver { get; set; }
+
             [JsonProperty("stat")]
             public int stat { get; set; }
+
             [JsonProperty("cdn")]
             public string cdn { get; set; }
+
             [JsonProperty("game")]
             public string game { get; set; }
+
             [JsonProperty("chat")]
             public string chat { get; set; }
+
             [JsonProperty("policy")]
             public double policy { get; set; }
+
             [JsonProperty("word")]
             public Dictionary<string, double> word { get; set; }
+
             [JsonProperty("fc")]
             public int fc { get; set; }
+
             [JsonProperty("gglogin")]
             public int gglogin { get; set; }
         }
-
     }
 
     public class GameVersionInfoRequest

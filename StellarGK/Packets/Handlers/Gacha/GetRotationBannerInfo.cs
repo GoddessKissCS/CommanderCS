@@ -36,11 +36,9 @@ namespace StellarGK.Host.Handlers.Gacha
 
             return response;
         }
-
     }
 
     public class GetRotationBannerInfoRequest
     {
-
     }
 }

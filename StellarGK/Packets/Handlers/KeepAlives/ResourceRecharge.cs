@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.KeepAlives
 {
     public class ResourceRecharge
     {
-
     }
 }
+
 /*	// Token: 0x06005FE0 RID: 24544 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1503", true, true)]
 	public void ResourceRecharge(int vidx, int mid, int vcnt)

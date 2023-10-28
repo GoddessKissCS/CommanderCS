@@ -4,14 +4,15 @@ namespace StellarGK.Packets.Handlers.WorldDuel
 {
     public class WorldDuelBuffUpgrade
     {
-
     }
+
     public class WorldDuelBuffUpgradeRequest
     {
         [JsonProperty("type")]
         public string Type { get; set; }
     }
 }
+
 /*	// Token: 0x06006157 RID: 24919 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3605", true, true)]
 	public void WorldDuelBuffUpgrade(string type)

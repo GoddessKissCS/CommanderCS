@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Commander
 {
     public class DecompositionWeapon
     {
-
     }
 }
+
 /*	// Token: 0x06006178 RID: 24952 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8509", true, true)]
 	public void DecompositionWeapon(List<int> wnos)

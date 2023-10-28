@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Mission
 {
     public class AllMissionReward
     {
-
     }
 }
+
 /*	// Token: 0x06005FA5 RID: 24485 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6236", true, true)]
 	public void AllMissionReward()

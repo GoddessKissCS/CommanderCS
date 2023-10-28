@@ -1,10 +1,21 @@
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Gacha
 {
-    public class BankInfo
+    [Packet(Id = Method.BankInfo)]
+    public class BankInfo : BaseMethodHandler<BankInfoRequest>
     {
+        public override object Handle(BankInfoRequest @params)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
+    public class BankInfoRequest
+    {
     }
 }
+
 /*	// Token: 0x06005FC7 RID: 24519 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "5302", true, true)]
 	public void BankInfo()

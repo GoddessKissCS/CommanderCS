@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Event
 {
     public class GetRotationBannerInfo
     {
-
     }
 }
+
 /*	// Token: 0x06006115 RID: 24853 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6401", true, true)]
 	public void GetRotationBannerInfo()

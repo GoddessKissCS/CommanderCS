@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Gacha
 {
     public class BuyVipGacha
     {
-
     }
 }
+
 /*	// Token: 0x060060B3 RID: 24755 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6313", true, true)]
 	public void BuyVipGacah()

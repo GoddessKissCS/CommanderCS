@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Dispatch
 {
     public class RecallDispatch
     {
-
     }
 }
+
 /*	// Token: 0x060060BB RID: 24763 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7173", true, true)]
 	public void RecallDispatch(int slot)

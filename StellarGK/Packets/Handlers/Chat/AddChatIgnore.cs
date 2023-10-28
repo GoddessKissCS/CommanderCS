@@ -10,7 +10,6 @@ namespace StellarGK.Packets.Handlers.Chat
     {
         public override object Handle(AddChatIgnoreRequest @params)
         {
-
             BlockUser blockUser = new()
             {
                 channel = @params.ch,
@@ -29,13 +28,10 @@ namespace StellarGK.Packets.Handlers.Chat
 
             return response;
         }
-
-
     }
 
     public class AddChatIgnoreRequest
     {
-
         [JsonProperty("ch")]
         public int ch { get; set; }
 
@@ -48,5 +44,4 @@ namespace StellarGK.Packets.Handlers.Chat
         [JsonProperty("thumb")]
         public string thumb { get; set; }
     }
-
 }

@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class ConquestTroopInfo
     {
         [JsonProperty("squard")]
@@ -13,7 +12,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("enemy")]
         public Enemy eGuild { get; set; }
-
 
         public class Enemy
         {
@@ -32,7 +30,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("mcnt")]
             public int mcnt { get; set; }
         }
-
 
         public class Troop
         {

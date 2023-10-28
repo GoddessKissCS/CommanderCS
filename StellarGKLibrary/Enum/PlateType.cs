@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Enum
 {
-
     public enum PlateType
     {
         // Token: 0x040066D5 RID: 26325

@@ -2,7 +2,6 @@ namespace StellarGK.Packets.Handlers.Troop
 {
     public class UpdateTroopRole
     {
-
     }
 }
 

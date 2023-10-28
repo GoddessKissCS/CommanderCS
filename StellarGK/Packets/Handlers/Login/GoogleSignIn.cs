@@ -6,17 +6,13 @@ namespace StellarGK.Packets.Handlers.Login
     [Packet(Id = Method.GoogleSignIn)]
     public class GoogleSignIn : BaseMethodHandler<GoogleSignInRequest>
     {
-
         public override object Handle(GoogleSignInRequest @params)
         {
-
             // WILL NOT SUPPORT PROBABLY
 
             return "{}";
-
         }
     }
-
 
     public class GoogleSignInRequest
     {

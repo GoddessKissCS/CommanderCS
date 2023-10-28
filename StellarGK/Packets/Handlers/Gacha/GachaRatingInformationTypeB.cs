@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Gacha
 {
     public class GachaRatingInformationTypeB
     {
-
     }
 }
+
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6316", true, true)]
 	public void GachaRatingInformationTypeB()
 	{

@@ -4,7 +4,8 @@ namespace StellarGKLibrary.ExcelReader
 {
     public class CommanderRankData : BaseExcelReader<CommanderRankData, CommanderRankDataExcel>
     {
-        public override string FileName { get { return "CommanderRankDataTable.json"; } }
+        public override string FileName
+        { get { return "CommanderRankDataTable.json"; } }
 
         public CommanderRankDataExcel? FromRank(string CommanderRank)
         {
@@ -12,13 +13,12 @@ namespace StellarGKLibrary.ExcelReader
 
             return All.Where(avatar => avatar.rank == rank).FirstOrDefault();
         }
-
     }
+
     public class CommanderRankDataExcel
     {
         public int rank { get; set; }
         public int medal { get; set; }
         public int gold { get; set; }
     }
-
 }

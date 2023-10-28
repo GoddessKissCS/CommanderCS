@@ -1,1 +1,27 @@
-[{"type":8,"gold":0,"exp":50},{"type":16,"gold":0,"exp":300},{"type":17,"gold":0,"exp":1000},{"type":18,"gold":0,"exp":3000},{"type":19,"gold":0,"exp":10000}]
+[
+  {
+    "type": 8,
+    "gold": 0,
+    "exp": 50
+  },
+  {
+    "type": 16,
+    "gold": 0,
+    "exp": 300
+  },
+  {
+    "type": 17,
+    "gold": 0,
+    "exp": 1000
+  },
+  {
+    "type": 18,
+    "gold": 0,
+    "exp": 3000
+  },
+  {
+    "type": 19,
+    "gold": 0,
+    "exp": 10000
+  }
+]

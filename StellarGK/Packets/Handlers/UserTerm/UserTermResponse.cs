@@ -25,15 +25,13 @@ namespace StellarGK.Host.Handlers.UserTerm
         {
             [JsonProperty("member")]
             public string member { get; set; }
+
             [JsonProperty("wemade")]
             public string wemade { get; set; }
-
         }
-
     }
 
     public class UserTermRequest
     {
-
     }
 }

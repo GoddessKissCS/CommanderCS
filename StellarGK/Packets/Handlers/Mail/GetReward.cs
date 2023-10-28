@@ -2,7 +2,6 @@ namespace StellarGK.Packets.Handlers.Mail
 {
     public class GetReward
     {
-
     }
 }
 

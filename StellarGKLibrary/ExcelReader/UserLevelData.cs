@@ -4,7 +4,8 @@ namespace StellarGKLibrary.ExcelReader
 {
     public class UserLevelData : BaseExcelReader<UserLevelData, UserLevelDataExcel>
     {
-        public override string FileName { get { return "UserLevelDataTable.json"; } }
+        public override string FileName
+        { get { return "UserLevelDataTable.json"; } }
 
         public UserLevelDataExcel? FromLevel(int level)
         {
@@ -15,7 +16,6 @@ namespace StellarGKLibrary.ExcelReader
         {
             return All.Where(avatar => avatar.level == int.Parse(level)).FirstOrDefault();
         }
-
     }
 
     public class UserLevelDataExcel
@@ -29,5 +29,4 @@ namespace StellarGKLibrary.ExcelReader
         public int bankGold { get; set; }
         public int goldIncrease { get; set; }
     }
-
 }

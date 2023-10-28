@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class GuildDispatchCommanderList
     {
         [JsonProperty("guild")]
@@ -10,7 +9,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("npc")]
         public Dictionary<string, int> npcList;
-
 
         public class GuildDispatchCommanderInfo
         {

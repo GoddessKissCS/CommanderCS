@@ -3,7 +3,6 @@ using StellarGKLibrary.Enum;
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class ConquestInfo
     {
         [JsonProperty("step")]
@@ -24,7 +23,6 @@ namespace StellarGKLibrary.Protocols
         [JsonProperty("prev")]
         public PrevState prev { get; set; }
 
-
         public class PrevState
         {
             [JsonProperty("isWin")]
@@ -42,7 +40,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("usrpnt")]
             public List<int> standbyList { get; set; }
 
-
             public class Point
             {
                 [JsonProperty("win")]
@@ -53,5 +50,4 @@ namespace StellarGKLibrary.Protocols
             }
         }
     }
-
 }

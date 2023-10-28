@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using static StellarGKLibrary.Cryptography.Crypto;
 using static StellarGKLibrary.Cryptography.Compression;
+using static StellarGKLibrary.Cryptography.Crypto;
 
 namespace StellarGK.Host
 {
@@ -18,7 +18,6 @@ namespace StellarGK.Host
                 var keyIndex = Decrypt(decompressedRequest, out var decryptedRequest);
 
                 var node = JsonConvert.DeserializeObject<JToken>(decryptedRequest);
-
 
                 if (node is null)
                 {
@@ -89,6 +88,7 @@ namespace StellarGK.Host
 
             return commandHandler.Handle(@params);
         }
+
         public static List<string> CommandsMapped => CommandsMapper.Keys.Select(commandId =>
         {
             var commandIdStr = commandId.ToString();

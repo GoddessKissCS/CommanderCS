@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class ConquestStageInfo
     {
         [JsonProperty("einfo")]
@@ -13,7 +12,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("enemy")]
         public List<User> enemyList { get; set; }
-
 
         public class User
         {
@@ -38,7 +36,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("move")]
             public int move { get; set; }
         }
-
 
         public class EnemyInfo
         {

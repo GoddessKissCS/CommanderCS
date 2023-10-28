@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Gift
 {
     public class DateModeGetGift
     {
-
     }
 }
+
 /*	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "4402", true, true)]
 	public void DateModeGetGift()
 	{

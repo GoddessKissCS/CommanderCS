@@ -8,7 +8,6 @@ namespace StellarGK.Host.Handlers.UserTerm
     {
         public override object Handle(GetChangeDeviceCodeRequest @params)
         {
-
             var userAccount = GetUserAccount();
 
             ResponsePacket response = new()
@@ -48,13 +47,11 @@ namespace StellarGK.Host.Handlers.UserTerm
                 return "Contact Admin";
             }
             return devicechange.Code;
-
         }
-
     }
+
     public class GetChangeDeviceCodeRequest
     {
-
     }
 }
 

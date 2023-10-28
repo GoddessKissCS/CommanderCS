@@ -6,7 +6,8 @@ namespace StellarGKLibrary.ExcelReader
 {
     public class CommanderCostumeData : BaseExcelReader<CommanderCostumeData, CommanderCostumeExcel>
     {
-        public override string FileName { get { return "CommanderCostumeDataTable.json"; } }
+        public override string FileName
+        { get { return "CommanderCostumeDataTable.json"; } }
 
         public CommanderCostumeExcel? FromId(int idx)
         {
@@ -28,10 +29,10 @@ namespace StellarGKLibrary.ExcelReader
 
             foreach (var item in items)
             {
-                int cid = item.cid;
+                string cid = item.cid.ToString();
+                int medl = item.cid;
 
-                // Check if the cid already exists in the dictionary to avoid duplicates
-                if (!commanderDataDict.ContainsKey(cid.ToString()))
+                if (!commanderDataDict.ContainsKey(cid))
                 {
                     UserInformationResponse.Commander commanderData = new()
                     {
@@ -52,7 +53,7 @@ namespace StellarGKLibrary.ExcelReader
                         haveCostume = new() { item.ctid },
                         id = "" + cid,
                         marry = 0,
-                        medl = cid,
+                        medl = medl,
                         role = "A",
                         transcendence = new() { 0, 0, 0, 0 },
                         __cls = "1",
@@ -63,13 +64,10 @@ namespace StellarGKLibrary.ExcelReader
 
                     commanderDataDict.Add(cid.ToString(), commanderData);
                 }
-
             }
 
             return commanderDataDict;
         }
-
-
 
         public Dictionary<string, UserInformationResponse.Commander> AddSpecificCommander(int commanderID)
         {
@@ -111,7 +109,6 @@ namespace StellarGKLibrary.ExcelReader
 
             commanderDataDict.Add(commanderID.ToString(), commanderData);
 
-
             return commanderDataDict;
         }
 
@@ -133,7 +130,6 @@ namespace StellarGKLibrary.ExcelReader
                     // Add the new entry to the dictionary with cid as the key and CommanderData as the value
                     commanderDataDict.Add(cid.ToString(), cid);
                 }
-
             }
 
             return commanderDataDict;
@@ -147,13 +143,10 @@ namespace StellarGKLibrary.ExcelReader
 
             List<CommanderCostumeExcel> items = JsonConvert.DeserializeObject<List<CommanderCostumeExcel>>(path);
 
-
             commanderDataDict.Add("" + commanderId, 1);
 
             return commanderDataDict;
         }
-
-
     }
 
     public class CommanderCostumeExcel
@@ -175,5 +168,4 @@ namespace StellarGKLibrary.ExcelReader
         public int statType3 { get; set; }
         public int stat3 { get; set; }
     }
-
 }

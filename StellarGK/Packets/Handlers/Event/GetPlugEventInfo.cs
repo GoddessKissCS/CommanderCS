@@ -33,9 +33,9 @@ namespace StellarGK.Host.Handlers.Event
 
     public class GetPlugEventInfoRequest
     {
-
     }
 }
+
 /*	// Token: 0x06006131 RID: 24881 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8300", true, true)]
 	public void GetPlugEventInfo()

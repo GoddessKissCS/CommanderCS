@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class UnitLevelUpResponse
     {
         [JsonProperty("gold")]
@@ -13,7 +12,5 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("nbp")]
         public string __blueprintNavy { get; set; }
-
     }
-
 }

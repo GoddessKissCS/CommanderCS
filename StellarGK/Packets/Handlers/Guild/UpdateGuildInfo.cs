@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Guild
 {
     public class UpdateGuildInfo
     {
-
     }
 }
+
 /*	// Token: 0x06006033 RID: 24627 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7213", true, true)]
 	public void UpdateGuildInfo(int act, string val)

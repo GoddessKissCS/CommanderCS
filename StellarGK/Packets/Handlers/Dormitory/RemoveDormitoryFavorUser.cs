@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Dormitory
 {
     public class RemoveDormitoryFavorUser
     {
-
     }
 }
+
 /*	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8662", true, true)]
 	public void RemoveDormitoryFavorUser(string tuno)
 	{

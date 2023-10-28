@@ -7,12 +7,10 @@ namespace StellarGK.Host.Handlers.Event
     {
         public override object Handle(GetEventRemainingTimeRequest @params)
         {
-
             GetEventRemainingTimeResponse remainingEventTime = new()
             {
                 buff = new() { }
             };
-
 
             ResponsePacket response = new()
             {
@@ -23,7 +21,6 @@ namespace StellarGK.Host.Handlers.Event
             return response;
         }
 
-
         public class GetEventRemainingTimeResponse
         {
             [JsonProperty("buff")]
@@ -33,6 +30,5 @@ namespace StellarGK.Host.Handlers.Event
 
     public class GetEventRemainingTimeRequest
     {
-
     }
 }

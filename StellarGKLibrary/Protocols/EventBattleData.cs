@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class EventBattleData
     {
         [JsonProperty("evt")]
@@ -23,7 +22,6 @@ namespace StellarGKLibrary.Protocols
         [JsonProperty("map")]
         public Dictionary<int, int> clearList { get; set; }
 
-
         public class EventData
         {
             [JsonProperty("efid")]
@@ -38,7 +36,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("type")]
             public int type { get; set; }
         }
-
 
         public class RaidData
         {

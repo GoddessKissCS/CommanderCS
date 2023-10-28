@@ -35,7 +35,7 @@ namespace StellarGKLibrary.Utils
 
         public static int CurrentTimeStamp()
         {
-            DateTime unixEpoch = new (1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            DateTime unixEpoch = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             TimeSpan timeSinceEpoch = DateTime.UtcNow - unixEpoch;
             int unixTimestamp = (int)timeSinceEpoch.TotalSeconds;
             return unixTimestamp;
@@ -43,89 +43,83 @@ namespace StellarGKLibrary.Utils
 
         public static string CreateGuestName()
         {
-                const string characters = "0123456789";
-                const int nameLength = 8;
+            const string characters = "0123456789";
+            const int nameLength = 8;
 
-                StringBuilder nameBuilder = new(nameLength);
+            StringBuilder nameBuilder = new(nameLength);
 
-                using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+            {
+                byte[] data = new byte[nameLength];
+                rng.GetBytes(data);
+
+                for (int i = 0; i < data.Length; i++)
                 {
-                    byte[] data = new byte[nameLength];
-                    rng.GetBytes(data);
-
-                    for (int i = 0; i < data.Length; i++)
-                    {
-                        byte value = data[i];
-                        char character = characters[value % characters.Length];
-                        nameBuilder.Append(character);
-                    }
+                    byte value = data[i];
+                    char character = characters[value % characters.Length];
+                    nameBuilder.Append(character);
                 }
+            }
 
-                string name = "Guest" + nameBuilder.ToString();
-                return name;
-            
+            string name = "Guest" + nameBuilder.ToString();
+            return name;
         }
-
 
         public static string ChangeDeviceCode()
         {
+            const string characters = "aAbBcCdDeEfFgGhHjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ123456789";
+            const int codeLength = 16;
 
-                const string characters = "aAbBcCdDeEfFgGhHjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ123456789";
-                const int codeLength = 16;
+            StringBuilder codeBuilder = new(codeLength);
 
-                StringBuilder codeBuilder = new(codeLength);
+            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+            {
+                byte[] data = new byte[codeLength];
+                rng.GetBytes(data);
 
-                using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+                for (int i = 0; i < data.Length; i++)
                 {
-                    byte[] data = new byte[codeLength];
-                    rng.GetBytes(data);
-
-                    for (int i = 0; i < data.Length; i++)
-                    {
-                        byte value = data[i];
-                        char character = characters[value % characters.Length];
-                        codeBuilder.Append(character);
-                    }
+                    byte value = data[i];
+                    char character = characters[value % characters.Length];
+                    codeBuilder.Append(character);
                 }
+            }
 
-                string code = codeBuilder.ToString();
-                return code;
-            
+            string code = codeBuilder.ToString();
+            return code;
         }
 
         public static IPAddress GetLocalIP()
         {
+            IPAddress localIP = IPAddress.None;
 
-                IPAddress localIP = IPAddress.None;
-
-                NetworkInterface[] networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
-                foreach (NetworkInterface networkInterface in networkInterfaces)
+            NetworkInterface[] networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
+            foreach (NetworkInterface networkInterface in networkInterfaces)
+            {
+                if (networkInterface.OperationalStatus == OperationalStatus.Up &&
+                    (networkInterface.NetworkInterfaceType ==
+                         NetworkInterfaceType.Wireless80211 ||
+                     networkInterface.NetworkInterfaceType ==
+                         NetworkInterfaceType.Ethernet))
                 {
-                    if (networkInterface.OperationalStatus == OperationalStatus.Up &&
-                        (networkInterface.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 ||
-                         networkInterface.NetworkInterfaceType == NetworkInterfaceType.Ethernet))
+                    IPInterfaceProperties ipProperties = networkInterface.GetIPProperties();
+                    foreach (
+                        UnicastIPAddressInformation ipInfo in ipProperties.UnicastAddresses)
                     {
-                        IPInterfaceProperties ipProperties = networkInterface.GetIPProperties();
-                        foreach (UnicastIPAddressInformation ipInfo in ipProperties.UnicastAddresses)
+                        if (ipInfo.Address.AddressFamily == AddressFamily.InterNetwork)
                         {
-                            if (ipInfo.Address.AddressFamily == AddressFamily.InterNetwork)
-                            {
-                                localIP = ipInfo.Address;
-                                break;
-                            }
+                            localIP = ipInfo.Address;
+                            break;
                         }
                     }
-
-                    if (!IPAddress.None.Equals(localIP))
-                        break;
                 }
 
-                if (IPAddress.None.Equals(localIP))
-                    localIP = IPAddress.Loopback;
+                if (!IPAddress.None.Equals(localIP)) break;
+            }
 
-                return localIP;
-            
+            if (IPAddress.None.Equals(localIP)) localIP = IPAddress.Loopback;
+
+            return localIP;
         }
-
     }
 }

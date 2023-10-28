@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class ResourceRecharge
     {
         [JsonProperty("bult")]
@@ -34,6 +33,7 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("world")]
         public int worldState { get; set; }
+
         public class RechargeData
         {
             [JsonProperty("cnt")]

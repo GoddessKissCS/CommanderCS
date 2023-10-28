@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.PvP
 {
     public class RefreshPvPDuelList
     {
-
     }
 }
+
 /*	// Token: 0x06005F83 RID: 24451 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3124", true, true)]
 	public void RefreshPvPDuelList()

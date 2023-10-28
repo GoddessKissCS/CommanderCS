@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Cooperate
 {
     public class CooperateBattleComplete
     {
-
     }
 }
+
 /*	// Token: 0x0600610B RID: 24843 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7602", true, true)]
 	public void CooperateBattleComplete(int stage, int step)

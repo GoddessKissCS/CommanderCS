@@ -13,12 +13,13 @@ namespace StellarGK.Host
         [JsonProperty(propertyName: "error", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public ErrorMessageId Error { get; set; }
     }
+
     public class ErrorMessageId
     {
         [JsonProperty("code")]
         public ErrorCode code { get; set; }
-
     }
+
     public enum ErrorCode : int
     {
         UserNotFound = -1,

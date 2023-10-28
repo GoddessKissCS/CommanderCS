@@ -21,7 +21,6 @@ namespace StellarGK.Host.Handlers.Event
             return response;
         }
 
-
         public class GetWebEventPacket
         {
             [JsonProperty("wev")]
@@ -31,9 +30,9 @@ namespace StellarGK.Host.Handlers.Event
 
     public class GetWebEventRequest
     {
-
     }
 }
+
 /*	// Token: 0x06006111 RID: 24849 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8121", true, true)]
 	public void GetWebEvent(int ch)

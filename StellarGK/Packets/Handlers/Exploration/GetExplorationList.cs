@@ -6,17 +6,14 @@ namespace StellarGK.Packets.Handlers.Exploration
     [Packet(Id = Method.GetExplorationList)]
     public class GetExplorationList : BaseMethodHandler<GetExplorationListRequest>
     {
-
         public override object Handle(GetExplorationListRequest @params)
         {
             ResponsePacket response = new();
 
             List<string> cids = new();
 
-
             List<ExplorationData> GetExplorationList1 = new()
             {
-
             };
 
             response.Result = GetExplorationList1;
@@ -26,12 +23,11 @@ namespace StellarGK.Packets.Handlers.Exploration
         }
     }
 
-
     public class GetExplorationListRequest
     {
-
     }
 }
+
 /*	// Token: 0x060060F3 RID: 24819 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3501", true, true)]
 	public void GetExplorationList()

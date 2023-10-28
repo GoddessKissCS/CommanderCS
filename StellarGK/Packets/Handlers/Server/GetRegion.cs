@@ -32,7 +32,6 @@ namespace StellarGK.Host.Handlers.Server
                 //{ "2", korea },
             };
 
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
@@ -46,21 +45,22 @@ namespace StellarGK.Host.Handlers.Server
         {
             [JsonProperty("openDt")]
             public double openDt { get; set; }
+
             [JsonProperty("maxLv")]
             public int maxLv { get; set; }
+
             [JsonProperty("maxSt")]
             public string maxSt { get; set; }
+
             [JsonProperty("plcnt")]
             public string plcnt { get; set; }
+
             [JsonProperty("svcnt")]
             public string svcnt { get; set; }
         }
-
-
     }
 
     public class GetRegionResult
     {
-
     }
 }

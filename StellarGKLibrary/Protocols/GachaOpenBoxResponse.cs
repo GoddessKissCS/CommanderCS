@@ -3,8 +3,6 @@ using StellarGKLibrary.Enum;
 
 namespace StellarGKLibrary.Protocols
 {
-
-
     public class GachaOpenBoxResponse
     {
         [JsonProperty("gbIdx")]
@@ -46,7 +44,6 @@ namespace StellarGKLibrary.Protocols
         [JsonProperty("equip")]
         public Dictionary<string, Dictionary<int, EquipItemInfo>> equipItem { get; set; }
 
-
         public class Reward
         {
             [JsonProperty("type")]
@@ -58,7 +55,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("cnt")]
             public int count { get; set; }
         }
-
 
         public class CommanderMedal
         {

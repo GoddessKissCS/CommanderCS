@@ -4,6 +4,7 @@
     {
     }
 }
+
 /*
     [JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "5217", true, true)]
 	public void CommanderDelayCancle(int cid)

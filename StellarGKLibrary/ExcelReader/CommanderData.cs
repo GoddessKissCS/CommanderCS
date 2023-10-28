@@ -4,7 +4,8 @@ namespace StellarGKLibrary.ExcelReader
 {
     public class CommanderData : BaseExcelReader<CommanderData, CommanderDataExcel>
     {
-        public override string FileName { get { return "CommanderDataTable.json"; } }
+        public override string FileName
+        { get { return "CommanderDataTable.json"; } }
 
         public CommanderDataExcel? FromId(int idx)
         {
@@ -15,8 +16,8 @@ namespace StellarGKLibrary.ExcelReader
         {
             return All.Where(avatar => avatar.id == int.Parse(idx)).FirstOrDefault();
         }
-
     }
+
     public class CommanderDataExcel
     {
         public int id { get; set; }

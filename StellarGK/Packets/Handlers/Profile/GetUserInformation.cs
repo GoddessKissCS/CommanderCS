@@ -11,12 +11,10 @@ namespace StellarGK.Packets.Handlers.Profile
         [JsonProperty("type")]
         public List<string> Type { get; set; }
     }
-
-
 }
 
 /*
- 
+
 public void GetUserInformation(List<string> type)
 {
 }

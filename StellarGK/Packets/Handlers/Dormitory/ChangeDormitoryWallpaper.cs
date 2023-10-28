@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Dormitory
 {
     public class ChangeDormitoryWallpaper
     {
-
     }
 }
+
 /*	// Token: 0x060061B4 RID: 25012 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8621", true, true)]
 	public void ChangeDormitoryWallpaper(string fno, string idx)

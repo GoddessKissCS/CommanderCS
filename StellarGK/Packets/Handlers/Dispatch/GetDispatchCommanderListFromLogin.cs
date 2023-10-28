@@ -3,7 +3,6 @@
     [Packet(Id = Method.GetDispatchCommanderListFromLogin)]
     public class GetDispatchCommanderListFromLogin : BaseMethodHandler<GetDispatchCommanderListFromLoginRequest>
     {
-
         public override object Handle(GetDispatchCommanderListFromLoginRequest @params)
         {
             ResponsePacket responsePacket = new()
@@ -14,11 +13,9 @@
 
             return responsePacket;
         }
-
-
     }
+
     public class GetDispatchCommanderListFromLoginRequest
     {
-
     }
 }

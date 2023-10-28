@@ -9,6 +9,7 @@ namespace StellarGK.Packets.Handlers.UserTerm
     public class ChangeDeviceDbros : BaseMethodHandler<ChangeDeviceDbrosRequest>
     {
 #warning TODO NO IDEA CURRENTLY HOW TO SOLVE THIS
+
         public override object Handle(ChangeDeviceDbrosRequest @params)
         {
             ResponsePacket response = new();
@@ -25,7 +26,6 @@ namespace StellarGK.Packets.Handlers.UserTerm
 
             response.Result = "{}";
             return response;
-
         }
     }
 
@@ -73,8 +73,8 @@ namespace StellarGK.Packets.Handlers.UserTerm
         [JsonProperty("gpid")]
         public string gpid { get; set; }
     }
-
 }
+
 /*	// Token: 0x060060DA RID: 24794 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1234", true, true)]
 	public void ChangeDeviceDbros(int ch, string dac, string uid, string pwd, Platform plfm, string devc, string dvid, int ptype, Protocols.OSCode oscd, string osvr, string gmvr, string apk, string lang, string gpid)

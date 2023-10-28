@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Conquest
 {
     public class GetConquestStageUserInfo
     {
-
     }
 }
+
 /*	// Token: 0x0600607E RID: 24702 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7513", true, true)]
 	public void GetConquestStageUserInfo(int tuno, int point)

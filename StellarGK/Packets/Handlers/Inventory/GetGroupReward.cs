@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Inventory
 {
     public class GetGroupReward
     {
-
     }
 }
+
 /*	// Token: 0x060060E8 RID: 24808 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3510", true, true)]
 	public void GetGroupReward(int giIdx)

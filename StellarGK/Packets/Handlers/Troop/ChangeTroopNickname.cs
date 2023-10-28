@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Troop
 {
     public class ChangeTroopNickname
     {
-
     }
 }
+
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "5218", true, true)]
 	public void ChangeTroopNickname(int cid, string name)
 	{

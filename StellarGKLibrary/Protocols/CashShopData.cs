@@ -3,7 +3,6 @@ using StellarGKLibrary.Enum;
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class CashShopData
     {
         [JsonProperty("ptyp")]
@@ -27,5 +26,4 @@ namespace StellarGKLibrary.Protocols
         [JsonProperty("cnt")]
         public int buyCount { get; set; }
     }
-
 }

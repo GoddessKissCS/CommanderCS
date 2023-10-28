@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Conquest
 {
     public class GetConquestRadar
     {
-
     }
 }
+
 /*	// Token: 0x0600607B RID: 24699 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7512", true, true)]
 	public void GetConquestRadar()

@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Dormitory
 {
     public class GetDormitoryPointAll
     {
-
     }
 }/*	// Token: 0x060061CE RID: 25038 RVA: 0x000120F8 File Offset: 0x000102F8
+
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8651", true, true)]
 	public void GetDormitoryPointAll(string fno)
 	{

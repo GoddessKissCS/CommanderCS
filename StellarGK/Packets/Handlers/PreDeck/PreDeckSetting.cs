@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.PreDeck
 {
     public class PreDeckSetting
     {
-
     }
 }
+
 /*	// Token: 0x06006094 RID: 24724 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "5220", false, true)]
 	public void PreDeckSetting(JObject send)

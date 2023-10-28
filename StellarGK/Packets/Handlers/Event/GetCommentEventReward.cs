@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Event
 {
     public class GetCommentEventReward
     {
-
     }
 }
+
 /*	// Token: 0x06006137 RID: 24887 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8302", true, true)]
 	public void GetCommentEventReward(int pId)

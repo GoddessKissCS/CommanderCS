@@ -8,14 +8,11 @@ namespace StellarGK.Packets.Handlers.Login
     {
         public override object Handle(FBSignInRequest @params)
         {
-
             // WILL NOT SUPPORT PROBABLY
 
             return "{}";
-
         }
     }
-
 
     public class FBSignInRequest
     {

@@ -8,37 +8,27 @@ namespace StellarGK.Host.Handlers.Gacha
     {
         public override object Handle(GetVipBuyCountRequest @params)
         {
-
             //gets send EVipRechargeType enum + ["rchg"]
 
             ResponsePacket response = new();
-            GetVIPBuyCountInv VIP = new();
 
-            List<UserInformationResponse.VipRechargeData> rchg = new();
-            /*
-            rchg.Add(new UserInformationResponse.VipRechargeData()
-            {
-                count = 1,
-                mid = 1,
-                idx = 101,
-            });
-            */
-            VIP.rchg = rchg;
+            GetVIPBuyCountResponse getVIPBuyCount = new();
 
+            var user = GetUserGameProfile();
+
+            getVIPBuyCount.rchg = user.VipRechargeData;
 
             response.Id = BasePacket.Id;
-            response.Result = VIP;
+            response.Result = getVIPBuyCount;
 
             return response;
         }
 
-        public class GetVIPBuyCountInv
+        public class GetVIPBuyCountResponse
         {
             [JsonProperty("rchg")]
             public List<UserInformationResponse.VipRechargeData> rchg { get; set; }
-
         }
-
     }
 
     public class GetVipBuyCountRequest
@@ -48,7 +38,6 @@ namespace StellarGK.Host.Handlers.Gacha
 
         [JsonProperty("renewType")]
         public int renewType { get; set; }
-
     }
 }
 

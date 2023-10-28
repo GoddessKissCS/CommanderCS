@@ -2,13 +2,10 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
-
     public class GetRadarData
     {
         [JsonProperty("Radar")]
         public Radar radar { get; set; }
-
 
         public class Radar
         {
@@ -28,7 +25,6 @@ namespace StellarGKLibrary.Protocols
             public Dictionary<int, User> info { get; set; }
         }
 
-
         public class User
         {
             [JsonProperty("alie")]
@@ -37,7 +33,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("enemy")]
             public Info enemy { get; set; }
         }
-
 
         public class Info
         {

@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class ChattingInfo
     {
         [JsonProperty("whisper")]
@@ -16,7 +15,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("time")]
         public int time { get; set; }
-
 
         public class ChattingData
         {
@@ -54,7 +52,7 @@ namespace StellarGKLibrary.Protocols
             public string thumbnail { get; set; }
 
             /*
-             * 
+             *
              *  TODO
             public ChattingMsgData chatMsgData
             {

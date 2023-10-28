@@ -1,172 +1,172 @@
 [
-    {
-        "category": 1,
-        "type": 0,
-        "typeIndex": 0,
-        "startDate": 0,
-        "startTime": 0,
-        "endDate": 0,
-        "endTime": 0,
-        "weekIdx": 9
-    },
-    {
-        "category": 2,
-        "type": 0,
-        "typeIndex": 0,
-        "startDate": 0,
-        "startTime": 0,
-        "endDate": 0,
-        "endTime": 0,
-        "weekIdx": 9
-    },
-    {
-        "category": 3,
-        "type": 0,
-        "typeIndex": 0,
-        "startDate": 0,
-        "startTime": 0,
-        "endDate": 0,
-        "endTime": 0,
-        "weekIdx": 9
-    },
-    {
-        "category": 5,
-        "type": 0,
-        "typeIndex": 0,
-        "startDate": 0,
-        "startTime": 0,
-        "endDate": 0,
-        "endTime": 0,
-        "weekIdx": 9
-    },
-    {
-        "category": 6,
-        "type": 0,
-        "typeIndex": 0,
-        "startDate": 0,
-        "startTime": 0,
-        "endDate": 0,
-        "endTime": 0,
-        "weekIdx": 9
-    },
-    {
-        "category": 7,
-        "type": 1,
-        "typeIndex": 0,
-        "startDate": "0",
-        "startTime": "00:00:00",
-        "endDate": "0",
-        "endTime": "20:00:00",
-        "weekIdx": "3,5,7"
-    },
-    {
-        "category": 7,
-        "type": 2,
-        "typeIndex": 0,
-        "startDate": "0",
-        "startTime": "20:00:00",
-        "endDate": "0",
-        "endTime": "21:00:00",
-        "weekIdx": "3,5,7"
-    },
-    {
-        "category": 7,
-        "type": 3,
-        "typeIndex": 0,
-        "startDate": "0",
-        "startTime": "21:00:00",
-        "endDate": "0",
-        "endTime": "23:00:00",
-        "weekIdx": "3,5,7"
-    },
-    {
-        "category": 7,
-        "type": 4,
-        "typeIndex": 0,
-        "startDate": "0",
-        "startTime": "23:00:00",
-        "endDate": "0",
-        "endTime": "24:00:00",
-        "weekIdx": "3,5,7"
-    },
-    {
-        "category": 9,
-        "type": 0,
-        "typeIndex": 0,
-        "startDate": 0,
-        "startTime": "0",
-        "endDate": 0,
-        "endTime": "0",
-        "weekIdx": 0
-    },
-    {
-        "category": 10,
-        "type": 1,
-        "typeIndex": 1,
-        "startDate": 0,
-        "startTime": "00:00:00",
-        "endDate": 0,
-        "endTime": "06:00:00",
-        "weekIdx": "1,2,3,4,5,6,7"
-    },
-    {
-        "category": 10,
-        "type": 1,
-        "typeIndex": 2,
-        "startDate": 0,
-        "startTime": "06:00:00",
-        "endDate": 0,
-        "endTime": "12:00:00",
-        "weekIdx": "1,2,3,4,5,6,7"
-    },
-    {
-        "category": 10,
-        "type": 1,
-        "typeIndex": 3,
-        "startDate": 0,
-        "startTime": "12:00:00",
-        "endDate": 0,
-        "endTime": "18:00:00",
-        "weekIdx": "1,2,3,4,5,6,7"
-    },
-    {
-        "category": 10,
-        "type": 1,
-        "typeIndex": 4,
-        "startDate": 0,
-        "startTime": "18:00:00",
-        "endDate": 0,
-        "endTime": "24:00:00",
-        "weekIdx": "1,2,3,4,5,6,7"
-    },
-    {
-        "category": 12,
-        "type": 0,
-        "typeIndex": 0,
-        "startDate": 0,
-        "startTime": "00:30:00",
-        "endDate": 0,
-        "endTime": "23:30:00",
-        "weekIdx": "1,2,3,4,5,6,7"
-    },
-    {
-        "category": 13,
-        "type": 99957,
-        "typeIndex": 1,
-        "startDate": "2018-02-26",
-        "startTime": "11:00:00",
-        "endDate": "2021-04-03",
-        "endTime": "14:00:00",
-        "weekIdx": 0
-    },
-    {
-        "category": 14,
-        "type": 0,
-        "typeIndex": 0,
-        "startDate": 0,
-        "startTime": "00:00:00",
-        "endDate": 0,
-        "endTime": "23:30:00",
-        "weekIdx": "6,7"
-    }
+  {
+    "category": 1,
+    "type": 0,
+    "typeIndex": 0,
+    "startDate": 0,
+    "startTime": 0,
+    "endDate": 0,
+    "endTime": 0,
+    "weekIdx": 9
+  },
+  {
+    "category": 2,
+    "type": 0,
+    "typeIndex": 0,
+    "startDate": 0,
+    "startTime": 0,
+    "endDate": 0,
+    "endTime": 0,
+    "weekIdx": 9
+  },
+  {
+    "category": 3,
+    "type": 0,
+    "typeIndex": 0,
+    "startDate": 0,
+    "startTime": 0,
+    "endDate": 0,
+    "endTime": 0,
+    "weekIdx": 9
+  },
+  {
+    "category": 5,
+    "type": 0,
+    "typeIndex": 0,
+    "startDate": 0,
+    "startTime": 0,
+    "endDate": 0,
+    "endTime": 0,
+    "weekIdx": 9
+  },
+  {
+    "category": 6,
+    "type": 0,
+    "typeIndex": 0,
+    "startDate": 0,
+    "startTime": 0,
+    "endDate": 0,
+    "endTime": 0,
+    "weekIdx": 9
+  },
+  {
+    "category": 7,
+    "type": 1,
+    "typeIndex": 0,
+    "startDate": "0",
+    "startTime": "00:00:00",
+    "endDate": "0",
+    "endTime": "20:00:00",
+    "weekIdx": "3,5,7"
+  },
+  {
+    "category": 7,
+    "type": 2,
+    "typeIndex": 0,
+    "startDate": "0",
+    "startTime": "20:00:00",
+    "endDate": "0",
+    "endTime": "21:00:00",
+    "weekIdx": "3,5,7"
+  },
+  {
+    "category": 7,
+    "type": 3,
+    "typeIndex": 0,
+    "startDate": "0",
+    "startTime": "21:00:00",
+    "endDate": "0",
+    "endTime": "23:00:00",
+    "weekIdx": "3,5,7"
+  },
+  {
+    "category": 7,
+    "type": 4,
+    "typeIndex": 0,
+    "startDate": "0",
+    "startTime": "23:00:00",
+    "endDate": "0",
+    "endTime": "24:00:00",
+    "weekIdx": "3,5,7"
+  },
+  {
+    "category": 9,
+    "type": 0,
+    "typeIndex": 0,
+    "startDate": 0,
+    "startTime": "0",
+    "endDate": 0,
+    "endTime": "0",
+    "weekIdx": 0
+  },
+  {
+    "category": 10,
+    "type": 1,
+    "typeIndex": 1,
+    "startDate": 0,
+    "startTime": "00:00:00",
+    "endDate": 0,
+    "endTime": "06:00:00",
+    "weekIdx": "1,2,3,4,5,6,7"
+  },
+  {
+    "category": 10,
+    "type": 1,
+    "typeIndex": 2,
+    "startDate": 0,
+    "startTime": "06:00:00",
+    "endDate": 0,
+    "endTime": "12:00:00",
+    "weekIdx": "1,2,3,4,5,6,7"
+  },
+  {
+    "category": 10,
+    "type": 1,
+    "typeIndex": 3,
+    "startDate": 0,
+    "startTime": "12:00:00",
+    "endDate": 0,
+    "endTime": "18:00:00",
+    "weekIdx": "1,2,3,4,5,6,7"
+  },
+  {
+    "category": 10,
+    "type": 1,
+    "typeIndex": 4,
+    "startDate": 0,
+    "startTime": "18:00:00",
+    "endDate": 0,
+    "endTime": "24:00:00",
+    "weekIdx": "1,2,3,4,5,6,7"
+  },
+  {
+    "category": 12,
+    "type": 0,
+    "typeIndex": 0,
+    "startDate": 0,
+    "startTime": "00:30:00",
+    "endDate": 0,
+    "endTime": "23:30:00",
+    "weekIdx": "1,2,3,4,5,6,7"
+  },
+  {
+    "category": 13,
+    "type": 99957,
+    "typeIndex": 1,
+    "startDate": "2018-02-26",
+    "startTime": "11:00:00",
+    "endDate": "2021-04-03",
+    "endTime": "14:00:00",
+    "weekIdx": 0
+  },
+  {
+    "category": 14,
+    "type": 0,
+    "typeIndex": 0,
+    "startDate": 0,
+    "startTime": "00:00:00",
+    "endDate": 0,
+    "endTime": "23:30:00",
+    "weekIdx": "6,7"
+  }
 ]

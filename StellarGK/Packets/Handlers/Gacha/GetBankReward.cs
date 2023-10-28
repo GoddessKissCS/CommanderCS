@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Gacha
 {
     public class GetBankReward
     {
-
     }
 }
+
 /*	// Token: 0x06005FCC RID: 24524 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "5303", true, true)]
 	public void GetBankReward()

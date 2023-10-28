@@ -1,1 +1,22 @@
-[{"battleIdx":"1011","uType":2,"unitId":"60001","unitLevel":5,"unitPosition":1,"unitGrade":1,"unitClass":1,"skillLevel":[1,1,0,0]},{"battleIdx":"1011","uType":3,"unitId":"5001","unitLevel":0,"unitPosition":8,"unitGrade":0,"unitClass":0,"skillLevel":[0,0,0,0]}]
+[
+  {
+    "battleIdx": "1011",
+    "uType": 2,
+    "unitId": "60001",
+    "unitLevel": 5,
+    "unitPosition": 1,
+    "unitGrade": 1,
+    "unitClass": 1,
+    "skillLevel": [ 1, 1, 0, 0 ]
+  },
+  {
+    "battleIdx": "1011",
+    "uType": 3,
+    "unitId": "5001",
+    "unitLevel": 0,
+    "unitPosition": 8,
+    "unitGrade": 0,
+    "unitClass": 0,
+    "skillLevel": [ 0, 0, 0, 0 ]
+  }
+]

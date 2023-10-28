@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Exploration
 {
     public class ExplorationCompleteAll
     {
-
     }
 }
+
 /*	// Token: 0x060060FD RID: 24829 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3551", true, true)]
 	public void ExplorationCompleteAll(List<int> idxs)

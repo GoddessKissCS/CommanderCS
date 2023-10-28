@@ -6,7 +6,6 @@ namespace StellarGK.Database.Schemes
 {
     public class GameProfileScheme
     {
-
         public ObjectId Id { get; set; }
         public int MemberId { get; set; }
         public int Server { get; set; }
@@ -161,5 +160,4 @@ namespace StellarGK.Database.Schemes
         public int ercnt { get; set; }
         public int iftw { get; set; }
     }
-
 }

@@ -13,7 +13,6 @@ namespace StellarGK.Packets.Handlers.Inventory
             user.CommanderData.TryGetValue("" + @params.cid, out var commanderData);
             user.UserInventory.medalData.TryGetValue("" + @params.cid, out int medal);
 
-
             commanderData.medl = commanderData.medl + @params.amnt;
             medal = medal + @params.amnt;
 
@@ -32,6 +31,7 @@ namespace StellarGK.Packets.Handlers.Inventory
         public int cid { get; set; }
     }
 }
+
 /*	// Token: 0x06006096 RID: 24726 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "5221", true, true)]
 	public void ExchangeMedal(int amnt, int cid)

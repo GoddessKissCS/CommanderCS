@@ -16,7 +16,6 @@ namespace StellarGK.Host.Handlers.Profile
 
             ErrorCode code = DatabaseManager.Account.ChangeMemberShip(@params.uid, @params.pwd, @params.plfm, @params.puid, @params.ch);
 
-
             if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
             {
                 response.Error = new() { code = code };
@@ -25,12 +24,9 @@ namespace StellarGK.Host.Handlers.Profile
                 return response;
             }
 
-
             response.Id = BasePacket.Id;
             response.Result = "{}";
             return response;
-
-
         }
     }
 
@@ -52,4 +48,3 @@ namespace StellarGK.Host.Handlers.Profile
         public string puid { get; set; }
     }
 }
-

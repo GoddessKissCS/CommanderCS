@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Raid
 {
     public class RaidStart
     {
-
     }
 }
+
 /*	// Token: 0x06005FD4 RID: 24532 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3734", true, true)]
 	public void RaidStart(int type, JObject deck, JObject gdp, int ucash, int bid, int np)

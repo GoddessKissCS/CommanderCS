@@ -2,8 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
-
     public class ShopReward
     {
         [JsonProperty("part")]

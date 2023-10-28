@@ -2,7 +2,6 @@ namespace StellarGK.Packets.Handlers.Situation
 {
     public class SituationSweepStart
     {
-
     }
 }
 

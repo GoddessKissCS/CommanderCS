@@ -31,12 +31,10 @@ namespace StellarGK.Host.Handlers.Sign
             response.Result = SignUp;
 
             return response;
-
         }
 
         private static ErrorCode RequestSignUp(string accountname, string password, int platformid, int channel)
         {
-
             if (Misc.NameCheck(accountname))
             {
                 return ErrorCode.InappropriateWords;
@@ -54,7 +52,6 @@ namespace StellarGK.Host.Handlers.Sign
             {
                 return ErrorCode.IdAlreadyExists;
             }
-
         }
 
         private class SignUpPacket
@@ -62,7 +59,6 @@ namespace StellarGK.Host.Handlers.Sign
             [JsonProperty("uid")]
             public string uid { get; set; }
         }
-
     }
 
     public class SignUpRequest

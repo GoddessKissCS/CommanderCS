@@ -1,21 +1,7 @@
-﻿using System.Net;
-using System.Net.NetworkInformation;
-using System.Net.Sockets;
-using System.Security.Cryptography;
-using System.Text;
-
-namespace StellarGKLibrary.Utils
+﻿namespace StellarGKLibrary.Utils
 {
-
     public static partial class Constants
     {
-        public static string[] Badwords =
-        {
-        "/",
-        ".",
-        "="
-        };
-
         public static class CommandIdsForChatting
         {
             public const string CheckChattingMsg = "checkMsg";
@@ -26,6 +12,5 @@ namespace StellarGKLibrary.Utils
             public const string SendwaitGuildMsg = "waitGuild";
             public const string SendWhisperMsgChatting = "sendWhisperMsg";
         }
-
     }
 }

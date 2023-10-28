@@ -1,422 +1,422 @@
 [
-    {
-        "slotType": 1,
-        "level": 1,
-        "gold": 6000,
-        "pIdx": 60002,
-        "value": 3
-    },
-    {
-        "slotType": 1,
-        "level": 2,
-        "gold": 12000,
-        "pIdx": 60002,
-        "value": 5
-    },
-    {
-        "slotType": 1,
-        "level": 3,
-        "gold": 24000,
-        "pIdx": 60002,
-        "value": 7
-    },
-    {
-        "slotType": 1,
-        "level": 4,
-        "gold": 48000,
-        "pIdx": 60002,
-        "value": 10
-    },
-    {
-        "slotType": 1,
-        "level": 5,
-        "gold": 96000,
-        "pIdx": 60002,
-        "value": 15
-    },
-    {
-        "slotType": 1,
-        "level": 6,
-        "gold": 192000,
-        "pIdx": 60002,
-        "value": 20
-    },
-    {
-        "slotType": 1,
-        "level": 7,
-        "gold": 384000,
-        "pIdx": 60002,
-        "value": 50
-    },
-    {
-        "slotType": 1,
-        "level": 8,
-        "gold": 768000,
-        "pIdx": 60002,
-        "value": 80
-    },
-    {
-        "slotType": 1,
-        "level": 9,
-        "gold": 1536000,
-        "pIdx": 60002,
-        "value": 100
-    },
-    {
-        "slotType": 1,
-        "level": 10,
-        "gold": 2304000,
-        "pIdx": 60002,
-        "value": 110
-    },
-    {
-        "slotType": 1,
-        "level": 11,
-        "gold": 3072000,
-        "pIdx": 60002,
-        "value": 125
-    },
-    {
-        "slotType": 1,
-        "level": 12,
-        "gold": 3840000,
-        "pIdx": 60002,
-        "value": 150
-    },
-    {
-        "slotType": 2,
-        "level": 1,
-        "gold": 6000,
-        "pIdx": 60003,
-        "value": 3
-    },
-    {
-        "slotType": 2,
-        "level": 2,
-        "gold": 12000,
-        "pIdx": 60003,
-        "value": 5
-    },
-    {
-        "slotType": 2,
-        "level": 3,
-        "gold": 24000,
-        "pIdx": 60003,
-        "value": 7
-    },
-    {
-        "slotType": 2,
-        "level": 4,
-        "gold": 48000,
-        "pIdx": 60003,
-        "value": 10
-    },
-    {
-        "slotType": 2,
-        "level": 5,
-        "gold": 96000,
-        "pIdx": 60003,
-        "value": 15
-    },
-    {
-        "slotType": 2,
-        "level": 6,
-        "gold": 192000,
-        "pIdx": 60003,
-        "value": 20
-    },
-    {
-        "slotType": 2,
-        "level": 7,
-        "gold": 384000,
-        "pIdx": 60003,
-        "value": 50
-    },
-    {
-        "slotType": 2,
-        "level": 8,
-        "gold": 768000,
-        "pIdx": 60003,
-        "value": 80
-    },
-    {
-        "slotType": 2,
-        "level": 9,
-        "gold": 1536000,
-        "pIdx": 60003,
-        "value": 100
-    },
-    {
-        "slotType": 2,
-        "level": 10,
-        "gold": 2304000,
-        "pIdx": 60003,
-        "value": 110
-    },
-    {
-        "slotType": 2,
-        "level": 11,
-        "gold": 3072000,
-        "pIdx": 60003,
-        "value": 125
-    },
-    {
-        "slotType": 2,
-        "level": 12,
-        "gold": 3840000,
-        "pIdx": 60003,
-        "value": 150
-    },
-    {
-        "slotType": 3,
-        "level": 1,
-        "gold": 6000,
-        "pIdx": 60004,
-        "value": 3
-    },
-    {
-        "slotType": 3,
-        "level": 2,
-        "gold": 12000,
-        "pIdx": 60004,
-        "value": 5
-    },
-    {
-        "slotType": 3,
-        "level": 3,
-        "gold": 24000,
-        "pIdx": 60004,
-        "value": 7
-    },
-    {
-        "slotType": 3,
-        "level": 4,
-        "gold": 48000,
-        "pIdx": 60004,
-        "value": 10
-    },
-    {
-        "slotType": 3,
-        "level": 5,
-        "gold": 96000,
-        "pIdx": 60004,
-        "value": 15
-    },
-    {
-        "slotType": 3,
-        "level": 6,
-        "gold": 192000,
-        "pIdx": 60004,
-        "value": 20
-    },
-    {
-        "slotType": 3,
-        "level": 7,
-        "gold": 384000,
-        "pIdx": 60004,
-        "value": 50
-    },
-    {
-        "slotType": 3,
-        "level": 8,
-        "gold": 768000,
-        "pIdx": 60004,
-        "value": 80
-    },
-    {
-        "slotType": 3,
-        "level": 9,
-        "gold": 1536000,
-        "pIdx": 60004,
-        "value": 100
-    },
-    {
-        "slotType": 3,
-        "level": 10,
-        "gold": 2304000,
-        "pIdx": 60004,
-        "value": 110
-    },
-    {
-        "slotType": 3,
-        "level": 11,
-        "gold": 3072000,
-        "pIdx": 60004,
-        "value": 125
-    },
-    {
-        "slotType": 3,
-        "level": 12,
-        "gold": 3840000,
-        "pIdx": 60004,
-        "value": 150
-    },
-    {
-        "slotType": 4,
-        "level": 1,
-        "gold": 6000,
-        "pIdx": 60005,
-        "value": 3
-    },
-    {
-        "slotType": 4,
-        "level": 2,
-        "gold": 12000,
-        "pIdx": 60005,
-        "value": 5
-    },
-    {
-        "slotType": 4,
-        "level": 3,
-        "gold": 24000,
-        "pIdx": 60005,
-        "value": 7
-    },
-    {
-        "slotType": 4,
-        "level": 4,
-        "gold": 48000,
-        "pIdx": 60005,
-        "value": 10
-    },
-    {
-        "slotType": 4,
-        "level": 5,
-        "gold": 96000,
-        "pIdx": 60005,
-        "value": 15
-    },
-    {
-        "slotType": 4,
-        "level": 6,
-        "gold": 192000,
-        "pIdx": 60005,
-        "value": 20
-    },
-    {
-        "slotType": 4,
-        "level": 7,
-        "gold": 384000,
-        "pIdx": 60005,
-        "value": 50
-    },
-    {
-        "slotType": 4,
-        "level": 8,
-        "gold": 768000,
-        "pIdx": 60005,
-        "value": 80
-    },
-    {
-        "slotType": 4,
-        "level": 9,
-        "gold": 1536000,
-        "pIdx": 60005,
-        "value": 100
-    },
-    {
-        "slotType": 4,
-        "level": 10,
-        "gold": 2304000,
-        "pIdx": 60005,
-        "value": 110
-    },
-    {
-        "slotType": 4,
-        "level": 11,
-        "gold": 3072000,
-        "pIdx": 60005,
-        "value": 125
-    },
-    {
-        "slotType": 4,
-        "level": 12,
-        "gold": 3840000,
-        "pIdx": 60005,
-        "value": 150
-    },
-    {
-        "slotType": 5,
-        "level": 1,
-        "gold": 6000,
-        "pIdx": 60006,
-        "value": 3
-    },
-    {
-        "slotType": 5,
-        "level": 2,
-        "gold": 12000,
-        "pIdx": 60006,
-        "value": 5
-    },
-    {
-        "slotType": 5,
-        "level": 3,
-        "gold": 24000,
-        "pIdx": 60006,
-        "value": 7
-    },
-    {
-        "slotType": 5,
-        "level": 4,
-        "gold": 48000,
-        "pIdx": 60006,
-        "value": 10
-    },
-    {
-        "slotType": 5,
-        "level": 5,
-        "gold": 96000,
-        "pIdx": 60006,
-        "value": 15
-    },
-    {
-        "slotType": 5,
-        "level": 6,
-        "gold": 192000,
-        "pIdx": 60006,
-        "value": 20
-    },
-    {
-        "slotType": 5,
-        "level": 7,
-        "gold": 384000,
-        "pIdx": 60006,
-        "value": 50
-    },
-    {
-        "slotType": 5,
-        "level": 8,
-        "gold": 768000,
-        "pIdx": 60006,
-        "value": 80
-    },
-    {
-        "slotType": 5,
-        "level": 9,
-        "gold": 1536000,
-        "pIdx": 60006,
-        "value": 100
-    },
-    {
-        "slotType": 5,
-        "level": 10,
-        "gold": 2304000,
-        "pIdx": 60006,
-        "value": 110
-    },
-    {
-        "slotType": 5,
-        "level": 11,
-        "gold": 3072000,
-        "pIdx": 60006,
-        "value": 125
-    },
-    {
-        "slotType": 5,
-        "level": 12,
-        "gold": 3840000,
-        "pIdx": 60006,
-        "value": 150
-    }
+  {
+    "slotType": 1,
+    "level": 1,
+    "gold": 6000,
+    "pIdx": 60002,
+    "value": 3
+  },
+  {
+    "slotType": 1,
+    "level": 2,
+    "gold": 12000,
+    "pIdx": 60002,
+    "value": 5
+  },
+  {
+    "slotType": 1,
+    "level": 3,
+    "gold": 24000,
+    "pIdx": 60002,
+    "value": 7
+  },
+  {
+    "slotType": 1,
+    "level": 4,
+    "gold": 48000,
+    "pIdx": 60002,
+    "value": 10
+  },
+  {
+    "slotType": 1,
+    "level": 5,
+    "gold": 96000,
+    "pIdx": 60002,
+    "value": 15
+  },
+  {
+    "slotType": 1,
+    "level": 6,
+    "gold": 192000,
+    "pIdx": 60002,
+    "value": 20
+  },
+  {
+    "slotType": 1,
+    "level": 7,
+    "gold": 384000,
+    "pIdx": 60002,
+    "value": 50
+  },
+  {
+    "slotType": 1,
+    "level": 8,
+    "gold": 768000,
+    "pIdx": 60002,
+    "value": 80
+  },
+  {
+    "slotType": 1,
+    "level": 9,
+    "gold": 1536000,
+    "pIdx": 60002,
+    "value": 100
+  },
+  {
+    "slotType": 1,
+    "level": 10,
+    "gold": 2304000,
+    "pIdx": 60002,
+    "value": 110
+  },
+  {
+    "slotType": 1,
+    "level": 11,
+    "gold": 3072000,
+    "pIdx": 60002,
+    "value": 125
+  },
+  {
+    "slotType": 1,
+    "level": 12,
+    "gold": 3840000,
+    "pIdx": 60002,
+    "value": 150
+  },
+  {
+    "slotType": 2,
+    "level": 1,
+    "gold": 6000,
+    "pIdx": 60003,
+    "value": 3
+  },
+  {
+    "slotType": 2,
+    "level": 2,
+    "gold": 12000,
+    "pIdx": 60003,
+    "value": 5
+  },
+  {
+    "slotType": 2,
+    "level": 3,
+    "gold": 24000,
+    "pIdx": 60003,
+    "value": 7
+  },
+  {
+    "slotType": 2,
+    "level": 4,
+    "gold": 48000,
+    "pIdx": 60003,
+    "value": 10
+  },
+  {
+    "slotType": 2,
+    "level": 5,
+    "gold": 96000,
+    "pIdx": 60003,
+    "value": 15
+  },
+  {
+    "slotType": 2,
+    "level": 6,
+    "gold": 192000,
+    "pIdx": 60003,
+    "value": 20
+  },
+  {
+    "slotType": 2,
+    "level": 7,
+    "gold": 384000,
+    "pIdx": 60003,
+    "value": 50
+  },
+  {
+    "slotType": 2,
+    "level": 8,
+    "gold": 768000,
+    "pIdx": 60003,
+    "value": 80
+  },
+  {
+    "slotType": 2,
+    "level": 9,
+    "gold": 1536000,
+    "pIdx": 60003,
+    "value": 100
+  },
+  {
+    "slotType": 2,
+    "level": 10,
+    "gold": 2304000,
+    "pIdx": 60003,
+    "value": 110
+  },
+  {
+    "slotType": 2,
+    "level": 11,
+    "gold": 3072000,
+    "pIdx": 60003,
+    "value": 125
+  },
+  {
+    "slotType": 2,
+    "level": 12,
+    "gold": 3840000,
+    "pIdx": 60003,
+    "value": 150
+  },
+  {
+    "slotType": 3,
+    "level": 1,
+    "gold": 6000,
+    "pIdx": 60004,
+    "value": 3
+  },
+  {
+    "slotType": 3,
+    "level": 2,
+    "gold": 12000,
+    "pIdx": 60004,
+    "value": 5
+  },
+  {
+    "slotType": 3,
+    "level": 3,
+    "gold": 24000,
+    "pIdx": 60004,
+    "value": 7
+  },
+  {
+    "slotType": 3,
+    "level": 4,
+    "gold": 48000,
+    "pIdx": 60004,
+    "value": 10
+  },
+  {
+    "slotType": 3,
+    "level": 5,
+    "gold": 96000,
+    "pIdx": 60004,
+    "value": 15
+  },
+  {
+    "slotType": 3,
+    "level": 6,
+    "gold": 192000,
+    "pIdx": 60004,
+    "value": 20
+  },
+  {
+    "slotType": 3,
+    "level": 7,
+    "gold": 384000,
+    "pIdx": 60004,
+    "value": 50
+  },
+  {
+    "slotType": 3,
+    "level": 8,
+    "gold": 768000,
+    "pIdx": 60004,
+    "value": 80
+  },
+  {
+    "slotType": 3,
+    "level": 9,
+    "gold": 1536000,
+    "pIdx": 60004,
+    "value": 100
+  },
+  {
+    "slotType": 3,
+    "level": 10,
+    "gold": 2304000,
+    "pIdx": 60004,
+    "value": 110
+  },
+  {
+    "slotType": 3,
+    "level": 11,
+    "gold": 3072000,
+    "pIdx": 60004,
+    "value": 125
+  },
+  {
+    "slotType": 3,
+    "level": 12,
+    "gold": 3840000,
+    "pIdx": 60004,
+    "value": 150
+  },
+  {
+    "slotType": 4,
+    "level": 1,
+    "gold": 6000,
+    "pIdx": 60005,
+    "value": 3
+  },
+  {
+    "slotType": 4,
+    "level": 2,
+    "gold": 12000,
+    "pIdx": 60005,
+    "value": 5
+  },
+  {
+    "slotType": 4,
+    "level": 3,
+    "gold": 24000,
+    "pIdx": 60005,
+    "value": 7
+  },
+  {
+    "slotType": 4,
+    "level": 4,
+    "gold": 48000,
+    "pIdx": 60005,
+    "value": 10
+  },
+  {
+    "slotType": 4,
+    "level": 5,
+    "gold": 96000,
+    "pIdx": 60005,
+    "value": 15
+  },
+  {
+    "slotType": 4,
+    "level": 6,
+    "gold": 192000,
+    "pIdx": 60005,
+    "value": 20
+  },
+  {
+    "slotType": 4,
+    "level": 7,
+    "gold": 384000,
+    "pIdx": 60005,
+    "value": 50
+  },
+  {
+    "slotType": 4,
+    "level": 8,
+    "gold": 768000,
+    "pIdx": 60005,
+    "value": 80
+  },
+  {
+    "slotType": 4,
+    "level": 9,
+    "gold": 1536000,
+    "pIdx": 60005,
+    "value": 100
+  },
+  {
+    "slotType": 4,
+    "level": 10,
+    "gold": 2304000,
+    "pIdx": 60005,
+    "value": 110
+  },
+  {
+    "slotType": 4,
+    "level": 11,
+    "gold": 3072000,
+    "pIdx": 60005,
+    "value": 125
+  },
+  {
+    "slotType": 4,
+    "level": 12,
+    "gold": 3840000,
+    "pIdx": 60005,
+    "value": 150
+  },
+  {
+    "slotType": 5,
+    "level": 1,
+    "gold": 6000,
+    "pIdx": 60006,
+    "value": 3
+  },
+  {
+    "slotType": 5,
+    "level": 2,
+    "gold": 12000,
+    "pIdx": 60006,
+    "value": 5
+  },
+  {
+    "slotType": 5,
+    "level": 3,
+    "gold": 24000,
+    "pIdx": 60006,
+    "value": 7
+  },
+  {
+    "slotType": 5,
+    "level": 4,
+    "gold": 48000,
+    "pIdx": 60006,
+    "value": 10
+  },
+  {
+    "slotType": 5,
+    "level": 5,
+    "gold": 96000,
+    "pIdx": 60006,
+    "value": 15
+  },
+  {
+    "slotType": 5,
+    "level": 6,
+    "gold": 192000,
+    "pIdx": 60006,
+    "value": 20
+  },
+  {
+    "slotType": 5,
+    "level": 7,
+    "gold": 384000,
+    "pIdx": 60006,
+    "value": 50
+  },
+  {
+    "slotType": 5,
+    "level": 8,
+    "gold": 768000,
+    "pIdx": 60006,
+    "value": 80
+  },
+  {
+    "slotType": 5,
+    "level": 9,
+    "gold": 1536000,
+    "pIdx": 60006,
+    "value": 100
+  },
+  {
+    "slotType": 5,
+    "level": 10,
+    "gold": 2304000,
+    "pIdx": 60006,
+    "value": 110
+  },
+  {
+    "slotType": 5,
+    "level": 11,
+    "gold": 3072000,
+    "pIdx": 60006,
+    "value": 125
+  },
+  {
+    "slotType": 5,
+    "level": 12,
+    "gold": 3840000,
+    "pIdx": 60006,
+    "value": 150
+  }
 ]

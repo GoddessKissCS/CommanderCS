@@ -6,7 +6,6 @@ namespace StellarGK.Packets.Handlers.KeepAlives
     [Packet(Id = Method.ChangeLanguage)]
     public class ChangeLanguage : BaseMethodHandler<ChangeLanguageRequest>
     {
-
         public override object Handle(ChangeLanguageRequest @params)
         {
             ResponsePacket response = new()
@@ -17,8 +16,8 @@ namespace StellarGK.Packets.Handlers.KeepAlives
 
             return response;
         }
-
     }
+
     public class ChangeLanguageRequest
     {
         [JsonProperty("lang")]

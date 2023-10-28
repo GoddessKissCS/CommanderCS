@@ -8,7 +8,6 @@ namespace StellarGK.Host.Handlers.Shop
     {
         public override object Handle(GetCashShopListRequest @params)
         {
-
 #warning TODO
             // NEED TO ADD A MONTHLY BUYABLE package
 
@@ -38,7 +37,6 @@ namespace StellarGK.Host.Handlers.Shop
 
     public class GetCashShopListRequest
     {
-
     }
 
     /*
@@ -142,8 +140,8 @@ namespace StellarGK.Host.Handlers.Shop
                "gk.package.110000r4":
                "gk.package.110000r5":
              * */
-
 }
+
 /*
 	// Token: 0x06006007 RID: 24583 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7100", true, true)]

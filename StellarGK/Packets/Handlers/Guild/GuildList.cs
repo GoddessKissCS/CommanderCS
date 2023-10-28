@@ -1,6 +1,5 @@
 ﻿using StellarGK.Database;
 
-
 namespace StellarGK.Host.Handlers.Guild
 {
     [Packet(Id = Method.GuildList)]
@@ -8,7 +7,6 @@ namespace StellarGK.Host.Handlers.Guild
     {
         public override object Handle(GuildListRequest @params)
         {
-
             StellarGKLibrary.Protocols.GuildInfo guildList = new()
             {
                 resource = null,
@@ -41,11 +39,9 @@ namespace StellarGK.Host.Handlers.Guild
 
             return response;
         }
-
     }
 
     public class GuildListRequest
     {
-
     }
 }

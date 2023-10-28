@@ -6,7 +6,8 @@ namespace StellarGKLibrary.ExcelReader
 {
     public class WorldMapStageData : BaseExcelReader<WorldMapStageData, WorldMapStageDataExcel>
     {
-        public override string FileName { get { return "WorldMapStageDataTable_2.json"; } }
+        public override string FileName
+        { get { return "WorldMapStageDataTable_2.json"; } }
 
         public WorldMapStageDataExcel? FromWorldMapId(int worldMapId)
         {
@@ -37,7 +38,6 @@ namespace StellarGKLibrary.ExcelReader
             return stages;
         }
 
-
         public Dictionary<string, int> AddDefaultWorldMapIsRewardCollected()
         {
             Dictionary<string, int> stages = new();
@@ -50,28 +50,6 @@ namespace StellarGKLibrary.ExcelReader
 
             return stages;
         }
-
-        public Dictionary<int, List<WorldMapInformationResponse>> RetrieveStages(Dictionary<string, List<WorldMapInformationResponse>> stages)
-        {
-
-            Dictionary<int, List<WorldMapInformationResponse>> stagesIntKeys = new();
-
-            foreach (var kvp in stages)
-            {
-                if (int.TryParse(kvp.Key, out int worldMapId))
-                {
-                    stagesIntKeys.Add(worldMapId, kvp.Value);
-                }
-                else
-                {
-                    Console.WriteLine($"Failed to parse key: {kvp.Key} to int.");
-                }
-            }
-
-            return stagesIntKeys;
-
-        }
-
     }
 
     public class WorldMapStageDataExcel
@@ -95,5 +73,4 @@ namespace StellarGKLibrary.ExcelReader
         public int turn3 { get; set; }
         public int commanderexp { get; set; }
     }
-
 }

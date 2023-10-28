@@ -23,11 +23,10 @@ namespace StellarGK.Packets.Handlers.Chat
 
     public class DelChatIgnoreRequest
     {
-
         [JsonProperty("ch")]
         public int ch { get; set; }
+
         [JsonProperty("uno")]
         public string uno { get; set; }
     }
-
 }

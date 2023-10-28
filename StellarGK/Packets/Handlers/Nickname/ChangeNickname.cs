@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using StellarGK.Database;
-using StellarGKLibrary.Utils;
 using StellarGKLibrary.Protocols;
+using StellarGKLibrary.Utils;
 
 namespace StellarGK.Host.Handlers.Nickname
 {
@@ -10,7 +10,6 @@ namespace StellarGK.Host.Handlers.Nickname
     {
         public override object Handle(ChangeNicknameRequest @params)
         {
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id
@@ -33,7 +32,6 @@ namespace StellarGK.Host.Handlers.Nickname
             response.Result = data;
 
             return response;
-
         }
 
         internal static ErrorCode RequestNickNameChange(string AccountName, string sess)
@@ -51,7 +49,6 @@ namespace StellarGK.Host.Handlers.Nickname
                 DatabaseManager.GameProfile.UpdateCash(sess, cash, false);
 
                 return ErrorCode.Success;
-
             }
             else if (user.UserResources.nickname == AccountName)
             {
@@ -66,13 +63,11 @@ namespace StellarGK.Host.Handlers.Nickname
             [JsonProperty("rsoc")]
             public UserInformationResponse.Resource rsoc { get; set; }
         }
-
     }
 
     public class ChangeNicknameRequest
     {
         [JsonProperty("unm")]
         public string nickname { get; set; }
-
     }
 }

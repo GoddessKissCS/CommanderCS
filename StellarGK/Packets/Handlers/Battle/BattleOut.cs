@@ -13,7 +13,6 @@ namespace StellarGK.Host.Handlers.Battle
             //Record record = (Record)@params.info;
             //Result result = (Result)@params.result;
 
-
             //string serializedRecord = JsonConvert.SerializeObject(record, Formatting.Indented);
             //string serializedResult = JsonConvert.SerializeObject(result, Formatting.Indented);
 
@@ -24,17 +23,19 @@ namespace StellarGK.Host.Handlers.Battle
 
             return "{}";
         }
-
     }
 
     public class BattleOutRequest
     {
         [JsonProperty("type")]
         public int type { get; set; }
+
         [JsonProperty("checkSum")]
         public string checkSum { get; set; }
+
         [JsonProperty("info")]
         public JArray info { get; set; }
+
         [JsonProperty("result")]
         public JArray result { get; set; }
     }

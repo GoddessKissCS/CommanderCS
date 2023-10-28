@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Payment
 {
     public class CheckPaymentOneStore
     {
-
     }
 }
+
 /*	// Token: 0x06006010 RID: 24592 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7104", true, true)]
 	public void CheckPaymentOneStore(string productId, string developerPayload, string txid, string signdata)

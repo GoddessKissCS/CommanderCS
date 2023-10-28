@@ -13,13 +13,11 @@ namespace StellarGK.Packets.Handlers.Annihilation
         }
     }
 
-
     public class ResetAnnihilationStageRequest
     {
         [JsonProperty("mode")]
         public AnnihilationMode mode { get; set; }
     }
-
 }
 
 /*	// Token: 0x060060AD RID: 24749 RVA: 0x000120F8 File Offset: 0x000102F8

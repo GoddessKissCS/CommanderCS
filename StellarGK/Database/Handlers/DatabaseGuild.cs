@@ -6,17 +6,19 @@ namespace StellarGK.Database.Handlers
 {
     public class DatabaseGuild : DatabaseTable<GuildScheme>
     {
-        public DatabaseGuild() : base("Guilds") { }
+        public DatabaseGuild() : base("Guilds")
+        {
+        }
 
         public void Create()
         {
-
         }
 
         public GuildScheme FindByName(string guildName)
         {
             return Collection.AsQueryable().Where(d => d.Name == guildName).FirstOrDefault();
         }
+
         public GuildScheme FindByUid(int guildId)
         {
             return Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
@@ -60,6 +62,7 @@ namespace StellarGK.Database.Handlers
 
             return userGuild;
         }
+
         public List<GuildMember.MemberData> RequestGuildMembers(int? guildId)
         {
             if (guildId == null)
@@ -76,7 +79,6 @@ namespace StellarGK.Database.Handlers
 
             return guild.MemberData;
         }
-
 
         public List<RoGuild> GetAllGuilds(string session)
         {
@@ -113,8 +115,5 @@ namespace StellarGK.Database.Handlers
 
             return returnGuilds;
         }
-
-
     }
-
 }

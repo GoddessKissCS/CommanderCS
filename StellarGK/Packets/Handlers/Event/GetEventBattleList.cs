@@ -5,10 +5,8 @@ namespace StellarGK.Host.Handlers.Event
     [Packet(Id = Method.GetEventBattleList)]
     public class GetEventBattleList : BaseMethodHandler<GetEventBattleListRequest>
     {
-
         public override object Handle(GetEventBattleListRequest @params)
         {
-
             List<EventBattleInfo> battleInfos = new();
 
             EventBattleInfo @event = new()
@@ -28,14 +26,11 @@ namespace StellarGK.Host.Handlers.Event
 
             return response;
         }
-
     }
+
     public class GetEventBattleListRequest
     {
-
     }
-
-
 }
 
 /*	// Token: 0x06006117 RID: 24855 RVA: 0x000120F8 File Offset: 0x000102F8

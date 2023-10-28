@@ -1,1 +1,82 @@
-[{"Luck":"1","ChipPercent":0},{"Luck":"2","ChipPercent":0},{"Luck":"3","ChipPercent":0},{"Luck":"4","ChipPercent":0},{"Luck":"5","ChipPercent":0},{"Luck":"6","ChipPercent":0},{"Luck":"7","ChipPercent":0},{"Luck":"8","ChipPercent":0},{"Luck":"9","ChipPercent":0},{"Luck":"10","ChipPercent":1000},{"Luck":"101","ChipPercent":0},{"Luck":"102","ChipPercent":0},{"Luck":"103","ChipPercent":0},{"Luck":"104","ChipPercent":0},{"Luck":"105","ChipPercent":0},{"Luck":"106","ChipPercent":0},{"Luck":"107","ChipPercent":0},{"Luck":"108","ChipPercent":0},{"Luck":"109","ChipPercent":0},{"Luck":"110","ChipPercent":1000}]
+[
+  {
+    "Luck": "1",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "2",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "3",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "4",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "5",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "6",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "7",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "8",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "9",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "10",
+    "ChipPercent": 1000
+  },
+  {
+    "Luck": "101",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "102",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "103",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "104",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "105",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "106",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "107",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "108",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "109",
+    "ChipPercent": 0
+  },
+  {
+    "Luck": "110",
+    "ChipPercent": 1000
+  }
+]

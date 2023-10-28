@@ -8,7 +8,6 @@ namespace StellarGK.Host.Handlers.Sign
     {
         public override object Handle(GuestSignInRequest @params)
         {
-
             SignInP SignInP = RequestSignIn(@params.uid);
 
             ResponsePacket response = new()
@@ -18,7 +17,6 @@ namespace StellarGK.Host.Handlers.Sign
             };
 
             return response;
-
         }
 
         private static SignInP RequestSignIn(string uid)
@@ -46,8 +44,10 @@ namespace StellarGK.Host.Handlers.Sign
         {
             [JsonProperty("mIdx")]
             public int mIdx { get; set; }
+
             [JsonProperty("tokn")]
             public string tokn { get; set; }
+
             [JsonProperty("srv")]
             public int srv { get; set; }
         }

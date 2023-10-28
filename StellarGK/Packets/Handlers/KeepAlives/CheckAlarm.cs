@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.KeepAlives
 {
     public class CheckAlarm
     {
-
     }
 }
+
 /*	// Token: 0x06006001 RID: 24577 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1505", true, true)]
 	public void CheckAlarm()

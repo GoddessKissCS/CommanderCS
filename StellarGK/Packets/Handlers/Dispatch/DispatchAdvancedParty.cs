@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Dispatch
 {
     public class DispatchAdvancedParty
     {
-
     }
 }
+
 /*	// Token: 0x060060A9 RID: 24745 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3236", true, true)]
 	public void DispatchAdvancedParty(List<string> cids)

@@ -2,7 +2,6 @@ namespace StellarGK.Packets.Handlers.Defender
 {
     public class DefenderSetting
     {
-
     }
 }
 

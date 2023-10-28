@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class UserInformationResponse
     {
         [JsonProperty("rsoc")]
@@ -64,7 +63,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("weapon")]
         public Dictionary<string, WeaponData> weaponList { get; set; }
-
 
         public class Resource
         {
@@ -186,7 +184,6 @@ namespace StellarGKLibrary.Protocols
             public string __worldDuelUpgradeCoin { get; set; }
         }
 
-
         public class BattleResult
         {
             [JsonProperty("save")]
@@ -234,7 +231,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("user")]
             public UserData user { get; set; }
 
-
             public class UserData
             {
                 [JsonProperty("prnk")]
@@ -268,7 +264,6 @@ namespace StellarGKLibrary.Protocols
                 public int duelPoint { get; set; }
             }
         }
-
 
         public class BattleStatistics
         {
@@ -357,7 +352,6 @@ namespace StellarGKLibrary.Protocols
             public int weaponInventoryCount { get; set; }
         }
 
-
         public class Unit
         {
             [JsonProperty("sp")]
@@ -373,7 +367,6 @@ namespace StellarGKLibrary.Protocols
             public int Hp { get; set; }
         }
 
-
         public class Building
         {
             [JsonProperty("bid")]
@@ -388,7 +381,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("remain")]
             public int remainTime { get; set; }
         }
-
 
         public class Commander
         {
@@ -463,9 +455,7 @@ namespace StellarGKLibrary.Protocols
 
             [JsonProperty("wp")]
             public Dictionary<string, WeaponData> equipWeaponInfo { get; set; }
-
         }
-
 
         public class DailyCheckPoint
         {
@@ -476,7 +466,6 @@ namespace StellarGKLibrary.Protocols
             public int explorationTicketBuyCount { get; set; }
         }
 
-
         public class PartData
         {
             [JsonProperty("pidx")]
@@ -485,7 +474,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("cnt")]
             public int count { get; set; }
         }
-
 
         public class UserGuild
         {
@@ -543,7 +531,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("world")]
             public int world { get; set; }
 
-
             public class GuildSkill
             {
                 [JsonProperty("gsid")]
@@ -553,7 +540,6 @@ namespace StellarGKLibrary.Protocols
                 public int level { get; set; }
             }
         }
-
 
         public class VipRechargeData
         {
@@ -567,7 +553,6 @@ namespace StellarGKLibrary.Protocols
             public int count { get; set; } = 1;
         }
 
-
         public class TutorialData
         {
             [JsonProperty("step")]
@@ -576,7 +561,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("skip")]
             public bool skip { get; set; }
         }
-
 
         public class PreDeck
         {

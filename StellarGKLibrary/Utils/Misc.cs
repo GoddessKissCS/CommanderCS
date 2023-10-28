@@ -1,21 +1,16 @@
-﻿
-namespace StellarGKLibrary.Utils
+﻿namespace StellarGKLibrary.Utils
 {
     public static class Misc
     {
+        public static string[] Badwords = {
+            "/", ".", "="
+        };
+
         public static bool NameCheck(string username)
         {
-            string[] BadWords = Constants.Badwords;
-
-            bool isBadWord = false;
             var name = username.ToLower();
-            isBadWord = BadWords.Any(badWord => name.Contains(badWord));
-            if (isBadWord)
-            {
-                return true;
-            }
-            return false;
+            bool isBadWord = Badwords.Any(name.Contains);
+            return isBadWord;
         }
-
     }
 }

@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Guild
 {
     public class GuildBoardWrite
     {
-
     }
 }
+
 /*	// Token: 0x06006054 RID: 24660 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7451", true, true)]
 	public void GuildBoardWrite(string msg)

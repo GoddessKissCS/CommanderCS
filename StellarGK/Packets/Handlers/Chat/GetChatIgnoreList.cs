@@ -13,12 +13,9 @@
 
             return response;
         }
-
-
     }
 
     public class GetChatIgnoreListRequest
     {
-
     }
 }

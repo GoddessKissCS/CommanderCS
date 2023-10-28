@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class SystemMessage
     {
         [JsonProperty("lvup")]
@@ -44,7 +43,6 @@ namespace StellarGKLibrary.Protocols
         [JsonProperty("rstm")]
         public int resetRemain { get; set; }
 
-
         public class SystemCheck
         {
             [JsonProperty("fromTime")]
@@ -58,7 +56,6 @@ namespace StellarGKLibrary.Protocols
 
             [JsonProperty("now")]
             public double nowTime { get; set; }
-
 
             public class Message
             {
@@ -82,7 +79,6 @@ namespace StellarGKLibrary.Protocols
             }
         }
 
-
         public class NoticeList
         {
             [JsonProperty("realtime")]
@@ -91,7 +87,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("chat")]
             public NoticeData chat { get; set; }
         }
-
 
         public class NoticeData
         {

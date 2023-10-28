@@ -2,7 +2,6 @@ namespace StellarGK.Packets.Handlers.Payment
 {
     public class RequestPayment
     {
-
     }
 }
 

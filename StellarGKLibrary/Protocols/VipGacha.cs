@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class VipGacha
     {
         [JsonProperty("list")]
@@ -65,5 +64,4 @@ namespace StellarGKLibrary.Protocols
             public int rewardCount_result { get; set; }
         }
     }
-
 }

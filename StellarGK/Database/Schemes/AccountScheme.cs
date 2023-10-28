@@ -28,5 +28,4 @@ namespace StellarGK.Database.Schemes
         Administrator = 3,
         Owner = 4,
     }
-
 }

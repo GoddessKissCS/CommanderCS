@@ -1,15 +1,9 @@
-using Newtonsoft.Json;
-using StellarGKLibrary.Protocols;
-
 namespace StellarGK.Packets.Handlers.Achievement
 {
     public class AllAchievementReward
     {
-
     }
 }
-
-
 
 /*	// Token: 0x06005FAA RID: 24490 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6235", true, true)]

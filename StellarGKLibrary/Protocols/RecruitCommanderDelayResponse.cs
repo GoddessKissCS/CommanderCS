@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class RecruitCommanderDelayResponse
     {
         [JsonProperty("wait")]

@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class WorldDuelInformation
     {
         [JsonProperty("itrm")]
@@ -62,5 +61,4 @@ namespace StellarGKLibrary.Protocols
             public string thmb { get; set; }
         }
     }
-
 }

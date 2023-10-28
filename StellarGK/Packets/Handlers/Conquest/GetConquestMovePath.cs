@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Conquest
 {
     public class GetConquestMovePath
     {
-
     }
 }
+
 /*	// Token: 0x0600606F RID: 24687 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7507", true, true)]
 	public void GetConquestMovePath(int dest, int slot)

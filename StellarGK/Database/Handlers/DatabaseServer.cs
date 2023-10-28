@@ -5,7 +5,9 @@ namespace StellarGK.Database.Handlers
 {
     public class DatabaseServer : DatabaseTable<ServerScheme>
     {
-        public DatabaseServer() : base("Servers") { }
+        public DatabaseServer() : base("Servers")
+        {
+        }
 
         public ServerScheme Create(int id, int maxlevel, string maxstage, double openDt, int playercount, int servercount)
         {
@@ -29,7 +31,4 @@ namespace StellarGK.Database.Handlers
             return Collection.AsQueryable().Where(d => d.ChannelId == id).FirstOrDefault();
         }
     }
-
-
-
 }

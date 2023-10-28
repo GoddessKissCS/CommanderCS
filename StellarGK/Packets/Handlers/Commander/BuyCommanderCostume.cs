@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Commander
 {
     public class BuyCommanderCostume
     {
-
     }
 }
+
 /*	// Token: 0x06006098 RID: 24728 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "4306", true, true)]
 	public void BuyCommanderCostume(int cid, int cos)

@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Situation
 {
     public class SituationInformation
     {
-
     }
 }
+
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3202", true, true)]
 	public void SituationInformation()
 	{

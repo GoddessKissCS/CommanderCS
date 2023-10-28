@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class MissionInfo
     {
         [JsonProperty("dlms")]
@@ -13,7 +12,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("dmcc")]
         public int completeCount { get; set; }
-
 
         public class MissionData
         {

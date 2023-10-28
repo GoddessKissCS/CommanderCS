@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class GetConquestBattle
     {
         [JsonProperty("entry")]
@@ -20,7 +19,6 @@ namespace StellarGKLibrary.Protocols
         [JsonProperty("eside")]
         public string eSide { get; set; }
 
-
         public class Entry
         {
             [JsonProperty("red")]
@@ -29,7 +27,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("blue")]
             public List<EntryInfo> blue { get; set; }
         }
-
 
         public class EntryInfo
         {
@@ -49,7 +46,6 @@ namespace StellarGKLibrary.Protocols
             public List<ConquestStageUser.Deck> deck { get; set; }
         }
 
-
         public class Battle
         {
             [JsonProperty("entry")]
@@ -62,7 +58,6 @@ namespace StellarGKLibrary.Protocols
             public string replayId { get; set; }
         }
 
-
         public class BattleEntry
         {
             [JsonProperty("red")]
@@ -71,7 +66,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("blue")]
             public Dictionary<string, BattleEntryInfo> blue { get; set; }
         }
-
 
         public class BattleEntryInfo
         {
@@ -85,7 +79,6 @@ namespace StellarGKLibrary.Protocols
             public int maxHp { get; set; }
         }
 
-
         public class Result
         {
             [JsonProperty("red")]
@@ -94,7 +87,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("blue")]
             public Dictionary<string, ResultInfo> blue { get; set; }
         }
-
 
         public class ResultInfo
         {

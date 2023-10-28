@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.SocketChatting
 {
     public class SendChMsgChatting
     {
-
     }
 }
+
 /*	// Token: 0x06005FB3 RID: 24499 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gkchat.flerogames.com/talk/server.php", "sendMsg", true, true)]
 	public void SendChMsgChatting(int channel, int send, string snm, string msg, int ucash, int thmb, int lv)

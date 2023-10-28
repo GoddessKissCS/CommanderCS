@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Event
 {
     public class EventRaidData
     {
-
     }
 }
+
 /*	// Token: 0x06006125 RID: 24869 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "2306", true, true)]
 	public void EventRaidData(int mbid)

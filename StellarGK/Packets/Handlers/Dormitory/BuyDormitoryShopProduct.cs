@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Dormitory
 {
     public class BuyDormitoryShopProduct
     {
-
     }
 }
+
 /*	// Token: 0x060061AF RID: 25007 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8611", true, true)]
 	public void BuyDormitoryShopProduct(EDormitoryItemType styp, string sidx)
@@ -30,12 +30,15 @@ namespace StellarGK.Packets.Handlers.Dormitory
 		case 85120:
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("81044"));
 			break;
+
 		case 85121:
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("81061"));
 			break;
+
 		case 85123:
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("81042"));
 			break;
+
 		case 85124:
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("81043"));
 			break;

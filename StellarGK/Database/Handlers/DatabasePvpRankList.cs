@@ -4,6 +4,8 @@ namespace StellarGK.Database.Handlers
 {
     public class DatabasePvpRankList : DatabaseTable<GuildScheme>
     {
-        public DatabasePvpRankList() : base("PvpRankList") { }
+        public DatabasePvpRankList() : base("PvpRankList")
+        {
+        }
     }
 }

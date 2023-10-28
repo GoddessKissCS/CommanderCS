@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Payment
 {
     public class GetFirstPaymentReward
     {
-
     }
 }
+
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6108", true, true)]
 	public void GetFirstPaymentReward()
 	{

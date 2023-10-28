@@ -37,12 +37,10 @@ namespace StellarGK.Host.Handlers.KeepAlives
 
             return response;
         }
-
     }
 
     public class DailyBonusCheckRequest
     {
-
     }
 }
 

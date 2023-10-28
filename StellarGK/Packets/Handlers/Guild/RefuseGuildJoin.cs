@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Guild
 {
     public class RefuseGuildJoin
     {
-
     }
 }
+
 /*	// Token: 0x0600603B RID: 24635 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7256", true, true)]
 	public void RefuseGuildJoin(int uno)

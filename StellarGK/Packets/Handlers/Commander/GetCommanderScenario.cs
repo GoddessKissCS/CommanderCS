@@ -16,14 +16,13 @@ namespace StellarGK.Host.Handlers.Commander
 
             return response;
         }
-
     }
 
     public class GetCommanderScenarioRequest
     {
-
     }
 }
+
 /*	// Token: 0x060060DD RID: 24797 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "4309", true, true)]
 	public void GetCommanderScenario()

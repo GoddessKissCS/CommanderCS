@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Commander
 {
     public class RecieveCommanderScenarioReward
     {
-
     }
 }
+
 /*	// Token: 0x060060E2 RID: 24802 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "4311", true, true)]
 	public void RecieveCommanderScenarioReward(int cid, int sid)

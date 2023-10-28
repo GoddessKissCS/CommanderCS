@@ -1,7 +1,6 @@
 ﻿using StellarGKLibrary.ExcelReader;
 using StellarGKLibrary.Protocols;
 
-
 namespace StellarGK.Host.Handlers.KeepAlives
 {
     [Packet(Id = Method.BulletCharge)]
@@ -15,7 +14,6 @@ namespace StellarGK.Host.Handlers.KeepAlives
 
             ResourceRecharge resource = new()
             {
-
                 bulletData = new()
                 {
                     cnt = user.UserResources.bullet,
@@ -59,7 +57,6 @@ namespace StellarGK.Host.Handlers.KeepAlives
                 worldState = user.WorldState,
                 gacha = new()
                 {
-
                 }
             };
 
@@ -71,11 +68,9 @@ namespace StellarGK.Host.Handlers.KeepAlives
 
             return response;
         }
-
     }
 
     public class BulletChargeResult
     {
-
     }
 }

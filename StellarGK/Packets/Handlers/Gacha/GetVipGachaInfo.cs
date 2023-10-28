@@ -11,15 +11,13 @@ namespace StellarGK.Host.Handlers.Gacha
 
             return "{}";
         }
-
-
     }
 
     public class GetVipGachaInfoRequest
     {
-
     }
 }
+
 /*	// Token: 0x060060B1 RID: 24753 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6314", true, true)]
 	public void GetVipGachaInfo()

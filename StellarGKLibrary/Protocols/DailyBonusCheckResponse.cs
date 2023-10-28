@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class DailyBonusCheckResponse
     {
         [JsonProperty("ver")]
@@ -25,6 +24,5 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("rcvd")]
         public int receiveState { get; set; }
-
     }
 }

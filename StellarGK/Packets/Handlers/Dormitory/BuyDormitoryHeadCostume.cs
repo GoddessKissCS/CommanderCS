@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Dormitory
 {
     public class BuyDormitoryHeadCostume
     {
-
     }
 }/*	// Token: 0x060061C4 RID: 25028 RVA: 0x000120F8 File Offset: 0x000102F8
+
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8614", true, true)]
 	public void BuyDormitoryHeadCostume(string idx)
 	{

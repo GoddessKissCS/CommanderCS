@@ -28,7 +28,6 @@ namespace StellarGK.Host.Handlers.UserTerm
             return response;
         }
 
-
         internal class BadWordListResponse
         {
             [JsonProperty("word")]
@@ -38,6 +37,5 @@ namespace StellarGK.Host.Handlers.UserTerm
 
     public class GetBadWordListRequest
     {
-
     }
 }

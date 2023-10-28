@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Event
 {
     public class GetEventBattleGachaInfo
     {
-
     }
 }
+
 /*	// Token: 0x0600613C RID: 24892 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "2311", true, true)]
 	public void EventBattleGachaOpen(int eidx, int cnt)

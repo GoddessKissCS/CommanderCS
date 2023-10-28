@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class RecruitCommanderListDictResponse
     {
         [JsonProperty("list")]
@@ -10,7 +9,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("remain")]
         public int remainTime { get; set; }
-
 
         public class Commander
         {

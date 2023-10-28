@@ -29,7 +29,5 @@ namespace StellarGK.Database
             Server.Create(3, 140, "18-20", 1643673600, 0, 0);
             Server.Create(4, 140, "18-20", 1643673600, 0, 0);
         }
-
     }
-
 }

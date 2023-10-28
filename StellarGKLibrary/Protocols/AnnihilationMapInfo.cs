@@ -3,7 +3,6 @@ using StellarGKLibrary.Enum;
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class AnnihilationMapInfo
     {
         [JsonProperty("mst")]
@@ -32,6 +31,7 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("mode")]
         public AnnihilationMode mode { get; set; }
+
         public class CommanderData
         {
             [JsonProperty("uid")]
@@ -46,6 +46,7 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("hp")]
             public int hp { get; set; }
         }
+
         public class AdvancePartyRewardInfo
         {
             [JsonProperty("reward")]
@@ -66,6 +67,7 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("item")]
             public Dictionary<string, int> itemData { get; set; }
         }
+
         public class StatusData
         {
             [JsonProperty("cid")]

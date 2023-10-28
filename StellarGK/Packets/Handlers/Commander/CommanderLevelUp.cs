@@ -7,12 +7,11 @@ namespace StellarGK.Host.Handlers.Commander
     [Packet(Id = Method.CommanderLevelUp)]
     public class CommanderLevelUp : BaseMethodHandler<CommanderLevelUpRequest>
     {
-
         public override object Handle(CommanderLevelUpRequest @params)
         {
             // "cid":13,"cnt":1,"ctt":"ctt1"
 
-            // packet.count = cnt 
+            // packet.count = cnt
             // packet.commanderTrainingTicket = ctt
 #warning TODO ADD MAXLEVEL CHECK SO YOU CANT OVERLEVEL THEM OVER YOUR LEVEL
             //GIVES OUT ERRORCODE 20001 or 20003
@@ -25,7 +24,6 @@ namespace StellarGK.Host.Handlers.Commander
 
             if (commanderList.TryGetValue(@params.commanderId.ToString(), out UserInformationResponse.Commander commander) && commander != null)
             {
-
                 int id = GoodsData.GetInstance().FromServerFieldName(@params.commanderTrainingTicket).type;
 
                 int commanderXP = Convert.ToInt32(commander.__exp);
@@ -36,9 +34,7 @@ namespace StellarGK.Host.Handlers.Commander
                 }
 
                 commander.__exp = "" + commanderXP;
-
             }
-
 
             return "{}";
         }
@@ -51,7 +47,6 @@ namespace StellarGK.Host.Handlers.Commander
             {18,3000 },
             {19,10000 }
         };
-
 
         private static bool TryLevelingUp(int ticketId, ref int xp)
         {
@@ -69,7 +64,6 @@ namespace StellarGK.Host.Handlers.Commander
 
             return true;
         }
-
     }
 
     public class CommanderLevelUpRequest

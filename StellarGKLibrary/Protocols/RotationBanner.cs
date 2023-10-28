@@ -3,7 +3,6 @@ using StellarGKLibrary.Enum;
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class RotationBanner
     {
         [JsonProperty("rt")]

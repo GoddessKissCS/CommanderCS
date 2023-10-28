@@ -2,7 +2,6 @@
 
 namespace StellarGK.Host.Handlers.Login
 {
-
     [Packet(Id = Method.Logout)]
     public class Logout : BaseMethodHandler<LogoutRequest>
     {
@@ -26,6 +25,5 @@ namespace StellarGK.Host.Handlers.Login
 
     public class LogoutRequest
     {
-
     }
 }

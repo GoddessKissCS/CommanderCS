@@ -1,9 +1,7 @@
 ﻿using Newtonsoft.Json;
 
-
 namespace StellarGKLibrary.Protocols
 {
-
     public class ConquestStageUser
     {
         [JsonProperty("slot")]
@@ -14,7 +12,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("deck")]
         public List<Deck> deck { get; set; }
-
 
         public class Deck
         {

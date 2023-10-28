@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Guild
 {
     public class CreateGuild
     {
-
     }
 }
+
 /*	// Token: 0x0600601F RID: 24607 RVA: 0x000492CD File Offset: 0x000474CD
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7212", true, true)]
 	public void CreateGuild(string gnm, int gtyp, int lvlm, int emb)

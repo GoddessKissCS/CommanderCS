@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.InfinityBattle
 {
     public class SaveInfinityBattleDeck
     {
-
     }
 }
+
 /*	// Token: 0x06006190 RID: 24976 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8702", true, true)]
 	public void SaveInfinityBattleDeck(JObject deck)

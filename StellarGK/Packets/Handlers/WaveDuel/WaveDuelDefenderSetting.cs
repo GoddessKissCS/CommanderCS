@@ -5,8 +5,8 @@ namespace StellarGK.Packets.Handlers.WaveDuel
 {
     public class WaveDuelDefenderSetting
     {
-
     }
+
     public class WaveDuelDefenderSettingRequest
     {
         [JsonProperty("decks")]

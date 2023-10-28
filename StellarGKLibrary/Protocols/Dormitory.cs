@@ -5,7 +5,6 @@ namespace StellarGKLibrary.Protocols
 {
     public class Dormitory
     {
-
         public class Resource
         {
             [JsonProperty("drpt")]
@@ -20,7 +19,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("elec")]
             public string __elec { get; set; }
         }
-
 
         public class InventoryData
         {
@@ -40,7 +38,6 @@ namespace StellarGKLibrary.Protocols
             public Dictionary<string, List<string>> costumeHead { get; set; }
         }
 
-
         public class Info : InventoryData
         {
             [JsonProperty("drsoc")]
@@ -49,7 +46,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("duifo")]
             public Dictionary<string, int> info { get; set; }
         }
-
 
         public class FloorCommanderInfo
         {
@@ -68,7 +64,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("cos")]
             public int costume { get; set; }
         }
-
 
         public class RoomInfo
         {
@@ -91,7 +86,6 @@ namespace StellarGKLibrary.Protocols
             public List<FloorCommanderInfo> commanderInfos { get; set; }
         }
 
-
         public class FloorInfo
         {
             [JsonProperty("ptst")]
@@ -104,13 +98,11 @@ namespace StellarGKLibrary.Protocols
             public bool isMasterUser { get; set; }
         }
 
-
         public class GetUserFloorInfoResponse : FloorInfo
         {
             [JsonProperty("tuno")]
             public string uno { get; set; }
         }
-
 
         public class ConstructFloorResponse
         {
@@ -121,7 +113,6 @@ namespace StellarGKLibrary.Protocols
             public Dictionary<string, RoomInfo> floors { get; set; }
         }
 
-
         public class FinishConstructFloorResponse
         {
             [JsonProperty("rsoc")]
@@ -130,7 +121,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("fInfo")]
             public Dictionary<string, RoomInfo> floors { get; set; }
         }
-
 
         public class FloorDecoInfo
         {
@@ -146,7 +136,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("rt")]
             public int rotation { get; set; }
         }
-
 
         public class FloorCharacterInfo
         {
@@ -166,7 +155,6 @@ namespace StellarGKLibrary.Protocols
             public double remain { get; set; }
         }
 
-
         public class FloorDetailInfo
         {
             [JsonProperty("fno")]
@@ -185,7 +173,6 @@ namespace StellarGKLibrary.Protocols
             public Dictionary<string, FloorCharacterInfo> characters { get; set; }
         }
 
-
         public class GetUserFloorDetailInfoResponse : FloorDetailInfo
         {
             [JsonProperty("tuno")]
@@ -195,7 +182,6 @@ namespace StellarGKLibrary.Protocols
             public bool favorState { get; set; }
         }
 
-
         public class ChangeDormitoryFloorNameResponse
         {
             [JsonProperty("rsoc")]
@@ -204,7 +190,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("fnm")]
             public string name { get; set; }
         }
-
 
         public class ShopProductItemInfo
         {
@@ -234,9 +219,7 @@ namespace StellarGKLibrary.Protocols
 
             [JsonProperty("lcnt")]
             public int buyLimit { get; set; }
-
         }
-
 
         public class ShopInfo
         {
@@ -244,13 +227,11 @@ namespace StellarGKLibrary.Protocols
             public Dictionary<EDormitoryItemType, List<ShopProductItemInfo>> items;
         }
 
-
         public class BuyShopProductResponse : RewardInfo
         {
             [JsonProperty("dshop")]
             public Dictionary<EDormitoryItemType, ShopProductItemInfo> items { get; set; }
         }
-
 
         public class ChangeWallpaperResponse
         {
@@ -261,7 +242,6 @@ namespace StellarGKLibrary.Protocols
             public Dictionary<string, int> invenWallpaper { get; set; }
         }
 
-
         public class ArrangeDecorationResponse
         {
             [JsonProperty("deco")]
@@ -271,7 +251,6 @@ namespace StellarGKLibrary.Protocols
             public Dictionary<string, int> invenAdvanced { get; set; }
         }
 
-
         public class GetDormitoryCommanderInfoResponse
         {
             [JsonProperty("dcom")]
@@ -280,7 +259,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("hcos")]
             public Dictionary<string, List<string>> headData { get; set; }
         }
-
 
         public class CommanderInfo
         {
@@ -294,13 +272,11 @@ namespace StellarGKLibrary.Protocols
             public double reamin { get; set; }
         }
 
-
         public class CommanderHeadData
         {
             [JsonProperty("hcos")]
             public string headId { get; set; }
         }
-
 
         public class CommanderBodyData
         {
@@ -308,20 +284,17 @@ namespace StellarGKLibrary.Protocols
             public string bodyId { get; set; }
         }
 
-
         public class CommanderRaminData
         {
             [JsonProperty("rtm")]
             public double remain { get; set; }
         }
 
-
         public class ChangeCommanderHeadResponse
         {
             [JsonProperty("fcm")]
             public Dictionary<string, CommanderHeadData> headData { get; set; }
         }
-
 
         public class ChangeCommanderBodyResponse
         {
@@ -331,7 +304,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("fcm")]
             public Dictionary<string, CommanderBodyData> bodyData { get; set; }
         }
-
 
         public class GetPointResponse
         {
@@ -345,13 +317,11 @@ namespace StellarGKLibrary.Protocols
             public Dictionary<string, CommanderRaminData> reaminData { get; set; }
         }
 
-
         public class GetPointAllResponse : GetPointResponse
         {
             [JsonProperty("ptst")]
             public bool pointState { get; set; }
         }
-
 
         public class SearchUserInfo
         {

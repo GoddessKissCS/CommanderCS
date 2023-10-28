@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Guild
 {
     public class GuildDispatchCommanderList
     {
-
     }
 }
+
 /*	// Token: 0x060060C8 RID: 24776 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7174", true, true)]
 	public void GuildDispatchCommanderList(int type)

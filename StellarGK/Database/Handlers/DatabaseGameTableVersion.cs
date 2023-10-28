@@ -5,7 +5,9 @@ namespace StellarGK.Database.Handlers
 {
     public class DatabaseGameTableVersion : DatabaseTable<DatabaseVersionScheme>
     {
-        public DatabaseGameTableVersion() : base("GameTableVersion") { }
+        public DatabaseGameTableVersion() : base("GameTableVersion")
+        {
+        }
 
         public DatabaseVersionScheme Create(double version)
         {

@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class GetUnitResearchListResponse
     {
         [JsonProperty("idx")]

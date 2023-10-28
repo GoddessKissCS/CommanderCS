@@ -29,10 +29,9 @@ namespace StellarGK.Packets.Handlers.Annihilation
 
         [JsonProperty("mst")]
         public int mst { get; set; }
-
     }
-
 }
+
 /*	// Token: 0x060060AB RID: 24747 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3731", true, true)]
 	public void AnnihilationStageStart(int type, JObject deck, JObject gdp, int ucash, int mst)

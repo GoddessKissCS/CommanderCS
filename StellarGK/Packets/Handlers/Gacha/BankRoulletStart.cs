@@ -15,19 +15,21 @@ namespace StellarGK.Host.Handlers.Gacha
         public override object Handle(BankRoulletStartRequest @params)
         {
             int vIdx;// metrobank id
-            int vcnt;// curremt rechargeCount? + 1
+            int vcnt;// current rechargeCount? + 1
 
             // return cnt is the remaining spins
 
             string session = GetSession();
 
-            var luck = BankGold(session, @params.count);
+            var count = @params.count;
+
+            var luck = BankGold(session, count);
 
             BankRoullet bankRoullet = new()
             {
                 rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session),
                 luck = luck,
-                cnt = @params.count
+                count = count
             };
 
             ResponsePacket response = new()
@@ -36,9 +38,7 @@ namespace StellarGK.Host.Handlers.Gacha
                 Result = bankRoullet
             };
 
-
             return response;
-
         }
 
         private static List<int> BankGold(string sessionId, int spins)
@@ -63,27 +63,26 @@ namespace StellarGK.Host.Handlers.Gacha
                 minusCash = 10;
             }
 
-            var newCash = user.UserResources.cash - minusCash;
+            user.UserResources.cash -= minusCash;
 
-            var newGold = user.UserResources.gold + updateGold;
+            user.UserResources.gold += updateGold;
 
-            DatabaseManager.GameProfile.UpdateGoldAndCash(sessionId, newGold, newCash, true);
+            DatabaseManager.GameProfile.UpdateUserResources(sessionId, user.UserResources);
 
             return luck;
-
         }
 
         public class BankRoullet
         {
             [JsonProperty("rsoc")]
             public UserInformationResponse.Resource rsoc { get; set; }
+
             [JsonProperty("cnt")]
-            public int cnt { get; set; }
+            public int count { get; set; }
+
             [JsonProperty("luck")]
             public List<int> luck { get; set; }
-
         }
-
     }
 
     public class BankRoulletStartRequest
@@ -98,6 +97,7 @@ namespace StellarGK.Host.Handlers.Gacha
         public int vcnt { get; set; }
     }
 }
+
 /*	// Token: 0x06005FC9 RID: 24521 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1501", true, true)]
 	public void BankRoulletStart(int vidx, int cnt, int vcnt)

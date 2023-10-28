@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Dormitory
 {
     public class RemoveDormitoryCommander
     {
-
     }
 }
+
 /*	// Token: 0x060061C1 RID: 25025 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8642", true, true)]
 	public void RemoveDormitoryCommander(string cid)

@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Dormitory
 {
     public class SellDormitoryItem
     {
-
     }
 }
+
 /*	// Token: 0x060061B2 RID: 25010 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8612", true, true)]
 	public void SellDormitoryItem(EStorageType ityp, string tidx, int amnt)

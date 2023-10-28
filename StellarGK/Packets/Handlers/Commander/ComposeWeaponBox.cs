@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Commander
 {
     public class ComposeWeaponBox
     {
-
     }
 }
+
 /*	// Token: 0x06006181 RID: 24961 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8512", true, true)]
 	public void ComposeWeaponBox(int gidx, int amnt)

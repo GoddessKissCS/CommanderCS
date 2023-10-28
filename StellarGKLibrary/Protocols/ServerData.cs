@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class ServerData
     {
         [JsonProperty("ws")]
@@ -13,7 +12,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("rsrv")]
         public int recommandServer { get; set; }
-
 
         public class ServerInfo
         {

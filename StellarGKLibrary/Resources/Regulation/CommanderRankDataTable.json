@@ -1,1 +1,50 @@
-[{"rank":1,"medalGoodsType":0,"medal":10,"gold":1000,"completeCash":0,"time":0},{"rank":2,"medalGoodsType":0,"medal":30,"gold":10000,"completeCash":0,"time":0},{"rank":3,"medalGoodsType":0,"medal":80,"gold":50000,"completeCash":0,"time":0},{"rank":4,"medalGoodsType":0,"medal":180,"gold":250000,"completeCash":0,"time":0},{"rank":5,"medalGoodsType":0,"medal":330,"gold":500000,"completeCash":0,"time":0},{"rank":6,"medalGoodsType":0,"medal":580,"gold":1000000,"completeCash":0,"time":0}]
+[
+  {
+    "rank": 1,
+    "medalGoodsType": 0,
+    "medal": 10,
+    "gold": 1000,
+    "completeCash": 0,
+    "time": 0
+  },
+  {
+    "rank": 2,
+    "medalGoodsType": 0,
+    "medal": 30,
+    "gold": 10000,
+    "completeCash": 0,
+    "time": 0
+  },
+  {
+    "rank": 3,
+    "medalGoodsType": 0,
+    "medal": 80,
+    "gold": 50000,
+    "completeCash": 0,
+    "time": 0
+  },
+  {
+    "rank": 4,
+    "medalGoodsType": 0,
+    "medal": 180,
+    "gold": 250000,
+    "completeCash": 0,
+    "time": 0
+  },
+  {
+    "rank": 5,
+    "medalGoodsType": 0,
+    "medal": 330,
+    "gold": 500000,
+    "completeCash": 0,
+    "time": 0
+  },
+  {
+    "rank": 6,
+    "medalGoodsType": 0,
+    "medal": 580,
+    "gold": 1000000,
+    "completeCash": 0,
+    "time": 0
+  }
+]

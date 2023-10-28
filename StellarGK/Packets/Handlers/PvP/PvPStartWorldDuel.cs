@@ -2,7 +2,6 @@ namespace StellarGK.Packets.Handlers.PvP
 {
     public class PvPStartWorldDuel
     {
-
     }
 }
 

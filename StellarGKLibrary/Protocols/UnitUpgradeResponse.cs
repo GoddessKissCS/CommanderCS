@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class UnitUpgradeResponse
     {
         [JsonProperty("ursc")]
@@ -14,7 +13,6 @@ namespace StellarGKLibrary.Protocols
         [JsonProperty("unit")]
         public Dictionary<string, Unit> unitInfo { get; set; }
 
-
         public class Resource
         {
             [JsonProperty("gold")]
@@ -23,7 +21,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("abp")]
             public string __blueprintArmy { get; set; }
         }
-
 
         public class Unit
         {

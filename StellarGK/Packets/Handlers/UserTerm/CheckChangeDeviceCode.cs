@@ -49,10 +49,9 @@ namespace StellarGK.Host.Handlers.UserTerm
 
         [JsonProperty("ch")]
         public int ch { get; set; }
-
     }
-
 }
+
 /*		// Token: 0x060060CC RID: 24780 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1231", true, true)]
 	public void CheckChangeDeviceCode(string dac, int ch)

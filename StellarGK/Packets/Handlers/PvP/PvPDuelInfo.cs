@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.PvP
 {
     public class PvPDuelInfo
     {
-
     }
 }
+
 /*	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3221", true, true)]
 	public void PvPDuelInfo(int idx)
 	{

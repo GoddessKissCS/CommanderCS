@@ -23,7 +23,6 @@ namespace StellarGK.Host.Handlers.WorldMap
             response.Id = BasePacket.Id;
             response.Result = wmssr;
 
-
             return response;
         }
 
@@ -31,10 +30,10 @@ namespace StellarGK.Host.Handlers.WorldMap
         {
             [JsonProperty("rsoc")]
             public UserInformationResponse.Resource rsoc { get; set; }
+
             [JsonProperty("reward")]
             public List<RewardInfo.RewardData> reward { get; set; }
         }
-
     }
 
     public class WorldMapStageStartRequest
@@ -58,7 +57,6 @@ namespace StellarGK.Host.Handlers.WorldMap
         public int Np { get; set; }
     }
 }
-
 
 /*
 [JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3732", true, true)]

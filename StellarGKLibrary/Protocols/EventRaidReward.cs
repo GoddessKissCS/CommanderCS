@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class EventRaidReward
     {
         [JsonProperty("reward")]
@@ -37,7 +36,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("rwdCnt")]
         public EventRaidRewardData rewardCount { get; set; }
-
 
         public class EventRaidRewardData
         {

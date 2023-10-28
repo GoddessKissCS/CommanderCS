@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class ScrambleMapHistory
     {
         [JsonProperty("result")]
@@ -13,7 +12,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("enmy")]
         public userData enemyHistory { get; set; }
-
 
         public class userData
         {
@@ -55,9 +53,7 @@ namespace StellarGKLibrary.Protocols
 
             [JsonProperty("deck")]
             public object __troopSlotsSource { get; set; }
-
         }
-
 
         public class Slot
         {

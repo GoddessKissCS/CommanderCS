@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class GuildMember
     {
         [JsonProperty("member")]
@@ -10,7 +9,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("bb")]
         public int badge { get; set; }
-
 
         public class MemberData
         {

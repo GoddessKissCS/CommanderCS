@@ -2,10 +2,8 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class RecordInfo
     {
-
         [JsonProperty("gnm", NullValueHandling = NullValueHandling.Ignore)]
         public string guildName { get; set; }
 
@@ -44,7 +42,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("vs")]
         public UserInfo userInfo { get; set; }
-
 
         public class UserInfo
         {

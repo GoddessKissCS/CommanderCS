@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Conquest
 {
     public class ConquestJoin
     {
-
     }
 }
+
 /*	// Token: 0x0600605A RID: 24666 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7501", true, true)]
 	public void ConquestJoin()

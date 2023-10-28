@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Event
 {
     public class GetEventBattleData
     {
-
     }
 }
+
 /*	// Token: 0x06006119 RID: 24857 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "2302", true, true)]
 	public void GetEventBattleData(int eidx, int level)

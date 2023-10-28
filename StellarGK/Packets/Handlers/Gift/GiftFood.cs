@@ -2,7 +2,6 @@ namespace StellarGK.Packets.Handlers.Gift
 {
     public class GiftFood
     {
-
     }
 }
 

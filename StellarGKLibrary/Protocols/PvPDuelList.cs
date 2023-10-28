@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class PvPDuelList
     {
         [JsonProperty("rfrm")]
@@ -19,7 +18,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("list")]
         public Dictionary<int, PvPDuelData> duelList { get; set; }
-
 
         public class PvPDuelData
         {
@@ -82,9 +80,7 @@ namespace StellarGKLibrary.Protocols
 
             [JsonProperty("lose")]
             public int loseCnt { get; set; }
-
         }
-
 
         public class GuildSkill
         {
@@ -94,7 +90,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("gslv")]
             public int level { get; set; }
         }
-
 
         public class PvPDuelDeck
         {

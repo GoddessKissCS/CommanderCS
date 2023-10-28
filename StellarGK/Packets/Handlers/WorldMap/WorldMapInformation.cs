@@ -35,6 +35,7 @@ namespace StellarGK.Host.Handlers.WorldMap
             return response;
         }
     }
+
     public class WorldMapInformationRequest
     {
         [JsonProperty("world")]
@@ -45,6 +46,7 @@ namespace StellarGK.Host.Handlers.WorldMap
     {
         [JsonProperty("stage")]
         public List<WorldMapInformationResponse> stage { get; set; }
+
         [JsonProperty("rwd")]
         public int rwd { get; set; }
     }

@@ -5,7 +5,9 @@ namespace StellarGK.Database.Handlers
 {
     public class DatabaseGuildApplication : DatabaseTable<GuildApplicationScheme>
     {
-        public DatabaseGuildApplication() : base("GuildApplications") { }
+        public DatabaseGuildApplication() : base("GuildApplications")
+        {
+        }
 
         public void CreateGuildApplication(string session, int guildIdx)
         {
@@ -22,7 +24,6 @@ namespace StellarGK.Database.Handlers
             Collection.InsertOne(guildApplication);
         }
 
-
         public string RetrieveGuildApplication(string session, int guildIdx)
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
@@ -37,7 +38,6 @@ namespace StellarGK.Database.Handlers
             if (tryGuild != null) { return "reg"; }
 
             return string.Empty;
-
         }
 
         public bool DeleteGuildApplication(string session, int guildIdx)

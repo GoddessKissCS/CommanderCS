@@ -30,13 +30,11 @@ namespace StellarGK.Packets.Handlers.Profile
             response.Id = BasePacket.Id;
             response.Result = "{}";
             return response;
-
-
         }
     }
 
     /*
-     * 
+     *
     [JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1213", true, true)]
     public void ChangeMembershipOpenPlatform(string tokn, Platform plfm, string puid, int ch)
     {
@@ -64,7 +62,6 @@ namespace StellarGK.Packets.Handlers.Profile
     }
 
     */
-
 
     public class ChangeMembershipOpenPlatformRequest
     {

@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Replay
 {
     public class GetReplayInfo
     {
-
     }
 }
+
 /*	// Token: 0x06005FE5 RID: 24549 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3133", true, true)]
 	public void GetReplayInfo(string rid, ERePlayType type)

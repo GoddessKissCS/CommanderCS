@@ -1,32 +1,32 @@
 [
-    {
-        "rank": 1,
-        "medal": 10,
-        "gold": 1000
-    },
-    {
-        "rank": 2,
-        "medal": 30,
-        "gold": 10000
-    },
-    {
-        "rank": 3,
-        "medal": 80,
-        "gold": 50000
-    },
-    {
-        "rank": 4,
-        "medal": 180,
-        "gold": 250000
-    },
-    {
-        "rank": 5,
-        "medal": 330,
-        "gold": 500000
-    },
-    {
-        "rank": 6,
-        "medal": 580,
-        "gold": 1000000
-    }
+  {
+    "rank": 1,
+    "medal": 10,
+    "gold": 1000
+  },
+  {
+    "rank": 2,
+    "medal": 30,
+    "gold": 10000
+  },
+  {
+    "rank": 3,
+    "medal": 80,
+    "gold": 50000
+  },
+  {
+    "rank": 4,
+    "medal": 180,
+    "gold": 250000
+  },
+  {
+    "rank": 5,
+    "medal": 330,
+    "gold": 500000
+  },
+  {
+    "rank": 6,
+    "medal": 580,
+    "gold": 1000000
+  }
 ]

@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class SituationExploreReward
     {
         [JsonProperty("sply")]
@@ -16,6 +15,5 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("reward")]
         public object __reward { get; set; }
-
     }
 }

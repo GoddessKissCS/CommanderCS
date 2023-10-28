@@ -3,7 +3,6 @@ using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.VersionCheck
 {
-
     [Packet(Id = Method.DBVersionCheck)]
     public class DatabaseVersionCheck : BaseMethodHandler<DatabaseVersionCheckRequest>
     {
@@ -30,11 +29,9 @@ namespace StellarGK.Host.Handlers.VersionCheck
             [JsonProperty("ver")]
             public double ver { get; set; }
         }
-
     }
 
     public class DatabaseVersionCheckRequest
     {
-
     }
 }

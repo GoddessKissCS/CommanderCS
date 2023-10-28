@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.InfinityBattle
 {
     public class InfinityBattleGetReward
     {
-
     }
 }/*	// Token: 0x06006196 RID: 24982 RVA: 0x000120F8 File Offset: 0x000102F8
+
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8704", true, true)]
 	public void InfinityBattleGetReward(int ifid, int msid)
 	{

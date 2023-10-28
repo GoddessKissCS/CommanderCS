@@ -2,12 +2,10 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class WaveBattleInfoList
     {
         [JsonProperty("wavebattle")]
         public List<WaveBattleInfo> InfoList { get; set; }
-
 
         public class WaveBattleInfo
         {

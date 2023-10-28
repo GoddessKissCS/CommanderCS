@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Inventory
 {
     public class WeaponProgressSlotOpen
     {
-
     }
 }
+
 /*	// Token: 0x06006166 RID: 24934 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8502", true, true)]
 	public void WeaponProgressSlotOpen()

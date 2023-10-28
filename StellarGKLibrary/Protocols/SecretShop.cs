@@ -3,7 +3,6 @@ using StellarGKLibrary.Enum;
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class SecretShop
     {
         [JsonProperty("shop")]
@@ -20,7 +19,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("vrcnt")]
         public int reset { get; set; }
-
 
         public class ShopData
         {

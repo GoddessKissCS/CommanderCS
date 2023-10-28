@@ -26,7 +26,6 @@ namespace StellarGK.Packets.Handlers.UserTerm
             response.Result = changeDeviceResponse;
 
             return response;
-
         }
     }
 
@@ -75,7 +74,6 @@ namespace StellarGK.Packets.Handlers.UserTerm
         public string gpid { get; set; }
     }
 
-
     internal class ChangeDeviceResponse
     {
         [JsonProperty("mIdx")]
@@ -85,6 +83,7 @@ namespace StellarGK.Packets.Handlers.UserTerm
         public string tokn { get; set; }
     }
 }
+
 /*	// Token: 0x060060D1 RID: 24785 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1233", true, true)]
 	public void ChangeDevice(int ch, string dac, string tokn, Platform plfm, string devc, string dvid, int ptype, Protocols.OSCode oscd, string osvr, string gmvr, string apk, string lang, string gpid)

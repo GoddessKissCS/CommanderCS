@@ -6,11 +6,12 @@ namespace StellarGK.Database.Handlers
 {
     public class DatabaseDeviceCode : DatabaseTable<DeviceChangeCodeScheme>
     {
-        public DatabaseDeviceCode() : base("DeviceChangeCode") { }
+        public DatabaseDeviceCode() : base("DeviceChangeCode")
+        {
+        }
 
         public DeviceChangeCodeScheme Create(int id)
         {
-
             var Code = Utility.ChangeDeviceCode();
             var CreateTime = Utility.CurrentTimeStamp();
 
@@ -24,7 +25,6 @@ namespace StellarGK.Database.Handlers
             Collection.InsertOne(deviceCode);
 
             return deviceCode;
-
         }
 
         public DeviceChangeCodeScheme? FindByUid(int uid)
@@ -36,6 +36,5 @@ namespace StellarGK.Database.Handlers
         {
             return Collection.AsQueryable().Where(deviceScheme => deviceScheme.Code == code).FirstOrDefault();
         }
-
     }
 }

@@ -4,7 +4,6 @@ namespace StellarGKLibrary.Protocols
 {
     public class RoGuild
     {
-
         [JsonProperty("list")]
         public string list { get; set; }
 
@@ -34,6 +33,7 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("cnt")]
         public int cnt { get; set; }
+
         [JsonProperty("world")]
         public int world { get; set; }
     }

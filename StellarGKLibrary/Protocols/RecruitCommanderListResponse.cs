@@ -2,8 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
-
     public class RecruitCommanderListResponse
     {
         [JsonProperty("list")]
@@ -17,7 +15,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("rsoc")]
         public UserInformationResponse.Resource resource { get; set; }
-
 
         public class Commander
         {
@@ -43,5 +40,4 @@ namespace StellarGKLibrary.Protocols
             public int waitTime { get; set; }
         }
     }
-
 }

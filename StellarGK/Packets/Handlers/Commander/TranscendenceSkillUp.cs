@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Commander
 {
     public class TranscendenceSkillUp
     {
-
     }
 }
+
 /*	// Token: 0x0600615D RID: 24925 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "4313", true, true)]
 	public void TranscendenceSkillUp(int cid, int slot)

@@ -5,7 +5,6 @@
     }
 }
 
-
 /*
   public void CommanderRankUpImmediate(int cid)
 	{

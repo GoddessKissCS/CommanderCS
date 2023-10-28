@@ -7,7 +7,6 @@ namespace StellarGK.Host.Handlers.Event
     {
         public override object Handle(GetCommonNoticeRequest @params)
         {
-
             List<NoticeData> CommonNotice1 = new List<NoticeData>
             { /*
                 new NoticeData()
@@ -34,8 +33,8 @@ namespace StellarGK.Host.Handlers.Event
             return response;
         }
     }
+
     public class GetCommonNoticeRequest
     {
-
     }
 }

@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Achievement
 {
     public class AchievementReward
     {
-
     }
 }
+
 /*	// Token: 0x06005FA8 RID: 24488 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6231", true, true)]
 	public void AchievementReward(int acid, int asot)

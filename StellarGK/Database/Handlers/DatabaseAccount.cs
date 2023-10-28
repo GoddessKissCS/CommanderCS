@@ -3,16 +3,18 @@ using StellarGK.Database.Schemes;
 using StellarGK.Host;
 using StellarGK.Host.Handlers.Login;
 using StellarGK.Packets.Handlers.UserTerm;
-using StellarGKLibrary.Utils;
 using StellarGKLibrary.Enum;
-using StellarGKLibrary.Protocols;
+using StellarGKLibrary.Utils;
 using static StellarGKLibrary.Cryptography.Crypto;
 
 namespace StellarGK.Database.Handlers
 {
     public class DatabaseAccount : DatabaseTable<AccountScheme>
     {
-        public DatabaseAccount() : base("Account") { }
+        public DatabaseAccount() : base("Account")
+        {
+        }
+
         public AccountScheme Create(string name = "", string password = "", int platformid = 0, int channel = 0)
         {
             AccountScheme? tryUser = Collection.AsQueryable().Where(d => d.Name == name).FirstOrDefault();
@@ -37,10 +39,8 @@ namespace StellarGK.Database.Handlers
 
             if (platformid == 0)
             {
-                string guestName = Utility.CreateGuestName();
                 user.Clearance = Clearance.Guest;
-                user.Name = guestName;
-
+                user.Name = Utility.CreateGuestName();
             }
             else
             {
@@ -60,14 +60,17 @@ namespace StellarGK.Database.Handlers
         {
             return Collection.AsQueryable().Where(d => d.Name == accountName).FirstOrDefault();
         }
+
         public AccountScheme? FindByUid(int memberId)
         {
             return Collection.AsQueryable().Where(d => d.MemberId == memberId).FirstOrDefault();
         }
+
         public AccountScheme? FindByUid(string memberId)
         {
             return Collection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).FirstOrDefault();
         }
+
         public bool AccountExists(string accountName)
         {
             return Collection.AsQueryable().Where(d => d.Name == accountName).Any();
@@ -75,7 +78,6 @@ namespace StellarGK.Database.Handlers
 
         public ErrorCode ChangeMemberShip(string changeName, string password, int platformId, string guestName, int channel)
         {
-
             if (Misc.NameCheck(changeName))
             {
                 return ErrorCode.InappropriateWords;
@@ -96,13 +98,10 @@ namespace StellarGK.Database.Handlers
             Collection.UpdateOne(filter, update);
 
             return ErrorCode.Success;
-
         }
-
 
         public void UpdateLoginTime(int id)
         {
-
             var CurrTimeStamp = Utility.CurrentTimeStamp();
 
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", id);
@@ -132,13 +131,10 @@ namespace StellarGK.Database.Handlers
 
         public void UpdateLastServerLoggedIn(int server, int memberid)
         {
-            var user = FindByUid(memberid);
-
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", memberid);
             var update = Builders<AccountScheme>.Update.Set("LastServerLoggedIn", server);
 
             Collection.UpdateOne(filter, update);
-
         }
 
         public ErrorCode RequestLogin(LoginRequest @params, string session)
@@ -153,33 +149,28 @@ namespace StellarGK.Database.Handlers
             return ErrorCode.Success;
         }
 
-        public bool AddBlockedUser(BlockUser toBeBlocked, string session)
-        {
+        //public bool addblockeduser(blockuser tobeblocked, string session)
+        //{
+        //    var user = databasemanager.gameprofile.findbysession(session);
+        //    var filter = builders<accountscheme>.filter.eq("memberid", user.memberid);
+        //    var update = builders<accountscheme>.update.push("blockusers", tobeblocked);
 
-            var user = DatabaseManager.GameProfile.FindBySession(session);
-            var filter = Builders<AccountScheme>.Filter.Eq("MemberId", user.MemberId);
-            var update = Builders<AccountScheme>.Update.Push("BlockUsers", toBeBlocked);
+        //    var updateresult = collection.updateone(filter, update);
 
-            var updateResult = Collection.UpdateOne(filter, update);
+        //    return updateresult.modifiedcount > 0;
+        //}
+        //public bool delblockeduser(string session, int ch, string uno)
+        //{
+        //    var user = databasemanager.gameprofile.findbysession(session);
 
-            return updateResult.ModifiedCount > 0;
-        }
-        public bool DelBlockedUser(string session, int ch, string uno)
-        {
-            var user = DatabaseManager.GameProfile.FindBySession(session);
+        //    var filter = builders<accountscheme>.filter.eq("memberid", user.memberid) &
+        //                 builders<accountscheme>.filter.elemmatch(x => x.blockedusers,
+        //                 builders<blockuser>.filter.eq("ch", ch) & builders<blockuser>.filter.eq("uno", uno));
 
-            var filter = Builders<AccountScheme>.Filter.Eq("MemberId", user.MemberId);
-            var update = Builders<AccountScheme>.Update.PullFilter("BlockedUser",
-                         Builders<BlockUser>.Filter.And(
-                         Builders<BlockUser>.Filter.Eq("ch", ch),
-                         Builders<BlockUser>.Filter.Eq("uno", uno)
-                                                             ));
+        //    var updateresult = collection.deleteone(filter);
 
-            var updateResult = Collection.UpdateOne(filter, update);
-
-            return updateResult.ModifiedCount > 0;
-        }
-
+        //    return updateresult.deletedcount > 0;
+        //}
 
         public ErrorCode ChangeDevice(Platform plfm, string uid, string pwd)
         {

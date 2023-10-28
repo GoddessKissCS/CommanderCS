@@ -7,7 +7,6 @@ namespace StellarGK.Host.Handlers.Tutorial
     [Packet(Id = Method.LoginTutorialSkip)]
     public class LoginTutorialSkip : BaseMethodHandler<LoginTutorialSkipRequest>
     {
-
         public override object Handle(LoginTutorialSkipRequest @params)
         {
             ResponsePacket response = new();
@@ -37,7 +36,6 @@ namespace StellarGK.Host.Handlers.Tutorial
             else
             {
                 return DatabaseManager.GameProfile.UpdateStepAndSkip(session, tutorialData);
-
             }
         }
 

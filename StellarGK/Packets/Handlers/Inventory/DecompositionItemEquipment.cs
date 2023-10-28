@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Inventory
 {
     public class DecompositionItemEquipment
     {
-
     }
 }
+
 /*	// Token: 0x060060F1 RID: 24817 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7424", true, true)]
 	public void DecompositionItemEquipment(int eidx, int elv, int amnt)

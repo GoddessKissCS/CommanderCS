@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class PvPRankingList
     {
         [JsonProperty("rank")]
@@ -16,7 +15,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("info")]
         public RaidInfo info { get; set; }
-
 
         public class RankData
         {
@@ -53,7 +51,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("rid")]
             public string replayId;
         }
-
 
         public class RaidInfo
         {

@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class GetTroopInformationResponse
     {
         [JsonProperty("cid")]
@@ -13,7 +12,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("deck")]
         public Dictionary<string, Slot> slots { get; set; }
-
 
         public class Slot
         {

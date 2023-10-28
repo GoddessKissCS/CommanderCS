@@ -4,7 +4,8 @@ namespace StellarGKLibrary.ExcelReader
 {
     public class DailyBonusData : BaseExcelReader<DailyBonusData, DailyBonusDataExcel>
     {
-        public override string FileName { get { return "DailyBonusDataTable.json"; } }
+        public override string FileName
+        { get { return "DailyBonusDataTable.json"; } }
 
         public DailyBonusDataExcel? FromDay(int day, int startTime)
         {
@@ -12,7 +13,6 @@ namespace StellarGKLibrary.ExcelReader
                       .Where(avatar => avatar.startTime == startTime)
                       .FirstOrDefault();
         }
-
     }
 
     public class DailyBonusDataExcel

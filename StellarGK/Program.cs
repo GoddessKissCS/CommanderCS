@@ -1,8 +1,8 @@
 using Microsoft.Extensions.FileProviders;
-using StellarGK.Database;
 using StellarGK.Host;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+
 namespace StellarGK
 {
     public class Program
@@ -36,16 +36,12 @@ namespace StellarGK
                 options.WriteIndented = true;
             });
 
-
-
             //builder.WebHost.ConfigureKestrel(options =>
             //{
             //    options.AllowSynchronousIO = true;
             //});
 
-
             builder.Services.AddHttpClient();
-
 
             //            // To be replaced with mongodb
             //            builder.Services.AddSqlite<DatabaseContext>(iConfigurationRoot.GetConnectionString(nameof(DatabaseContext)));
@@ -57,7 +53,6 @@ namespace StellarGK
             //                dbContextOptionsBuilder.UseLoggerFactory(iLoggerFactory);
             //#endif
             //            });
-
 
             var app = builder.Build();
 
@@ -145,11 +140,9 @@ namespace StellarGK
         }
     }
 
-    class Status
+    internal class Status
     {
         public string Message { get; set; }
         public List<string> CommandsLoaded { get; set; }
     }
-
 }
-

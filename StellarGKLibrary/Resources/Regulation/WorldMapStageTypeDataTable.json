@@ -1,68 +1,68 @@
 [
-    {
-        "id": "101",
-        "resourceId": "map_stage_guardpost01",
-        "battleCount": 1,
-        "bgm": "BGM_Stage_002"
-    },
-    {
-        "id": "102",
-        "resourceId": "stage_boss_01",
-        "battleCount": 1,
-        "bgm": "BGM_Stage_002"
-    },
-    {
-        "id": "150",
-        "resourceId": "map_stage_supplystorage01",
-        "battleCount": 1,
-        "bgm": "BGM_Stage_002"
-    },
-    {
-        "id": "201",
-        "resourceId": "map_stage_watchhouse01",
-        "battleCount": 9999,
-        "bgm": "BGM_Stage_002"
-    },
-    {
-        "id": "202",
-        "resourceId": "map_stage_watchhouse02",
-        "battleCount": 9999,
-        "bgm": "BGM_Stage_002"
-    },
-    {
-        "id": "203",
-        "resourceId": "map_stage_watchhouse03",
-        "battleCount": 9999,
-        "bgm": "BGM_Stage_002"
-    },
-    {
-        "id": "210",
-        "resourceId": "map_stage_factory01",
-        "battleCount": 9999,
-        "bgm": "BGM_Stage_002"
-    },
-    {
-        "id": "211",
-        "resourceId": "map_stage_factory02",
-        "battleCount": 9999,
-        "bgm": "BGM_Stage_002"
-    },
-    {
-        "id": "212",
-        "resourceId": "map_stage_factory03",
-        "battleCount": 9999,
-        "bgm": "BGM_Stage_002"
-    },
-    {
-        "id": "301",
-        "resourceId": "stage_boss_02",
-        "battleCount": 3,
-        "bgm": "BGM_Stage_002"
-    },
-    {
-        "id": "302",
-        "resourceId": "stage_boss_01",
-        "battleCount": 3,
-        "bgm": "Pocket_BGM_Boss_001"
-    }
+  {
+    "id": "101",
+    "resourceId": "map_stage_guardpost01",
+    "battleCount": 1,
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": "102",
+    "resourceId": "stage_boss_01",
+    "battleCount": 1,
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": "150",
+    "resourceId": "map_stage_supplystorage01",
+    "battleCount": 1,
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": "201",
+    "resourceId": "map_stage_watchhouse01",
+    "battleCount": 9999,
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": "202",
+    "resourceId": "map_stage_watchhouse02",
+    "battleCount": 9999,
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": "203",
+    "resourceId": "map_stage_watchhouse03",
+    "battleCount": 9999,
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": "210",
+    "resourceId": "map_stage_factory01",
+    "battleCount": 9999,
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": "211",
+    "resourceId": "map_stage_factory02",
+    "battleCount": 9999,
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": "212",
+    "resourceId": "map_stage_factory03",
+    "battleCount": 9999,
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": "301",
+    "resourceId": "stage_boss_02",
+    "battleCount": 3,
+    "bgm": "BGM_Stage_002"
+  },
+  {
+    "id": "302",
+    "resourceId": "stage_boss_01",
+    "battleCount": 3,
+    "bgm": "Pocket_BGM_Boss_001"
+  }
 ]

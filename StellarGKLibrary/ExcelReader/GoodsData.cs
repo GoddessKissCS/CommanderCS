@@ -5,8 +5,8 @@ namespace StellarGKLibrary.ExcelReader
 {
     public class GoodsData : BaseExcelReader<GoodsData, GoodsDataExcel>
     {
-        public override string FileName { get { return "GoodsDataTable.json"; } }
-
+        public override string FileName
+        { get { return "GoodsDataTable.json"; } }
 
         public GoodsDataExcel? FromServerFieldName(string name)
         {
@@ -28,7 +28,6 @@ namespace StellarGKLibrary.ExcelReader
 
             return allGoods;
         }
-
     }
 
     public class GoodsDataExcel

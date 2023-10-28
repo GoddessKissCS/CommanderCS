@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Shop
 {
     public class BuySecretShopItem
     {
-
     }
 }
+
 /*	// Token: 0x06006015 RID: 24597 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8201", true, true)]
 	public void BuySecretShopItem(int styp, int id)

@@ -8,11 +8,10 @@ namespace StellarGK.Packets.Handlers.Annihilation
     {
         public override object Handle(AnnihilationEnemyInformationRequest @params)
         {
-
             return "{}";
         }
-
     }
+
     public class AnnihilationEnemyInformationRequest
     {
         [JsonProperty("stage")]
@@ -22,7 +21,6 @@ namespace StellarGK.Packets.Handlers.Annihilation
         }
     }
 }
-
 
 /*	// Token: 0x06006019 RID: 24601 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7306", true, true)]

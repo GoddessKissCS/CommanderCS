@@ -4,7 +4,6 @@ namespace StellarGK.Packets.Handlers.WorldDuel
 {
     public class WorldDuelBuffSetting
     {
-
     }
 
     public class WorldDuelBuffSettingRequest
@@ -13,6 +12,7 @@ namespace StellarGK.Packets.Handlers.WorldDuel
         public string Bbf { get; set; }
     }
 }
+
 /*	// Token: 0x06006154 RID: 24916 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3610", true, true)]
 	public void WorldDuelBuffSetting(string bbf)

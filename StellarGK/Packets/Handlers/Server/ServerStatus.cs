@@ -2,7 +2,6 @@
 using StellarGK.Database;
 using StellarGKLibrary.Protocols;
 
-
 namespace StellarGK.Host.Handlers.Server
 {
     [Packet(Id = Method.ServerStatus)]
@@ -67,10 +66,9 @@ namespace StellarGK.Host.Handlers.Server
             SIFO.lastLoginTime = account.LastLoginTime;
 
             return SIFO;
-
         }
-
     }
+
     public class ServerStatusRequest
     {
         [JsonProperty("mIdx")]

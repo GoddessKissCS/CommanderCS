@@ -3,7 +3,6 @@ using StellarGK.Database;
 using StellarGKLibrary.ExcelReader;
 using StellarGKLibrary.Protocols;
 
-
 namespace StellarGK.Host.Handlers.Commander
 {
     [Packet(Id = Method.CommanderRankUp)]
@@ -16,7 +15,6 @@ namespace StellarGK.Host.Handlers.Commander
             string session = GetSession();
 
             var user = GetUserGameProfile();
-
 
             string cid = @params.cid.ToString();
 
@@ -43,11 +41,9 @@ namespace StellarGK.Host.Handlers.Commander
                 user.CommanderData[cid] = commander;
 
                 DatabaseManager.GameProfile.UpdateGold(session, commanderRankData.gold, false);
-
             }
             else
             {
-
                 user.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
 
                 var CostumeData = CommanderCostumeData.GetInstance().FromId(cid);
@@ -102,6 +98,7 @@ namespace StellarGK.Host.Handlers.Commander
             { 2, 30 },
             { 3, 80 }
         };
+
         private static Dictionary<int, int> RankCostList { get; set; } = new Dictionary<int, int>()
         {
             { 1, 20 },
@@ -110,6 +107,7 @@ namespace StellarGK.Host.Handlers.Commander
             { 4, 150 },
             { 5, 250 }
         };
+
         private static bool TryRecruitCommander(int grade, ref int medals)
         {
             if (!GradeCostList.TryGetValue(grade, out var cost))
@@ -126,6 +124,7 @@ namespace StellarGK.Host.Handlers.Commander
 
             return true;
         }
+
         private static bool TryRankUpCommander(int grade, ref int medals)
         {
             if (!RankCostList.TryGetValue(grade, out var cost))
@@ -142,6 +141,7 @@ namespace StellarGK.Host.Handlers.Commander
 
             return true;
         }
+
         private static UserInformationResponse.Commander CreateCommander(string commanderid, int costumeid, int commanderMedals, int grade)
         {
             UserInformationResponse.Commander __commander = new()
@@ -168,14 +168,13 @@ namespace StellarGK.Host.Handlers.Commander
                 id = commanderid,
                 marry = 0,
                 medl = commanderMedals,
-#warning TODO CREATE A ROLE TABLE 
+#warning TODO CREATE A ROLE TABLE
                 role = "A",
                 transcendence = new() { 0, 0, 0, 0 },
             };
 
             return __commander;
         }
-
     }
 
     public class CommanderRankUpRequest

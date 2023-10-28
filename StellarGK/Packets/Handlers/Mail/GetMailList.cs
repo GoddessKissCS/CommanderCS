@@ -21,7 +21,6 @@ namespace StellarGK.Packets.Handlers.Mail
 
             return response;
         }
-
     }
 
     public class GetMailListRequest

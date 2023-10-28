@@ -13,6 +13,5 @@ namespace StellarGK.Database
         {
             Collection = Database.GetCollection<T>(collectionName);
         }
-
     }
 }

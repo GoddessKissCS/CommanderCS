@@ -1,1 +1,848 @@
-[{"level":1,"exp":0,"aexp":0,"AddLeadership":0},{"level":2,"exp":30,"aexp":30,"AddLeadership":0},{"level":3,"exp":60,"aexp":90,"AddLeadership":0},{"level":4,"exp":100,"aexp":190,"AddLeadership":0},{"level":5,"exp":150,"aexp":340,"AddLeadership":0},{"level":6,"exp":200,"aexp":540,"AddLeadership":0},{"level":7,"exp":250,"aexp":790,"AddLeadership":0},{"level":8,"exp":300,"aexp":1090,"AddLeadership":0},{"level":9,"exp":350,"aexp":1440,"AddLeadership":0},{"level":10,"exp":400,"aexp":1840,"AddLeadership":0},{"level":11,"exp":450,"aexp":2290,"AddLeadership":0},{"level":12,"exp":500,"aexp":2790,"AddLeadership":0},{"level":13,"exp":550,"aexp":3340,"AddLeadership":0},{"level":14,"exp":600,"aexp":3940,"AddLeadership":0},{"level":15,"exp":650,"aexp":4590,"AddLeadership":0},{"level":16,"exp":700,"aexp":5290,"AddLeadership":0},{"level":17,"exp":750,"aexp":6040,"AddLeadership":0},{"level":18,"exp":800,"aexp":6840,"AddLeadership":0},{"level":19,"exp":850,"aexp":7690,"AddLeadership":0},{"level":20,"exp":900,"aexp":8590,"AddLeadership":0},{"level":21,"exp":950,"aexp":9540,"AddLeadership":0},{"level":22,"exp":1000,"aexp":10540,"AddLeadership":0},{"level":23,"exp":1100,"aexp":11640,"AddLeadership":0},{"level":24,"exp":1200,"aexp":12840,"AddLeadership":0},{"level":25,"exp":1300,"aexp":14140,"AddLeadership":0},{"level":26,"exp":1400,"aexp":15540,"AddLeadership":0},{"level":27,"exp":1500,"aexp":17040,"AddLeadership":0},{"level":28,"exp":1600,"aexp":18640,"AddLeadership":0},{"level":29,"exp":1700,"aexp":20340,"AddLeadership":0},{"level":30,"exp":1800,"aexp":22140,"AddLeadership":0},{"level":31,"exp":1900,"aexp":24040,"AddLeadership":0},{"level":32,"exp":2000,"aexp":26040,"AddLeadership":0},{"level":33,"exp":2500,"aexp":28540,"AddLeadership":0},{"level":34,"exp":3000,"aexp":31540,"AddLeadership":0},{"level":35,"exp":3500,"aexp":35040,"AddLeadership":0},{"level":36,"exp":4000,"aexp":39040,"AddLeadership":0},{"level":37,"exp":4500,"aexp":43540,"AddLeadership":0},{"level":38,"exp":5000,"aexp":48540,"AddLeadership":0},{"level":39,"exp":5500,"aexp":54040,"AddLeadership":0},{"level":40,"exp":6000,"aexp":60040,"AddLeadership":0},{"level":41,"exp":6500,"aexp":66540,"AddLeadership":0},{"level":42,"exp":7000,"aexp":73540,"AddLeadership":0},{"level":43,"exp":7500,"aexp":81040,"AddLeadership":0},{"level":44,"exp":8000,"aexp":89040,"AddLeadership":0},{"level":45,"exp":8500,"aexp":97540,"AddLeadership":0},{"level":46,"exp":9000,"aexp":106540,"AddLeadership":0},{"level":47,"exp":9500,"aexp":116040,"AddLeadership":0},{"level":48,"exp":10000,"aexp":126040,"AddLeadership":0},{"level":49,"exp":11000,"aexp":137040,"AddLeadership":0},{"level":50,"exp":12000,"aexp":149040,"AddLeadership":0},{"level":51,"exp":13000,"aexp":162040,"AddLeadership":0},{"level":52,"exp":14000,"aexp":176040,"AddLeadership":0},{"level":53,"exp":15000,"aexp":191040,"AddLeadership":0},{"level":54,"exp":16000,"aexp":207040,"AddLeadership":0},{"level":55,"exp":17000,"aexp":224040,"AddLeadership":0},{"level":56,"exp":18000,"aexp":242040,"AddLeadership":0},{"level":57,"exp":19000,"aexp":261040,"AddLeadership":0},{"level":58,"exp":20000,"aexp":281040,"AddLeadership":0},{"level":59,"exp":22000,"aexp":303040,"AddLeadership":0},{"level":60,"exp":24000,"aexp":327040,"AddLeadership":0},{"level":61,"exp":26000,"aexp":353040,"AddLeadership":0},{"level":62,"exp":28000,"aexp":381040,"AddLeadership":0},{"level":63,"exp":30000,"aexp":411040,"AddLeadership":0},{"level":64,"exp":32000,"aexp":443040,"AddLeadership":0},{"level":65,"exp":34000,"aexp":477040,"AddLeadership":0},{"level":66,"exp":36000,"aexp":513040,"AddLeadership":0},{"level":67,"exp":38000,"aexp":551040,"AddLeadership":0},{"level":68,"exp":40000,"aexp":591040,"AddLeadership":0},{"level":69,"exp":42000,"aexp":633040,"AddLeadership":0},{"level":70,"exp":44000,"aexp":677040,"AddLeadership":0},{"level":71,"exp":68000,"aexp":745040,"AddLeadership":0},{"level":72,"exp":90000,"aexp":835040,"AddLeadership":0},{"level":73,"exp":110000,"aexp":945040,"AddLeadership":0},{"level":74,"exp":128000,"aexp":1073040,"AddLeadership":0},{"level":75,"exp":144000,"aexp":1217040,"AddLeadership":0},{"level":76,"exp":158000,"aexp":1375040,"AddLeadership":0},{"level":77,"exp":170000,"aexp":1545040,"AddLeadership":0},{"level":78,"exp":180000,"aexp":1725040,"AddLeadership":0},{"level":79,"exp":188000,"aexp":1913040,"AddLeadership":0},{"level":80,"exp":194000,"aexp":2107040,"AddLeadership":0},{"level":81,"exp":198000,"aexp":2305040,"AddLeadership":0},{"level":82,"exp":202000,"aexp":2507040,"AddLeadership":0},{"level":83,"exp":206000,"aexp":2713040,"AddLeadership":0},{"level":84,"exp":210000,"aexp":2923040,"AddLeadership":0},{"level":85,"exp":214000,"aexp":3137040,"AddLeadership":0},{"level":86,"exp":218000,"aexp":3355040,"AddLeadership":0},{"level":87,"exp":222000,"aexp":3577040,"AddLeadership":0},{"level":88,"exp":226000,"aexp":3803040,"AddLeadership":0},{"level":89,"exp":230000,"aexp":4033040,"AddLeadership":0},{"level":90,"exp":234000,"aexp":4267040,"AddLeadership":0},{"level":91,"exp":238000,"aexp":4505040,"AddLeadership":0},{"level":92,"exp":242000,"aexp":4747040,"AddLeadership":0},{"level":93,"exp":246000,"aexp":4993040,"AddLeadership":0},{"level":94,"exp":250000,"aexp":5243040,"AddLeadership":0},{"level":95,"exp":254000,"aexp":5497040,"AddLeadership":0},{"level":96,"exp":258000,"aexp":5755040,"AddLeadership":0},{"level":97,"exp":262000,"aexp":6017040,"AddLeadership":0},{"level":98,"exp":266000,"aexp":6283040,"AddLeadership":0},{"level":99,"exp":270000,"aexp":6553040,"AddLeadership":0},{"level":100,"exp":274000,"aexp":6827040,"AddLeadership":0},{"level":101,"exp":278000,"aexp":7105040,"AddLeadership":0},{"level":102,"exp":282000,"aexp":7387040,"AddLeadership":0},{"level":103,"exp":286000,"aexp":7673040,"AddLeadership":0},{"level":104,"exp":290000,"aexp":7963040,"AddLeadership":0},{"level":105,"exp":294000,"aexp":8257040,"AddLeadership":0},{"level":106,"exp":298000,"aexp":8555040,"AddLeadership":0},{"level":107,"exp":302000,"aexp":8857040,"AddLeadership":0},{"level":108,"exp":306000,"aexp":9163040,"AddLeadership":0},{"level":109,"exp":310000,"aexp":9473040,"AddLeadership":0},{"level":110,"exp":314000,"aexp":9787040,"AddLeadership":0},{"level":111,"exp":318000,"aexp":10105040,"AddLeadership":0},{"level":112,"exp":322000,"aexp":10427040,"AddLeadership":0},{"level":113,"exp":326000,"aexp":10753040,"AddLeadership":0},{"level":114,"exp":330000,"aexp":11083040,"AddLeadership":0},{"level":115,"exp":334000,"aexp":11417040,"AddLeadership":0},{"level":116,"exp":338000,"aexp":11755040,"AddLeadership":0},{"level":117,"exp":342000,"aexp":12097040,"AddLeadership":0},{"level":118,"exp":346000,"aexp":12443040,"AddLeadership":0},{"level":119,"exp":350000,"aexp":12793040,"AddLeadership":0},{"level":120,"exp":354000,"aexp":13147040,"AddLeadership":0},{"level":121,"exp":358000,"aexp":13505040,"AddLeadership":0},{"level":122,"exp":362000,"aexp":13867040,"AddLeadership":0},{"level":123,"exp":366000,"aexp":14233040,"AddLeadership":0},{"level":124,"exp":370000,"aexp":14603040,"AddLeadership":0},{"level":125,"exp":374000,"aexp":14977040,"AddLeadership":0},{"level":126,"exp":378000,"aexp":15355040,"AddLeadership":0},{"level":127,"exp":382000,"aexp":15737040,"AddLeadership":0},{"level":128,"exp":386000,"aexp":16123040,"AddLeadership":0},{"level":129,"exp":390000,"aexp":16513040,"AddLeadership":0},{"level":130,"exp":394000,"aexp":16907040,"AddLeadership":0},{"level":131,"exp":398000,"aexp":17305040,"AddLeadership":0},{"level":132,"exp":402000,"aexp":17707040,"AddLeadership":0},{"level":133,"exp":406000,"aexp":18113040,"AddLeadership":0},{"level":134,"exp":410000,"aexp":18523040,"AddLeadership":0},{"level":135,"exp":414000,"aexp":18937040,"AddLeadership":0},{"level":136,"exp":418000,"aexp":19355040,"AddLeadership":0},{"level":137,"exp":422000,"aexp":19777040,"AddLeadership":0},{"level":138,"exp":426000,"aexp":20203040,"AddLeadership":0},{"level":139,"exp":430000,"aexp":20633040,"AddLeadership":0},{"level":140,"exp":434000,"aexp":21067040,"AddLeadership":0},{"level":141,"exp":438000,"aexp":21505040,"AddLeadership":0}]
+[
+  {
+    "level": 1,
+    "exp": 0,
+    "aexp": 0,
+    "AddLeadership": 0
+  },
+  {
+    "level": 2,
+    "exp": 30,
+    "aexp": 30,
+    "AddLeadership": 0
+  },
+  {
+    "level": 3,
+    "exp": 60,
+    "aexp": 90,
+    "AddLeadership": 0
+  },
+  {
+    "level": 4,
+    "exp": 100,
+    "aexp": 190,
+    "AddLeadership": 0
+  },
+  {
+    "level": 5,
+    "exp": 150,
+    "aexp": 340,
+    "AddLeadership": 0
+  },
+  {
+    "level": 6,
+    "exp": 200,
+    "aexp": 540,
+    "AddLeadership": 0
+  },
+  {
+    "level": 7,
+    "exp": 250,
+    "aexp": 790,
+    "AddLeadership": 0
+  },
+  {
+    "level": 8,
+    "exp": 300,
+    "aexp": 1090,
+    "AddLeadership": 0
+  },
+  {
+    "level": 9,
+    "exp": 350,
+    "aexp": 1440,
+    "AddLeadership": 0
+  },
+  {
+    "level": 10,
+    "exp": 400,
+    "aexp": 1840,
+    "AddLeadership": 0
+  },
+  {
+    "level": 11,
+    "exp": 450,
+    "aexp": 2290,
+    "AddLeadership": 0
+  },
+  {
+    "level": 12,
+    "exp": 500,
+    "aexp": 2790,
+    "AddLeadership": 0
+  },
+  {
+    "level": 13,
+    "exp": 550,
+    "aexp": 3340,
+    "AddLeadership": 0
+  },
+  {
+    "level": 14,
+    "exp": 600,
+    "aexp": 3940,
+    "AddLeadership": 0
+  },
+  {
+    "level": 15,
+    "exp": 650,
+    "aexp": 4590,
+    "AddLeadership": 0
+  },
+  {
+    "level": 16,
+    "exp": 700,
+    "aexp": 5290,
+    "AddLeadership": 0
+  },
+  {
+    "level": 17,
+    "exp": 750,
+    "aexp": 6040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 18,
+    "exp": 800,
+    "aexp": 6840,
+    "AddLeadership": 0
+  },
+  {
+    "level": 19,
+    "exp": 850,
+    "aexp": 7690,
+    "AddLeadership": 0
+  },
+  {
+    "level": 20,
+    "exp": 900,
+    "aexp": 8590,
+    "AddLeadership": 0
+  },
+  {
+    "level": 21,
+    "exp": 950,
+    "aexp": 9540,
+    "AddLeadership": 0
+  },
+  {
+    "level": 22,
+    "exp": 1000,
+    "aexp": 10540,
+    "AddLeadership": 0
+  },
+  {
+    "level": 23,
+    "exp": 1100,
+    "aexp": 11640,
+    "AddLeadership": 0
+  },
+  {
+    "level": 24,
+    "exp": 1200,
+    "aexp": 12840,
+    "AddLeadership": 0
+  },
+  {
+    "level": 25,
+    "exp": 1300,
+    "aexp": 14140,
+    "AddLeadership": 0
+  },
+  {
+    "level": 26,
+    "exp": 1400,
+    "aexp": 15540,
+    "AddLeadership": 0
+  },
+  {
+    "level": 27,
+    "exp": 1500,
+    "aexp": 17040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 28,
+    "exp": 1600,
+    "aexp": 18640,
+    "AddLeadership": 0
+  },
+  {
+    "level": 29,
+    "exp": 1700,
+    "aexp": 20340,
+    "AddLeadership": 0
+  },
+  {
+    "level": 30,
+    "exp": 1800,
+    "aexp": 22140,
+    "AddLeadership": 0
+  },
+  {
+    "level": 31,
+    "exp": 1900,
+    "aexp": 24040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 32,
+    "exp": 2000,
+    "aexp": 26040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 33,
+    "exp": 2500,
+    "aexp": 28540,
+    "AddLeadership": 0
+  },
+  {
+    "level": 34,
+    "exp": 3000,
+    "aexp": 31540,
+    "AddLeadership": 0
+  },
+  {
+    "level": 35,
+    "exp": 3500,
+    "aexp": 35040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 36,
+    "exp": 4000,
+    "aexp": 39040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 37,
+    "exp": 4500,
+    "aexp": 43540,
+    "AddLeadership": 0
+  },
+  {
+    "level": 38,
+    "exp": 5000,
+    "aexp": 48540,
+    "AddLeadership": 0
+  },
+  {
+    "level": 39,
+    "exp": 5500,
+    "aexp": 54040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 40,
+    "exp": 6000,
+    "aexp": 60040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 41,
+    "exp": 6500,
+    "aexp": 66540,
+    "AddLeadership": 0
+  },
+  {
+    "level": 42,
+    "exp": 7000,
+    "aexp": 73540,
+    "AddLeadership": 0
+  },
+  {
+    "level": 43,
+    "exp": 7500,
+    "aexp": 81040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 44,
+    "exp": 8000,
+    "aexp": 89040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 45,
+    "exp": 8500,
+    "aexp": 97540,
+    "AddLeadership": 0
+  },
+  {
+    "level": 46,
+    "exp": 9000,
+    "aexp": 106540,
+    "AddLeadership": 0
+  },
+  {
+    "level": 47,
+    "exp": 9500,
+    "aexp": 116040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 48,
+    "exp": 10000,
+    "aexp": 126040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 49,
+    "exp": 11000,
+    "aexp": 137040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 50,
+    "exp": 12000,
+    "aexp": 149040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 51,
+    "exp": 13000,
+    "aexp": 162040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 52,
+    "exp": 14000,
+    "aexp": 176040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 53,
+    "exp": 15000,
+    "aexp": 191040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 54,
+    "exp": 16000,
+    "aexp": 207040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 55,
+    "exp": 17000,
+    "aexp": 224040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 56,
+    "exp": 18000,
+    "aexp": 242040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 57,
+    "exp": 19000,
+    "aexp": 261040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 58,
+    "exp": 20000,
+    "aexp": 281040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 59,
+    "exp": 22000,
+    "aexp": 303040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 60,
+    "exp": 24000,
+    "aexp": 327040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 61,
+    "exp": 26000,
+    "aexp": 353040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 62,
+    "exp": 28000,
+    "aexp": 381040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 63,
+    "exp": 30000,
+    "aexp": 411040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 64,
+    "exp": 32000,
+    "aexp": 443040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 65,
+    "exp": 34000,
+    "aexp": 477040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 66,
+    "exp": 36000,
+    "aexp": 513040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 67,
+    "exp": 38000,
+    "aexp": 551040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 68,
+    "exp": 40000,
+    "aexp": 591040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 69,
+    "exp": 42000,
+    "aexp": 633040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 70,
+    "exp": 44000,
+    "aexp": 677040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 71,
+    "exp": 68000,
+    "aexp": 745040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 72,
+    "exp": 90000,
+    "aexp": 835040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 73,
+    "exp": 110000,
+    "aexp": 945040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 74,
+    "exp": 128000,
+    "aexp": 1073040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 75,
+    "exp": 144000,
+    "aexp": 1217040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 76,
+    "exp": 158000,
+    "aexp": 1375040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 77,
+    "exp": 170000,
+    "aexp": 1545040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 78,
+    "exp": 180000,
+    "aexp": 1725040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 79,
+    "exp": 188000,
+    "aexp": 1913040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 80,
+    "exp": 194000,
+    "aexp": 2107040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 81,
+    "exp": 198000,
+    "aexp": 2305040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 82,
+    "exp": 202000,
+    "aexp": 2507040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 83,
+    "exp": 206000,
+    "aexp": 2713040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 84,
+    "exp": 210000,
+    "aexp": 2923040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 85,
+    "exp": 214000,
+    "aexp": 3137040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 86,
+    "exp": 218000,
+    "aexp": 3355040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 87,
+    "exp": 222000,
+    "aexp": 3577040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 88,
+    "exp": 226000,
+    "aexp": 3803040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 89,
+    "exp": 230000,
+    "aexp": 4033040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 90,
+    "exp": 234000,
+    "aexp": 4267040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 91,
+    "exp": 238000,
+    "aexp": 4505040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 92,
+    "exp": 242000,
+    "aexp": 4747040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 93,
+    "exp": 246000,
+    "aexp": 4993040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 94,
+    "exp": 250000,
+    "aexp": 5243040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 95,
+    "exp": 254000,
+    "aexp": 5497040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 96,
+    "exp": 258000,
+    "aexp": 5755040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 97,
+    "exp": 262000,
+    "aexp": 6017040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 98,
+    "exp": 266000,
+    "aexp": 6283040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 99,
+    "exp": 270000,
+    "aexp": 6553040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 100,
+    "exp": 274000,
+    "aexp": 6827040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 101,
+    "exp": 278000,
+    "aexp": 7105040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 102,
+    "exp": 282000,
+    "aexp": 7387040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 103,
+    "exp": 286000,
+    "aexp": 7673040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 104,
+    "exp": 290000,
+    "aexp": 7963040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 105,
+    "exp": 294000,
+    "aexp": 8257040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 106,
+    "exp": 298000,
+    "aexp": 8555040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 107,
+    "exp": 302000,
+    "aexp": 8857040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 108,
+    "exp": 306000,
+    "aexp": 9163040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 109,
+    "exp": 310000,
+    "aexp": 9473040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 110,
+    "exp": 314000,
+    "aexp": 9787040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 111,
+    "exp": 318000,
+    "aexp": 10105040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 112,
+    "exp": 322000,
+    "aexp": 10427040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 113,
+    "exp": 326000,
+    "aexp": 10753040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 114,
+    "exp": 330000,
+    "aexp": 11083040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 115,
+    "exp": 334000,
+    "aexp": 11417040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 116,
+    "exp": 338000,
+    "aexp": 11755040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 117,
+    "exp": 342000,
+    "aexp": 12097040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 118,
+    "exp": 346000,
+    "aexp": 12443040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 119,
+    "exp": 350000,
+    "aexp": 12793040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 120,
+    "exp": 354000,
+    "aexp": 13147040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 121,
+    "exp": 358000,
+    "aexp": 13505040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 122,
+    "exp": 362000,
+    "aexp": 13867040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 123,
+    "exp": 366000,
+    "aexp": 14233040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 124,
+    "exp": 370000,
+    "aexp": 14603040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 125,
+    "exp": 374000,
+    "aexp": 14977040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 126,
+    "exp": 378000,
+    "aexp": 15355040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 127,
+    "exp": 382000,
+    "aexp": 15737040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 128,
+    "exp": 386000,
+    "aexp": 16123040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 129,
+    "exp": 390000,
+    "aexp": 16513040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 130,
+    "exp": 394000,
+    "aexp": 16907040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 131,
+    "exp": 398000,
+    "aexp": 17305040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 132,
+    "exp": 402000,
+    "aexp": 17707040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 133,
+    "exp": 406000,
+    "aexp": 18113040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 134,
+    "exp": 410000,
+    "aexp": 18523040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 135,
+    "exp": 414000,
+    "aexp": 18937040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 136,
+    "exp": 418000,
+    "aexp": 19355040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 137,
+    "exp": 422000,
+    "aexp": 19777040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 138,
+    "exp": 426000,
+    "aexp": 20203040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 139,
+    "exp": 430000,
+    "aexp": 20633040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 140,
+    "exp": 434000,
+    "aexp": 21067040,
+    "AddLeadership": 0
+  },
+  {
+    "level": 141,
+    "exp": 438000,
+    "aexp": 21505040,
+    "AddLeadership": 0
+  }
+]

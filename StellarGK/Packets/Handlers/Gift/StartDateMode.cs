@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Gift
 {
     public class StartDateMode
     {
-
     }
 }
+
 /*	// Token: 0x060060D3 RID: 24787 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "4401", true, true)]
 	public void StartDateMode()

@@ -21,16 +21,13 @@ namespace StellarGK.Host.Handlers.Profile
             };
 
             return response;
-
         }
-
 
         public class UpdateTutorialStepInfo
         {
             [JsonProperty("step")]
             public int step { get; set; }
         }
-
     }
 
     public class UpdateTutorialStepRequest

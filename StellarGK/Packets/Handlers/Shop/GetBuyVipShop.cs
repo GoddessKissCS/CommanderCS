@@ -9,14 +9,11 @@
         }
     }
 
-
     public class GetBuyVipShopRequest
     {
-
     }
-
-
 }
+
 /*	// Token: 0x060060AF RID: 24751 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8203", true, true)]
 	public void GetBuyVipShop()

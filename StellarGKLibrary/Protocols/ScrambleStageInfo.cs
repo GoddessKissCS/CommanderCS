@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class ScrambleStageInfo
     {
         [JsonProperty("myDeck")]
@@ -13,7 +12,6 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("stageInfo")]
         public UserInfo user { get; set; }
-
 
         public class UserInfo
         {
@@ -26,7 +24,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("thmb")]
             public int thumb { get; set; }
         }
-
 
         public class EnemyCommander
         {
@@ -78,7 +75,6 @@ namespace StellarGKLibrary.Protocols
             [JsonProperty("gsk")]
             public List<GuildSkill> guildSkillList { get; set; }
 
-
             public class Slot
             {
                 [JsonProperty("uid")]
@@ -90,7 +86,6 @@ namespace StellarGKLibrary.Protocols
                 [JsonProperty("lv")]
                 public int unitLevel { get; set; }
             }
-
 
             public class GuildSkill
             {

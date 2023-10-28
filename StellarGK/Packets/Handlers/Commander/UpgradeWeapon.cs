@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Commander
 {
     public class UpgradeWeapon
     {
-
     }
 }
+
 /*	// Token: 0x0600617B RID: 24955 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8508", true, true)]
 	public void UpgradeWeapon(int wno)

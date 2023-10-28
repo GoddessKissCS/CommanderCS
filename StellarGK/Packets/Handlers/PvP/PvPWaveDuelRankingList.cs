@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.PvP
 {
     public class PvPWaveDuelRankingList
     {
-
     }
 }
+
 /*	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3403", true, true)]
 	public void PvPWaveDuelRankingList()
 	{

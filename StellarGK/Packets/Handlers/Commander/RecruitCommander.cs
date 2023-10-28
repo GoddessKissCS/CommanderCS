@@ -4,6 +4,7 @@
     {
     }
 }
+
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "5211", true, true)]
 	public void RecruitCommander(int cid)
 	{

@@ -31,9 +31,9 @@ namespace StellarGK.Host.Handlers.Guild
             return response;
         }
     }
+
     public class GuildMemberListRequest
     {
-
     }
 }
 

@@ -2,8 +2,8 @@ namespace StellarGK.Packets.Handlers.WaveDuel
 {
     public class GetWaveDuelDefenderInfo
     {
-
     }
+
     public class GetWaveDuelDefenderInfoRequest
     {
     }

@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.KeepAlives
 {
     public class InputCoupon
     {
-
     }
 }
+
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8116", true, true)]
 	public void InputCoupon(string num)
 	{

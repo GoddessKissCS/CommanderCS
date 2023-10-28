@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Dormitory
 {
     public class ConstructDormitoryFloor
     {
-
     }
 }
+
 /*	// Token: 0x060061A2 RID: 24994 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8602", true, true)]
 	public void ConstructDormitoryFloor(string fno)

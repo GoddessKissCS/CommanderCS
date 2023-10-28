@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.PvP
 {
     public class PvPStartWaveDuel
     {
-
     }
 }
+
 /*	// Token: 0x06005F9D RID: 24477 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3739", true, true)]
 	public void PvPStartWaveDuel(int type, int idx, string checkSum, JArray info, JArray result)

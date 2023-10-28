@@ -11,7 +11,7 @@ namespace StellarGK.Host.Handlers.Login
     {
         public override object Handle(LoginRequest @params)
         {
-#warning TODO ADD UNABLE TO JOIN 
+#warning TODO ADD UNABLE TO JOIN
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id
@@ -65,7 +65,6 @@ namespace StellarGK.Host.Handlers.Login
                 __commanderInfo = JObject.FromObject(user.CommanderData),
             };
 
-
             LoginPacket Login = new()
             {
                 info = userInformationResponse,
@@ -81,6 +80,7 @@ namespace StellarGK.Host.Handlers.Login
         {
             [JsonProperty("sess")]
             public string sess { get; set; }
+
             [JsonProperty("info")]
             public UserInformationResponse info { get; set; }
         }
@@ -108,6 +108,7 @@ namespace StellarGK.Host.Handlers.Login
 
         [JsonProperty("dvid")]
         public string deviceId { get; set; }
+
         [JsonProperty("ptype")]
         public int patchType { get; set; }
 
@@ -119,6 +120,7 @@ namespace StellarGK.Host.Handlers.Login
 
         [JsonProperty("gmvr")]
         public string gameVersion { get; set; }
+
         [JsonProperty("apk")]
         public string apkFileName { get; set; }
 

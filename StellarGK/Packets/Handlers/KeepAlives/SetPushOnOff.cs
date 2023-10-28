@@ -26,5 +26,4 @@ namespace StellarGK.Packets.Handlers.KeepAlives
         [JsonProperty("onoff")]
         public int onoff { get; set; }
     }
-
 }

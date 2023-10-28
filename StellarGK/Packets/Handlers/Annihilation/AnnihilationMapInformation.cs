@@ -7,16 +7,15 @@ namespace StellarGK.Packets.Handlers.Annihilation
     {
         public override object Handle(AnnihilationMapInformationRequest @params)
         {
-
             return "{}";
         }
-
     }
+
     public class AnnihilationMapInformationRequest
     {
-
     }
 }
+
 /*	// Token: 0x06006017 RID: 24599 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7301", true, true)]
 	public void AnnihilationMapInformation()

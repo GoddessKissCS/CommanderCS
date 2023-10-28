@@ -1,9 +1,7 @@
 ﻿using Newtonsoft.Json;
 
-
 namespace StellarGKLibrary.Protocols
 {
-
     public class CarnivalList
     {
         [JsonProperty("list")]
@@ -47,11 +45,13 @@ namespace StellarGKLibrary.Protocols
 
         [JsonProperty("ctm")]
         public int connectTime { get; set; }
+
         public class CarnivaTime
         {
             [JsonProperty("rtm")]
             public string remain { get; set; }
         }
+
         public class ProcessData
         {
             [JsonProperty("cnt")]
@@ -77,7 +77,6 @@ namespace StellarGKLibrary.Protocols
 
             [JsonProperty("rtm")]
             public string remain { get; set; }
-
         }
     }
 }

@@ -2,7 +2,6 @@ namespace StellarGK.Packets.Handlers.KeepAlives
 {
     public class DailyBonusReceive
     {
-
     }
 }
 

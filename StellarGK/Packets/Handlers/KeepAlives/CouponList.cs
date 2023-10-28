@@ -10,7 +10,6 @@ namespace StellarGK.Host.Handlers.KeepAlives
             CouponList couponList = new();
             List<string> coupons = new()
             {
-
             };
 
             couponList.list = coupons;
@@ -24,15 +23,14 @@ namespace StellarGK.Host.Handlers.KeepAlives
             return response;
         }
 
-
         public class CouponList
         {
             [JsonProperty("list")]
             public List<string> list { get; set; }
         }
     }
+
     public class GetCouponListRequest
     {
-
     }
 }

@@ -6,10 +6,8 @@ namespace StellarGK.Host.Handlers.Carnival
     [Packet(Id = Method.GetCarnivalList)]
     public class GetCarnivalList : BaseMethodHandler<GetCarnivalListRequest>
     {
-
         public override object Handle(GetCarnivalListRequest @params)
         {
-
             ResponsePacket response = new();
 
             CarnivalList CLlist = new CarnivalList();
@@ -20,18 +18,18 @@ namespace StellarGK.Host.Handlers.Carnival
 
             return "{}";
         }
-
-
     }
 
     public class GetCarnivalListRequest
     {
         [JsonProperty("cctype")]
         public int cctype { get; set; }
+
         [JsonProperty("eidx")]
         public int eidx { get; set; }
     }
 }
+
 /*	// Token: 0x060060BE RID: 24766 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6241", true, true)]
 	public void GetCarnivalList(int eidx, int cctype)

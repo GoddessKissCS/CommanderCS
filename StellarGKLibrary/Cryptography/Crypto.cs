@@ -11,6 +11,7 @@ namespace StellarGKLibrary.Cryptography
     {
         private static readonly byte[][] _keys;
         private static readonly Encoding _encoding = Encoding.UTF8;
+
         static Crypto()
         {
             _keys = new byte[][]
@@ -19,7 +20,6 @@ namespace StellarGKLibrary.Cryptography
                  _encoding.GetBytes("IU is Korea Best Singer! really!"),
                  _encoding.GetBytes("JSON134c4dabedcd462bad9d775873de")
             };
-
         }
 
         public static int Decrypt(string input, out string value) => Decrypt(Convert.FromBase64String(input), out value);
@@ -83,6 +83,7 @@ namespace StellarGKLibrary.Cryptography
         }
 
         public static string Encrypt(string input, int keyIndex) => Encrypt(_encoding.GetBytes(input), keyIndex);
+
         public static string Encrypt(byte[] input, int keyIndex)
         {
             var cipher = InitializeCipher(_keys[keyIndex], true);
@@ -96,6 +97,7 @@ namespace StellarGKLibrary.Cryptography
         }
 
         public static string ComputeSha256Hash(string input) => ComputeSha256Hash(_encoding.GetBytes(input));
+
         public static string ComputeSha256Hash(byte[] input)
         {
             var hash = SHA256.HashData(input);
@@ -108,9 +110,8 @@ namespace StellarGKLibrary.Cryptography
             return builder.ToString();
         }
 
-
         public static object Object_DecryptFromFile(string filePath)
-        {      
+        {
             byte[] objectFile = File.ReadAllBytes(filePath);
 
             Decrypt(objectFile, out string json);
@@ -128,6 +129,5 @@ namespace StellarGKLibrary.Cryptography
 
             return decrypted;
         }
-
     }
 }

@@ -8,7 +8,6 @@ namespace StellarGK.Host.Handlers.Sign
     {
         public override object Handle(GuestSignUpRequest @params)
         {
-
             GuestSignUpPacket SignUp = new()
             {
                 uid = RequestSignUp(@params.plfm, @params.ch),
@@ -34,6 +33,7 @@ namespace StellarGK.Host.Handlers.Sign
             public string uid { get; set; }
         }
     }
+
     public class GuestSignUpRequest
     {
         [JsonProperty("ch")]

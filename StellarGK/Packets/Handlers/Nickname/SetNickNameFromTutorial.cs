@@ -16,7 +16,6 @@ namespace StellarGK.Host.Handlers.Nickname
                 Id = BasePacket.Id,
             };
 
-
             if (code == ErrorCode.InappropriateWords || code == ErrorCode.AlreadyInUse)
             {
                 response.Error = new() { code = code };
@@ -36,7 +35,6 @@ namespace StellarGK.Host.Handlers.Nickname
 
         internal static ErrorCode RequestNicknameAfterTutorial(string sess, string nickname)
         {
-
             if (Misc.NameCheck(nickname))
             {
                 return ErrorCode.InappropriateWords;
@@ -75,7 +73,6 @@ namespace StellarGK.Host.Handlers.Nickname
             public int step { get; set; }
         }
     }
-
 
     public class SetNickNameFromTutorialRequest
     {

@@ -2,7 +2,6 @@ namespace StellarGK.Packets.Handlers.Mission
 {
     public class Mission
     {
-
     }
 }
 

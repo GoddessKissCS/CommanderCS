@@ -19,10 +19,10 @@ namespace StellarGK.Packets.Handlers.Mail
                 Result = result.ToString(),
             };
 
-
             return response;
         }
     }
+
     public class ReadMailRequest
     {
         [JsonProperty("idx")]

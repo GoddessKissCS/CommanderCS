@@ -12,46 +12,66 @@ namespace StellarGK.Packets.Handlers.WorldMap
             // Check all Pilots that exist
             int commanderId;
 
+            // its either add commander if it doesnt exists or add the medals if it does
+
             var user = GetUserGameProfile();
 
             switch (@params.world)
             {
                 case 0:
                     break;
+
                 case 1:
                     break;
+
                 case 2:
                     break;
+
                 case 3:
                     break;
+
                 case 4:
                     break;
+
                 case 5:
                     break;
+
                 case 6:
                     break;
+
                 case 7:
                     break;
+
                 case 8:
                     break;
+
                 case 9:
                     break;
+
                 case 10:
                     break;
+
                 case 11:
                     break;
+
                 case 12:
                     break;
+
                 case 13:
                     break;
+
                 case 14:
                     break;
+
                 case 15:
                     break;
+
                 case 16:
                     break;
+
                 case 17:
                     break;
+
                 case 18:
                     break;
             }
@@ -60,7 +80,6 @@ namespace StellarGK.Packets.Handlers.WorldMap
 
             StellarGKLibrary.Protocols.WorldMapReward worldMap = new()
             {
-
             };
 
             ResponsePacket response = new()
@@ -69,10 +88,8 @@ namespace StellarGK.Packets.Handlers.WorldMap
                 Result = worldMap
             };
 
-
             return response;
         }
-
     }
 
     public class WorldMapRewardRequest

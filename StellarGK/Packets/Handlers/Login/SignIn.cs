@@ -28,8 +28,8 @@ namespace StellarGK.Host.Handlers.Sign
             DatabaseManager.Account.UpdateLoginTime(@params.uid);
 
             return response;
-
         }
+
         private static ErrorCode RequestSignIn(string AccountName, string password, out SignInP signInP)
         {
             var password_hash = ComputeSha256Hash(password);
@@ -53,19 +53,19 @@ namespace StellarGK.Host.Handlers.Sign
             {
                 return ErrorCode.PasswordInvalid;
             }
-
         }
 
         private class SignInP
         {
             [JsonProperty("mIdx")]
             public int mIdx { get; set; }
+
             [JsonProperty("tokn")]
             public string tokn { get; set; }
+
             [JsonProperty("srv")]
             public int srv { get; set; }
         }
-
     }
 
     public class SignInRequest

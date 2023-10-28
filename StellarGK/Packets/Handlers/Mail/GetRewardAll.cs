@@ -6,17 +6,15 @@ namespace StellarGK.Packets.Handlers.KeepAlives
     [Packet(Id = Method.GetRewardAll)]
     public class GetRewardAll : BaseMethodHandler<GetRewardAllRequest>
     {
-
 #warning TODO NEEDS FURTHER CODE
+
         public override object Handle(GetRewardAllRequest @params)
         {
             var gameProfile = GetUserGameProfile();
 
             RewardInfo rewardInfo = new()
             {
-
             };
-
 
             ResponsePacket response = new()
             {
@@ -24,20 +22,13 @@ namespace StellarGK.Packets.Handlers.KeepAlives
                 Result = null,
             };
 
-
             return response;
-
-
         }
-
     }
-
 
     public class GetRewardAllRequest
     {
-
     }
-
 }
 
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6104", true, true)]

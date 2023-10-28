@@ -2,7 +2,6 @@
 
 namespace StellarGKLibrary.Protocols
 {
-
     public class ExplorationData
     {
         [JsonProperty("idx")]
@@ -14,5 +13,4 @@ namespace StellarGKLibrary.Protocols
         [JsonProperty("cid")]
         public List<string> cids { get; set; }
     }
-
 }

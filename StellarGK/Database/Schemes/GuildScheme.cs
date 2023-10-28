@@ -25,6 +25,5 @@ namespace StellarGK.Database.Schemes
         public List<GuildMember.MemberData> MemberData { get; set; }
         public int Occupy { get; set; }
         public int World { get; set; }
-
     }
 }

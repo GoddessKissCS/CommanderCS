@@ -5,10 +5,8 @@ namespace StellarGK.Host.Handlers.Carnival
     [Packet(Id = Method.CheckBadge)]
     public class CheckBadge : BaseMethodHandler<CheckBadgeRequest>
     {
-
         public override object Handle(CheckBadgeRequest @params)
         {
-
             var user = GetUserGameProfile().UserBadges;
 
 #warning TODO ADJUST THIS SHIT
@@ -33,7 +31,6 @@ namespace StellarGK.Host.Handlers.Carnival
                 iftw = user.iftw,
             };
 
-
             return checkBadgeMaster;
         }
 
@@ -41,36 +38,52 @@ namespace StellarGK.Host.Handlers.Carnival
         {
             [JsonProperty("id")]
             public string id { get; set; }
+
             [JsonProperty("arena")]
             public int arena { get; set; }
+
             [JsonProperty("dlms")]
             public int dlms { get; set; }
+
             [JsonProperty("achv")]
             public int achv { get; set; }
+
             [JsonProperty("rwd")]
             public int rwd { get; set; }
+
             [JsonProperty("shop")]
             public Dictionary<string, int> shop { get; set; }
+
             [JsonProperty("cnvl")]
             public List<string> cnvl { get; set; }
+
             [JsonProperty("ccnv")]
             public int ccnv { get; set; }
+
             [JsonProperty("cnvl2")]
             public List<string> cnvl2 { get; set; }
+
             [JsonProperty("ccvn2")]
             public int ccvn2 { get; set; }
+
             [JsonProperty("cnvl3")]
             public List<string> cnvl3 { get; set; }
+
             [JsonProperty("ccvn3")]
             public int ccvn3 { get; set; }
+
             [JsonProperty("wb")]
             public int wb { get; set; }
+
             [JsonProperty("gb")]
             public int gb { get; set; }
+
             [JsonProperty("grp")]
             public int grp { get; set; }
+
             [JsonProperty("ercnt")]
             public int ercnt { get; set; }
+
             [JsonProperty("iftw")]
             public int iftw { get; set; }
         }
@@ -78,10 +91,9 @@ namespace StellarGK.Host.Handlers.Carnival
 
     public class CheckBadgeRequest
     {
-
     }
-
 }
+
 /*
 	// Token: 0x06005FFD RID: 24573 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "1504", true, true)]

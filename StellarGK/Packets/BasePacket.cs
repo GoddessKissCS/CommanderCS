@@ -32,19 +32,24 @@ namespace StellarGK.Host
     public abstract class BaseMethodHandler<TParams>
     {
         public BasePacket BasePacket { get; set; }
+
         public abstract object Handle(TParams @params);
+
         public string GetSession()
         {
             return BasePacket.Session;
         }
+
         public AccountScheme? GetUserAccount()
         {
             return DatabaseManager.Account.FindBySession(BasePacket.Session);
         }
+
         public GameProfileScheme? GetUserGameProfile()
         {
             return DatabaseManager.GameProfile.FindBySession(BasePacket.Session);
         }
+
         public DormitoryScheme? GetUserDormitory()
         {
             return DatabaseManager.Dormitory.FindBySession(BasePacket.Session);
@@ -339,6 +344,5 @@ namespace StellarGK.Host
         SaveInfinityBattleDeck = 8702,
         StartInfinityBattleScenario = 8703,
         InfinityBattleGetReward = 8704,
-
     }
 }

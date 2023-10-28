@@ -2,9 +2,9 @@ namespace StellarGK.Packets.Handlers.Carnival
 {
     public class CarnivalSelectItem
     {
-
     }
 }
+
 /*	// Token: 0x060060C5 RID: 24773 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6244", true, true)]
 	public void CarnivalSelectItem(int ctid, int cidx, int ridx)
