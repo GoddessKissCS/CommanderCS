@@ -1,88 +1,68 @@
 ﻿using MongoDB.Driver;
-using StellarGK.Database.Models;
+using StellarGK.Database.Schemes;
 
 namespace StellarGK.Database.Handlers
 {
     public class DatabaseDormitory : DatabaseTable<DormitoryScheme>
     {
-        public DatabaseDormitory() : base("Dormitory") { }
+        public DatabaseDormitory() : base("Dormitory")
+        {
+        }
 
         public DormitoryScheme Create(int id)
         {
-            DormitoryScheme? tryUser = collection.AsQueryable().Where(d => d.Id == id).FirstOrDefault();
+            DormitoryScheme? tryUser = Collection.AsQueryable().Where(d => d.memberId == id).FirstOrDefault();
             if (tryUser != null) { return tryUser; }
 
             //TODO THIS
             DormitoryScheme user = new()
             {
-                Id = id,
-                costumeHead = new()
+                memberId = id,
+                CostumeHead = new()
                 {
-
                 },
-                dormitoryInfo = new()
+                DormitoryInfo = new()
                 {
                     { "inven", 10 } // MEANS INVENTORY LIMIT
                 },
-                dormitoryResource = new()
+                DormitoryResource = new()
                 {
                     __dormitoryPoint = "10",
                     __ston = "10",
                     __elec = "10",
                     __wood = "10",
                 },
-                itemAdvanced = new()
+                ItemAdvanced = new()
                 {
-
                 },
-                costumeBody = new()
+                CostumeBody = new()
                 {
-
                 },
-                itemNormal = new()
+                ItemNormal = new()
                 {
-
                 },
-                itemWallpaper = new()
+                ItemWallpaper = new()
                 {
-
                 }
             };
 
-            collection.InsertOne(user);
+            Collection.InsertOne(user);
 
             return user;
         }
 
-        public DormitoryScheme FindByName(string name)
-        {
-            AccountScheme? user = DatabaseAccount.collection.AsQueryable().Where(d => d.name == name).FirstOrDefault();
-
-            var dormitory = FindByUid(user.Id);
-
-            return dormitory;
-        }
-        public DormitoryScheme? FindByToken(string token)
-        {
-            AccountScheme? user = DatabaseAccount.collection.AsQueryable().Where(d => d.token == token).FirstOrDefault();
-
-            var dormitory = FindByUid(user.Id);
-
-            return dormitory;
-        }
         public DormitoryScheme? FindByUid(int uid)
         {
-            DormitoryScheme? user = collection.AsQueryable().Where(d => d.Id == uid).FirstOrDefault();
-            return user;
+            return Collection.AsQueryable().Where(d => d.memberId == uid).FirstOrDefault();
         }
+
         public DormitoryScheme? FindBySession(string session)
         {
-            AccountScheme? user = DatabaseAccount.collection.AsQueryable().Where(d => d.session == session).FirstOrDefault();
+            GameProfileScheme? user = DatabaseManager.GameProfile.FindBySession(session);
 
-            var dormitory = FindByUid(user.Id);
+            var dormitory = FindByUid(user.MemberId);
 
             return dormitory;
         }
-
     }
 }

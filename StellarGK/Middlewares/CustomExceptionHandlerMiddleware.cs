@@ -4,6 +4,7 @@
     {
         private readonly ILogger<CustomExceptionHandlerMiddleware> Logger;
         private readonly RequestDelegate Pipeline;
+
         public CustomExceptionHandlerMiddleware(RequestDelegate Pipeline, ILogger<CustomExceptionHandlerMiddleware> Logger)
         {
             this.Logger = Logger;
@@ -27,7 +28,6 @@
                 Logger.LogError(exception: ex, $"Uncaught Exception. Message => \"{ex.Message}\"");
                 throw;
             }
-
         }
     }
 }

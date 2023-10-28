@@ -1,52 +1,50 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.Profile
 {
-    [Command(Id = CommandId.ChangeMembership)]
-    public class ChangeMemberShip : BaseCommandHandler<ChangeMemberShipRequest>
+    [Packet(Id = Method.ChangeMembership)]
+    public class ChangeMemberShip : BaseMethodHandler<ChangeMemberShipRequest>
     {
         public override object Handle(ChangeMemberShipRequest @params)
         {
             ResponsePacket response = new();
 
-            // TODO - ??? i dont know
-            ErrorCode code = DatabaseManager.Account.ChangeMemberShip(@params.uid, @params.pwd, @params.plfm, @params.puid, @params.ch);
+#warning TODO - ??? i dont know
 
+            // SHOULD BE FINISHED?
+
+            ErrorCode code = DatabaseManager.Account.ChangeMemberShip(@params.uid, @params.pwd, @params.plfm, @params.puid, @params.ch);
 
             if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
             {
-                response.error = new() { code = code };
-                response.id = BasePacket.Id;
+                response.Error = new() { code = code };
+                response.Id = BasePacket.Id;
 
                 return response;
             }
 
-
-            response.id = BasePacket.Id;
-            response.result = "{}";
+            response.Id = BasePacket.Id;
+            response.Result = "{}";
             return response;
-
-
         }
     }
 
     public class ChangeMemberShipRequest
     {
-        [JsonPropertyName("uid")]
+        [JsonProperty("uid")]
         public string uid { get; set; }
 
-        [JsonPropertyName("pwd")]
+        [JsonProperty("pwd")]
         public string pwd { get; set; }
 
-        [JsonPropertyName("plfm")]
+        [JsonProperty("plfm")]
         public int plfm { get; set; }
 
-        [JsonPropertyName("ch")]
+        [JsonProperty("ch")]
         public int ch { get; set; }
 
-        [JsonPropertyName("puid")]
+        [JsonProperty("puid")]
         public string puid { get; set; }
     }
 }
-

@@ -1,66 +1,69 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using StellarGK.Database;
-using StellarGK.Logic.Enums;
-using StellarGK.Logic.Protocols;
-using StellarGK.Tools;
+using StellarGKLibrary.Enum;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Login
 {
-    [Command(Id = CommandId.Login)]
-    public class Login : BaseCommandHandler<LoginRequest>
+    [Packet(Id = Method.Login)]
+    public class Login : BaseMethodHandler<LoginRequest>
     {
         public override object Handle(LoginRequest @params)
         {
-            // TODO ADD UNABLE TO JOIN 
+#warning TODO ADD UNABLE TO JOIN
             ResponsePacket response = new()
             {
-                id = BasePacket.Id
+                Id = BasePacket.Id
             };
 
-            string session = Constants.Session;
+            //@params.world
+            // first we need to check if the world has a profile if not create a new one
 
-            ErrorCode code = RequestLogin(@params.memberId, @params.deviceName, @params.deviceId, @params.patchType, (int)@params.osCode, @params.osVersion, @params.gameVersion, @params.apkFileName, @params.pushRegistrationId, @params.languageCode, @params.countryCode, @params.largoId, @params.channel, session);
+            string session = Guid.NewGuid().ToString();
+
+            var user = DatabaseManager.GameProfile.GetOrCreate(@params.memberId, @params.world);
+
+            var code = DatabaseManager.Account.RequestLogin(@params, session);
 
             if (code == ErrorCode.BannedOrSuspended || code == ErrorCode.UnableToJoin)
             {
-                response.error = new() { code = code };
+                response.Error = new() { code = code };
 
                 return response;
             }
 
-            var account = GetAccount();
-
-            var gamedata = GetGameData();
+            var goods = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+            var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(session);
+            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId);
 
             UserInformationResponse userInformationResponse = new()
             {
-                goodsInfo = DatabaseManager.Resources.RequestResources(@params.memberId),
-                battleStatisticsInfo = DatabaseManager.BattleStatistics.RequestBattleStatistics(@params.memberId),
-                uno = account.uno,
-                stage = account.lastStage,
-                notification = account.notifaction,
+                goodsInfo = goods,
+                battleStatisticsInfo = battlestats,
+                uno = user.Uno,
+                stage = user.LastStage,
+                notification = user.Notifaction,
 
-                foodData = gamedata.foodData,
-                eventResourceData = gamedata.eventResourceData,
-                groupItemData = gamedata.groupItemData,
-                itemData = gamedata.ItemData,
-                medalData = gamedata.medalData,
-                partData = gamedata.partData,
+                foodData = user.UserInventory.foodData,
+                eventResourceData = user.UserInventory.eventResourceData,
+                groupItemData = user.UserInventory.groupItemData,
+                itemData = user.UserInventory.itemData,
+                medalData = user.UserInventory.medalData,
+                partData = user.UserInventory.partData,
 
-                resetRemain = 1, // should be set?
+                resetRemain = user.ResetDateTime, // should be set?
 
-                equipItem = gamedata.equipItem,
+                equipItem = user.UserInventory.equipItem,
 
-                donHaveCommCostumeData = gamedata.donHaveCommCostumeData,
-                completeRewardGroupIdx = gamedata.completeRewardGroupIdx,
-                guildInfo = DatabaseManager.Guild.RequestGuild(account.guildId),
-                sweepClearData = gamedata.sweepClearData,
-                preDeck = gamedata.preDeck,
-                weaponList = gamedata.weaponList,
-                __commanderInfo = JObject.FromObject(gamedata.commanderData),
+                donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,
+                completeRewardGroupIdx = user.CompleteRewardGroupIdx,
+                guildInfo = guild,
+                sweepClearData = user.SweepClearData,
+                preDeck = user.PreDeck,
+                weaponList = user.UserInventory.weaponList,
+                __commanderInfo = JObject.FromObject(user.CommanderData),
             };
-
 
             LoginPacket Login = new()
             {
@@ -68,86 +71,72 @@ namespace StellarGK.Host.Handlers.Login
                 sess = session
             };
 
-            response.result = Login;
+            response.Result = Login;
 
             return response;
-
-
-        }
-
-
-        private static ErrorCode RequestLogin(int mIdx, string devc, string dvid, int ptype, int oscd, string osvr, string gmvr, string apk, string psId, string lang, string ctry, string gpid, int ch, string session)
-        {
-            var user = DatabaseManager.Account.FindByUid(mIdx);
-            if (user.isBanned == true)
-            {
-                return ErrorCode.BannedOrSuspended;
-            }
-            else
-            {
-                DatabaseManager.Account.UpdateUponLogin(mIdx, devc, dvid, ptype, oscd, osvr, gmvr, apk, psId, lang, gpid, ctry, ch, session);
-                return ErrorCode.Success;
-            }
         }
 
         private class LoginPacket
         {
-            [JsonPropertyName("sess")]
+            [JsonProperty("sess")]
             public string sess { get; set; }
-            [JsonPropertyName("info")]
+
+            [JsonProperty("info")]
             public UserInformationResponse info { get; set; }
         }
     }
 
     public class LoginRequest
     {
-        [JsonPropertyName("mIdx")]
+        [JsonProperty("mIdx")]
         public int memberId { get; set; }
 
-        [JsonPropertyName("tokn")]
+        [JsonProperty("tokn")]
         public string token { get; set; }
 
-        [JsonPropertyName("wld")]
+        [JsonProperty("wld")]
         public int world { get; set; }
 
-        [JsonPropertyName("unm")]
+        [JsonProperty("unm")]
         public string userName { get; set; }
 
-        [JsonPropertyName("plfm")]
+        [JsonProperty("plfm")]
         public Platform platform { get; set; }
 
-        [JsonPropertyName("devc")]
+        [JsonProperty("devc")]
         public string deviceName { get; set; }
 
-        [JsonPropertyName("dvid")]
+        [JsonProperty("dvid")]
         public string deviceId { get; set; }
-        [JsonPropertyName("ptype")]
+
+        [JsonProperty("ptype")]
         public int patchType { get; set; }
 
-        [JsonPropertyName("oscd")]
+        [JsonProperty("oscd")]
         public OSCode osCode { get; set; }
 
-        [JsonPropertyName("osvr")]
+        [JsonProperty("osvr")]
         public string osVersion { get; set; }
 
-        [JsonPropertyName("gmvr")]
+        [JsonProperty("gmvr")]
         public string gameVersion { get; set; }
-        [JsonPropertyName("apk")]
+
+        [JsonProperty("apk")]
         public string apkFileName { get; set; }
 
-        [JsonPropertyName("psId")]
+        [JsonProperty("psId")]
         public string pushRegistrationId { get; set; }
 
-        [JsonPropertyName("lang")]
+        [JsonProperty("lang")]
         public string languageCode { get; set; }
 
-        [JsonPropertyName("ctry")]
+        [JsonProperty("ctry")]
         public string countryCode { get; set; }
 
-        [JsonPropertyName("gpid")]
+        [JsonProperty("gpid")]
         public string largoId { get; set; }
 
-        [JsonPropertyName("ch")]
+        [JsonProperty("ch")]
         public int channel { get; set; }
     }
 }

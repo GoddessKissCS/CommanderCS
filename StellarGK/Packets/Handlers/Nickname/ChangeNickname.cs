@@ -1,60 +1,56 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 using StellarGK.Database;
-using StellarGK.Logic.Protocols;
-using StellarGK.Tools;
+using StellarGKLibrary.Protocols;
+using StellarGKLibrary.Utils;
 
 namespace StellarGK.Host.Handlers.Nickname
 {
-    [Command(Id = CommandId.ChangeNickname)]
-    public class ChangeNickname : BaseCommandHandler<ChangeNicknameRequest>
+    [Packet(Id = Method.ChangeNickname)]
+    public class ChangeNickname : BaseMethodHandler<ChangeNicknameRequest>
     {
         public override object Handle(ChangeNicknameRequest @params)
         {
-
             ResponsePacket response = new()
             {
-                id = BasePacket.Id
+                Id = BasePacket.Id
             };
 
             ErrorCode code = RequestNickNameChange(@params.nickname, GetSession());
 
-
             if (code == ErrorCode.AlreadyInUse || code == ErrorCode.InappropriateWords)
             {
-                response.error = new() { code = code };
+                response.Error = new() { code = code };
 
                 return response;
             }
 
-            Data data = new()
+            ChangeNicknameResponse data = new()
             {
-                rsoc = DatabaseManager.Resources.RequestResources(GetSession()),
+                rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(GetSession()),
             };
 
-            response.result = data;
+            response.Result = data;
 
             return response;
-
         }
 
-        private static ErrorCode RequestNickNameChange(string AccountName, string sess)
+        internal static ErrorCode RequestNickNameChange(string AccountName, string sess)
         {
             if (Misc.NameCheck(AccountName))
             {
                 return ErrorCode.InappropriateWords;
             }
 
-            var user = DatabaseManager.Resources.FindByNickname(AccountName);
+            var user = DatabaseManager.GameProfile.FindByNick(AccountName);
             if (user == null)
             {
-                int cash = Convert.ToInt32(user.cash) - 100;
+                int cash = user.UserResources.cash - 100;
 
-                DatabaseManager.Resources.UpdateCash(user.Id, cash, false);
+                DatabaseManager.GameProfile.UpdateCash(sess, cash, false);
 
                 return ErrorCode.Success;
-
             }
-            else if (user.nickname == AccountName)
+            else if (user.UserResources.nickname == AccountName)
             {
                 return ErrorCode.AlreadyInUse;
             }
@@ -62,18 +58,16 @@ namespace StellarGK.Host.Handlers.Nickname
             return ErrorCode.Success;
         }
 
-        public class Data
+        internal class ChangeNicknameResponse
         {
-            [JsonPropertyName("rsoc")]
+            [JsonProperty("rsoc")]
             public UserInformationResponse.Resource rsoc { get; set; }
         }
-
     }
 
     public class ChangeNicknameRequest
     {
-        [JsonPropertyName("unm")]
+        [JsonProperty("unm")]
         public string nickname { get; set; }
-
     }
 }

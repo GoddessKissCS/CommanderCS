@@ -1,45 +1,56 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 using StellarGK.Database;
-using StellarGK.Logic.Protocols;
-
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Server
 {
-    [Command(Id = CommandId.ServerStatus)]
-    public class ServerStatus : BaseCommandHandler<ServerStatusRequest>
+    [Packet(Id = Method.ServerStatus)]
+    public class ServerStatus : BaseMethodHandler<ServerStatusRequest>
     {
         public override object Handle(ServerStatusRequest @params)
         {
-
+#warning TODO
             // needs to be reworked
 
+            // iterate through every server where i have a account
+            // if not just use nullserver
 
             ResponsePacket response = new();
 
             ServerData serverData = new();
 
-            var SIFO = Req(@params.mIdx);
+            var SIFO = ProfilesRequest(@params.mIdx, GetSession());
 
-            List<ServerData.ServerInfo> serverInfo = new(
-                new List<ServerData.ServerInfo>() {
-                        { SIFO }
-             });
+            ServerData.ServerInfo nullServer = new()
+            {
+                idx = 0,
+                status = 0,
+                lastLoginTime = 0,
+                level = 0,
+                thumnail = 0,
+            };
+
+            List<ServerData.ServerInfo> serverInfo = new()
+            {
+                SIFO,
+                nullServer
+            };
 
             serverData.serverInfoList = serverInfo;
             serverData.recommandServer = 1;
             serverData.newServer = 1;
 
-            response.id = BasePacket.Id;
-            response.result = serverData;
+            response.Id = BasePacket.Id;
+            response.Result = serverData;
 
             return response;
         }
 
-        private static ServerData.ServerInfo Req(int mIdx)
+        private static ServerData.ServerInfo ProfilesRequest(string mIdx, string session)
         {
-
             var account = DatabaseManager.Account.FindByUid(mIdx);
-            var resources = DatabaseManager.Resources.FindByUid(mIdx);
+
+            var user = DatabaseManager.GameProfile.FindBySession(session);
 
             ServerData.ServerInfo SIFO = new()
             {
@@ -50,24 +61,23 @@ namespace StellarGK.Host.Handlers.Server
                 thumnail = 0,
             };
 
-            SIFO.level = Convert.ToInt32(resources.level);
-            SIFO.thumnail = Convert.ToInt32(resources.thumbnailId);
-            SIFO.lastLoginTime = account.lastLoginTime;
+            SIFO.level = user.UserResources.level;
+            SIFO.thumnail = user.UserResources.thumbnailId;
+            SIFO.lastLoginTime = account.LastLoginTime;
 
             return SIFO;
-
         }
-
     }
+
     public class ServerStatusRequest
     {
-        [JsonPropertyName("mIdx")]
-        public int mIdx { get; set; }
+        [JsonProperty("mIdx")]
+        public string mIdx { get; set; }
 
-        [JsonPropertyName("tokn")]
+        [JsonProperty("tokn")]
         public string tokn { get; set; }
 
-        [JsonPropertyName("srv")]
+        [JsonProperty("srv")]
         public int srv { get; set; }
     }
 }

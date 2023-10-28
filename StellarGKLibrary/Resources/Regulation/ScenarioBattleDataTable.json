@@ -1,0 +1,11 @@
+[
+  {
+    "battleIdx": "1011",
+    "battlemap": "land_jungle",
+    "enemymap": "land_jungle",
+    "turn1": 10,
+    "turn2": 20,
+    "turn3": 30,
+    "quarter": "10103"
+  }
+]

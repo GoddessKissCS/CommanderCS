@@ -1,31 +1,29 @@
-﻿using System.Text.Json.Serialization;
-using StellarGK.Logic.ExcelReader;
-using StellarGK.Logic.Protocols;
+﻿using Newtonsoft.Json;
+using StellarGKLibrary.ExcelReader;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Commander
 {
-    [Command(Id = CommandId.CommanderLevelUp)]
-    public class CommanderLevelUp : BaseCommandHandler<CommanderLevelUpRequest>
+    [Packet(Id = Method.CommanderLevelUp)]
+    public class CommanderLevelUp : BaseMethodHandler<CommanderLevelUpRequest>
     {
-
         public override object Handle(CommanderLevelUpRequest @params)
         {
             // "cid":13,"cnt":1,"ctt":"ctt1"
 
-            // packet.count = cnt 
+            // packet.count = cnt
             // packet.commanderTrainingTicket = ctt
-            // TODO ADD MAXLEVEL CHECK SO YOU CANT OVERLEVEL THEM OVER YOUR LEVEL
+#warning TODO ADD MAXLEVEL CHECK SO YOU CANT OVERLEVEL THEM OVER YOUR LEVEL
             //GIVES OUT ERRORCODE 20001 or 20003
 
-            var resources = GetGameData();
+            var user = GetUserGameProfile();
 
-            var commanderList = resources.commanderData;
+            var commanderList = user.CommanderData;
 
-            var itemData = resources.ItemData;
+            var itemData = user.UserInventory.itemData;
 
             if (commanderList.TryGetValue(@params.commanderId.ToString(), out UserInformationResponse.Commander commander) && commander != null)
             {
-
                 int id = GoodsData.GetInstance().FromServerFieldName(@params.commanderTrainingTicket).type;
 
                 int commanderXP = Convert.ToInt32(commander.__exp);
@@ -36,9 +34,7 @@ namespace StellarGK.Host.Handlers.Commander
                 }
 
                 commander.__exp = "" + commanderXP;
-
             }
-
 
             return "{}";
         }
@@ -51,7 +47,6 @@ namespace StellarGK.Host.Handlers.Commander
             {18,3000 },
             {19,10000 }
         };
-
 
         private static bool TryLevelingUp(int ticketId, ref int xp)
         {
@@ -69,18 +64,17 @@ namespace StellarGK.Host.Handlers.Commander
 
             return true;
         }
-
     }
 
     public class CommanderLevelUpRequest
     {
-        [JsonPropertyName("cid")]
+        [JsonProperty("cid")]
         public int commanderId { get; set; }
 
-        [JsonPropertyName("cnt")]
+        [JsonProperty("cnt")]
         public int count { get; set; }
 
-        [JsonPropertyName("ctt")]
+        [JsonProperty("ctt")]
         public string commanderTrainingTicket { get; set; }
     }
 }

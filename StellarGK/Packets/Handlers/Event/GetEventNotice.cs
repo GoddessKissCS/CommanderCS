@@ -1,15 +1,12 @@
-﻿using StellarGK.Logic.Protocols;
+﻿using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Event
 {
-    [Command(Id = CommandId.GetEventNotice)]
-    public class GetEventNotice : BaseCommandHandler<GetEventNoticeRequest>
+    [Packet(Id = Method.GetEventNotice)]
+    public class GetEventNotice : BaseMethodHandler<GetEventNoticeRequest>
     {
-
         public override object Handle(GetEventNoticeRequest @params)
         {
-            ResponsePacket response = new();
-
             List<NoticeData> EventNotice1 = new()
             {
                 /*
@@ -28,17 +25,17 @@ namespace StellarGK.Host.Handlers.Event
                 */
             };
 
-            response.result = EventNotice1;
-            response.id = BasePacket.Id;
+            ResponsePacket response = new()
+            {
+                Result = EventNotice1,
+                Id = BasePacket.Id
+            };
 
             return response;
         }
-
     }
 
     public class GetEventNoticeRequest
     {
-
     }
-
 }

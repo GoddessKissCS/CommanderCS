@@ -1,0 +1,67 @@
+[
+  {
+    "idx": 50,
+    "type": 1,
+    "favorPoint": 10
+  },
+  {
+    "idx": 51,
+    "type": 1,
+    "favorPoint": 30
+  },
+  {
+    "idx": 52,
+    "type": 1,
+    "favorPoint": 50
+  },
+  {
+    "idx": 53,
+    "type": 1,
+    "favorPoint": 150
+  },
+  {
+    "idx": 54,
+    "type": 1,
+    "favorPoint": 300
+  },
+  {
+    "idx": 55,
+    "type": 1,
+    "favorPoint": 500
+  },
+  {
+    "idx": 56,
+    "type": 2,
+    "favorPoint": 100
+  },
+  {
+    "idx": 59,
+    "type": 1,
+    "favorPoint": 1000
+  },
+  {
+    "idx": 60,
+    "type": 1,
+    "favorPoint": 2000
+  },
+  {
+    "idx": 61,
+    "type": 1,
+    "favorPoint": 3000
+  },
+  {
+    "idx": 62,
+    "type": 1,
+    "favorPoint": 4000
+  },
+  {
+    "idx": 63,
+    "type": 1,
+    "favorPoint": 6000
+  },
+  {
+    "idx": 64,
+    "type": 1,
+    "favorPoint": 9000
+  }
+]

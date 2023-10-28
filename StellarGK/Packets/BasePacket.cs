@@ -1,73 +1,62 @@
-﻿using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using StellarGK.Database;
-using StellarGK.Database.Models;
+using StellarGK.Database.Schemes;
 
 namespace StellarGK.Host
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
-    public sealed class CommandAttribute : Attribute
+    public sealed class PacketAttribute : Attribute
     {
-        public CommandId Id { get; set; }
+        public Method Id { get; set; }
     }
 
-    public class RawPacket : BasePacket
+    public class ParamsPacket : BasePacket
     {
-        [JsonPropertyName("params")]
-        public JsonNode Params { get; set; }
+        [JsonProperty("params")]
+        public JToken Params { get; set; }
     }
 
     public class BasePacket
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonPropertyName("method")]
+        [JsonProperty("method")]
         public int Method { get; set; }
 
-        [JsonPropertyName("sess")]
+        [JsonProperty("sess")]
         public string Session { get; set; }
     }
 
-    public abstract class BaseCommandHandler<TParams>
+    public abstract class BaseMethodHandler<TParams>
     {
         public BasePacket BasePacket { get; set; }
+
         public abstract object Handle(TParams @params);
 
-        // This is a example
-        // THis could be reused in all command handlers
         public string GetSession()
         {
             return BasePacket.Session;
         }
 
-        public AccountScheme? GetAccount()
+        public AccountScheme? GetUserAccount()
         {
-            return DatabaseManager.Account.FindBySession(GetSession());
+            return DatabaseManager.Account.FindBySession(BasePacket.Session);
         }
 
-        public ResourcesScheme? GetResources()
+        public GameProfileScheme? GetUserGameProfile()
         {
-            return DatabaseManager.Resources.FindBySession(GetSession());
+            return DatabaseManager.GameProfile.FindBySession(BasePacket.Session);
         }
 
-        public BattleStatisticsScheme? GetBattleStatistics()
+        public DormitoryScheme? GetUserDormitory()
         {
-            return DatabaseManager.BattleStatistics.FindBySession(GetSession());
-        }
-
-        public DormitoryScheme? GetDormitory()
-        {
-            return DatabaseManager.Dormitory.FindBySession(GetSession());
-        }
-
-        public GameDataScheme? GetGameData()
-        {
-            return DatabaseManager.GameData.FindBySession(GetSession());
+            return DatabaseManager.Dormitory.FindBySession(BasePacket.Session);
         }
     }
 
-    public enum CommandId : int
+    public enum Method : int
     {
         GetRegion = 1000,
         GetTutorialStep = 1100,
@@ -202,6 +191,7 @@ namespace StellarGK.Host
         GetMailList = 6101,
         GetReward = 6102,
         ReadMail = 6103,
+        GetRewardAll = 6104,
         GetRankingReward = 6105,
         GetFirstPaymentReward = 6108,
         DailyBonusCheck = 6112,
@@ -354,8 +344,5 @@ namespace StellarGK.Host
         SaveInfinityBattleDeck = 8702,
         StartInfinityBattleScenario = 8703,
         InfinityBattleGetReward = 8704,
-
     }
-
-
 }

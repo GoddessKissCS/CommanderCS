@@ -1,8 +1,7 @@
+using Microsoft.Extensions.FileProviders;
+using StellarGK.Host;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Microsoft.Extensions.FileProviders;
-using StellarGK.Database;
-using StellarGK.Host;
 
 namespace StellarGK
 {
@@ -37,16 +36,12 @@ namespace StellarGK
                 options.WriteIndented = true;
             });
 
-
-
             //builder.WebHost.ConfigureKestrel(options =>
             //{
             //    options.AllowSynchronousIO = true;
             //});
 
-
             builder.Services.AddHttpClient();
-
 
             //            // To be replaced with mongodb
             //            builder.Services.AddSqlite<DatabaseContext>(iConfigurationRoot.GetConnectionString(nameof(DatabaseContext)));
@@ -59,7 +54,6 @@ namespace StellarGK
             //#endif
             //            });
 
-
             var app = builder.Build();
 
             var status = new Status()
@@ -68,7 +62,7 @@ namespace StellarGK
                 CommandsLoaded = PacketHandler.CommandsMapped,
             };
 
-            var statusString = System.Text.Json.JsonSerializer.Serialize(status, new JsonSerializerOptions()
+            var statusString = JsonSerializer.Serialize(status, new JsonSerializerOptions()
             {
                 WriteIndented = true,
             });
@@ -85,7 +79,7 @@ namespace StellarGK
                 KeepAliveInterval = TimeSpan.FromMilliseconds(1000),
             };
 
-            app.UseWebSockets(wsOptions);
+            //app.UseWebSockets(wsOptions);
 
             //app.MapGet("/chat.php", async (HttpContext context) =>
             //{
@@ -145,10 +139,10 @@ namespace StellarGK
             app.Run();
         }
     }
-}
 
-class Status
-{
-    public string Message { get; set; }
-    public List<string> CommandsLoaded { get; set; }
+    internal class Status
+    {
+        public string Message { get; set; }
+        public List<string> CommandsLoaded { get; set; }
+    }
 }

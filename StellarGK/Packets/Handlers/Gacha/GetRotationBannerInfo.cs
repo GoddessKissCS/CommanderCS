@@ -1,10 +1,10 @@
-﻿using StellarGK.Logic.Enums;
-using StellarGK.Logic.Protocols;
+﻿using StellarGKLibrary.Enum;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Gacha
 {
-    [Command(Id = CommandId.GetRotationBannerInfo)]
-    public class GetRotationBannerInfo : BaseCommandHandler<GetRotationBannerInfoRequest>
+    [Packet(Id = Method.GetRotationBannerInfo)]
+    public class GetRotationBannerInfo : BaseMethodHandler<GetRotationBannerInfoRequest>
     {
         public override object Handle(GetRotationBannerInfoRequest @params)
         {
@@ -30,17 +30,15 @@ namespace StellarGK.Host.Handlers.Gacha
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
-                result = rotationBanner,
+                Id = BasePacket.Id,
+                Result = rotationBanner,
             };
 
             return response;
         }
-
     }
 
     public class GetRotationBannerInfoRequest
     {
-
     }
 }

@@ -1,0 +1,17 @@
+[
+  {
+    "key": 1,
+    "levelStep": 2,
+    "goldStep": 1
+  },
+  {
+    "key": 2,
+    "levelStep": 3,
+    "goldStep": 2
+  },
+  {
+    "key": 3,
+    "levelStep": 3,
+    "goldStep": 3
+  }
+]

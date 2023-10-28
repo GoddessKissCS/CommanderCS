@@ -1,49 +1,45 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 using StellarGK.Database;
-using StellarGK.Logic.Protocols;
-
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Tutorial
 {
-    [Command(Id = CommandId.GetTutorialStep)]
-    public class GetTutorialStep : BaseCommandHandler<GetTutorialStepRequest>
+    [Packet(Id = Method.GetTutorialStep)]
+    public class GetTutorialStep : BaseMethodHandler<GetTutorialStepRequest>
     {
-
         public override object Handle(GetTutorialStepRequest @params)
         {
-            UserInformationResponse.TutorialData TData = RequestTutorialData(GetSession());
+            UserInformationResponse.TutorialData tutorialData = RequestTutorialData(GetSession());
 
             TutorialStep tutorialStep = new()
             {
-                ttrl = TData
+                ttrl = tutorialData
             };
 
             ResponsePacket response = new()
             {
-                result = tutorialStep,
-                id = BasePacket.Id
+                Result = tutorialStep,
+                Id = BasePacket.Id
             };
 
             return response;
         }
 
-
         private static UserInformationResponse.TutorialData RequestTutorialData(string sess)
         {
-            var user = DatabaseManager.Account.FindBySession(sess);
+            var user = DatabaseManager.GameProfile.FindBySession(sess).TutorialData;
 
-            return new UserInformationResponse.TutorialData() { skip = user.skip, step = user.step };
+            return user;
         }
 
         public class TutorialStep
         {
-            [JsonPropertyName("ttrl")]
+            [JsonProperty("ttrl")]
             public UserInformationResponse.TutorialData ttrl { get; set; }
         }
     }
 
     public class GetTutorialStepRequest
     {
-
     }
 }

@@ -1,11 +1,11 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 using StellarGK.Database;
-using StellarGK.Tools;
+using StellarGKLibrary.Utils;
 
 namespace StellarGK.Host.Handlers.Nickname
 {
-    [Command(Id = CommandId.SetNickNameFromTutorial)]
-    public class SetNickNameFromTutorial : BaseCommandHandler<SetNickNameFromTutorialRequest>
+    [Packet(Id = Method.SetNickNameFromTutorial)]
+    public class SetNickNameFromTutorial : BaseMethodHandler<SetNickNameFromTutorialRequest>
     {
         public override object Handle(SetNickNameFromTutorialRequest @params)
         {
@@ -13,77 +13,73 @@ namespace StellarGK.Host.Handlers.Nickname
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
+                Id = BasePacket.Id,
             };
-
 
             if (code == ErrorCode.InappropriateWords || code == ErrorCode.AlreadyInUse)
             {
-                response.error = new() { code = code };
+                response.Error = new() { code = code };
 
                 return response;
             }
 
-            SetNickNameF SetNickNameF1 = new()
+            SetNickNameResponse SetNickNameF1 = new()
             {
                 step = @params.Step,
             };
 
-            response.result = SetNickNameF1;
+            response.Result = SetNickNameF1;
 
             return response;
         }
 
-        private static ErrorCode RequestNicknameAfterTutorial(string sess, string AccountName)
+        internal static ErrorCode RequestNicknameAfterTutorial(string sess, string nickname)
         {
-
-            if (Misc.NameCheck(AccountName))
+            if (Misc.NameCheck(nickname))
             {
                 return ErrorCode.InappropriateWords;
             }
 
-            var user = DatabaseManager.Resources.FindByNickname(AccountName);
+            var user = DatabaseManager.GameProfile.FindByNick(nickname);
 
             if (user == null)
             {
-                var requestUser = DatabaseManager.Resources.FindBySession(sess);
+                var userGameProfile = DatabaseManager.GameProfile.FindBySession(sess);
 
-                var account = DatabaseManager.Account.FindBySession(sess);
-
-                if (account.skip == true)
+                if (userGameProfile.TutorialData.skip == true)
                 {
-                    DatabaseManager.Account.UpdateStep(requestUser.Id, 12);
+                    DatabaseManager.GameProfile.UpdateStep(sess, 12);
                 }
                 else
                 {
-                    DatabaseManager.Account.UpdateStep(requestUser.Id, 2);
+                    DatabaseManager.GameProfile.UpdateStep(sess, 2);
                 }
 
-                DatabaseManager.Resources.UpdateNickName(AccountName, sess);
+                DatabaseManager.GameProfile.UpdateNickName(sess, nickname);
 
                 return ErrorCode.Success;
             }
-            else if (user.nickname == AccountName)
+            else if (user.UserResources.nickname == nickname)
             {
                 return ErrorCode.AlreadyInUse;
             }
+
             return 0;
         }
 
-        public class SetNickNameF
+        internal class SetNickNameResponse
         {
-            [JsonPropertyName("step")]
+            [JsonProperty("step")]
             public int step { get; set; }
         }
     }
 
-
     public class SetNickNameFromTutorialRequest
     {
-        [JsonPropertyName("unm")]
+        [JsonProperty("unm")]
         public string Unm { get; set; }
 
-        [JsonPropertyName("step")]
+        [JsonProperty("step")]
         public int Step { get; set; }
     }
 }

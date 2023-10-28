@@ -1,44 +1,41 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace StellarGK.Host.Handlers.UserTerm
 {
-    [Command(Id = CommandId.GetBadWordList)]
-    public class GetBadWordList : BaseCommandHandler<GetBadWordListRequest>
+    [Packet(Id = Method.GetBadWordList)]
+    public class GetBadWordList : BaseMethodHandler<GetBadWordListRequest>
     {
         public override object Handle(GetBadWordListRequest @params)
         {
-
             ResponsePacket response = new();
 
-            badwords badWord = new();
+#warning TODO ADD AN ENTIRE BADWORDLIST WITH DIFFERENT LANGUAGES
 
-            Dictionary<string, List<string>> MasterBadWordList = new();
             List<string> en = new()
             {
                 "booooooobs",
             };
 
+            BadWordListResponse badWord = new()
+            {
+                word = new() {
+                {"en", en }}
+            };
 
-            MasterBadWordList.Add("en", en);
-
-            badWord.word = MasterBadWordList;
-
-            response.id = BasePacket.Id;
-            response.result = badWord;
+            response.Id = BasePacket.Id;
+            response.Result = badWord;
 
             return response;
         }
 
-
-        private class badwords
+        internal class BadWordListResponse
         {
-            [JsonPropertyName("word")]
+            [JsonProperty("word")]
             public Dictionary<string, List<string>> word { get; set; }
         }
     }
 
     public class GetBadWordListRequest
     {
-
     }
 }

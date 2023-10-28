@@ -6,12 +6,24 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>StellarGK</RootNamespace>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<ApplicationIcon>crying.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="MongoDB.Bson" Version="2.20.0" />
-		<PackageReference Include="MongoDB.Driver" Version="2.20.0" />
-		<PackageReference Include="MongoDB.Driver.Core" Version="2.20.0" />
+	  <Compile Remove="Logic\**" />
+	  <Content Remove="Logic\**" />
+	  <EmbeddedResource Remove="Logic\**" />
+	  <None Remove="Logic\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="crying.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MongoDB.Bson" Version="2.21.0" />
+		<PackageReference Include="MongoDB.Driver" Version="2.21.0" />
+		<PackageReference Include="MongoDB.Driver.Core" Version="2.21.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
 		<PackageReference Include="Tival.GZipCompressor" Version="1.0.1" />
@@ -25,5 +37,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\CommandHandlerMappingsSourceGenerator\CommandHandlerMappingsSourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<ProjectReference Include="..\StellarGKLibrary\StellarGKLibrary.csproj" />
 	</ItemGroup>
 </Project>

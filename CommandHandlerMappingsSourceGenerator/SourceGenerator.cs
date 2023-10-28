@@ -1,11 +1,11 @@
 ﻿//#define EnableSourceGeneratorDebug
 
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Text;
 using System.Threading;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace CommandHandlerMappingsSourceGenerator
 {
@@ -52,7 +52,7 @@ namespace CommandHandlerMappingsSourceGenerator
             }
         }
 
-        private const string AttributeName = "Command";
+        private const string AttributeName = "Packet";
         private const string AttributeNameAlt = $"{AttributeName}Attribute";
 
         public static bool IsTargetForGenerator(SyntaxNode SyntaxNode, CancellationToken cancellationToken)

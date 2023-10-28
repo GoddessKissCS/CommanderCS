@@ -1,24 +1,21 @@
 ﻿namespace StellarGK.Host.Handlers.Dispatch
 {
-    [Command(Id = CommandId.GetDispatchCommanderListFromLogin)]
-    public class GetDispatchCommanderListFromLogin : BaseCommandHandler<GetDispatchCommanderListFromLoginRequest>
+    [Packet(Id = Method.GetDispatchCommanderListFromLogin)]
+    public class GetDispatchCommanderListFromLogin : BaseMethodHandler<GetDispatchCommanderListFromLoginRequest>
     {
-
         public override object Handle(GetDispatchCommanderListFromLoginRequest @params)
         {
             ResponsePacket responsePacket = new()
             {
-                id = BasePacket.Id,
-                result = GetGameData().dispatchedCommanders,
+                Id = BasePacket.Id,
+                Result = GetUserGameProfile().DispatchedCommanders,
             };
 
             return responsePacket;
         }
-
-
     }
+
     public class GetDispatchCommanderListFromLoginRequest
     {
-
     }
 }

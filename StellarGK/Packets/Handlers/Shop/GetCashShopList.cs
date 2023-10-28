@@ -1,12 +1,15 @@
-﻿using StellarGK.Logic.Protocols;
+﻿using StellarGKLibrary.Enum;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Shop
 {
-    [Command(Id = CommandId.GetCashShopList)]
-    public class GetCashShopList : BaseCommandHandler<GetCashShopListRequest>
+    [Packet(Id = Method.GetCashShopList)]
+    public class GetCashShopList : BaseMethodHandler<GetCashShopListRequest>
     {
         public override object Handle(GetCashShopListRequest @params)
         {
+#warning TODO
+            // NEED TO ADD A MONTHLY BUYABLE package
 
             List<CashShopData> csl = new() { };
             CashShopData c = new()
@@ -17,15 +20,15 @@ namespace StellarGK.Host.Handlers.Shop
                 remainTime = 0,
                 buyCount = 1,
                 priceId = "gk.dia.100",
-                pType = Logic.Enums.ECashRechargePriceType.Dollars
+                pType = ECashRechargePriceType.Dollars
             };
 
             csl.Add(c);
 
             ResponsePacket response = new()
             {
-                result = csl,
-                id = BasePacket.Id
+                Result = csl,
+                Id = BasePacket.Id
             };
 
             return response;
@@ -34,7 +37,6 @@ namespace StellarGK.Host.Handlers.Shop
 
     public class GetCashShopListRequest
     {
-
     }
 
     /*
@@ -138,5 +140,29 @@ namespace StellarGK.Host.Handlers.Shop
                "gk.package.110000r4":
                "gk.package.110000r5":
              * */
-
 }
+
+/*
+	// Token: 0x06006007 RID: 24583 RVA: 0x000120F8 File Offset: 0x000102F8
+	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7100", true, true)]
+	public void GetCashShopList()
+	{
+	}
+
+	// Token: 0x06006008 RID: 24584 RVA: 0x001AFC54 File Offset: 0x001ADE54
+	private IEnumerator GetCashShopListResult(JsonRpcClient.Request request, List<Protocols.CashShopData> result)
+	{
+		if (result != null)
+		{
+			if (result.Count != 0)
+			{
+				this.regulation.cashShopDtbl = result;
+			}
+			if (UIManager.instance.world != null)
+			{
+				UIManager.instance.world.mainCommand.OpenAndInitDiamondShop();
+			}
+			Message.Send("Shop.Open.CashShop");
+		}
+		yield break;
+	}*/

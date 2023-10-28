@@ -6,15 +6,15 @@ namespace StellarGK.Database
     {
         public static DatabaseAutoIncrements AutoIncrements { get; } = new();
         public static DatabaseAccount Account { get; } = new();
-        public static DatabaseBattleStatistics BattleStatistics { get; } = new();
         public static DatabaseDormitory Dormitory { get; } = new();
         public static DatabaseDeviceCode DeviceCode { get; } = new();
-        public static DatabaseResources Resources { get; } = new();
         public static DatabaseServer Server { get; } = new();
         public static DatabaseGuild Guild { get; } = new();
+        public static DatabaseGuildApplication GuildApplication { get; } = new();
         public static DatabaseGameVersion GameVersionInfo { get; } = new();
         public static DatabaseGameTableVersion GameTableVersion { get; } = new();
-        public static DatabaseGameData GameData { get; } = new();
+        public static DatabaseGameProfile GameProfile { get; } = new();
+
         public static void FirstCreate()
         {
             GameVersionInfo.Create(1, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L0ZpbGVDRE4v", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQucGhw", false, false, false, false);
@@ -29,15 +29,5 @@ namespace StellarGK.Database
             Server.Create(3, 140, "18-20", 1643673600, 0, 0);
             Server.Create(4, 140, "18-20", 1643673600, 0, 0);
         }
-
-        public static void CreateUser(int memberId)
-        {
-            BattleStatistics.Create(memberId);
-            Resources.Create(memberId);
-            Dormitory.Create(memberId);
-            GameData.Create(memberId);
-        }
-
     }
-
 }

@@ -1,31 +1,28 @@
-﻿using StellarGK.Logic.ExcelReader;
-using StellarGK.Logic.Protocols;
-
+﻿using StellarGKLibrary.ExcelReader;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.KeepAlives
 {
-    [Command(Id = CommandId.BulletCharge)]
-    public class BulletCharge : BaseCommandHandler<BulletChargeResult>
+    [Packet(Id = Method.BulletCharge)]
+    public class BulletCharge : BaseMethodHandler<BulletChargeResult>
     {
         public override object Handle(BulletChargeResult @params)
         {
-            var user = GetAccount();
-            var res = GetResources();
+            var user = GetUserGameProfile();
 
-            int bullets = UserLevelData.GetInstance().FromLevel(res.level).maxBullet;
+            int bullets = UserLevelData.GetInstance().FromLevel(user.UserResources.level).maxBullet;
 
             ResourceRecharge resource = new()
             {
-
                 bulletData = new()
                 {
-                    cnt = Convert.ToInt32(res.bullet),
+                    cnt = user.UserResources.bullet,
                     remain = bullets,
                 },
                 oilData = new()
                 {
-                    cnt = Convert.ToInt32(res.oil),
-                    remain = Convert.ToInt32(res.oil)
+                    cnt = user.UserResources.oil,
+                    remain = user.UserResources.oil,
                 },
                 skillData = new()
                 {
@@ -34,49 +31,46 @@ namespace StellarGK.Host.Handlers.KeepAlives
                 },
                 chip = new()
                 {
-                    remain = Convert.ToInt32(res.chip),
-                    cnt = Convert.ToInt32(res.chip),
+                    remain = user.UserResources.chip,
+                    cnt = user.UserResources.chip,
                 },
                 weaponMaterialData1 = new()
                 {
-                    cnt = Convert.ToInt32(res.weaponMaterial1),
-                    remain = Convert.ToInt32(res.weaponMaterial1),
+                    cnt = user.UserResources.weaponMaterial1,
+                    remain = user.UserResources.weaponMaterial1,
                 },
                 weaponMaterialData2 = new()
                 {
-                    cnt = Convert.ToInt32(res.weaponMaterial2),
-                    remain = Convert.ToInt32(res.weaponMaterial2),
+                    cnt = user.UserResources.weaponMaterial2,
+                    remain = user.UserResources.weaponMaterial2,
                 },
                 weaponMaterialData3 = new()
                 {
-                    cnt = Convert.ToInt32(res.weaponMaterial3),
-                    remain = Convert.ToInt32(res.weaponMaterial3),
+                    cnt = user.UserResources.weaponMaterial3,
+                    remain = user.UserResources.weaponMaterial3,
                 },
                 weaponMaterialData4 = new()
                 {
-                    cnt = Convert.ToInt32(res.weaponMaterial4),
-                    remain = Convert.ToInt32(res.weaponMaterial4),
+                    cnt = user.UserResources.weaponMaterial4,
+                    remain = user.UserResources.weaponMaterial4,
                 },
-                worldState = user.worldState,
+                worldState = user.WorldState,
                 gacha = new()
                 {
-
                 }
             };
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
-                result = resource
+                Id = BasePacket.Id,
+                Result = resource
             };
 
             return response;
         }
-
     }
 
     public class BulletChargeResult
     {
-
     }
 }

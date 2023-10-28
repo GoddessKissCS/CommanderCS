@@ -1,0 +1,518 @@
+[
+  {
+    "commanderId": 1,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 5,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 6,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 7,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 10,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 11,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 12,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 13,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 14,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 16,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 17,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 18,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 19,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 22,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 23,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 24,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 27,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 28,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 30,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 32,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 35,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 37,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 40,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 41,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 43,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 46,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 49,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 50,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 51,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 52,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 54,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 55,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 57,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 61,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 62,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 63,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 64,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 65,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 67,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 68,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 70,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 72,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 73,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 84,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 85,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 86,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 89,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 91,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 92,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 93,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 94,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 106,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 107,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 108,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 605,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 614,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 616,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 954,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 959,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 966,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 967,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 968,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 970,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 971,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 975,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 976,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 984,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 985,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 989,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 990,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 996,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 999,
+    "commanderRole": "A"
+  },
+  {
+    "commanderId": 2,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 4,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 8,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 9,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 15,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 20,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 21,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 29,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 31,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 34,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 36,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 39,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 44,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 47,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 53,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 60,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 71,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 74,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 76,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 83,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 87,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 90,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 96,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 98,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 102,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 109,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 972,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 977,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 983,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 987,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 988,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 997,
+    "commanderRole": "D"
+  },
+  {
+    "commanderId": 3,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 26,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 33,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 38,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 42,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 45,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 48,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 56,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 58,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 59,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 66,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 75,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 88,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 95,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 97,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 626,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 955,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 956,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 969,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 973,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 974,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 978,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 982,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 986,
+    "commanderRole": "S"
+  },
+  {
+    "commanderId": 998,
+    "commanderRole": "S"
+  }
+]

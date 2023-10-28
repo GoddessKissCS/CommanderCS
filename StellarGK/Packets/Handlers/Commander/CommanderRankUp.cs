@@ -1,35 +1,33 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 using StellarGK.Database;
-using StellarGK.Logic.ExcelReader;
-using StellarGK.Logic.Protocols;
-
+using StellarGKLibrary.ExcelReader;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Commander
 {
-    [Command(Id = CommandId.CommanderRankUp)]
-    public class CommanderRankUp : BaseCommandHandler<CommanderRankUpRequest>
+    [Packet(Id = Method.CommanderRankUp)]
+    public class CommanderRankUp : BaseMethodHandler<CommanderRankUpRequest>
     {
         public override object Handle(CommanderRankUpRequest @params)
         {
             ResponsePacket response = new();
 
-            var resources = GetGameData();
+            string session = GetSession();
 
-            var commanderList = resources.commanderData;
-            var medalsdata = resources.medalData;
+            var user = GetUserGameProfile();
 
             string cid = @params.cid.ToString();
 
-            if (commanderList.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
+            if (user.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
             {
                 var commanderRankData = CommanderRankData.GetInstance().FromRank(commander.__rank);
 
-                medalsdata.TryGetValue(cid, out var commanderMedals);
+                user.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
 
                 if (!TryRankUpCommander(commanderRankData.rank, ref commanderMedals))
                 {
-                    response.id = BasePacket.Id;
-                    response.error = new() { code = ErrorCode.NotEnoughResources };
+                    response.Id = BasePacket.Id;
+                    response.Error = new() { code = ErrorCode.NotEnoughResources };
 
                     return response;
                 }
@@ -39,14 +37,14 @@ namespace StellarGK.Host.Handlers.Commander
 
                 commanderRankData = CommanderRankData.GetInstance().FromRank(commander.__rank);
 
-                medalsdata[cid] = commanderMedals;
-                commanderList[cid] = commander;
+                user.UserInventory.medalData[cid] = commanderMedals;
+                user.CommanderData[cid] = commander;
 
-                DatabaseManager.Resources.UpdateGold(GetSession(), commanderRankData.gold, false);
-
-            } else {
-
-                medalsdata.TryGetValue(cid, out var commanderMedals);
+                DatabaseManager.GameProfile.UpdateGold(session, commanderRankData.gold, false);
+            }
+            else
+            {
+                user.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
 
                 var CostumeData = CommanderCostumeData.GetInstance().FromId(cid);
 
@@ -54,42 +52,42 @@ namespace StellarGK.Host.Handlers.Commander
 
                 if (!TryRecruitCommander(commanderData.grade, ref commanderMedals))
                 {
-                    response.id = BasePacket.Id;
-                    response.error = new() { code = ErrorCode.NotEnoughResources };
+                    response.Id = BasePacket.Id;
+                    response.Error = new() { code = ErrorCode.NotEnoughResources };
 
                     return response;
                 }
 
-                medalsdata[cid] = commanderMedals;
+                user.UserInventory.medalData[cid] = commanderMedals;
 
                 var newestCommander = CreateCommander(cid, CostumeData.ctid, commanderMedals, commanderData.grade);
 
                 int newcommanderId = 1;
 
-                if (commanderList.Count > 0)
+                if (user.CommanderData.Count > 0)
                 {
-                    newcommanderId = Convert.ToInt32(commanderList.Last().Key) + 1;
+                    newcommanderId = Convert.ToInt32(user.CommanderData.Last().Key) + 1;
                 }
 
-                commanderList.Add(newcommanderId.ToString(), newestCommander);
+                user.CommanderData.Add(newcommanderId.ToString(), newestCommander);
 
-                DatabaseManager.Resources.UpdateGold(resources.Id, commanderData.recruitGold, false);
+                DatabaseManager.GameProfile.UpdateGold(session, commanderData.recruitGold, false);
             }
 
-            DatabaseManager.GameData.UpdateCommanderData(GetSession(), commanderList);
-            DatabaseManager.GameData.UpdateMedalData(GetSession(), medalsdata);
+            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+            DatabaseManager.GameProfile.UpdateMedalData(session, user.UserInventory.medalData);
 
-            var newResources = GetGameData();
+            var newResources = GetUserGameProfile();
 
             CommanderRankUpResponse cmrup = new()
             {
-                rsoc = DatabaseManager.Resources.RequestResources(GetSession()),
-                medl = newResources.medalData,
-                comm = newResources.commanderData,
+                rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session),
+                medl = newResources.UserInventory.medalData,
+                comm = newResources.CommanderData,
             };
 
-            response.result = cmrup;
-            response.id = BasePacket.Id;
+            response.Result = cmrup;
+            response.Id = BasePacket.Id;
 
             return response;
         }
@@ -100,6 +98,7 @@ namespace StellarGK.Host.Handlers.Commander
             { 2, 30 },
             { 3, 80 }
         };
+
         private static Dictionary<int, int> RankCostList { get; set; } = new Dictionary<int, int>()
         {
             { 1, 20 },
@@ -108,6 +107,7 @@ namespace StellarGK.Host.Handlers.Commander
             { 4, 150 },
             { 5, 250 }
         };
+
         private static bool TryRecruitCommander(int grade, ref int medals)
         {
             if (!GradeCostList.TryGetValue(grade, out var cost))
@@ -124,6 +124,7 @@ namespace StellarGK.Host.Handlers.Commander
 
             return true;
         }
+
         private static bool TryRankUpCommander(int grade, ref int medals)
         {
             if (!RankCostList.TryGetValue(grade, out var cost))
@@ -140,6 +141,7 @@ namespace StellarGK.Host.Handlers.Commander
 
             return true;
         }
+
         private static UserInformationResponse.Commander CreateCommander(string commanderid, int costumeid, int commanderMedals, int grade)
         {
             UserInformationResponse.Commander __commander = new()
@@ -166,18 +168,18 @@ namespace StellarGK.Host.Handlers.Commander
                 id = commanderid,
                 marry = 0,
                 medl = commanderMedals,
-                role = "A", // TODO CREATE A ROLE TABLE
+#warning TODO CREATE A ROLE TABLE
+                role = "A",
                 transcendence = new() { 0, 0, 0, 0 },
             };
 
             return __commander;
         }
-
     }
 
     public class CommanderRankUpRequest
     {
-        [JsonPropertyName("cid")]
+        [JsonProperty("cid")]
         public int cid { get; set; }
     }
 }

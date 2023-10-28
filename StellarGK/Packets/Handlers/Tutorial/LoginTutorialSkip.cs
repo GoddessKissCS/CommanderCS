@@ -1,13 +1,12 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 using StellarGK.Database;
-using StellarGK.Logic.Protocols;
+using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Tutorial
 {
-    [Command(Id = CommandId.LoginTutorialSkip)]
-    public class LoginTutorialSkip : BaseCommandHandler<LoginTutorialSkipRequest>
+    [Packet(Id = Method.LoginTutorialSkip)]
+    public class LoginTutorialSkip : BaseMethodHandler<LoginTutorialSkipRequest>
     {
-
         public override object Handle(LoginTutorialSkipRequest @params)
         {
             ResponsePacket response = new();
@@ -19,39 +18,37 @@ namespace StellarGK.Host.Handlers.Tutorial
                 ttrl = TData,
             };
 
-            response.id = BasePacket.Id;
-            response.result = lts;
+            response.Id = BasePacket.Id;
+            response.Result = lts;
 
             return response;
         }
 
-        private static UserInformationResponse.TutorialData RequestTutorialData(string sess, bool skipTutorial)
+        private static UserInformationResponse.TutorialData RequestTutorialData(string session, bool skipTutorial)
         {
-            var user = DatabaseManager.Account.FindBySession(sess);
+            UserInformationResponse.TutorialData tutorialData = new() { skip = skipTutorial, step = 0 };
 
             if (skipTutorial)
             {
-                DatabaseManager.Account.UpdateStepAndSkip(user.Id, 12, skipTutorial);
-                return new UserInformationResponse.TutorialData() { skip = true, step = 12 };
+                tutorialData.step = 12;
+                return DatabaseManager.GameProfile.UpdateStepAndSkip(session, tutorialData);
             }
             else
             {
-                DatabaseManager.Account.UpdateStepAndSkip(user.Id, 0, skipTutorial);
-                return new UserInformationResponse.TutorialData() { skip = false, step = 0 };
-
+                return DatabaseManager.GameProfile.UpdateStepAndSkip(session, tutorialData);
             }
         }
 
         private class TutorialStep
         {
-            [JsonPropertyName("ttrl")]
+            [JsonProperty("ttrl")]
             public UserInformationResponse.TutorialData ttrl { get; set; }
         }
     }
 
     public class LoginTutorialSkipRequest
     {
-        [JsonPropertyName("skip")]
+        [JsonProperty("skip")]
         public int skip { get; set; }
     }
 }

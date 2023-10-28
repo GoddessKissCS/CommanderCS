@@ -1,42 +1,34 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace StellarGK.Host.Handlers.Event
 {
-    [Command(Id = CommandId.GetEventRemaingTime)]
-    public class GetEventRemainingTime : BaseCommandHandler<GetEventRemainingTimeRequest>
+    [Packet(Id = Method.GetEventRemaingTime)]
+    public class GetEventRemainingTime : BaseMethodHandler<GetEventRemainingTimeRequest>
     {
         public override object Handle(GetEventRemainingTimeRequest @params)
         {
-            var test = new Dictionary<string, int>()
-                    {
-                        {"test", 1}
-                    };
-
-            GetEventRemainingTimeM getEventRemainingTimeM = new()
+            GetEventRemainingTimeResponse remainingEventTime = new()
             {
-                buff = test,
+                buff = new() { }
             };
-
 
             ResponsePacket response = new()
             {
-                id = BasePacket.Id,
-                result = getEventRemainingTimeM,
+                Id = BasePacket.Id,
+                Result = remainingEventTime,
             };
 
             return response;
         }
 
-
-        public class GetEventRemainingTimeM
+        public class GetEventRemainingTimeResponse
         {
-            [JsonPropertyName("buff")]
+            [JsonProperty("buff")]
             public Dictionary<string, int> buff { get; set; }
         }
     }
 
     public class GetEventRemainingTimeRequest
     {
-
     }
 }

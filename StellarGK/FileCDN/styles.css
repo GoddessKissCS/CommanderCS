@@ -1,27 +1,32 @@
-body{
+body {
     background: lightgrey;
     font-size: 12pt;
 }
-h1, h2, p, div{
+
+h1, h2, p, div {
     box-sizing: border-box;
     font-family: sans-serif;
     margin-left: auto;
     margin-right: auto;
     width: 640px;
 }
-img{
+
+img {
     width: 640px;
     height: 360px;
 }
-mark{
+
+mark {
     color: white;
     font-family: monospace;
     background-color: black;
 }
-p{
+
+p {
     text-align: justify;
 }
-.console{
+
+.console {
     background-color: black;
     color: gray;
     font-family: monospace;

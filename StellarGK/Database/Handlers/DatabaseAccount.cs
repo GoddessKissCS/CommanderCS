@@ -1,178 +1,214 @@
 ﻿using MongoDB.Driver;
-using StellarGK.Database.Models;
+using StellarGK.Database.Schemes;
 using StellarGK.Host;
-using StellarGK.Tools;
+using StellarGK.Host.Handlers.Login;
+using StellarGK.Packets.Handlers.UserTerm;
+using StellarGKLibrary.Enum;
+using StellarGKLibrary.Utils;
+using static StellarGKLibrary.Cryptography.Crypto;
 
 namespace StellarGK.Database.Handlers
 {
     public class DatabaseAccount : DatabaseTable<AccountScheme>
     {
-        public DatabaseAccount() : base("Account") { }
-
-        // TODO add resetRemain 
-
-        public AccountScheme Create(string name, string password, int platformid, int channel)
+        public DatabaseAccount() : base("Account")
         {
-            AccountScheme? tryUser = collection.AsQueryable().Where(d => d.name == name).FirstOrDefault();
+        }
+
+        public AccountScheme Create(string name = "", string password = "", int platformid = 0, int channel = 0)
+        {
+            AccountScheme? tryUser = Collection.AsQueryable().Where(d => d.Name == name).FirstOrDefault();
             if (tryUser != null) { return tryUser; }
 
-            int memberId = DatabaseManager.AutoIncrements.GetNextNumber("UID", 1000);
+            int memberId = DatabaseManager.AutoIncrements.GetNextNumber("MemberId", 1000);
+
+            var CurrTimeStamp = Utility.CurrentTimeStamp();
 
             AccountScheme user = new()
             {
-                name = name,
-                Id = memberId,
-                server = 1,
-                token = Guid.NewGuid().ToString(),
-                password = Crypto.ComputeSha256Hash(password),
-                platformId = platformid,
-                channel = channel,
-                // result.worldState != -1;
-                // if exploration is finished id assume
-                worldState = 1,
-                uno = memberId.ToString(),
-                creationTime = Constants.CurrentTimeStamp,
-                lastLoginTime = Constants.CurrentTimeStamp,
-                isBanned = false,
-                banReason = "",
-                PermissionLevel = 0,
-                guildId = null,
-                lastStage = 0,
-                blockedUsers = new() { },
+                MemberId = memberId,
+                Token = Guid.NewGuid().ToString(),
+                Channel = channel,
+                CreationTime = CurrTimeStamp,
+                LastLoginTime = CurrTimeStamp,
+                isBanned = null,
+                BanReason = null,
+                LastServerLoggedIn = 1,
+                Platform = (Platform)platformid,
             };
 
-            collection.InsertOne(user);
-
-            return user;
-        }
-        public AccountScheme CreateGuest(int platformid, int channel)
-        {
-            string name = Constants.CreateGuestName;
-            AccountScheme? tryUser = collection.AsQueryable().Where(d => d.name == name).FirstOrDefault();
-            if (tryUser != null) { return tryUser; }
-
-            int memberId = DatabaseManager.AutoIncrements.GetNextNumber("UID", 1000);
-
-            AccountScheme user = new()
+            if (platformid == 0)
             {
-                name = name,
-                Id = memberId,
-                server = 1,
-                token = Guid.NewGuid().ToString(),
-                platformId = platformid,
-                channel = channel,
-                // result.worldState != -1;
-                // if exploration is finished id assume
-                worldState = 1,
-                uno = memberId.ToString(),
-                creationTime = Constants.CurrentTimeStamp,
-                lastLoginTime = Constants.CurrentTimeStamp,
-                isBanned = false,
-                banReason = "",
-                PermissionLevel = 0,
-                guildId = null,
-                lastStage = 0,
-                blockedUsers = new() { },
-            };
+                user.Clearance = Clearance.Guest;
+                user.Name = Utility.CreateGuestName();
+            }
+            else
+            {
+                user.Name = name;
+                user.Password_Hash = ComputeSha256Hash(password);
+                user.Clearance = Clearance.Player;
+            }
 
-            collection.InsertOne(user);
+            DatabaseManager.Dormitory.Create(memberId);
+
+            Collection.InsertOne(user);
 
             return user;
         }
-
 
         public AccountScheme FindByName(string accountName)
         {
-            AccountScheme? user = collection.AsQueryable().Where(d => d.name == accountName).FirstOrDefault();
-            return user;
+            return Collection.AsQueryable().Where(d => d.Name == accountName).FirstOrDefault();
         }
-        public AccountScheme FindByPassword(string password)
-        {
-            password = Crypto.ComputeSha256Hash(password);
 
-            AccountScheme? user = collection.AsQueryable().Where(d => d.password == password).FirstOrDefault();
-            return user;
-        }
-        public AccountScheme? FindByToken(string token)
-        {
-            AccountScheme? user = collection.AsQueryable().Where(d => d.token == token).FirstOrDefault();
-            return user;
-        }
         public AccountScheme? FindByUid(int memberId)
         {
-            AccountScheme? user = collection.AsQueryable().Where(d => d.Id == memberId).FirstOrDefault();
-            return user;
+            return Collection.AsQueryable().Where(d => d.MemberId == memberId).FirstOrDefault();
         }
-        public AccountScheme? FindBySession(string session)
-        {
-            AccountScheme? user = collection.AsQueryable().Where(d => d.session == session).FirstOrDefault();
 
-            return user;
+        public AccountScheme? FindByUid(string memberId)
+        {
+            return Collection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).FirstOrDefault();
         }
 
         public bool AccountExists(string accountName)
         {
-            return collection.AsQueryable().Where(d => d.name == accountName).Count() > 0;
+            return Collection.AsQueryable().Where(d => d.Name == accountName).Any();
         }
 
-
-        public void UpdateUponLogin(int memberId, string device, string deviceId, int patchType, int osCode, string osVersion, string gameVersion, string apk, string pushRegistrationId, string language, string countryName, string gpid, int channel, string session)
+        public ErrorCode ChangeMemberShip(string changeName, string password, int platformId, string guestName, int channel)
         {
-            var filter = Builders<AccountScheme>.Filter.Eq("Id", memberId);
-
-            var update = Builders<AccountScheme>.Update.Set("device", device).Set("gameversion", gameVersion).Set("deviceid", deviceId).Set("patchType", patchType).Set("osCode", osCode).Set("osversion", osVersion).Set("apk", apk).Set("pushRegistrationId", pushRegistrationId).Set("language", language).Set("country", countryName).Set("gpid", gpid).Set("channel", channel).Set("session", session);
-
-            collection.UpdateOne(filter, update);
-        }
-        public void UpdateLoginTime(int memberId)
-        {
-            var filter = Builders<AccountScheme>.Filter.Eq("Id", memberId);
-
-            var update = Builders<AccountScheme>.Update.Set("lastLoginTime", Constants.CurrentTimeStamp);
-
-            collection.UpdateOne(filter, update);
-        }
-        public void UpdateStep(int memberId, int tutorialStep)
-        {
-            var filter = Builders<AccountScheme>.Filter.Eq("Id", memberId);
-
-            var update = Builders<AccountScheme>.Update.Set("step", tutorialStep);
-
-            collection.UpdateOne(filter, update);
-        }
-        public void UpdateStepAndSkip(int memberId, int tutorialStep, bool skip)
-        {
-            var filter = Builders<AccountScheme>.Filter.Eq("Id", memberId);
-
-            var update = Builders<AccountScheme>.Update.Set("step", tutorialStep).Set("skip", skip);
-
-            collection.UpdateOne(filter, update);
-        }
-
-        public ErrorCode ChangeMemberShip(string oldName, string password, int platformId, string newName, int channel)
-        {
-
-            if (Misc.NameCheck(oldName))
+            if (Misc.NameCheck(changeName))
             {
                 return ErrorCode.InappropriateWords;
             }
 
-            if (AccountExists(oldName))
+            if (AccountExists(changeName))
+            {
+                return ErrorCode.IdAlreadyExists;
+            }
+
+            var account = FindByName(guestName);
+
+            var password_hash = ComputeSha256Hash(password);
+
+            var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
+            var update = Builders<AccountScheme>.Update.Set("Name", changeName).Set("Password_Hash", password_hash).Set("PlatformId", platformId).Set("Channel", channel);
+
+            Collection.UpdateOne(filter, update);
+
+            return ErrorCode.Success;
+        }
+
+        public void UpdateLoginTime(int id)
+        {
+            var CurrTimeStamp = Utility.CurrentTimeStamp();
+
+            var filter = Builders<AccountScheme>.Filter.Eq("MemberId", id);
+            var update = Builders<AccountScheme>.Update.Set("LastLoginTime", CurrTimeStamp);
+
+            Collection.UpdateOne(filter, update);
+        }
+
+        public void UpdateLoginTime(string name)
+        {
+            var account = FindByName(name);
+
+            var CurrTimeStamp = Utility.CurrentTimeStamp();
+
+            var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
+            var update = Builders<AccountScheme>.Update.Set("LastLoginTime", CurrTimeStamp);
+
+            Collection.UpdateOne(filter, update);
+        }
+
+        public AccountScheme? FindBySession(string session)
+        {
+            var user = DatabaseManager.GameProfile.FindBySession(session);
+
+            return FindByUid(user.MemberId);
+        }
+
+        public void UpdateLastServerLoggedIn(int server, int memberid)
+        {
+            var filter = Builders<AccountScheme>.Filter.Eq("MemberId", memberid);
+            var update = Builders<AccountScheme>.Update.Set("LastServerLoggedIn", server);
+
+            Collection.UpdateOne(filter, update);
+        }
+
+        public ErrorCode RequestLogin(LoginRequest @params, string session)
+        {
+            var user = FindByUid(@params.memberId);
+            if (user.isBanned == true && user.isBanned != null)
+            {
+                return ErrorCode.BannedOrSuspended;
+            }
+
+            DatabaseManager.GameProfile.UpdateOnLogin(@params, session);
+            return ErrorCode.Success;
+        }
+
+        //public bool addblockeduser(blockuser tobeblocked, string session)
+        //{
+        //    var user = databasemanager.gameprofile.findbysession(session);
+        //    var filter = builders<accountscheme>.filter.eq("memberid", user.memberid);
+        //    var update = builders<accountscheme>.update.push("blockusers", tobeblocked);
+
+        //    var updateresult = collection.updateone(filter, update);
+
+        //    return updateresult.modifiedcount > 0;
+        //}
+        //public bool delblockeduser(string session, int ch, string uno)
+        //{
+        //    var user = databasemanager.gameprofile.findbysession(session);
+
+        //    var filter = builders<accountscheme>.filter.eq("memberid", user.memberid) &
+        //                 builders<accountscheme>.filter.elemmatch(x => x.blockedusers,
+        //                 builders<blockuser>.filter.eq("ch", ch) & builders<blockuser>.filter.eq("uno", uno));
+
+        //    var updateresult = collection.deleteone(filter);
+
+        //    return updateresult.deletedcount > 0;
+        //}
+
+        public ErrorCode ChangeDevice(Platform plfm, string uid, string pwd)
+        {
+            throw new NotImplementedException();
+
+            /*
+            if (Misc.NameCheck(uid))
+            {
+                return ErrorCode.InappropriateWords;
+            }
+
+            if (AccountExists(changeName))
             {
                 return ErrorCode.IdAlreadyExists;
             }
             else
             {
-                var account = FindByName(newName);
+                var account = FindByName(guestName);
 
-                var filter = Builders<AccountScheme>.Filter.Eq("Id", account.Id);
-                var update = Builders<AccountScheme>.Update.Set("name", oldName).Set("password", Crypto.ComputeSha256Hash(password)).Set("platformId", platformId).Set("channel", channel);
+                var password_hash = Crypto.ComputeSha256Hash(password);
 
-                collection.UpdateOne(filter, update);
-
+                var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
+                var update = Builders<AccountScheme>.Update.Set("Name", changeName).Set("Password_Hash", password_hash).Set("PlatformId", platformId).Set("Channel", channel);
+                Collection.UpdateOne(filter, update);
                 return ErrorCode.Success;
             }
+            */
         }
 
+        public AccountScheme? ChangeDevice(ChangeDeviceRequest @params)
+        {
+            var account = FindByName(@params.uid);
+
+            var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
+            var update = Builders<AccountScheme>.Update.Set("PlatformId", @params.plfm).Set("Channel", @params.plfm).Set("OsCode", @params.oscd);
+            Collection.UpdateOne(filter, update);
+
+            return FindByName(@params.uid);
+        }
     }
 }

@@ -1,40 +1,30 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 using StellarGK.Database;
 
 namespace StellarGK.Host.Handlers.Profile
 {
-    [Command(Id = CommandId.ChangeUserThumbnail)]
-    public class ChangeThumbnail : BaseCommandHandler<ChangeThumbnailRequest>
+    [Packet(Id = Method.ChangeUserThumbnail)]
+    public class ChangeThumbnail : BaseMethodHandler<ChangeThumbnailRequest>
     {
         public override object Handle(ChangeThumbnailRequest @params)
         {
-            ResponsePacket response = new();
+#warning TODO - MISSING FALSE HANDLING
 
-            // TODO - MISSING FALSE HANDLING
+            bool success = DatabaseManager.GameProfile.ChangeThumbnail(GetSession(), @params.idx);
 
-            bool success = DatabaseManager.Resources.ChangeThumbnail(@params.idx, GetSession());
-
-            response.id = BasePacket.Id;
-
-            if (success)
+            ResponsePacket response = new()
             {
-                response.result = "true";
+                Id = BasePacket.Id,
+                Result = success.ToString()
+            };
 
-                return response;
-            }
-            else
-            {
-                response.result = "false";
-
-                return response;
-            }
+            return response;
         }
-
     }
+
     public class ChangeThumbnailRequest
     {
-        [JsonPropertyName("idx")]
+        [JsonProperty("idx")]
         public int idx { get; set; }
-
     }
 }

@@ -1,13 +1,12 @@
-﻿using System.Text.Json;
-using System.Text.Json.Nodes;
-using static StellarGK.Tools.Compression;
-using static StellarGK.Tools.Crypto;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using static StellarGKLibrary.Cryptography.Compression;
+using static StellarGKLibrary.Cryptography.Crypto;
 
 namespace StellarGK.Host
 {
     public partial class PacketHandler
     {
-        private static readonly JsonSerializerOptions JsonSerializerOptions = new();
         public static async Task<string> ProcessRequest(HttpContext context, IServiceProvider serviceProvider)
         {
             if (context.Request.Headers.UserAgent.Contains("BestHTTP"))
@@ -18,20 +17,17 @@ namespace StellarGK.Host
 
                 var keyIndex = Decrypt(decompressedRequest, out var decryptedRequest);
 
-                var node = JsonSerializer.Deserialize<JsonNode>(decryptedRequest, JsonSerializerOptions);
+                var node = JsonConvert.DeserializeObject<JToken>(decryptedRequest);
 
                 if (node is null)
                 {
                     return "{}";
-                    //throw new ArgumentNullException(nameof(node));
                 }
 
                 object response;
 
-                if (node is JsonArray array)
+                if (node is JArray array)
                 {
-                    // This only gets executed if it recived an array
-
                     var responses = new List<object>();
 
                     foreach (var item in array)
@@ -58,7 +54,7 @@ namespace StellarGK.Host
                     return Encrypt("{}", keyIndex);
                 }
 
-                var serialized = JsonSerializer.Serialize(response, JsonSerializerOptions);
+                var serialized = JsonConvert.SerializeObject(response);
 
                 var encrypted = Encrypt(serialized, keyIndex);
 
@@ -67,33 +63,36 @@ namespace StellarGK.Host
 
             return "shouldnt happen";
         }
-        private static object ProcessPacket(JsonNode raw, IServiceProvider serviceProvider)
-        {
-            var rawPacket = raw.Deserialize<RawPacket>();
 
-            if (!CommandsMapper.TryGetValue(rawPacket.Method, out var endpointMapping))
+        private static object ProcessPacket(JToken raw, IServiceProvider serviceProvider)
+        {
+            var paramsPacket = raw.ToObject<ParamsPacket>();
+
+            if (!CommandsMapper.TryGetValue(paramsPacket.Method, out var endpointMapping))
             {
                 throw new Exception("Unsupported Packet");
             }
 
-            var result = endpointMapping(rawPacket, serviceProvider);
+            var result = endpointMapping(paramsPacket, serviceProvider);
 
             return result;
         }
-        internal static object CommandMapping<TEndpoint, TParams>(RawPacket rawPacket, IServiceProvider serviceProvider) where TEndpoint : BaseCommandHandler<TParams>
+
+        internal static object CommandMapping<TEndpoint, TParams>(ParamsPacket paramsPacket, IServiceProvider serviceProvider) where TEndpoint : BaseMethodHandler<TParams>
         {
-            var @params = rawPacket.Params.Deserialize<TParams>();
+            var @params = paramsPacket.Params.ToObject<TParams>();
 
             var commandHandler = ActivatorUtilities.CreateInstance<TEndpoint>(serviceProvider);
 
-            commandHandler.BasePacket = rawPacket;
+            commandHandler.BasePacket = paramsPacket;
 
             return commandHandler.Handle(@params);
         }
+
         public static List<string> CommandsMapped => CommandsMapper.Keys.Select(commandId =>
         {
             var commandIdStr = commandId.ToString();
-            var enumText = ((CommandId)commandId).ToString();
+            var enumText = ((Method)commandId).ToString();
 
             if (commandIdStr == enumText)
             {
