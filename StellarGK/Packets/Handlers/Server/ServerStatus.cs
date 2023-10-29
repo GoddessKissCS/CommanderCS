@@ -12,7 +12,7 @@ namespace StellarGK.Host.Handlers.Server
 #warning TODO
             // needs to be reworked
 
-            // iterate through every server where i have a account
+            // iterate through every server where you have a account
             // if not just use nullserver
 
             ResponsePacket response = new();
@@ -55,7 +55,7 @@ namespace StellarGK.Host.Handlers.Server
             ServerData.ServerInfo SIFO = new()
             {
                 idx = 1,
-                lastLoginTime = 1643673600,
+                lastLoginTime = 0,
                 level = 1,
                 status = 1,
                 thumnail = 0,

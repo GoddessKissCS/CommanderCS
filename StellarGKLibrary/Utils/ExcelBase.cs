@@ -25,6 +25,8 @@ namespace StellarGKLibrary.Utils
 
         public void Load()
         {
+            string exePath = AppDomain.CurrentDomain.BaseDirectory;
+
             string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
 
             All = JsonConvert.DeserializeObject<Scheme[]>(path) ?? Array.Empty<Scheme>();
