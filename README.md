@@ -1,53 +1,36 @@
 # StellarGK
-some gacha game emu
-
-
+StellarGK strives to be a Server Emulator for the long shutdowned Game "GoddessKiss".
 
 ## Status
-"Urgent" to-dos
+
 
 ### Progress
-
-TLDR 
-0 - 50% means not started or not finished 
-
 <details open>
- <summary>* Achievement: 0%</summary>
+  <summary>Achievement: 0%</summary>
     * AchievementReward
     * AllAchievementReward
     * CompleteAchievement
-<details>
-
-<details open>
-  <summary>* Annihilation: 0%</summary>
+</details>
+* Annihilation: 0%
     * AnnihilationEnemyInformation
     * AnnihilationMapInformation
     * AnnihilationStageStart
     * GetAnnihilationMapInfo
     * ResetAnnihilationStage
     * StartAnnihilation
-</details>
-
 * Battle: 0%
-
     * BattleOut
-
 * Carnival: 0%
-
     * CarnivalBuyPackage
     * CarnivalComplete
     * CarnivalSelectItem
     * CheckBadge
     * GetCarnivalList
-
 * Chat:  Technically 100%
-
     * AddChatIgnore
     * DelChatIgnore
     * GetChatIgnoreList
-
 * Commander: 0%
-
     * BuyCommanderCostume
     * ChangeCommanderCostume
     * CommanderClassUp
@@ -71,9 +54,7 @@ TLDR
     * TranscendenceSkillUp
     * UpgradeWeapon
     * UpgradeWeaponInventory
-
 * Conquest: 0%
-
     * BuyConquestTroopSlot
     * ConquestJoin
     * DeleteConquestTroop
@@ -91,30 +72,22 @@ TLDR
     * SetConquestNotice
     * SetConquestTroop
     * StartConquestRadar
-
 * Cooperate: 0%
-
     * CooperateBattleComplete
     * CooperateBattleInfo
     * CooperateBattlePointGuildRank
     * CooperateBattlePointRank
     * CooperateBattleStart
-
 * Defender: 0%
-
     * DefenderSetting
     * GetDefenderInfo
-
 * Dispatch: 0%
-
     * DispatchAdvancedParty
     * DispatchCommander
     * GetDispatchCommanderList
     * GetDispatchCommanderListFromLogin
     * RecallDispatch
-
 * Dormitory: 0%
-
     * AddDormitoryFavorUser
     * ArrangeDormitoryCommander
     * ArrangeDormitoryDecoration
@@ -144,13 +117,9 @@ TLDR
     * RemoveDormitoryFavorUser
     * SearchDormitoryUser
     * SellDormitoryItem
-
 * Duel: 0%
-
     * ReceiveDuelPointReward
-
 * Event: 5%
-
     * EventBattleGachaReset
     * EventBattleStart
     * EventRaidBattleStart
@@ -174,18 +143,14 @@ TLDR
     * GetShutDownNotice
     * GetWebEvent
     * StartWebEvent
-
 * Exploration: 0%
-
     * ExplorationCancel
     * ExplorationComplete
     * ExplorationCompleteAll
     * ExplorationStart
     * ExplorationStartAll
     * GetExplorationList
-
 * Gacha: 10%
-
     * BankInfo
     * BankRoulletStart
     * BuyVipGacha
@@ -197,17 +162,13 @@ TLDR
     * GetRotationBannerInfo
     * GetVipBuyCount
     * GetVipGachaInfo
-
 * Gift: 0%
-
     * DateModeGetGift
     * GetFavorReward
     * GetMarried
     * GiftFood
     * StartDateMode
-
 * Guild: 0%
-
     * ApplyGuildJoin
     * AppointSubMaster
     * ApproveGuildJoin
@@ -233,18 +194,14 @@ TLDR
     * UpdateGuildInfo
     * UpgradeGuildLevel
     * UpgradeGuildSkill
-
 * InfinityBattle: 0%
-
     * GetInfinityBattleDeck
     * InfinityBattleGetReward
     * InfinityBattleInformation
     * InfinityBattleStart
     * SaveInfinityBattleDeck
     * StartInfinityBattleScenario
-
 * Inventory: 0%
- 
     * DecompositionItemEquipment
     * ExchangeMedal
     * GetGroupReward
@@ -259,9 +216,7 @@ TLDR
     * WeaponProgressFinish
     * WeaponProgressSlotOpen
     * WeaponProgressUseImmediateTicket
-
 * KeepAlives: 50%
-
     * BulletCharge
     * ChangeLanguage
     * CheckAlarm
@@ -273,9 +228,7 @@ TLDR
     * SetPushOnOff
     * UseTimeMachine
     * UseTimeMachineSweep
-
 * Login: 
-
     * FBSignIn 0%
     * GoogleSignIn 0%
     * GuestSignIn 50%
@@ -284,28 +237,21 @@ TLDR
     * Logout 50%
     * SignIn 50%
     * SignUp 50%
- 
 * Mail: 0%
-
     * GetMailList
     * GetReward
     * GetRewardAll
     * ReadMail
-
 * Mission: 0%
-
     * AllMissionReward
     * CompleteMissionGoal
     * Mission
     * MissionReward
-
 * Nickname: 100%
-
     * ChangeNickname
     * SetNickNameFromTutorial
 
 * Payment: 0%
-
     * CheckPayment
     * CheckPaymentAmazon
     * CheckPaymentIOS
@@ -316,12 +262,10 @@ TLDR
     * RequestPayment
 
 * PreDeck: 0%
-
     * BuyPredeckSlot 0%
     * PreDeckSetting 0%
 
 * Profile: 40%
-
     * ChangeMemberShip 0%
     * ChangeMembershipOpenPlatform 0%
     * ChangeThumbnail 75%
@@ -330,7 +274,6 @@ TLDR
     * UpdateTutorialStep 100%
 
 * PvP: 0%
-
     * GetRankingReward
     * PvPDuelInfo
     * PvPDuelList
@@ -345,25 +288,21 @@ TLDR
     * RefreshPvPWaveDuelList
 
 * Raid: 0%
-
     * GetRaidInfo
     * GetRaidRankList
     * RaidStart
     * ReceiveRaidReward
 
 * Replay: 0%
-
     * GetRecordList
     * GetReplayInfo
     * GetReplayList
 
 * Server: 100%
-
     * GetRegion
     * ServerStatus
 
 * Shop:
-
     * BuySecretShopItem
     * GetBuyVipShop
     * GetCashShopList
@@ -372,12 +311,10 @@ TLDR
     * ShopBuyGold
 
 * Situation: 0%
-
     * SituationInformation
     * SituationSweepStart
 
 * SocketChatting: 0%
-
     * CheckChattingMsg
     * SendChMsgChatting
     * SendGuildMsgChatting
@@ -385,46 +322,34 @@ TLDR
     * SendWaitChatMsg
     * SendwaitGuildMsg
     * SendWhisperMsgChatting
-
 * Troop: 0%
-
     * ChangeTroopNickname
     * GetTroopInformation
     * UpdateTroopRole
-
 * Tutorial: 100%
-
     * GetTutorialStep
     * LoginTutorialSkip
- 
 * Unit: 0%
-
     * GetUnitResearchList
     * UnitLevelUp
     * UnitLevelUpImmediate
     * UnitUpgrade
-
 * UserTerm:
-
     * ChangeDevice 25%
     * ChangeDeviceDbros 25%
     * CheckChangeDeviceCode 80%
     * GetBadWordList 80%
     * GetChangeDeviceCode 50%
     * UserTerm 100%
-
 * VersionCheck: 100%
-
     * DatabaseVersionCheck 100%
     * GameVersionInfo 100%
-
 * WorldDuel: 0%
     * WorldDuelBuffSetting 
     * WorldDuelBuffUpgrade
     * WorldDuelDefenderSetting
     * WorldDuelEnemyInfo
     * WorldDuelInformation
-
 * WorldMap: 66%
     * WorldMapInformation 100%
     * WorldMapReward 100%
