@@ -98,7 +98,7 @@ namespace StellarGK.Packets.Handlers.WorldMap
                     break;
             }
 
-            var worldmap = UserWorldReward(20, commanderId, user, session);
+            var worldmap = UserWorldReward(commanderId, user, session);
 
             ResponsePacket response = new()
             {
@@ -113,15 +113,16 @@ namespace StellarGK.Packets.Handlers.WorldMap
         }
 
 
-        public static StellarGKLibrary.Protocols.WorldMapReward UserWorldReward(int medals, string commander_id, GameProfileScheme user, string session)
+        public static StellarGKLibrary.Protocols.WorldMapReward UserWorldReward(string commander_id, GameProfileScheme user, string session)
         {
+            int medals = 20;
+
             StellarGKLibrary.Protocols.WorldMapReward WorldMapReward = new();
 
             user.CommanderData.TryGetValue(commander_id, out var commander);
 
             if(commander != null)
             {
-                commander.medl += medals;
                 user.UserInventory.medalData[commander_id] += medals;
                 user.CommanderData[commander_id].medl += medals;
 

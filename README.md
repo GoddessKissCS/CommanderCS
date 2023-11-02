@@ -11,27 +11,28 @@ some gacha game emu
 TLDR 
 0 - 50% means not started or not finished 
 
-
-* Achievement:
-
+<details open>
+ <summary>* Achievement: 0%</summary>
     * AchievementReward
     * AllAchievementReward
     * CompleteAchievement
+<details>
 
-* Annihilation:
-
+<details open>
+  <summary>* Annihilation: 0%</summary>
     * AnnihilationEnemyInformation
     * AnnihilationMapInformation
     * AnnihilationStageStart
     * GetAnnihilationMapInfo
     * ResetAnnihilationStage
     * StartAnnihilation
+</details>
 
-* Battle:
+* Battle: 0%
 
     * BattleOut
 
-* Carnival:
+* Carnival: 0%
 
     * CarnivalBuyPackage
     * CarnivalComplete
@@ -39,13 +40,13 @@ TLDR
     * CheckBadge
     * GetCarnivalList
 
-* Chat:
+* Chat:  Technically 100%
 
     * AddChatIgnore
     * DelChatIgnore
     * GetChatIgnoreList
 
-* Commander:
+* Commander: 0%
 
     * BuyCommanderCostume
     * ChangeCommanderCostume
@@ -71,7 +72,7 @@ TLDR
     * UpgradeWeapon
     * UpgradeWeaponInventory
 
-* Conquest:
+* Conquest: 0%
 
     * BuyConquestTroopSlot
     * ConquestJoin
@@ -91,7 +92,7 @@ TLDR
     * SetConquestTroop
     * StartConquestRadar
 
-* Cooperate:
+* Cooperate: 0%
 
     * CooperateBattleComplete
     * CooperateBattleInfo
@@ -99,12 +100,12 @@ TLDR
     * CooperateBattlePointRank
     * CooperateBattleStart
 
-* Defender:
+* Defender: 0%
 
     * DefenderSetting
     * GetDefenderInfo
 
-* Dispatch:
+* Dispatch: 0%
 
     * DispatchAdvancedParty
     * DispatchCommander
@@ -112,7 +113,7 @@ TLDR
     * GetDispatchCommanderListFromLogin
     * RecallDispatch
 
-* Dormitory:
+* Dormitory: 0%
 
     * AddDormitoryFavorUser
     * ArrangeDormitoryCommander
@@ -144,11 +145,11 @@ TLDR
     * SearchDormitoryUser
     * SellDormitoryItem
 
-* Duel:
+* Duel: 0%
 
     * ReceiveDuelPointReward
 
-* Event:
+* Event: 5%
 
     * EventBattleGachaReset
     * EventBattleStart
@@ -174,7 +175,7 @@ TLDR
     * GetWebEvent
     * StartWebEvent
 
-* Exploration:
+* Exploration: 0%
 
     * ExplorationCancel
     * ExplorationComplete
@@ -183,7 +184,7 @@ TLDR
     * ExplorationStartAll
     * GetExplorationList
 
-* Gacha:
+* Gacha: 10%
 
     * BankInfo
     * BankRoulletStart
@@ -197,7 +198,7 @@ TLDR
     * GetVipBuyCount
     * GetVipGachaInfo
 
-* Gift:
+* Gift: 0%
 
     * DateModeGetGift
     * GetFavorReward
@@ -205,7 +206,7 @@ TLDR
     * GiftFood
     * StartDateMode
 
-* Guild:
+* Guild: 0%
 
     * ApplyGuildJoin
     * AppointSubMaster
@@ -233,7 +234,7 @@ TLDR
     * UpgradeGuildLevel
     * UpgradeGuildSkill
 
-* InfinityBattle:
+* InfinityBattle: 0%
 
     * GetInfinityBattleDeck
     * InfinityBattleGetReward
@@ -242,8 +243,8 @@ TLDR
     * SaveInfinityBattleDeck
     * StartInfinityBattleScenario
 
-* Inventory:
-
+* Inventory: 0%
+ 
     * DecompositionItemEquipment
     * ExchangeMedal
     * GetGroupReward
@@ -259,7 +260,7 @@ TLDR
     * WeaponProgressSlotOpen
     * WeaponProgressUseImmediateTicket
 
-* KeepAlives:
+* KeepAlives: 50%
 
     * BulletCharge
     * ChangeLanguage
@@ -273,37 +274,37 @@ TLDR
     * UseTimeMachine
     * UseTimeMachineSweep
 
-* Login:
+* Login: 
 
-    * FBSignIn
-    * GoogleSignIn
-    * GuestSignIn
-    * GuestSignUp
-    * Login
-    * Logout
-    * SignIn
-    * SignUp
-
-* Mail:
+    * FBSignIn 0%
+    * GoogleSignIn 0%
+    * GuestSignIn 50%
+    * GuestSignUp 50%
+    * Login 50%
+    * Logout 50%
+    * SignIn 50%
+    * SignUp 50%
+ 
+* Mail: 0%
 
     * GetMailList
     * GetReward
     * GetRewardAll
     * ReadMail
 
-* Mission:
+* Mission: 0%
 
     * AllMissionReward
     * CompleteMissionGoal
     * Mission
     * MissionReward
 
-* Nickname:
+* Nickname: 100%
 
     * ChangeNickname
     * SetNickNameFromTutorial
 
-* Payment:
+* Payment: 0%
 
     * CheckPayment
     * CheckPaymentAmazon
@@ -314,21 +315,21 @@ TLDR
     * MakeOrderId
     * RequestPayment
 
-* PreDeck:
+* PreDeck: 0%
 
-    * BuyPredeckSlot
-    * PreDeckSetting
+    * BuyPredeckSlot 0%
+    * PreDeckSetting 0%
 
-* Profile:
+* Profile: 40%
 
-    * ChangeMemberShip
-    * ChangeMembershipOpenPlatform
-    * ChangeThumbnail
-    * CheckOpenPlatformExist
-    * GetUserInformation
-    * UpdateTutorialStep
+    * ChangeMemberShip 0%
+    * ChangeMembershipOpenPlatform 0%
+    * ChangeThumbnail 75%
+    * CheckOpenPlatformExist 0%
+    * GetUserInformation 100%
+    * UpdateTutorialStep 100%
 
-* PvP:
+* PvP: 0%
 
     * GetRankingReward
     * PvPDuelInfo
@@ -343,20 +344,20 @@ TLDR
     * RefreshPvPDuelList
     * RefreshPvPWaveDuelList
 
-* Raid:
+* Raid: 0%
 
     * GetRaidInfo
     * GetRaidRankList
     * RaidStart
     * ReceiveRaidReward
 
-* Replay:
+* Replay: 0%
 
     * GetRecordList
     * GetReplayInfo
     * GetReplayList
 
-* Server:
+* Server: 100%
 
     * GetRegion
     * ServerStatus
@@ -370,12 +371,12 @@ TLDR
     * RefreshSecretShopList
     * ShopBuyGold
 
-* Situation:
+* Situation: 0%
 
     * SituationInformation
     * SituationSweepStart
 
-* SocketChatting:
+* SocketChatting: 0%
 
     * CheckChattingMsg
     * SendChMsgChatting
@@ -385,18 +386,18 @@ TLDR
     * SendwaitGuildMsg
     * SendWhisperMsgChatting
 
-* Troop:
+* Troop: 0%
 
     * ChangeTroopNickname
     * GetTroopInformation
     * UpdateTroopRole
 
-* Tutorial:
+* Tutorial: 100%
 
     * GetTutorialStep
     * LoginTutorialSkip
-
-* Unit:
+ 
+* Unit: 0%
 
     * GetUnitResearchList
     * UnitLevelUp
@@ -405,29 +406,29 @@ TLDR
 
 * UserTerm:
 
-    * ChangeDevice
-    * ChangeDeviceDbros
-    * CheckChangeDeviceCode
-    * GetBadWordList
-    * GetChangeDeviceCode
-    * UserTerm
+    * ChangeDevice 25%
+    * ChangeDeviceDbros 25%
+    * CheckChangeDeviceCode 80%
+    * GetBadWordList 80%
+    * GetChangeDeviceCode 50%
+    * UserTerm 100%
 
-* VersionCheck:
+* VersionCheck: 100%
 
-    * DatabaseVersionCheck
-    * GameVersionInfo
+    * DatabaseVersionCheck 100%
+    * GameVersionInfo 100%
 
-* WorldDuel:
-    * WorldDuelBuffSetting
+* WorldDuel: 0%
+    * WorldDuelBuffSetting 
     * WorldDuelBuffUpgrade
     * WorldDuelDefenderSetting
     * WorldDuelEnemyInfo
     * WorldDuelInformation
 
-* WorldMap:
-    * WorldMapInformation
-    * WorldMapReward
-    * WorldMapStageStart
+* WorldMap: 66%
+    * WorldMapInformation 100%
+    * WorldMapReward 100%
+    * WorldMapStageStart 0%
 
 ## Credit
 

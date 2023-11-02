@@ -10,7 +10,9 @@ namespace StellarGK.Host.Handlers.Profile
         {
 #warning TODO - MISSING FALSE HANDLING
 
-            bool success = DatabaseManager.GameProfile.ChangeThumbnail(GetSession(), @params.idx);
+            string session = GetSession();
+
+            bool success = DatabaseManager.GameProfile.ChangeThumbnail(session, @params.idx);
 
             ResponsePacket response = new()
             {
