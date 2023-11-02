@@ -3,6 +3,7 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
+using static StellarGKLibrary.Protocols.UserInformationResponse;
 
 namespace StellarGKLibrary.Utils
 {
@@ -121,5 +122,8 @@ namespace StellarGKLibrary.Utils
 
             return localIP;
         }
+
+
+
     }
 }

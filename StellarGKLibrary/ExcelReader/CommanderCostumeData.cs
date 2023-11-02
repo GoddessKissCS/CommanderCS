@@ -112,6 +112,52 @@ namespace StellarGKLibrary.ExcelReader
             return commanderDataDict;
         }
 
+
+
+        public Dictionary<string, UserInformationResponse.Commander> AddSpecificCommander(Dictionary<string, UserInformationResponse.Commander> commanderDict, int commanderID)
+        {
+            string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
+
+            List<CommanderCostumeExcel> items = JsonConvert.DeserializeObject<List<CommanderCostumeExcel>>(path);
+
+            CommanderCostumeExcel item = items.Where(c => c.cid == commanderID).FirstOrDefault();
+
+            UserInformationResponse.Commander commanderData = new()
+            {
+                state = "N",
+                __skv1 = "1",
+                __skv2 = "1",
+                __skv3 = "0",
+                __skv4 = "0",
+                favorRewardStep = 0,
+                favorStep = 0,
+                currentCostume = item.ctid,
+                equipItemInfo = new() { },
+                equipWeaponInfo = new() { },
+                eventCostume = new() { },
+                favorPoint = new() { },
+                favr = 0,
+                fvrd = 0,
+                haveCostume = new() { item.ctid },
+                id = "" + commanderID,
+                marry = 0,
+                medl = 0,
+                role = "A",
+                transcendence = new() { 0, 0, 0, 0 },
+                __cls = "1",
+                __exp = "0",
+                __level = "1",
+                __rank = "1",
+            };
+
+            commanderDict.Add(commanderID.ToString(), commanderData);
+
+            return commanderDict;
+        }
+
+
+
+
         public Dictionary<string, int> GetAllCommandersMedalsWithDefaultValue()
         {
             Dictionary<string, int> commanderDataDict = new();

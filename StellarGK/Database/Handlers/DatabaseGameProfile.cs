@@ -167,7 +167,7 @@ namespace StellarGK.Database.Handlers
                 {
                     new()
                     {
-                        count = 9,
+                        count = 0,
                         idx = 601,
                         mid = 0,
                     }
@@ -393,7 +393,7 @@ namespace StellarGK.Database.Handlers
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
-            var update = Builders<GameProfileScheme>.Update.Set("userResources.cash", cash);
+            var update = Builders<GameProfileScheme>.Update.Set("UserResources.cash", cash);
 
             Collection.UpdateOne(filter, update);
         }
@@ -578,12 +578,21 @@ namespace StellarGK.Database.Handlers
 
             user.WorldMapStagesReward[mapId] = 1;
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("session", session);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
             var update = Builders<GameProfileScheme>.Update.Set("WorldMapStagesReward", user.WorldMapStagesReward);
 
             var updateResult = Collection.UpdateOne(filter, update);
 
             return updateResult.ModifiedCount > 0;
         }
+
+        public void UpdateVipRechargeData(string session, List<UserInformationResponse.VipRechargeData> vipRechargedata)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
+            var update = Builders<GameProfileScheme>.Update.Set("VipRechargeData", vipRechargedata);
+
+            Collection.UpdateOne(filter, update);
+        }
+
     }
 }

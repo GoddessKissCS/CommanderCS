@@ -46,7 +46,25 @@ namespace StellarGKLibrary.ExcelReader
 
             var stageList = JsonConvert.DeserializeObject<List<WorldMapStageDataExcel>>(path);
 
-            stages = stageList.ToDictionary(stage => "" + stage.worldMapId, _ => 0);
+            foreach (var stage in stageList)
+
+
+            {
+
+
+
+
+
+
+
+
+
+                string worldMapId = "" + stage.worldMapId;
+                if (!stages.ContainsKey(worldMapId))
+                {
+                    stages[worldMapId] = 0;
+                }
+            }
 
             return stages;
         }

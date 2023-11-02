@@ -9,7 +9,7 @@ namespace StellarGK.Database.Handlers
         {
         }
 
-        public GameVersionScheme Create(int id, string ver, string cdn, string game, string chat, bool gglogin, bool fc, bool stat, bool policy)
+        public GameVersionScheme Insert(int id, string ver, string cdn, string game, string chat, bool gglogin, bool fc, bool stat, bool policy)
         {
             GameVersionScheme versionInfo = new()
             {

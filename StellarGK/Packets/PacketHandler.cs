@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using static StellarGKLibrary.Cryptography.Compression;
-using static StellarGKLibrary.Cryptography.Crypto;
+using StellarGKLibrary.Cryptography;
 
 namespace StellarGK.Host
 {
@@ -11,11 +10,11 @@ namespace StellarGK.Host
         {
             if (context.Request.Headers.UserAgent.Contains("BestHTTP"))
             {
-                var rawRequest = await Stream2ByteArray(context.Request.Body);
+                var rawRequest = await Compression.Stream2ByteArray(context.Request.Body);
 
-                var decompressedRequest = Decompress(rawRequest);
+                var decompressedRequest = Compression.Decompress(rawRequest);
 
-                var keyIndex = Decrypt(decompressedRequest, out var decryptedRequest);
+                var keyIndex = Crypto.Decrypt(decompressedRequest, out var decryptedRequest);
 
                 var node = JsonConvert.DeserializeObject<JToken>(decryptedRequest);
 
@@ -51,12 +50,12 @@ namespace StellarGK.Host
 
                 if (response == "{}")
                 {
-                    return Encrypt("{}", keyIndex);
+                    return Crypto.Encrypt("{}", keyIndex);
                 }
 
                 var serialized = JsonConvert.SerializeObject(response);
 
-                var encrypted = Encrypt(serialized, keyIndex);
+                var encrypted = Crypto.Encrypt(serialized, keyIndex);
 
                 return encrypted;
             }

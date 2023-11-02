@@ -2,34 +2,39 @@
 using StellarGK.Database;
 using StellarGKLibrary.ExcelReader;
 using StellarGKLibrary.Protocols;
+using StellarGKLibrary.Utils;
 
 namespace StellarGK.Host.Handlers.Gacha
 {
     [Packet(Id = Method.BankRoulletStart)]
     public class BankRoulletStart : BaseMethodHandler<BankRoulletStartRequest>
     {
-        public static Random random = new();
-
-        public static Random random1 = new(random.Next());
 
         public override object Handle(BankRoulletStartRequest @params)
         {
-            int vIdx;// metrobank id
-            int vcnt;// current rechargeCount? + 1
-
-            // return cnt is the remaining spins
-
             string session = GetSession();
+
+            var user = GetUserGameProfile();
 
             var count = @params.count;
 
+            var vip_spins = Misc.GetVipRechargeCount(user.VipRechargeData, 601);
+
+            var remainingSpins = vip_spins + count;
+
+            user.VipRechargeData = Misc.UpdateVipRechargeCount(user.VipRechargeData, 601, remainingSpins);
+
+            DatabaseManager.GameProfile.UpdateVipRechargeData(session, user.VipRechargeData);
+
             var luck = BankGold(session, count);
+
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
 
             BankRoullet bankRoullet = new()
             {
-                rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session),
+                rsoc = rsoc,
                 luck = luck,
-                count = count
+                count = remainingSpins
             };
 
             ResponsePacket response = new()
@@ -43,6 +48,11 @@ namespace StellarGK.Host.Handlers.Gacha
 
         private static List<int> BankGold(string sessionId, int spins)
         {
+
+            Random random = new();
+
+            Random random1 = new(random.Next(1, 99));
+
             List<int> luck = new(10);
 
             for (int i = 0; i < spins; i++)
@@ -71,6 +81,7 @@ namespace StellarGK.Host.Handlers.Gacha
 
             return luck;
         }
+
 
         public class BankRoullet
         {

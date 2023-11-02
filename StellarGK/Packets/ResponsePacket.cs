@@ -7,10 +7,10 @@ namespace StellarGK.Host
         [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty(propertyName: "result", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonProperty("result", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public object Result { get; set; }
 
-        [JsonProperty(propertyName: "error", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonProperty("error", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public ErrorMessageId Error { get; set; }
     }
 

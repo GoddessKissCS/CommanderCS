@@ -9,7 +9,7 @@ namespace StellarGK.Database.Handlers
         {
         }
 
-        public ServerScheme Create(int id, int maxlevel, string maxstage, double openDt, int playercount, int servercount)
+        public ServerScheme Insert(int id, int maxlevel, string maxstage, double openDt, int playercount, int servercount)
         {
             ServerScheme versionInfo = new()
             {
