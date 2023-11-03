@@ -1,36 +1,52 @@
 # StellarGK
-StellarGK strives to be a Server Emulator for the long shutdowned Game "GoddessKiss".
+some gacha game emu
+
+
 
 ## Status
-
+"Urgent" to-dos
 
 ### Progress
-<details open>
-  <summary>Achievement: 0%</summary>
+
+TLDR 
+0 - 50% means not started or not finished 
+
+
+* Achievement:
+
     * AchievementReward
     * AllAchievementReward
     * CompleteAchievement
-</details>
-* Annihilation: 0%
+
+* Annihilation:
+
     * AnnihilationEnemyInformation
     * AnnihilationMapInformation
     * AnnihilationStageStart
     * GetAnnihilationMapInfo
     * ResetAnnihilationStage
     * StartAnnihilation
-* Battle: 0%
+
+* Battle:
+
     * BattleOut
-* Carnival: 0%
+
+* Carnival:
+
     * CarnivalBuyPackage
     * CarnivalComplete
     * CarnivalSelectItem
     * CheckBadge
     * GetCarnivalList
-* Chat:  Technically 100%
+
+* Chat:
+
     * AddChatIgnore
     * DelChatIgnore
     * GetChatIgnoreList
-* Commander: 0%
+
+* Commander:
+
     * BuyCommanderCostume
     * ChangeCommanderCostume
     * CommanderClassUp
@@ -54,7 +70,9 @@ StellarGK strives to be a Server Emulator for the long shutdowned Game "GoddessK
     * TranscendenceSkillUp
     * UpgradeWeapon
     * UpgradeWeaponInventory
-* Conquest: 0%
+
+* Conquest:
+
     * BuyConquestTroopSlot
     * ConquestJoin
     * DeleteConquestTroop
@@ -72,22 +90,30 @@ StellarGK strives to be a Server Emulator for the long shutdowned Game "GoddessK
     * SetConquestNotice
     * SetConquestTroop
     * StartConquestRadar
-* Cooperate: 0%
+
+* Cooperate:
+
     * CooperateBattleComplete
     * CooperateBattleInfo
     * CooperateBattlePointGuildRank
     * CooperateBattlePointRank
     * CooperateBattleStart
-* Defender: 0%
+
+* Defender:
+
     * DefenderSetting
     * GetDefenderInfo
-* Dispatch: 0%
+
+* Dispatch:
+
     * DispatchAdvancedParty
     * DispatchCommander
     * GetDispatchCommanderList
     * GetDispatchCommanderListFromLogin
     * RecallDispatch
-* Dormitory: 0%
+
+* Dormitory:
+
     * AddDormitoryFavorUser
     * ArrangeDormitoryCommander
     * ArrangeDormitoryDecoration
@@ -117,9 +143,13 @@ StellarGK strives to be a Server Emulator for the long shutdowned Game "GoddessK
     * RemoveDormitoryFavorUser
     * SearchDormitoryUser
     * SellDormitoryItem
-* Duel: 0%
+
+* Duel:
+
     * ReceiveDuelPointReward
-* Event: 5%
+
+* Event:
+
     * EventBattleGachaReset
     * EventBattleStart
     * EventRaidBattleStart
@@ -143,14 +173,18 @@ StellarGK strives to be a Server Emulator for the long shutdowned Game "GoddessK
     * GetShutDownNotice
     * GetWebEvent
     * StartWebEvent
-* Exploration: 0%
+
+* Exploration:
+
     * ExplorationCancel
     * ExplorationComplete
     * ExplorationCompleteAll
     * ExplorationStart
     * ExplorationStartAll
     * GetExplorationList
-* Gacha: 10%
+
+* Gacha:
+
     * BankInfo
     * BankRoulletStart
     * BuyVipGacha
@@ -162,13 +196,17 @@ StellarGK strives to be a Server Emulator for the long shutdowned Game "GoddessK
     * GetRotationBannerInfo
     * GetVipBuyCount
     * GetVipGachaInfo
-* Gift: 0%
+
+* Gift:
+
     * DateModeGetGift
     * GetFavorReward
     * GetMarried
     * GiftFood
     * StartDateMode
-* Guild: 0%
+
+* Guild:
+
     * ApplyGuildJoin
     * AppointSubMaster
     * ApproveGuildJoin
@@ -194,14 +232,18 @@ StellarGK strives to be a Server Emulator for the long shutdowned Game "GoddessK
     * UpdateGuildInfo
     * UpgradeGuildLevel
     * UpgradeGuildSkill
-* InfinityBattle: 0%
+
+* InfinityBattle:
+
     * GetInfinityBattleDeck
     * InfinityBattleGetReward
     * InfinityBattleInformation
     * InfinityBattleStart
     * SaveInfinityBattleDeck
     * StartInfinityBattleScenario
-* Inventory: 0%
+
+* Inventory:
+
     * DecompositionItemEquipment
     * ExchangeMedal
     * GetGroupReward
@@ -216,7 +258,9 @@ StellarGK strives to be a Server Emulator for the long shutdowned Game "GoddessK
     * WeaponProgressFinish
     * WeaponProgressSlotOpen
     * WeaponProgressUseImmediateTicket
-* KeepAlives: 50%
+
+* KeepAlives:
+
     * BulletCharge
     * ChangeLanguage
     * CheckAlarm
@@ -228,30 +272,39 @@ StellarGK strives to be a Server Emulator for the long shutdowned Game "GoddessK
     * SetPushOnOff
     * UseTimeMachine
     * UseTimeMachineSweep
-* Login: 
-    * FBSignIn 0%
-    * GoogleSignIn 0%
-    * GuestSignIn 50%
-    * GuestSignUp 50%
-    * Login 50%
-    * Logout 50%
-    * SignIn 50%
-    * SignUp 50%
-* Mail: 0%
+
+* Login:
+
+    * FBSignIn
+    * GoogleSignIn
+    * GuestSignIn
+    * GuestSignUp
+    * Login
+    * Logout
+    * SignIn
+    * SignUp
+
+* Mail:
+
     * GetMailList
     * GetReward
     * GetRewardAll
     * ReadMail
-* Mission: 0%
+
+* Mission:
+
     * AllMissionReward
     * CompleteMissionGoal
     * Mission
     * MissionReward
-* Nickname: 100%
+
+* Nickname:
+
     * ChangeNickname
     * SetNickNameFromTutorial
 
-* Payment: 0%
+* Payment:
+
     * CheckPayment
     * CheckPaymentAmazon
     * CheckPaymentIOS
@@ -261,19 +314,22 @@ StellarGK strives to be a Server Emulator for the long shutdowned Game "GoddessK
     * MakeOrderId
     * RequestPayment
 
-* PreDeck: 0%
-    * BuyPredeckSlot 0%
-    * PreDeckSetting 0%
+* PreDeck:
 
-* Profile: 40%
-    * ChangeMemberShip 0%
-    * ChangeMembershipOpenPlatform 0%
-    * ChangeThumbnail 75%
-    * CheckOpenPlatformExist 0%
-    * GetUserInformation 100%
-    * UpdateTutorialStep 100%
+    * BuyPredeckSlot
+    * PreDeckSetting
 
-* PvP: 0%
+* Profile:
+
+    * ChangeMemberShip
+    * ChangeMembershipOpenPlatform
+    * ChangeThumbnail
+    * CheckOpenPlatformExist
+    * GetUserInformation
+    * UpdateTutorialStep
+
+* PvP:
+
     * GetRankingReward
     * PvPDuelInfo
     * PvPDuelList
@@ -287,22 +343,26 @@ StellarGK strives to be a Server Emulator for the long shutdowned Game "GoddessK
     * RefreshPvPDuelList
     * RefreshPvPWaveDuelList
 
-* Raid: 0%
+* Raid:
+
     * GetRaidInfo
     * GetRaidRankList
     * RaidStart
     * ReceiveRaidReward
 
-* Replay: 0%
+* Replay:
+
     * GetRecordList
     * GetReplayInfo
     * GetReplayList
 
-* Server: 100%
+* Server:
+
     * GetRegion
     * ServerStatus
 
 * Shop:
+
     * BuySecretShopItem
     * GetBuyVipShop
     * GetCashShopList
@@ -310,11 +370,13 @@ StellarGK strives to be a Server Emulator for the long shutdowned Game "GoddessK
     * RefreshSecretShopList
     * ShopBuyGold
 
-* Situation: 0%
+* Situation:
+
     * SituationInformation
     * SituationSweepStart
 
-* SocketChatting: 0%
+* SocketChatting:
+
     * CheckChattingMsg
     * SendChMsgChatting
     * SendGuildMsgChatting
@@ -322,38 +384,50 @@ StellarGK strives to be a Server Emulator for the long shutdowned Game "GoddessK
     * SendWaitChatMsg
     * SendwaitGuildMsg
     * SendWhisperMsgChatting
-* Troop: 0%
+
+* Troop:
+
     * ChangeTroopNickname
     * GetTroopInformation
     * UpdateTroopRole
-* Tutorial: 100%
+
+* Tutorial:
+
     * GetTutorialStep
     * LoginTutorialSkip
-* Unit: 0%
+
+* Unit:
+
     * GetUnitResearchList
     * UnitLevelUp
     * UnitLevelUpImmediate
     * UnitUpgrade
+
 * UserTerm:
-    * ChangeDevice 25%
-    * ChangeDeviceDbros 25%
-    * CheckChangeDeviceCode 80%
-    * GetBadWordList 80%
-    * GetChangeDeviceCode 50%
-    * UserTerm 100%
-* VersionCheck: 100%
-    * DatabaseVersionCheck 100%
-    * GameVersionInfo 100%
-* WorldDuel: 0%
-    * WorldDuelBuffSetting 
+
+    * ChangeDevice
+    * ChangeDeviceDbros
+    * CheckChangeDeviceCode
+    * GetBadWordList
+    * GetChangeDeviceCode
+    * UserTerm
+
+* VersionCheck:
+
+    * DatabaseVersionCheck
+    * GameVersionInfo
+
+* WorldDuel:
+    * WorldDuelBuffSetting
     * WorldDuelBuffUpgrade
     * WorldDuelDefenderSetting
     * WorldDuelEnemyInfo
     * WorldDuelInformation
-* WorldMap: 66%
-    * WorldMapInformation 100%
-    * WorldMapReward 100%
-    * WorldMapStageStart 0%
+
+* WorldMap:
+    * WorldMapInformation
+    * WorldMapReward
+    * WorldMapStageStart
 
 ## Credit
 

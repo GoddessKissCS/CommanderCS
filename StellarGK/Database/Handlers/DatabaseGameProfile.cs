@@ -187,6 +187,8 @@ namespace StellarGK.Database.Handlers
                 },
             };
 
+            DatabaseManager.Dormitory.Create(uno);
+
             Collection.InsertOne(user);
 
             return user;
@@ -229,6 +231,11 @@ namespace StellarGK.Database.Handlers
         public GameProfileScheme FindByNick(string nickname)
         {
             return Collection.AsQueryable().Where(d => d.UserResources.nickname == nickname).FirstOrDefault();
+        }
+
+        public List<GameProfileScheme> FindByMemberIdList(string memberId)
+        {
+            return Collection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).ToList();
         }
 
         public UserInformationResponse.BattleStatistics UserStatisticsFromSession(string session)
@@ -333,24 +340,20 @@ namespace StellarGK.Database.Handlers
         {
             var user = FindBySession(session);
 
-            int gold, cash, stats_gold;
-
             if (useAddition)
             {
-                gold = user.UserResources.gold + new_gold;
-                stats_gold = user.UserStatistics.TotalGold + new_gold;
-                cash = user.UserResources.cash + new_cash;
-            }
-            else
-            {
-                gold = user.UserResources.gold - new_gold;
-                stats_gold = user.UserStatistics.TotalGold - new_gold;
-                cash = user.UserResources.cash - new_cash;
+                user.UserResources.gold =+ new_gold;
+                user.UserStatistics.TotalGold =+ new_gold;
+                user.UserResources.cash =+ new_cash;
+            } else {
+                user.UserResources.gold =- new_gold;
+                user.UserStatistics.TotalGold =- new_gold;
+                user.UserResources.cash =- new_cash;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
-            var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", gold).Set("UserResources.cash", cash).Set("UserStatistics.totalGold", stats_gold);
+            var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", user.UserResources.gold).Set("UserResources.cash", user.UserResources.cash).Set("UserStatistics.totalGold", user.UserStatistics.TotalGold);
 
             Collection.UpdateOne(filter, update);
         }
@@ -359,21 +362,20 @@ namespace StellarGK.Database.Handlers
         {
             var user = FindBySession(session);
 
-            int stats_gold;
             if (useAddition)
             {
-                gold = user.UserResources.gold + gold;
-                stats_gold = user.UserStatistics.TotalGold + gold;
+                user.UserResources.gold =+ gold;
+                user.UserStatistics.TotalGold = + gold;
             }
             else
             {
-                gold = user.UserResources.gold - gold;
-                stats_gold = user.UserStatistics.TotalGold - gold;
+                user.UserResources.gold =- gold;
+                user.UserStatistics.TotalGold =- gold;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
-            var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", gold).Set("UserStatistics.totalGold", stats_gold);
+            var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", user.UserResources.gold).Set("UserStatistics.totalGold", user.UserStatistics.TotalGold);
 
             Collection.UpdateOne(filter, update);
         }
@@ -384,16 +386,16 @@ namespace StellarGK.Database.Handlers
 
             if (useAddition)
             {
-                cash = user.UserResources.cash + cash;
+                user.UserResources.cash =+ cash;
             }
             else
             {
-                cash = user.UserResources.cash - cash;
+                user.UserResources.cash =- cash;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
-            var update = Builders<GameProfileScheme>.Update.Set("UserResources.cash", cash);
+            var update = Builders<GameProfileScheme>.Update.Set("UserResources.cash", user.UserResources.cash);
 
             Collection.UpdateOne(filter, update);
         }

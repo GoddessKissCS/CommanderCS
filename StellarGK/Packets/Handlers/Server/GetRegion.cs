@@ -29,7 +29,7 @@ namespace StellarGK.Host.Handlers.Server
             Dictionary<string, ServerInfo> serverInfo = new()
             {
                 { "1", korea },
-                //{ "2", korea },
+              korea },
             };
 
             ResponsePacket response = new()

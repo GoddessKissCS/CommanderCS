@@ -47,9 +47,7 @@ namespace StellarGK.Database.Handlers
                 user.Name = name;
                 user.Password_Hash = ComputeSha256Hash(password);
                 user.Clearance = Clearance.Player;
-            }
-
-            DatabaseManager.Dormitory.Create(memberId);
+            }            
 
             Collection.InsertOne(user);
 
@@ -99,6 +97,17 @@ namespace StellarGK.Database.Handlers
 
             return ErrorCode.Success;
         }
+
+        public void ChangeMemberShipOpenPlatform(string guestname, int platformId, string token, int channel)
+        {
+            var filter = Builders<AccountScheme>.Filter.Eq("Name", guestname) & Builders<AccountScheme>.Filter.Eq("Token", token);
+            var update = Builders<AccountScheme>.Update.Set("PlatformId", platformId).Set("Channel", channel);
+
+            Collection.UpdateOne(filter, update);
+
+        }
+
+
 
         public void UpdateLoginTime(int id)
         {

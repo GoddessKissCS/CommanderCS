@@ -10,8 +10,6 @@ namespace StellarGK.Host.Handlers.Profile
         {
             ResponsePacket response = new();
 
-#warning TODO - ??? i dont know
-
             // SHOULD BE FINISHED?
 
             ErrorCode code = DatabaseManager.Account.ChangeMemberShip(@params.uid, @params.pwd, @params.plfm, @params.puid, @params.ch);

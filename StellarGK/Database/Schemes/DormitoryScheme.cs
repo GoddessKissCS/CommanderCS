@@ -6,7 +6,7 @@ namespace StellarGK.Database.Schemes
     public class DormitoryScheme
     {
         public ObjectId Id { get; set; }
-        public int memberId { get; set; }
+        public int Uno { get; set; }
         public Dictionary<string, int> DormitoryInfo { get; set; }
         public Dormitory.Resource DormitoryResource { get; set; }
         public Dictionary<string, int> ItemNormal { get; set; }

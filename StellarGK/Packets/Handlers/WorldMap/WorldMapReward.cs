@@ -106,7 +106,6 @@ namespace StellarGK.Packets.Handlers.WorldMap
                 Result = worldmap
             };
 
-
             DatabaseManager.GameProfile.UpdateWorldMapReward(session, @params.world);
 
             return response;
@@ -127,8 +126,7 @@ namespace StellarGK.Packets.Handlers.WorldMap
                 user.CommanderData[commander_id].medl += medals;
 
                 WorldMapReward.commanderData = user.CommanderData;
-            } else
-            {
+            } else {
                 int cid = int.Parse(commander_id);
 
                 var commanderdata = CommanderCostumeData.GetInstance().AddSpecificCommander(user.CommanderData, cid);

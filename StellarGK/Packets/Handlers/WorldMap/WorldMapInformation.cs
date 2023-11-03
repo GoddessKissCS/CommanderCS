@@ -11,7 +11,6 @@ namespace StellarGK.Host.Handlers.WorldMap
     {
         public override object Handle(WorldMapInformationRequest @params)
         {
-
             var user = GetUserGameProfile();
 
             user.WorldMapStages.TryGetValue(@params.world.ToString(), out List<WorldMapInformationResponse> stages);

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using StellarGK.Database;
 using StellarGK.Host;
 using StellarGKLibrary.Enum;
 
@@ -11,26 +12,32 @@ namespace StellarGK.Packets.Handlers.Profile
         {
             ResponsePacket response = new();
 
-#warning TODO - changing the platform from like google -> dbros? idk
+            //TODO - changing the platform from like google -> dbros? idk
 
-            //ErrorCode code = DatabaseManager.Account.ChangeMemberShip(@params.uid, @params.pwd, @params.plfm, @params.puid, @params.ch);
+            // should be finished? idk it shouldnt affect anything but you never know
 
-            /*
+            DatabaseManager.Account.ChangeMemberShipOpenPlatform(@params.puid, (int)@params.plfm, @params.tokn, @params.ch);       
 
-            if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
-            {
-                response.error = new() { code = code };
-                response.id = BasePacket.Id;
-
-                return response;
-            }
-
-            */
-
+        
             response.Id = BasePacket.Id;
             response.Result = "{}";
             return response;
         }
+
+    }
+    public class ChangeMembershipOpenPlatformRequest
+    {
+        [JsonProperty("tokn")]
+        public string tokn { get; set; }
+
+        [JsonProperty("plfm")]
+        public Platform plfm { get; set; }
+
+        [JsonProperty("puid")]
+        public string puid { get; set; }
+
+        [JsonProperty("ch")]
+        public int ch { get; set; }
     }
 
     /*
@@ -63,18 +70,4 @@ namespace StellarGK.Packets.Handlers.Profile
 
     */
 
-    public class ChangeMembershipOpenPlatformRequest
-    {
-        [JsonProperty("tokn")]
-        public string tokn { get; set; }
-
-        [JsonProperty("plfm")]
-        public Platform plfm { get; set; }
-
-        [JsonProperty("puid")]
-        public string puid { get; set; }
-
-        [JsonProperty("ch")]
-        public int ch { get; set; }
-    }
 }

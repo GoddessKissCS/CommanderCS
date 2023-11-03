@@ -1,6 +1,24 @@
-﻿namespace StellarGK.Packets.Handlers.Unit
+﻿using StellarGK.Host;
+using StellarGKLibrary.Protocols;
+
+namespace StellarGK.Packets.Handlers.Unit
 {
-    public class GetUnitResearchList
+    [Packet(Id = Method.GetUnitResearchList)]
+    public class GetUnitResearchList : BaseMethodHandler<GetUnitResearchListRequest>
+    {
+        public override object Handle(GetUnitResearchListRequest @params)
+        {
+            ResponsePacket response = new()
+            {
+                Result = null,
+                Id = BasePacket.Id
+            };
+
+            return response;
+        }
+    }
+
+    public class GetUnitResearchListRequest
     {
     }
 }
