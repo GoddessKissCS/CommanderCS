@@ -26,10 +26,13 @@ namespace StellarGK.Host.Handlers.Commander
 
                 if (!TryRankUpCommander(commanderRankData.rank, ref commanderMedals))
                 {
-                    response.Id = BasePacket.Id;
-                    response.Error = new() { code = ErrorCode.NotEnoughResources };
+                    ErrorPacket error = new()
+                    {
+                        Id = BasePacket.Id,
+                        Error = new() { code = ErrorCode.NotEnoughResources },
+                    };
 
-                    return response;
+                    return error;
                 }
 
                 commander.__rank = (Convert.ToInt32(commander.__rank) + 1).ToString();
@@ -52,10 +55,12 @@ namespace StellarGK.Host.Handlers.Commander
 
                 if (!TryRecruitCommander(commanderData.grade, ref commanderMedals))
                 {
-                    response.Id = BasePacket.Id;
-                    response.Error = new() { code = ErrorCode.NotEnoughResources };
+                    ErrorPacket error = new() { 
+                        Id = BasePacket.Id,
+                        Error = new() { code = ErrorCode.NotEnoughResources },
+                    };
 
-                    return response;
+                    return error;
                 }
 
                 user.UserInventory.medalData[cid] = commanderMedals;

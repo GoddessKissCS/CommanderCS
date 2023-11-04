@@ -18,9 +18,13 @@ namespace StellarGK.Host.Handlers.Sign
 
             if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
             {
-                response.Error = new() { code = code };
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = code },
+                };
 
-                return response;
+                return error;
             }
 
             SignUpPacket SignUp = new()

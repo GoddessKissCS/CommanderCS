@@ -18,20 +18,28 @@ namespace StellarGK.Packets.Handlers.Guild
 
 			if (Misc.NameCheck(@params.gnm))
 			{
-                response.Error = new() { code = ErrorCode.FederationNameContainsBadwordsOrInvalid };
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = ErrorCode.FederationNameContainsBadwordsOrInvalid },
+                };
 
-                return response;
+                return error;
             }
 
             var guild = DatabaseManager.Guild.FindByName(@params.gnm);
 
             if (guild != null)
 			{
-                response.Error = new() { code = ErrorCode.FederationNameAlreadyExists };
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = ErrorCode.FederationNameAlreadyExists },
+                };
 
-                return response;      
-            } else
-			{
+                return error;   
+				
+            } else {
                 string session = GetSession();
 
 				DatabaseManager.GameProfile.UpdateCash(session, 300, false);
@@ -44,10 +52,13 @@ namespace StellarGK.Packets.Handlers.Guild
 
 				var userguild = DatabaseManager.Guild.RequestGuild(user.GuildId);
 
+				var memberdata = DatabaseManager.Guild.RequestGuildMembers(user.GuildId);
+
                 GuildInfo guildInfo = new()
                 {
 					guildInfo = userguild,
 					resource = rsoc,
+					memberData = memberdata
                 };
 
 				response.Result = guildInfo;

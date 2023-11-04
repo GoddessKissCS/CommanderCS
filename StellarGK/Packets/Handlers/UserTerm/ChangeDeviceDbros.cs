@@ -24,9 +24,13 @@ namespace StellarGK.Packets.Handlers.UserTerm
 
             if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
             {
-                response.Error = new() { code = code };
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = code },
+                };
 
-                return response;
+                return error;
             }
 
             response.Result = "{}";

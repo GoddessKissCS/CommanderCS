@@ -18,9 +18,14 @@ namespace StellarGK.Host.Handlers.UserTerm
 
             if (result == null)
             {
-                response.Error = new() { code = ErrorCode.InvalidDeviceCode };
 
-                return response;
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = ErrorCode.InvalidDeviceCode },
+                };
+
+                return error;
             }
 
             var user = DatabaseManager.Account.FindByUid(result.MemberId);

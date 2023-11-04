@@ -16,10 +16,13 @@ namespace StellarGK.Host.Handlers.Profile
 
             if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
             {
-                response.Error = new() { code = code };
-                response.Id = BasePacket.Id;
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = code },
+                };
 
-                return response;
+                return error;
             }
 
             response.Id = BasePacket.Id;

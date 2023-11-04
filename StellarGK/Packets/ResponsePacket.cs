@@ -7,10 +7,17 @@ namespace StellarGK.Host
         [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty("result", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonProperty("result")]
         public object Result { get; set; }
 
-        [JsonProperty("error", DefaultValueHandling = DefaultValueHandling.Ignore)]
+    }
+
+    public class ErrorPacket
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("error")]
         public ErrorMessageId Error { get; set; }
     }
 
@@ -50,5 +57,6 @@ namespace StellarGK.Host
         InsufficientParticipationEntries = 21007, // Those migh be swapped
         FederationNameAlreadyExists = 71005,
         FederationNameContainsBadwordsOrInvalid = 71009,
+        CannotProceedWithConquestBattleAtThisTime = 71501,
     }
 }

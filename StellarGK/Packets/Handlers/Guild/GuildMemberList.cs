@@ -25,8 +25,9 @@ namespace StellarGK.Host.Handlers.Guild
             {
                 memberData = DatabaseManager.Guild.RequestGuildMembers(user.GuildId),
                 badge = 0, // NO IDEA WHAT THIS SETS
-#warning TODO
             };
+
+            response.Result = guild;
 
             return response;
         }

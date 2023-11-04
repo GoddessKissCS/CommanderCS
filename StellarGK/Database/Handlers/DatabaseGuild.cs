@@ -37,8 +37,10 @@ namespace StellarGK.Database.Handlers
                     new()
                     {
                         level = user.UserResources.level,
-                        lastTime = time,
-                        memberGrade = 0,
+                        lastTime = 0,
+                        memberGrade = 1,
+                        // MemberGrade 1 = Guildmaster 
+                        // MemberGrade 2 = Sub Guildmaster
                         name = user.UserResources.nickname,
                         paymentBonusPoint = 0,
                         thumnail = user.UserResources.thumbnailId,
@@ -50,7 +52,38 @@ namespace StellarGK.Database.Handlers
                 ],
                 Notice = string.Empty,
                 State = 0,
-                SkillDada = null,
+                SkillDada = [
+                    new()
+                    {
+                        idx = 1,
+                        level = 1,
+                    },
+                    new()
+                    {
+                        idx = 2,
+                        level = 1,
+                    },
+                    new()
+                    {
+                        idx = 3,
+                        level = 1,
+                    },
+                    new()
+                    {
+                        idx = 8,
+                        level = 1,
+                    },
+                    new()
+                    {
+                        idx = 9,
+                        level = 1,
+                    },
+                    new()
+                    {
+                        idx = 10,
+                        level = 0,
+                    },
+                ],
                 World = user.Server,
                 aPoint = 0,
                 Point = 0,
@@ -109,7 +142,9 @@ namespace StellarGK.Database.Handlers
                 occupy = guild.Occupy,
                 point = guild.Point,
                 world = guild.World,
+               
             };
+
 
             return userGuild;
         }
@@ -131,11 +166,28 @@ namespace StellarGK.Database.Handlers
             return guild.MemberData;
         }
 
+
+        public void UpdateLoginTimeInGuild(GameProfileScheme user)
+        {
+            GuildScheme? guild = Collection.AsQueryable().Where(d => d.GuildId == user.GuildId).FirstOrDefault();
+
+            if (guild == null)
+            {
+                return;
+            }
+
+            var filter = Builders<GuildScheme>.Filter.Eq("MemberData.uno", user.Uno);
+
+            var update = Builders<GuildScheme>.Update.Set("MemberData.$.lastTime", 0);
+
+            Collection.UpdateOne(filter, update);
+        }
+
         public List<RoGuild> GetAllGuilds(string session)
         {
             var allGuilds = Collection.AsQueryable().ToList();
 
-            List<RoGuild> returnGuilds = new();
+            List<RoGuild> returnGuilds = [];
 
             if (allGuilds == null)
             {
