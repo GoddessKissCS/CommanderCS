@@ -34,23 +34,19 @@ namespace StellarGK.Packets.Handlers.Guild
 			{
                 string session = GetSession();
 
-                UserInformationResponse.UserGuild userGuild = new()
-				{
-					emblem = @params.emb,
-					guildType = @params.gtyp,
-					limitLevel = @params.lvlm,
-					name = @params.gnm,
-				};
-
 				DatabaseManager.GameProfile.UpdateCash(session, 300, false);
 
 				var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
 
-				DatabaseManager.Guild.Create(@params.gnm, @params.emb, @params.gtyp, @params.lvlm);
+				DatabaseManager.Guild.Create(@params.gnm, @params.emb, @params.gtyp, @params.lvlm, session);
+
+				var user = GetUserGameProfile();
+
+				var userguild = DatabaseManager.Guild.RequestGuild(user.GuildId);
 
                 GuildInfo guildInfo = new()
                 {
-					guildInfo = userGuild,
+					guildInfo = userguild,
 					resource = rsoc,
                 };
 

@@ -12,11 +12,15 @@ namespace StellarGK.Database.Handlers
         {
         }
 
-        public void Create(string guildname, int emblem, int guildtype, int levellimit)
+        public void Create(string guildname, int emblem, int guildtype, int levellimit, string session)
         {
             int guildId = DatabaseManager.AutoIncrements.GetNextNumber("GuildId", 1000);
 
             int time = Utility.CurrentTimeStamp();
+
+            var user = DatabaseManager.GameProfile.FindBySession(session);
+
+            // TODO PROBABLY NEEDS AN OVERHAUL OR SO IDK
 
             GuildScheme guild = new()
             {
@@ -28,9 +32,35 @@ namespace StellarGK.Database.Handlers
                 CreateTime = time,
                 Level = 1,
                 Count = 1,
-                
-
+                MemberData =
+                [
+                    new()
+                    {
+                        level = user.UserResources.level,
+                        lastTime = time,
+                        memberGrade = 0,
+                        name = user.UserResources.nickname,
+                        paymentBonusPoint = 0,
+                        thumnail = user.UserResources.thumbnailId,
+                        todayPoint = 0,
+                        totalPoint = 0,
+                        uno = int.Parse(user.Uno),
+                        world = user.Server,
+                    }
+                ],
+                Notice = string.Empty,
+                State = 0,
+                SkillDada = null,
+                World = user.Server,
+                aPoint = 0,
+                Point = 0,
+                MemberGrade = 0,
+                MaxCount = 20,
             };
+
+            user.GuildId = guildId;
+
+            DatabaseManager.GameProfile.UpdateProfile(session, user);
 
             Collection.InsertOne(guild);
         }
