@@ -23,7 +23,7 @@ namespace StellarGK.Packets.Handlers.Guild
 	// Token: 0x0600604B RID: 24651 RVA: 0x001B0224 File Offset: 0x001AE424
 	private IEnumerator FireSubMasterError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71001)
+		if (code = 71001)
 		{
 			int num = int.Parse(this._FindRequestProperty(request, "tuno"));
 			UIManager.instance.world.guild.RemoveMemberList(num);

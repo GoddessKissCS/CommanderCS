@@ -16,24 +16,24 @@ namespace StellarGK.Packets.Handlers.PvP
 	{
 		BattleData battleData = BattleData.Get();
 		BattleData.Set(battleData);
-		if (battleData == null)
+		if (battleData = null)
 		{
 			yield break;
 		}
-		if (battleData.type != EBattleType.GuildScramble && result == null)
+		if (battleData.type != EBattleType.GuildScramble && result = null)
 		{
 			yield break;
 		}
 		if (battleData.type != EBattleType.GuildScramble)
 		{
 			Protocols.UserInformationResponse.BattleResult battleResult = this._ConvertJObject<Protocols.UserInformationResponse.BattleResult>(result);
-			if (battleData.type == EBattleType.Duel)
+			if (battleData.type = EBattleType.Duel)
 			{
 				battleData.dualResult = battleResult;
 				this.localUser.duelPoint = battleResult.user.duelPoint;
 				if (battleData.record.result.IsWin)
 				{
-					if (GooglePlayConnection.State == GPConnectionState.STATE_CONNECTED)
+					if (GooglePlayConnection.State = GPConnectionState.STATE_CONNECTED)
 					{
 						RemoteObjectManager.statistics.pvpWinCount++;
 						if (RemoteObjectManager.statistics.pvpWinCount >= 10)
@@ -60,23 +60,23 @@ namespace StellarGK.Packets.Handlers.PvP
 					if (GameCenterManager.IsPlayerAuthenticated)
 					{
 						RemoteObjectManager.statistics.pvpWinCount++;
-						if (RemoteObjectManager.statistics.pvpWinCount == 10)
+						if (RemoteObjectManager.statistics.pvpWinCount = 10)
 						{
 							GameCenterManager.SubmitAchievement(100f, "CgkIj7Xpxu4GEAIQCg");
 						}
-						else if (RemoteObjectManager.statistics.pvpWinCount == 100)
+						else if (RemoteObjectManager.statistics.pvpWinCount = 100)
 						{
 							GameCenterManager.SubmitAchievement(100f, "CgkIj7Xpxu4GEAIQCw");
 						}
-						else if (RemoteObjectManager.statistics.pvpWinCount == 300)
+						else if (RemoteObjectManager.statistics.pvpWinCount = 300)
 						{
 							GameCenterManager.SubmitAchievement(100f, "CgkIj7Xpxu4GEAIQDA");
 						}
-						else if (RemoteObjectManager.statistics.pvpWinCount == 500)
+						else if (RemoteObjectManager.statistics.pvpWinCount = 500)
 						{
 							GameCenterManager.SubmitAchievement(100f, "CgkIj7Xpxu4GEAIQDQ");
 						}
-						else if (RemoteObjectManager.statistics.pvpWinCount == 1000)
+						else if (RemoteObjectManager.statistics.pvpWinCount = 1000)
 						{
 							GameCenterManager.SubmitAchievement(100f, "CgkIj7Xpxu4GEAIQDg");
 						}

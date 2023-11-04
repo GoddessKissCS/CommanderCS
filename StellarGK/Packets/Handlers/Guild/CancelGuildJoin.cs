@@ -30,7 +30,7 @@ namespace StellarGK.Packets.Handlers.Guild
 	// Token: 0x0600602C RID: 24620 RVA: 0x001AFF68 File Offset: 0x001AE168
 	private IEnumerator CancelGuildJoinError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71304)
+		if (code = 71304)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110222"));
 		}

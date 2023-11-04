@@ -25,7 +25,7 @@
 	{
 		this.localUser.RefreshGoodsFromNetwork(result.resource);
 		this.localUser.FromNetwork(result.userInfo);
-		if (result.userInfo.vipShop == 1 && result.userInfo.vipShopResetTime == 0)
+		if (result.userInfo.vipShop = 1 && result.userInfo.vipShopResetTime = 0)
 		{
 			this.localUser.statistics.isBuyVipShop = true;
 		}

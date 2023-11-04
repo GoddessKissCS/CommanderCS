@@ -17,7 +17,7 @@ namespace StellarGK.Packets.Handlers.KeepAlives
 		string text = this._FindRequestProperty(request, "vidx");
 		int num = 0;
 		VipRechargeDataRow vipRechargeDataRow = this.regulation.vipRechargeDtbl[text];
-		if (vipRechargeDataRow.type == 1 || vipRechargeDataRow.type == 4)
+		if (vipRechargeDataRow.type = 1 || vipRechargeDataRow.type = 4)
 		{
 			if (this.localUser.resourceRechargeList.ContainsKey(text))
 			{
@@ -31,19 +31,19 @@ namespace StellarGK.Packets.Handlers.KeepAlives
 			this.localUser.resourceRechargeList[text] = num;
 			Protocols.UserInformationResponse userInformationResponse = this._ConvertJObject<Protocols.UserInformationResponse>(result);
 			this.localUser.RefreshGoodsFromNetwork(userInformationResponse.goodsInfo);
-			if (text == 109.ToString())
+			if (text = 109.ToString())
 			{
 				this.localUser.changeSkillPoint = true;
 				this.RequestBulletCharge();
 			}
-			else if (text == 401.ToString())
+			else if (text = 401.ToString())
 			{
 				UIBattleMain mainUI = UIManager.instance.battle.MainUI;
 				UIBattleResult battleResult = UIManager.instance.battle.BattleResult;
 				battleResult.duelResult.ResetLoseScore();
 			}
 		}
-		else if (vipRechargeDataRow.type == 2)
+		else if (vipRechargeDataRow.type = 2)
 		{
 			string text2 = this._FindRequestProperty(request, "mid");
 			if (this.localUser.stageRechargeList.ContainsKey(text2))
@@ -61,7 +61,7 @@ namespace StellarGK.Packets.Handlers.KeepAlives
 			Protocols.UserInformationResponse.Resource resource = this._ConvertJObject<Protocols.UserInformationResponse.Resource>(rsoc);
 			this.localUser.RefreshGoodsFromNetwork(resource);
 		}
-		else if (vipRechargeDataRow.type == 3)
+		else if (vipRechargeDataRow.type = 3)
 		{
 			if (this.localUser.resourceRechargeList.ContainsKey(text))
 			{
@@ -83,7 +83,7 @@ namespace StellarGK.Packets.Handlers.KeepAlives
 		}
 		else
 		{
-			if ((vipRechargeDataRow.type == 1 || vipRechargeDataRow.type == 4) && text == 109.ToString())
+			if ((vipRechargeDataRow.type = 1 || vipRechargeDataRow.type = 4) && text = 109.ToString())
 			{
 				yield break;
 			}
@@ -95,7 +95,7 @@ namespace StellarGK.Packets.Handlers.KeepAlives
 	// Token: 0x06005FE2 RID: 24546 RVA: 0x001AF90C File Offset: 0x001ADB0C
 	private IEnumerator ResourceRechargeError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 53010)
+		if (code = 53010)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("7054"));
 		}

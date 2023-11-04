@@ -21,7 +21,7 @@ namespace StellarGK.Packets.Handlers.Situation
 	}
     	private IEnumerator SituationSweepStartError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 11011)
+		if (code = 11011)
 		{
 			if (UIManager.instance.world != null)
 			{

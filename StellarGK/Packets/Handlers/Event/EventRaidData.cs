@@ -24,7 +24,7 @@ namespace StellarGK.Packets.Handlers.Event
 	// Token: 0x06006127 RID: 24871 RVA: 0x001B140C File Offset: 0x001AF60C
 	private IEnumerator EventRaidDataError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 70201 || code == 70210)
+		if (code = 70201 || code = 70210)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("6600"));
 			if (UIManager.instance.world.existEventBattle && UIManager.instance.world.eventBattle.isActive)
@@ -32,7 +32,7 @@ namespace StellarGK.Packets.Handlers.Event
 				UIManager.instance.world.eventBattle.CloseEventRaid();
 			}
 		}
-		else if (code == 70204 || code == 70205)
+		else if (code = 70204 || code = 70205)
 		{
 			UISimplePopup uisimplePopup = UISimplePopup.CreateOK(false, Localization.Get("1303"), Localization.Format("110367", new object[] { code }), string.Empty, Localization.Get("1001"));
 			uisimplePopup.onClose = delegate
@@ -43,7 +43,7 @@ namespace StellarGK.Packets.Handlers.Event
 				}
 			};
 		}
-		else if (code == 70207 || code == 70202 || code == 70203)
+		else if (code = 70207 || code = 70202 || code = 70203)
 		{
 			UISimplePopup uisimplePopup2 = UISimplePopup.CreateOK(false, Localization.Get("1303"), string.Empty, Localization.Get("6606"), Localization.Get("1001"));
 			uisimplePopup2.onClose = delegate

@@ -23,7 +23,7 @@ namespace StellarGK.Packets.Handlers.SocketChatting
 			for (int i = 0; i < result.rewardList.Count; i++)
 			{
 				Protocols.RewardInfo.RewardData rewardData = result.rewardList[i];
-				if (rewardData.rewardType == ERewardType.Commander)
+				if (rewardData.rewardType = ERewardType.Commander)
 				{
 					text = rewardData.rewardId;
 				}
@@ -65,27 +65,27 @@ namespace StellarGK.Packets.Handlers.SocketChatting
 	// Token: 0x06005FB8 RID: 24504 RVA: 0x001AF5EC File Offset: 0x001AD7EC
 	private IEnumerator SendGuildMsgChattingError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 99004)
+		if (code = 99004)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("7054"));
 		}
-		else if (code == 52003)
+		else if (code = 52003)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("7903"));
 		}
-		else if (code == 52005)
+		else if (code = 52005)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("7904"));
 		}
-		else if (code == 52007)
+		else if (code = 52007)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("7902"));
 		}
-		else if (code == 52008)
+		else if (code = 52008)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("7901"));
 		}
-		else if (code == 52010)
+		else if (code = 52010)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("7905"));
 		}

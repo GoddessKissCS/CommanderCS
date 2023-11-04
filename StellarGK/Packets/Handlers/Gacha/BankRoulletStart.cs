@@ -128,7 +128,7 @@ namespace StellarGK.Host.Handlers.Gacha
 	// Token: 0x06005FCB RID: 24523 RVA: 0x001AF754 File Offset: 0x001AD954
 	private IEnumerator BankRoulletStartError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 53010)
+		if (code = 53010)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("7054"));
 		}

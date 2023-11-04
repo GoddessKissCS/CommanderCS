@@ -28,7 +28,7 @@ namespace StellarGK.Packets.Handlers.Conquest
 	// Token: 0x0600605F RID: 24671 RVA: 0x001B03B0 File Offset: 0x001AE5B0
 	private IEnumerator GetConquestInfoError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71501)
+		if (code = 71501)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110365"));
 			UIManager.instance.world.guild.SetConquestError();

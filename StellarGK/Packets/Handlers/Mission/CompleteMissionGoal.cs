@@ -19,12 +19,12 @@ namespace StellarGK.Packets.Handlers.Mission
 		SoundManager.PlaySFX("SE_DailyMissionReward_001", false, 0f, float.MaxValue, float.MaxValue, default(Vector3), null, SoundDuckingSetting.DoNotDuck, 0f, 1f);
 		this.localUser.RefreshRewardFromNetwork(result);
 		UIManager.instance.RefreshOpenedUI();
-		if (text == "1")
+		if (text = "1")
 		{
 			this.localUser.missionGoal++;
 			UIManager.instance.world.warHome.SetInfo(EReward.DailyMission);
 		}
-		else if (text == "2")
+		else if (text = "2")
 		{
 			this.localUser.achievementGoal++;
 			UIManager.instance.world.warHome.SetInfo(EReward.Achievement);

@@ -1,4 +1,5 @@
-﻿using StellarGKLibrary.Utils;
+﻿using Newtonsoft.Json;
+using StellarGKLibrary.Utils;
 
 namespace StellarGKLibrary.ExcelReader
 {
@@ -17,8 +18,13 @@ namespace StellarGKLibrary.ExcelReader
 
     public class CommanderRankDataExcel
     {
+        [JsonProperty("rank")]
         public int rank { get; set; }
+
+        [JsonProperty("medal")]
         public int medal { get; set; }
+
+        [JsonProperty("gold")]
         public int gold { get; set; }
     }
 }

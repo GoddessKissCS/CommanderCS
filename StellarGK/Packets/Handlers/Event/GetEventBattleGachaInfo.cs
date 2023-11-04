@@ -36,7 +36,7 @@ namespace StellarGK.Packets.Handlers.Event
 	// Token: 0x0600613E RID: 24894 RVA: 0x001B15E0 File Offset: 0x001AF7E0
 	private IEnumerator EventBattleGachaOpenError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 70210)
+		if (code = 70210)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("6600"));
 			yield break;

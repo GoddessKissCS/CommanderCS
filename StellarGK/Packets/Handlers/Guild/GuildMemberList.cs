@@ -53,7 +53,7 @@ namespace StellarGK.Host.Handlers.Guild
 		if (result != null)
 		{
 			UIManager.instance.world.guild.InitAndOpenGuildInfo(result.memberData);
-			UISetter.SetActive(UIManager.instance.world.guild.guildBoardBadge, result.badge == 1);
+			UISetter.SetActive(UIManager.instance.world.guild.guildBoardBadge, result.badge = 1);
 		}
 		yield break;
 	}*/

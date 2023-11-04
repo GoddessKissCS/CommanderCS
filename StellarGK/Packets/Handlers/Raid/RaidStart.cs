@@ -22,7 +22,7 @@ namespace StellarGK.Packets.Handlers.Raid
 	// Token: 0x06005FD6 RID: 24534 RVA: 0x001AF81C File Offset: 0x001ADA1C
 	private IEnumerator RaidStartError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 70009)
+		if (code = 70009)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("7044"));
 		}

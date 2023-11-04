@@ -46,7 +46,7 @@ namespace StellarGK.Host.Handlers.Nickname
             {
                 var userGameProfile = DatabaseManager.GameProfile.FindBySession(sess);
 
-                if (userGameProfile.TutorialData.skip == true)
+                if (userGameProfile.TutorialData.skip = true)
                 {
                     DatabaseManager.GameProfile.UpdateStep(sess, 12);
                 }

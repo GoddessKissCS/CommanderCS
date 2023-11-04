@@ -14,7 +14,7 @@ namespace StellarGK.Packets.Handlers.SocketChatting
 	// Token: 0x06005FBE RID: 24510 RVA: 0x001AF650 File Offset: 0x001AD850
 	private IEnumerator SendwaitGuildMsgResult(JsonRpcClient.Request request, object result)
 	{
-		if (result == null)
+		if (result = null)
 		{
 			yield break;
 		}

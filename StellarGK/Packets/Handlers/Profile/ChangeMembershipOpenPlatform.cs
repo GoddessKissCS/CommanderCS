@@ -57,11 +57,11 @@ namespace StellarGK.Packets.Handlers.Profile
         LocalStorage.RemoveLoginData(PlayerPrefs.GetString("GuestID"));
         PlayerPrefs.SetString("GuestID", null);
         LocalStorage.SaveLoginData(this.localUser.platformUserInfo, null, (int)platform);
-        if (platform == Platform.FaceBook)
+        if (platform = Platform.FaceBook)
         {
             this.RequestFBSignIn(text);
         }
-        else if (platform == Platform.Google)
+        else if (platform = Platform.Google)
         {
             this.RequestGoogleSignIn(text);
         }

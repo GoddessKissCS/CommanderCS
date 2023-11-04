@@ -1,7 +1,29 @@
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.WaveDuel
 {
-    public class WaveBattleList
+	[Packet(Id = Method.WaveBattleList)]
+    public class WaveBattleList : BaseMethodHandler<WaveBattleListRequest>
     {
+        public override object Handle(WaveBattleListRequest @params)
+        {
+
+			StellarGKLibrary.Protocols.WaveBattleInfoList waveBattleInfoList = new();
+
+
+			// Need to figure out the daily shit for this thing
+
+			ResponsePacket packet = new()
+			{
+				Id = BasePacket.Id,
+				Result = waveBattleInfoList,
+			};
+
+			return packet;
+
+        }
+
     }
 
     public class WaveBattleListRequest

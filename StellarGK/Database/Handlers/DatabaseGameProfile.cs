@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using StellarGK.Database.Schemes;
 using StellarGK.Host.Handlers.Login;
 using StellarGKLibrary.ExcelReader;
@@ -342,13 +343,13 @@ namespace StellarGK.Database.Handlers
 
             if (useAddition)
             {
-                user.UserResources.gold =+ new_gold;
-                user.UserStatistics.TotalGold =+ new_gold;
-                user.UserResources.cash =+ new_cash;
+                user.UserResources.gold += new_gold;
+                user.UserStatistics.TotalGold += new_gold;
+                user.UserResources.cash += new_cash;
             } else {
-                user.UserResources.gold =- new_gold;
-                user.UserStatistics.TotalGold =- new_gold;
-                user.UserResources.cash =- new_cash;
+                user.UserResources.gold -= new_gold;
+                user.UserStatistics.TotalGold -= new_gold;
+                user.UserResources.cash -= new_cash;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
@@ -364,13 +365,13 @@ namespace StellarGK.Database.Handlers
 
             if (useAddition)
             {
-                user.UserResources.gold =+ gold;
-                user.UserStatistics.TotalGold = + gold;
+                user.UserResources.gold += gold;
+                user.UserStatistics.TotalGold += gold;
             }
             else
             {
-                user.UserResources.gold =- gold;
-                user.UserStatistics.TotalGold =- gold;
+                user.UserResources.gold -= gold;
+                user.UserStatistics.TotalGold -= gold;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
@@ -386,11 +387,11 @@ namespace StellarGK.Database.Handlers
 
             if (useAddition)
             {
-                user.UserResources.cash =+ cash;
+                user.UserResources.cash += cash;
             }
             else
             {
-                user.UserResources.cash =- cash;
+                user.UserResources.cash -= cash;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
@@ -596,5 +597,11 @@ namespace StellarGK.Database.Handlers
             Collection.UpdateOne(filter, update);
         }
 
+        public void UpdateProfile(string session, GameProfileScheme user)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
+
+            Collection.ReplaceOne(filter, user);
+        }
     }
 }

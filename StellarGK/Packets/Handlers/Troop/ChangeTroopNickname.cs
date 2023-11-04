@@ -25,7 +25,7 @@ namespace StellarGK.Packets.Handlers.Troop
 	// Token: 0x06005F51 RID: 24401 RVA: 0x001AED74 File Offset: 0x001ACF74
 	private IEnumerator ChangeTroopNicknameError(JsonRpcClient.Request request, string result, int code, string message)
 	{
-		if (code == 90001)
+		if (code = 90001)
 		{
 		}
 		UISimplePopup.CreateOK(false, "ChangeTroopNicknameError", code.ToString(), message, "확인");

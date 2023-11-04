@@ -21,7 +21,7 @@ namespace StellarGK.Packets.Handlers.Conquest
 			for (int i = 0; i < this.localUser.commanderList.Count; i++)
 			{
 				RoCommander roCommander = this.localUser.commanderList[i];
-				if (roCommander.conquestDeckId == int.Parse(text))
+				if (roCommander.conquestDeckId = int.Parse(text))
 				{
 					roCommander.conquestDeckId = 0;
 				}
@@ -42,28 +42,28 @@ namespace StellarGK.Packets.Handlers.Conquest
 	// Token: 0x06006062 RID: 24674 RVA: 0x001B03F8 File Offset: 0x001AE5F8
 	private IEnumerator SetConquestTroopError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71001)
+		if (code = 71001)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110303"));
 			UIManager.instance.world.guild.Close();
 		}
-		else if (code == 71501)
+		else if (code = 71501)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
-		else if (code == 71502)
+		else if (code = 71502)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
-		else if (code == 71507)
+		else if (code = 71507)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
-		else if (code == 71503)
+		else if (code = 71503)
 		{
 			UISimplePopup.CreateOK(false, Localization.Get("1303"), Localization.Format("110367", new object[] { code }), null, "1001");
 		}
-		else if (code == 71504)
+		else if (code = 71504)
 		{
 			UISimplePopup.CreateOK(false, Localization.Get("1303"), Localization.Format("110367", new object[] { code }), null, "1001");
 		}

@@ -25,7 +25,7 @@ namespace StellarGK.Packets.Handlers.Exploration
 				int num = 0;
 				if (result.explorationExp != null)
 				{
-					int num2 = result.explorationExp.FindIndex((Protocols.RewardInfo.ExplorationExp x) => x.idx == idxs[i]);
+					int num2 = result.explorationExp.FindIndex((Protocols.RewardInfo.ExplorationExp x) => x.idx = idxs[i]);
 					if (num2 >= 0)
 					{
 						num = result.explorationExp[num2].exp;

@@ -19,7 +19,7 @@ namespace StellarGK.Packets.Handlers.Commander
 		{
 			this.localUser.weaponHistory.Add(num, recp);
 		}
-		if (UIManager.instance.world.weaponResearch.inProgress.historyPopup == null)
+		if (UIManager.instance.world.weaponResearch.inProgress.historyPopup = null)
 		{
 			UIManager.instance.world.weaponResearch.inProgress.historyPopup = UIPopup.Create<UIWeaponProgressHistoryPopup>("WeaponProgressHistoryPopup");
 		}

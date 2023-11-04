@@ -35,6 +35,8 @@ namespace StellarGK.Database.Schemes
         public List<BlockUser> BlockedUsers { get; set; }
         public List<MailInfo.MailData>? MailDataList { get; set; }
         public List<DailyBonusCheckResponse> DailyBonusCheck { get; set; }
+
+        //public List<WaveBattleInfoList.WaveBattleInfo> WaveBattleInfos { get; set; }
     }
 
     public class UserDevice

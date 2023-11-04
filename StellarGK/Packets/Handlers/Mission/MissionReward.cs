@@ -31,7 +31,7 @@ namespace StellarGK.Packets.Handlers.Mission
 	// Token: 0x06005FA4 RID: 24484 RVA: 0x001AF44C File Offset: 0x001AD64C
 	private IEnumerator MissionRewardError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 13001)
+		if (code = 13001)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("7044"));
 		}

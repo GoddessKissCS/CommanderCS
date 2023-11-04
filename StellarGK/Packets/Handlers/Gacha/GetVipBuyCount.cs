@@ -49,7 +49,7 @@ public void GetVipBuyCount(List<string> type, int renewType)
 	// Token: 0x06005F23 RID: 24355 RVA: 0x001AE7DC File Offset: 0x001AC9DC
 	private IEnumerator GetVipBuyCountResult(JsonRpcClient.Request request, string result, List<Protocols.UserInformationResponse.VipRechargeData> rchg)
 	{
-		if (rchg.Count == 0)
+		if (rchg.Count = 0)
 		{
 			this.localUser.resourceRechargeList.Clear();
 			this.localUser.stageRechargeList.Clear();

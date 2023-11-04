@@ -14,7 +14,7 @@ namespace StellarGK.Packets.Handlers.Conquest
 	// Token: 0x0600608B RID: 24715 RVA: 0x001B0774 File Offset: 0x001AE974
 	private IEnumerator GetConquestReplayResult(JsonRpcClient.Request request, object result)
 	{
-		if (result == null)
+		if (result = null)
 		{
 			if (this.localUser.playingChatRecord != null)
 			{

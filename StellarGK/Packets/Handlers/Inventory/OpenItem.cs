@@ -23,7 +23,7 @@ namespace StellarGK.Packets.Handlers.Inventory
 		}
 		ERewardType erewardType = (ERewardType)int.Parse(this._FindRequestProperty(request, "rtyp"));
 		string text = this._FindRequestProperty(request, "ridx");
-		if (erewardType == ERewardType.Commander)
+		if (erewardType = ERewardType.Commander)
 		{
 			RoCommander roCommander = this.localUser.FindCommander(text);
 			if (roCommander != null)

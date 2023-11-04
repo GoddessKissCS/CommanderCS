@@ -13,7 +13,7 @@ namespace StellarGK.Packets.Handlers.InfinityBattle
 	// Token: 0x0600618B RID: 24971 RVA: 0x001B1C84 File Offset: 0x001AFE84
 	private IEnumerator InfinityBattleInformationResult(JsonRpcClient.Request request, Protocols.InfinityTowerInformation result)
 	{
-		if (this.localUser.infinityStageList == null)
+		if (this.localUser.infinityStageList = null)
 		{
 			this.localUser.infinityStageList = new Dictionary<string, Dictionary<int, int>>();
 		}

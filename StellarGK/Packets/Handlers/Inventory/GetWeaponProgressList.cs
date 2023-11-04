@@ -26,7 +26,7 @@ namespace StellarGK.Packets.Handlers.Inventory
 	// Token: 0x06006162 RID: 24930 RVA: 0x001B18F8 File Offset: 0x001AFAF8
 	private IEnumerator GetWeaponProgressListError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 70201 || code == 70210)
+		if (code = 70201 || code = 70210)
 		{
 		}
 		yield break;

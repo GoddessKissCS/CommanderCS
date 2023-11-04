@@ -6,8 +6,7 @@ namespace StellarGKLibrary.ExcelReader
 {
     public class CommanderCostumeData : BaseExcelReader<CommanderCostumeData, CommanderCostumeExcel>
     {
-        public override string FileName
-        { get { return "CommanderCostumeDataTable.json"; } }
+        public override string FileName { get { return "CommanderCostumeDataTable.json"; } }
 
         public CommanderCostumeExcel? FromId(int idx)
         {
@@ -17,6 +16,11 @@ namespace StellarGKLibrary.ExcelReader
         public CommanderCostumeExcel? FromId(string idx)
         {
             return All.Where(avatar => avatar.cid == int.Parse(idx)).FirstOrDefault();
+        }
+
+        public CommanderCostumeExcel? FromCostumeId(int idx)
+        {
+            return All.Where(costume => costume.ctid == idx).FirstOrDefault();
         }
 
         public Dictionary<string, UserInformationResponse.Commander> GetAllCommandersWithDefaultValue()
@@ -68,7 +72,6 @@ namespace StellarGKLibrary.ExcelReader
 
             return commanderDataDict;
         }
-
         public Dictionary<string, UserInformationResponse.Commander> AddSpecificCommander(int commanderID)
         {
             Dictionary<string, UserInformationResponse.Commander> commanderDataDict = new();
@@ -111,9 +114,6 @@ namespace StellarGKLibrary.ExcelReader
 
             return commanderDataDict;
         }
-
-
-
         public Dictionary<string, UserInformationResponse.Commander> AddSpecificCommander(Dictionary<string, UserInformationResponse.Commander> commanderDict, int commanderID)
         {
             string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
@@ -154,10 +154,6 @@ namespace StellarGKLibrary.ExcelReader
 
             return commanderDict;
         }
-
-
-
-
         public Dictionary<string, int> GetAllCommandersMedalsWithDefaultValue()
         {
             Dictionary<string, int> commanderDataDict = new();
@@ -180,7 +176,6 @@ namespace StellarGKLibrary.ExcelReader
 
             return commanderDataDict;
         }
-
         public Dictionary<string, int> AddSpecificCommanderMedals(int commanderId)
         {
             Dictionary<string, int> commanderDataDict = new();
@@ -197,21 +192,52 @@ namespace StellarGKLibrary.ExcelReader
 
     public class CommanderCostumeExcel
     {
+        [JsonProperty("ctid")]
         public int ctid { get; set; }
+
+        [JsonProperty("cid")]
         public int cid { get; set; }
+
+        [JsonProperty("name")]
         public int name { get; set; }
+
+        [JsonProperty("Desc")]
         public int Desc { get; set; }
+
+        [JsonProperty("sell")]
         public int sell { get; set; }
+
+        [JsonProperty("gid")]
         public int gid { get; set; }
+
+        [JsonProperty("sellPrice")]
         public int sellPrice { get; set; }
+
+        [JsonProperty("atlasNumber")]
         public int atlasNumber { get; set; }
+
+        [JsonProperty("skinName")]
         public int skinName { get; set; }
+
+        [JsonProperty("order")]
         public int order { get; set; }
+
+        [JsonProperty("statType1")]
         public int statType1 { get; set; }
+
+        [JsonProperty("stat1")]
         public int stat1 { get; set; }
+
+        [JsonProperty("statType2")]
         public int statType2 { get; set; }
+
+        [JsonProperty("stat2")]
         public int stat2 { get; set; }
+
+        [JsonProperty("statType3")]
         public int statType3 { get; set; }
+
+        [JsonProperty("stat3")]
         public int stat3 { get; set; }
     }
 }

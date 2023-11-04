@@ -32,16 +32,37 @@ namespace StellarGKLibrary.ExcelReader
 
     public class GoodsDataExcel
     {
+        [JsonProperty("type")]
         public int type { get; set; }
+
+        [JsonProperty("name")]
         public int name { get; set; }
+
+        [JsonProperty("serverFieldName")]
         public string serverFieldName { get; set; }
+
+        [JsonProperty("max")]
         public int max { get; set; }
+
+        [JsonProperty("rechargeType")]
         public int rechargeType { get; set; }
+
+        [JsonProperty("rechargeTime")]
         public int rechargeTime { get; set; }
+
+        [JsonProperty("rechargeMax")]
         public int rechargeMax { get; set; }
+
+        [JsonProperty("description")]
         public int description { get; set; }
+
+        [JsonProperty("storage")]
         public int storage { get; set; }
+
+        [JsonProperty("icon")]
         public string icon { get; set; }
+
+        [JsonProperty("openType")]
         public int openType { get; set; }
     }
 }

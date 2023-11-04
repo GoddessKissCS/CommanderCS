@@ -1,8 +1,30 @@
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Raid
 {
-    public class GetRaidRankList
+	[Packet(Id = Method.GetRaidRankList)]
+    public class GetRaidRankList : BaseMethodHandler<GetRaidRankListRequest>
     {
+        public override object Handle(GetRaidRankListRequest @params)
+        {
+            ResponsePacket response = new ResponsePacket()
+			{
+				Id = BasePacket.Id,
+				Result = null,
+			};
+
+
+			StellarGKLibrary.Protocols.PvPRankingList pvPRankingList = new();
+
+
+            return response;
+        }
     }
+
+	public class GetRaidRankListRequest
+	{
+
+	}
 }
 
 /*	// Token: 0x06005FD0 RID: 24528 RVA: 0x000120F8 File Offset: 0x000102F8
@@ -15,7 +37,7 @@ namespace StellarGK.Packets.Handlers.Raid
 	private IEnumerator GetRaidRankListResult(JsonRpcClient.Request request, object result)
 	{
 		this.raidRankingList.Clear();
-		if (result == null)
+		if (result = null)
 		{
 			yield break;
 		}

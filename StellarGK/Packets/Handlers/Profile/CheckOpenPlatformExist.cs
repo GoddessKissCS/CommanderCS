@@ -36,9 +36,9 @@ namespace StellarGK.Packets.Handlers.Profile
 			uisimplePopup.onClick = delegate(GameObject popupSender)
 			{
 				string name = popupSender.name;
-				if (name == "OK")
+				if (name = "OK")
 				{
-					if (this.localUser.loginType == 1)
+					if (this.localUser.loginType = 1)
 					{
 						this.RequestChangeDevice(plfm);
 					}
@@ -49,7 +49,7 @@ namespace StellarGK.Packets.Handlers.Profile
 				}
 			};
 		}
-		else if (this.localUser.loginType == 1)
+		else if (this.localUser.loginType = 1)
 		{
 			this.RequestChangeDevice(plfm);
 		}

@@ -43,7 +43,7 @@ namespace StellarGK.Packets.Handlers.Commander
 	// Token: 0x060060E1 RID: 24801 RVA: 0x001B0E4C File Offset: 0x001AF04C
 	private IEnumerator CompleteCommanderScenarioError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 30111)
+		if (code = 30111)
 		{
 			ScenarioResultPopup scenarioResultPopup = UIPopup.Create<ScenarioResultPopup>("ScenarioResultPopup");
 			if (scenarioResultPopup != null)

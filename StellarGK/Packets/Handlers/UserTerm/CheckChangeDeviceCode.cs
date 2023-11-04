@@ -70,7 +70,7 @@ namespace StellarGK.Host.Handlers.UserTerm
 	// Token: 0x060060CE RID: 24782 RVA: 0x001B0CE0 File Offset: 0x001AEEE0
 	private IEnumerator CheckChangeDeviceCodeError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 10024)
+		if (code = 10024)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("19525"));
 		}

@@ -21,7 +21,7 @@ namespace StellarGK.Packets.Handlers.Guild
 	// Token: 0x06006053 RID: 24659 RVA: 0x001B02E0 File Offset: 0x001AE4E0
 	private IEnumerator GetGuildBoardError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71001)
+		if (code = 71001)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110303"));
 			UIManager.instance.world.guild.Close();

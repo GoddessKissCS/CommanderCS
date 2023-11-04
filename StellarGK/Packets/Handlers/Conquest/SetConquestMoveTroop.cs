@@ -24,7 +24,7 @@ namespace StellarGK.Packets.Handlers.Conquest
 			troop.remain = result.distance;
 			troop.ucash = result.ucash;
 			troop.mvtm = result.distance;
-			if (troop.remainData == null)
+			if (troop.remainData = null)
 			{
 				troop.remainData = new TimeData();
 			}
@@ -41,31 +41,31 @@ namespace StellarGK.Packets.Handlers.Conquest
 	// Token: 0x06006074 RID: 24692 RVA: 0x001B059C File Offset: 0x001AE79C
 	private IEnumerator SetConquestMoveTroopError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71001)
+		if (code = 71001)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110303"));
 		}
-		else if (code == 71501)
+		else if (code = 71501)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
-		else if (code == 71502)
+		else if (code = 71502)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
-		else if (code == 71507)
+		else if (code = 71507)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
-		else if (code == 71506)
+		else if (code = 71506)
 		{
 			UISimplePopup.CreateOK(false, Localization.Get("1303"), Localization.Format("110367", new object[] { code }), null, "1001");
 		}
-		else if (code == 71508)
+		else if (code = 71508)
 		{
 			UISimplePopup.CreateOK(false, Localization.Get("1303"), Localization.Format("110367", new object[] { code }), null, "1001");
 		}
-		else if (code == 20002)
+		else if (code = 20002)
 		{
 			UISimplePopup.CreateOK(false, Localization.Get("1303"), Localization.Format("110367", new object[] { code }), null, "1001");
 			this.ReqeustRenewUserGameData();

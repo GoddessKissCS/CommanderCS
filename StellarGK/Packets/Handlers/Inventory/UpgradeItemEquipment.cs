@@ -47,7 +47,7 @@ namespace StellarGK.Packets.Handlers.Inventory
 				}
 			}
 		}
-		if (roItem == null)
+		if (roItem = null)
 		{
 			roItem = this.localUser.EquipPossibleList_FindItem(text, num);
 		}

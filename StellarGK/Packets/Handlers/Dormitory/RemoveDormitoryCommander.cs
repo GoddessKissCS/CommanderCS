@@ -38,7 +38,7 @@ namespace StellarGK.Packets.Handlers.Dormitory
 	// Token: 0x060061C3 RID: 25027 RVA: 0x001B2050 File Offset: 0x001B0250
 	private IEnumerator RemoveDormitoryCommanderError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 85144)
+		if (code = 85144)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("81031"));
 		}

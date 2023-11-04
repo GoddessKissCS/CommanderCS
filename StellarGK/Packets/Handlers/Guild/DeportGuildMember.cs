@@ -22,13 +22,13 @@ namespace StellarGK.Packets.Handlers.Guild
 	// Token: 0x06006045 RID: 24645 RVA: 0x001B0184 File Offset: 0x001AE384
 	private IEnumerator DeportGuildMemberError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71001)
+		if (code = 71001)
 		{
 			int num = int.Parse(this._FindRequestProperty(request, "tuno"));
 			UIManager.instance.world.guild.RemoveMemberList(num);
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110228"));
 		}
-		else if (code == 71307)
+		else if (code = 71307)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110118"));
 		}

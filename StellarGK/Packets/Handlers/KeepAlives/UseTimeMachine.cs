@@ -17,7 +17,7 @@ namespace StellarGK.Packets.Handlers.KeepAlives
 		string text = this._FindRequestProperty(request, "mid");
 		string text2 = this._FindRequestProperty(request, "cnt");
 		RoWorldMap.Stage stage = this.localUser.FindWorldMapStage(text);
-		stage.clearCount += int.Parse(text2);
+		stage.clearCount = int.Parse(text2);
 		this.localUser.useBullet = true;
 		this.localUser.RefreshGoodsFromNetwork(result.resource);
 		this.localUser.RefreshItemFromNetwork(result.eventResourceData);
@@ -25,7 +25,7 @@ namespace StellarGK.Packets.Handlers.KeepAlives
 		this.localUser.RefreshPartFromNetwork(result.partData);
 		this.localUser.RefreshMedalFromNetwork(result.medalData);
 		this.localUser.RefreshItemFromNetwork(result.groupItemData);
-		if (!this.localUser.statistics.isBuyVipShop && result.VipShopOpen == 1)
+		if (!this.localUser.statistics.isBuyVipShop && result.VipShopOpen = 1)
 		{
 			this.localUser.statistics.vipShopResetTime_Data.SetByDuration((double)result.VipShopRemainTime);
 			this.localUser.statistics.vipShop = result.VipShopOpen;

@@ -14,7 +14,7 @@ namespace StellarGK.Packets.Handlers.Dormitory
 	private IEnumerator AddDormitoryFavorUserResult(JsonRpcClient.Request request, string result)
 	{
 		string text = this._FindRequestProperty(request, "tuno");
-		if (SingletonMonoBehaviour<DormitoryData>.Instance.user.uno == text)
+		if (SingletonMonoBehaviour<DormitoryData>.Instance.user.uno = text)
 		{
 			SingletonMonoBehaviour<DormitoryData>.Instance.favorState = true;
 			Message.Send("User.Update.FavorState");

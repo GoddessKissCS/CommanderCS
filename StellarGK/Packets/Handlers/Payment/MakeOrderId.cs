@@ -22,11 +22,11 @@ namespace StellarGK.Packets.Handlers.Payment
 	// Token: 0x0600600B RID: 24587 RVA: 0x001AFC9C File Offset: 0x001ADE9C
 	private IEnumerator MakeOrderIdError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 10129)
+		if (code = 10129)
 		{
 			NetworkAnimation.Instance.CreateFloatingText("Error Code:" + code);
 		}
-		else if (code == 10128)
+		else if (code = 10128)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("10000207"));
 		}

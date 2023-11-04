@@ -1,6 +1,8 @@
 ﻿using MongoDB.Driver;
 using StellarGK.Database.Schemes;
 using StellarGKLibrary.Protocols;
+using StellarGKLibrary.Ro;
+using StellarGKLibrary.Utils;
 
 namespace StellarGK.Database.Handlers
 {
@@ -10,8 +12,27 @@ namespace StellarGK.Database.Handlers
         {
         }
 
-        public void Create()
+        public void Create(string guildname, int emblem, int guildtype, int levellimit)
         {
+            int guildId = DatabaseManager.AutoIncrements.GetNextNumber("GuildId", 1000);
+
+            int time = Utility.CurrentTimeStamp();
+
+            GuildScheme guild = new()
+            {
+                GuildId = guildId,
+                Name = guildname,
+                Emblem = emblem,
+                GuildType = guildtype,
+                Limitlevel = levellimit,
+                CreateTime = time,
+                Level = 1,
+                Count = 1,
+                
+
+            };
+
+            Collection.InsertOne(guild);
         }
 
         public GuildScheme FindByName(string guildName)

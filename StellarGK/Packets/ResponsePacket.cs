@@ -44,5 +44,11 @@ namespace StellarGK.Host
         CannotSentMoreThanTwoFederationRequestsOrBeAccepted = 71110,
         CannotSentTheSameFederationAnRequestAfterBeingDeclientWithin48Hours = 71111,
         CannotSentAnotherFederationAnJoinRequestAfterLeavingForOneHour = 71112,
+        CannotPurchauseSinceBuyLimitIsReached = 10128,
+        UnknownErrorCode_2 = 10129,
+        InsufficientEnergy = 21006,
+        InsufficientParticipationEntries = 21007, // Those migh be swapped
+        FederationNameAlreadyExists = 71005,
+        FederationNameContainsBadwordsOrInvalid = 71009,
     }
 }

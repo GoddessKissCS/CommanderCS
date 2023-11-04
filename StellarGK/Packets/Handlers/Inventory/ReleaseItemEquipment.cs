@@ -33,7 +33,7 @@ namespace StellarGK.Packets.Handlers.Inventory
 				RoCommander roCommander = this.localUser.FindCommander(key);
 				if (roCommander != null)
 				{
-					EquipItemDataRow equipItemDataRow = this.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key == releaseItemIdx);
+					EquipItemDataRow equipItemDataRow = this.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key = releaseItemIdx);
 					RoItem roItem = this.localUser.EquipedList_FindItem(releaseItemIdx, key, num);
 					if (roItem != null)
 					{
