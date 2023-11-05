@@ -1,7 +1,47 @@
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+using StellarGKLibrary.Protocols;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class GetGuildBoard
+	[Packet(Id = Method.GetGuildBoard)]
+    public class GetGuildBoard : BaseMethodHandler<GetGuildBoardRequest>
     {
+        public override object Handle(GetGuildBoardRequest @params)
+        {
+
+			var user = GetUserGameProfile();
+
+
+			var list = DatabaseManager.Guild.GetGuildBoard(user.GuildId);
+
+
+			ResponsePacket response = new ResponsePacket();
+			GetGuildBoardResponse getGuildBoard = new()
+			{
+				list = list,
+				page = 0,
+				tPage = 0,
+			};
+
+			response.Id = BasePacket.Id;
+			response.Result = getGuildBoard;
+
+			return response;
+        }
+    }
+	public class GetGuildBoardRequest
+	{
+		[JsonProperty("page")]
+		public int page { get; set; }
+	}
+
+	public class GetGuildBoardResponse
+	{
+        public int tPage { get; set; }
+        public int page { get; set; }
+        public List<GuildBoardData> list { get; set; }
     }
 }
 

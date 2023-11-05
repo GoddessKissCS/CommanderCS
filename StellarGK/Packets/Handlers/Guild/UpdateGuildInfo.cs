@@ -1,8 +1,58 @@
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class UpdateGuildInfo
+	[Packet(Id = Method.UpdateGuildInfo)]
+    public class UpdateGuildInfo : BaseMethodHandler<UpdateGuildInfoRequest>
     {
+        public override object Handle(UpdateGuildInfoRequest @params)
+        {      
+			var user = GetUserGameProfile();
+
+			var session = GetSession();
+
+            ErrorCode code = DatabaseManager.Guild.UpdateGuildInfo(@params.act, @params.val, session);
+
+			if(code == ErrorCode.FederationSettingsChangedRecently || code == ErrorCode.FederationNameContainsBadwordsOrInvalid || code == ErrorCode.FederationNameAlreadyExists)
+			{
+				ErrorPacket error = new()
+				{
+					Error = new() { code = code },
+					Id = BasePacket.Id,
+				};
+				return error;
+			}
+
+			var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+			var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+
+            StellarGKLibrary.Protocols.GuildInfo guildInfo = new()
+			{
+				resource = rsoc,
+				guildInfo = guild,
+			};
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = guildInfo,
+            };
+
+            return response;
+        }
     }
+
+	public class UpdateGuildInfoRequest
+	{
+        [JsonProperty("act")]
+        public int act { get; set; }
+
+		[JsonProperty("val")]
+		public string val { get; set; }
+	}
+
 }
 
 /*	// Token: 0x06006033 RID: 24627 RVA: 0x000120F8 File Offset: 0x000102F8

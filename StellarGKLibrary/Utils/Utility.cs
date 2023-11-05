@@ -42,6 +42,19 @@ namespace StellarGKLibrary.Utils
             return unixTimestamp;
         }
 
+        public static long GetCurrentTimeInSeconds()
+        {
+            DateTime unixEpoch = new(1970, 1, 1, 0, 0, 0);
+            TimeSpan timeSpan = DateTime.UtcNow - unixEpoch;
+            return (long)timeSpan.TotalSeconds;
+        }
+
+        public static double CurrentTimeInMilliseconds()
+        {
+            TimeSpan span = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1, 0, 0, 0));
+            return span.TotalMilliseconds;
+        }
+
         public static string CreateGuestName()
         {
             const string characters = "0123456789";

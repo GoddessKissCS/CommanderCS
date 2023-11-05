@@ -48,9 +48,11 @@ namespace StellarGK.Host
         FederationSettingsChanged = 71301,
         FederationGuildSettingsChanged = 71302,
         CannotSentMoreThanOneFederationJoinRequest = 71303,
+
         CannotSentMoreThanTwoFederationRequestsOrBeAccepted = 71110,
         CannotSentTheSameFederationAnRequestAfterBeingDeclientWithin48Hours = 71111,
         CannotSentAnotherFederationAnJoinRequestAfterLeavingForOneHour = 71112,
+
         CannotPurchauseSinceBuyLimitIsReached = 10128,
         UnknownErrorCode_2 = 10129,
         InsufficientEnergy = 21006,
@@ -58,5 +60,15 @@ namespace StellarGK.Host
         FederationNameAlreadyExists = 71005,
         FederationNameContainsBadwordsOrInvalid = 71009,
         CannotProceedWithConquestBattleAtThisTime = 71501,
+        InappropriateWordsInGuildBoardMessage = 71131,
+        FederationSettingsChangedRecently = 71007,
+        FederationSettingsChangedRecently_2 = 71018,
+
+        FederationSettingsChangedOnGuildApply = 71301,
+        FederationSettingsChangedOnGuildApply_2 = 71302,
+        CannotJoinOrApplyMoreThan1Federation = 71303,
+
+        FederationIsFull = 71305,
+        RequestDataHasBeenChanged = 71306,
     }
 }

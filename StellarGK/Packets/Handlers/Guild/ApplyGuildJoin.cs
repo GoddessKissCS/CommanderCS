@@ -1,7 +1,45 @@
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class ApplyGuildJoin
+	[Packet(Id = Method.ApplyGuildJoin)]
+    public class ApplyGuildJoin : BaseMethodHandler<ApplyGuildJoinRequest>
     {
+        public override object Handle(ApplyGuildJoinRequest @params)
+        {           
+			var session = GetSession();
+
+			ErrorCode code = DatabaseManager.GuildApplication.CreateGuildApplication(session, @params.gidx);
+
+#warning TODO NEED TO ADD ALL ERRORCODES
+
+			if(code != ErrorCode.Success)
+			{
+				ErrorPacket error = new()
+				{
+					Error = new() { code = code },
+					Id = BasePacket.Id,
+				};
+
+				return error;
+			}
+
+
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = "okay",
+			};
+
+			return response;
+        }
+    }
+    public class ApplyGuildJoinRequest
+    {
+		[JsonProperty("gidx")]
+		public int gidx { get; set; }
     }
 }
 

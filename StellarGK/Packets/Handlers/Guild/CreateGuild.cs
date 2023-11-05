@@ -50,7 +50,7 @@ namespace StellarGK.Packets.Handlers.Guild
 
 				var user = GetUserGameProfile();
 
-				var userguild = DatabaseManager.Guild.RequestGuild(user.GuildId);
+				var userguild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
 				var memberdata = DatabaseManager.Guild.RequestGuildMembers(user.GuildId);
 

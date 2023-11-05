@@ -1,6 +1,29 @@
+using StellarGK.Database;
+using StellarGK.Host;
+using System.Collections.Generic;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class ManageGuildJoinMember
+	[Packet(Id = Method.ManageGuildJoinMember)]
+    public class ManageGuildJoinMember : BaseMethodHandler<ManageGuildJoinMemberRequest>
+    {
+        public override object Handle(ManageGuildJoinMemberRequest @params)
+        {
+            var user = GetUserGameProfile();
+
+			var application = DatabaseManager.GuildApplication.GetGuildApplications(user.GuildId);
+
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = application,
+            };
+
+            return response;
+        }
+    }
+
+    public class ManageGuildJoinMemberRequest
     {
     }
 }

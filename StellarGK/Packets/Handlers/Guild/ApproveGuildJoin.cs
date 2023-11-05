@@ -1,7 +1,27 @@
+using Newtonsoft.Json;
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class ApproveGuildJoin
+	[Packet(Id = Method.ApproveGuildJoin)]
+    public class ApproveGuildJoin : BaseMethodHandler<ApproveGuildJoinRequest>
     {
+        public override object Handle(ApproveGuildJoinRequest @params)
+        {
+           
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = "accepted",
+			};
+			return response;	
+
+        }
+    }
+    public class ApproveGuildJoinRequest
+    {
+		[JsonProperty("uno")]
+		public int uno {  get; set; }
     }
 }
 

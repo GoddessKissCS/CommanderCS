@@ -24,12 +24,14 @@ namespace StellarGK.Database.Handlers
 
             int uno = DatabaseManager.AutoIncrements.GetNextNumber("UNO", 1000);
 
+            var worldmapstagesreward = WorldMapStageData.GetInstance().AddDefaultWorldMapIsRewardCollected();
+            var WorldMapStages = WorldMapStageData.GetInstance().AddAllStagesAtDefault();
             GameProfileScheme user = new()
             {
                 Server = server,
-                WorldMapStages = WorldMapStageData.GetInstance().AddAllStagesAtDefault(),
-                WorldMapStagesReward = WorldMapStageData.GetInstance().AddDefaultWorldMapIsRewardCollected(),
-                SweepClearData = new() { },
+                WorldMapStages = WorldMapStages,
+                WorldMapStagesReward = worldmapstagesreward,
+                SweepClearData = [],
                 LastStage = 0,
                 UserStatistics = new()
                 {
@@ -62,9 +64,7 @@ namespace StellarGK.Database.Handlers
                     UnitDestroyCount = 0,
                     weaponInventoryCount = 0,
                 },
-                CommanderData = new()
-                {
-                },
+                CommanderData = [],
                 CompleteRewardGroupIdx = new()
                 {
                 },
@@ -72,7 +72,7 @@ namespace StellarGK.Database.Handlers
                 GuildId = null,
                 MemberId = memberId,
                 Notifaction = false,
-                PreDeck = new() { },
+                PreDeck = [],
                 TutorialData = new()
                 {
                     skip = false,
@@ -135,7 +135,7 @@ namespace StellarGK.Database.Handlers
                     worldDuelTicket = 0,
                     worldDuelUpgradeCoin = 0,
                 },
-                Uno = uno.ToString(),
+                Uno = uno,
                 WorldState = 0,
                 // result.worldState != -1;
                 // if exploration is finished id assume
@@ -164,28 +164,20 @@ namespace StellarGK.Database.Handlers
                     ercnt = 0,
                     iftw = 0,
                 },
-                VipRechargeData = new()
-                {
+                VipRechargeData =
+                [
                     new()
                     {
                         count = 0,
                         idx = 601,
                         mid = 0,
                     }
-                },
-                BlockedUsers = new()
-                {
-                },
-                BoughtCashShopItems = new()
-                {
-                },
+                ],
+                BlockedUsers = [],
+                BoughtCashShopItems = [],
                 Session = string.Empty,
-                MailDataList = new()
-                {
-                },
-                DailyBonusCheck = new()
-                {
-                },
+                MailDataList = [],
+                DailyBonusCheck = [],
             };
 
             DatabaseManager.Dormitory.Create(uno);
@@ -227,6 +219,11 @@ namespace StellarGK.Database.Handlers
             }
 
             return tryUser;
+        }
+
+        public GameProfileScheme FindByUno(int uno)
+        {
+            return Collection.AsQueryable().Where(d => d.Uno == uno).FirstOrDefault();
         }
 
         public GameProfileScheme FindByNick(string nickname)

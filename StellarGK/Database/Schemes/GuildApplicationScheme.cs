@@ -6,6 +6,6 @@ namespace StellarGK.Database.Schemes
     {
         public ObjectId Id { get; set; }
         public int GuildId { get; set; }
-        public string Uno { get; set; }
+        public int Uno { get; set; }
     }
 }

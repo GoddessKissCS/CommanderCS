@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using StellarGK.Database.Schemes;
+using StellarGK.Host;
 using StellarGKLibrary.Protocols;
 using StellarGKLibrary.Ro;
 using StellarGKLibrary.Utils;
@@ -39,14 +40,12 @@ namespace StellarGK.Database.Handlers
                         level = user.UserResources.level,
                         lastTime = 0,
                         memberGrade = 1,
-                        // MemberGrade 1 = Guildmaster 
-                        // MemberGrade 2 = Sub Guildmaster
                         name = user.UserResources.nickname,
                         paymentBonusPoint = 0,
                         thumnail = user.UserResources.thumbnailId,
                         todayPoint = 0,
                         totalPoint = 0,
-                        uno = int.Parse(user.Uno),
+                        uno = user.Uno,
                         world = user.Server,
                     }
                 ],
@@ -56,27 +55,27 @@ namespace StellarGK.Database.Handlers
                     new()
                     {
                         idx = 1,
-                        level = 1,
+                        level = 0,
                     },
                     new()
                     {
                         idx = 2,
-                        level = 1,
+                        level = 0,
                     },
                     new()
                     {
                         idx = 3,
-                        level = 1,
+                        level = 0,
                     },
                     new()
                     {
                         idx = 8,
-                        level = 1,
+                        level = 0,
                     },
                     new()
                     {
                         idx = 9,
-                        level = 1,
+                        level = 0,
                     },
                     new()
                     {
@@ -89,6 +88,10 @@ namespace StellarGK.Database.Handlers
                 Point = 0,
                 MemberGrade = 0,
                 MaxCount = 20,
+                BoardList = [],
+                // MemberGrade 1 = Guildmaster 
+                // MemberGrade 2 = Sub Guildmaster
+                LastGuildEdit = Utility.CurrentTimeInMilliseconds(),
             };
 
             user.GuildId = guildId;
@@ -103,12 +106,12 @@ namespace StellarGK.Database.Handlers
             return Collection.AsQueryable().Where(d => d.Name == guildName).FirstOrDefault();
         }
 
-        public GuildScheme FindByUid(int guildId)
+        public GuildScheme FindByUid(int? guildId)
         {
             return Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
         }
 
-        public UserInformationResponse.UserGuild RequestGuild(int? guildId)
+        public UserInformationResponse.UserGuild RequestGuild(int? guildId, int uno)
         {
             if (guildId == null)
             {
@@ -121,6 +124,8 @@ namespace StellarGK.Database.Handlers
             {
                 return null;
             }
+
+            var guildMember = guild.MemberData.Where(member => member.uno == uno).FirstOrDefault();
 
             UserInformationResponse.UserGuild userGuild = new()
             {
@@ -136,13 +141,12 @@ namespace StellarGK.Database.Handlers
                 level = guild.Level,
                 limitLevel = guild.Limitlevel,
                 maxCount = guild.MaxCount,
-                memberGrade = guild.MemberGrade,
+                memberGrade = guildMember.memberGrade,
                 name = guild.Name,
                 notice = guild.Notice,
                 occupy = guild.Occupy,
                 point = guild.Point,
-                world = guild.World,
-               
+                world = guild.World,  
             };
 
 
@@ -183,6 +187,52 @@ namespace StellarGK.Database.Handlers
             Collection.UpdateOne(filter, update);
         }
 
+
+        public void UpdateGuildName(int guildId, string val)
+        {
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
+
+            var update = Builders<GuildScheme>.Update.Set("Name", val);
+
+            Collection.UpdateOne(filter, update);
+        }
+
+        public void UpdateGuildEmblem(int guildId, string val)
+        {
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
+
+            var update = Builders<GuildScheme>.Update.Set("Emblem", int.Parse(val));
+
+            Collection.UpdateOne(filter, update);
+        }
+
+        public void UpdateGuildType(int guildId, string val)
+        {
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
+
+            var update = Builders<GuildScheme>.Update.Set("GuildType", int.Parse(val));
+
+            Collection.UpdateOne(filter, update);
+        }
+
+        public void UpdateLimitLevel(int guildId, string val)
+        {
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
+
+            var update = Builders<GuildScheme>.Update.Set("Limitlevel", int.Parse(val));
+
+            Collection.UpdateOne(filter, update);
+        }
+
+        public void UpdateGuildNotice(int guildId, string val)
+        {
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
+
+            var update = Builders<GuildScheme>.Update.Set("Notice", val);
+
+            Collection.UpdateOne(filter, update);
+        }
+
         public List<RoGuild> GetAllGuilds(string session)
         {
             var allGuilds = Collection.AsQueryable().ToList();
@@ -217,6 +267,89 @@ namespace StellarGK.Database.Handlers
             }
 
             return returnGuilds;
+        }
+    
+    
+        public List<GuildBoardData> GetGuildBoard(int? guildId)
+        {
+            GuildScheme? guild = Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
+
+            return guild.BoardList;
+        }
+
+        public void AddGuildBoardEntry(GuildBoardData guildBoardData, int? guildId)
+        {
+            GuildScheme? guild = Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
+
+            if (guild != null)
+            {
+                // Initialize the BoardList if it's null
+                if (guild.BoardList == null)
+                {
+                    guild.BoardList = [];
+                }
+
+                guild.BoardList.Add(guildBoardData);
+            }
+
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
+
+            var update = Builders<GuildScheme>.Update.Set("BoardList", guild.BoardList);
+
+            Collection.UpdateOne(filter, update);
+        }
+
+        public ErrorCode UpdateGuildInfo(int act, string val, string session)
+        {
+
+            if (Misc.NameCheck(val))
+            {
+                return ErrorCode.FederationNameContainsBadwordsOrInvalid;
+            }
+
+            var user = DatabaseManager.GameProfile.FindBySession(session);
+
+            var guild = FindByUid(user.GuildId);
+
+            //DateTime currentTime = DateTime.UtcNow;
+            //DateTime lastGuildEditTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(guild.LastGuildEdit);
+            
+            //TimeSpan timeDifference = lastGuildEditTime - currentTime;
+
+            //if (timeDifference.TotalSeconds <= 30)
+            //{
+            //    return ErrorCode.FederationSettingsChangedRecently_2;
+            //}
+
+            switch (act)
+            { 
+                case 0: // Guildname
+                    
+                    if (FindByName(val) != null)
+                    {
+                        return ErrorCode.FederationNameAlreadyExists;
+                    }
+
+                    UpdateGuildName(guild.GuildId, val);
+
+                    DatabaseManager.GameProfile.UpdateCash(user.Session, 500, false);
+                    break;
+                case 1: // emblem
+                    UpdateGuildEmblem(guild.GuildId, val);
+                    DatabaseManager.GameProfile.UpdateCash(user.Session, 100, false);
+                    break;
+                case 2: // limitLevel
+                    UpdateLimitLevel(guild.GuildId, val);
+                    break;
+                case 3: // guildType
+                    UpdateGuildType(guild.GuildId, val);
+                    break;
+                case 4: // Notice
+                    UpdateGuildNotice(guild.GuildId, val);
+                    break;
+            }
+
+            return ErrorCode.Success;
         }
     }
 }

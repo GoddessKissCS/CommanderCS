@@ -58,9 +58,7 @@ namespace StellarGK.Database.Handlers
         {
             GameProfileScheme? user = DatabaseManager.GameProfile.FindBySession(session);
 
-            int uno = int.Parse(user.Uno);
-
-            return FindByUno(uno);
+            return FindByUno(user.Uno);
         }
     }
 }
