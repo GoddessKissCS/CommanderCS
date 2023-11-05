@@ -2,6 +2,7 @@ using MongoDB.Driver;
 using StellarGK.Database.Schemes;
 using StellarGK.Host;
 using StellarGKLibrary.Protocols;
+using StellarGKLibrary.Utils;
 
 namespace StellarGK.Database.Handlers
 {
@@ -20,15 +21,39 @@ namespace StellarGK.Database.Handlers
                 return ErrorCode.CannotSentMoreThanOneFederationJoinRequest;
             }
 
+
+
+
             GuildApplicationScheme guildApplication = new()
             {
                 GuildId = guildIdx,
                 Uno = user.Uno,
+                JoinMemberData = new()
+                {
+                    lastTime = 0,
+                    level = user.UserResources.level,
+                    memberGrade = 0,
+                    name = user.UserResources.nickname,
+                    paymentBonusPoint = 0,
+                    thumnail = user.UserResources.thumbnailId,
+                    todayPoint = 0,
+                    totalPoint = 0,
+                    uno = user.Uno,
+                    world = user.Server,
+                },
+                ApplyTime = Utility.CurrentTimeInMilliseconds(),
+                
             };
 
             Collection.InsertOne(guildApplication);
             return ErrorCode.Success;
         }
+
+        public GuildApplicationScheme? FindApplicationByUno(int Uno, int guildId)
+        {
+            return Collection.AsQueryable().Where(d => d.Uno == Uno).Where(d => d.GuildId == guildId).FirstOrDefault();
+        }
+
         public string RetrieveGuildApplication(string session, int guildIdx)
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
@@ -81,6 +106,17 @@ namespace StellarGK.Database.Handlers
 
             return result.DeletedCount > 0;
         }
+
+        public bool DeleteGuildApplication(int uno, int guildIdx)
+        {
+            var filter = Builders<GuildApplicationScheme>.Filter.And(Builders<GuildApplicationScheme>.Filter.Eq("uno", uno),
+             Builders<GuildApplicationScheme>.Filter.Eq("guildId", guildIdx));
+
+            var result = Collection.DeleteOne(filter);
+
+            return result.DeletedCount > 0;
+        }
+
         public List<GuildMember.MemberData> GetGuildApplications(int? guildId)
         {
             var guildlist = new List<GuildMember.MemberData>();
@@ -92,36 +128,46 @@ namespace StellarGK.Database.Handlers
 
             foreach(var entry in matchingEntries)
             {
-                var Applicant = DatabaseManager.GameProfile.FindByUno(entry.Uno);
-                var guildappli = new GuildMember.MemberData()
-                {
-                    thumnail = Applicant.UserResources.thumbnailId,
-                    level = Applicant.UserResources.level,
-                    name = Applicant.UserResources.nickname,
-                    todayPoint = 0,
-                    lastTime = 0,
-                    paymentBonusPoint = 0,
-                    memberGrade = 0,
-                    totalPoint = 0,
-                    uno = entry.Uno,
-                    world = Applicant.Server,
-                };
-
-                guildlist.Add(guildappli);  
-
+                guildlist.Add(entry.JoinMemberData);  
             }
 
             return guildlist;
         }
 
-        public ErrorCode ApproveGuildJoin(string session, int uno)
+        public ErrorCode ApproveGuildJoinRequest(int uno)
         {
-            var guildJoinRequester = DatabaseManager.GameProfile.FindByUno(uno);
-
             var guildId = RetrieveGuildApplicationFromId(uno);
+
+            var guild = DatabaseManager.Guild.FindByUid(guildId);
+
+            if (guild.Count == guild.MaxCount)
+            {
+                return ErrorCode.FederationIsFull;
+            }
+
+            var application = FindApplicationByUno(uno, guildId);
+            
+            var user = DatabaseManager.GameProfile.FindByUno(uno);
+
+            if(CheckIfRequestMemberDataChanged(application, user)) 
+            {
+                return ErrorCode.RequestDataHasBeenChanged;
+            }
+
+#warning TODO  
+            // blablabla if federation settings change blabla
+            // add thing here
+
+            DeleteGuildApplication(uno, guildId);
+            DatabaseManager.Guild.AddGuildMember(uno, guildId, application.JoinMemberData);
 
             return ErrorCode.Success;
 
+        }
+
+        private bool CheckIfRequestMemberDataChanged(GuildApplicationScheme guildApplication, GameProfileScheme user)
+        {
+            return guildApplication.JoinMemberData.thumnail != user.UserResources.thumbnailId || guildApplication.JoinMemberData.level != user.UserResources.level || guildApplication.JoinMemberData.name != user.UserResources.nickname;
         }
 
     }

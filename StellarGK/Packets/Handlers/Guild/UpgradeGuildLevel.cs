@@ -1,8 +1,52 @@
+using StellarGK.Database;
+using StellarGK.Host;
+using StellarGKLibrary.ExcelReader;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class UpgradeGuildLevel
+	[Packet(Id = Method.UpgradeGuildLevel)]
+    public class UpgradeGuildLevel : BaseMethodHandler<UpgradeGuildLevelRequest>
+    {
+        public override object Handle(UpgradeGuildLevelRequest @params)
+        {
+			var user = GetUserGameProfile();
+
+			var guild = DatabaseManager.Guild.FindByUid(user.GuildId);
+
+			var guildUpgradeData = GuildLevelInfoData.GetInstance().FromLevel(guild.Level + 1);
+
+			guild.Point -= guildUpgradeData.cost;
+
+			guild.Level += 1;
+
+			guild.MaxCount = guildUpgradeData.maxcount;
+
+			DatabaseManager.Guild.UpdateGuildPointLevelMaxCount(user.GuildId, guild);
+
+			var newGuild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+
+            StellarGKLibrary.Protocols.GuildInfo guildList = new()
+            {
+                resource = null,
+                guildInfo = newGuild,
+                memberData = null,
+                guildList = null,
+            };
+
+            ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = guildList,
+			};
+
+			return response;
+        }
+    }
+
+    public class UpgradeGuildLevelRequest
     {
     }
+
 }
 
 /*	// Token: 0x0600604F RID: 24655 RVA: 0x000120F8 File Offset: 0x000102F8

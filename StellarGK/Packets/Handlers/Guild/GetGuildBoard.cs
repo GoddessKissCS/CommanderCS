@@ -10,14 +10,48 @@ namespace StellarGK.Packets.Handlers.Guild
     {
         public override object Handle(GetGuildBoardRequest @params)
         {
-
 			var user = GetUserGameProfile();
 
+			var list = DatabaseManager.Guild.GetGuildBoard(user.GuildId, out ErrorCode code);
 
-			var list = DatabaseManager.Guild.GetGuildBoard(user.GuildId);
 
+			if(code != ErrorCode.Success)
+			{
+				ErrorPacket error = new()
+				{
+					Error = new() { code = code },
+					Id = BasePacket.Id,
+				};
+			}
 
-			ResponsePacket response = new ResponsePacket();
+			var memberGrade = DatabaseManager.Guild.GetMemberGrade(user.GuildId, user.Uno);
+
+			if(memberGrade == 1)
+			{
+                list.ForEach(boardData =>
+                {
+                    if (boardData.dauth == 0)
+                    {
+                        boardData.dauth = 1; 
+                    }
+                });
+            }
+
+            if (memberGrade == 2)
+            {
+                list.ForEach(boardData =>
+                {
+                    var boardMemberId = DatabaseManager.Guild.GetMemberGrade(user.GuildId, boardData.uno);
+
+                    if (boardData.dauth == 0 && boardMemberId != 1)
+                    {
+                        boardData.dauth = 1;
+                    }
+                });
+            }
+
+#warning TODO ADD the PAGES counter below
+
 			GetGuildBoardResponse getGuildBoard = new()
 			{
 				list = list,
@@ -25,10 +59,13 @@ namespace StellarGK.Packets.Handlers.Guild
 				tPage = 0,
 			};
 
-			response.Id = BasePacket.Id;
-			response.Result = getGuildBoard;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = getGuildBoard
+            };
 
-			return response;
+            return response;
         }
     }
 	public class GetGuildBoardRequest

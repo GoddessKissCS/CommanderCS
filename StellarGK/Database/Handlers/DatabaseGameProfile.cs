@@ -5,6 +5,7 @@ using StellarGK.Host.Handlers.Login;
 using StellarGKLibrary.ExcelReader;
 using StellarGKLibrary.Protocols;
 using StellarGKLibrary.Utils;
+using static StellarGKLibrary.Protocols.UserInformationResponse;
 
 namespace StellarGK.Database.Handlers
 {
@@ -599,6 +600,14 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
             Collection.ReplaceOne(filter, user);
+        }
+
+        public void UpdateGuildId(int uno, int guildId)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Uno", uno);
+            var update = Builders<GameProfileScheme>.Update.Set("GuildId", guildId);
+
+            Collection.UpdateOne(filter, update);
         }
     }
 }

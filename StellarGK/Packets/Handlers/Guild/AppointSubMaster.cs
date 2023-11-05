@@ -1,7 +1,57 @@
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class AppointSubMaster
+	[Packet(Id = Method.AppointSubMaster)]
+    public class AppointSubMaster : BaseMethodHandler<AppointSubMasterRequest>
     {
+        public override object Handle(AppointSubMasterRequest @params)
+        {
+            var user = GetUserGameProfile();
+
+
+			int submaster = DatabaseManager.Guild.GetTotalSubMasters(user.GuildId);
+
+			if(submaster > 2)
+			{
+                ErrorPacket error = new()
+                {
+                    Error = new() { code = ErrorCode.YouCanOnlyAppointUpTo2SubMaster },
+                    Id = BasePacket.Id,
+
+                };
+                return error;
+            }
+
+			bool succeed = DatabaseManager.Guild.AppointSubMaster(@params.tuno, user.GuildId);
+
+			if (!succeed)
+			{
+				ErrorPacket error = new()
+				{
+					Error = new() { code = ErrorCode.YouAlreadyLeftTheFederation },
+					Id = BasePacket.Id,
+
+				};
+				return error;
+			}
+
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = "added",
+			};	
+
+			return response;
+
+        }
+    }
+    public class AppointSubMasterRequest
+    {
+		[JsonProperty("tuno")]
+		public int tuno {  get; set; }
     }
 }
 

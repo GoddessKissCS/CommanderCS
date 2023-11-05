@@ -12,7 +12,7 @@ namespace StellarGK
         {
             var configurationBuilder = new ConfigurationBuilder();
             configurationBuilder.AddJsonFile(path: "appsettings.json", optional: false, reloadOnChange: true);
-            var iConfigurationRoot = configurationBuilder.Build();
+            IConfiguration iConfigurationRoot = configurationBuilder.Build();
 
             var builder = WebApplication.CreateBuilder(args);
 
@@ -90,7 +90,7 @@ namespace StellarGK
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseHttpLogging();
+                //app.UseHttpLogging();
                 app.UseDeveloperExceptionPage();
             }
 

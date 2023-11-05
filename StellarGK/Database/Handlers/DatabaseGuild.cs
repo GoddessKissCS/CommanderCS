@@ -4,6 +4,8 @@ using StellarGK.Host;
 using StellarGKLibrary.Protocols;
 using StellarGKLibrary.Ro;
 using StellarGKLibrary.Utils;
+using System;
+using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 
 namespace StellarGK.Database.Handlers
 {
@@ -110,6 +112,12 @@ namespace StellarGK.Database.Handlers
         {
             return Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
         }
+
+        public int GetMemberGrade(int? guildId, int uno)
+        {
+            return Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault().MemberData.Where(d => d.uno == uno).FirstOrDefault().memberGrade;
+        }
+
 
         public UserInformationResponse.UserGuild RequestGuild(int? guildId, int uno)
         {
@@ -270,9 +278,13 @@ namespace StellarGK.Database.Handlers
         }
     
     
-        public List<GuildBoardData> GetGuildBoard(int? guildId)
+        public List<GuildBoardData> GetGuildBoard(int? guildId, out ErrorCode code)
         {
             GuildScheme? guild = Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
+
+#warning add the blabla for ErrorCode.FederationSettingsChangedWhileGettingGuildBoard
+
+            code = ErrorCode.Success;
 
             return guild.BoardList;
         }
@@ -351,5 +363,65 @@ namespace StellarGK.Database.Handlers
 
             return ErrorCode.Success;
         }
+
+
+        public void AddGuildMember(int uno, int guildId, GuildMember.MemberData member)
+        {       
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
+            var update = Builders<GuildScheme>.Update.Push("MemberData", member);
+
+            DatabaseManager.GameProfile.UpdateGuildId(uno, guildId);
+
+            Collection.UpdateOne(filter, update);
+
+            var guild = FindByUid(guildId);
+
+            var filter2 = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
+            var update2 = Builders<GuildScheme>.Update.Set("Count", guild.MemberData.Count);
+
+            Collection.UpdateOne(filter2, update2);
+        }
+
+        public bool AppointSubMaster(int uno, int? guildId)
+        {
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId)
+                         & Builders<GuildScheme>.Filter.ElemMatch("MemberData",
+                             Builders<GuildMember.MemberData>.Filter.Eq("uno", uno));
+
+            var update = Builders<GuildScheme>.Update.Set("MemberData.$.memberGrade", 2);
+
+            var result = Collection.UpdateOne(filter, update);
+
+            return result.ModifiedCount > 0;
+        }
+
+        public int GetTotalSubMasters(int? guildId)
+        {
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId)
+                         & Builders<GuildScheme>.Filter.ElemMatch("MemberData",
+                             Builders<GuildMember.MemberData>.Filter.Eq("memberGrade", 2));
+
+            var count = Collection.CountDocuments(filter);
+
+            return (int)count;
+        }
+
+        public void UpdateGuildPointLevelMaxCount(int? GuildId, GuildScheme guild)
+        {
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", GuildId);
+
+            var update = Builders<GuildScheme>.Update.Set("Point", guild.Point).Set("Level", guild.Level).Set("MaxCount",guild.MaxCount);
+
+            Collection.UpdateOne(filter, update);
+        }
+
+        public void UpdateGuildSkill(int? guildId, List<UserInformationResponse.UserGuild.GuildSkill> SkillDada, int newPoint)
+        {
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
+            var update = Builders<GuildScheme>.Update.Set("SkillDada", SkillDada).Set("Point", newPoint);
+
+            Collection.UpdateOne(filter, update);
+        }
+
     }
 }

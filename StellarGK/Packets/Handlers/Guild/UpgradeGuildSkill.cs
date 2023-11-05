@@ -1,8 +1,75 @@
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+using StellarGKLibrary.ExcelReader;
+using System.ComponentModel;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class UpgradeGuildSkill
-    {
+
+    [Packet(Id = Method.UpgradeGuildSkill)]
+    public class UpgradeGuildSkill : BaseMethodHandler<UpgradeGuildSkillRequest> {
+
+        public override object Handle(UpgradeGuildSkillRequest @params)
+        {
+			var user = GetUserGameProfile();
+
+			var guild = DatabaseManager.Guild.FindByUid(user.GuildId);
+
+			var guildSkill = guild.SkillDada.Where(d => d.idx == @params.gsid).FirstOrDefault();
+
+			var upgradeCost = GuildSkillData.GetInstance().FromSkillLevel(guildSkill.level + 1);
+
+			if(upgradeCost.cost > guild.Point)
+			{
+				ErrorPacket error = new()
+				{
+					Error = new() { code = ErrorCode.HigherFederationLevelRequired},
+					Id = BasePacket.Id,
+				};
+
+				return error;
+			}
+
+            int index = guild.SkillDada.FindIndex(skill => skill.idx == @params.gsid);
+
+            if (index >= 0)
+            {
+                guildSkill.level += 1;
+                // Replace the original skill with the updated skill
+                guild.SkillDada[index] = guildSkill;
+
+            }
+
+			guild.Point -= upgradeCost.cost;
+
+            DatabaseManager.Guild.UpdateGuildSkill(user.GuildId, guild.SkillDada, guild.Point);
+
+            var newGuild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+
+            StellarGKLibrary.Protocols.GuildInfo guildList = new()
+            {
+                resource = null,
+                guildInfo = newGuild,
+                memberData = null,
+                guildList = null,
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = guildList,
+            };
+
+			return response;
+        }
     }
+
+	public class UpgradeGuildSkillRequest
+	{
+		[JsonProperty("gsid")]
+		public int gsid { get; set; }
+	}
 }
 
 /*	// Token: 0x0600604C RID: 24652 RVA: 0x000120F8 File Offset: 0x000102F8

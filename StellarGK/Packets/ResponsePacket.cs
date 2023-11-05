@@ -70,5 +70,12 @@ namespace StellarGK.Host
 
         FederationIsFull = 71305,
         RequestDataHasBeenChanged = 71306,
+
+        FederationSettingsChangedWhileGettingGuildBoard = 71001,
+
+        YouCanOnlyAppointUpTo2SubMaster = 71019,
+        YouAlreadyLeftTheFederation = 71001,
+
+        HigherFederationLevelRequired = 71014,
     }
 }

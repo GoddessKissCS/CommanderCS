@@ -22,13 +22,13 @@ namespace StellarGK.Packets.Handlers.Guild
 				};
 			}
 
-			var boarddatalist = DatabaseManager.Guild.GetGuildBoard(user.GuildId);
+			var boarddatalist = DatabaseManager.Guild.GetGuildBoard(user.GuildId, out ErrorCode code);
 
             int nextIdx = boarddatalist.Count != 0 ? boarddatalist.Max(item => item.idx) + 1 : 0;
 
 			var newEntry = new GuildBoardData()
 			{
-				dauth = 1,
+				dauth = 0,
 				idx = nextIdx,
 				msg = @params.msg,
 				regdt = Utility.CurrentTimeInMilliseconds(),

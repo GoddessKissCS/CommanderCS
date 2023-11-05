@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using StellarGK.Database;
 using StellarGK.Host;
 
 namespace StellarGK.Packets.Handlers.Guild
@@ -8,8 +9,21 @@ namespace StellarGK.Packets.Handlers.Guild
     {
         public override object Handle(ApproveGuildJoinRequest @params)
         {
-           
-			ResponsePacket response = new()
+			var session = GetSession();
+
+			ErrorCode code = DatabaseManager.GuildApplication.ApproveGuildJoinRequest(@params.uno);
+
+			if(code != ErrorCode.Success)
+			{
+				ErrorPacket error = new()
+				{
+					Error = new() { code = code},
+					Id = BasePacket.Id
+				};
+				return error;
+			}
+
+            ResponsePacket response = new()
 			{
 				Id = BasePacket.Id,
 				Result = "accepted",
