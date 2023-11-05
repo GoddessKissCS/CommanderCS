@@ -17,15 +17,15 @@ namespace StellarGK.Packets.Handlers.PvP
 		BattleData _battleData = BattleData.Get();
 		BattleData.Set(_battleData);
 		Protocols.UserInformationResponse.BattleResult battleResult = null;
-		if (_battleData == null)
+		if (_battleData = null)
 		{
 			yield break;
 		}
-		if (result == null)
+		if (result = null)
 		{
 			yield break;
 		}
-		if (_battleData.type == EBattleType.WorldDuel)
+		if (_battleData.type = EBattleType.WorldDuel)
 		{
 			battleResult = this._ConvertJObject<Protocols.UserInformationResponse.BattleResult>(result);
 			_battleData.dualResult = battleResult;

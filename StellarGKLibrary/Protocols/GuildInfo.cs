@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using StellarGKLibrary.Ro;
 
 namespace StellarGKLibrary.Protocols
 {

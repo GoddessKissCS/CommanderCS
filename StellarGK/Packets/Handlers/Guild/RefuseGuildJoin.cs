@@ -26,11 +26,11 @@ namespace StellarGK.Packets.Handlers.Guild
 	// Token: 0x0600603D RID: 24637 RVA: 0x001B00C0 File Offset: 0x001AE2C0
 	private IEnumerator RefuseGuildJoinError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71305)
+		if (code = 71305)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110221"));
 		}
-		else if (code == 71306)
+		else if (code = 71306)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110307"));
 			int num = int.Parse(this._FindRequestProperty(request, "uno"));
@@ -40,7 +40,7 @@ namespace StellarGK.Packets.Handlers.Guild
 				uiguildMemberJoinPopUp.RemoveJoinMember(num);
 			}
 		}
-		else if (code == 71007 || code == 71018 || code == 71107)
+		else if (code = 71007 || code = 71018 || code = 71107)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110303"));
 			UIGuildMemberJoinPopUp uiguildMemberJoinPopUp2 = UnityEngine.Object.FindObjectOfType(typeof(UIGuildMemberJoinPopUp)) as UIGuildMemberJoinPopUp;

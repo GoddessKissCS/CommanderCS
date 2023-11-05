@@ -20,7 +20,7 @@ namespace StellarGK.Packets.Handlers.Shop
 			for (int i = 0; i < this.localUser.shopList.Count; i++)
 			{
 				Protocols.SecretShop.ShopData shopData = this.localUser.shopList[i];
-				if (shopData.id == result.shop.id)
+				if (shopData.id = result.shop.id)
 				{
 					shopData.sold = result.shop.sold;
 				}

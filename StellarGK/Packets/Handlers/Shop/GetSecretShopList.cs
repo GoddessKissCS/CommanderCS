@@ -17,22 +17,22 @@ namespace StellarGK.Packets.Handlers.Shop
 		if (result != null && result.shopList.Count != 0)
 		{
 			string text = this._FindRequestProperty(request, "styp");
-			if (text == 3.ToString())
+			if (text = 3.ToString())
 			{
 				this.localUser.badgeRaidShop = false;
 			}
-			else if (text == 2.ToString())
+			else if (text = 2.ToString())
 			{
 				this.localUser.badgeChallengeShop = false;
 			}
-			else if (text == 7.ToString())
+			else if (text = 7.ToString())
 			{
 				this.localUser.badgeWaveDuelShop = false;
 			}
 			this.localUser.shopList = result.shopList;
 			this.localUser.shopRefreshTime.SetByDuration((double)result.refreshTime);
 			this.localUser.shopRefreshCount = result.refreshCount;
-			this.localUser.shopRefreshFree = result.reset == 0;
+			this.localUser.shopRefreshFree = result.reset = 0;
 			UIManager.instance.RefreshOpenedUI();
 		}
 		yield break;

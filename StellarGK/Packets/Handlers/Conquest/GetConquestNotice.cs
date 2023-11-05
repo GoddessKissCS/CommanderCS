@@ -15,7 +15,7 @@ namespace StellarGK.Packets.Handlers.Conquest
 	private IEnumerator GetConquestNoticeResult(JsonRpcClient.Request request, string result, string notice)
 	{
 		int num = int.Parse(this._FindRequestProperty(request, "check"));
-		if (num == 1 && string.IsNullOrEmpty(notice))
+		if (num = 1 && string.IsNullOrEmpty(notice))
 		{
 			yield break;
 		}

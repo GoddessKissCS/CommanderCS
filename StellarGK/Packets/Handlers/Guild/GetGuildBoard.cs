@@ -1,7 +1,47 @@
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+using StellarGKLibrary.Protocols;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class GetGuildBoard
+	[Packet(Id = Method.GetGuildBoard)]
+    public class GetGuildBoard : BaseMethodHandler<GetGuildBoardRequest>
     {
+        public override object Handle(GetGuildBoardRequest @params)
+        {
+
+			var user = GetUserGameProfile();
+
+
+			var list = DatabaseManager.Guild.GetGuildBoard(user.GuildId);
+
+
+			ResponsePacket response = new ResponsePacket();
+			GetGuildBoardResponse getGuildBoard = new()
+			{
+				list = list,
+				page = 0,
+				tPage = 0,
+			};
+
+			response.Id = BasePacket.Id;
+			response.Result = getGuildBoard;
+
+			return response;
+        }
+    }
+	public class GetGuildBoardRequest
+	{
+		[JsonProperty("page")]
+		public int page { get; set; }
+	}
+
+	public class GetGuildBoardResponse
+	{
+        public int tPage { get; set; }
+        public int page { get; set; }
+        public List<GuildBoardData> list { get; set; }
     }
 }
 
@@ -21,7 +61,7 @@ namespace StellarGK.Packets.Handlers.Guild
 	// Token: 0x06006053 RID: 24659 RVA: 0x001B02E0 File Offset: 0x001AE4E0
 	private IEnumerator GetGuildBoardError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71001)
+		if (code = 71001)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110303"));
 			UIManager.instance.world.guild.Close();

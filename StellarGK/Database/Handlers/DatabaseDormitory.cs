@@ -9,28 +9,28 @@ namespace StellarGK.Database.Handlers
         {
         }
 
-        public DormitoryScheme Create(int id)
+        public void Create(int id)
         {
-            DormitoryScheme? tryUser = Collection.AsQueryable().Where(d => d.memberId == id).FirstOrDefault();
-            if (tryUser != null) { return tryUser; }
+            DormitoryScheme? tryUser = Collection.AsQueryable().Where(d => d.Uno == id).FirstOrDefault();
+            if (tryUser != null) { return; }
 
             //TODO THIS
             DormitoryScheme user = new()
             {
-                memberId = id,
+                Uno = id,
                 CostumeHead = new()
                 {
                 },
                 DormitoryInfo = new()
                 {
-                    { "inven", 10 } // MEANS INVENTORY LIMIT
+                    { "inven", 100 } // MEANS INVENTORY LIMIT
                 },
                 DormitoryResource = new()
                 {
-                    __dormitoryPoint = "10",
-                    __ston = "10",
-                    __elec = "10",
-                    __wood = "10",
+                    __dormitoryPoint = "0",
+                    __ston = "0",
+                    __elec = "0",
+                    __wood = "0",
                 },
                 ItemAdvanced = new()
                 {
@@ -47,22 +47,18 @@ namespace StellarGK.Database.Handlers
             };
 
             Collection.InsertOne(user);
-
-            return user;
         }
 
-        public DormitoryScheme? FindByUid(int uid)
+        public DormitoryScheme? FindByUno(int uid)
         {
-            return Collection.AsQueryable().Where(d => d.memberId == uid).FirstOrDefault();
+            return Collection.AsQueryable().Where(d => d.Uno == uid).FirstOrDefault();
         }
 
         public DormitoryScheme? FindBySession(string session)
         {
             GameProfileScheme? user = DatabaseManager.GameProfile.FindBySession(session);
 
-            var dormitory = FindByUid(user.MemberId);
-
-            return dormitory;
+            return FindByUno(user.Uno);
         }
     }
 }

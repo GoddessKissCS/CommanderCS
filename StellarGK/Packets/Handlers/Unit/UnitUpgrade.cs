@@ -1,8 +1,30 @@
-﻿namespace StellarGK.Packets.Handlers.Unit
+﻿using Newtonsoft.Json;
+using StellarGK.Host;
+using StellarGKLibrary.Protocols;
+
+namespace StellarGK.Packets.Handlers.Unit
 {
-    public class UnitUpgrade
+    [Packet(Id = Method.UnitUpgrade)]
+    public class UnitUpgrade : BaseMethodHandler<UnitUpgradeRequest>
     {
+        public override object Handle(UnitUpgradeRequest @params)
+        {
+            ResponsePacket response = new()
+            {
+				Result = null,
+				Id = BasePacket.Id
+            };
+
+            return response;
+        }
     }
+
+    public class UnitUpgradeRequest
+    {
+        [JsonProperty("idx")]
+        public int idx { get; set; }
+    }
+
 }
 
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "4304", true, true)]

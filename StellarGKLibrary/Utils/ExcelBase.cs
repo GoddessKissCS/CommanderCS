@@ -25,6 +25,7 @@ namespace StellarGKLibrary.Utils
 
         public void Load()
         {
+
             string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
 
             All = JsonConvert.DeserializeObject<Scheme[]>(path) ?? Array.Empty<Scheme>();

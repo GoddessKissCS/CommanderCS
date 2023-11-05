@@ -1,21 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackAsTool>False</PackAsTool>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Ro\**" />
     <Compile Remove="StellarGKLibrary.Shared\**" />
-    <EmbeddedResource Remove="Ro\**" />
     <EmbeddedResource Remove="StellarGKLibrary.Shared\**" />
-    <None Remove="Ro\**" />
     <None Remove="StellarGKLibrary.Shared\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\BadWordList\En.json" />
     <None Remove="Resources\ExcelOutputAsset\AchievementTable.json" />
     <None Remove="Resources\ExcelOutputAsset\AnnihilateBattleDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\BattleFieldSearchDataTable.json" />
@@ -219,9 +218,13 @@
     <None Remove="Resources\Regulation\WorldMapDataTable.json" />
     <None Remove="Resources\Regulation\WorldMapStageDataTable.json" />
     <None Remove="Resources\Regulation\WorldMapStageTypeDataTable.json" />
+    <None Remove="Resources\ServerSettings\reset_time.txt" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\BadWordList\En.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\ExcelOutputAsset\AchievementTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
@@ -1037,6 +1040,12 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
     <PackageReference Include="Tival.GZipCompressor" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\ServerSettings\reset_time.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

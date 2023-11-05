@@ -23,7 +23,7 @@ namespace StellarGK.Host.Handlers.Guild
 
             var user = GetUserGameProfile();
 
-            var userGuild = DatabaseManager.Guild.RequestGuild(user.GuildId);
+            var userGuild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
             if (userGuild != null)
             {

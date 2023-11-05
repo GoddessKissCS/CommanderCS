@@ -5,9 +5,12 @@
     {
         public override object Handle(GetChatIgnoreListRequest @params)
         {
+            var user = GetUserGameProfile();
+
+
             ResponsePacket response = new()
             {
-                Result = GetUserGameProfile().BlockedUsers,
+                Result = user.BlockedUsers,
                 Id = BasePacket.Id
             };
 

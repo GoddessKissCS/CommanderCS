@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using StellarGK.Database;
+using StellarGK.Database.Schemes;
 using StellarGK.Host;
+using StellarGKLibrary.ExcelReader;
 
 namespace StellarGK.Packets.Handlers.WorldMap
 {
@@ -9,87 +11,138 @@ namespace StellarGK.Packets.Handlers.WorldMap
     {
         public override object Handle(WorldMapRewardRequest @params)
         {
-            // Check all Pilots that exist
-            int commanderId;
 
-            // its either add commander if it doesnt exists or add the medals if it does
-
+            // probably increase the ratios or so
+            //idk
             var user = GetUserGameProfile();
+            var session = GetSession();
+
+            string commanderId = string.Empty;
 
             switch (@params.world)
             {
                 case 0:
+                    commanderId = "5";
                     break;
 
                 case 1:
+                    commanderId = "26";
                     break;
 
                 case 2:
+                    commanderId = "14";
                     break;
 
                 case 3:
+                    commanderId = "19";
                     break;
 
                 case 4:
+                    commanderId = "15";
                     break;
 
                 case 5:
+                    commanderId = "12";
                     break;
 
                 case 6:
+                    commanderId = "27";
                     break;
 
                 case 7:
+                    commanderId = "10";
                     break;
 
                 case 8:
+                    commanderId = "20";
                     break;
 
                 case 9:
+                    commanderId = "30";
                     break;
 
                 case 10:
+                    commanderId = "616";
                     break;
 
                 case 11:
+                    commanderId = "47";
                     break;
 
                 case 12:
+                    commanderId = "50";
                     break;
 
                 case 13:
+                    commanderId = "51";
                     break;
 
                 case 14:
+                    commanderId = "48";
                     break;
 
                 case 15:
+                    commanderId = "62";
                     break;
 
                 case 16:
+                    commanderId = "75";
                     break;
 
                 case 17:
+                    commanderId = "85";
                     break;
 
                 case 18:
+                    commanderId = "92";
                     break;
             }
 
-            DatabaseManager.GameProfile.UpdateWorldMapReward(GetSession(), @params.world);
-
-            StellarGKLibrary.Protocols.WorldMapReward worldMap = new()
-            {
-            };
+            var worldmap = UserWorldReward(commanderId, user, session);
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = worldMap
+                Result = worldmap
             };
+
+            DatabaseManager.GameProfile.UpdateWorldMapReward(session, @params.world);
 
             return response;
         }
+
+
+        public static StellarGKLibrary.Protocols.WorldMapReward UserWorldReward(string commander_id, GameProfileScheme user, string session)
+        {
+            int medals = 20;
+
+            StellarGKLibrary.Protocols.WorldMapReward WorldMapReward = new();
+
+            user.CommanderData.TryGetValue(commander_id, out var commander);
+
+            if(commander != null)
+            {
+                user.UserInventory.medalData[commander_id] += medals;
+                user.CommanderData[commander_id].medl += medals;
+
+                WorldMapReward.commanderData = user.CommanderData;
+            } else {
+                int cid = int.Parse(commander_id);
+
+                var commanderdata = CommanderCostumeData.GetInstance().AddSpecificCommander(user.CommanderData, cid);
+
+                WorldMapReward.commanderData = commanderdata;
+            }
+
+            WorldMapReward.medalData = user.UserInventory.medalData;
+
+            DatabaseManager.GameProfile.UpdateCommanderData(session, WorldMapReward.commanderData);
+            DatabaseManager.GameProfile.UpdateMedalData(session, WorldMapReward.medalData);
+
+            return WorldMapReward;
+
+        }
+
     }
 
     public class WorldMapRewardRequest
@@ -98,6 +151,10 @@ namespace StellarGK.Packets.Handlers.WorldMap
         public int world { get; set; }
     }
 }
+
+
+
+
 
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "2209", true, true)]
 	public void WorldMapReward(int world)

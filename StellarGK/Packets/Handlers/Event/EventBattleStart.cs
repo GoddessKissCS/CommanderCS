@@ -24,7 +24,7 @@ namespace StellarGK.Packets.Handlers.Event
 	// Token: 0x06006144 RID: 24900 RVA: 0x001B1688 File Offset: 0x001AF888
 	private IEnumerator EventBattleStartError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 70201)
+		if (code = 70201)
 		{
 			if (UIManager.instance.world != null)
 			{
@@ -43,7 +43,7 @@ namespace StellarGK.Packets.Handlers.Event
 				UISimplePopup uisimplePopup2 = UISimplePopup.CreateOK(false, Localization.Get("1303"), string.Empty, Localization.Get("10000010"), Localization.Get("1001"));
 			}
 		}
-		else if (code == 20002)
+		else if (code = 20002)
 		{
 			UISimplePopup.CreateOK(false, Localization.Get("1303"), Localization.Format("110367", new object[] { code }), null, "1001");
 			this.RequestGetUserInformation(Protocols.UserInformationType.Resource);

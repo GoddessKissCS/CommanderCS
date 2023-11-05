@@ -1,8 +1,75 @@
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Database.Schemes;
+using StellarGK.Host;
+
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class SearchGuild
+	[Packet(Id = Method.SearchGuild)]
+    public class SearchGuild : BaseMethodHandler<SearchGuildRequest>
     {
+
+        public override object Handle(SearchGuildRequest @params)
+        {
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+			};	
+
+			var guild = DatabaseManager.Guild.FindByName(@params.gnm);
+
+			if (guild != null)
+			{
+				var roguild = Guild2RoGuild(guild, GetSession());
+				response.Result = roguild;
+			}
+			else
+			{
+				StellarGKLibrary.Ro.RoGuild Roguild = new()
+				{
+
+				};
+
+				response.Result = Roguild;
+            }
+
+
+			return response;
+
+        }
+
+        public static StellarGKLibrary.Ro.RoGuild Guild2RoGuild(GuildScheme guild, string session)
+        {
+            string isApplyingForGuild = DatabaseManager.GuildApplication.RetrieveGuildApplication(session, guild.GuildId);
+
+            StellarGKLibrary.Ro.RoGuild Roguild = new()
+            {
+                apnt = guild.aPoint,
+                cnt = guild.Count,
+                emb = guild.Emblem,
+                gidx = guild.GuildId,
+                gnm = guild.Name,
+                gtyp = guild.GuildType,
+                lev = guild.Level,
+                list = isApplyingForGuild,
+				mxCnt = guild.MaxCount,
+				ntc = guild.Notice,
+				world = guild.World,
+            };
+
+            return Roguild;
+
+        }
+
     }
+
+	public class SearchGuildRequest
+	{
+		[JsonProperty("gnm")]
+		public string gnm { get; set;}
+	}
+
 }
 
 /*	// Token: 0x06006022 RID: 24610 RVA: 0x000120F8 File Offset: 0x000102F8

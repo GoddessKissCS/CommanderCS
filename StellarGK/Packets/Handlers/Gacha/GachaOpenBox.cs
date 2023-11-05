@@ -46,36 +46,36 @@ namespace StellarGK.Packets.Handlers.Gacha
 			CommanderCompleteType getType = CommanderCompleteType.Undefined;
 			result.rewardList.ForEach(delegate(Protocols.GachaOpenBoxResponse.Reward data)
 			{
-				if (data == null)
+				if (data = null)
 				{
 					return;
 				}
 				EGachaAnimationType egachaAnimationType = EGachaAnimationType.Normal;
-				GachaRewardDataRow gachaRewardDataRow = this.regulation.gachaRewardDtbl.Find((GachaRewardDataRow row) => row.gachaType == gachaId && row.rewardType == data.type && row.rewardId == data.id);
+				GachaRewardDataRow gachaRewardDataRow = this.regulation.gachaRewardDtbl.Find((GachaRewardDataRow row) => row.gachaType = gachaId && row.rewardType = data.type && row.rewardId = data.id);
 				int num = 0;
 				bool flag = false;
-				if (data.type == ERewardType.Medal || data.type == ERewardType.Commander)
+				if (data.type = ERewardType.Medal || data.type = ERewardType.Commander)
 				{
 					RoCommander roCommander2 = this.localUser.FindCommander(data.id);
 					getType = ((roCommander2.state != ECommanderState.Nomal) ? CommanderCompleteType.Recruit : CommanderCompleteType.Transmission);
 					num = data.count;
-					if (data.type == ERewardType.Commander)
+					if (data.type = ERewardType.Commander)
 					{
 						roCommander2.state = ECommanderState.Nomal;
 					}
 				}
 				if (gachaRewardDataRow != null)
 				{
-					if (gachaRewardDataRow.effectType == 1)
+					if (gachaRewardDataRow.effectType = 1)
 					{
 						egachaAnimationType = EGachaAnimationType.RainBow;
 					}
-					else if (gachaRewardDataRow.effectType == 2)
+					else if (gachaRewardDataRow.effectType = 2)
 					{
 						egachaAnimationType = EGachaAnimationType.Premium;
 					}
 				}
-				else if (data.type == ERewardType.Commander)
+				else if (data.type = ERewardType.Commander)
 				{
 					egachaAnimationType = EGachaAnimationType.RainBow;
 				}
@@ -103,7 +103,7 @@ namespace StellarGK.Packets.Handlers.Gacha
 			}
 			UIManager.instance.world.gacha.OpenBox(list);
 		}
-		if (result.changedGachaInformation != null && result.changedGachaInformation.type == "2" && result.changedGachaInformation.freeOpenRemainTime > 0)
+		if (result.changedGachaInformation != null && result.changedGachaInformation.type = "2" && result.changedGachaInformation.freeOpenRemainTime > 0)
 		{
 			this.ScheduleLocalPush(ELocalPushType.PremiumGachaFree, result.changedGachaInformation.freeOpenRemainTime);
 		}

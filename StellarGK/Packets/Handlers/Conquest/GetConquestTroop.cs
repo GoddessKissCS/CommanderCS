@@ -25,19 +25,19 @@ namespace StellarGK.Packets.Handlers.Conquest
 	// Token: 0x06006068 RID: 24680 RVA: 0x001B0480 File Offset: 0x001AE680
 	private IEnumerator GetConquestTroopError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71001)
+		if (code = 71001)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110303"));
 		}
-		else if (code == 71501)
+		else if (code = 71501)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
-		else if (code == 71502)
+		else if (code = 71502)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
-		else if (code == 71507)
+		else if (code = 71507)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}

@@ -26,7 +26,7 @@ namespace StellarGK.Packets.Handlers.Inventory
 					foreach (KeyValuePair<string, int> keyValuePair2 in keyValuePair.Value.equipItemInfo)
 					{
 						RoItem roItem = this.localUser.EquipedList_FindItem(keyValuePair2.Key, key, keyValuePair2.Value);
-						if (roItem == null)
+						if (roItem = null)
 						{
 							this.localUser.EquipedList_AddItem(RoItem.Create(keyValuePair2.Key, keyValuePair2.Value, 1, key));
 							RoItem roItem2 = this.localUser.EquipedList_FindItem(keyValuePair2.Key, key, keyValuePair2.Value);
@@ -49,7 +49,7 @@ namespace StellarGK.Packets.Handlers.Inventory
 				foreach (KeyValuePair<int, Protocols.EquipItemInfo> keyValuePair4 in keyValuePair3.Value)
 				{
 					int key2 = keyValuePair4.Key;
-					if ((result.equipItem.Count == 2 && num == 0) || (keyValuePair3.Value.Count == 2 && num2 == 0))
+					if ((result.equipItem.Count = 2 && num = 0) || (keyValuePair3.Value.Count = 2 && num2 = 0))
 					{
 						RoItem roItem4 = this.localUser.EquipedList_FindItem(text, roCommander.id, key2);
 						if (roItem4 != null)

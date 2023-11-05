@@ -35,7 +35,7 @@ namespace StellarGK.Packets.Handlers.Dispatch
 	// Token: 0x060060BA RID: 24762 RVA: 0x001B0B28 File Offset: 0x001AED28
 	private IEnumerator GetDispatchCommanderListError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71001)
+		if (code = 71001)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110303"));
 			UIManager.instance.world.guild.CloseDispatchPopup();

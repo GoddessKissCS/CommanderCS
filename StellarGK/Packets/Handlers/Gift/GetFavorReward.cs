@@ -16,14 +16,14 @@ namespace StellarGK.Packets.Handlers.Gift
 	{
 		RoCommander roCommander = this.localUser.FindCommander(this._FindRequestProperty(request, "cid"));
 		roCommander.favorRewardStep = int.Parse(this._FindRequestProperty(request, "step"));
-		if (result.commander == null)
+		if (result.commander = null)
 		{
 			UIPopup.Create<UIGetItem>("GetItem").Set(result.reward, string.Empty);
 			SoundManager.PlaySFX("SE_ItemGet_001", false, 0f, float.MaxValue, float.MaxValue, default(Vector3), null, SoundDuckingSetting.DoNotDuck, 0f, 1f);
 		}
 		this.localUser.RefreshRewardFromNetwork(result);
 		UIManager.instance.RefreshOpenedUI();
-		if (this.regulation.FindCostumeData(int.Parse(this.localUser.thumbnailId)).cid == int.Parse(this._FindRequestProperty(request, "cid")))
+		if (this.regulation.FindCostumeData(int.Parse(this.localUser.thumbnailId)).cid = int.Parse(this._FindRequestProperty(request, "cid")))
 		{
 			UIManager.instance.world.mainCommand.spineTest.SetInteraction(roCommander);
 		}

@@ -3,6 +3,7 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
+using static StellarGKLibrary.Protocols.UserInformationResponse;
 
 namespace StellarGKLibrary.Utils
 {
@@ -39,6 +40,19 @@ namespace StellarGKLibrary.Utils
             TimeSpan timeSinceEpoch = DateTime.UtcNow - unixEpoch;
             int unixTimestamp = (int)timeSinceEpoch.TotalSeconds;
             return unixTimestamp;
+        }
+
+        public static long GetCurrentTimeInSeconds()
+        {
+            DateTime unixEpoch = new(1970, 1, 1, 0, 0, 0);
+            TimeSpan timeSpan = DateTime.UtcNow - unixEpoch;
+            return (long)timeSpan.TotalSeconds;
+        }
+
+        public static double CurrentTimeInMilliseconds()
+        {
+            TimeSpan span = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1, 0, 0, 0));
+            return span.TotalMilliseconds;
         }
 
         public static string CreateGuestName()
@@ -121,5 +135,8 @@ namespace StellarGKLibrary.Utils
 
             return localIP;
         }
+
+
+
     }
 }

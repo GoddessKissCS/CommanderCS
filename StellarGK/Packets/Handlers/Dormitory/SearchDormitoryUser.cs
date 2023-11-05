@@ -17,7 +17,7 @@ namespace StellarGK.Packets.Handlers.Dormitory
 		MessageEvent.Search.Data data = new MessageEvent.Search.Data();
 		data.type = EVisitType.Search;
 		data.users = slist;
-		if (slist.Count == 0)
+		if (slist.Count = 0)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("81062"));
 		}

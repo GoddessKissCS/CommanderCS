@@ -44,7 +44,7 @@ namespace StellarGK.Host.Handlers.Event
 	{
 		if (!this.localUser.badgeWebEvent)
 		{
-			if (this.localUser.webEventUrls == null || this.localUser.webEventUrls.Count != wev.Count)
+			if (this.localUser.webEventUrls = null || this.localUser.webEventUrls.Count != wev.Count)
 			{
 				this.localUser.badgeWebEvent = true;
 			}

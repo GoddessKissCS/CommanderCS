@@ -10,18 +10,19 @@ namespace StellarGK.Host.Handlers.Profile
         {
             ResponsePacket response = new();
 
-#warning TODO - ??? i dont know
-
             // SHOULD BE FINISHED?
 
             ErrorCode code = DatabaseManager.Account.ChangeMemberShip(@params.uid, @params.pwd, @params.plfm, @params.puid, @params.ch);
 
             if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
             {
-                response.Error = new() { code = code };
-                response.Id = BasePacket.Id;
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = code },
+                };
 
-                return response;
+                return error;
             }
 
             response.Id = BasePacket.Id;

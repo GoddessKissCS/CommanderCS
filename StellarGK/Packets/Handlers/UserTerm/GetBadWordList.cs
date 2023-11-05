@@ -9,17 +9,23 @@ namespace StellarGK.Host.Handlers.UserTerm
         {
             ResponsePacket response = new();
 
-#warning TODO ADD AN ENTIRE BADWORDLIST WITH DIFFERENT LANGUAGES
-
             List<string> en = new()
             {
                 "booooooobs",
             };
 
+
+            // TODO:
+            // Read from a badwordlist file and add them
+            // doesnt need to be done until its done ig
+
+            //var enList = JsonConvert.DeserializeObject<List<string>>($"Resources\\BadWordList\\En.json");
+
             BadWordListResponse badWord = new()
             {
                 word = new() {
-                {"en", en }}
+                    {"en", en }
+                }
             };
 
             response.Id = BasePacket.Id;

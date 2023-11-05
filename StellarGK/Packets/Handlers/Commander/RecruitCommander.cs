@@ -24,7 +24,7 @@
 			entry.recruited = true;
 			RoCommander roCommander = this.localUser.FindCommander(text);
 			CommanderCompleteType commanderCompleteType;
-			if (roCommander.state == ECommanderState.Nomal)
+			if (roCommander.state = ECommanderState.Nomal)
 			{
 				commanderCompleteType = CommanderCompleteType.Transmission;
 			}
@@ -47,11 +47,11 @@
 	// Token: 0x06005F3A RID: 24378 RVA: 0x001AEA1C File Offset: 0x001ACC1C
 	private IEnumerator RecruitCommanderError(JsonRpcClient.Request request, string result, int code, string message)
 	{
-		if (code == 20001)
+		if (code = 20001)
 		{
 			UISimplePopup.CreateDebugOK("자원부족", result, "확인");
 		}
-		else if (code == 30004)
+		else if (code = 30004)
 		{
 		}
 		yield break;

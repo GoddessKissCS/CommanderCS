@@ -14,7 +14,7 @@ namespace StellarGK.Packets.Handlers.Event
 	// Token: 0x06006116 RID: 24854 RVA: 0x001B1274 File Offset: 0x001AF474
 	private IEnumerator GetRotationBannerInfoResult(JsonRpcClient.Request request, Protocols.RotationBanner result)
 	{
-		if (result == null)
+		if (result = null)
 		{
 			if (UIManager.instance.world.mainCommand != null)
 			{

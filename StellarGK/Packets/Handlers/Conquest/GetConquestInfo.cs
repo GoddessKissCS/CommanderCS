@@ -1,8 +1,28 @@
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Conquest
 {
-    public class GetConquestInfo
+	[Packet(Id = Method.GetConquestInfo)]
+    public class GetConquestInfo : BaseMethodHandler<GetConquestInfoRequest>
     {
+        public override object Handle(GetConquestInfoRequest @params)
+        {
+            
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = null,
+			};
+
+			return response;
+        }
     }
+
+    public class GetConquestInfoRequest
+	{
+
+	}
+
 }
 
 /*	// Token: 0x0600605D RID: 24669 RVA: 0x000120F8 File Offset: 0x000102F8
@@ -28,7 +48,7 @@ namespace StellarGK.Packets.Handlers.Conquest
 	// Token: 0x0600605F RID: 24671 RVA: 0x001B03B0 File Offset: 0x001AE5B0
 	private IEnumerator GetConquestInfoError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71501)
+		if (code = 71501)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110365"));
 			UIManager.instance.world.guild.SetConquestError();

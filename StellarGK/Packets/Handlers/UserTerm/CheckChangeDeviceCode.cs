@@ -18,9 +18,14 @@ namespace StellarGK.Host.Handlers.UserTerm
 
             if (result == null)
             {
-                response.Error = new() { code = ErrorCode.InvalidDeviceCode };
 
-                return response;
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = ErrorCode.InvalidDeviceCode },
+                };
+
+                return error;
             }
 
             var user = DatabaseManager.Account.FindByUid(result.MemberId);
@@ -70,7 +75,7 @@ namespace StellarGK.Host.Handlers.UserTerm
 	// Token: 0x060060CE RID: 24782 RVA: 0x001B0CE0 File Offset: 0x001AEEE0
 	private IEnumerator CheckChangeDeviceCodeError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 10024)
+		if (code = 10024)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("19525"));
 		}

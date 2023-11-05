@@ -1,8 +1,89 @@
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+using StellarGKLibrary.Protocols;
+using StellarGKLibrary.Utils;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class CreateGuild
+	[Packet(Id = Method.CreateGuild)]
+    public class CreateGuild : BaseMethodHandler<CreateGuildRequest>
     {
+        public override object Handle(CreateGuildRequest @params)
+        {	
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+			};
+
+			if (Misc.NameCheck(@params.gnm))
+			{
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = ErrorCode.FederationNameContainsBadwordsOrInvalid },
+                };
+
+                return error;
+            }
+
+            var guild = DatabaseManager.Guild.FindByName(@params.gnm);
+
+            if (guild != null)
+			{
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = ErrorCode.FederationNameAlreadyExists },
+                };
+
+                return error;   
+				
+            } else {
+                string session = GetSession();
+
+				DatabaseManager.GameProfile.UpdateCash(session, 300, false);
+
+				var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+
+				DatabaseManager.Guild.Create(@params.gnm, @params.emb, @params.gtyp, @params.lvlm, session);
+
+				var user = GetUserGameProfile();
+
+				var userguild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+
+				var memberdata = DatabaseManager.Guild.RequestGuildMembers(user.GuildId);
+
+                GuildInfo guildInfo = new()
+                {
+					guildInfo = userguild,
+					resource = rsoc,
+					memberData = memberdata
+                };
+
+				response.Result = guildInfo;
+            }
+
+			return response;
+
+        }
     }
+
+	public class CreateGuildRequest
+	{
+		[JsonProperty("gnm")]
+		public string gnm { get; set; }
+
+        [JsonProperty("gtyp")]
+        public int gtyp { get; set; }
+
+        [JsonProperty("lvlm")]
+        public int lvlm { get; set; }
+
+        [JsonProperty("emb")]
+        public int emb { get; set; }
+	}
+
 }
 
 /*	// Token: 0x0600601F RID: 24607 RVA: 0x000492CD File Offset: 0x000474CD
@@ -17,7 +98,7 @@ namespace StellarGK.Packets.Handlers.Guild
 	{
 		this.localUser.RefreshGoodsFromNetwork(result.resource);
 		this.localUser.RefreshGuildFromNetwork(result.guildInfo);
-		if (result.memberData == null)
+		if (result.memberData = null)
 		{
 			this.localUser.nickname = this.tempNickName;
 			List<Protocols.GuildMember.MemberData> list = new List<Protocols.GuildMember.MemberData>();
@@ -49,15 +130,15 @@ namespace StellarGK.Packets.Handlers.Guild
 	// Token: 0x06006021 RID: 24609 RVA: 0x001AFE64 File Offset: 0x001AE064
 	private IEnumerator CreateGuildError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71005)
+		if (code = 71005)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110021"));
 		}
-		else if (code == 71009)
+		else if (code = 71009)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110022"));
 		}
-		else if (code == 71303)
+		else if (code = 71303)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110219"));
 		}

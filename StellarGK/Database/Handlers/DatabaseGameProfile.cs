@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using StellarGK.Database.Schemes;
 using StellarGK.Host.Handlers.Login;
 using StellarGKLibrary.ExcelReader;
@@ -23,12 +24,14 @@ namespace StellarGK.Database.Handlers
 
             int uno = DatabaseManager.AutoIncrements.GetNextNumber("UNO", 1000);
 
+            var worldmapstagesreward = WorldMapStageData.GetInstance().AddDefaultWorldMapIsRewardCollected();
+            var WorldMapStages = WorldMapStageData.GetInstance().AddAllStagesAtDefault();
             GameProfileScheme user = new()
             {
                 Server = server,
-                WorldMapStages = WorldMapStageData.GetInstance().AddAllStagesAtDefault(),
-                WorldMapStagesReward = WorldMapStageData.GetInstance().AddDefaultWorldMapIsRewardCollected(),
-                SweepClearData = new() { },
+                WorldMapStages = WorldMapStages,
+                WorldMapStagesReward = worldmapstagesreward,
+                SweepClearData = [],
                 LastStage = 0,
                 UserStatistics = new()
                 {
@@ -61,9 +64,7 @@ namespace StellarGK.Database.Handlers
                     UnitDestroyCount = 0,
                     weaponInventoryCount = 0,
                 },
-                CommanderData = new()
-                {
-                },
+                CommanderData = [],
                 CompleteRewardGroupIdx = new()
                 {
                 },
@@ -71,7 +72,7 @@ namespace StellarGK.Database.Handlers
                 GuildId = null,
                 MemberId = memberId,
                 Notifaction = false,
-                PreDeck = new() { },
+                PreDeck = [],
                 TutorialData = new()
                 {
                     skip = false,
@@ -134,7 +135,7 @@ namespace StellarGK.Database.Handlers
                     worldDuelTicket = 0,
                     worldDuelUpgradeCoin = 0,
                 },
-                Uno = uno.ToString(),
+                Uno = uno,
                 WorldState = 0,
                 // result.worldState != -1;
                 // if exploration is finished id assume
@@ -163,29 +164,23 @@ namespace StellarGK.Database.Handlers
                     ercnt = 0,
                     iftw = 0,
                 },
-                VipRechargeData = new()
-                {
+                VipRechargeData =
+                [
                     new()
                     {
-                        count = 9,
+                        count = 0,
                         idx = 601,
                         mid = 0,
                     }
-                },
-                BlockedUsers = new()
-                {
-                },
-                BoughtCashShopItems = new()
-                {
-                },
+                ],
+                BlockedUsers = [],
+                BoughtCashShopItems = [],
                 Session = string.Empty,
-                MailDataList = new()
-                {
-                },
-                DailyBonusCheck = new()
-                {
-                },
+                MailDataList = [],
+                DailyBonusCheck = [],
             };
+
+            DatabaseManager.Dormitory.Create(uno);
 
             Collection.InsertOne(user);
 
@@ -226,9 +221,19 @@ namespace StellarGK.Database.Handlers
             return tryUser;
         }
 
+        public GameProfileScheme FindByUno(int uno)
+        {
+            return Collection.AsQueryable().Where(d => d.Uno == uno).FirstOrDefault();
+        }
+
         public GameProfileScheme FindByNick(string nickname)
         {
             return Collection.AsQueryable().Where(d => d.UserResources.nickname == nickname).FirstOrDefault();
+        }
+
+        public List<GameProfileScheme> FindByMemberIdList(string memberId)
+        {
+            return Collection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).ToList();
         }
 
         public UserInformationResponse.BattleStatistics UserStatisticsFromSession(string session)
@@ -333,24 +338,20 @@ namespace StellarGK.Database.Handlers
         {
             var user = FindBySession(session);
 
-            int gold, cash, stats_gold;
-
             if (useAddition)
             {
-                gold = user.UserResources.gold + new_gold;
-                stats_gold = user.UserStatistics.TotalGold + new_gold;
-                cash = user.UserResources.cash + new_cash;
-            }
-            else
-            {
-                gold = user.UserResources.gold - new_gold;
-                stats_gold = user.UserStatistics.TotalGold - new_gold;
-                cash = user.UserResources.cash - new_cash;
+                user.UserResources.gold += new_gold;
+                user.UserStatistics.TotalGold += new_gold;
+                user.UserResources.cash += new_cash;
+            } else {
+                user.UserResources.gold -= new_gold;
+                user.UserStatistics.TotalGold -= new_gold;
+                user.UserResources.cash -= new_cash;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
-            var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", gold).Set("UserResources.cash", cash).Set("UserStatistics.totalGold", stats_gold);
+            var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", user.UserResources.gold).Set("UserResources.cash", user.UserResources.cash).Set("UserStatistics.totalGold", user.UserStatistics.TotalGold);
 
             Collection.UpdateOne(filter, update);
         }
@@ -359,21 +360,20 @@ namespace StellarGK.Database.Handlers
         {
             var user = FindBySession(session);
 
-            int stats_gold;
             if (useAddition)
             {
-                gold = user.UserResources.gold + gold;
-                stats_gold = user.UserStatistics.TotalGold + gold;
+                user.UserResources.gold += gold;
+                user.UserStatistics.TotalGold += gold;
             }
             else
             {
-                gold = user.UserResources.gold - gold;
-                stats_gold = user.UserStatistics.TotalGold - gold;
+                user.UserResources.gold -= gold;
+                user.UserStatistics.TotalGold -= gold;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
-            var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", gold).Set("UserStatistics.totalGold", stats_gold);
+            var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", user.UserResources.gold).Set("UserStatistics.totalGold", user.UserStatistics.TotalGold);
 
             Collection.UpdateOne(filter, update);
         }
@@ -384,16 +384,16 @@ namespace StellarGK.Database.Handlers
 
             if (useAddition)
             {
-                cash = user.UserResources.cash + cash;
+                user.UserResources.cash += cash;
             }
             else
             {
-                cash = user.UserResources.cash - cash;
+                user.UserResources.cash -= cash;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
-            var update = Builders<GameProfileScheme>.Update.Set("userResources.cash", cash);
+            var update = Builders<GameProfileScheme>.Update.Set("UserResources.cash", user.UserResources.cash);
 
             Collection.UpdateOne(filter, update);
         }
@@ -578,12 +578,27 @@ namespace StellarGK.Database.Handlers
 
             user.WorldMapStagesReward[mapId] = 1;
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("session", session);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
             var update = Builders<GameProfileScheme>.Update.Set("WorldMapStagesReward", user.WorldMapStagesReward);
 
             var updateResult = Collection.UpdateOne(filter, update);
 
             return updateResult.ModifiedCount > 0;
+        }
+
+        public void UpdateVipRechargeData(string session, List<UserInformationResponse.VipRechargeData> vipRechargedata)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
+            var update = Builders<GameProfileScheme>.Update.Set("VipRechargeData", vipRechargedata);
+
+            Collection.UpdateOne(filter, update);
+        }
+
+        public void UpdateProfile(string session, GameProfileScheme user)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
+
+            Collection.ReplaceOne(filter, user);
         }
     }
 }

@@ -23,23 +23,23 @@ namespace StellarGK.Packets.Handlers.Conquest
 	// Token: 0x0600605C RID: 24668 RVA: 0x001B0370 File Offset: 0x001AE570
 	private IEnumerator ConquestJoinError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71001)
+		if (code = 71001)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110303"));
 		}
-		else if (code == 71501)
+		else if (code = 71501)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
-		else if (code == 71502)
+		else if (code = 71502)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
-		else if (code == 71007)
+		else if (code = 71007)
 		{
 			UISimplePopup.CreateOK(false, Localization.Get("1303"), Localization.Format("110367", new object[] { code }), null, "1001");
 		}
-		else if (code == 71511)
+		else if (code = 71511)
 		{
 			UISimplePopup.CreateOK(false, Localization.Get("1303"), Localization.Format("110367", new object[] { code }), null, "1001");
 		}

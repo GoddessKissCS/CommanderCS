@@ -19,7 +19,7 @@ namespace StellarGK.Packets.Handlers.PvP
 		{
 		}
 		Protocols.PvPRankingList pvPRankingList = this._ConvertJObject<Protocols.PvPRankingList>(result);
-		if (pvPRankingList == null)
+		if (pvPRankingList = null)
 		{
 			yield break;
 		}

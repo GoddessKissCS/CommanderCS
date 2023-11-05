@@ -21,7 +21,7 @@ namespace StellarGK.Packets.Handlers.Cooperate
 	// Token: 0x06006110 RID: 24848 RVA: 0x001B1208 File Offset: 0x001AF408
 	private IEnumerator CooperateBattleStartError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71001)
+		if (code = 71001)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110303"));
 			if (UIManager.instance.world.guild.isActive)
@@ -29,7 +29,7 @@ namespace StellarGK.Packets.Handlers.Cooperate
 				UIManager.instance.world.guild.Close();
 			}
 		}
-		else if (code == 71604)
+		else if (code = 71604)
 		{
 			UISimplePopup uisimplePopup = UISimplePopup.CreateOK(false, Localization.Get("5090012"), Localization.Get("5090013"), null, "1001");
 			uisimplePopup.onClose = delegate
@@ -41,7 +41,7 @@ namespace StellarGK.Packets.Handlers.Cooperate
 				}
 			};
 		}
-		else if (code == 71603)
+		else if (code = 71603)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("5090010"));
 		}

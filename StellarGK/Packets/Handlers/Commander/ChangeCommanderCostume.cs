@@ -1,8 +1,45 @@
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Commander
 {
-    public class ChangeCommanderCostume
+    [Packet(Id = Method.ChangeCommanderCostume)]
+    public class ChangeCommanderCostume : BaseMethodHandler<ChangeCommanderCostumeRequest>
     {
+		public override object Handle(ChangeCommanderCostumeRequest @params)
+		{
+			var user = GetUserGameProfile();
+			var session = GetSession();
+
+
+			// maybe check if you own the costume first?
+
+			user.CommanderData["" + @params.cid].currentCostume = @params.cos;
+
+			DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = "{}"
+			};
+
+			return response;
+
+		}
+
     }
+
+    public class ChangeCommanderCostumeRequest
+    {
+        [JsonProperty("cid")]
+        public int cid { get; set; }
+
+        [JsonProperty("tokn")]
+        public int cos { get; set; }
+    }
+
 }
 
 /*	// Token: 0x0600609A RID: 24730 RVA: 0x000120F8 File Offset: 0x000102F8
@@ -16,7 +53,7 @@ namespace StellarGK.Packets.Handlers.Commander
 	{
 		string text = this._FindRequestProperty(request, "cid");
 		string text2 = this._FindRequestProperty(request, "cos");
-		if (this.regulation.FindCostumeData(int.Parse(this.localUser.thumbnailId)).cid == int.Parse(text))
+		if (this.regulation.FindCostumeData(int.Parse(this.localUser.thumbnailId)).cid = int.Parse(text))
 		{
 			this.localUser.thumbnailId = text2;
 		}

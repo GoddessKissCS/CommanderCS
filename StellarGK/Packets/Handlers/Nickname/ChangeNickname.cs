@@ -19,9 +19,13 @@ namespace StellarGK.Host.Handlers.Nickname
 
             if (code == ErrorCode.AlreadyInUse || code == ErrorCode.InappropriateWords)
             {
-                response.Error = new() { code = code };
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = code },
+                };
 
-                return response;
+                return error;
             }
 
             ChangeNicknameResponse data = new()

@@ -25,8 +25,9 @@ namespace StellarGK.Host.Handlers.Guild
             {
                 memberData = DatabaseManager.Guild.RequestGuildMembers(user.GuildId),
                 badge = 0, // NO IDEA WHAT THIS SETS
-#warning TODO
             };
+
+            response.Result = guild;
 
             return response;
         }
@@ -53,7 +54,7 @@ namespace StellarGK.Host.Handlers.Guild
 		if (result != null)
 		{
 			UIManager.instance.world.guild.InitAndOpenGuildInfo(result.memberData);
-			UISetter.SetActive(UIManager.instance.world.guild.guildBoardBadge, result.badge == 1);
+			UISetter.SetActive(UIManager.instance.world.guild.guildBoardBadge, result.badge = 1);
 		}
 		yield break;
 	}*/

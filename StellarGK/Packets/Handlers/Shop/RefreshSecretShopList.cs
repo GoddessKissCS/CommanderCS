@@ -19,7 +19,7 @@ namespace StellarGK.Packets.Handlers.Shop
 			this.localUser.shopList = result.shopList;
 			this.localUser.RefreshGoodsFromNetwork(result.resource);
 			this.localUser.shopRefreshCount = result.refreshCount;
-			this.localUser.shopRefreshFree = result.reset == 0;
+			this.localUser.shopRefreshFree = result.reset = 0;
 			UIManager.instance.RefreshOpenedUI();
 		}
 		yield break;

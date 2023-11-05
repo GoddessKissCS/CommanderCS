@@ -29,15 +29,15 @@ namespace StellarGK.Packets.Handlers.Conquest
 	// Token: 0x0600607D RID: 24701 RVA: 0x001B066C File Offset: 0x001AE86C
 	private IEnumerator GetConquestRadarError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71001)
+		if (code = 71001)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110303"));
 		}
-		else if (code == 71501)
+		else if (code = 71501)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
-		else if (code == 71502)
+		else if (code = 71502)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}

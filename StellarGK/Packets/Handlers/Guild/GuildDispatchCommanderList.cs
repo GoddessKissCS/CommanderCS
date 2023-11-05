@@ -17,7 +17,7 @@ namespace StellarGK.Packets.Handlers.Guild
 		this.localUser.SetMercenaryList(result);
 		string text = this._FindRequestProperty(request, "type");
 		int num = int.Parse(text);
-		if (num == 1 || num == 5 || num == 10 || num == 15)
+		if (num = 1 || num = 5 || num = 10 || num = 15)
 		{
 			UIManager.instance.world.commanderList.SetEngageCommanderList();
 		}

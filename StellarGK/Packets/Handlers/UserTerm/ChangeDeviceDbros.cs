@@ -8,20 +8,29 @@ namespace StellarGK.Packets.Handlers.UserTerm
     [Packet(Id = Method.ChangeDeviceDbros)]
     public class ChangeDeviceDbros : BaseMethodHandler<ChangeDeviceDbrosRequest>
     {
-#warning TODO NO IDEA CURRENTLY HOW TO SOLVE THIS
+
+        // I think it should be finished but you never know
+
+        // Something might not work fully
 
         public override object Handle(ChangeDeviceDbrosRequest @params)
         {
-            ResponsePacket response = new();
-            response.Id = BasePacket.Id;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id
+            };
 
             ErrorCode code = DatabaseManager.Account.ChangeDevice(@params.plfm, @params.uid, @params.pwd);
 
             if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
             {
-                response.Error = new() { code = code };
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = code },
+                };
 
-                return response;
+                return error;
             }
 
             response.Result = "{}";
@@ -95,11 +104,11 @@ namespace StellarGK.Packets.Handlers.UserTerm
 	// Token: 0x060060DC RID: 24796 RVA: 0x001B0DE8 File Offset: 0x001AEFE8
 	private IEnumerator ChangeDeviceDbrosError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 10014)
+		if (code = 10014)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("19033"));
 		}
-		else if (code == 20014)
+		else if (code = 20014)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("7054"));
 		}

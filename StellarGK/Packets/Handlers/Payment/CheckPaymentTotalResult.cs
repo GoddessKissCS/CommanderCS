@@ -436,12 +436,12 @@ namespace StellarGK.Packets.Handlers.Payment
 		if (world != null)
 		{
 			RoBuilding roBuilding = this.localUser.FindBuilding(EBuilding.VipShop);
-			if (roBuilding != null && this.localUser.vipLevel == roBuilding.reg.vipLevel && !roBuilding.GetUIBuilding().gameObject.activeSelf)
+			if (roBuilding != null && this.localUser.vipLevel = roBuilding.reg.vipLevel && !roBuilding.GetUIBuilding().gameObject.activeSelf)
 			{
 				NetworkAnimation.Instance.CreateFloatingText_OnlyUIToast(Localization.Get("22006"), roBuilding.reg.resourceId);
 			}
 			RoBuilding roBuilding2 = this.localUser.FindBuilding(EBuilding.VipGacha);
-			if (roBuilding2 != null && this.localUser.vipLevel == roBuilding2.reg.vipLevel && !roBuilding2.GetUIBuilding().gameObject.activeSelf)
+			if (roBuilding2 != null && this.localUser.vipLevel = roBuilding2.reg.vipLevel && !roBuilding2.GetUIBuilding().gameObject.activeSelf)
 			{
 				string text3 = "Loot_carrier";
 				NetworkAnimation.Instance.CreateFloatingText_OnlyUIToast(Localization.Get("7167"), text3);

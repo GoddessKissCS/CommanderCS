@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using StellarGK.Database;
 using StellarGKLibrary.Enum;
 using StellarGKLibrary.Protocols;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace StellarGK.Host.Handlers.Login
 {
@@ -28,20 +29,25 @@ namespace StellarGK.Host.Handlers.Login
 
             if (code == ErrorCode.BannedOrSuspended || code == ErrorCode.UnableToJoin)
             {
-                response.Error = new() { code = code };
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = code },
+                };
 
-                return response;
+                return error;
             }
 
             var goods = DatabaseManager.GameProfile.UserResourcesFromSession(session);
             var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(session);
-            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId);
+            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+            DatabaseManager.Guild.UpdateLoginTimeInGuild(user);
 
             UserInformationResponse userInformationResponse = new()
             {
                 goodsInfo = goods,
                 battleStatisticsInfo = battlestats,
-                uno = user.Uno,
+                uno = user.Uno.ToString(),
                 stage = user.LastStage,
                 notification = user.Notifaction,
 

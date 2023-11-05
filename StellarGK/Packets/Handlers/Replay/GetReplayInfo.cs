@@ -14,11 +14,11 @@ namespace StellarGK.Packets.Handlers.Replay
 	// Token: 0x06005FE6 RID: 24550 RVA: 0x001AF954 File Offset: 0x001ADB54
 	private IEnumerator GetReplayInfoResult(JsonRpcClient.Request request, Protocols.RecordInfo result)
 	{
-		if (result == null)
+		if (result = null)
 		{
 			yield break;
 		}
-		if (result.data == null)
+		if (result.data = null)
 		{
 			if (this.localUser.playingChatRecord != null)
 			{

@@ -20,7 +20,7 @@ namespace StellarGK.Packets.Handlers.Guild
 			while (enumerator.MoveNext())
 			{
 				Protocols.UserInformationResponse.UserGuild.GuildSkill list = enumerator.Current;
-				this.localUser.guildSkillList.Find((RoGuildSkill skill) => skill.idx == list.idx).skillLevel = list.level;
+				this.localUser.guildSkillList.Find((RoGuildSkill skill) => skill.idx = list.idx).skillLevel = list.level;
 			}
 		}
 		UIGuildManagePopup uiguildManagePopup = UnityEngine.Object.FindObjectOfType(typeof(UIGuildManagePopup)) as UIGuildManagePopup;
@@ -35,7 +35,7 @@ namespace StellarGK.Packets.Handlers.Guild
 	// Token: 0x0600604E RID: 24654 RVA: 0x001B0274 File Offset: 0x001AE474
 	private IEnumerator UpgradeGuildSkillError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71014)
+		if (code = 71014)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110259"));
 		}

@@ -28,7 +28,7 @@ namespace StellarGK.Packets.Handlers.Dormitory
 	// Token: 0x060061C8 RID: 25032 RVA: 0x001B20AC File Offset: 0x001B02AC
 	private IEnumerator ChangeDormitoryCommanderError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 85150)
+		if (code = 85150)
 		{
 		}
 		yield break;

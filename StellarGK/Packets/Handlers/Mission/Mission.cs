@@ -42,8 +42,8 @@ namespace StellarGK.Packets.Handlers.Mission
 					RoMission roMission = this.localUser.FindMission(missionInfo.missionList[j].missionId.ToString());
 					if (roMission != null)
 					{
-						roMission.received = missionInfo.missionList[j].receive == 1;
-						roMission.combleted = missionInfo.missionList[j].complete == 1;
+						roMission.received = missionInfo.missionList[j].receive = 1;
+						roMission.combleted = missionInfo.missionList[j].complete = 1;
 						roMission.conditionCount = missionInfo.missionList[j].point;
 						if (roMission.combleted && !roMission.received)
 						{
@@ -64,8 +64,8 @@ namespace StellarGK.Packets.Handlers.Mission
 					RoMission roMission2 = this.localUser.FindAchievement(achievementInfo.AchievementList[k].achievementId.ToString(), achievementInfo.AchievementList[k].sort);
 					if (roMission2 != null)
 					{
-						roMission2.received = achievementInfo.AchievementList[k].receive == 1;
-						roMission2.combleted = achievementInfo.AchievementList[k].complete == 1;
+						roMission2.received = achievementInfo.AchievementList[k].receive = 1;
+						roMission2.combleted = achievementInfo.AchievementList[k].complete = 1;
 						roMission2.conditionCount = achievementInfo.AchievementList[k].point;
 						if (roMission2.combleted && !roMission2.received)
 						{

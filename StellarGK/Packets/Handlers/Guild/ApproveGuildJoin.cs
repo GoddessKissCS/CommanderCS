@@ -1,7 +1,27 @@
+using Newtonsoft.Json;
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class ApproveGuildJoin
+	[Packet(Id = Method.ApproveGuildJoin)]
+    public class ApproveGuildJoin : BaseMethodHandler<ApproveGuildJoinRequest>
     {
+        public override object Handle(ApproveGuildJoinRequest @params)
+        {
+           
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = "accepted",
+			};
+			return response;	
+
+        }
+    }
+    public class ApproveGuildJoinRequest
+    {
+		[JsonProperty("uno")]
+		public int uno {  get; set; }
     }
 }
 
@@ -26,11 +46,11 @@ namespace StellarGK.Packets.Handlers.Guild
 	// Token: 0x0600603A RID: 24634 RVA: 0x001B0070 File Offset: 0x001AE270
 	private IEnumerator ApproveGuildJoinError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71305)
+		if (code = 71305)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110221"));
 		}
-		else if (code == 71306)
+		else if (code = 71306)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110307"));
 			int num = int.Parse(this._FindRequestProperty(request, "uno"));
@@ -40,7 +60,7 @@ namespace StellarGK.Packets.Handlers.Guild
 				uiguildMemberJoinPopUp.RemoveJoinMember(num);
 			}
 		}
-		else if (code == 71007 || code == 71018 || code == 71107)
+		else if (code = 71007 || code = 71018 || code = 71107)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110303"));
 			UIGuildMemberJoinPopUp uiguildMemberJoinPopUp2 = UnityEngine.Object.FindObjectOfType(typeof(UIGuildMemberJoinPopUp)) as UIGuildMemberJoinPopUp;

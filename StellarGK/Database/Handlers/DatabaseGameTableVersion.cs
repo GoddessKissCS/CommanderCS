@@ -9,7 +9,7 @@ namespace StellarGK.Database.Handlers
         {
         }
 
-        public DatabaseVersionScheme Create(double version)
+        public DatabaseVersionScheme Insert(double version)
         {
             DatabaseVersionScheme dataInfo = new()
             {

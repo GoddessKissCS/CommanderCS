@@ -21,7 +21,7 @@ namespace StellarGK.Packets.Handlers.KeepAlives
 		this.localUser.RefreshMedalFromNetwork(result.medalData);
 		this.localUser.RefreshItemFromNetwork(result.foodData);
 		this.localUser.RefreshItemFromNetwork(result.groupItemData);
-		if (!this.localUser.statistics.isBuyVipShop && result.VipShopOpen == 1)
+		if (!this.localUser.statistics.isBuyVipShop && result.VipShopOpen = 1)
 		{
 			this.localUser.statistics.vipShopResetTime_Data.SetByDuration((double)result.VipShopRemainTime);
 			this.localUser.statistics.vipShop = result.VipShopOpen;

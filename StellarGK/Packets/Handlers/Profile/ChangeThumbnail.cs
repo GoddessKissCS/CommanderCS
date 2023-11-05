@@ -8,9 +8,17 @@ namespace StellarGK.Host.Handlers.Profile
     {
         public override object Handle(ChangeThumbnailRequest @params)
         {
-#warning TODO - MISSING FALSE HANDLING
+            string session = GetSession();
+            
+            var user = GetUserGameProfile();
 
-            bool success = DatabaseManager.GameProfile.ChangeThumbnail(GetSession(), @params.idx);
+            bool success = false;
+
+            if (user.CommanderData["" + @params.idx] != null)
+            {
+                success = DatabaseManager.GameProfile.ChangeThumbnail(session, @params.idx);
+            }
+
 
             ResponsePacket response = new()
             {

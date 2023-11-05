@@ -26,7 +26,7 @@ namespace StellarGK.Packets.Handlers.Cooperate
 	// Token: 0x0600610A RID: 24842 RVA: 0x001B1198 File Offset: 0x001AF398
 	private IEnumerator CooperateBattlePointRankError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71001)
+		if (code = 71001)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110303"));
 			if (UIManager.instance.world.guild.isActive)
@@ -34,7 +34,7 @@ namespace StellarGK.Packets.Handlers.Cooperate
 				UIManager.instance.world.guild.Close();
 			}
 		}
-		else if (code == 71603)
+		else if (code = 71603)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("5090032"));
 		}

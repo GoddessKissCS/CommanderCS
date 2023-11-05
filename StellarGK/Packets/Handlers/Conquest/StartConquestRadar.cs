@@ -31,22 +31,22 @@ namespace StellarGK.Packets.Handlers.Conquest
 	// Token: 0x0600607A RID: 24698 RVA: 0x001B062C File Offset: 0x001AE82C
 	private IEnumerator StartConquestRadarError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71001)
+		if (code = 71001)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110303"));
 			UIManager.instance.world.guild.Close();
 		}
-		else if (code == 71501)
+		else if (code = 71501)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 			UIManager.instance.world.guild.Close();
 		}
-		else if (code == 71502)
+		else if (code = 71502)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 			UIManager.instance.world.guild.Close();
 		}
-		else if (code == 71509)
+		else if (code = 71509)
 		{
 			UISimplePopup uisimplePopup = UISimplePopup.CreateOK(false, Localization.Get("1303"), Localization.Format("110367", new object[] { code }), null, "1001");
 			if (uisimplePopup != null)
@@ -57,7 +57,7 @@ namespace StellarGK.Packets.Handlers.Conquest
 				};
 			}
 		}
-		else if (code == 20002)
+		else if (code = 20002)
 		{
 			UISimplePopup.CreateOK(false, Localization.Get("1303"), Localization.Format("110367", new object[] { code }), null, "1001");
 			this.ReqeustRenewUserGameData();

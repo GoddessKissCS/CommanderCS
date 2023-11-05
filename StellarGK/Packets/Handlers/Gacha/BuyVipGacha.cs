@@ -21,7 +21,7 @@ namespace StellarGK.Packets.Handlers.Gacha
 		int num = -1;
 		for (int i = 0; i < this.localUser.gachaInfoList.Count; i++)
 		{
-			if (this.localUser.gachaInfoList[i].rewardType == gacharesult[0].rewardType_result && this.localUser.gachaInfoList[i].rewardIdx == gacharesult[0].rewardIdx_result)
+			if (this.localUser.gachaInfoList[i].rewardType = gacharesult[0].rewardType_result && this.localUser.gachaInfoList[i].rewardIdx = gacharesult[0].rewardIdx_result)
 			{
 				num = this.localUser.gachaInfoList[i].rewardIdx;
 				this.localUser.gachaInfoList[i].rewardRate--;
@@ -32,7 +32,7 @@ namespace StellarGK.Packets.Handlers.Gacha
 				list.Add(rewardData);
 			}
 		}
-		if (erewardType == ERewardType.Commander)
+		if (erewardType = ERewardType.Commander)
 		{
 			RoCommander roCommander = RemoteObjectManager.instance.localUser.FindCommander(num.ToString());
 			if (roCommander != null)

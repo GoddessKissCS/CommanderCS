@@ -12,7 +12,7 @@ namespace StellarGK.Database.Schemes
         public int? GuildId { get; set; }
         public int WorldState { get; set; }
         public string Session { get; set; }
-        public string Uno { get; set; }
+        public int Uno { get; set; }
         public int LastStage { get; set; }
         public bool Notifaction { get; set; }
         public int ResetDateTime { get; set; }
@@ -35,6 +35,8 @@ namespace StellarGK.Database.Schemes
         public List<BlockUser> BlockedUsers { get; set; }
         public List<MailInfo.MailData>? MailDataList { get; set; }
         public List<DailyBonusCheckResponse> DailyBonusCheck { get; set; }
+
+        //public List<WaveBattleInfoList.WaveBattleInfo> WaveBattleInfos { get; set; }
     }
 
     public class UserDevice

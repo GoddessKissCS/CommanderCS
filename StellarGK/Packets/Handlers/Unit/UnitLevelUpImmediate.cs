@@ -1,8 +1,40 @@
-﻿namespace StellarGK.Packets.Handlers.Unit
+﻿using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+using StellarGK.Packets.Handlers.Chat;
+using StellarGKLibrary.Protocols;
+
+namespace StellarGK.Packets.Handlers.Unit
 {
-    public class UnitLevelUpImmediate
+    [Packet(Id = Method.UnitLevelUpImmediate)]
+    public class UnitLevelUpImmediate : BaseMethodHandler<UnitLevelUpImmediateRequest>
     {
+        public override object Handle(UnitLevelUpImmediateRequest @params)
+        {
+
+            ResponsePacket response = new()
+            {
+                Result = null,
+                Id = BasePacket.Id
+            };
+
+            return response;
+        }
     }
+
+
+    public class UnitLevelUpImmediateRequest
+    {
+		[JsonProperty("idx")]
+        public int idx { get; set; }
+    }
+
+    public class UnitLevelUpImmediateResponse
+    {
+        [JsonProperty("cash")]
+        public int cash { get; set; }
+    }
+
 }
 
 /*

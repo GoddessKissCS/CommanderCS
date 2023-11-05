@@ -15,10 +15,7 @@ namespace StellarGK.Packets.Handlers.Annihilation
     public class AnnihilationEnemyInformationRequest
     {
         [JsonProperty("stage")]
-        public int stage
-        {
-            get; set;
-        }
+        public int stage { get; set; }
     }
 }
 

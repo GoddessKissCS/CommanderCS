@@ -1,5 +1,8 @@
 ﻿using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGKLibrary.ExcelReader;
 using StellarGKLibrary.Protocols;
+using System.Security.Cryptography;
 
 namespace StellarGK.Host.Handlers.WorldMap
 {
@@ -8,22 +11,16 @@ namespace StellarGK.Host.Handlers.WorldMap
     {
         public override object Handle(WorldMapInformationRequest @params)
         {
-#warning TODO ???
-
             var user = GetUserGameProfile();
 
-            user.WorldMapStages.TryGetValue(@params.world.ToString(), out List<WorldMapInformationResponse> worldMapStages);
+            user.WorldMapStages.TryGetValue(@params.world.ToString(), out List<WorldMapInformationResponse> stages);
 
-            user.WorldMapStagesReward.TryGetValue(@params.world.ToString(), out int rwd);
-
-            // reward means if you complete the stage
-            // maybe needs a rework if you already have it?
-            // need to add if you already have all and add it to the db
+            user.WorldMapStagesReward.TryGetValue(@params.world.ToString(), out int isRewardCollected);
 
             WorldMapResponse worldmap = new()
             {
-                stage = worldMapStages,
-                rwd = Convert.ToInt32(rwd),
+                stage = stages,
+                rwd = Convert.ToInt32(isRewardCollected),
             };
 
             ResponsePacket response = new()

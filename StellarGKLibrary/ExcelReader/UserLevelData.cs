@@ -1,4 +1,5 @@
-﻿using StellarGKLibrary.Utils;
+﻿using Newtonsoft.Json;
+using StellarGKLibrary.Utils;
 
 namespace StellarGKLibrary.ExcelReader
 {
@@ -20,13 +21,28 @@ namespace StellarGKLibrary.ExcelReader
 
     public class UserLevelDataExcel
     {
+        [JsonProperty("level")]
         public int level { get; set; }
+
+        [JsonProperty("exp")]
         public int exp { get; set; }
+
+        [JsonProperty("uExp")]
         public int uExp { get; set; }
+
+        [JsonProperty("maxBullet")]
         public int maxBullet { get; set; }
+
+        [JsonProperty("maxSkill")]
         public int maxSkill { get; set; }
+
+        [JsonProperty("rewardBullet")]
         public int rewardBullet { get; set; }
+
+        [JsonProperty("bankGold")]
         public int bankGold { get; set; }
+
+        [JsonProperty("goldIncrease")]
         public int goldIncrease { get; set; }
     }
 }

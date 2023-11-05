@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using StellarGK.Database;
+using StellarGK.Database.Schemes;
 using StellarGKLibrary.Protocols;
 
 namespace StellarGK.Host.Handlers.Server
@@ -12,31 +13,30 @@ namespace StellarGK.Host.Handlers.Server
 #warning TODO
             // needs to be reworked
 
-            // iterate through every server where i have a account
+            // iterate through every server where you have a account
             // if not just use nullserver
 
             ResponsePacket response = new();
 
             ServerData serverData = new();
 
-            var SIFO = ProfilesRequest(@params.mIdx, GetSession());
+            var serverinfos = ProfilesRequest(@params.mIdx, GetSession());
 
-            ServerData.ServerInfo nullServer = new()
+            if(serverinfos.Count > 4)
             {
-                idx = 0,
-                status = 0,
-                lastLoginTime = 0,
-                level = 0,
-                thumnail = 0,
-            };
+                //add more server channels etc
 
-            List<ServerData.ServerInfo> serverInfo = new()
-            {
-                SIFO,
-                nullServer
-            };
+                ServerData.ServerInfo nullServer = new()
+                {
+                    idx = 0,
+                    status = 0,
+                    lastLoginTime = 0,
+                    level = 0,
+                    thumnail = 0,
+                };
+            }
 
-            serverData.serverInfoList = serverInfo;
+            serverData.serverInfoList = serverinfos;
             serverData.recommandServer = 1;
             serverData.newServer = 1;
 
@@ -46,26 +46,33 @@ namespace StellarGK.Host.Handlers.Server
             return response;
         }
 
-        private static ServerData.ServerInfo ProfilesRequest(string mIdx, string session)
+        private static List<ServerData.ServerInfo> ProfilesRequest(string mIdx, string session)
         {
-            var account = DatabaseManager.Account.FindByUid(mIdx);
+            List<ServerData.ServerInfo> serverInfo = new();
 
-            var user = DatabaseManager.GameProfile.FindBySession(session);
+            var list = DatabaseManager.GameProfile.FindByMemberIdList(mIdx);
 
-            ServerData.ServerInfo SIFO = new()
+            int i = 0;
+            foreach (GameProfileScheme profile in list)
             {
-                idx = 1,
-                lastLoginTime = 1643673600,
-                level = 1,
-                status = 1,
-                thumnail = 0,
-            };
+                ServerData.ServerInfo SIFO = new()
+                {
+                    status = 1,
+                    // 1 = Medium
+                    // 2 = Busy
+                    // 3 = Full
+                    // 4 = Unable to join
+                    idx = i,
+                    lastLoginTime = profile.LastLoginTime,
+                    level = profile.UserResources.level,
+                    thumnail = profile.UserResources.thumbnailId                     
+                };
+                i++;
 
-            SIFO.level = user.UserResources.level;
-            SIFO.thumnail = user.UserResources.thumbnailId;
-            SIFO.lastLoginTime = account.LastLoginTime;
+                serverInfo.Add(SIFO);
+            }
 
-            return SIFO;
+            return serverInfo;
         }
     }
 

@@ -20,7 +20,7 @@ namespace StellarGK.Packets.Handlers.Conquest
 			for (int i = 0; i < this.localUser.commanderList.Count; i++)
 			{
 				RoCommander roCommander = this.localUser.commanderList[i];
-				if (roCommander.conquestDeckId == num)
+				if (roCommander.conquestDeckId = num)
 				{
 					roCommander.conquestDeckId = 0;
 				}
@@ -34,23 +34,23 @@ namespace StellarGK.Packets.Handlers.Conquest
 	// Token: 0x06006065 RID: 24677 RVA: 0x001B0440 File Offset: 0x001AE640
 	private IEnumerator DeleteConquestTroopError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (code == 71001)
+		if (code = 71001)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110303"));
 		}
-		else if (code == 71501)
+		else if (code = 71501)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
-		else if (code == 71502)
+		else if (code = 71502)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
-		else if (code == 71507)
+		else if (code = 71507)
 		{
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
-		else if (code == 71503)
+		else if (code = 71503)
 		{
 			UISimplePopup.CreateOK(false, Localization.Get("1303"), Localization.Format("110367", new object[] { code }), null, "1001");
 		}

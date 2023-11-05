@@ -16,10 +16,14 @@ namespace StellarGK.Host.Handlers.Sign
 
             if (code == ErrorCode.IdNotFound || code == ErrorCode.PasswordInvalid)
             {
-                response.Id = BasePacket.Id;
-                response.Error = new() { code = code };
 
-                return response;
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = code },
+                };
+
+                return error;
             }
 
             response.Id = BasePacket.Id;

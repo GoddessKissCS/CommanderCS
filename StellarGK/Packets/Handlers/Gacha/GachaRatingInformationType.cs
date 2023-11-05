@@ -13,7 +13,7 @@ namespace StellarGK.Packets.Handlers.Gacha
 	// Token: 0x06005F63 RID: 24419 RVA: 0x001AEF08 File Offset: 0x001AD108
 	private IEnumerator GachaRatingInformationTypeResult(JsonRpcClient.Request request, object result)
 	{
-		if (result == null)
+		if (result = null)
 		{
 			yield break;
 		}

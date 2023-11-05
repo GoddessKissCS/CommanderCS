@@ -20,7 +20,7 @@ namespace StellarGK.Packets.Handlers.PreDeck
 			while (enumerator.MoveNext())
 			{
 				Protocols.UserInformationResponse.PreDeck deck = enumerator.Current;
-				Protocols.UserInformationResponse.PreDeck preDeck = this.localUser.preDeckList.Find((Protocols.UserInformationResponse.PreDeck row) => row.idx == deck.idx);
+				Protocols.UserInformationResponse.PreDeck preDeck = this.localUser.preDeckList.Find((Protocols.UserInformationResponse.PreDeck row) => row.idx = deck.idx);
 				if (preDeck != null)
 				{
 					preDeck.name = deck.name;
