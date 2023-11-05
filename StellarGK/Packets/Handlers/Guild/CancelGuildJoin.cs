@@ -1,7 +1,33 @@
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class CancelGuildJoin
+	[Packet(Id = Method.CancelGuildJoin)]
+    public class CancelGuildJoin : BaseMethodHandler<CancelGuildJoinRequest>
     {
+        public override object Handle(CancelGuildJoinRequest @params)
+        {
+            var user = GetUserGameProfile();
+
+			bool result = DatabaseManager.GuildApplication.DeleteGuildApplication(user.Uno, @params.gidx);
+
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = result,
+			};
+
+#warning TODO ADD THE FAIL
+
+			return response;
+        }
+    }
+    public class CancelGuildJoinRequest
+    {
+		[JsonProperty("gidx")]
+		public int gidx { get; set; }	
     }
 }
 

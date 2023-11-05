@@ -65,7 +65,7 @@ namespace StellarGK.Host
         FederationSettingsChangedRecently_2 = 71018,
 
         FederationSettingsChangedOnGuildApply = 71301,
-        FederationSettingsChangedOnGuildApply_2 = 71302,
+        FederationTypeChangedRecently = 71302,
         CannotJoinOrApplyMoreThan1Federation = 71303,
 
         FederationIsFull = 71305,
@@ -77,5 +77,7 @@ namespace StellarGK.Host
         YouAlreadyLeftTheFederation = 71001,
 
         HigherFederationLevelRequired = 71014,
+
+        CantCancelFederationJoinIfYouAlreadyInAFederation = 71304,
     }
 }

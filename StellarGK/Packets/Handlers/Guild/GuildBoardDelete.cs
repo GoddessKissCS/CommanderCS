@@ -1,7 +1,34 @@
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class GuildBoardDelete
+	[Packet(Id = Method.GuildBoardDelete)]
+    public class GuildBoardDelete : BaseMethodHandler<GuildBoardDeleteRequest>
     {
+        public override object Handle(GuildBoardDeleteRequest @params)
+        {
+            var user = GetUserGameProfile();
+
+			DatabaseManager.Guild.DeleteGuildBoardEntry(user.GuildId, @params.idx);
+
+#warning TODO ADD THE TIMECHECK FAIL
+
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = true,
+			};	
+
+			return response;
+        }
+    }
+
+    public class GuildBoardDeleteRequest
+    {
+        [JsonProperty("idx")]
+        public int idx { get; set; }
     }
 }
 

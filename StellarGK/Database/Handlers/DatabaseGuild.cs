@@ -245,12 +245,12 @@ namespace StellarGK.Database.Handlers
         {
             var allGuilds = Collection.AsQueryable().ToList();
 
-            List<RoGuild> returnGuilds = [];
-
             if (allGuilds == null)
             {
                 return null;
             }
+
+            List<RoGuild> returnGuilds = [];
 
             foreach (var guild in allGuilds)
             {
@@ -268,7 +268,7 @@ namespace StellarGK.Database.Handlers
                     lev = guild.Level,
                     ntc = guild.Notice,
                     world = guild.World,
-                    list = isApplyingForGuild,
+                    list = isApplyingForGuild,      
                 };
 
                 returnGuilds.Add(newGuild);
@@ -295,7 +295,6 @@ namespace StellarGK.Database.Handlers
 
             if (guild != null)
             {
-                // Initialize the BoardList if it's null
                 if (guild.BoardList == null)
                 {
                     guild.BoardList = [];
@@ -307,6 +306,15 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
 
             var update = Builders<GuildScheme>.Update.Set("BoardList", guild.BoardList);
+
+            Collection.UpdateOne(filter, update);
+        }
+
+        public void DeleteGuildBoardEntry(int? guildId, int entryId)
+        {
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
+            var guildBoardFilter = Builders<GuildBoardData>.Filter.Eq("idx", entryId);
+            var update = Builders<GuildScheme>.Update.PullFilter("BoardList", guildBoardFilter);
 
             Collection.UpdateOne(filter, update);
         }
@@ -362,6 +370,36 @@ namespace StellarGK.Database.Handlers
             }
 
             return ErrorCode.Success;
+        }
+
+
+        public void AddFreeJoinGuildMember(int uno, int guildId)
+        {
+            var user = DatabaseManager.GameProfile.FindByUno(uno);
+
+            var memberData = new GuildMember.MemberData()
+            {
+                memberGrade = 0,
+                lastTime = 0,
+                level = user.UserResources.level,
+                name = user.UserResources.nickname,
+                paymentBonusPoint = 0,
+                thumnail = user.UserResources.thumbnailId,
+                todayPoint = 0,
+                totalPoint = 0,
+                uno = user.Uno,
+                world = user.Server,
+            };
+
+            var guild = FindByUid(guildId);
+
+
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
+            var update = Builders<GuildScheme>.Update.Push("MemberData", memberData).Set("Count", guild.MemberData.Count + 1);
+
+            DatabaseManager.GameProfile.UpdateGuildId(uno, guildId);
+
+            Collection.UpdateOne(filter, update);
         }
 
 

@@ -1,8 +1,57 @@
+using Microsoft.AspNetCore.Razor.Hosting;
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+using StellarGKLibrary.Protocols;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class FreeJoinGuild
+    [Packet(Id = Method.FreeJoinGuild)]
+    public class FreeJoinGuild : BaseMethodHandler<FreeJoinGuildRequest>
     {
+        public override object Handle(FreeJoinGuildRequest @params)
+        {
+			var user = GetUserGameProfile();
+
+			var session = GetSession();
+
+
+            DatabaseManager.Guild.AddFreeJoinGuildMember(user.Uno, @params.gidx);
+
+			var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+
+            var userGuild = DatabaseManager.Guild.RequestGuild(@params.gidx, user.Uno);
+
+			var members = DatabaseManager.Guild.RequestGuildMembers(@params.gidx);
+
+
+#warning STILL NEED TO ADD THE MISSING ERRORPACKET IF IT FAILS
+
+			GuildInfo guildList = new()
+            {
+                resource = rsoc,
+                guildInfo = userGuild,
+                memberData = members,
+                guildList = null,
+            };
+
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = guildList,
+            };
+
+            return response;
+        }
     }
+
+    public class FreeJoinGuildRequest
+    {
+        [JsonProperty("gidx")]
+        public int gidx { get; set; }
+    }
+
 }
 
 /*	// Token: 0x06006024 RID: 24612 RVA: 0x000120F8 File Offset: 0x000102F8

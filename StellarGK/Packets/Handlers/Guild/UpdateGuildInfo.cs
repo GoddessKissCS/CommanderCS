@@ -15,7 +15,7 @@ namespace StellarGK.Packets.Handlers.Guild
 
             ErrorCode code = DatabaseManager.Guild.UpdateGuildInfo(@params.act, @params.val, session);
 
-			if(code == ErrorCode.FederationSettingsChangedRecently || code == ErrorCode.FederationNameContainsBadwordsOrInvalid || code == ErrorCode.FederationNameAlreadyExists)
+			if(code != ErrorCode.Success)
 			{
 				ErrorPacket error = new()
 				{
