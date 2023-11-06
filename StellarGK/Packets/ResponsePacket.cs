@@ -79,5 +79,7 @@ namespace StellarGK.Host
         HigherFederationLevelRequired = 71014,
 
         CantCancelFederationJoinIfYouAlreadyInAFederation = 71304,
+
+        CanOnlyKickUpTo5MemberWithinADayAndNotOnTheJoinDay = 71307,
     }
 }

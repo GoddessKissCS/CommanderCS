@@ -9,6 +9,8 @@ namespace StellarGKLibrary.Utils
 {
     public class Utility
     {
+        private static DateTime _baseTime = new(1970, 1, 1, 0, 0, 0);
+
         public static DateTime ConvertToDateTime(string yyyymmdd)
         {
             if (string.IsNullOrEmpty(yyyymmdd) || yyyymmdd.Length != 8)
@@ -32,6 +34,18 @@ namespace StellarGKLibrary.Utils
                 return default(DateTime);
             }
             return new DateTime(num, num2, num3);
+        }
+
+        public static double GetCurrentTime()
+        {
+            return (DateTime.UtcNow - _baseTime).TotalSeconds;
+        }
+
+        public static double GetTimeDifference(double timeInSeconds)
+        {
+            double currentTime = GetCurrentTime();
+            double difference = currentTime - timeInSeconds;
+            return difference;
         }
 
         public static int CurrentTimeStamp()

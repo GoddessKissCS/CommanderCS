@@ -24,7 +24,6 @@ namespace StellarGK.Packets.Handlers.Guild
 
 			var members = DatabaseManager.Guild.RequestGuildMembers(@params.gidx);
 
-
 #warning STILL NEED TO ADD THE MISSING ERRORPACKET IF IT FAILS
 
 			GuildInfo guildList = new()

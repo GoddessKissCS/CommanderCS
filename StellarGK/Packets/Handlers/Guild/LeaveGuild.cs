@@ -1,6 +1,28 @@
+using StellarGK.Database;
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class LeaveGuild
+
+    [Packet(Id = Method.LeaveGuild)]
+    public class LeaveGuild : BaseMethodHandler<LeaveGuildRequest>
+    {
+        public override object Handle(LeaveGuildRequest @params)
+        {
+			var user = GetUserGameProfile();
+
+			DatabaseManager.Guild.QuitGuild(user.GuildId, user.Uno);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "quited",
+            };
+
+            return response;
+        }
+    }
+    public class LeaveGuildRequest
     {
     }
 }

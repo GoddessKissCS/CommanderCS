@@ -1,7 +1,44 @@
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class FireSubMaster
+    [Packet(Id = Method.FireSubMaster)]
+    public class FireSubMaster : BaseMethodHandler<FireSubMasterRequest>
     {
+        public override object Handle(FireSubMasterRequest @params)
+        {
+            var user = GetUserGameProfile();
+
+            bool isInGuild = DatabaseManager.Guild.IsUnoInMemberData(user.GuildId, user.Uno);
+
+            if (!isInGuild)
+            {
+                ErrorPacket error = new()
+                {
+                    Error = new() { code = ErrorCode.YouAlreadyLeftTheFederation },
+                    Id = BasePacket.Id,
+                };
+
+                return error;
+            }
+
+            DatabaseManager.Guild.UpdateSpecificMemberGrade(user.GuildId, @params.tuno, 0);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "accepted",
+            };
+
+            return response;
+        }
+    }
+    public class FireSubMasterRequest
+    {
+        [JsonProperty("tuno")]
+        public int tuno { get; set; }
     }
 }
 

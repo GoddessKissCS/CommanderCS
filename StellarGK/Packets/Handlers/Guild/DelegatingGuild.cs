@@ -1,7 +1,44 @@
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class DelegatingGuild
+	[Packet(Id = Method.DelegatingGuild)]
+    public class DelegatingGuild : BaseMethodHandler<DelegatingGuildRequest>
     {
+        public override object Handle(DelegatingGuildRequest @params)
+        {
+			var user = GetUserGameProfile();
+
+			bool isInGuild = DatabaseManager.Guild.IsUnoInMemberData(user.GuildId, user.Uno);
+
+            if (!isInGuild)
+			{
+				ErrorPacket error = new()
+				{
+					Error = new() { code = ErrorCode.YouAlreadyLeftTheFederation },
+					Id = BasePacket.Id,
+				};
+
+				return error;
+			}
+
+            DatabaseManager.Guild.AppointNewGuildMaster(user.GuildId, user.Uno, @params.tuno);
+
+            ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = "accepted",
+			};
+
+			return response;
+        }
+    }
+    public class DelegatingGuildRequest
+	{
+		[JsonProperty("tuno")]		
+		public int tuno {  get; set; }
     }
 }
 

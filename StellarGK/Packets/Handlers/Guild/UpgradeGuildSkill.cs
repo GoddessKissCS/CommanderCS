@@ -36,7 +36,6 @@ namespace StellarGK.Packets.Handlers.Guild
             if (index >= 0)
             {
                 guildSkill.level += 1;
-                // Replace the original skill with the updated skill
                 guild.SkillDada[index] = guildSkill;
 
             }

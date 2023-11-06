@@ -1,8 +1,41 @@
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class RefuseGuildJoin
+	[Packet(Id = Method.RefuseGuildJoin)]
+    public class RefuseGuildJoin : BaseMethodHandler<RefuseGuildJoinRequest>
     {
+        public override object Handle(RefuseGuildJoinRequest @params)
+        {
+            ErrorCode code = DatabaseManager.GuildApplication.DeclineGuildJoinRequest(@params.uno);
+
+            if (code != ErrorCode.Success)
+            {
+                ErrorPacket error = new()
+                {
+                    Error = new() { code = code },
+                    Id = BasePacket.Id
+                };
+                return error;
+            }
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "refused",
+            };
+
+            return response;
+        }
     }
+    public class RefuseGuildJoinRequest
+    {
+        [JsonProperty("uno")]
+        public int uno { get; set; }
+    }
+
 }
 
 /*	// Token: 0x0600603B RID: 24635 RVA: 0x000120F8 File Offset: 0x000102F8

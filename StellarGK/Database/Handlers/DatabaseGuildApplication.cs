@@ -130,6 +130,37 @@ namespace StellarGK.Database.Handlers
             return guilds;
         }
 
+
+        public ErrorCode DeclineGuildJoinRequest(int uno)
+        {
+            var guildId = RetrieveGuildApplicationFromId(uno);
+
+            var guild = DatabaseManager.Guild.FindByUid(guildId);
+
+            if (guild.Count == guild.MaxCount)
+            {
+                return ErrorCode.FederationIsFull;
+            }
+
+            var application = FindApplicationByUno(uno, guildId);
+
+            var user = DatabaseManager.GameProfile.FindByUno(uno);
+
+            if (CheckIfRequestMemberDataChanged(application, user))
+            {
+                return ErrorCode.RequestDataHasBeenChanged;
+            }
+
+
+#warning TODO  
+            // blablabla if federation settings change blabla
+            // add thing here
+
+            DeleteGuildApplication(uno, guildId);
+
+            return ErrorCode.Success;
+        }
+
         public ErrorCode ApproveGuildJoinRequest(int uno)
         {
             var guildId = RetrieveGuildApplicationFromId(uno);

@@ -48,7 +48,7 @@ namespace StellarGK.Host.Handlers.Server
 
         private static List<ServerData.ServerInfo> ProfilesRequest(string mIdx, string session)
         {
-            List<ServerData.ServerInfo> serverInfo = new();
+            List<ServerData.ServerInfo> serverInfo = [];
 
             var list = DatabaseManager.GameProfile.FindByMemberIdList(mIdx);
 
@@ -63,7 +63,7 @@ namespace StellarGK.Host.Handlers.Server
                     // 3 = Full
                     // 4 = Unable to join
                     idx = i,
-                    lastLoginTime = profile.LastLoginTime,
+                    lastLoginTime = (int)profile.LastLoginTime,
                     level = profile.UserResources.level,
                     thumnail = profile.UserResources.thumbnailId                     
                 };

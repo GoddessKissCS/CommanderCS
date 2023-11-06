@@ -21,11 +21,15 @@ namespace StellarGK.Host.Handlers.Guild
                 return response;
             }
 
+            var memberData = DatabaseManager.Guild.RequestGuildMembers(user.GuildId);
+
             GuildMember guild = new()
             {
-                memberData = DatabaseManager.Guild.RequestGuildMembers(user.GuildId),
-                badge = 0, // NO IDEA WHAT THIS SETS
+                memberData = memberData,
+                badge = 0,
             };
+
+#warning TODO ADD If there was a New Entry in the guildboard since you last saw it
 
             response.Result = guild;
 

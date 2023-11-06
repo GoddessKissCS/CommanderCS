@@ -417,7 +417,7 @@ namespace StellarGK.Database.Handlers
                 PushRegistrationId = @params.pushRegistrationId,
             };
 
-            var CurrTimeStamp = Utility.CurrentTimeStamp();
+            var CurrTimeStamp = Utility.GetCurrentTime();
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("MemberId", @params.memberId) &
                          Builders<GameProfileScheme>.Filter.Eq("Server", @params.world);

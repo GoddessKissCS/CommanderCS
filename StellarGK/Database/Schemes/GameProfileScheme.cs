@@ -16,7 +16,7 @@ namespace StellarGK.Database.Schemes
         public int LastStage { get; set; }
         public bool Notifaction { get; set; }
         public int ResetDateTime { get; set; }
-        public int LastLoginTime { get; set; }
+        public double LastLoginTime { get; set; }
         public UserDevice UserDevice { get; set; }
         public UserBattleStatistics UserStatistics { get; set; }
         public UserResources UserResources { get; set; }
