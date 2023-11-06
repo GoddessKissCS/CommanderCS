@@ -17,8 +17,8 @@ namespace StellarGK.Database.Schemes
         public int Limitlevel { get; set; }
         public string Notice { get; set; }
         public int State { get; set; }
-        public int CloseTime { get; set; }
-        public int CreateTime { get; set; }
+        public double CloseTime { get; set; }
+        public double CreateTime { get; set; }
         public int MaxCount { get; set; }
         public int Count { get; set; }
         public List<UserInformationResponse.UserGuild.GuildSkill> SkillDada { get; set; }

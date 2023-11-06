@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using StellarGK.Database.Schemes;
 using StellarGK.Host;
 using StellarGKLibrary.Protocols;
@@ -19,7 +20,7 @@ namespace StellarGK.Database.Handlers
         {
             int guildId = DatabaseManager.AutoIncrements.GetNextNumber("GuildId", 1000);
 
-            int time = Utility.CurrentTimeStamp();
+            double time = Utility.CurrentTimeInMilliseconds();
 
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
@@ -327,6 +328,14 @@ namespace StellarGK.Database.Handlers
                 return ErrorCode.FederationNameContainsBadwordsOrInvalid;
             }
 
+            if(act == 0)
+            {
+                if (FindByName(val) != null)
+                {
+                    return ErrorCode.FederationNameAlreadyExists;
+                }
+            }
+
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
             var guild = FindByUid(user.GuildId);
@@ -343,28 +352,23 @@ namespace StellarGK.Database.Handlers
 
             switch (act)
             { 
-                case 0: // Guildname
-                    
-                    if (FindByName(val) != null)
-                    {
-                        return ErrorCode.FederationNameAlreadyExists;
-                    }
-
+                case 0:
+                   
                     UpdateGuildName(guild.GuildId, val);
 
                     DatabaseManager.GameProfile.UpdateCash(user.Session, 500, false);
                     break;
-                case 1: // emblem
+                case 1:
                     UpdateGuildEmblem(guild.GuildId, val);
                     DatabaseManager.GameProfile.UpdateCash(user.Session, 100, false);
                     break;
-                case 2: // limitLevel
+                case 2:
                     UpdateLimitLevel(guild.GuildId, val);
                     break;
-                case 3: // guildType
+                case 3:
                     UpdateGuildType(guild.GuildId, val);
                     break;
-                case 4: // Notice
+                case 4:
                     UpdateGuildNotice(guild.GuildId, val);
                     break;
             }
@@ -459,6 +463,31 @@ namespace StellarGK.Database.Handlers
             var update = Builders<GuildScheme>.Update.Set("SkillDada", SkillDada).Set("Point", newPoint);
 
             Collection.UpdateOne(filter, update);
+        }
+
+
+        public void CloseDownGuild(int? guildId, double closeTime)
+        {
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
+            var update = Builders<GuildScheme>.Update.Set("State", 1).Set("CloseTime", closeTime);
+
+            Collection.UpdateOne(filter, update);
+        }
+
+        public void ResetMemberGrades(int? guildId)
+        {
+            var filter = Builders<GuildScheme>.Filter.And(
+                Builders<GuildScheme>.Filter.Eq("GuildId", guildId),
+                Builders<GuildScheme>.Filter.ElemMatch("MemberData", Builders<GuildMember.MemberData>.Filter.Gt("memberGrade", 0))
+            );
+
+            var update = Builders<GuildScheme>.Update.Set("MemberData.$[elem].memberGrade", 0);
+
+            var arrayFilters = new List<ArrayFilterDefinition>{ new JsonArrayFilterDefinition<GuildMember.MemberData>("{'elem.memberGrade': {$gt: 0}}") };
+
+            var updateOptions = new UpdateOptions { ArrayFilters = arrayFilters };
+
+            Collection.UpdateMany(filter, update, updateOptions);
         }
 
     }

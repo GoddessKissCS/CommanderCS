@@ -1,8 +1,48 @@
+using Newtonsoft.Json;
+using StellarGK.Database;
+using StellarGK.Host;
+using StellarGKLibrary.Utils;
+
 namespace StellarGK.Packets.Handlers.Guild
 {
-    public class GuildCloseDown
+	[Packet(Id = Method.GuildCloseDown)]
+    public class GuildCloseDown : BaseMethodHandler<GuildCloseDownRequest>
+    {
+        public override object Handle(GuildCloseDownRequest @params)
+        {
+            var user = GetUserGameProfile();
+
+            var closeTime = Utility.GetCurrentTimeInSeconds();
+
+			DatabaseManager.Guild.CloseDownGuild(user.GuildId, closeTime);
+			DatabaseManager.Guild.ResetMemberGrades(user.GuildId);
+
+			var res = new GuildCloseDownResponse()
+			{
+				ctime = closeTime,
+			};
+
+            ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = res	
+            };
+
+			return response;
+        }
+    }
+
+    public class GuildCloseDownRequest
     {
     }
+
+    public class GuildCloseDownResponse
+	{
+		[JsonProperty("ctime")]
+		public double ctime {  get; set; }	
+
+    }
+
 }
 
 /*	// Token: 0x0600603E RID: 24638 RVA: 0x000120F8 File Offset: 0x000102F8

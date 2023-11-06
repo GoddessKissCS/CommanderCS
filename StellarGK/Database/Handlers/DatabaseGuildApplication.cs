@@ -21,9 +21,6 @@ namespace StellarGK.Database.Handlers
                 return ErrorCode.CannotSentMoreThanOneFederationJoinRequest;
             }
 
-
-
-
             GuildApplicationScheme guildApplication = new()
             {
                 GuildId = guildIdx,
@@ -119,19 +116,18 @@ namespace StellarGK.Database.Handlers
 
         public List<GuildMember.MemberData> GetGuildApplications(int? guildId)
         {
-            var guildlist = new List<GuildMember.MemberData>();
+            var guilds = new List<GuildMember.MemberData>();
 
             var filter = Builders<GuildApplicationScheme>.Filter.Eq("GuildId", guildId);
 
-            // Retrieve entries that match the filter
             List<GuildApplicationScheme> matchingEntries = Collection.Find(filter).ToList();
 
             foreach(var entry in matchingEntries)
             {
-                guildlist.Add(entry.JoinMemberData);  
+                guilds.Add(entry.JoinMemberData);  
             }
 
-            return guildlist;
+            return guilds;
         }
 
         public ErrorCode ApproveGuildJoinRequest(int uno)
@@ -167,7 +163,7 @@ namespace StellarGK.Database.Handlers
 
         private bool CheckIfRequestMemberDataChanged(GuildApplicationScheme guildApplication, GameProfileScheme user)
         {
-            return guildApplication.JoinMemberData.thumnail != user.UserResources.thumbnailId || guildApplication.JoinMemberData.level != user.UserResources.level || guildApplication.JoinMemberData.name != user.UserResources.nickname;
+            return guildApplication.JoinMemberData.thumnail != user.UserResources.thumbnailId || guildApplication.JoinMemberData.level != user.UserResources.level || guildApplication.JoinMemberData.name != user.UserResources.nickname || user.GuildId != null;
         }
 
     }

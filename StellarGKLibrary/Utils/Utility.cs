@@ -42,11 +42,11 @@ namespace StellarGKLibrary.Utils
             return unixTimestamp;
         }
 
-        public static long GetCurrentTimeInSeconds()
+        public static double GetCurrentTimeInSeconds()
         {
             DateTime unixEpoch = new(1970, 1, 1, 0, 0, 0);
             TimeSpan timeSpan = DateTime.UtcNow - unixEpoch;
-            return (long)timeSpan.TotalSeconds;
+            return timeSpan.TotalSeconds;
         }
 
         public static double CurrentTimeInMilliseconds()
