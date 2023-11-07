@@ -10,6 +10,8 @@ namespace StellarGK.Packets.Handlers.Chat
     {
         public override object Handle(AddChatIgnoreRequest @params)
         {
+            var session = GetSession();
+
             BlockUser blockUser = new()
             {
                 channel = @params.ch,
@@ -18,7 +20,7 @@ namespace StellarGK.Packets.Handlers.Chat
                 uno = @params.uno,
             };
 
-            bool YesOrNo = DatabaseManager.GameProfile.AddBlockedUser(blockUser, GetSession());
+            DatabaseManager.GameProfile.AddBlockedUser(blockUser, session);
 
             ResponsePacket response = new()
             {

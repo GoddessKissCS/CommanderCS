@@ -7,12 +7,10 @@ namespace StellarGK.Host.Handlers.KeepAlives
     {
         public override object Handle(GetCouponListRequest @params)
         {
-            CouponList couponList = new();
-            List<string> coupons = new()
+            CouponList couponList = new()
             {
+                list = []
             };
-
-            couponList.list = coupons;
 
             ResponsePacket response = new()
             {

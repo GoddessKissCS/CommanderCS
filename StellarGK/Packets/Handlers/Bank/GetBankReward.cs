@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Gacha
+namespace StellarGK.Packets.Handlers.Bank
 {
     public class GetBankReward
     {

@@ -5,7 +5,6 @@ using StellarGK.Host.Handlers.Login;
 using StellarGKLibrary.ExcelReader;
 using StellarGKLibrary.Protocols;
 using StellarGKLibrary.Utils;
-using static StellarGKLibrary.Protocols.UserInformationResponse;
 
 namespace StellarGK.Database.Handlers
 {
@@ -66,9 +65,7 @@ namespace StellarGK.Database.Handlers
                     weaponInventoryCount = 0,
                 },
                 CommanderData = [],
-                CompleteRewardGroupIdx = new()
-                {
-                },
+                CompleteRewardGroupIdx = [],
                 DispatchedCommanders = null,
                 GuildId = null,
                 MemberId = memberId,
@@ -84,15 +81,15 @@ namespace StellarGK.Database.Handlers
                 },
                 UserInventory = new()
                 {
-                    equipItem = new() { },
-                    donHaveCommCostumeData = new() { },
-                    eventResourceData = new() { },
-                    groupItemData = new() { },
-                    foodData = new() { },
-                    itemData = new() { },
-                    medalData = new() { },
-                    partData = new() { },
-                    weaponList = new() { }
+                    equipItem = [],
+                    donHaveCommCostumeData = [],
+                    eventResourceData = [],
+                    groupItemData = [],
+                    foodData = [],
+                    itemData = [],
+                    medalData = [],
+                    partData = [],
+                    weaponList = []
                 },
                 ResetDateTime = 0,
                 UserResources = new()
@@ -153,11 +150,11 @@ namespace StellarGK.Database.Handlers
                         { "arena3", 0 },
                         { "arena", 0 }
                     },
-                    cnvl = new List<string>(),
+                    cnvl = [],
                     ccnv = 0,
-                    cnvl2 = new List<string>(),
+                    cnvl2 = [],
                     ccvn2 = 0,
-                    cnvl3 = new List<string>(),
+                    cnvl3 = [],
                     ccvn3 = 0,
                     wb = 0,
                     gb = 0,

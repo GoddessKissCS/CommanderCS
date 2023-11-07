@@ -37,7 +37,7 @@ namespace StellarGK.Packets.Handlers.Guild
 				uno = user.Uno,
 			};
 
-			DatabaseManager.Guild.AddGuildBoardEntry(newEntry, user.GuildId);
+			DatabaseManager.Guild.AddGuildBoardEntry(user.GuildId, newEntry);
 
 			ResponsePacket response = new()
 			{

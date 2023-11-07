@@ -7,13 +7,11 @@ namespace StellarGK.Host.Handlers.UserTerm
     {
         public override object Handle(GetBadWordListRequest @params)
         {
-            ResponsePacket response = new();
 
-            List<string> en = new()
-            {
-                "booooooobs",
-            };
-
+            List<string> en =
+            [
+                "."
+            ];
 
             // TODO:
             // Read from a badwordlist file and add them
@@ -28,13 +26,16 @@ namespace StellarGK.Host.Handlers.UserTerm
                 }
             };
 
-            response.Id = BasePacket.Id;
-            response.Result = badWord;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = badWord
+            };
 
             return response;
         }
 
-        internal class BadWordListResponse
+        private class BadWordListResponse
         {
             [JsonProperty("word")]
             public Dictionary<string, List<string>> word { get; set; }

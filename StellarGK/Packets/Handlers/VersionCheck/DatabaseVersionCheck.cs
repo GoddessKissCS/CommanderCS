@@ -24,7 +24,7 @@ namespace StellarGK.Host.Handlers.VersionCheck
             return response;
         }
 
-        internal class DatabaseVersionCheckResponse
+        private class DatabaseVersionCheckResponse
         {
             [JsonProperty("ver")]
             public double ver { get; set; }

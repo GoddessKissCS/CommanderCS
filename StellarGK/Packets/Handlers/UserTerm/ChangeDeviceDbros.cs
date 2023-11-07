@@ -15,11 +15,6 @@ namespace StellarGK.Packets.Handlers.UserTerm
 
         public override object Handle(ChangeDeviceDbrosRequest @params)
         {
-            ResponsePacket response = new()
-            {
-                Id = BasePacket.Id
-            };
-
             ErrorCode code = DatabaseManager.Account.ChangeDevice(@params.plfm, @params.uid, @params.pwd);
 
             if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
@@ -33,7 +28,12 @@ namespace StellarGK.Packets.Handlers.UserTerm
                 return error;
             }
 
-            response.Result = "{}";
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "{}"
+            };
+
             return response;
         }
     }

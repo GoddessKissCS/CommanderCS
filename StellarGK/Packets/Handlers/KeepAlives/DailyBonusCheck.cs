@@ -21,11 +21,11 @@ namespace StellarGK.Host.Handlers.KeepAlives
             DailyBonusCheckResponse DailyBonusCheckResponse = new()
             {
                 day = 1,
-                version = "1",
-                goodsId = "1",
-                goodsCount = 10,
-                startTimeString = "1",
-                endTimeString = "2",
+                version = "49",
+                goodsId = "3",
+                goodsCount = 400,
+                startTimeString = "2023101",
+                endTimeString = "20231130",
                 receiveState = 0,
             };
 

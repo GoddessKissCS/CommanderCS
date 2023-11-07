@@ -265,7 +265,7 @@ namespace StellarGK.Database.Handlers
 
             return guild.BoardList;
         }
-        public void AddGuildBoardEntry(GuildBoardData guildBoardData, int? guildId)
+        public void AddGuildBoardEntry(int? guildId, GuildBoardData guildBoardData)
         {
             GuildScheme? guild = Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
 

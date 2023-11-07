@@ -30,14 +30,13 @@ namespace StellarGK.Packets.Handlers.Commander
 
             if (user.CommanderData.ContainsKey(cid) && user.UserInventory.donHaveCommCostumeData.ContainsKey(cid))
             {
-                // Both CommanderData[cid] and donHaveCommCostumeData[cid] exist
                 user.CommanderData[cid].haveCostume.Add(@params.cos);
                 user.UserInventory.donHaveCommCostumeData[cid].Add(@params.cos);
                 user.UserResources.cash -= costumeData.sellPrice;
             }
             else if (!user.UserInventory.donHaveCommCostumeData.ContainsKey(cid))
             {
-                user.UserInventory.donHaveCommCostumeData.Add(cid, new List<int> { @params.cos });
+                user.UserInventory.donHaveCommCostumeData.Add(cid, [@params.cos]);
                 user.UserResources.cash -= costumeData.sellPrice;
             }
             else

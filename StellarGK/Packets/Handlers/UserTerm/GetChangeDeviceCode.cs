@@ -10,43 +10,15 @@ namespace StellarGK.Host.Handlers.UserTerm
         {
             var userAccount = GetUserAccount();
 
+            var deviceCode = DatabaseManager.DeviceCode.RequestForChangeDeviceCode(userAccount);
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = RequestForChangeDeviceCode(userAccount)
+                Result = deviceCode,
             };
 
             return response;
-        }
-
-        private static string RequestForChangeDeviceCode(AccountScheme? account)
-        {
-            var devicechange = DatabaseManager.DeviceCode.FindByUid(account.MemberId);
-
-            DateTime createTimeDate = DateTime.ParseExact(devicechange.CreateTime.ToString(), "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture);
-
-            TimeSpan timeDifference = DateTime.Now - createTimeDate;
-            int daysDifference = (int)timeDifference.TotalDays;
-
-            if (daysDifference > 7)
-            {
-                return "Code Expired";
-            }
-
-            try
-            {
-                if (devicechange == null)
-                {
-                    var device = DatabaseManager.DeviceCode.Create(account.MemberId);
-
-                    return device.Code;
-                }
-            }
-            catch (Exception _)
-            {
-                return "Contact Admin";
-            }
-            return devicechange.Code;
         }
     }
 

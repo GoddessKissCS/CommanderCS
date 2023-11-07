@@ -1,6 +1,6 @@
 using StellarGK.Host;
 
-namespace StellarGK.Packets.Handlers.Gacha
+namespace StellarGK.Packets.Handlers.Bank
 {
     [Packet(Id = Method.BankInfo)]
     public class BankInfo : BaseMethodHandler<BankInfoRequest>

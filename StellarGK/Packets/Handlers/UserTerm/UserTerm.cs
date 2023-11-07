@@ -7,21 +7,21 @@ namespace StellarGK.Host.Handlers.UserTerm
     {
         public override object Handle(UserTermRequest @params)
         {
-            ResponsePacket response = new();
-
             UserTermResponse userterm = new()
             {
                 wemade = File.ReadAllText($"Resources\\PrivacyPolicy\\TermsOfService.txt"),
                 member = File.ReadAllText($"Resources\\PrivacyPolicy\\PrivacyPolicy.txt")
             };
 
-            response.Id = BasePacket.Id;
-            response.Result = userterm;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = userterm
+            };
 
             return response;
         }
-
-        internal class UserTermResponse
+        private class UserTermResponse
         {
             [JsonProperty("member")]
             public string member { get; set; }

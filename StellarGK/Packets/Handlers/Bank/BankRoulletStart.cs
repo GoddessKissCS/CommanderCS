@@ -4,12 +4,11 @@ using StellarGKLibrary.ExcelReader;
 using StellarGKLibrary.Protocols;
 using StellarGKLibrary.Utils;
 
-namespace StellarGK.Host.Handlers.Gacha
+namespace StellarGK.Host.Handlers.Bank
 {
     [Packet(Id = Method.BankRoulletStart)]
     public class BankRoulletStart : BaseMethodHandler<BankRoulletStartRequest>
     {
-
         public override object Handle(BankRoulletStartRequest @params)
         {
             string session = GetSession();
@@ -48,7 +47,6 @@ namespace StellarGK.Host.Handlers.Gacha
 
         private static List<int> BankGold(string sessionId, int spins)
         {
-
             Random random = new();
 
             Random random1 = new(random.Next(1, 99));
@@ -66,18 +64,15 @@ namespace StellarGK.Host.Handlers.Gacha
 
             int updateGold = luck.Sum() * thebankGold;
 
-            int minusCash = 100;
+            int minusCash = 10;
 
-            if (spins == 1)
+            if (spins == 10)
             {
-                minusCash = 10;
+                minusCash = 100;
             }
 
-            user.UserResources.cash -= minusCash;
-
-            user.UserResources.gold += updateGold;
-
-            DatabaseManager.GameProfile.UpdateUserResources(sessionId, user.UserResources);
+            DatabaseManager.GameProfile.UpdateGold(sessionId, updateGold, true);
+            DatabaseManager.GameProfile.UpdateCash(sessionId, minusCash, false);
 
             return luck;
         }

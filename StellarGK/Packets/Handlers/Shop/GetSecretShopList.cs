@@ -1,7 +1,48 @@
+using Newtonsoft.Json;
+using StellarGK.Host;
+
 namespace StellarGK.Packets.Handlers.Shop
 {
-    public class GetSecretShopList
+	[Packet(Id = Method.GetSecretShopList)]
+    public class GetSecretShopList : BaseMethodHandler<GetSecretShopListRequest>
     {
+        public override object Handle(GetSecretShopListRequest @params)
+        {
+			StellarGKLibrary.Protocols.SecretShop shop = new()
+			{
+				refreshCount = 86400,
+				reset = 86400,
+				shopList = [],
+				resource = null,
+				refreshTime = 86400,
+			};
+
+            switch (@params.styp)
+			{
+				case 1: // normal shop
+					break;
+                case 2: // ChallengeShop shop
+                    break;
+                case 3: // raid shop
+					break;
+				case 7: //waveduel shop
+					break;
+			}
+
+
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = shop,
+			};
+
+			return response;
+        }
+    }
+    public class GetSecretShopListRequest 
+    {
+		[JsonProperty("styp")]
+		public int styp { get; set; }
     }
 }
 

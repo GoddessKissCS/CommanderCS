@@ -31,7 +31,7 @@ namespace StellarGK.Host.Handlers.VersionCheck
             return ResponsePacket;
         }
 
-        internal class GameVersionInfoResponse
+        private class GameVersionInfoResponse
         {
             [JsonProperty("ver")]
             public string ver { get; set; }

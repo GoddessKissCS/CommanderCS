@@ -1,6 +1,6 @@
 ﻿using StellarGKLibrary.Protocols;
 
-namespace StellarGK.Host.Handlers.Gacha
+namespace StellarGK.Host.Handlers.Vip
 {
     [Packet(Id = Method.GetVipGachaInfo)]
     public class GetVipGachaInfo : BaseMethodHandler<GetVipGachaInfoRequest>

@@ -9,11 +9,6 @@ namespace StellarGK.Host.Handlers.UserTerm
     {
         public override object Handle(CheckChangeDeviceCodeRequest @params)
         {
-            ResponsePacket response = new()
-            {
-                Id = BasePacket.Id
-            };
-
             var result = DatabaseManager.DeviceCode.FindByDeviceCode(@params.dac);
 
             if (result == null)
@@ -35,18 +30,21 @@ namespace StellarGK.Host.Handlers.UserTerm
                 plfm = user.Platform,
             };
 
-            response.Result = CheckChangeDeviceCodeResponse;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = CheckChangeDeviceCodeResponse
+            };
 
             return response;
         }
-    }
 
-    internal class CheckChangeDeviceCodeResponse
-    {
-        [JsonProperty("plfm")]
-        public Platform plfm { get; set; }
-    }
-
+        private class CheckChangeDeviceCodeResponse
+        {
+            [JsonProperty("plfm")]
+            public Platform plfm { get; set; }
+        }
+   }
     public class CheckChangeDeviceCodeRequest
     {
         [JsonProperty("dac")]

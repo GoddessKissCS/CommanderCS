@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using StellarGKLibrary.Protocols;
 
-namespace StellarGK.Host.Handlers.Gacha
+namespace StellarGK.Host.Handlers.Vip
 {
     [Packet(Id = Method.GetVipBuyCount)]
     public class GetVipBuyCount : BaseMethodHandler<GetVipBuyCountRequest>

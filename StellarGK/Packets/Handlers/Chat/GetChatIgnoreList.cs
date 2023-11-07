@@ -7,7 +7,6 @@
         {
             var user = GetUserGameProfile();
 
-
             ResponsePacket response = new()
             {
                 Result = user.BlockedUsers,

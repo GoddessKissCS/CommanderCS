@@ -10,9 +10,6 @@ namespace StellarGK.Packets.Handlers.UserTerm
     {
         public override object Handle(ChangeDeviceRequest @params)
         {
-            ResponsePacket response = new();
-            response.Id = BasePacket.Id;
-
             var ChangedDevice = DatabaseManager.Account.ChangeDevice(@params);
 
 #warning TODO MAYBE CHANGE THE DEVICE AND ETC TO ACCOUNT RATHER THAN GAMEPROFILE?
@@ -23,7 +20,11 @@ namespace StellarGK.Packets.Handlers.UserTerm
                 tokn = ChangedDevice.Token
             };
 
-            response.Result = changeDeviceResponse;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = changeDeviceResponse
+            };
 
             return response;
         }

@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Gacha
+namespace StellarGK.Packets.Handlers.Vip
 {
     public class BuyVipGacha
     {
