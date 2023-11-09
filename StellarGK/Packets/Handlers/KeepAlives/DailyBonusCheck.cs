@@ -26,7 +26,7 @@ namespace StellarGK.Host.Handlers.KeepAlives
                 goodsCount = 400,
                 startTimeString = "2023101",
                 endTimeString = "20231130",
-                receiveState = 0,
+                receiveState = 1,
             };
 
             ResponsePacket response = new()
