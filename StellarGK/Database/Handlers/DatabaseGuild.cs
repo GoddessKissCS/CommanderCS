@@ -12,7 +12,7 @@ namespace StellarGK.Database.Handlers
 {
     public class DatabaseGuild : DatabaseTable<GuildScheme>
     {
-        public DatabaseGuild() : base("Guild")
+        public DatabaseGuild() : base("Guild ")
         {
         }
 
@@ -97,15 +97,15 @@ namespace StellarGK.Database.Handlers
                 LastGuildEdit = Utility.CurrentTimeInMilliseconds(),
             };
 
-            user.GuildId = guildId;
-
-            DatabaseManager.GameProfile.UpdateProfile(session, user);
+            DatabaseManager.GameProfile.UpdateGuildId(user.Uno, guildId);
 
             Collection.InsertOne(guild);
         }
 
         public GuildScheme FindByName(string guildName) => Collection.AsQueryable().Where(d => d.Name == guildName).FirstOrDefault();
         public GuildScheme FindByUid(int? guildId) => Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
+
+
         public int GetMemberGrade(int? guildId, int uno)
         {
             return Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault().MemberData.Where(d => d.uno == uno).FirstOrDefault().memberGrade;

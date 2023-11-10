@@ -49,10 +49,7 @@ namespace StellarGK.Database.Handlers
             Collection.InsertOne(user);
         }
 
-        public DormitoryScheme? FindByUno(int uid)
-        {
-            return Collection.AsQueryable().Where(d => d.Uno == uid).FirstOrDefault();
-        }
+        public DormitoryScheme? FindByUno(int uid) => Collection.AsQueryable().Where(d => d.Uno == uid).FirstOrDefault();
 
         public DormitoryScheme? FindBySession(string session)
         {

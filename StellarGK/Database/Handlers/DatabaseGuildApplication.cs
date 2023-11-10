@@ -46,10 +46,7 @@ namespace StellarGK.Database.Handlers
             return ErrorCode.Success;
         }
 
-        public GuildApplicationScheme? FindApplicationByUno(int Uno, int guildId)
-        {
-            return Collection.AsQueryable().Where(d => d.Uno == Uno).Where(d => d.GuildId == guildId).FirstOrDefault();
-        }
+        public GuildApplicationScheme? FindApplicationByUno(int Uno, int guildId) => Collection.AsQueryable().Where(d => d.Uno == Uno).Where(d => d.GuildId == guildId).FirstOrDefault();
 
         public string RetrieveGuildApplication(string session, int guildIdx)
         {

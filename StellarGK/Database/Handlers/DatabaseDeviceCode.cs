@@ -27,15 +27,9 @@ namespace StellarGK.Database.Handlers
             return deviceCode;
         }
 
-        public DeviceChangeCodeScheme? FindByUid(int uid)
-        {
-            return Collection.AsQueryable().Where(deviceScheme => deviceScheme.MemberId == uid).FirstOrDefault();
-        }
+        public DeviceChangeCodeScheme? FindByUid(int uid) => Collection.AsQueryable().Where(deviceScheme => deviceScheme.MemberId == uid).FirstOrDefault();
 
-        public DeviceChangeCodeScheme? FindByDeviceCode(string code)
-        {
-            return Collection.AsQueryable().Where(deviceScheme => deviceScheme.Code == code).FirstOrDefault();
-        }
+        public DeviceChangeCodeScheme? FindByDeviceCode(string code) => Collection.AsQueryable().Where(deviceScheme => deviceScheme.Code == code).FirstOrDefault();
 
         public string RequestForChangeDeviceCode(AccountScheme? account)
         {

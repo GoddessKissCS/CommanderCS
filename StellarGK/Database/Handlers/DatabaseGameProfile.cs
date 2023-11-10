@@ -201,10 +201,7 @@ namespace StellarGK.Database.Handlers
             }
         }
 
-        public bool AccountExists(string nickname)
-        {
-            return Collection.AsQueryable().Where(d => d.UserResources.nickname == nickname).Count() > 0;
-        }
+        public bool AccountExists(string nickname) => Collection.AsQueryable().Where(d => d.UserResources.nickname == nickname).Count() > 0;
 
         public GameProfileScheme? FindBySession(string session)
         {
@@ -219,20 +216,10 @@ namespace StellarGK.Database.Handlers
             return tryUser;
         }
 
-        public GameProfileScheme FindByUno(int uno)
-        {
-            return Collection.AsQueryable().Where(d => d.Uno == uno).FirstOrDefault();
-        }
+        public GameProfileScheme FindByUno(int uno) => Collection.AsQueryable().Where(d => d.Uno == uno).FirstOrDefault();
 
-        public GameProfileScheme FindByNick(string nickname)
-        {
-            return Collection.AsQueryable().Where(d => d.UserResources.nickname == nickname).FirstOrDefault();
-        }
-
-        public List<GameProfileScheme> FindByMemberIdList(string memberId)
-        {
-            return Collection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).ToList();
-        }
+        public GameProfileScheme FindByNick(string nickname) => Collection.AsQueryable().Where(d => d.UserResources.nickname == nickname).FirstOrDefault();
+        public List<GameProfileScheme> FindByMemberIdList(string memberId) => Collection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).ToList();
 
         public UserInformationResponse.BattleStatistics UserStatisticsFromSession(string session)
         {

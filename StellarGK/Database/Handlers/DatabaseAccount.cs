@@ -54,25 +54,22 @@ namespace StellarGK.Database.Handlers
             return user;
         }
 
-        public AccountScheme FindByName(string accountName)
+        public AccountScheme FindByName(string accountName) => Collection.AsQueryable().Where(d => d.Name == accountName).FirstOrDefault();
+
+        public AccountScheme? FindByUid(int memberId) => Collection.AsQueryable().Where(d => d.MemberId == memberId).FirstOrDefault();
+
+        public AccountScheme? FindByUid(string memberId) => Collection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).FirstOrDefault();
+
+        public bool AccountExists(string accountName) => Collection.AsQueryable().Where(d => d.Name == accountName).Any();
+
+        public AccountScheme? FindBySession(string session)
         {
-            return Collection.AsQueryable().Where(d => d.Name == accountName).FirstOrDefault();
+            var user = DatabaseManager.GameProfile.FindBySession(session);
+
+            return FindByUid(user.MemberId);
         }
 
-        public AccountScheme? FindByUid(int memberId)
-        {
-            return Collection.AsQueryable().Where(d => d.MemberId == memberId).FirstOrDefault();
-        }
 
-        public AccountScheme? FindByUid(string memberId)
-        {
-            return Collection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).FirstOrDefault();
-        }
-
-        public bool AccountExists(string accountName)
-        {
-            return Collection.AsQueryable().Where(d => d.Name == accountName).Any();
-        }
 
         public ErrorCode ChangeMemberShip(string changeName, string password, int platformId, string guestName, int channel)
         {
@@ -107,8 +104,6 @@ namespace StellarGK.Database.Handlers
 
         }
 
-
-
         public void UpdateLoginTime(int id)
         {
             var CurrTimeStamp = Utility.CurrentTimeStamp();
@@ -129,13 +124,6 @@ namespace StellarGK.Database.Handlers
             var update = Builders<AccountScheme>.Update.Set("LastLoginTime", CurrTimeStamp);
 
             Collection.UpdateOne(filter, update);
-        }
-
-        public AccountScheme? FindBySession(string session)
-        {
-            var user = DatabaseManager.GameProfile.FindBySession(session);
-
-            return FindByUid(user.MemberId);
         }
 
         public void UpdateLastServerLoggedIn(int server, int memberid)

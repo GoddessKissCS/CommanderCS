@@ -33,9 +33,6 @@ namespace StellarGK.Database.Handlers
             return versionInfo;
         }
 
-        public GameVersionScheme Get(int id)
-        {
-            return Collection.AsQueryable().Where(d => d.ChannelId == id).FirstOrDefault();
-        }
+        public GameVersionScheme Get(int id) => Collection.AsQueryable().Where(d => d.ChannelId == id).FirstOrDefault();
     }
 }

@@ -21,9 +21,6 @@ namespace StellarGK.Database.Handlers
             return dataInfo;
         }
 
-        public DatabaseVersionScheme Get()
-        {
-            return Collection.AsQueryable().FirstOrDefault();
-        }
+        public DatabaseVersionScheme Get() => Collection.AsQueryable().FirstOrDefault();
     }
 }
