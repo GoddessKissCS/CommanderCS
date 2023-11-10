@@ -2,7 +2,6 @@
 some gacha game emu
 
 
-
 ## Status
 "Urgent" to-dos
 

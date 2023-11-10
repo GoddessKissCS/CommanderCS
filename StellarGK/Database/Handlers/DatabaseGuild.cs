@@ -99,16 +99,16 @@ namespace StellarGK.Database.Handlers
 
             DatabaseManager.GameProfile.UpdateGuildId(user.Uno, guildId);
 
-            Collection.InsertOne(guild);
+            DatabaseCollection.InsertOne(guild);
         }
 
-        public GuildScheme FindByName(string guildName) => Collection.AsQueryable().Where(d => d.Name == guildName).FirstOrDefault();
-        public GuildScheme FindByUid(int? guildId) => Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
+        public GuildScheme FindByName(string guildName) => DatabaseCollection.AsQueryable().Where(d => d.Name == guildName).FirstOrDefault();
+        public GuildScheme FindByUid(int? guildId) => DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
 
 
         public int GetMemberGrade(int? guildId, int uno)
         {
-            return Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault().MemberData.Where(d => d.uno == uno).FirstOrDefault().memberGrade;
+            return DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault().MemberData.Where(d => d.uno == uno).FirstOrDefault().memberGrade;
         }
         public UserInformationResponse.UserGuild RequestGuild(int? guildId, int uno)
         {
@@ -117,7 +117,7 @@ namespace StellarGK.Database.Handlers
                 return null;
             }
 
-            GuildScheme? guild = Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
+            GuildScheme? guild = DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
 
             if (guild == null)
             {
@@ -158,7 +158,7 @@ namespace StellarGK.Database.Handlers
                 return null;
             }
 
-            GuildScheme? guild = Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
+            GuildScheme? guild = DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
 
             if (guild == null)
             {
@@ -183,7 +183,7 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GuildScheme>.Update.Set("Name", val);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
         public void UpdateGuildEmblem(int guildId, string val)
         {
@@ -191,7 +191,7 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GuildScheme>.Update.Set("Emblem", int.Parse(val));
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
         public void UpdateGuildType(int guildId, string val)
         {
@@ -199,7 +199,7 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GuildScheme>.Update.Set("GuildType", int.Parse(val));
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
         public void UpdateLimitLevel(int guildId, string val)
         {
@@ -207,7 +207,7 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GuildScheme>.Update.Set("Limitlevel", int.Parse(val));
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
         public void UpdateGuildNotice(int guildId, string val)
         {
@@ -215,11 +215,11 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GuildScheme>.Update.Set("Notice", val);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
         public List<RoGuild> GetAllGuilds(string session)
         {
-            var allGuilds = Collection.AsQueryable().ToList();
+            var allGuilds = DatabaseCollection.AsQueryable().ToList();
 
             if (allGuilds == null)
             {
@@ -254,7 +254,7 @@ namespace StellarGK.Database.Handlers
         }   
         public List<GuildBoardData> GetGuildBoard(int? guildId, out ErrorCode code)
         {
-            GuildScheme? guild = Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
+            GuildScheme? guild = DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
 
 #warning add the blabla for ErrorCode.FederationSettingsChangedWhileGettingGuildBoard
 
@@ -264,7 +264,7 @@ namespace StellarGK.Database.Handlers
         }
         public void AddGuildBoardEntry(int? guildId, GuildBoardData guildBoardData)
         {
-            GuildScheme? guild = Collection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
+            GuildScheme? guild = DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
 
             if (guild != null)
             {
@@ -280,7 +280,7 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GuildScheme>.Update.Set("BoardList", guild.BoardList);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
         public void DeleteGuildBoardEntry(int? guildId, int entryId)
         {
@@ -288,7 +288,7 @@ namespace StellarGK.Database.Handlers
             var guildBoardFilter = Builders<GuildBoardData>.Filter.Eq("idx", entryId);
             var update = Builders<GuildScheme>.Update.PullFilter("BoardList", guildBoardFilter);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
         public ErrorCode UpdateGuildInfo(int act, string val, string session)
         {
@@ -371,7 +371,7 @@ namespace StellarGK.Database.Handlers
 
             DatabaseManager.GameProfile.UpdateGuildId(uno, guildId);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
         public void AddGuildMember(int uno, int guildId, GuildMember.MemberData member)
         {       
@@ -380,14 +380,14 @@ namespace StellarGK.Database.Handlers
 
             DatabaseManager.GameProfile.UpdateGuildId(uno, guildId);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
 
             var guildCount = FindByUid(guildId).Count;
 
             var filter2 = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
             var update2 = Builders<GuildScheme>.Update.Set("Count", guildCount++);
 
-            Collection.UpdateOne(filter2, update2);
+            DatabaseCollection.UpdateOne(filter2, update2);
         }
         public bool AppointSubMaster(int uno, int? guildId)
         {
@@ -397,7 +397,7 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GuildScheme>.Update.Set("MemberData.$.memberGrade", 2);
 
-            var result = Collection.UpdateOne(filter, update);
+            var result = DatabaseCollection.UpdateOne(filter, update);
 
             return result.ModifiedCount > 0;
         }
@@ -407,7 +407,7 @@ namespace StellarGK.Database.Handlers
                          & Builders<GuildScheme>.Filter.ElemMatch("MemberData",
                              Builders<GuildMember.MemberData>.Filter.Eq("memberGrade", 2));
 
-            var count = Collection.CountDocuments(filter);
+            var count = DatabaseCollection.CountDocuments(filter);
 
             return (int)count;
         }
@@ -417,21 +417,21 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GuildScheme>.Update.Set("Point", guild.Point).Set("Level", guild.Level).Set("MaxCount",guild.MaxCount);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
         public void UpdateGuildSkill(int? guildId, List<UserInformationResponse.UserGuild.GuildSkill> SkillDada, int newPoint)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
             var update = Builders<GuildScheme>.Update.Set("SkillDada", SkillDada).Set("Point", newPoint);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
         public void CloseDownGuild(int? guildId, double closeTime)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
             var update = Builders<GuildScheme>.Update.Set("State", 1).Set("CloseTime", closeTime);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
         public void ResetMemberGrades(int? guildId)
         {
@@ -446,7 +446,7 @@ namespace StellarGK.Database.Handlers
 
             var updateOptions = new UpdateOptions { ArrayFilters = arrayFilters };
 
-            Collection.UpdateMany(filter, update, updateOptions);
+            DatabaseCollection.UpdateMany(filter, update, updateOptions);
         }
         public void AppointNewGuildMaster(int? guildId, int uno, int tuno)
         {
@@ -456,7 +456,7 @@ namespace StellarGK.Database.Handlers
 
             var updateUno = Builders<GuildScheme>.Update.Set("MemberData.$.memberGrade", 0);
 
-            Collection.UpdateOne(filter, updateUno);
+            DatabaseCollection.UpdateOne(filter, updateUno);
 
             var filterTuno = Builders<GuildScheme>.Filter.Eq("GuildId", guildId)
                               & Builders<GuildScheme>.Filter.ElemMatch("MemberData",
@@ -464,7 +464,7 @@ namespace StellarGK.Database.Handlers
 
             var updateTuno = Builders<GuildScheme>.Update.Set("MemberData.$.memberGrade", 1);
 
-            Collection.UpdateOne(filterTuno, updateTuno);
+            DatabaseCollection.UpdateOne(filterTuno, updateTuno);
         }
         public void UpdateSpecificMemberGrade(int? guildId, int uno, int memberGrade)
         {
@@ -474,13 +474,13 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GuildScheme>.Update.Set("MemberData.$.memberGrade", memberGrade);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
         public bool IsUnoInMemberData(int? guildId, int uno)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId) & Builders<GuildScheme>.Filter.ElemMatch("MemberData", Builders<GuildMember.MemberData>.Filter.Eq("uno", uno));
 
-            long count = Collection.CountDocuments(filter);
+            long count = DatabaseCollection.CountDocuments(filter);
 
             return count > 0;
         }
@@ -490,7 +490,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
             var update = Builders<GuildScheme>.Update.PullFilter("MemberData", Builders<GuildMember.MemberData>.Filter.Eq("uno", uno));
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
 
             var user = DatabaseManager.GameProfile.FindByUno(uno);
 
@@ -505,7 +505,7 @@ namespace StellarGK.Database.Handlers
             var filter2 = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
             var update2 = Builders<GuildScheme>.Update.Set("Count", guildCount--);
 
-            Collection.UpdateOne(filter2, update2);
+            DatabaseCollection.UpdateOne(filter2, update2);
 
 
         }

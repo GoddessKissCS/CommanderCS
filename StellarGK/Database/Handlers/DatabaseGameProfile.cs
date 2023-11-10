@@ -16,7 +16,7 @@ namespace StellarGK.Database.Handlers
 
         public GameProfileScheme? GetOrCreate(int memberId, int server)
         {
-            var tryUser = Collection.AsQueryable()
+            var tryUser = DatabaseCollection.AsQueryable()
                        .Where(d => d.Server == server && d.MemberId == memberId)
                        .FirstOrDefault();
 
@@ -180,14 +180,14 @@ namespace StellarGK.Database.Handlers
 
             DatabaseManager.Dormitory.Create(uno);
 
-            Collection.InsertOne(user);
+            DatabaseCollection.InsertOne(user);
 
             return user;
         }
 
         public GameProfileScheme? FromUidAndServer(int memberId, int server)
         {
-            var tryUser = Collection.AsQueryable()
+            var tryUser = DatabaseCollection.AsQueryable()
                        .Where(d => d.Server == server && d.MemberId == memberId)
                        .FirstOrDefault();
 
@@ -201,11 +201,11 @@ namespace StellarGK.Database.Handlers
             }
         }
 
-        public bool AccountExists(string nickname) => Collection.AsQueryable().Where(d => d.UserResources.nickname == nickname).Count() > 0;
+        public bool AccountExists(string nickname) => DatabaseCollection.AsQueryable().Where(d => d.UserResources.nickname == nickname).Count() > 0;
 
         public GameProfileScheme? FindBySession(string session)
         {
-            var tryUser = Collection.AsQueryable()
+            var tryUser = DatabaseCollection.AsQueryable()
                        .Where(d => d.Session == session)
                        .FirstOrDefault();
 
@@ -216,10 +216,10 @@ namespace StellarGK.Database.Handlers
             return tryUser;
         }
 
-        public GameProfileScheme FindByUno(int uno) => Collection.AsQueryable().Where(d => d.Uno == uno).FirstOrDefault();
+        public GameProfileScheme FindByUno(int uno) => DatabaseCollection.AsQueryable().Where(d => d.Uno == uno).FirstOrDefault();
 
-        public GameProfileScheme FindByNick(string nickname) => Collection.AsQueryable().Where(d => d.UserResources.nickname == nickname).FirstOrDefault();
-        public List<GameProfileScheme> FindByMemberIdList(string memberId) => Collection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).ToList();
+        public GameProfileScheme FindByNick(string nickname) => DatabaseCollection.AsQueryable().Where(d => d.UserResources.nickname == nickname).FirstOrDefault();
+        public List<GameProfileScheme> FindByMemberIdList(string memberId) => DatabaseCollection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).ToList();
 
         public UserInformationResponse.BattleStatistics UserStatisticsFromSession(string session)
         {
@@ -316,7 +316,7 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GameProfileScheme>.Update.Set("UserResources", resources);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         public void UpdateGoldAndCash(string session, int new_gold, int new_cash, bool useAddition)
@@ -338,7 +338,7 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", user.UserResources.gold).Set("UserResources.cash", user.UserResources.cash).Set("UserStatistics.totalGold", user.UserStatistics.TotalGold);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         public void UpdateGold(string session, int gold, bool useAddition)
@@ -360,7 +360,7 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", user.UserResources.gold).Set("UserStatistics.totalGold", user.UserStatistics.TotalGold);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         public void UpdateCash(string session, int cash, bool useAddition)
@@ -380,7 +380,7 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GameProfileScheme>.Update.Set("UserResources.cash", user.UserResources.cash);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         public void UpdateOnLogin(LoginRequest @params, string session)
@@ -408,7 +408,7 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GameProfileScheme>.Update.Set("Session", session).Set("UserDevice", userDevice).Set("LastLoginTime", CurrTimeStamp);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
 
             DatabaseManager.Account.UpdateLastServerLoggedIn(@params.world, @params.memberId);
         }
@@ -418,7 +418,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
             var update = Builders<GameProfileScheme>.Update.Set(x => x.CommanderData, commanderList);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         public void UpdateCommanderData(int id, Dictionary<string, UserInformationResponse.Commander> commanderList)
@@ -426,7 +426,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, id);
             var update = Builders<GameProfileScheme>.Update.Set(x => x.CommanderData, commanderList);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         public void UpdateMedalData(string session, Dictionary<string, int> medalsdata)
@@ -434,7 +434,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
             var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.medalData, medalsdata);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         public void UpdateMedalData(int id, Dictionary<string, int> medalsdata)
@@ -442,7 +442,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, id);
             var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.medalData, medalsdata);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         public void UpdateItemData(string session, Dictionary<string, int> goods)
@@ -450,7 +450,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
             var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.itemData, goods);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         public UserInformationResponse.TutorialData UpdateStepAndSkip(string session, UserInformationResponse.TutorialData tutorialData)
@@ -459,7 +459,7 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GameProfileScheme>.Update.Set("TutorialData", tutorialData);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
 
             return FindBySession(session).TutorialData;
         }
@@ -472,7 +472,7 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GameProfileScheme>.Update.Set("UserResources.thumbnailId", id);
 
-            var updateResult = Collection.UpdateOne(filter, update);
+            var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
             return updateResult.ModifiedCount > 0;
         }
@@ -487,7 +487,7 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GameProfileScheme>.Update.Set("TutorialData", user);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         public void UpdateNickName(string session, string accountName)
@@ -496,7 +496,7 @@ namespace StellarGK.Database.Handlers
 
             var update = Builders<GameProfileScheme>.Update.Set("UserResources.nickname", accountName);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         public bool AddBlockedUser(BlockUser toBeBlocked, string session)
@@ -505,7 +505,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq("MemberId", user.MemberId);
             var update = Builders<GameProfileScheme>.Update.Push("BlockedUsers", toBeBlocked);
 
-            var updateResult = Collection.UpdateOne(filter, update);
+            var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
             return updateResult.ModifiedCount > 0;
         }
@@ -524,7 +524,7 @@ namespace StellarGK.Database.Handlers
                 )
             );
 
-            var deleteResult = Collection.DeleteOne(filter);
+            var deleteResult = DatabaseCollection.DeleteOne(filter);
 
             return deleteResult.DeletedCount > 0;
         }
@@ -540,7 +540,7 @@ namespace StellarGK.Database.Handlers
                     Builders<MailInfo.MailData>.Filter.Eq("idx", MailIdx)
                 ));
 
-            var updateResult = Collection.UpdateOne(filter, update);
+            var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
             return updateResult.ModifiedCount > 0;
         }
@@ -550,7 +550,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq("session", session);
             var update = Builders<GameProfileScheme>.Update.Set("Notifaction", Convert.ToBoolean(onoff));
 
-            var updateResult = Collection.UpdateOne(filter, update);
+            var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
             return updateResult.ModifiedCount > 0;
         }
@@ -566,7 +566,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
             var update = Builders<GameProfileScheme>.Update.Set("WorldMapStagesReward", user.WorldMapStagesReward);
 
-            var updateResult = Collection.UpdateOne(filter, update);
+            var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
             return updateResult.ModifiedCount > 0;
         }
@@ -576,14 +576,14 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
             var update = Builders<GameProfileScheme>.Update.Set("VipRechargeData", vipRechargedata);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         public void UpdateProfile(string session, GameProfileScheme user)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
 
-            Collection.ReplaceOne(filter, user);
+            DatabaseCollection.ReplaceOne(filter, user);
         }
 
         public void UpdateGuildId(int uno, int guildId)
@@ -591,7 +591,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq("Uno", uno);
             var update = Builders<GameProfileScheme>.Update.Set("GuildId", guildId);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace StellarGK.Database.Handlers
         {
         }
 
-        public GameVersionScheme Insert(int id, string ver, string cdn, string game, string chat, bool gglogin, bool fc, bool stat, bool policy)
+        public void Insert(int id, string ver, string cdn, string game, string chat, bool gglogin, bool fc, bool stat, bool policy)
         {
             GameVersionScheme versionInfo = new()
             {
@@ -28,11 +28,9 @@ namespace StellarGK.Database.Handlers
                 }
             };
 
-            Collection.InsertOne(versionInfo);
-
-            return versionInfo;
+            DatabaseCollection.InsertOne(versionInfo);
         }
 
-        public GameVersionScheme Get(int id) => Collection.AsQueryable().Where(d => d.ChannelId == id).FirstOrDefault();
+        public GameVersionScheme Get(int id) => DatabaseCollection.AsQueryable().Where(d => d.ChannelId == id).FirstOrDefault();
     }
 }

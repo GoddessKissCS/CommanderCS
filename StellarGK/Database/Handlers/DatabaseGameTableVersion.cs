@@ -16,11 +16,11 @@ namespace StellarGK.Database.Handlers
                 Version = version
             };
 
-            Collection.InsertOne(dataInfo);
+            DatabaseCollection.InsertOne(dataInfo);
 
             return dataInfo;
         }
 
-        public DatabaseVersionScheme Get() => Collection.AsQueryable().FirstOrDefault();
+        public DatabaseVersionScheme Get() => DatabaseCollection.AsQueryable().FirstOrDefault();
     }
 }

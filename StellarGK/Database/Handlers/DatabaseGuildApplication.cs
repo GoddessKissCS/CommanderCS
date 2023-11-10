@@ -42,11 +42,11 @@ namespace StellarGK.Database.Handlers
                 
             };
 
-            Collection.InsertOne(guildApplication);
+            DatabaseCollection.InsertOne(guildApplication);
             return ErrorCode.Success;
         }
 
-        public GuildApplicationScheme? FindApplicationByUno(int Uno, int guildId) => Collection.AsQueryable().Where(d => d.Uno == Uno).Where(d => d.GuildId == guildId).FirstOrDefault();
+        public GuildApplicationScheme? FindApplicationByUno(int Uno, int guildId) => DatabaseCollection.AsQueryable().Where(d => d.Uno == Uno).Where(d => d.GuildId == guildId).FirstOrDefault();
 
         public string RetrieveGuildApplication(string session, int guildIdx)
         {
@@ -54,7 +54,7 @@ namespace StellarGK.Database.Handlers
 
             if (user == null) { return string.Empty; }
 
-            var tryGuild = Collection.AsQueryable()
+            var tryGuild = DatabaseCollection.AsQueryable()
                             .Where(d => d.Uno == user.Uno)
                             .Where(d => d.GuildId == guildIdx)
                             .FirstOrDefault();
@@ -66,7 +66,7 @@ namespace StellarGK.Database.Handlers
 
         public int RetrieveGuildApplicationFromId(int uno)
         {
-            var tryGuild = Collection.AsQueryable()
+            var tryGuild = DatabaseCollection.AsQueryable()
                             .Where(d => d.Uno == uno)
                             .FirstOrDefault();
 
@@ -79,7 +79,7 @@ namespace StellarGK.Database.Handlers
 
             if (user == null) { return string.Empty; }
 
-            var tryGuild = Collection.AsQueryable()
+            var tryGuild = DatabaseCollection.AsQueryable()
                             .Where(d => d.Uno == user.Uno)
                             .FirstOrDefault();
 
@@ -96,7 +96,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<GuildApplicationScheme>.Filter.And(Builders<GuildApplicationScheme>.Filter.Eq("Uno", user.Uno),
                          Builders<GuildApplicationScheme>.Filter.Eq("GuildId", guildIdx));
 
-            var result = Collection.DeleteOne(filter);
+            var result = DatabaseCollection.DeleteOne(filter);
 
             return result.DeletedCount > 0;
         }
@@ -106,7 +106,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<GuildApplicationScheme>.Filter.And(Builders<GuildApplicationScheme>.Filter.Eq("Uno", uno),
              Builders<GuildApplicationScheme>.Filter.Eq("GuildId", guildIdx));
 
-            var result = Collection.DeleteOne(filter);
+            var result = DatabaseCollection.DeleteOne(filter);
 
             return result.DeletedCount > 0;
         }
@@ -117,7 +117,7 @@ namespace StellarGK.Database.Handlers
 
             var filter = Builders<GuildApplicationScheme>.Filter.Eq("GuildId", guildId);
 
-            List<GuildApplicationScheme> matchingEntries = Collection.Find(filter).ToList();
+            List<GuildApplicationScheme> matchingEntries = DatabaseCollection.Find(filter).ToList();
 
             foreach(var entry in matchingEntries)
             {

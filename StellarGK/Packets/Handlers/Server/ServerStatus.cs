@@ -22,19 +22,30 @@ namespace StellarGK.Host.Handlers.Server
 
             var serverinfos = ProfilesRequest(@params.mIdx, GetSession());
 
-            if(serverinfos.Count > 4)
+            int nextIdx = 1;
+
+            while (serverinfos.Count < 1)
             {
-                //add more server channels etc
+                // Check if the nextIdx is already used
+                if (serverinfos.Any(server => server.idx == nextIdx))
+                {
+                    nextIdx++;
+                    continue; // Skip to the next iteration if the idx is already used
+                }
 
                 ServerData.ServerInfo nullServer = new()
                 {
-                    idx = 0,
-                    status = 0,
+                    idx = nextIdx,
+                    status = 1,
                     lastLoginTime = 0,
                     level = 0,
                     thumnail = 0,
                 };
+
+                serverinfos.Add(nullServer);
+                nextIdx++;
             }
+
 
             serverData.serverInfoList = serverinfos;
             serverData.recommandServer = 1;
@@ -52,7 +63,7 @@ namespace StellarGK.Host.Handlers.Server
 
             var list = DatabaseManager.GameProfile.FindByMemberIdList(mIdx);
 
-            int i = 0;
+            int i = 1;
             foreach (GameProfileScheme profile in list)
             {
                 ServerData.ServerInfo SIFO = new()

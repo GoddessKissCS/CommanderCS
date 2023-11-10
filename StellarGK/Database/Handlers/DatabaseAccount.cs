@@ -17,7 +17,7 @@ namespace StellarGK.Database.Handlers
 
         public AccountScheme Create(string name = "", string password = "", int platformid = 0, int channel = 0)
         {
-            AccountScheme? tryUser = Collection.AsQueryable().Where(d => d.Name == name).FirstOrDefault();
+            AccountScheme? tryUser = DatabaseCollection.AsQueryable().Where(d => d.Name == name).FirstOrDefault();
             if (tryUser != null) { return tryUser; }
 
             int memberId = DatabaseManager.AutoIncrements.GetNextNumber("MemberId", 1000);
@@ -49,18 +49,18 @@ namespace StellarGK.Database.Handlers
                 user.Clearance = Clearance.Player;
             }            
 
-            Collection.InsertOne(user);
+            DatabaseCollection.InsertOne(user);
 
             return user;
         }
 
-        public AccountScheme FindByName(string accountName) => Collection.AsQueryable().Where(d => d.Name == accountName).FirstOrDefault();
+        public AccountScheme FindByName(string accountName) => DatabaseCollection.AsQueryable().Where(d => d.Name == accountName).FirstOrDefault();
 
-        public AccountScheme? FindByUid(int memberId) => Collection.AsQueryable().Where(d => d.MemberId == memberId).FirstOrDefault();
+        public AccountScheme? FindByUid(int memberId) => DatabaseCollection.AsQueryable().Where(d => d.MemberId == memberId).FirstOrDefault();
 
-        public AccountScheme? FindByUid(string memberId) => Collection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).FirstOrDefault();
+        public AccountScheme? FindByUid(string memberId) => DatabaseCollection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).FirstOrDefault();
 
-        public bool AccountExists(string accountName) => Collection.AsQueryable().Where(d => d.Name == accountName).Any();
+        public bool AccountExists(string accountName) => DatabaseCollection.AsQueryable().Where(d => d.Name == accountName).Any();
 
         public AccountScheme? FindBySession(string session)
         {
@@ -90,7 +90,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
             var update = Builders<AccountScheme>.Update.Set("Name", changeName).Set("Password_Hash", password_hash).Set("PlatformId", platformId).Set("Channel", channel);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
 
             return ErrorCode.Success;
         }
@@ -100,7 +100,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<AccountScheme>.Filter.Eq("Name", guestname) & Builders<AccountScheme>.Filter.Eq("Token", token);
             var update = Builders<AccountScheme>.Update.Set("PlatformId", platformId).Set("Channel", channel);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
 
         }
 
@@ -111,7 +111,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", id);
             var update = Builders<AccountScheme>.Update.Set("LastLoginTime", CurrTimeStamp);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         public void UpdateLoginTime(string name)
@@ -123,7 +123,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
             var update = Builders<AccountScheme>.Update.Set("LastLoginTime", CurrTimeStamp);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         public void UpdateLastServerLoggedIn(int server, int memberid)
@@ -131,7 +131,7 @@ namespace StellarGK.Database.Handlers
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", memberid);
             var update = Builders<AccountScheme>.Update.Set("LastServerLoggedIn", server);
 
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         public ErrorCode RequestLogin(LoginRequest @params, string session)
@@ -203,7 +203,7 @@ namespace StellarGK.Database.Handlers
 
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
             var update = Builders<AccountScheme>.Update.Set("PlatformId", @params.plfm).Set("Channel", @params.plfm).Set("OsCode", @params.oscd);
-            Collection.UpdateOne(filter, update);
+            DatabaseCollection.UpdateOne(filter, update);
 
             return FindByName(@params.uid);
         }

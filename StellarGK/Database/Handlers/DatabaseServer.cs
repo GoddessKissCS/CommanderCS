@@ -5,15 +5,16 @@ namespace StellarGK.Database.Handlers
 {
     public class DatabaseServer : DatabaseTable<ServerScheme>
     {
-        public DatabaseServer() : base("Servers")
+        public DatabaseServer() : base("Server")
         {
         }
 
-        public ServerScheme Insert(int id, int maxlevel, string maxstage, double openDt, int playercount, int servercount)
+        public void Insert(int id, string region, int maxlevel, string maxstage, double openDt, int playercount, int servercount)
         {
             ServerScheme versionInfo = new()
             {
                 ChannelId = id,
+                ServerRegion = region,
                 MaxLevel = maxlevel,
                 MaxStage = maxstage,
                 OpenDate = openDt,
@@ -21,11 +22,9 @@ namespace StellarGK.Database.Handlers
                 ServerCount = servercount,
             };
 
-            Collection.InsertOne(versionInfo);
-
-            return versionInfo;
+            DatabaseCollection.InsertOne(versionInfo);
         }
 
-        public ServerScheme Get(int id) => Collection.AsQueryable().Where(d => d.ChannelId == id).FirstOrDefault();
+        public ServerScheme Get(int id) => DatabaseCollection.AsQueryable().Where(d => d.ChannelId == id).FirstOrDefault();
     }
 }

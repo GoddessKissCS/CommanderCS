@@ -11,7 +11,6 @@ namespace StellarGK.Host
         public object Result { get; set; }
 
     }
-
     public class ErrorPacket
     {
         [JsonProperty("id")]

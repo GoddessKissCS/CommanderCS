@@ -6,6 +6,7 @@ namespace StellarGK.Database.Schemes
     {
         public ObjectId Id { get; set; }
         public int ChannelId { get; set; }
+        public string ServerRegion { get; set; }
         public double OpenDate { get; set; }
         public int MaxLevel { get; set; }
         public string MaxStage { get; set; }

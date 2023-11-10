@@ -15,19 +15,15 @@ namespace StellarGK.Database
         public static DatabaseGameTableVersion GameTableVersion { get; } = new();
         public static DatabaseGameProfile GameProfile { get; } = new();
 
-        public static void FirstCreate()
+        public static void Init()
         {
             GameVersionInfo.Insert(1, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L0ZpbGVDRE4v", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQucGhw", false, false, false, false);
             GameVersionInfo.Insert(2, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L0ZpbGVDRE4v", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQucGhw", false, false, false, false);
-            GameVersionInfo.Insert(3, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L0ZpbGVDRE4v", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQucGhw", false, false, false, false);
-            GameVersionInfo.Insert(4, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L0ZpbGVDRE4v", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQucGhw", false, false, false, false);
 
             GameTableVersion.Insert(20220312000000);
 
-            Server.Insert(1, 140, "18-20", 1643673600, 0, 0);
-            Server.Insert(2, 140, "18-20", 1643673600, 0, 0);
-            Server.Insert(3, 140, "18-20", 1643673600, 0, 0);
-            Server.Insert(4, 140, "18-20", 1643673600, 0, 0);
+            Server.Insert(1, "Korea", 140, "18-20", 1643673600, 0, 0);
+            Server.Insert(2, "Global", 140, "18-20", 1643673600, 0, 0);
         }
     }
 }

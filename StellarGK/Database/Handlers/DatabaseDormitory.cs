@@ -11,7 +11,7 @@ namespace StellarGK.Database.Handlers
 
         public void Create(int id)
         {
-            DormitoryScheme? tryUser = Collection.AsQueryable().Where(d => d.Uno == id).FirstOrDefault();
+            DormitoryScheme? tryUser = DatabaseCollection.AsQueryable().Where(d => d.Uno == id).FirstOrDefault();
             if (tryUser != null) { return; }
 
             //TODO THIS
@@ -46,10 +46,10 @@ namespace StellarGK.Database.Handlers
                 }
             };
 
-            Collection.InsertOne(user);
+            DatabaseCollection.InsertOne(user);
         }
 
-        public DormitoryScheme? FindByUno(int uid) => Collection.AsQueryable().Where(d => d.Uno == uid).FirstOrDefault();
+        public DormitoryScheme? FindByUno(int uid) => DatabaseCollection.AsQueryable().Where(d => d.Uno == uid).FirstOrDefault();
 
         public DormitoryScheme? FindBySession(string session)
         {

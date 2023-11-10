@@ -22,14 +22,14 @@ namespace StellarGK.Database.Handlers
                 CreateTime = CreateTime,
             };
 
-            Collection.InsertOne(deviceCode);
+            DatabaseCollection.InsertOne(deviceCode);
 
             return deviceCode;
         }
 
-        public DeviceChangeCodeScheme? FindByUid(int uid) => Collection.AsQueryable().Where(deviceScheme => deviceScheme.MemberId == uid).FirstOrDefault();
+        public DeviceChangeCodeScheme? FindByUid(int uid) => DatabaseCollection.AsQueryable().Where(deviceScheme => deviceScheme.MemberId == uid).FirstOrDefault();
 
-        public DeviceChangeCodeScheme? FindByDeviceCode(string code) => Collection.AsQueryable().Where(deviceScheme => deviceScheme.Code == code).FirstOrDefault();
+        public DeviceChangeCodeScheme? FindByDeviceCode(string code) => DatabaseCollection.AsQueryable().Where(deviceScheme => deviceScheme.Code == code).FirstOrDefault();
 
         public string RequestForChangeDeviceCode(AccountScheme? account)
         {

@@ -35,25 +35,13 @@ namespace StellarGK.Host
 
         public abstract object Handle(TParams @params);
 
-        public string GetSession()
-        {
-            return BasePacket.Session;
-        }
+        public string GetSession() => BasePacket.Session;
 
-        public AccountScheme? GetUserAccount()
-        {
-            return DatabaseManager.Account.FindBySession(BasePacket.Session);
-        }
+        public AccountScheme? GetUserAccount() => DatabaseManager.Account.FindBySession(BasePacket.Session);
 
-        public GameProfileScheme? GetUserGameProfile()
-        {
-            return DatabaseManager.GameProfile.FindBySession(BasePacket.Session);
-        }
+        public GameProfileScheme? GetUserGameProfile() => DatabaseManager.GameProfile.FindBySession(BasePacket.Session);
 
-        public DormitoryScheme? GetUserDormitory()
-        {
-            return DatabaseManager.Dormitory.FindBySession(BasePacket.Session);
-        }
+        public DormitoryScheme? GetUserDormitory() => DatabaseManager.Dormitory.FindBySession(BasePacket.Session);
     }
 
     public enum Method : int
