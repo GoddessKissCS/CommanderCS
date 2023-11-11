@@ -10,27 +10,17 @@ namespace StellarGK.Host.Handlers.Server
     {
         public override object Handle(ServerStatusRequest @params)
         {
-#warning TODO
-            // needs to be reworked
-
-            // iterate through every server where you have a account
-            // if not just use nullserver
-
-            ResponsePacket response = new();
-
-            ServerData serverData = new();
-
-            var serverinfos = ProfilesRequest(@params.mIdx, GetSession());
+            var serverinfos = ProfilesRequest(@params.mIdx);
 
             int nextIdx = 1;
 
             while (serverinfos.Count < 1)
             {
-                // Check if the nextIdx is already used
+
                 if (serverinfos.Any(server => server.idx == nextIdx))
                 {
                     nextIdx++;
-                    continue; // Skip to the next iteration if the idx is already used
+                    continue;
                 }
 
                 ServerData.ServerInfo nullServer = new()
@@ -46,18 +36,23 @@ namespace StellarGK.Host.Handlers.Server
                 nextIdx++;
             }
 
+            ServerData serverData = new()
+            {
+                serverInfoList = serverinfos,
+                recommandServer = 1,
+                newServer = 1
+            };
 
-            serverData.serverInfoList = serverinfos;
-            serverData.recommandServer = 1;
-            serverData.newServer = 1;
-
-            response.Id = BasePacket.Id;
-            response.Result = serverData;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = serverData
+            };
 
             return response;
         }
 
-        private static List<ServerData.ServerInfo> ProfilesRequest(string mIdx, string session)
+        private static List<ServerData.ServerInfo> ProfilesRequest(string mIdx)
         {
             List<ServerData.ServerInfo> serverInfo = [];
 
@@ -74,7 +69,7 @@ namespace StellarGK.Host.Handlers.Server
                     // 3 = Full
                     // 4 = Unable to join
                     idx = i,
-                    lastLoginTime = (int)profile.LastLoginTime,
+                    lastLoginTime = profile.LastLoginTime,
                     level = profile.UserResources.level,
                     thumnail = profile.UserResources.thumbnailId                     
                 };
