@@ -13,23 +13,25 @@ namespace StellarGK.Host.Handlers.Server
             //3 is Global Version 2
             //4 is Global Version 3
 
-#warning TODO needs a small adjust for servers and playercount
+            // we dont really need more than 1 server and global tbh
 
             var server = DatabaseManager.Server.Get(1);
+
+            var playerCount = DatabaseManager.GameProfile.GetGameProfileSchemeCount();
 
             ServerInfo korea = new()
             {
                 maxLv = server.MaxLevel,
                 maxSt = server.MaxStage,
                 openDt = server.OpenDate,
-                svcnt = server.ServerCount.ToString(),
-                plcnt = server.PlayerCount.ToString(),
+                svcnt = "1",
+                plcnt = playerCount,
             };
 
             Dictionary<string, ServerInfo> serverInfo = new()
             {
                 { "1", korea },
-                 // korea },
+                 // { "2", korea //global },
             };
 
             ResponsePacket response = new()

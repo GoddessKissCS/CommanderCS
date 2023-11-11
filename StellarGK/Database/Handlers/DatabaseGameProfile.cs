@@ -221,6 +221,16 @@ namespace StellarGK.Database.Handlers
         public GameProfileScheme FindByNick(string nickname) => DatabaseCollection.AsQueryable().Where(d => d.UserResources.nickname == nickname).FirstOrDefault();
         public List<GameProfileScheme> FindByMemberIdList(string memberId) => DatabaseCollection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).ToList();
 
+        public string GetGameProfileSchemeCount()
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Empty;
+
+            long count = DatabaseCollection.CountDocuments(filter);
+
+            return count.ToString();
+        }
+
+
         public UserInformationResponse.BattleStatistics UserStatisticsFromSession(string session)
         {
             var statistics = FindBySession(session).UserStatistics;
