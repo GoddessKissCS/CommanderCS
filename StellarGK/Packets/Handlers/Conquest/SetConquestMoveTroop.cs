@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Conquest
+namespace CommanderCS.Packets.Handlers.Conquest
 {
     public class SetConquestMoveTroop
     {

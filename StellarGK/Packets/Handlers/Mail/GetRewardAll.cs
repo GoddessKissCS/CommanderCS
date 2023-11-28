@@ -1,7 +1,7 @@
-using StellarGK.Host;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Host;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Packets.Handlers.KeepAlives
+namespace CommanderCS.Packets.Handlers.KeepAlives
 {
     [Packet(Id = Method.GetRewardAll)]
     public class GetRewardAll : BaseMethodHandler<GetRewardAllRequest>

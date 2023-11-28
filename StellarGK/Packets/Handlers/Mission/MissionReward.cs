@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Mission
+namespace CommanderCS.Packets.Handlers.Mission
 {
     public class MissionReward
     {

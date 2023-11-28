@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Event
+namespace CommanderCS.Packets.Handlers.Event
 {
     public class EventBattleGachaReset
     {

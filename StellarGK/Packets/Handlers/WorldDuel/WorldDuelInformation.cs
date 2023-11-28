@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.WorldDuel
+namespace CommanderCS.Packets.Handlers.WorldDuel
 {
     public class WorldDuelInformation
     {

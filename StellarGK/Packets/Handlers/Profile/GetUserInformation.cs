@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using StellarGK.Database;
-using StellarGK.Host;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Database;
+using CommanderCS.Host;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Packets.Handlers.Profile
+namespace CommanderCS.Packets.Handlers.Profile
 {
     [Packet(Id = Method.GetUserInformation)]
     public class GetUserInformation : BaseMethodHandler<GetUserInformationRequest>

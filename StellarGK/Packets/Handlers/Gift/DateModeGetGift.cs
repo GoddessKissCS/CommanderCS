@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Gift
+namespace CommanderCS.Packets.Handlers.Gift
 {
     public class DateModeGetGift
     {

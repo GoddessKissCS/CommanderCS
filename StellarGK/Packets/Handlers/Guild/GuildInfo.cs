@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using StellarGK.Database;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Database;
+using CommanderCS.Protocols;
 using System.Numerics;
 
-namespace StellarGK.Host.Handlers.Guild
+namespace CommanderCS.Host.Handlers.Guild
 {
     [Packet(Id = Method.GuildInfo)]
     public class GuildInfo : BaseMethodHandler<GuildInfoRequest>

@@ -1,13 +1,13 @@
 ﻿using MongoDB.Driver;
-using StellarGK.Database.Schemes;
-using StellarGK.Host;
-using StellarGK.Host.Handlers.Login;
-using StellarGK.Packets.Handlers.UserTerm;
-using StellarGKLibrary.Enum;
-using StellarGKLibrary.Utils;
-using static StellarGKLibrary.Cryptography.Crypto;
+using CommanderCS.Database.Schemes;
+using CommanderCS.Host;
+using CommanderCS.Host.Handlers.Login;
+using CommanderCS.Packets.Handlers.UserTerm;
+using CommanderCS.Enum;
+using CommanderCS.Utils;
+using static CommanderCS.Cryptography.Crypto;
 
-namespace StellarGK.Database.Handlers
+namespace CommanderCS.Database.Handlers
 {
     public class DatabaseAccount : DatabaseTable<AccountScheme>
     {

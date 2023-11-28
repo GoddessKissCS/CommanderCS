@@ -1,13 +1,13 @@
-﻿using StellarGK.Database;
+﻿using CommanderCS.Database;
 
-namespace StellarGK.Host.Handlers.Guild
+namespace CommanderCS.Host.Handlers.Guild
 {
     [Packet(Id = Method.GuildList)]
     public class GuildList : BaseMethodHandler<GuildListRequest>
     {
         public override object Handle(GuildListRequest @params)
         {
-            StellarGKLibrary.Protocols.GuildInfo guildList = new()
+            CommanderCS.Protocols.GuildInfo guildList = new()
             {
                 resource = null,
                 guildInfo = null,

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace StellarGK.Host.Handlers.KeepAlives
+namespace CommanderCS.Host.Handlers.KeepAlives
 {
     [Packet(Id = Method.GetCouponList)]
     public class GetCouponList : BaseMethodHandler<GetCouponListRequest>

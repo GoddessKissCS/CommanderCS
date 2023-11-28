@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using StellarGKLibrary.Protocols;
-using StellarGKLibrary.Utils;
+using CommanderCS.Protocols;
+using CommanderCS.Utils;
 
-namespace StellarGKLibrary.ExcelReader
+namespace CommanderCS.ExcelReader
 {
     public class CommanderCostumeData : BaseExcelReader<CommanderCostumeData, CommanderCostumeExcel>
     {

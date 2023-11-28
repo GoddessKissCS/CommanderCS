@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.PvP
+namespace CommanderCS.Packets.Handlers.PvP
 {
     public class PvPWaveDuelList
     {

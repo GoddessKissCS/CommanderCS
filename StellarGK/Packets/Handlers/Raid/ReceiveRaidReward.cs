@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Raid
+namespace CommanderCS.Packets.Handlers.Raid
 {
     public class ReceiveRaidReward
     {

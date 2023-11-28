@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGKLibrary.ExcelReader;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Database;
+using CommanderCS.ExcelReader;
+using CommanderCS.Protocols;
 using System.Security.Cryptography;
 
-namespace StellarGK.Host.Handlers.WorldMap
+namespace CommanderCS.Host.Handlers.WorldMap
 {
     [Packet(Id = Method.WorldMapInformation)]
     public class WorldMapInformation : BaseMethodHandler<WorldMapInformationRequest>

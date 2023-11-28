@@ -1,10 +1,10 @@
 using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGK.Host;
-using StellarGKLibrary.ExcelReader;
+using CommanderCS.Database;
+using CommanderCS.Host;
+using CommanderCS.ExcelReader;
 using System.ComponentModel;
 
-namespace StellarGK.Packets.Handlers.Guild
+namespace CommanderCS.Packets.Handlers.Guild
 {
 
     [Packet(Id = Method.UpgradeGuildSkill)]
@@ -46,7 +46,7 @@ namespace StellarGK.Packets.Handlers.Guild
 
             var newGuild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
-            StellarGKLibrary.Protocols.GuildInfo guildList = new()
+            CommanderCS.Protocols.GuildInfo guildList = new()
             {
                 resource = null,
                 guildInfo = newGuild,

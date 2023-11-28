@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Database;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Host.Handlers.Tutorial
+namespace CommanderCS.Host.Handlers.Tutorial
 {
     [Packet(Id = Method.GetTutorialStep)]
     public class GetTutorialStep : BaseMethodHandler<GetTutorialStepRequest>

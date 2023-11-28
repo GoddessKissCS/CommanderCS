@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace StellarGKLibrary.Ro
+namespace CommanderCS.Ro
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class RoGuild

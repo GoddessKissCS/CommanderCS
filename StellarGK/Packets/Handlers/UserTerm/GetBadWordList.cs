@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace StellarGK.Host.Handlers.UserTerm
+namespace CommanderCS.Host.Handlers.UserTerm
 {
     [Packet(Id = Method.GetBadWordList)]
     public class GetBadWordList : BaseMethodHandler<GetBadWordListRequest>

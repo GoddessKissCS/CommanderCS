@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace StellarGK.Host.Handlers.Dormitory
+namespace CommanderCS.Host.Handlers.Dormitory
 {
     [Packet(Id = Method.GetDormitoryInfo)]
     public class GetDormitoryInfo : BaseMethodHandler<GetDormitoryInfoRequest>
@@ -9,7 +9,7 @@ namespace StellarGK.Host.Handlers.Dormitory
         {
             var dormitoryInfo = GetUserDormitory();
 
-            StellarGKLibrary.Protocols.Dormitory.Info DormitoryInfo = new()
+            CommanderCS.Protocols.Dormitory.Info DormitoryInfo = new()
             {
                 costumeBody = dormitoryInfo.CostumeBody,
                 itemNormal = dormitoryInfo.ItemNormal,

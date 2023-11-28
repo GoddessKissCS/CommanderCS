@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace StellarGK.Host.Handlers.Carnival
+namespace CommanderCS.Host.Handlers.Carnival
 {
     [Packet(Id = Method.CheckBadge)]
     public class CheckBadge : BaseMethodHandler<CheckBadgeRequest>

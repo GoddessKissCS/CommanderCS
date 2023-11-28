@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.InfinityBattle
+namespace CommanderCS.Packets.Handlers.InfinityBattle
 {
     public class StartInfinityBattleScenario
     {

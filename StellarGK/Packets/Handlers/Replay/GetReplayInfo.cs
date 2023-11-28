@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Replay
+namespace CommanderCS.Packets.Handlers.Replay
 {
     public class GetReplayInfo
     {

@@ -1,6 +1,6 @@
 ﻿// Token: 0x0200130D RID: 4877
 
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum TicketType
     {

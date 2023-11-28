@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F76 RID: 3958
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum StatType
     {

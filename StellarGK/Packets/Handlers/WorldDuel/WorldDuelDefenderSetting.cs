@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace StellarGK.Packets.Handlers.WorldDuel
+namespace CommanderCS.Packets.Handlers.WorldDuel
 {
     public class WorldDuelDefenderSetting
     {

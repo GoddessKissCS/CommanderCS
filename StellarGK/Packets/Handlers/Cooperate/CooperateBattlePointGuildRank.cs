@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Cooperate
+namespace CommanderCS.Packets.Handlers.Cooperate
 {
     public class CooperateBattlePointGuildRank
     {

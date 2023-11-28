@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.SocketChatting
+namespace CommanderCS.Packets.Handlers.SocketChatting
 {
     public class SendChMsgChatting
     {

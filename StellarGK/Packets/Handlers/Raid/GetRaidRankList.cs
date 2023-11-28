@@ -1,6 +1,6 @@
-using StellarGK.Host;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.Raid
+namespace CommanderCS.Packets.Handlers.Raid
 {
 	[Packet(Id = Method.GetRaidRankList)]
     public class GetRaidRankList : BaseMethodHandler<GetRaidRankListRequest>
@@ -14,7 +14,7 @@ namespace StellarGK.Packets.Handlers.Raid
 			};
 
 
-			StellarGKLibrary.Protocols.PvPRankingList pvPRankingList = new();
+			CommanderCS.Protocols.PvPRankingList pvPRankingList = new();
 
 
             return response;

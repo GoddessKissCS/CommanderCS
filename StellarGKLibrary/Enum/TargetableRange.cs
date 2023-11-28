@@ -1,5 +1,5 @@
 ﻿// Token: 0x0200102F RID: 4143
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum TargetableRange
     {

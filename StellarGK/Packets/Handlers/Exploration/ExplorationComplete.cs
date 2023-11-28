@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Exploration
+namespace CommanderCS.Packets.Handlers.Exploration
 {
     public class ExplorationComplete
     {

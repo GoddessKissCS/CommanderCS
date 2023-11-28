@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Bank
+namespace CommanderCS.Packets.Handlers.Bank
 {
     public class GetBankReward
     {

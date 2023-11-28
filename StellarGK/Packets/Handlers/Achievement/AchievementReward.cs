@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Achievement
+namespace CommanderCS.Packets.Handlers.Achievement
 {
     public class AchievementReward
     {

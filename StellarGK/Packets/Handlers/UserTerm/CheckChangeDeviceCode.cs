@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGKLibrary.Enum;
+using CommanderCS.Database;
+using CommanderCS.Enum;
 
-namespace StellarGK.Host.Handlers.UserTerm
+namespace CommanderCS.Host.Handlers.UserTerm
 {
     [Packet(Id = Method.CheckChangeDeviceCode)]
     public class CheckChangeDeviceCode : BaseMethodHandler<CheckChangeDeviceCodeRequest>

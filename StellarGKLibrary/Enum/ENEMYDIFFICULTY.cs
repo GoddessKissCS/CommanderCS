@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F85 RID: 3973
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ENEMYDIFFICULTY
     {

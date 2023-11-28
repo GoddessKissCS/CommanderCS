@@ -1,4 +1,4 @@
-﻿namespace StellarGK.Host.Handlers.Shop
+﻿namespace CommanderCS.Host.Handlers.Shop
 {
     [Packet(Id = Method.GetBuyVipShop)]
     public class GetBuyVipShop : BaseMethodHandler<GetBuyVipShopRequest>

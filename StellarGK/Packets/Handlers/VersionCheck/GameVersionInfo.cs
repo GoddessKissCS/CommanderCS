@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Database;
+using CommanderCS.Database;
 
-namespace StellarGK.Host.Handlers.VersionCheck
+namespace CommanderCS.Host.Handlers.VersionCheck
 {
     [Packet(Id = Method.GameVersionInfo)]
     public class GameVersionInfo : BaseMethodHandler<GameVersionInfoRequest>

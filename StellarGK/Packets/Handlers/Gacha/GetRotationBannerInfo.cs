@@ -1,7 +1,7 @@
-﻿using StellarGKLibrary.Enum;
-using StellarGKLibrary.Protocols;
+﻿using CommanderCS.Enum;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Host.Handlers.Gacha
+namespace CommanderCS.Host.Handlers.Gacha
 {
     [Packet(Id = Method.GetRotationBannerInfo)]
     public class GetRotationBannerInfo : BaseMethodHandler<GetRotationBannerInfoRequest>

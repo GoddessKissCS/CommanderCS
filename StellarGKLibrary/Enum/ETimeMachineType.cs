@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F93 RID: 3987
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ETimeMachineType
     {

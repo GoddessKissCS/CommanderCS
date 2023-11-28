@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using Tival.GZipCompressor;
 
-namespace StellarGKLibrary.Cryptography
+namespace CommanderCS.Cryptography
 {
     public class Compression
     {

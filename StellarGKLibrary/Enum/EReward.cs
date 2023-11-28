@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F60 RID: 3936
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EReward
     {

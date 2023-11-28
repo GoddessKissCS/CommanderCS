@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F80 RID: 3968
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EStorageType
     {

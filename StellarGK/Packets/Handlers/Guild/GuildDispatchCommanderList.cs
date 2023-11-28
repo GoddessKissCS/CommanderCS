@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Guild
+namespace CommanderCS.Packets.Handlers.Guild
 {
     public class GuildDispatchCommanderList
     {

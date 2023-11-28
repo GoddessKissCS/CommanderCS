@@ -1,5 +1,5 @@
 ﻿// Token: 0x020010EB RID: 4331
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum PvPRewardType
     {

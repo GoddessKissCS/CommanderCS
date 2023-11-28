@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGK.Host;
-using StellarGKLibrary.Enum;
+using CommanderCS.Database;
+using CommanderCS.Host;
+using CommanderCS.Enum;
 
-namespace StellarGK.Packets.Handlers.Profile
+namespace CommanderCS.Packets.Handlers.Profile
 {
     [Packet(Id = Method.ChangeMembershipOpenPlatform)]
     public class ChangeMembershipOpenPlatform : BaseMethodHandler<ChangeMembershipOpenPlatformRequest>

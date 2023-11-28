@@ -1,8 +1,8 @@
 using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGK.Host;
+using CommanderCS.Database;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.KeepAlives
+namespace CommanderCS.Packets.Handlers.KeepAlives
 {
     [Packet(Id = Method.SetPushOnOff)]
     public class SetPushOnOff : BaseMethodHandler<SetPushOnOffRequest>

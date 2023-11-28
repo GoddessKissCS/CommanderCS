@@ -1,14 +1,14 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using StellarGK.Database.Schemes;
-using StellarGK.Host;
-using StellarGKLibrary.Protocols;
-using StellarGKLibrary.Ro;
-using StellarGKLibrary.Utils;
+using CommanderCS.Database.Schemes;
+using CommanderCS.Host;
+using CommanderCS.Protocols;
+using CommanderCS.Ro;
+using CommanderCS.Utils;
 using System;
 using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 
-namespace StellarGK.Database.Handlers
+namespace CommanderCS.Database.Handlers
 {
     public class DatabaseGuild : DatabaseTable<GuildScheme>
     {

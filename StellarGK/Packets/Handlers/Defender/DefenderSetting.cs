@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Defender
+namespace CommanderCS.Packets.Handlers.Defender
 {
     public class DefenderSetting
     {

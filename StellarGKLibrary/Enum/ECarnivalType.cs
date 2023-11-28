@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F94 RID: 3988
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ECarnivalType
     {

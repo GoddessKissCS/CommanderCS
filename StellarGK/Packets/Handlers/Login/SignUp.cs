@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGKLibrary.Utils;
+using CommanderCS.Database;
+using CommanderCS.Utils;
 
-namespace StellarGK.Host.Handlers.Sign
+namespace CommanderCS.Host.Handlers.Sign
 {
     [Packet(Id = Method.SignUp)]
     public class SignUp : BaseMethodHandler<SignUpRequest>

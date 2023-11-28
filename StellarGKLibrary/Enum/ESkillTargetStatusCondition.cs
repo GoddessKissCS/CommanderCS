@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F8A RID: 3978
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ESkillTargetStatusCondition
     {

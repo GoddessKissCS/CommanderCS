@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F7F RID: 3967
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum Platform : int
     {

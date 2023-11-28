@@ -1,4 +1,4 @@
-﻿namespace StellarGKLibrary.Protocols
+﻿namespace CommanderCS.Protocols
 {
     internal class PvPDuelInformation
     {

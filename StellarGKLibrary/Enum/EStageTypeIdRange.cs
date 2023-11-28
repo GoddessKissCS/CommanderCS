@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F65 RID: 3941
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EStageTypeIdRange
     {

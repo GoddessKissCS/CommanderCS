@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Database;
+using CommanderCS.Database;
 
-namespace StellarGK.Host.Handlers.Sign
+namespace CommanderCS.Host.Handlers.Sign
 {
     [Packet(Id = Method.GuestSignIn)]
     public class GuestSignIn : BaseMethodHandler<GuestSignInRequest>

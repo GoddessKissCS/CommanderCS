@@ -1,10 +1,10 @@
 using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGK.Host;
-using StellarGKLibrary.Protocols;
-using StellarGKLibrary.Utils;
+using CommanderCS.Database;
+using CommanderCS.Host;
+using CommanderCS.Protocols;
+using CommanderCS.Utils;
 
-namespace StellarGK.Packets.Handlers.Guild
+namespace CommanderCS.Packets.Handlers.Guild
 {
 	[Packet(Id = Method.CreateGuild)]
     public class CreateGuild : BaseMethodHandler<CreateGuildRequest>

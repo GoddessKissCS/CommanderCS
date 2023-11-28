@@ -1,6 +1,6 @@
-﻿using StellarGK.Database.Schemes;
+﻿using CommanderCS.Database.Schemes;
 
-namespace StellarGK.Database.Handlers
+namespace CommanderCS.Database.Handlers
 {
     public class DatabaseNotice : DatabaseTable<AIScheme>
     {

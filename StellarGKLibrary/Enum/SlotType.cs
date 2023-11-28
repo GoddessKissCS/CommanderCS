@@ -1,6 +1,6 @@
 ﻿// Token: 0x020012F4 RID: 4852
 
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     internal enum SlotType
     {

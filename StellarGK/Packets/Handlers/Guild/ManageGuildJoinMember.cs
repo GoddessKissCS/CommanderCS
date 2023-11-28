@@ -1,8 +1,8 @@
-using StellarGK.Database;
-using StellarGK.Host;
+using CommanderCS.Database;
+using CommanderCS.Host;
 using System.Collections.Generic;
 
-namespace StellarGK.Packets.Handlers.Guild
+namespace CommanderCS.Packets.Handlers.Guild
 {
 	[Packet(Id = Method.ManageGuildJoinMember)]
     public class ManageGuildJoinMember : BaseMethodHandler<ManageGuildJoinMemberRequest>

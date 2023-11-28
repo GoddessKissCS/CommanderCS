@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000913 RID: 2323
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ETimeGroupType
     {

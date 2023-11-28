@@ -1,10 +1,10 @@
 using MongoDB.Driver;
-using StellarGK.Database.Schemes;
-using StellarGK.Host;
-using StellarGKLibrary.Protocols;
-using StellarGKLibrary.Utils;
+using CommanderCS.Database.Schemes;
+using CommanderCS.Host;
+using CommanderCS.Protocols;
+using CommanderCS.Utils;
 
-namespace StellarGK.Database.Handlers
+namespace CommanderCS.Database.Handlers
 {
     public class DatabaseGuildApplication : DatabaseTable<GuildApplicationScheme>
     {

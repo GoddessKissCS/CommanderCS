@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace StellarGK.Packets.Handlers.WaveDuel
+namespace CommanderCS.Packets.Handlers.WaveDuel
 {
     public class WaveBattleStart
     {

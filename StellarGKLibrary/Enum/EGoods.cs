@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F62 RID: 3938
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EGoods
     {

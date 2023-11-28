@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using StellarGKLibrary.Cryptography;
+using CommanderCS.Cryptography;
 
-namespace StellarGK.Host
+namespace CommanderCS.Host
 {
     public partial class PacketHandler
     {

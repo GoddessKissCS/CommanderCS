@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Mail
+namespace CommanderCS.Packets.Handlers.Mail
 {
     public class GetReward
     {

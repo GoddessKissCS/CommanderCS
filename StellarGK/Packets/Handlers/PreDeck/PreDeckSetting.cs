@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.PreDeck
+namespace CommanderCS.Packets.Handlers.PreDeck
 {
     public class PreDeckSetting
     {

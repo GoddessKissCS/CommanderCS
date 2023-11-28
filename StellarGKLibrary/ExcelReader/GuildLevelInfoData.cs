@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
-using StellarGKLibrary.Utils;
+using CommanderCS.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StellarGKLibrary.ExcelReader
+namespace CommanderCS.ExcelReader
 {
     public class GuildLevelInfoData : BaseExcelReader<GuildLevelInfoData, GuildLevelInfoExcel>
     {

@@ -1,7 +1,7 @@
-﻿using StellarGKLibrary.Enum;
-using StellarGKLibrary.Protocols;
+﻿using CommanderCS.Enum;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Host.Handlers.Shop
+namespace CommanderCS.Host.Handlers.Shop
 {
     [Packet(Id = Method.GetCashShopList)]
     public class GetCashShopList : BaseMethodHandler<GetCashShopListRequest>

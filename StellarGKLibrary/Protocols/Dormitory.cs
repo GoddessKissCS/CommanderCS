@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using StellarGKLibrary.Enum;
+using CommanderCS.Enum;
 
-namespace StellarGKLibrary.Protocols
+namespace CommanderCS.Protocols
 {
     public class Dormitory
     {

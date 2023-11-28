@@ -1,10 +1,10 @@
 using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGK.Database.Schemes;
-using StellarGK.Host;
+using CommanderCS.Database;
+using CommanderCS.Database.Schemes;
+using CommanderCS.Host;
 
 
-namespace StellarGK.Packets.Handlers.Guild
+namespace CommanderCS.Packets.Handlers.Guild
 {
 	[Packet(Id = Method.SearchGuild)]
     public class SearchGuild : BaseMethodHandler<SearchGuildRequest>
@@ -26,7 +26,7 @@ namespace StellarGK.Packets.Handlers.Guild
 			}
 			else
 			{
-				StellarGKLibrary.Ro.RoGuild Roguild = new()
+				CommanderCS.Ro.RoGuild Roguild = new()
 				{
 
 				};
@@ -39,11 +39,11 @@ namespace StellarGK.Packets.Handlers.Guild
 
         }
 
-        public static StellarGKLibrary.Ro.RoGuild Guild2RoGuild(GuildScheme guild, string session)
+        public static CommanderCS.Ro.RoGuild Guild2RoGuild(GuildScheme guild, string session)
         {
             string isApplyingForGuild = DatabaseManager.GuildApplication.RetrieveGuildApplication(session, guild.GuildId);
 
-            StellarGKLibrary.Ro.RoGuild Roguild = new()
+            CommanderCS.Ro.RoGuild Roguild = new()
             {
                 apnt = guild.aPoint,
                 cnt = guild.Count,

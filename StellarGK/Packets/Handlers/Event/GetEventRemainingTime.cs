@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace StellarGK.Host.Handlers.Event
+namespace CommanderCS.Host.Handlers.Event
 {
     [Packet(Id = Method.GetEventRemaingTime)]
     public class GetEventRemainingTime : BaseMethodHandler<GetEventRemainingTimeRequest>

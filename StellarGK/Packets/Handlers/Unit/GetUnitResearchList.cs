@@ -1,7 +1,7 @@
-﻿using StellarGK.Host;
-using StellarGKLibrary.Protocols;
+﻿using CommanderCS.Host;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Packets.Handlers.Unit
+namespace CommanderCS.Packets.Handlers.Unit
 {
     [Packet(Id = Method.GetUnitResearchList)]
     public class GetUnitResearchList : BaseMethodHandler<GetUnitResearchListRequest>

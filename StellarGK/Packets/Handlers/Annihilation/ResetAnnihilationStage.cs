@@ -1,8 +1,8 @@
 using Newtonsoft.Json;
-using StellarGK.Host;
-using StellarGKLibrary.Enum;
+using CommanderCS.Host;
+using CommanderCS.Enum;
 
-namespace StellarGK.Packets.Handlers.Annihilation
+namespace CommanderCS.Packets.Handlers.Annihilation
 {
     [Packet(Id = Method.ResetAnnihilationStage)]
     public class ResetAnnihilationStage : BaseMethodHandler<ResetAnnihilationStageRequest>

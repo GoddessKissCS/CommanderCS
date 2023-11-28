@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Commander
+namespace CommanderCS.Packets.Handlers.Commander
 {
     public class DecompositionWeapon
     {

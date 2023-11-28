@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
-using StellarGKLibrary.Enum;
+using CommanderCS.Enum;
 
-namespace StellarGK.Packets.Handlers.Profile
+namespace CommanderCS.Packets.Handlers.Profile
 {
     public class CheckOpenPlatformExist
     {

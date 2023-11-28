@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Host;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.Login
+namespace CommanderCS.Packets.Handlers.Login
 {
     [Packet(Id = Method.GoogleSignIn)]
     public class GoogleSignIn : BaseMethodHandler<GoogleSignInRequest>

@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F75 RID: 3957
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EVipRechargeType
     {

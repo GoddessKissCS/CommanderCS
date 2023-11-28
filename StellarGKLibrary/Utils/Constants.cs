@@ -1,4 +1,4 @@
-﻿namespace StellarGKLibrary.Utils
+﻿namespace CommanderCS.Utils
 {
     public static partial class Constants
     {

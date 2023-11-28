@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F66 RID: 3942
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EBattleType
     {

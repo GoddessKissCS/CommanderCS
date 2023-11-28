@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using StellarGK.Database;
-using StellarGK.Database.Schemes;
+using CommanderCS.Database;
+using CommanderCS.Database.Schemes;
 
-namespace StellarGK.Host
+namespace CommanderCS.Host
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
     public sealed class PacketAttribute : Attribute

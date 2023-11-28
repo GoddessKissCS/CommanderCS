@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Situation
+namespace CommanderCS.Packets.Handlers.Situation
 {
     public class SituationSweepStart
     {

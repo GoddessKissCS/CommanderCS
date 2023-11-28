@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F69 RID: 3945
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EBuildingState
     {

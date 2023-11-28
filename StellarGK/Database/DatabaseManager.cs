@@ -1,6 +1,6 @@
-﻿using StellarGK.Database.Handlers;
+﻿using CommanderCS.Database.Handlers;
 
-namespace StellarGK.Database
+namespace CommanderCS.Database
 {
     public class DatabaseManager
     {

@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000FA6 RID: 4006
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EWorldDuelBuff
     {

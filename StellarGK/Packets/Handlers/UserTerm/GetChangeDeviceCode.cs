@@ -1,7 +1,7 @@
-﻿using StellarGK.Database;
-using StellarGK.Database.Schemes;
+﻿using CommanderCS.Database;
+using CommanderCS.Database.Schemes;
 
-namespace StellarGK.Host.Handlers.UserTerm
+namespace CommanderCS.Host.Handlers.UserTerm
 {
     [Packet(Id = Method.GetChangeDeviceCode)]
     public class GetChangeDeviceCode : BaseMethodHandler<GetChangeDeviceCodeRequest>

@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 
-namespace StellarGK.Database
+namespace CommanderCS.Database
 {
     public abstract class DatabaseTable<T>
     {

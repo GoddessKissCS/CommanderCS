@@ -1,14 +1,14 @@
 using Newtonsoft.Json;
-using StellarGK.Host;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.Shop
+namespace CommanderCS.Packets.Handlers.Shop
 {
 	[Packet(Id = Method.GetSecretShopList)]
     public class GetSecretShopList : BaseMethodHandler<GetSecretShopListRequest>
     {
         public override object Handle(GetSecretShopListRequest @params)
         {
-			StellarGKLibrary.Protocols.SecretShop shop = new()
+			CommanderCS.Protocols.SecretShop shop = new()
 			{
 				refreshCount = 86400,
 				reset = 86400,

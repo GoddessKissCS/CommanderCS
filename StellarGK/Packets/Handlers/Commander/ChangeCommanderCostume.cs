@@ -1,8 +1,8 @@
 using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGK.Host;
+using CommanderCS.Database;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.Commander
+namespace CommanderCS.Packets.Handlers.Commander
 {
     [Packet(Id = Method.ChangeCommanderCostume)]
     public class ChangeCommanderCostume : BaseMethodHandler<ChangeCommanderCostumeRequest>

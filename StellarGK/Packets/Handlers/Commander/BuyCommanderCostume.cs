@@ -1,12 +1,12 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using StellarGK.Database;
-using StellarGK.Host;
-using StellarGKLibrary.ExcelReader;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Database;
+using CommanderCS.Host;
+using CommanderCS.ExcelReader;
+using CommanderCS.Protocols;
 using System.Net;
 
-namespace StellarGK.Packets.Handlers.Commander
+namespace CommanderCS.Packets.Handlers.Commander
 {
     [Packet(Id = Method.BuyCommanderCostume)]
     public class BuyCommanderCostume : BaseMethodHandler<BuyCommanderCostumeRequest>

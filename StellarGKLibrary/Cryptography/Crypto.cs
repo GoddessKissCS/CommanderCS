@@ -5,7 +5,7 @@ using Org.BouncyCastle.Crypto.Parameters;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace StellarGKLibrary.Cryptography
+namespace CommanderCS.Cryptography
 {
     public class Crypto
     {

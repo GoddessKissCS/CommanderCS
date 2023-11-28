@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Gacha
+namespace CommanderCS.Packets.Handlers.Gacha
 {
     public class GachaRatingInformationType
     {

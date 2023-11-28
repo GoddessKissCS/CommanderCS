@@ -1,6 +1,6 @@
-﻿using StellarGKLibrary.Protocols;
+﻿using CommanderCS.Protocols;
 
-namespace StellarGK.Host.Handlers.KeepAlives
+namespace CommanderCS.Host.Handlers.KeepAlives
 {
     [Packet(Id = Method.DailyBonusCheck)]
     public class DailyBonusCheck : BaseMethodHandler<DailyBonusCheckRequest>

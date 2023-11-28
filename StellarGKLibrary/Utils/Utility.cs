@@ -3,9 +3,9 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
-using static StellarGKLibrary.Protocols.UserInformationResponse;
+using static CommanderCS.Protocols.UserInformationResponse;
 
-namespace StellarGKLibrary.Utils
+namespace CommanderCS.Utils
 {
     public class Utility
     {

@@ -1,7 +1,7 @@
-using StellarGK.Host;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Host;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Packets.Handlers.Mail
+namespace CommanderCS.Packets.Handlers.Mail
 {
     [Packet(Id = Method.GetMailList)]
     public class GetMailList : BaseMethodHandler<GetMailListRequest>

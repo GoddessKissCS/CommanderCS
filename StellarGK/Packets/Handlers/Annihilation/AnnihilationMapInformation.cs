@@ -1,6 +1,6 @@
-using StellarGK.Host;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.Annihilation
+namespace CommanderCS.Packets.Handlers.Annihilation
 {
     [Packet(Id = Method.AnnihilationMapInformation)]
     public class AnnihilationMapInformation : BaseMethodHandler<AnnihilationMapInformationRequest>

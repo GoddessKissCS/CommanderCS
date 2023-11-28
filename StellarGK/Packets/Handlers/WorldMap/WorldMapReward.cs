@@ -1,10 +1,10 @@
 using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGK.Database.Schemes;
-using StellarGK.Host;
-using StellarGKLibrary.ExcelReader;
+using CommanderCS.Database;
+using CommanderCS.Database.Schemes;
+using CommanderCS.Host;
+using CommanderCS.ExcelReader;
 
-namespace StellarGK.Packets.Handlers.WorldMap
+namespace CommanderCS.Packets.Handlers.WorldMap
 {
     [Packet(Id = Method.WorldMapReward)]
     public class WorldMapReward : BaseMethodHandler<WorldMapRewardRequest>
@@ -112,11 +112,11 @@ namespace StellarGK.Packets.Handlers.WorldMap
         }
 
 
-        public static StellarGKLibrary.Protocols.WorldMapReward UserWorldReward(string commander_id, GameProfileScheme user, string session)
+        public static CommanderCS.Protocols.WorldMapReward UserWorldReward(string commander_id, GameProfileScheme user, string session)
         {
             int medals = 20;
 
-            StellarGKLibrary.Protocols.WorldMapReward WorldMapReward = new();
+            CommanderCS.Protocols.WorldMapReward WorldMapReward = new();
 
             user.CommanderData.TryGetValue(commander_id, out var commander);
 

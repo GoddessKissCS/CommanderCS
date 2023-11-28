@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using StellarGK.Database;
-using StellarGKLibrary.Enum;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Database;
+using CommanderCS.Enum;
+using CommanderCS.Protocols;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace StellarGK.Host.Handlers.Login
+namespace CommanderCS.Host.Handlers.Login
 {
     [Packet(Id = Method.Login)]
     public class Login : BaseMethodHandler<LoginRequest>

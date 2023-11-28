@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Duel
+namespace CommanderCS.Packets.Handlers.Duel
 {
     public class ReceiveDuelPointReward
     {

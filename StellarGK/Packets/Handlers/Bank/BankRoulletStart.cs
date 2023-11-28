@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGKLibrary.ExcelReader;
-using StellarGKLibrary.Protocols;
-using StellarGKLibrary.Utils;
+using CommanderCS.Database;
+using CommanderCS.ExcelReader;
+using CommanderCS.Protocols;
+using CommanderCS.Utils;
 
-namespace StellarGK.Host.Handlers.Bank
+namespace CommanderCS.Host.Handlers.Bank
 {
     [Packet(Id = Method.BankRoulletStart)]
     public class BankRoulletStart : BaseMethodHandler<BankRoulletStartRequest>

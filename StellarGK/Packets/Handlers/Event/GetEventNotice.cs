@@ -1,6 +1,6 @@
-﻿using StellarGKLibrary.Protocols;
+﻿using CommanderCS.Protocols;
 
-namespace StellarGK.Host.Handlers.Event
+namespace CommanderCS.Host.Handlers.Event
 {
     [Packet(Id = Method.GetEventNotice)]
     public class GetEventNotice : BaseMethodHandler<GetEventNoticeRequest>

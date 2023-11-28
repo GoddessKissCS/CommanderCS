@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000FAB RID: 4011
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EInfinityStageType
     {

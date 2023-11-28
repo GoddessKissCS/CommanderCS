@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Database.Schemes
+namespace CommanderCS.Database.Schemes
 {
     public class DormitoryScheme
     {

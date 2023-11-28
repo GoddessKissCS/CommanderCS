@@ -1,8 +1,8 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using StellarGK.Host;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.Annihilation
+namespace CommanderCS.Packets.Handlers.Annihilation
 {
     [Packet(Id = Method.AnnihilationStageStart)]
     public class AnnihilationStageStart : BaseMethodHandler<AnnihilationStageStartRequest>

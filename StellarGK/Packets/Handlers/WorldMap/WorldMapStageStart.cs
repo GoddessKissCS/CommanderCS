@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using StellarGK.Database;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Database;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Host.Handlers.WorldMap
+namespace CommanderCS.Host.Handlers.WorldMap
 {
     [Packet(Id = Method.WorldMapStageStart)]
     public class WorldMapStageStart : BaseMethodHandler<WorldMapStageStartRequest>

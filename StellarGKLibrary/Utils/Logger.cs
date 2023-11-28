@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace StellarGKLibrary.Utils
+namespace CommanderCS.Utils
 {
     public class Logger
     {

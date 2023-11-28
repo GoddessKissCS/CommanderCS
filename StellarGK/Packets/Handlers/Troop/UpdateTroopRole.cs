@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Troop
+namespace CommanderCS.Packets.Handlers.Troop
 {
     public class UpdateTroopRole
     {

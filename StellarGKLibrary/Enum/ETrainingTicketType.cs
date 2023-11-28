@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F64 RID: 3940
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ETrainingTicketType
     {

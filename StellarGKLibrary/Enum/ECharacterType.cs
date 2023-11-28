@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F96 RID: 3990
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ECharacterType
     {

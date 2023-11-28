@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using StellarGKLibrary.ExcelReader;
-using StellarGKLibrary.Protocols;
+using CommanderCS.ExcelReader;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Host.Handlers.Commander
+namespace CommanderCS.Host.Handlers.Commander
 {
     [Packet(Id = Method.CommanderLevelUp)]
     public class CommanderLevelUp : BaseMethodHandler<CommanderLevelUpRequest>

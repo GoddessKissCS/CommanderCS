@@ -1,6 +1,6 @@
 ﻿// Token: 0x0200123E RID: 4670
 
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum PlateType
     {

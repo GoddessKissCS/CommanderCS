@@ -1,6 +1,6 @@
 ﻿// Token: 0x02000FA7 RID: 4007
 
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EWorldDuelBuffEffect
     {

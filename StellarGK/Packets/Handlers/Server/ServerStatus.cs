@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGK.Database.Schemes;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Database;
+using CommanderCS.Database.Schemes;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Host.Handlers.Server
+namespace CommanderCS.Host.Handlers.Server
 {
     [Packet(Id = Method.ServerStatus)]
     public class ServerStatus : BaseMethodHandler<ServerStatusRequest>

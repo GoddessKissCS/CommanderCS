@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using StellarGKLibrary.Utils;
+using CommanderCS.Utils;
 
-namespace StellarGKLibrary.ExcelReader
+namespace CommanderCS.ExcelReader
 {
     public class UserLevelData : BaseExcelReader<UserLevelData, UserLevelDataExcel>
     {

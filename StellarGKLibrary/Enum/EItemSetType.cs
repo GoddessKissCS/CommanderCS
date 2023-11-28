@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F9E RID: 3998
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EItemSetType
     {

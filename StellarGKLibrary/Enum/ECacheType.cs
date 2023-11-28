@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F8D RID: 3981
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ECacheType
     {

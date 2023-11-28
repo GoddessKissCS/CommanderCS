@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGK.Host;
-using StellarGK.Packets.Handlers.Chat;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Database;
+using CommanderCS.Host;
+using CommanderCS.Packets.Handlers.Chat;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Packets.Handlers.Unit
+namespace CommanderCS.Packets.Handlers.Unit
 {
     [Packet(Id = Method.UnitLevelUpImmediate)]
     public class UnitLevelUpImmediate : BaseMethodHandler<UnitLevelUpImmediateRequest>

@@ -1,4 +1,4 @@
-﻿namespace StellarGK.Middlewares
+﻿namespace CommanderCS.Middlewares
 {
     public class CustomExceptionHandlerMiddleware
     {

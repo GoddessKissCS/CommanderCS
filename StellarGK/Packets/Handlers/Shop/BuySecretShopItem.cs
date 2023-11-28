@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Shop
+namespace CommanderCS.Packets.Handlers.Shop
 {
     public class BuySecretShopItem
     {

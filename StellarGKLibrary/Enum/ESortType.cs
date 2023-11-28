@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F7A RID: 3962
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ESortType
     {

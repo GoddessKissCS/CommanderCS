@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Carnival
+namespace CommanderCS.Packets.Handlers.Carnival
 {
     public class CarnivalComplete
     {

@@ -1,4 +1,4 @@
-﻿namespace StellarGK.Host.Handlers.Chat
+﻿namespace CommanderCS.Host.Handlers.Chat
 {
     [Packet(Id = Method.GetChatIgnoreList)]
     public class GetChatIgnoreList : BaseMethodHandler<GetChatIgnoreListRequest>

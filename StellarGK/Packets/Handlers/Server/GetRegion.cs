@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Database;
+using CommanderCS.Database;
 
-namespace StellarGK.Host.Handlers.Server
+namespace CommanderCS.Host.Handlers.Server
 {
     [Packet(Id = Method.GetRegion)]
     public class GetRegion : BaseMethodHandler<GetRegionResult>

@@ -1,7 +1,7 @@
-using StellarGK.Database;
-using StellarGK.Host;
+using CommanderCS.Database;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.Guild
+namespace CommanderCS.Packets.Handlers.Guild
 {
 
     [Packet(Id = Method.LeaveGuild)]

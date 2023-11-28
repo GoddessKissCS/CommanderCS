@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Database;
+using CommanderCS.Database;
 
-namespace StellarGK.Host.Handlers.Profile
+namespace CommanderCS.Host.Handlers.Profile
 {
     [Packet(Id = Method.ChangeUserThumbnail)]
     public class ChangeThumbnail : BaseMethodHandler<ChangeThumbnailRequest>

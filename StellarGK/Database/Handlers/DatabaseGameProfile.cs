@@ -1,12 +1,12 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using StellarGK.Database.Schemes;
-using StellarGK.Host.Handlers.Login;
-using StellarGKLibrary.ExcelReader;
-using StellarGKLibrary.Protocols;
-using StellarGKLibrary.Utils;
+using CommanderCS.Database.Schemes;
+using CommanderCS.Host.Handlers.Login;
+using CommanderCS.ExcelReader;
+using CommanderCS.Protocols;
+using CommanderCS.Utils;
 
-namespace StellarGK.Database.Handlers
+namespace CommanderCS.Database.Handlers
 {
     public class DatabaseGameProfile : DatabaseTable<GameProfileScheme>
     {

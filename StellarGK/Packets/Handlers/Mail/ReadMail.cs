@@ -1,8 +1,8 @@
 using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGK.Host;
+using CommanderCS.Database;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.Mail
+namespace CommanderCS.Packets.Handlers.Mail
 {
     [Packet(Id = Method.ReadMail)]
     public class ReadMail : BaseMethodHandler<ReadMailRequest>

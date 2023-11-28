@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using StellarGKLibrary.Ro;
+using CommanderCS.Ro;
 
-namespace StellarGKLibrary.Protocols
+namespace CommanderCS.Protocols
 {
     public class GuildInfo
     {

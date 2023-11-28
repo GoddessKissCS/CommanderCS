@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.KeepAlives
+namespace CommanderCS.Packets.Handlers.KeepAlives
 {
     public class CheckAlarm
     {

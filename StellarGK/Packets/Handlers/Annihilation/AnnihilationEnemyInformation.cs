@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
-using StellarGK.Host;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.Annihilation
+namespace CommanderCS.Packets.Handlers.Annihilation
 {
     [Packet(Id = Method.AnnihilationEnemyInformation)]
     public class AnnihilationEnemyInformation : BaseMethodHandler<AnnihilationEnemyInformationRequest>

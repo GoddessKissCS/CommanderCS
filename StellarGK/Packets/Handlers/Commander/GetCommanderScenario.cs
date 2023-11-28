@@ -1,6 +1,6 @@
-﻿using StellarGKLibrary.Protocols;
+﻿using CommanderCS.Protocols;
 
-namespace StellarGK.Host.Handlers.Commander
+namespace CommanderCS.Host.Handlers.Commander
 {
     [Packet(Id = Method.GetCommanderScenario)]
     public class GetCommanderScenario : BaseMethodHandler<GetCommanderScenarioRequest>

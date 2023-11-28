@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F5F RID: 3935
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EBuilding
     {

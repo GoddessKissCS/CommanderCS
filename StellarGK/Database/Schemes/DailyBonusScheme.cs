@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 
-namespace StellarGK.Database.Schemes
+namespace CommanderCS.Database.Schemes
 {
     public class DailyBonusScheme
     {

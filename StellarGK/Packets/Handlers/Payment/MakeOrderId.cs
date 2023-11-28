@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Payment
+namespace CommanderCS.Packets.Handlers.Payment
 {
     public class MakeOrderId
     {

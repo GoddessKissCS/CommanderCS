@@ -1,6 +1,6 @@
-﻿using static StellarGKLibrary.Protocols.UserInformationResponse;
+﻿using static CommanderCS.Protocols.UserInformationResponse;
 
-namespace StellarGKLibrary.Utils
+namespace CommanderCS.Utils
 {
     public static class Misc
     {

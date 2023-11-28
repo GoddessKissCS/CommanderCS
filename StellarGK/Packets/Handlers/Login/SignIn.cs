@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGK.Database.Schemes;
-using static StellarGKLibrary.Cryptography.Crypto;
+using CommanderCS.Database;
+using CommanderCS.Database.Schemes;
+using static CommanderCS.Cryptography.Crypto;
 
-namespace StellarGK.Host.Handlers.Sign
+namespace CommanderCS.Host.Handlers.Sign
 {
     [Packet(Id = Method.SignIn)]
     public class SignIn : BaseMethodHandler<SignInRequest>

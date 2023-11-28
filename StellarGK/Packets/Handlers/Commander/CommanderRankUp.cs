@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGKLibrary.ExcelReader;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Database;
+using CommanderCS.ExcelReader;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Host.Handlers.Commander
+namespace CommanderCS.Host.Handlers.Commander
 {
     [Packet(Id = Method.CommanderRankUp)]
     public class CommanderRankUp : BaseMethodHandler<CommanderRankUpRequest>

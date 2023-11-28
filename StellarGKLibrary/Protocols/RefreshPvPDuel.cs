@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace StellarGKLibrary.Protocols
+namespace CommanderCS.Protocols
 {
     public class RefreshPvPDuel
     {

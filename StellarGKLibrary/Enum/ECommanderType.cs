@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F70 RID: 3952
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ECommanderType
     {

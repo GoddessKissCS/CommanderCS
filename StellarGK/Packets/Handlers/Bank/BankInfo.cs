@@ -1,6 +1,6 @@
-using StellarGK.Host;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.Bank
+namespace CommanderCS.Packets.Handlers.Bank
 {
     [Packet(Id = Method.BankInfo)]
     public class BankInfo : BaseMethodHandler<BankInfoRequest>

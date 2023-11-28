@@ -1,7 +1,7 @@
-﻿using StellarGKLibrary.ExcelReader;
-using StellarGKLibrary.Protocols;
+﻿using CommanderCS.ExcelReader;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Host.Handlers.KeepAlives
+namespace CommanderCS.Host.Handlers.KeepAlives
 {
     [Packet(Id = Method.BulletCharge)]
     public class BulletCharge : BaseMethodHandler<BulletChargeResult>

@@ -1,6 +1,6 @@
 ﻿// Token: 0x02000F7E RID: 3966
 
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ThumbnailType
     {

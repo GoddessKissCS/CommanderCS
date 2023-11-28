@@ -1,8 +1,8 @@
 using MongoDB.Bson;
-using StellarGKLibrary.Enum;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Enum;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Database.Schemes
+namespace CommanderCS.Database.Schemes
 {
     public class GameProfileScheme
     {

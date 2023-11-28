@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using StellarGK.Host;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.WaveDuel
+namespace CommanderCS.Packets.Handlers.WaveDuel
 {
 	[Packet(Id = Method.WaveBattleList)]
     public class WaveBattleList : BaseMethodHandler<WaveBattleListRequest>
@@ -9,7 +9,7 @@ namespace StellarGK.Packets.Handlers.WaveDuel
         public override object Handle(WaveBattleListRequest @params)
         {
 
-			StellarGKLibrary.Protocols.WaveBattleInfoList waveBattleInfoList = new();
+			CommanderCS.Protocols.WaveBattleInfoList waveBattleInfoList = new();
 
 
 			// Need to figure out the daily shit for this thing

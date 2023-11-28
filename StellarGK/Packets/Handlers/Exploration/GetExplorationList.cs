@@ -1,7 +1,7 @@
-﻿using StellarGK.Host;
-using StellarGKLibrary.Protocols;
+﻿using CommanderCS.Host;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Packets.Handlers.Exploration
+namespace CommanderCS.Packets.Handlers.Exploration
 {
     [Packet(Id = Method.GetExplorationList)]
     public class GetExplorationList : BaseMethodHandler<GetExplorationListRequest>

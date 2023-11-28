@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F5A RID: 3930
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EBranch
     {

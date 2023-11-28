@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F8E RID: 3982
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ERankingContentsType
     {

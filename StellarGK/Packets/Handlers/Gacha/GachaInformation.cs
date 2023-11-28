@@ -1,6 +1,6 @@
-﻿using StellarGKLibrary.Protocols;
+﻿using CommanderCS.Protocols;
 
-namespace StellarGK.Host.Handlers.Gacha
+namespace CommanderCS.Host.Handlers.Gacha
 {
     [Packet(Id = Method.GachaInformation)]
     public class GachaInformation : BaseMethodHandler<GachaInformationRequest>

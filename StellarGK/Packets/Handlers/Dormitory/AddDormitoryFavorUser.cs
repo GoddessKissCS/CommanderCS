@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Dormitory
+namespace CommanderCS.Packets.Handlers.Dormitory
 {
     public class AddDormitoryFavorUser
     {

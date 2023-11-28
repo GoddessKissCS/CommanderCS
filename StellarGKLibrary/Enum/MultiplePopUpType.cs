@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F6B RID: 3947
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum MultiplePopUpType
     {

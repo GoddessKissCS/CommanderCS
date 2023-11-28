@@ -1,4 +1,4 @@
-﻿namespace StellarGKLibrary.Enum
+﻿namespace CommanderCS.Enum
 {
     public enum EExplorationState
     {

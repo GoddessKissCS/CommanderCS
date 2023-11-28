@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F74 RID: 3956
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ETooltipType
     {

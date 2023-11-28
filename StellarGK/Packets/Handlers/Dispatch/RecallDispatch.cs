@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Dispatch
+namespace CommanderCS.Packets.Handlers.Dispatch
 {
     public class RecallDispatch
     {

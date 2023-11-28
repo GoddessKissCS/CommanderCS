@@ -1,6 +1,6 @@
 ﻿// Token: 0x020011A4 RID: 4516
 
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EventRaidTabType
     {

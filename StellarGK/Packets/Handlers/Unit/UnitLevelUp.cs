@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Host;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Host;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Packets.Handlers.Unit
+namespace CommanderCS.Packets.Handlers.Unit
 {
     [Packet(Id = Method.UnitLevelUp)]
     public class UnitLevelUp : BaseMethodHandler<UnitLevelUpRequest>

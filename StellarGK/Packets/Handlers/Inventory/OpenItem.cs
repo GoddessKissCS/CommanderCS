@@ -1,4 +1,4 @@
-namespace StellarGK.Packets.Handlers.Inventory
+namespace CommanderCS.Packets.Handlers.Inventory
 {
     public class OpenItem
     {

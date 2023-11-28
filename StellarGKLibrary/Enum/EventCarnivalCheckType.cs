@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000FA3 RID: 4003
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EventCarnivalCheckType
     {

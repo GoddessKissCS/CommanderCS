@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
-using StellarGK.Host;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.KeepAlives
+namespace CommanderCS.Packets.Handlers.KeepAlives
 {
     [Packet(Id = Method.ChangeLanguage)]
     public class ChangeLanguage : BaseMethodHandler<ChangeLanguageRequest>

@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
-using StellarGK.Host;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.Inventory
+namespace CommanderCS.Packets.Handlers.Inventory
 {
     //[Packet(Id = Method.ExchangeMedal)]
     public class ExchangeMedal : BaseMethodHandler<ExchangeMedalRequest>

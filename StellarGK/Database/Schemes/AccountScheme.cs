@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
-using StellarGKLibrary.Enum;
+using CommanderCS.Enum;
 
-namespace StellarGK.Database.Schemes
+namespace CommanderCS.Database.Schemes
 {
     public class AccountScheme
     {

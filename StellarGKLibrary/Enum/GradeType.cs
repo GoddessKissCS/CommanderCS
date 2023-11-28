@@ -1,4 +1,4 @@
-﻿namespace StellarGKLibrary.Enum
+﻿namespace CommanderCS.Enum
 {
     internal enum GradeType
     {

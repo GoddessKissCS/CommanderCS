@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F5B RID: 3931
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EJob
     {

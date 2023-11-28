@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F97 RID: 3991
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ECommanderVoiceEventType
     {

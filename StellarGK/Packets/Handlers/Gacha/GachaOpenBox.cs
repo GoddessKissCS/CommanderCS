@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
-using StellarGK.Host;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.Gacha
+namespace CommanderCS.Packets.Handlers.Gacha
 {
     [Packet(Id = Method.GachaOpenBox)]
     public class GachaOpenBox : BaseMethodHandler<GachaOpenBoxRequest>

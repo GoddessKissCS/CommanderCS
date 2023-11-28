@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Host.Handlers.Carnival
+namespace CommanderCS.Host.Handlers.Carnival
 {
     [Packet(Id = Method.GetCarnivalList)]
     public class GetCarnivalList : BaseMethodHandler<GetCarnivalListRequest>

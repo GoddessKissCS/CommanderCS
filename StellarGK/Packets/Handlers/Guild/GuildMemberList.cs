@@ -1,7 +1,7 @@
-﻿using StellarGK.Database;
-using StellarGKLibrary.Protocols;
+﻿using CommanderCS.Database;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Host.Handlers.Guild
+namespace CommanderCS.Host.Handlers.Guild
 {
     [Packet(Id = Method.GuildMemberList)]
     public class GuildMemberList : BaseMethodHandler<GuildMemberListRequest>

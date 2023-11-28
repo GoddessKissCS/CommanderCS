@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace StellarGK.Host.Handlers.Event
+namespace CommanderCS.Host.Handlers.Event
 {
     [Packet(Id = Method.GetPlugEventInfo)]
     public class GetPlugEventInfo : BaseMethodHandler<GetPlugEventInfoRequest>

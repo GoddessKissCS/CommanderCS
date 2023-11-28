@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace StellarGK.Host.Handlers.Login
+namespace CommanderCS.Host.Handlers.Login
 {
     [Packet(Id = Method.Logout)]
     public class Logout : BaseMethodHandler<LogoutRequest>

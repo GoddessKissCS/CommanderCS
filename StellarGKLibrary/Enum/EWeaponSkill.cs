@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000FA8 RID: 4008
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum EWeaponSkill
     {

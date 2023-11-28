@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace StellarGK.Host.Handlers.Battle
+namespace CommanderCS.Host.Handlers.Battle
 {
     [Packet(Id = Method.BattleOut)]
     public class BattleOut : BaseMethodHandler<BattleOutRequest>

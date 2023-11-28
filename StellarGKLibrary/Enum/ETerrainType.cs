@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F5D RID: 3933
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ETerrainType
     {

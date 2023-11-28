@@ -1,8 +1,8 @@
 using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGK.Host;
+using CommanderCS.Database;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.Guild
+namespace CommanderCS.Packets.Handlers.Guild
 {
 	[Packet(Id = Method.UpdateGuildInfo)]
     public class UpdateGuildInfo : BaseMethodHandler<UpdateGuildInfoRequest>
@@ -28,7 +28,7 @@ namespace StellarGK.Packets.Handlers.Guild
 			var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
 			var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
-            StellarGKLibrary.Protocols.GuildInfo guildInfo = new()
+            CommanderCS.Protocols.GuildInfo guildInfo = new()
 			{
 				resource = rsoc,
 				guildInfo = guild,

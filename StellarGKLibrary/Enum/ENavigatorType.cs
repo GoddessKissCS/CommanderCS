@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F81 RID: 3969
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ENavigatorType
     {

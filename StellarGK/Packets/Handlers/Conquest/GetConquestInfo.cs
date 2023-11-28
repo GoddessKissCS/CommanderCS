@@ -1,6 +1,6 @@
-using StellarGK.Host;
+using CommanderCS.Host;
 
-namespace StellarGK.Packets.Handlers.Conquest
+namespace CommanderCS.Packets.Handlers.Conquest
 {
 	[Packet(Id = Method.GetConquestInfo)]
     public class GetConquestInfo : BaseMethodHandler<GetConquestInfoRequest>

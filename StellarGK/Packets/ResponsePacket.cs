@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace StellarGK.Host
+namespace CommanderCS.Host
 {
     public class ResponsePacket
     {

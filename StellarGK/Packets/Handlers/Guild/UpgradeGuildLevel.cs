@@ -1,8 +1,8 @@
-using StellarGK.Database;
-using StellarGK.Host;
-using StellarGKLibrary.ExcelReader;
+using CommanderCS.Database;
+using CommanderCS.Host;
+using CommanderCS.ExcelReader;
 
-namespace StellarGK.Packets.Handlers.Guild
+namespace CommanderCS.Packets.Handlers.Guild
 {
 	[Packet(Id = Method.UpgradeGuildLevel)]
     public class UpgradeGuildLevel : BaseMethodHandler<UpgradeGuildLevelRequest>
@@ -25,7 +25,7 @@ namespace StellarGK.Packets.Handlers.Guild
 
 			var newGuild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
-            StellarGKLibrary.Protocols.GuildInfo guildList = new()
+            CommanderCS.Protocols.GuildInfo guildList = new()
             {
                 resource = null,
                 guildInfo = newGuild,

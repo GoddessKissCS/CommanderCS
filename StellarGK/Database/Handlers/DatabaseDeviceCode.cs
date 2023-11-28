@@ -1,8 +1,8 @@
 ﻿using MongoDB.Driver;
-using StellarGK.Database.Schemes;
-using StellarGKLibrary.Utils;
+using CommanderCS.Database.Schemes;
+using CommanderCS.Utils;
 
-namespace StellarGK.Database.Handlers
+namespace CommanderCS.Database.Handlers
 {
     public class DatabaseDeviceCode : DatabaseTable<DeviceChangeCodeScheme>
     {

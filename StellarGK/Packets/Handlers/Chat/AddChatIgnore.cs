@@ -1,9 +1,9 @@
 using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGK.Host;
-using StellarGKLibrary.Protocols;
+using CommanderCS.Database;
+using CommanderCS.Host;
+using CommanderCS.Protocols;
 
-namespace StellarGK.Packets.Handlers.Chat
+namespace CommanderCS.Packets.Handlers.Chat
 {
     [Packet(Id = Method.AddChatIgnore)]
     public class AddChatIgnore : BaseMethodHandler<AddChatIgnoreRequest>

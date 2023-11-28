@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
-using StellarGK.Database;
-using StellarGKLibrary.Protocols;
-using StellarGKLibrary.Utils;
+using CommanderCS.Database;
+using CommanderCS.Protocols;
+using CommanderCS.Utils;
 
-namespace StellarGK.Host.Handlers.Nickname
+namespace CommanderCS.Host.Handlers.Nickname
 {
     [Packet(Id = Method.ChangeNickname)]
     public class ChangeNickname : BaseMethodHandler<ChangeNicknameRequest>

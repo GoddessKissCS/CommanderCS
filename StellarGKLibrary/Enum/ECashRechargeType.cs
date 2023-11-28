@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F83 RID: 3971
-namespace StellarGKLibrary.Enum
+namespace CommanderCS.Enum
 {
     public enum ECashRechargeType
     {
