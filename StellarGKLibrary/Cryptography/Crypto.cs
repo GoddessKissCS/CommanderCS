@@ -14,12 +14,12 @@ namespace StellarGKLibrary.Cryptography
 
         static Crypto()
         {
-            _keys = new byte[][]
-            {
+            _keys =
+            [
                  _encoding.GetBytes("Zb*!W-$&TA6mrIEU-F=ShH7=($ucOZdg"),
                  _encoding.GetBytes("IU is Korea Best Singer! really!"),
                  _encoding.GetBytes("JSON134c4dabedcd462bad9d775873de")
-            };
+            ];
         }
 
         public static int Decrypt(string input, out string value) => Decrypt(Convert.FromBase64String(input), out value);
@@ -108,26 +108,6 @@ namespace StellarGKLibrary.Cryptography
                 builder.Append(hash[i].ToString("x2"));
             }
             return builder.ToString();
-        }
-
-        public static object Object_DecryptFromFile(string filePath)
-        {
-            byte[] objectFile = File.ReadAllBytes(filePath);
-
-            Decrypt(objectFile, out string json);
-
-            object result = JsonConvert.DeserializeObject(json);
-
-            return result;
-        }
-
-        public static string JSON_Decrypt(string text)
-        {
-            var json = File.ReadAllText(text);
-
-            string decrypted = DecryptInternal(Convert.FromBase64String(json), _keys[2]);
-
-            return decrypted;
         }
     }
 }

@@ -13,13 +13,14 @@ namespace StellarGK.Database.Handlers
         }
         public ErrorCode CreateGuildApplication(string session, int guildIdx)
         {
-            var user = DatabaseManager.GameProfile.FindBySession(session);
-
-
             if(CheckIfAnyApplicationExists(session) == "reg")
             {
                 return ErrorCode.CannotSentMoreThanOneFederationJoinRequest;
             }
+
+            var user = DatabaseManager.GameProfile.FindBySession(session);
+
+            var time = Utility.CurrentTimeInMilliseconds();
 
             GuildApplicationScheme guildApplication = new()
             {
@@ -38,15 +39,18 @@ namespace StellarGK.Database.Handlers
                     uno = user.Uno,
                     world = user.Server,
                 },
-                ApplyTime = Utility.CurrentTimeInMilliseconds(),
-                
+                ApplyTime = time,
+              
             };
 
             DatabaseCollection.InsertOne(guildApplication);
             return ErrorCode.Success;
         }
 
-        public GuildApplicationScheme? FindApplicationByUno(int Uno, int guildId) => DatabaseCollection.AsQueryable().Where(d => d.Uno == Uno).Where(d => d.GuildId == guildId).FirstOrDefault();
+        public GuildApplicationScheme? FindApplicationByUno(int Uno, int guildId)
+        {
+            return DatabaseCollection.AsQueryable().Where(d => d.Uno == Uno).Where(d => d.GuildId == guildId).FirstOrDefault();
+        }
 
         public string RetrieveGuildApplication(string session, int guildIdx)
         {

@@ -102,8 +102,14 @@ namespace StellarGK.Database.Handlers
             DatabaseCollection.InsertOne(guild);
         }
 
-        public GuildScheme FindByName(string guildName) => DatabaseCollection.AsQueryable().Where(d => d.Name == guildName).FirstOrDefault();
-        public GuildScheme FindByUid(int? guildId) => DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
+        public GuildScheme FindByName(string guildName)
+        {
+            return DatabaseCollection.AsQueryable().Where(d => d.Name == guildName).FirstOrDefault();
+        }
+        public GuildScheme FindByUid(int? guildId)
+        {
+            return DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
+        }
 
 
         public int GetMemberGrade(int? guildId, int uno)

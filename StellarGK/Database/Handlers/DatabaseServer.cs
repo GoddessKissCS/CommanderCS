@@ -25,6 +25,9 @@ namespace StellarGK.Database.Handlers
             DatabaseCollection.InsertOne(versionInfo);
         }
 
-        public ServerScheme Get(int id) => DatabaseCollection.AsQueryable().Where(d => d.ChannelId == id).FirstOrDefault();
+        public ServerScheme Get(int id)
+        {
+            return DatabaseCollection.AsQueryable().Where(d => d.ChannelId == id).FirstOrDefault();
+        }
     }
 }

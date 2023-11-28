@@ -60,7 +60,7 @@ namespace StellarGK.Host
                 return encrypted;
             }
 
-            return "shouldnt happen";
+            return "{id:XXX,result:{success:false}}";
         }
 
         private static object ProcessPacket(JToken raw, IServiceProvider serviceProvider)

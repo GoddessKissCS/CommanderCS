@@ -41,9 +41,7 @@ namespace StellarGK.Database.Handlers
             {
                 user.Clearance = Clearance.Guest;
                 user.Name = Utility.CreateGuestName();
-            }
-            else
-            {
+            } else {
                 user.Name = name;
                 user.Password_Hash = ComputeSha256Hash(password);
                 user.Clearance = Clearance.Player;
@@ -54,13 +52,25 @@ namespace StellarGK.Database.Handlers
             return user;
         }
 
-        public AccountScheme FindByName(string accountName) => DatabaseCollection.AsQueryable().Where(d => d.Name == accountName).FirstOrDefault();
+        public AccountScheme FindByName(string accountName)
+        {
+            return DatabaseCollection.AsQueryable().Where(d => d.Name == accountName).FirstOrDefault();
+        }
 
-        public AccountScheme? FindByUid(int memberId) => DatabaseCollection.AsQueryable().Where(d => d.MemberId == memberId).FirstOrDefault();
+        public AccountScheme? FindByUid(int memberId)
+        {
+            return DatabaseCollection.AsQueryable().Where(d => d.MemberId == memberId).FirstOrDefault();
+        }
 
-        public AccountScheme? FindByUid(string memberId) => DatabaseCollection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).FirstOrDefault();
+        public AccountScheme? FindByUid(string memberId)
+        {
+            return DatabaseCollection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).FirstOrDefault();
+        }
 
-        public bool AccountExists(string accountName) => DatabaseCollection.AsQueryable().Where(d => d.Name == accountName).Any();
+        public bool AccountExists(string accountName)
+        {
+            return DatabaseCollection.AsQueryable().Where(d => d.Name == accountName).Any();
+        }
 
         public AccountScheme? FindBySession(string session)
         {
@@ -137,6 +147,7 @@ namespace StellarGK.Database.Handlers
         public ErrorCode RequestLogin(LoginRequest @params, string session)
         {
             var user = FindByUid(@params.memberId);
+
             if (user.isBanned == true && user.isBanned != null)
             {
                 return ErrorCode.BannedOrSuspended;
@@ -145,29 +156,6 @@ namespace StellarGK.Database.Handlers
             DatabaseManager.GameProfile.UpdateOnLogin(@params, session);
             return ErrorCode.Success;
         }
-
-        //public bool addblockeduser(blockuser tobeblocked, string session)
-        //{
-        //    var user = databasemanager.gameprofile.findbysession(session);
-        //    var filter = builders<accountscheme>.filter.eq("memberid", user.memberid);
-        //    var update = builders<accountscheme>.update.push("blockusers", tobeblocked);
-
-        //    var updateresult = collection.updateone(filter, update);
-
-        //    return updateresult.modifiedcount > 0;
-        //}
-        //public bool delblockeduser(string session, int ch, string uno)
-        //{
-        //    var user = databasemanager.gameprofile.findbysession(session);
-
-        //    var filter = builders<accountscheme>.filter.eq("memberid", user.memberid) &
-        //                 builders<accountscheme>.filter.elemmatch(x => x.blockedusers,
-        //                 builders<blockuser>.filter.eq("ch", ch) & builders<blockuser>.filter.eq("uno", uno));
-
-        //    var updateresult = collection.deleteone(filter);
-
-        //    return updateresult.deletedcount > 0;
-        //}
 
         public ErrorCode ChangeDevice(Platform plfm, string uid, string pwd)
         {
@@ -202,10 +190,18 @@ namespace StellarGK.Database.Handlers
             var account = FindByName(@params.uid);
 
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
-            var update = Builders<AccountScheme>.Update.Set("PlatformId", @params.plfm).Set("Channel", @params.plfm).Set("OsCode", @params.oscd);
-            DatabaseCollection.UpdateOne(filter, update);
 
-            return FindByName(@params.uid);
+            var update = Builders<AccountScheme>.Update.Set("PlatformId", @params.plfm).Set("Channel", @params.plfm).Set("OsCode", @params.oscd);
+
+            var options = new FindOneAndUpdateOptions<AccountScheme>
+            {
+                ReturnDocument = ReturnDocument.After, // Returns the updated document
+                IsUpsert = false // Ensures that a new document is not created if the filter does not match any document
+            };
+
+            var updatedAccount = DatabaseCollection.FindOneAndUpdate(filter, update, options);
+
+            return updatedAccount;
         }
     }
 }
