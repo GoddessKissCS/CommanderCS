@@ -7,6 +7,7 @@ using CommanderCS.Ro;
 using CommanderCS.Utils;
 using System;
 using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
+using CommanderCSLibrary.Utils;
 
 namespace CommanderCS.Database.Handlers
 {
@@ -20,7 +21,7 @@ namespace CommanderCS.Database.Handlers
         {
             int guildId = DatabaseManager.AutoIncrements.GetNextNumber("GuildId", 1000);
 
-            double time = Utility.CurrentTimeInMilliseconds();
+            double time = TimeManager.CurrentEpochMilliseconds;
 
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
@@ -94,7 +95,7 @@ namespace CommanderCS.Database.Handlers
                 BoardList = [],
                 // MemberGrade 1 = Guildmaster 
                 // MemberGrade 2 = Sub Guildmaster
-                LastGuildEdit = Utility.CurrentTimeInMilliseconds(),
+                LastGuildEdit = TimeManager.CurrentEpochMilliseconds,
             };
 
             DatabaseManager.GameProfile.UpdateGuildId(user.Uno, guildId);
@@ -175,7 +176,7 @@ namespace CommanderCS.Database.Handlers
             {
                 var user = DatabaseManager.GameProfile.FindByUno(entry.uno);
 
-                entry.lastTime = Utility.GetTimeDifference(user.LastLoginTime);
+                entry.lastTime = TimeManager.GetTimeDifference(user.LastLoginTime);
 
                 entry.level = user.UserResources.level;
                 entry.name = user.UserResources.nickname;

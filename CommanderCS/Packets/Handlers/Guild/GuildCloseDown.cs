@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using CommanderCS.Database;
 using CommanderCS.Host;
 using CommanderCS.Utils;
+using CommanderCSLibrary.Utils;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -12,7 +13,7 @@ namespace CommanderCS.Packets.Handlers.Guild
         {
             var user = GetUserGameProfile();
 
-            var closeTime = Utility.GetCurrentTimeInSeconds();
+            var closeTime = TimeManager.CurrentEpoch;
 
 			DatabaseManager.Guild.CloseDownGuild(user.GuildId, closeTime);
 			DatabaseManager.Guild.ResetMemberGrades(user.GuildId);

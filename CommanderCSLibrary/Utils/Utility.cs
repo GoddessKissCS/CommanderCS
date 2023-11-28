@@ -9,66 +9,6 @@ namespace CommanderCS.Utils
 {
     public class Utility
     {
-        private static DateTime _baseTime = new(1970, 1, 1, 0, 0, 0);
-
-        public static DateTime ConvertToDateTime(string yyyymmdd)
-        {
-            if (string.IsNullOrEmpty(yyyymmdd) || yyyymmdd.Length != 8)
-            {
-                return default(DateTime);
-            }
-            string year = yyyymmdd.Substring(0, 4);
-            string month = yyyymmdd.Substring(4, 2);
-            string day = yyyymmdd.Substring(6, 2);
-            int num, num2, num3;
-            if (!int.TryParse(year, out num))
-            {
-                return default(DateTime);
-            }
-            if (!int.TryParse(month, out num2))
-            {
-                return default(DateTime);
-            }
-            if (!int.TryParse(day, out num3))
-            {
-                return default(DateTime);
-            }
-            return new DateTime(num, num2, num3);
-        }
-
-        public static double GetCurrentTime()
-        {
-            return (DateTime.UtcNow - _baseTime).TotalSeconds;
-        }
-
-        public static double GetTimeDifference(double timeInSeconds)
-        {
-            double currentTime = GetCurrentTime();
-            double difference = currentTime - timeInSeconds;
-            return difference;
-        }
-
-        public static int CurrentTimeStamp()
-        {
-            DateTime unixEpoch = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            TimeSpan timeSinceEpoch = DateTime.UtcNow - unixEpoch;
-            int unixTimestamp = (int)timeSinceEpoch.TotalSeconds;
-            return unixTimestamp;
-        }
-
-        public static double GetCurrentTimeInSeconds()
-        {
-            DateTime unixEpoch = new(1970, 1, 1, 0, 0, 0);
-            TimeSpan timeSpan = DateTime.UtcNow - unixEpoch;
-            return timeSpan.TotalSeconds;
-        }
-
-        public static double CurrentTimeInMilliseconds()
-        {
-            TimeSpan span = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1, 0, 0, 0));
-            return span.TotalMilliseconds;
-        }
-
         public static string CreateGuestName()
         {
             const string characters = "0123456789";
@@ -149,8 +89,6 @@ namespace CommanderCS.Utils
 
             return localIP;
         }
-
-
 
     }
 }

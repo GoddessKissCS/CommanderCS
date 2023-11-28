@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using CommanderCS.Database.Schemes;
 using CommanderCS.Utils;
+using CommanderCSLibrary.Utils;
 
 namespace CommanderCS.Database.Handlers
 {
@@ -13,7 +14,7 @@ namespace CommanderCS.Database.Handlers
         public DeviceChangeCodeScheme Create(int id)
         {
             var Code = Utility.ChangeDeviceCode();
-            var CreateTime = Utility.CurrentTimeStamp();
+            var CreateTime = TimeManager.CurrentEpoch;
 
             DeviceChangeCodeScheme deviceCode = new()
             {

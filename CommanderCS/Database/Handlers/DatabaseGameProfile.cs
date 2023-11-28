@@ -5,6 +5,7 @@ using CommanderCS.Host.Handlers.Login;
 using CommanderCS.ExcelReader;
 using CommanderCS.Protocols;
 using CommanderCS.Utils;
+using CommanderCSLibrary.Utils;
 
 namespace CommanderCS.Database.Handlers
 {
@@ -423,7 +424,7 @@ namespace CommanderCS.Database.Handlers
                 PushRegistrationId = @params.pushRegistrationId,
             };
 
-            var CurrTimeStamp = Utility.GetCurrentTime();
+            var CurrTimeStamp = TimeManager.CurrentEpoch;
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("MemberId", @params.memberId) &
                          Builders<GameProfileScheme>.Filter.Eq("Server", @params.world);

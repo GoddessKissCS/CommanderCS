@@ -6,6 +6,7 @@ using CommanderCS.Packets.Handlers.UserTerm;
 using CommanderCS.Enum;
 using CommanderCS.Utils;
 using static CommanderCS.Cryptography.Crypto;
+using CommanderCSLibrary.Utils;
 
 namespace CommanderCS.Database.Handlers
 {
@@ -22,7 +23,7 @@ namespace CommanderCS.Database.Handlers
 
             int memberId = DatabaseManager.AutoIncrements.GetNextNumber("MemberId", 1000);
 
-            var CurrTimeStamp = Utility.CurrentTimeStamp();
+            var CurrTimeStamp = TimeManager.CurrentEpoch;
 
             AccountScheme user = new()
             {
@@ -116,7 +117,7 @@ namespace CommanderCS.Database.Handlers
 
         public void UpdateLoginTime(int id)
         {
-            var CurrTimeStamp = Utility.CurrentTimeStamp();
+            var CurrTimeStamp = TimeManager.CurrentEpoch;
 
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", id);
             var update = Builders<AccountScheme>.Update.Set("LastLoginTime", CurrTimeStamp);
@@ -128,7 +129,7 @@ namespace CommanderCS.Database.Handlers
         {
             var account = FindByName(name);
 
-            var CurrTimeStamp = Utility.CurrentTimeStamp();
+            var CurrTimeStamp = TimeManager.CurrentEpoch;
 
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
             var update = Builders<AccountScheme>.Update.Set("LastLoginTime", CurrTimeStamp);

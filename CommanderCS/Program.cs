@@ -135,7 +135,7 @@ namespace CommanderCS
 
             //app.UseAuthorization();
 
-            //DatabaseManager.FirstCreate();
+            DatabaseManager.Init();
 
             app.Run();
         }

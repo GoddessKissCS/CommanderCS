@@ -3,6 +3,7 @@ using CommanderCS.Database;
 using CommanderCS.Host;
 using CommanderCS.Protocols;
 using CommanderCS.Utils;
+using CommanderCSLibrary.Utils;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -31,7 +32,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 				dauth = 0,
 				idx = nextIdx,
 				msg = @params.msg,
-				regdt = Utility.CurrentTimeInMilliseconds(),
+				regdt = TimeManager.CurrentEpochMilliseconds,
 				thumb = "" + user.UserResources.thumbnailId,
 				unm = user.UserResources.nickname,
 				uno = user.Uno,

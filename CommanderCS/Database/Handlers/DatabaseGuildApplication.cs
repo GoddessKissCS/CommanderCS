@@ -3,6 +3,7 @@ using CommanderCS.Database.Schemes;
 using CommanderCS.Host;
 using CommanderCS.Protocols;
 using CommanderCS.Utils;
+using CommanderCSLibrary.Utils;
 
 namespace CommanderCS.Database.Handlers
 {
@@ -20,7 +21,7 @@ namespace CommanderCS.Database.Handlers
 
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
-            var time = Utility.CurrentTimeInMilliseconds();
+            var time = TimeManager.CurrentEpochMilliseconds;
 
             GuildApplicationScheme guildApplication = new()
             {

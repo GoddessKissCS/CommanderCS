@@ -7,6 +7,6 @@ namespace CommanderCS.Database.Schemes
         public ObjectId Id { get; set; }
         public int MemberId { get; set; }
         public string Code { get; set; }
-        public int CreateTime { get; set; }
+        public long CreateTime { get; set; }
     }
 }

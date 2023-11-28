@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using StellarGK.Host;
+using CommanderCS.Host;
 
-namespace StellarGK.Host
+namespace CommanderCS.Host
 {
     public partial class PacketHandler
     {
