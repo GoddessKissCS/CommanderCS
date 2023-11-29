@@ -29,6 +29,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\CommanderCSLibrary\CommanderCSLibrary.csproj" />
 		<ProjectReference Include="..\CommandHandlerMappingsSourceGenerator\CommandHandlerMappingsSourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 		<ProjectReference Include="..\StellarGKLibrary\CommanderCSLibrary.csproj" />
 	</ItemGroup>

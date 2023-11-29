@@ -64,7 +64,7 @@ namespace CommanderCS.Host.Handlers.Login
                 donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,
                 completeRewardGroupIdx = user.CompleteRewardGroupIdx,
                 guildInfo = guild,
-                sweepClearData = user.SweepClearData,
+                sweepClearData = user.BattleData.SweepClearData,
                 preDeck = user.PreDeck,
                 weaponList = user.UserInventory.weaponList,
                 __commanderInfo = JObject.FromObject(user.CommanderData),

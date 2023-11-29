@@ -60,7 +60,7 @@ namespace CommanderCS.Host
                 return encrypted;
             }
 
-            return "{id:XXX,result:{success:false}}";
+            return "{id:xxx,result:{success:false}}";
         }
 
         private static object ProcessPacket(JToken raw, IServiceProvider serviceProvider)
@@ -97,7 +97,6 @@ namespace CommanderCS.Host
             {
                 enumText = "??????";
             }
-
             return $"{commandId} {enumText}";
         }).ToList();
     }

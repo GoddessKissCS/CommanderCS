@@ -22,13 +22,12 @@ namespace CommanderCS.Database.Schemes
         public UserResources UserResources { get; set; }
         public UserInventory UserInventory { get; set; }
         public UserBadges UserBadges { get; set; }
+        public WorldMapData WorldMapData { get; set; }
+        public BattleData BattleData { get; set; }
         public UserInformationResponse.TutorialData TutorialData { get; set; }
-        public Dictionary<string, List<WorldMapInformationResponse>> WorldMapStages { get; set; }
-        public Dictionary<string, int> WorldMapStagesReward { get; set; }
         public Dictionary<string, UserInformationResponse.Commander> CommanderData { get; set; }
         public List<UserInformationResponse.PreDeck> PreDeck { get; set; }
         public List<int> CompleteRewardGroupIdx { get; set; }
-        public Dictionary<string, List<int>> SweepClearData { get; set; }
         public Dictionary<string, DiapatchCommanderInfo> DispatchedCommanders { get; set; }
         public List<UserInformationResponse.VipRechargeData> VipRechargeData { get; set; }
         public Dictionary<string, int> BoughtCashShopItems { get; set; }
@@ -162,4 +161,17 @@ namespace CommanderCS.Database.Schemes
         public int ercnt { get; set; }
         public int iftw { get; set; }
     }
+
+    public class WorldMapData
+    {
+        public Dictionary<string, List<WorldMapInformationResponse>> Stages { get; set; }
+
+        public Dictionary<string, int> StageReward { get; set; }
+    }
+
+    public class BattleData
+    {
+        public Dictionary<string, List<int>> SweepClearData { get; set; }
+    }
+
 }

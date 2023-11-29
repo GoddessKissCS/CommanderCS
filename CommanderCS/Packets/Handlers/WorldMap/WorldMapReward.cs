@@ -11,9 +11,6 @@ namespace CommanderCS.Packets.Handlers.WorldMap
     {
         public override object Handle(WorldMapRewardRequest @params)
         {
-
-            // probably increase the ratios or so
-            //idk
             var user = GetUserGameProfile();
             var session = GetSession();
 
@@ -112,22 +109,22 @@ namespace CommanderCS.Packets.Handlers.WorldMap
         }
 
 
-        public static CommanderCS.Protocols.WorldMapReward UserWorldReward(string commander_id, GameProfileScheme user, string session)
+        public static Protocols.WorldMapReward UserWorldReward(string commanderId, GameProfileScheme user, string session)
         {
             int medals = 20;
 
-            CommanderCS.Protocols.WorldMapReward WorldMapReward = new();
+            Protocols.WorldMapReward WorldMapReward = new();
 
-            user.CommanderData.TryGetValue(commander_id, out var commander);
+            user.CommanderData.TryGetValue(commanderId, out var commander);
 
             if(commander != null)
             {
-                user.UserInventory.medalData[commander_id] += medals;
-                user.CommanderData[commander_id].medl += medals;
+                user.UserInventory.medalData[commanderId] += medals;
+                user.CommanderData[commanderId].medl += medals;
 
                 WorldMapReward.commanderData = user.CommanderData;
             } else {
-                int cid = int.Parse(commander_id);
+                int cid = int.Parse(commanderId);
 
                 var commanderdata = CommanderCostumeData.GetInstance().AddSpecificCommander(user.CommanderData, cid);
 
@@ -136,8 +133,7 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 
             WorldMapReward.medalData = user.UserInventory.medalData;
 
-            DatabaseManager.GameProfile.UpdateCommanderData(session, WorldMapReward.commanderData);
-            DatabaseManager.GameProfile.UpdateMedalData(session, WorldMapReward.medalData);
+            DatabaseManager.GameProfile.UpdateCommanderDataAndMedalData(session, WorldMapReward.commanderData, WorldMapReward.medalData);
 
             return WorldMapReward;
 

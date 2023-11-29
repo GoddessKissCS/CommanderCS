@@ -6,6 +6,7 @@ using CommanderCS.ExcelReader;
 using CommanderCS.Protocols;
 using CommanderCS.Utils;
 using CommanderCSLibrary.Utils;
+using System.Linq.Expressions;
 
 namespace CommanderCS.Database.Handlers
 {
@@ -27,12 +28,19 @@ namespace CommanderCS.Database.Handlers
 
             var worldmapstagesreward = WorldMapStageData.GetInstance().AddDefaultWorldMapIsRewardCollected();
             var WorldMapStages = WorldMapStageData.GetInstance().AddAllStagesAtDefault();
+
             GameProfileScheme user = new()
             {
                 Server = server,
-                WorldMapStages = WorldMapStages,
-                WorldMapStagesReward = worldmapstagesreward,
-                SweepClearData = [],
+                WorldMapData = new()
+                {
+                  StageReward = worldmapstagesreward,
+                  Stages = WorldMapStages
+                },
+                BattleData = new()
+                {
+                    SweepClearData = []
+                },
                 LastStage = 0,
                 UserStatistics = new()
                 {
@@ -444,6 +452,18 @@ namespace CommanderCS.Database.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+
+        public void UpdateCommanderDataAndMedalData(string session, Dictionary<string, UserInformationResponse.Commander> commanderList, Dictionary<string, int> medalsdata)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.CommanderData, commanderList).Set(x => x.UserInventory.medalData, medalsdata);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+
+
+
         public void UpdateCommanderData(int id, Dictionary<string, UserInformationResponse.Commander> commanderList)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, id);
@@ -582,12 +602,10 @@ namespace CommanderCS.Database.Handlers
         {
             var user = FindBySession(session);
 
-            string mapId = "" + worldMapId;
-
-            user.WorldMapStagesReward[mapId] = 1;
+            user.WorldMapData.StageReward[worldMapId.ToString()] = 1;
 
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
-            var update = Builders<GameProfileScheme>.Update.Set("WorldMapStagesReward", user.WorldMapStagesReward);
+            var update = Builders<GameProfileScheme>.Update.Set("WorldMapData.StageReward", user.WorldMapData.StageReward);
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
@@ -616,5 +634,6 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
     }
 }
