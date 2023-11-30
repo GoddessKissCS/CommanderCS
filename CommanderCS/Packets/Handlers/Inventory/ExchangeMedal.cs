@@ -13,8 +13,8 @@ namespace CommanderCS.Packets.Handlers.Inventory
             user.CommanderData.TryGetValue("" + @params.cid, out var commanderData);
             user.UserInventory.medalData.TryGetValue("" + @params.cid, out int medal);
 
-            commanderData.medl = commanderData.medl + @params.amnt;
-            medal = medal + @params.amnt;
+            commanderData.medl += @params.amnt;
+            medal += @params.amnt;
 
             // AND THEN WE NEED TO SUBSTRACT THE EXCHANGEMEDALS FROM THE USER
 

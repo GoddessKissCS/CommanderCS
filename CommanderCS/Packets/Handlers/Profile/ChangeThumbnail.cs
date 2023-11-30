@@ -16,7 +16,7 @@ namespace CommanderCS.Host.Handlers.Profile
 
             if (user.CommanderData["" + @params.idx] != null)
             {
-                success = DatabaseManager.GameProfile.ChangeThumbnail(session, @params.idx);
+                success = DatabaseManager.GameProfile.ChangeThumbnailId(session, @params.idx);
             }
 
 

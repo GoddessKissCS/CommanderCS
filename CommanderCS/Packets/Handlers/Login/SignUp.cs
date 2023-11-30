@@ -16,7 +16,7 @@ namespace CommanderCS.Host.Handlers.Sign
 
             ErrorCode code = RequestSignUp(@params.uid, @params.pwd, @params.plfm, @params.ch);
 
-            if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
+            if (code != ErrorCode.Success)
             {
                 ErrorPacket error = new()
                 {

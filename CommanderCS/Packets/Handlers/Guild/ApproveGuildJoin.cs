@@ -9,8 +9,6 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(ApproveGuildJoinRequest @params)
         {
-			var session = GetSession();
-
 			ErrorCode code = DatabaseManager.GuildApplication.ApproveGuildJoinRequest(@params.uno);
 
 			if(code != ErrorCode.Success)

@@ -52,11 +52,11 @@ namespace CommanderCS.Host.Handlers.Nickname
 
                 if (userGameProfile.TutorialData.skip = true)
                 {
-                    DatabaseManager.GameProfile.UpdateStep(sess, 12);
+                    DatabaseManager.GameProfile.UpdateTutorialStep(sess, 12);
                 }
                 else
                 {
-                    DatabaseManager.GameProfile.UpdateStep(sess, 2);
+                    DatabaseManager.GameProfile.UpdateTutorialStep(sess, 2);
                 }
 
                 DatabaseManager.GameProfile.UpdateNickName(sess, nickname);

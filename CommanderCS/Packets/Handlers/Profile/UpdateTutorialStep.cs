@@ -10,7 +10,7 @@ namespace CommanderCS.Host.Handlers.Profile
         {
             UpdateTutorialStepInfo utsi = new();
 
-            DatabaseManager.GameProfile.UpdateStep(GetSession(), @params.step);
+            DatabaseManager.GameProfile.UpdateTutorialStep(GetSession(), @params.step);
 
             utsi.step = @params.step;
 

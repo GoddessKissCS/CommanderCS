@@ -14,7 +14,7 @@ namespace CommanderCS.Host.Handlers.Sign
 
             ErrorCode code = RequestSignIn(@params.uid, @params.pwd, out SignInP SignInP);
 
-            if (code == ErrorCode.IdNotFound || code == ErrorCode.PasswordInvalid)
+            if (code != ErrorCode.Success)
             {
 
                 ErrorPacket error = new()

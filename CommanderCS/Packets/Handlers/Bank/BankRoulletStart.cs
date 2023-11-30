@@ -2,7 +2,7 @@
 using CommanderCS.Database;
 using CommanderCS.ExcelReader;
 using CommanderCS.Protocols;
-using CommanderCS.Utils;
+using CommanderCSLibrary.Utils;
 
 namespace CommanderCS.Host.Handlers.Bank
 {
@@ -13,19 +13,13 @@ namespace CommanderCS.Host.Handlers.Bank
         {
             string session = GetSession();
 
-            var user = GetUserGameProfile();
+            var vip_spins = DatabaseManager.GameProfile.GetVipRechargeCount(session, 601);
 
-            var count = @params.count;
+            var remainingSpins = vip_spins + @params.count;
 
-            var vip_spins = Misc.GetVipRechargeCount(user.VipRechargeData, 601);
+            DatabaseManager.GameProfile.UpdateVipRechargeCount(session, 601, remainingSpins);
 
-            var remainingSpins = vip_spins + count;
-
-            user.VipRechargeData = Misc.UpdateVipRechargeCount(user.VipRechargeData, 601, remainingSpins);
-
-            DatabaseManager.GameProfile.UpdateVipRechargeData(session, user.VipRechargeData);
-
-            var luck = BankGold(session, count);
+            var luck = SpinBankRouletteAndProcessResults(session, @params.count);
 
             var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
 
@@ -45,38 +39,23 @@ namespace CommanderCS.Host.Handlers.Bank
             return response;
         }
 
-        private static List<int> BankGold(string sessionId, int spins)
+        private static List<int> SpinBankRouletteAndProcessResults(string sessionId, int spins)
         {
-            Random random = new();
+            var roulettLuck = RandomGenerator.BankRoulletLuck(spins);
 
-            Random random1 = new(random.Next(1, 99));
+            var userLevel = DatabaseManager.GameProfile.FindBySession(sessionId).UserResources.level;
 
-            List<int> luck = new(10);
+            int bankGold = UserLevelData.GetInstance().FromLevel(userLevel).bankGold;
 
-            for (int i = 0; i < spins; i++)
-            {
-                luck.Add(random1.Next(1, 10));
-            };
+            int updatedGold = roulettLuck.Sum() * bankGold;
 
-            var user = DatabaseManager.GameProfile.FindBySession(sessionId);
+            int cashDeduction = (spins == 10) ? 100 : 10;
 
-            int thebankGold = UserLevelData.GetInstance().FromLevel(user.UserResources.level).bankGold;
+            DatabaseManager.GameProfile.UpdateGold(sessionId, updatedGold, true);
+            DatabaseManager.GameProfile.UpdateCash(sessionId, cashDeduction, false);
 
-            int updateGold = luck.Sum() * thebankGold;
-
-            int minusCash = 10;
-
-            if (spins == 10)
-            {
-                minusCash = 100;
-            }
-
-            DatabaseManager.GameProfile.UpdateGold(sessionId, updateGold, true);
-            DatabaseManager.GameProfile.UpdateCash(sessionId, minusCash, false);
-
-            return luck;
+            return roulettLuck;
         }
-
 
         public class BankRoullet
         {

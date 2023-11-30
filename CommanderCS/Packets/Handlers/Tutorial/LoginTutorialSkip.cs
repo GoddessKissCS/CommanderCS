@@ -31,11 +31,11 @@ namespace CommanderCS.Host.Handlers.Tutorial
             if (skipTutorial)
             {
                 tutorialData.step = 12;
-                return DatabaseManager.GameProfile.UpdateStepAndSkip(session, tutorialData);
+                return DatabaseManager.GameProfile.UpdateTutorialData(session, tutorialData);
             }
             else
             {
-                return DatabaseManager.GameProfile.UpdateStepAndSkip(session, tutorialData);
+                return DatabaseManager.GameProfile.UpdateTutorialData(session, tutorialData);
             }
         }
 
