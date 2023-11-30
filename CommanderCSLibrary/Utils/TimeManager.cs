@@ -84,5 +84,36 @@ namespace CommanderCSLibrary.Utils
             return difference;
         }
 
+
+        public static double GetTimeDifferenceInMinutes(double timeInSeconds)
+        {
+            double currentTimeInSeconds = CurrentEpoch;
+            double differenceInSeconds = currentTimeInSeconds - timeInSeconds;
+
+            double differenceInMinutes = differenceInSeconds / 60;
+
+            return differenceInMinutes;
+        }
+
+        public static double GetTimeDifferenceInHours(double timeInSeconds)
+        {
+            double currentTimeInSeconds = CurrentEpoch;
+            double differenceInSeconds = currentTimeInSeconds - timeInSeconds;
+
+            double differenceInHours = differenceInSeconds / (60 * 60);
+
+            return differenceInHours;
+        }
+
+        public static double GetTimeDifferenceInDays(double timeInSeconds)
+        {
+            double currentTimeInSeconds = CurrentEpoch;
+            double differenceInSeconds = currentTimeInSeconds - timeInSeconds;
+
+            double differenceInDays = differenceInSeconds / (60 * 60 * 24);
+
+            return differenceInDays;
+        }
+
     }
 }

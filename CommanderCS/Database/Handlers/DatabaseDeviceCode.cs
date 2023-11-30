@@ -42,12 +42,9 @@ namespace CommanderCS.Database.Handlers
         {
             var devicechange = DatabaseManager.DeviceCode.FindByUid(account.MemberId);
 
-            DateTime createTimeDate = DateTime.ParseExact(devicechange.CreateTime.ToString(), "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture);
+            var timeDifference = TimeManager.GetTimeDifferenceInDays(devicechange.CreateTime);
 
-            TimeSpan timeDifference = DateTime.Now - createTimeDate;
-            int daysDifference = (int)timeDifference.TotalDays;
-
-            if (daysDifference > 7)
+            if (timeDifference > 7)
             {
                 return "Code Expired";
             }

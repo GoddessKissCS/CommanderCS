@@ -9,7 +9,7 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
         public override object Handle(WaveBattleListRequest @params)
         {
 
-			CommanderCS.Protocols.WaveBattleInfoList waveBattleInfoList = new();
+			Protocols.WaveBattleInfoList waveBattleInfoList = new();
 
 
 			// Need to figure out the daily shit for this thing

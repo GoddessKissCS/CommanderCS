@@ -10,18 +10,19 @@ namespace CommanderCS.Host.Handlers.WorldMap
     {
         public override object Handle(WorldMapStageStartRequest @params)
         {
-            ResponsePacket response = new();
-
             WorldMapStageStartResponse wmssr = new();
 
-            List<RewardInfo.RewardData> test = new();
+            List<RewardInfo.RewardData> test = [];
 
             wmssr.reward = test;
 
             wmssr.rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(GetSession());
 
-            response.Id = BasePacket.Id;
-            response.Result = wmssr;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = wmssr
+            };
 
             return response;
         }

@@ -53,6 +53,12 @@ namespace CommanderCS.Host
         { 
             return DatabaseManager.Dormitory.FindBySession(BasePacket.Session);
         }
+
+        public string GetUserDeviceCode()
+        {
+            return DatabaseManager.DeviceCode.RequestForChangeDeviceCode(GetUserAccount());
+        }
+
     }
 
     public enum Method : int

@@ -25,9 +25,10 @@ namespace CommanderCS.Host.Handlers.Login
 
             var user = DatabaseManager.GameProfile.GetOrCreate(@params.memberId, @params.world);
 
-            var code = DatabaseManager.Account.RequestLogin(@params, session);
+            ErrorCode code = DatabaseManager.Account.RequestLogin(@params, session);
 
-            if (code == ErrorCode.BannedOrSuspended || code == ErrorCode.UnableToJoin)
+
+            if (code != ErrorCode.Success)
             {
                 ErrorPacket error = new()
                 {

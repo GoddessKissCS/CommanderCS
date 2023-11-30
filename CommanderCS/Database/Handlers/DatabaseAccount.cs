@@ -154,6 +154,13 @@ namespace CommanderCS.Database.Handlers
                 return ErrorCode.BannedOrSuspended;
             }
 
+            var timeDifference = TimeManager.GetTimeDifferenceInMinutes(user.LastLoginTime);
+
+            if(timeDifference < 5)
+            {
+                return ErrorCode.UnableToJoin;
+            }
+
             DatabaseManager.GameProfile.UpdateOnLogin(@params, session);
             return ErrorCode.Success;
         }

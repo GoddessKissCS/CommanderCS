@@ -7,12 +7,10 @@ namespace CommanderCS.Host.Handlers.VersionCheck
     public class GameVersionInfo : BaseMethodHandler<GameVersionInfoRequest>
     {
         public override object Handle(GameVersionInfoRequest @params)
-        {
-            ResponsePacket ResponsePacket = new();
-
+        {         
             var info = DatabaseManager.GameVersionInfo.Get(@params.ch);
 
-            GameVersionInfoResponse game = new()
+            GameVersionInfoResponse gameversion = new()
             {
                 policy = Convert.ToDouble(info.showPolicy),
                 chat = info.Chat_Url,
@@ -25,8 +23,11 @@ namespace CommanderCS.Host.Handlers.VersionCheck
                 stat = Convert.ToInt32(info.Version_State)
             };
 
-            ResponsePacket.Id = BasePacket.Id;
-            ResponsePacket.Result = game;
+            ResponsePacket ResponsePacket = new()
+            {
+                Id = BasePacket.Id,
+                Result = gameversion
+            };
 
             return ResponsePacket;
         }

@@ -136,7 +136,6 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             DatabaseManager.GameProfile.UpdateCommanderDataAndMedalData(session, WorldMapReward.commanderData, WorldMapReward.medalData);
 
             return WorldMapReward;
-
         }
 
     }

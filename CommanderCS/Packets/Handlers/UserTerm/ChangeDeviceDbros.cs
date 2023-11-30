@@ -17,7 +17,7 @@ namespace CommanderCS.Packets.Handlers.UserTerm
         {
             ErrorCode code = DatabaseManager.Account.ChangeDevice(@params.plfm, @params.uid, @params.pwd);
 
-            if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
+            if (code != ErrorCode.Success)
             {
                 ErrorPacket error = new()
                 {
