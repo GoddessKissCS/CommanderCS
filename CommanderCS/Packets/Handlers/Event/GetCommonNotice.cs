@@ -7,22 +7,7 @@ namespace CommanderCS.Host.Handlers.Event
     {
         public override object Handle(GetCommonNoticeRequest @params)
         {
-            List<NoticeData> CommonNotice1 = new List<NoticeData>
-            { /*
-                new NoticeData()
-                {
-                    idx = 0,
-                    img = "1",
-                    notice = "TEST",
-                    link = "http://",
-                    startDate = 0,
-                    endDate = 0,
-                    eventEndDate = 0,
-                    eventStartDate = 0,
-                    notiFixed = 0,
-                }
-                */
-            };
+            List<NoticeData> CommonNotice1 = [];
 
             ResponsePacket response = new()
             {

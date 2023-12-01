@@ -5,8 +5,7 @@ namespace CommanderCS.ExcelReader
 {
     public class CommanderData : BaseExcelReader<CommanderData, CommanderDataExcel>
     {
-        public override string FileName
-        { get { return "CommanderDataTable.json"; } }
+        public override string FileName { get { return "CommanderDataTable.json"; } }
 
         public CommanderDataExcel? FromId(int idx)
         {

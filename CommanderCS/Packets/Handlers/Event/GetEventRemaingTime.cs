@@ -1,6 +1,35 @@
+using CommanderCS.Host;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Event
 {
-    public class GetEventRemaingTime
+    [Packet(Id = Method.GetEventRemaingTime)]
+    public class GetEventRemaingTime : BaseMethodHandler<GetEventRemaingTimeRequest>
+    {
+        public override object Handle(GetEventRemaingTimeRequest @params)
+        {
+            GetEventRemainingTimeResponse remainingEventTime = new()
+            {
+                buff = []
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = remainingEventTime,
+            };
+
+            return response;
+        }
+
+        public class GetEventRemainingTimeResponse
+        {
+            [JsonProperty("buff")]
+            public Dictionary<string, int> buff { get; set; }
+        }
+    }
+
+    public class GetEventRemaingTimeRequest
     {
     }
 }

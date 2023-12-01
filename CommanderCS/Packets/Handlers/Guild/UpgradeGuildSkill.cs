@@ -20,7 +20,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
 			var upgradeCost = GuildSkillData.GetInstance().FromSkillLevel(guildSkill.level + 1);
 
-			if(upgradeCost.cost > guild.Point)
+			if(upgradeCost.level < guild.Level)
 			{
 				ErrorPacket error = new()
 				{
@@ -37,19 +37,18 @@ namespace CommanderCS.Packets.Handlers.Guild
             {
                 guildSkill.level += 1;
                 guild.SkillDada[index] = guildSkill;
-
             }
 
 			guild.Point -= upgradeCost.cost;
 
             DatabaseManager.Guild.UpdateGuildSkill(user.GuildId, guild.SkillDada, guild.Point);
 
-            var newGuild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+            var guildInfo = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
-            CommanderCS.Protocols.GuildInfo guildList = new()
+            Protocols.GuildInfo guildList = new()
             {
                 resource = null,
-                guildInfo = newGuild,
+                guildInfo = guildInfo,
                 memberData = null,
                 guildList = null,
             };

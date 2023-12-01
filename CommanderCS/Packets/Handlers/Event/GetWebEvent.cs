@@ -9,7 +9,7 @@ namespace CommanderCS.Host.Handlers.Event
         {
             GetWebEventPacket gwe = new()
             {
-                wev = new List<string>() { "NONE" }
+                wev = ["NONE"]
             };
 
             ResponsePacket response = new()

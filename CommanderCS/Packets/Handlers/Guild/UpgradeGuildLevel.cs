@@ -1,47 +1,49 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
 using CommanderCS.ExcelReader;
+using CommanderCS.Database.Schemes;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
 	[Packet(Id = Method.UpgradeGuildLevel)]
-    public class UpgradeGuildLevel : BaseMethodHandler<UpgradeGuildLevelRequest>
-    {
-        public override object Handle(UpgradeGuildLevelRequest @params)
-        {
+	public class UpgradeGuildLevel : BaseMethodHandler<UpgradeGuildLevelRequest>
+	{
+		public override object Handle(UpgradeGuildLevelRequest @params)
+		{
 			var user = GetUserGameProfile();
 
 			var guild = DatabaseManager.Guild.FindByUid(user.GuildId);
 
-			var guildUpgradeData = GuildLevelInfoData.GetInstance().FromLevel(guild.Level + 1);
+            var guildUpgradeData = GuildLevelInfoData.GetInstance().FromLevel(guild.Level + 1);
 
-			guild.Point -= guildUpgradeData.cost;
+            guild.Point -= guildUpgradeData.cost;
 
-			guild.Level += 1;
+            guild.Level += 1;
 
-			guild.MaxCount = guildUpgradeData.maxcount;
+            guild.MaxCount = guildUpgradeData.maxcount;
 
-			DatabaseManager.Guild.UpdateGuildPointLevelMaxCount(user.GuildId, guild);
+            DatabaseManager.Guild.UpdateGuildPointLevelMaxCount(user.GuildId, guild);
 
-			var newGuild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+			var guildInfo = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
-            CommanderCS.Protocols.GuildInfo guildList = new()
-            {
-                resource = null,
-                guildInfo = newGuild,
-                memberData = null,
-                guildList = null,
-            };
+			Protocols.GuildInfo guildList = new()
+			{
+				resource = null,
+				guildInfo = guildInfo,
+				memberData = null,
+				guildList = null,
+			};
 
-            ResponsePacket response = new()
+			ResponsePacket response = new()
 			{
 				Id = BasePacket.Id,
 				Result = guildList,
 			};
 
 			return response;
-        }
-    }
+		}
+	} 
+
 
     public class UpgradeGuildLevelRequest
     {

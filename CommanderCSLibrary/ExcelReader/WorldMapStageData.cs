@@ -6,8 +6,7 @@ namespace CommanderCS.ExcelReader
 {
     public class WorldMapStageData : BaseExcelReader<WorldMapStageData, WorldMapStageDataExcel>
     {
-        public override string FileName
-        { get { return "WorldMapStageDataTable_2.json"; } }
+        public override string FileName { get { return "WorldMapStageDataTable_2.json"; } }
 
         public WorldMapStageDataExcel? FromWorldMapId(int worldMapId)
         {
@@ -16,7 +15,7 @@ namespace CommanderCS.ExcelReader
 
         public Dictionary<string, List<WorldMapInformationResponse>> AddAllStagesAtDefault()
         {
-            Dictionary<string, List<WorldMapInformationResponse>> stages = new();
+            Dictionary<string, List<WorldMapInformationResponse>> stages = [];
 
             string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
 
@@ -40,7 +39,7 @@ namespace CommanderCS.ExcelReader
 
         public Dictionary<string, int> AddDefaultWorldMapIsRewardCollected()
         {
-            Dictionary<string, int> stages = new();
+            Dictionary<string, int> stages = [];
 
             string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
 

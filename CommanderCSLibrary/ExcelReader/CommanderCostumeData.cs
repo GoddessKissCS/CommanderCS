@@ -25,7 +25,7 @@ namespace CommanderCS.ExcelReader
 
         public Dictionary<string, UserInformationResponse.Commander> GetAllCommandersWithDefaultValue()
         {
-            Dictionary<string, UserInformationResponse.Commander> commanderDataDict = new();
+            Dictionary<string, UserInformationResponse.Commander> commanderDataDict = [];
 
             string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
 
@@ -48,18 +48,18 @@ namespace CommanderCS.ExcelReader
                         favorRewardStep = 0,
                         favorStep = 0,
                         currentCostume = item.ctid,
-                        equipItemInfo = new() { },
-                        equipWeaponInfo = new() { },
-                        eventCostume = new() { },
+                        equipItemInfo = [],
+                        equipWeaponInfo = [],
+                        eventCostume = [],
                         favorPoint = new() { },
                         favr = 0,
                         fvrd = 0,
-                        haveCostume = new() { item.ctid },
+                        haveCostume = [item.ctid],
                         id = "" + cid,
                         marry = 0,
                         medl = medl,
                         role = "A",
-                        transcendence = new() { 0, 0, 0, 0 },
+                        transcendence = [0, 0, 0, 0],
                         __cls = "1",
                         __exp = "0",
                         __level = "1",
@@ -92,18 +92,18 @@ namespace CommanderCS.ExcelReader
                 favorRewardStep = 0,
                 favorStep = 0,
                 currentCostume = item.ctid,
-                equipItemInfo = new() { },
-                equipWeaponInfo = new() { },
-                eventCostume = new() { },
+                equipItemInfo = [],
+                equipWeaponInfo = [],
+                eventCostume = [],
                 favorPoint = new() { },
                 favr = 0,
                 fvrd = 0,
-                haveCostume = new() { item.ctid },
+                haveCostume = [item.ctid],
                 id = "" + commanderID,
                 marry = 0,
                 medl = 0,
                 role = "A",
-                transcendence = new() { 0, 0, 0, 0 },
+                transcendence = [0, 0, 0, 0],
                 __cls = "1",
                 __exp = "0",
                 __level = "1",
@@ -132,18 +132,18 @@ namespace CommanderCS.ExcelReader
                 favorRewardStep = 0,
                 favorStep = 0,
                 currentCostume = item.ctid,
-                equipItemInfo = new() { },
-                equipWeaponInfo = new() { },
-                eventCostume = new() { },
+                equipItemInfo = [],
+                equipWeaponInfo = [],
+                eventCostume = [],
                 favorPoint = new() { },
                 favr = 0,
                 fvrd = 0,
-                haveCostume = new() { item.ctid },
+                haveCostume = [item.ctid],
                 id = "" + commanderID,
                 marry = 0,
                 medl = 0,
                 role = "A",
-                transcendence = new() { 0, 0, 0, 0 },
+                transcendence = [0, 0, 0, 0],
                 __cls = "1",
                 __exp = "0",
                 __level = "1",
@@ -178,7 +178,7 @@ namespace CommanderCS.ExcelReader
         }
         public Dictionary<string, int> AddSpecificCommanderMedals(int commanderId)
         {
-            Dictionary<string, int> commanderDataDict = new();
+            Dictionary<string, int> commanderDataDict = [];
 
             string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
 

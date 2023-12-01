@@ -28,7 +28,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 			var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
 			var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
-            CommanderCS.Protocols.GuildInfo guildInfo = new()
+            Protocols.GuildInfo guildInfo = new()
 			{
 				resource = rsoc,
 				guildInfo = guild,

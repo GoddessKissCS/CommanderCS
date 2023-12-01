@@ -9,10 +9,12 @@ namespace CommanderCS.Packets.Handlers.Guild
 	[Packet(Id = Method.SearchGuild)]
     public class SearchGuild : BaseMethodHandler<SearchGuildRequest>
     {
-
         public override object Handle(SearchGuildRequest @params)
         {
-			ResponsePacket response = new()
+
+			var session = GetSession();
+
+            ResponsePacket response = new()
 			{
 				Id = BasePacket.Id,
 			};	
@@ -21,12 +23,12 @@ namespace CommanderCS.Packets.Handlers.Guild
 
 			if (guild != null)
 			{
-				var roguild = Guild2RoGuild(guild, GetSession());
+				var roguild = Guild2RoGuild(guild, session);
 				response.Result = roguild;
 			}
 			else
 			{
-				CommanderCS.Ro.RoGuild Roguild = new()
+				Ro.RoGuild Roguild = new()
 				{
 
 				};
@@ -39,11 +41,11 @@ namespace CommanderCS.Packets.Handlers.Guild
 
         }
 
-        public static CommanderCS.Ro.RoGuild Guild2RoGuild(GuildScheme guild, string session)
+        public static Ro.RoGuild Guild2RoGuild(GuildScheme guild, string session)
         {
             string isApplyingForGuild = DatabaseManager.GuildApplication.RetrieveGuildApplication(session, guild.GuildId);
 
-            CommanderCS.Ro.RoGuild Roguild = new()
+            Ro.RoGuild Roguild = new()
             {
                 apnt = guild.aPoint,
                 cnt = guild.Count,

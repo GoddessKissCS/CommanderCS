@@ -7,16 +7,19 @@ namespace CommanderCS.Host.Handlers.Event
     {
         public override object Handle(GetPlugEventInfoRequest @params)
         {
-            ResponsePacket response = new();
+            
 
             GetPlugEventInfoPacket plugEventInfo = new()
             {
-                cmt = new List<int>() { },
-                pst = new List<int>() { }
+                cmt = [],
+                pst = []
             };
 
-            response.Id = BasePacket.Id;
-            response.Result = plugEventInfo;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = plugEventInfo
+            };
 
             return response;
         }
