@@ -18,9 +18,9 @@ namespace CommanderCS.Packets.Handlers.Guild
 
 			var guildSkill = guild.SkillDada.Where(d => d.idx == @params.gsid).FirstOrDefault();
 
-			var upgradeCost = GuildSkillData.GetInstance().FromSkillLevel(guildSkill.level + 1);
+			var upgradeSkill = GuildSkillData.GetInstance().FromSkillLevel(guildSkill.level + 1);
 
-			if(upgradeCost.level < guild.Level)
+			if(upgradeSkill.level < guild.Level)
 			{
 				ErrorPacket error = new()
 				{
@@ -31,6 +31,18 @@ namespace CommanderCS.Packets.Handlers.Guild
 				return error;
 			}
 
+            if (upgradeSkill.cost < guild.Point)
+            {
+                ErrorPacket error = new()
+                {
+                    Error = new() { code = ErrorCode.HigherFederationLevelRequired },
+                    Id = BasePacket.Id,
+                };
+
+                return error;
+            }
+
+
             int index = guild.SkillDada.FindIndex(skill => skill.idx == @params.gsid);
 
             if (index >= 0)
@@ -39,7 +51,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 guild.SkillDada[index] = guildSkill;
             }
 
-			guild.Point -= upgradeCost.cost;
+			guild.Point -= upgradeSkill.cost;
 
             DatabaseManager.Guild.UpdateGuildSkill(user.GuildId, guild.SkillDada, guild.Point);
 
