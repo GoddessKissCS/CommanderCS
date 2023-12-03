@@ -80,7 +80,7 @@ namespace CommanderCS.Database.Schemes
         public int CommanderDestroyCount { get; set; }
         public int VipShop { get; set; }
         public int VipShopResetTime { get; set; }
-        public int PredeckCount { get; set; }
+        public int PredeckCount { get; set; } = 5;
         public int firstPayment { get; set; }
         public int weaponMakeSlotCount { get; set; }
         public int weaponInventoryCount { get; set; }

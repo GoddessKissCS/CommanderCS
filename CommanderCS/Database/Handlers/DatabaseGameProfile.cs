@@ -1,12 +1,9 @@
-﻿using MongoDB.Bson;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using CommanderCS.Database.Schemes;
 using CommanderCS.Host.Handlers.Login;
 using CommanderCS.ExcelReader;
 using CommanderCS.Protocols;
-using CommanderCS.Utils;
 using CommanderCSLibrary.Utils;
-using System.Linq.Expressions;
 
 namespace CommanderCS.Database.Handlers
 {
@@ -36,28 +33,28 @@ namespace CommanderCS.Database.Handlers
                 Server = server,
                 WorldMapData = new()
                 {
-                  StageReward = new() {
-                      {"0", 0 },
-                      {"1", 0 },
-                      {"2", 0 },
-                      {"3", 0 },
-                      {"4", 0 },
-                      {"5", 0 },
-                      {"6", 0 },
-                      {"7", 0 },
-                      {"8", 0 },
-                      {"9", 0 },
-                      {"10", 0 },
-                      {"11", 0 },
-                      {"12", 0 },
-                      {"13", 0 },
-                      {"14", 0 },
-                      {"15", 0 },
-                      {"16", 0 },
-                      {"17", 0 },
-                      {"18", 0 },
-                  },
-                  Stages = WorldMapStages
+                    StageReward = new() {
+                        { "0", 0 },
+                        { "1", 0 },
+                        { "2", 0 },
+                        { "3", 0 },
+                        { "4", 0 },
+                        { "5", 0 },
+                        { "6", 0 },
+                        { "7", 0 },
+                        { "8", 0 },
+                        { "9", 0 },
+                        { "10", 0 },
+                        { "11", 0 },
+                        { "12", 0 },
+                        { "13", 0 },
+                        { "14", 0 },
+                        { "15", 0 },
+                        { "16", 0 },
+                        { "17", 0 },
+                        { "18", 0 },
+                    },
+                    Stages = WorldMapStages
                 },
                 BattleData = new()
                 {
@@ -71,7 +68,40 @@ namespace CommanderCS.Database.Handlers
                 GuildId = null,
                 MemberId = memberId,
                 Notifaction = false,
-                PreDeck = [],
+                PreDeck =
+                [
+                    new()
+                    {
+                        idx = 1,
+                        name = "1",
+                        deckData = []
+                    },
+                    new()
+                    {
+                        idx = 2,
+                        name = "2",
+                        deckData = []
+                    },
+                    new()
+                    {
+                        idx = 3,
+                        name = "3",
+                        deckData = []
+                    },
+                    new()
+                    {
+                        idx = 4,
+                        name = "4",
+                        deckData = []
+                    },
+                    new()
+                    {
+                        idx = 5,
+                        name = "5",
+                        deckData = []
+                    }
+
+                ],
                 TutorialData = new() { skip = false , step = 0 },
                 UserDevice = new() { },
                 UserInventory = new UserInventory(),
@@ -139,11 +169,11 @@ namespace CommanderCS.Database.Handlers
 
         public bool AccountExists(string nickname)
         {
-            return DatabaseCollection.AsQueryable().Where(d => d.UserResources.nickname == nickname).Count() > 0;
+            return DatabaseCollection.AsQueryable().Where(d => d.UserResources.nickname == nickname).Any();
         }
         public bool SessionTokenExists(string session)
         {
-            return DatabaseCollection.AsQueryable().Where(d => d.Session == session).Count() > 0;
+            return DatabaseCollection.AsQueryable().Where(d => d.Session == session).Any();
         }
 
         public GameProfileScheme? FindBySession(string session)
