@@ -156,10 +156,10 @@ namespace CommanderCS.Database.Handlers
 
             var timeDifference = TimeManager.GetTimeDifferenceInMinutes(user.LastLoginTime);
 
-            if(timeDifference < 5)
-            {
-                return ErrorCode.UnableToJoin;
-            }
+            //if(timeDifference < 3)
+            //{
+            //    return ErrorCode.UnableToJoin;
+            //}
 
             DatabaseManager.GameProfile.UpdateOnLogin(@params, session);
             return ErrorCode.Success;

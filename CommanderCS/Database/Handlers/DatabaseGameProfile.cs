@@ -29,6 +29,9 @@ namespace CommanderCS.Database.Handlers
             var worldmapstagesreward = WorldMapStageData.GetInstance().AddDefaultWorldMapIsRewardCollected();
             var WorldMapStages = WorldMapStageData.GetInstance().AddAllStagesAtDefault();
 
+
+            var currTime = TimeManager.CurrentEpoch;
+
             GameProfileScheme user = new()
             {
                 Server = server,
@@ -146,7 +149,7 @@ namespace CommanderCS.Database.Handlers
                 WorldState = 0,
                 // result.worldState != -1;
                 // if exploration is finished id assume
-                LastLoginTime = 0,
+                LastLoginTime = currTime,
                 UserBadges = new()
                 {
                     arena = 0,
@@ -652,6 +655,16 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.ReplaceOne(filter, user);
         }
+
+
+        public void UpdateGuild(int uno, object? guildId)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Uno", uno);
+            var update = Builders<GameProfileScheme>.Update.Set("GuildId", guildId);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
 
         public void UpdateGuildId(int uno, int guildId)
         {

@@ -10,7 +10,6 @@ namespace CommanderCS.Host
     {
         public Method Id { get; set; }
     }
-
     public class ParamsPacket : BasePacket
     {
         [JsonProperty("params")]

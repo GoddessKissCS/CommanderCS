@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.IO.Compression;
+using System.Text;
 using Tival.GZipCompressor;
 
 namespace CommanderCS.Cryptography

@@ -3,7 +3,6 @@ using Newtonsoft.Json.Linq;
 using CommanderCS.Database;
 using CommanderCS.Enum;
 using CommanderCS.Protocols;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CommanderCS.Host.Handlers.Login
 {

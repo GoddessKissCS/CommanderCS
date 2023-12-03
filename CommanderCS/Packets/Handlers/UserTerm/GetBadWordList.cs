@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using CommanderCS.Database.Schemes;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace CommanderCS.Host.Handlers.UserTerm
 {
@@ -8,16 +10,7 @@ namespace CommanderCS.Host.Handlers.UserTerm
         public override object Handle(GetBadWordListRequest @params)
         {
 
-            List<string> en =
-            [
-                "."
-            ];
-
-            // TODO:
-            // Read from a badwordlist file and add them
-            // doesnt need to be done until its done ig
-
-            //var enList = JsonConvert.DeserializeObject<List<string>>($"Resources\\BadWordList\\En.json");
+            List<string> en = ["."];
 
             BadWordListResponse badWord = new()
             {

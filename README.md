@@ -5,6 +5,11 @@ some gacha game emu
 ## Status
 "Urgent" to-dos
 
+### Bugs
+
+Getting kicked out of a guild while the game still thinks you are in one will make unable to continue playing (needs to restart the game) (client-sided issue)
+
+
 ### Progress
 
 TLDR 

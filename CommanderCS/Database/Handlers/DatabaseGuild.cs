@@ -133,6 +133,12 @@ namespace CommanderCS.Database.Handlers
 
             var guildMember = guild.MemberData.Where(member => member.uno == uno).FirstOrDefault();
 
+
+            if (guildMember == null)
+            {
+                return null;
+            }
+
             UserInformationResponse.UserGuild userGuild = new()
             {
                 skillDada = guild.SkillDada,
@@ -329,10 +335,8 @@ namespace CommanderCS.Database.Handlers
 
             switch (act)
             { 
-                case 0:
-                   
+                case 0:                  
                     UpdateGuildName(guild.GuildId, val);
-
                     DatabaseManager.GameProfile.UpdateCash(user.Session, 500, false);
                     break;
                 case 1:
@@ -496,25 +500,41 @@ namespace CommanderCS.Database.Handlers
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
             var update = Builders<GuildScheme>.Update.PullFilter("MemberData", Builders<GuildMember.MemberData>.Filter.Eq("uno", uno));
-
             DatabaseCollection.UpdateOne(filter, update);
 
             var user = DatabaseManager.GameProfile.FindByUno(uno);
-
-            if (user != null)
+            if (user != null && user.GuildId == guildId)
             {
-                user.GuildId = null;
-                DatabaseManager.GameProfile.UpdateProfile(user.Session, user);
+                DatabaseManager.GameProfile.UpdateGuild(uno, null);
             }
 
-            var guildCount = FindByUid(guildId).Count;
-
+            var guildCount = FindByUid(guildId).MemberData.Count;
             var filter2 = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
-            var update2 = Builders<GuildScheme>.Update.Set("Count", guildCount--);
+            var update2 = Builders<GuildScheme>.Update.Set("Count", guildCount);
+            DatabaseCollection.UpdateOne(filter2, update2);
+        }
 
+        public bool RemoveMemberDataByUno(int? guildId, int uno)
+        {
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId) & Builders<GuildScheme>.Filter.ElemMatch("MemberData", Builders<GuildMember.MemberData>.Filter.Eq("uno", uno));
+
+            var update = Builders<GuildScheme>.Update.PullFilter("MemberData", Builders<GuildMember.MemberData>.Filter.Eq("uno", uno));
+
+            var result = DatabaseCollection.UpdateOne(filter, update);
+
+            var user = DatabaseManager.GameProfile.FindByUno(uno);
+
+            if (user != null && user.GuildId == guildId)
+            {
+                DatabaseManager.GameProfile.UpdateGuild(uno, null);
+            }
+
+            var guildCount = FindByUid(guildId).MemberData.Count;
+            var filter2 = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
+            var update2 = Builders<GuildScheme>.Update.Set("Count", guildCount);
             DatabaseCollection.UpdateOne(filter2, update2);
 
-
+            return result.ModifiedCount > 0;
         }
     }
 }

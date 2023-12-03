@@ -90,7 +90,7 @@ namespace CommanderCSLibrary.Utils
             double currentTimeInSeconds = CurrentEpoch;
             double differenceInSeconds = currentTimeInSeconds - timeInSeconds;
 
-            double differenceInMinutes = differenceInSeconds / 60;
+            int differenceInMinutes = (int)(differenceInSeconds / 60);
 
             return differenceInMinutes;
         }
