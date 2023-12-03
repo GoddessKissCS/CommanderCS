@@ -10,8 +10,12 @@ namespace CommanderCS.Packets.Handlers.Guild
     public class CreateGuild : BaseMethodHandler<CreateGuildRequest>
     {
         public override object Handle(CreateGuildRequest @params)
-        {	
-			ResponsePacket response = new()
+        {
+            string session = GetSession();
+
+            var user = GetUserGameProfile();
+
+            ResponsePacket response = new()
 			{
 				Id = BasePacket.Id,
 			};
@@ -21,7 +25,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 ErrorPacket error = new()
                 {
                     Id = BasePacket.Id,
-                    Error = new() { code = ErrorCode.FederationNameContainsBadwordsOrInvalid },
+                    Error = new() { code = ErrorCode.FederationNameContainsBadwordsOrIsInvalid },
                 };
 
                 return error;
@@ -40,17 +44,15 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;   
 				
             } else {
-                string session = GetSession();
 
 				DatabaseManager.GameProfile.UpdateCash(session, 300, false);
 
-				var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
-
 				DatabaseManager.Guild.Create(@params.gnm, @params.emb, @params.gtyp, @params.lvlm, session);
+			
 
-				var user = GetUserGameProfile();
+                var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
 
-				var userguild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+                var userguild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
 				var memberdata = DatabaseManager.Guild.RequestGuildMembers(user.GuildId);
 
@@ -65,9 +67,13 @@ namespace CommanderCS.Packets.Handlers.Guild
             }
 
 			return response;
-
         }
+
+
     }
+
+
+
 
 	public class CreateGuildRequest
 	{

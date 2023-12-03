@@ -7,7 +7,7 @@ namespace CommanderCS.Host.Handlers.Guild
     {
         public override object Handle(GuildListRequest @params)
         {
-            CommanderCS.Protocols.GuildInfo guildList = new()
+            Protocols.GuildInfo guildList = new()
             {
                 resource = null,
                 guildInfo = null,

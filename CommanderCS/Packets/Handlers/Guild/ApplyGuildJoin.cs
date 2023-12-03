@@ -30,7 +30,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 			ResponsePacket response = new()
 			{
 				Id = BasePacket.Id,
-				Result = "okay",
+				Result = "applied",
 			};
 
 			return response;

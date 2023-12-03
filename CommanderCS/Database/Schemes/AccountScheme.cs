@@ -14,7 +14,7 @@ namespace CommanderCS.Database.Schemes
         public long CreationTime { get; set; }
         public int Channel { get; set; }
         public bool? isBanned { get; set; }
-        public string? BanReason { get; set; }
+        public string? BanReason { get; set; } = string.Empty;
         public Clearance Clearance { get; set; }
         public int LastServerLoggedIn { get; set; }
         public Platform Platform { get; set; }

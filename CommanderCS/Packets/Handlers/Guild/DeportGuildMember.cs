@@ -1,5 +1,6 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
+using CommanderCSLibrary.Utils;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -10,10 +11,26 @@ namespace CommanderCS.Packets.Handlers.Guild
         public override object Handle(DeportGuildMemberRequest @params)
         {
             var user = GetUserGameProfile();
+            var guild = GetUserGuild(user.GuildId);
+
+            var target = guild.MemberData.FirstOrDefault(member => member.uno == @params.tuno);
+
+            var difference = TimeManager.GetTimeDifferenceInDays(target.joinDate);
+
+            bool kicked5peopleToday = false;
+
+            if(difference < 1 || kicked5peopleToday == true)
+            {
+                ErrorPacket error = new()
+                {
+                    Error = new() { code = ErrorCode.CanOnlyKickUpTo5MemberWithinADayAndNotOnTheJoinDay },
+                    Id = BasePacket.Id,
+                };
+
+                return error;
+            }
 
             bool isInGuild = DatabaseManager.Guild.IsUnoInMemberData(user.GuildId, user.Uno);
-
-#warning add the error checks
 
             bool isntRemoved = DatabaseManager.Guild.RemoveMemberDataByUno(user.GuildId, @params.tuno);
 
@@ -31,7 +48,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = "accepted",
+                Result = "deported",
             };
 
             return response;

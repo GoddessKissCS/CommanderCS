@@ -1,8 +1,35 @@
+using CommanderCS.Host;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Guild
 {
-    public class GuildDispatchCommanderList
+	[Packet(Id = Method.GuildDispatchCommanderList)]
+    public class GuildDispatchCommanderList : BaseMethodHandler<GuildDispatchCommanderListRequest>
     {
+        public override object Handle(GuildDispatchCommanderListRequest @params)
+        {
+			Protocols.GuildDispatchCommanderList vs = new()
+			{
+				commanderList = [],
+				npcList = [],
+			};
+
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = vs,
+			};
+
+			return response;
+        }
     }
+
+    public class GuildDispatchCommanderListRequest
+    {
+		[JsonProperty("type")] 
+		public int type { get; set; }
+    }
+
 }
 
 /*	// Token: 0x060060C8 RID: 24776 RVA: 0x000120F8 File Offset: 0x000102F8

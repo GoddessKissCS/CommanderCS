@@ -11,7 +11,6 @@ namespace CommanderCS.Packets.Handlers.Guild
         {
             var user = GetUserGameProfile();
 
-
 			int submaster = DatabaseManager.Guild.GetTotalSubMasters(user.GuildId);
 
 			if(submaster > 2)
@@ -20,8 +19,8 @@ namespace CommanderCS.Packets.Handlers.Guild
                 {
                     Error = new() { code = ErrorCode.YouCanOnlyAppointUpTo2SubMaster },
                     Id = BasePacket.Id,
-
                 };
+
                 return error;
             }
 
@@ -33,15 +32,15 @@ namespace CommanderCS.Packets.Handlers.Guild
 				{
 					Error = new() { code = ErrorCode.YouAlreadyLeftTheFederation },
 					Id = BasePacket.Id,
-
 				};
+
 				return error;
 			}
 
 			ResponsePacket response = new()
 			{
 				Id = BasePacket.Id,
-				Result = "added",
+				Result = "appointed",
 			};	
 
 			return response;

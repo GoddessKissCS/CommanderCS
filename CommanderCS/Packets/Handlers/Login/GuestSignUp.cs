@@ -8,9 +8,11 @@ namespace CommanderCS.Host.Handlers.Sign
     {
         public override object Handle(GuestSignUpRequest @params)
         {
+            var name = RequestSignUp(@params.plfm, @params.ch);
+
             GuestSignUpPacket SignUp = new()
             {
-                uid = RequestSignUp(@params.plfm, @params.ch),
+                uid = name,
             };
 
             ResponsePacket response = new()

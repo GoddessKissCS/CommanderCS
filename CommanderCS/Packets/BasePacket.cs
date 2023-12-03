@@ -58,6 +58,11 @@ namespace CommanderCS.Host
             return DatabaseManager.DeviceCode.RequestForChangeDeviceCode(GetUserAccount());
         }
 
+        public GuildScheme GetUserGuild(int? guildId)
+        {
+            return DatabaseManager.Guild.FindByUid(guildId);
+        }
+
     }
 
     public enum Method : int

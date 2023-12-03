@@ -11,7 +11,6 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(SearchGuildRequest @params)
         {
-
 			var session = GetSession();
 
             ResponsePacket response = new()
@@ -28,14 +27,10 @@ namespace CommanderCS.Packets.Handlers.Guild
 			}
 			else
 			{
-				Ro.RoGuild Roguild = new()
-				{
-
-				};
+				Ro.RoGuild Roguild = new() { };
 
 				response.Result = Roguild;
             }
-
 
 			return response;
 
@@ -61,9 +56,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             };
 
             return Roguild;
-
         }
-
     }
 
 	public class SearchGuildRequest

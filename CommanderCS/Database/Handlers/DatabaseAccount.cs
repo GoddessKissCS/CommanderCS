@@ -12,16 +12,18 @@ namespace CommanderCS.Database.Handlers
 {
     public class DatabaseAccount : DatabaseTable<AccountScheme>
     {
-        public DatabaseAccount() : base("Account")
-        {
-        }
+        public DatabaseAccount() : base("Account") { }
 
         public AccountScheme Create(string name = "", string password = "", int platformid = 0, int channel = 0)
         {
-            AccountScheme? tryUser = DatabaseCollection.AsQueryable().Where(d => d.Name == name).FirstOrDefault();
-            if (tryUser != null) { return tryUser; }
+            AccountScheme existingUser = DatabaseCollection.AsQueryable().Where(d => d.Name == name).FirstOrDefault();
 
-            int memberId = DatabaseManager.AutoIncrements.GetNextNumber("MemberId", 1000);
+            if (existingUser != null)
+            {
+                return existingUser;
+            }
+
+            int memberId = DatabaseManager.AutoIncrements.GetNextNumber("MemberId");
 
             var CurrTimeStamp = TimeManager.CurrentEpoch;
 
@@ -32,8 +34,7 @@ namespace CommanderCS.Database.Handlers
                 Channel = channel,
                 CreationTime = CurrTimeStamp,
                 LastLoginTime = CurrTimeStamp,
-                isBanned = null,
-                BanReason = null,
+                isBanned = false,
                 LastServerLoggedIn = 1,
                 Platform = (Platform)platformid,
             };
@@ -61,11 +62,6 @@ namespace CommanderCS.Database.Handlers
         public AccountScheme? FindByUid(int memberId)
         {
             return DatabaseCollection.AsQueryable().Where(d => d.MemberId == memberId).FirstOrDefault();
-        }
-
-        public AccountScheme? FindByUid(string memberId)
-        {
-            return DatabaseCollection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).FirstOrDefault();
         }
 
         public bool AccountExists(string accountName)
@@ -112,7 +108,6 @@ namespace CommanderCS.Database.Handlers
             var update = Builders<AccountScheme>.Update.Set("PlatformId", platformId).Set("Channel", channel);
 
             DatabaseCollection.UpdateOne(filter, update);
-
         }
 
         public void UpdateLoginTime(int id)
@@ -154,7 +149,7 @@ namespace CommanderCS.Database.Handlers
                 return ErrorCode.BannedOrSuspended;
             }
 
-            var timeDifference = TimeManager.GetTimeDifferenceInMinutes(user.LastLoginTime);
+            //var timeDifference = TimeManager.GetTimeDifferenceInMinutes(user.LastLoginTime);
 
             //if(timeDifference < 3)
             //{
@@ -203,8 +198,8 @@ namespace CommanderCS.Database.Handlers
 
             var options = new FindOneAndUpdateOptions<AccountScheme>
             {
-                ReturnDocument = ReturnDocument.After, // Returns the updated document
-                IsUpsert = false // Ensures that a new document is not created if the filter does not match any document
+                ReturnDocument = ReturnDocument.After,
+                IsUpsert = false
             };
 
             var updatedAccount = DatabaseCollection.FindOneAndUpdate(filter, update, options);

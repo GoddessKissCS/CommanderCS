@@ -56,7 +56,7 @@ namespace CommanderCS.Database.Schemes
 
     public class UserBattleStatistics
     {
-        public int TotalGold { get; set; }
+        public int TotalGold { get; set; } = 100000;
         public int PveWinCount { get; set; }
         public int PveLoseCount { get; set; }
         public int PvpWinCount { get; set; }
@@ -88,45 +88,45 @@ namespace CommanderCS.Database.Schemes
 
     public class UserResources
     {
-        public string nickname { get; set; }
-        public int annCoin { get; set; }
-        public int BlackChallenge { get; set; }
-        public int blueprintArmy { get; set; }
-        public int blueprintNavy { get; set; }
-        public int bullet { get; set; }
-        public int cash { get; set; }
-        public int challenge { get; set; }
-        public int challengeCoin { get; set; }
-        public int chip { get; set; }
-        public int commanderGift { get; set; }
-        public int commanderPromotionPoint { get; set; }
-        public int eventRaidTicket { get; set; }
-        public int exp { get; set; }
-        public int explorationTicket { get; set; }
-        public int gold { get; set; }
-        public int guildCoin { get; set; }
-        public int honor { get; set; }
-        public int level { get; set; }
-        public int oil { get; set; }
-        public int opcon { get; set; }
-        public int opener { get; set; }
-        public int raidCoin { get; set; }
-        public int ring { get; set; }
-        public int sweepTicket { get; set; }
-        public int thumbnailId { get; set; }
-        public int vipExp { get; set; }
-        public int vipLevel { get; set; }
-        public int waveDuelCoin { get; set; }
-        public int waveDuelTicket { get; set; }
-        public int weaponImmediateTicket { get; set; }
-        public int weaponMakeTicket { get; set; }
-        public int weaponMaterial1 { get; set; }
-        public int weaponMaterial2 { get; set; }
-        public int weaponMaterial3 { get; set; }
-        public int weaponMaterial4 { get; set; }
-        public int worldDuelCoin { get; set; }
-        public int worldDuelTicket { get; set; }
-        public int worldDuelUpgradeCoin { get; set; }
+        public string nickname { get; set; } = string.Empty;
+        public int annCoin { get; set; } = 0;
+        public int BlackChallenge { get; set; } = 0;
+        public int blueprintArmy { get; set; } = 0;
+        public int blueprintNavy { get; set; } = 0;
+        public int bullet { get; set; } = 1500;
+        public int cash { get; set; } = 500;
+        public int challenge { get; set; } = 0;
+        public int challengeCoin { get; set; } = 0;
+        public int chip { get; set; } = 0;
+        public int commanderGift { get; set; } = 0;
+        public int commanderPromotionPoint { get; set; } = 0;
+        public int eventRaidTicket { get; set; } = 0;
+        public int exp { get; set; } = 0;
+        public int explorationTicket { get; set; } = 0;
+        public int gold { get; set; } = 100000;
+        public int guildCoin { get; set; } = 0;
+        public int honor { get; set; } = 0;
+        public int level { get; set; } = 1;
+        public int oil { get; set; } = 0;
+        public int opcon { get; set; } = 0;
+        public int opener { get; set; } = 0;
+        public int raidCoin { get; set; } = 0;
+        public int ring { get; set; } = 0;
+        public int sweepTicket { get; set; } = 0;
+        public int thumbnailId { get; set; } = 1001;
+        public int vipExp { get; set; } = 0;
+        public int vipLevel { get; set; } = 0;
+        public int waveDuelCoin { get; set; } = 0;
+        public int waveDuelTicket { get; set; } = 0;
+        public int weaponImmediateTicket { get; set; } = 0;
+        public int weaponMakeTicket { get; set; } = 0;
+        public int weaponMaterial1 { get; set; } = 0;
+        public int weaponMaterial2 { get; set; } = 0;
+        public int weaponMaterial3 { get; set; } = 0;
+        public int weaponMaterial4 { get; set; } = 0;
+        public int worldDuelCoin { get; set; } = 0;
+        public int worldDuelTicket { get; set; } = 0;
+        public int worldDuelUpgradeCoin { get; set; } = 0;
     }
 
     public class UserInventory

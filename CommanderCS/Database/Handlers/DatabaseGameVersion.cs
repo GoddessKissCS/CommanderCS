@@ -22,6 +22,7 @@ namespace CommanderCS.Database.Handlers
                 enableGoogleLogin = gglogin,
                 showPolicy = policy,
                 Version_State = stat,
+                // probably should add more "word lists"
                 Word = new()
                 {
                     { "en", 1 }

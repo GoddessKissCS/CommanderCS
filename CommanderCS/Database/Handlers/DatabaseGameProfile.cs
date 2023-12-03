@@ -12,23 +12,22 @@ namespace CommanderCS.Database.Handlers
 {
     public class DatabaseGameProfile : DatabaseTable<GameProfileScheme>
     {
-        public DatabaseGameProfile() : base("GameProfile")
-        {
-        }
+        public DatabaseGameProfile() : base("GameProfile") { }
 
         public GameProfileScheme? GetOrCreate(int memberId, int server)
         {
-            var tryUser = DatabaseCollection.AsQueryable()
-                       .Where(d => d.Server == server && d.MemberId == memberId)
-                       .FirstOrDefault();
+            var existingUser = DatabaseCollection.AsQueryable()
+                .Where(d => d.Server == server && d.MemberId == memberId)
+                .FirstOrDefault();
 
-            if (tryUser != null) { return tryUser; }
+            if (existingUser != null)
+            {
+                return existingUser;
+            }
 
-            int uno = DatabaseManager.AutoIncrements.GetNextNumber("UNO", 1000);
+            int uno = DatabaseManager.AutoIncrements.GetNextNumber("UNO");
 
-            var worldmapstagesreward = WorldMapStageData.GetInstance().AddDefaultWorldMapIsRewardCollected();
             var WorldMapStages = WorldMapStageData.GetInstance().AddAllStagesAtDefault();
-
 
             var currTime = TimeManager.CurrentEpoch;
 
@@ -37,7 +36,27 @@ namespace CommanderCS.Database.Handlers
                 Server = server,
                 WorldMapData = new()
                 {
-                  StageReward = worldmapstagesreward,
+                  StageReward = new() {
+                      {"0", 0 },
+                      {"1", 0 },
+                      {"2", 0 },
+                      {"3", 0 },
+                      {"4", 0 },
+                      {"5", 0 },
+                      {"6", 0 },
+                      {"7", 0 },
+                      {"8", 0 },
+                      {"9", 0 },
+                      {"10", 0 },
+                      {"11", 0 },
+                      {"12", 0 },
+                      {"13", 0 },
+                      {"14", 0 },
+                      {"15", 0 },
+                      {"16", 0 },
+                      {"17", 0 },
+                      {"18", 0 },
+                  },
                   Stages = WorldMapStages
                 },
                 BattleData = new()
@@ -45,37 +64,7 @@ namespace CommanderCS.Database.Handlers
                     SweepClearData = []
                 },
                 LastStage = 0,
-                UserStatistics = new()
-                {
-                    StageClearCount = 0,
-                    SweepClearCount = 0,
-                    PreWinStreak = 0,
-                    RaidHighScore = 0,
-                    VipShopResetTime = 0,
-                    weaponMakeSlotCount = 0,
-                    VipShop = 0,
-                    WinStreak = 0,
-                    ArenaHighRank = 0,
-                    WinMostStreak = 0,
-                    ArmyCommanderDestroyCount = 0,
-                    ArmyUnitDestroyCount = 0,
-                    CommanderDestroyCount = 0,
-                    firstPayment = 0,
-                    NavyCommanderDestroyCount = 0,
-                    NavyUnitDestroyCount = 0,
-                    NormalGachaCount = 0,
-                    PredeckCount = 0,
-                    PremiumGachaCount = 0,
-                    PveLoseCount = 0,
-                    PveWinCount = 0,
-                    PvpLoseCount = 0,
-                    PvpWinCount = 0,
-                    RaidHighRank = 0,
-                    TotalGold = 100000,
-                    TotalPlunderGold = 0,
-                    UnitDestroyCount = 0,
-                    weaponInventoryCount = 0,
-                },
+                UserStatistics = new() { },
                 CommanderData = [],
                 CompleteRewardGroupIdx = [],
                 DispatchedCommanders = null,
@@ -83,68 +72,11 @@ namespace CommanderCS.Database.Handlers
                 MemberId = memberId,
                 Notifaction = false,
                 PreDeck = [],
-                TutorialData = new()
-                {
-                    skip = false,
-                    step = 0
-                },
-                UserDevice = new()
-                {
-                },
-                UserInventory = new()
-                {
-                    equipItem = [],
-                    donHaveCommCostumeData = [],
-                    eventResourceData = [],
-                    groupItemData = [],
-                    foodData = [],
-                    itemData = [],
-                    medalData = [],
-                    partData = [],
-                    weaponList = []
-                },
+                TutorialData = new() { skip = false , step = 0 },
+                UserDevice = new() { },
+                UserInventory = new UserInventory(),
                 ResetDateTime = 0,
-                UserResources = new()
-                {
-                    sweepTicket = 0,
-                    annCoin = 0,
-                    BlackChallenge = 0,
-                    blueprintArmy = 0,
-                    blueprintNavy = 0,
-                    bullet = 500,
-                    cash = 500,
-                    challenge = 0,
-                    challengeCoin = 0,
-                    chip = 0,
-                    commanderGift = 0,
-                    commanderPromotionPoint = 0,
-                    eventRaidTicket = 0,
-                    exp = 0,
-                    gold = 100000,
-                    explorationTicket = 0,
-                    guildCoin = 0,
-                    honor = 0,
-                    level = 1,
-                    opcon = 0,
-                    oil = 0,
-                    opener = 0,
-                    raidCoin = 0,
-                    ring = 0,
-                    thumbnailId = 1001,
-                    vipExp = 0,
-                    vipLevel = 0,
-                    waveDuelCoin = 0,
-                    weaponImmediateTicket = 0,
-                    waveDuelTicket = 0,
-                    weaponMakeTicket = 0,
-                    weaponMaterial1 = 0,
-                    weaponMaterial2 = 0,
-                    weaponMaterial3 = 0,
-                    weaponMaterial4 = 0,
-                    worldDuelCoin = 0,
-                    worldDuelTicket = 0,
-                    worldDuelUpgradeCoin = 0,
-                },
+                UserResources = new() { },
                 Uno = uno,
                 WorldState = 0,
                 // result.worldState != -1;
@@ -174,15 +106,7 @@ namespace CommanderCS.Database.Handlers
                     ercnt = 0,
                     iftw = 0,
                 },
-                VipRechargeData =
-                [
-                    new()
-                    {
-                        count = 0,
-                        idx = 601,
-                        mid = 0,
-                    }
-                ],
+                VipRechargeData = [new(){count = 0, idx = 601,mid = 0, }],
                 BlockedUsers = [],
                 BoughtCashShopItems = [],
                 Session = string.Empty,
@@ -190,9 +114,9 @@ namespace CommanderCS.Database.Handlers
                 DailyBonusCheck = [],
             };
 
-            DatabaseManager.Dormitory.Create(uno);
-
             DatabaseCollection.InsertOne(user);
+
+            DatabaseManager.Dormitory.Create(uno);          
 
             return user;
         }
@@ -216,6 +140,10 @@ namespace CommanderCS.Database.Handlers
         public bool AccountExists(string nickname)
         {
             return DatabaseCollection.AsQueryable().Where(d => d.UserResources.nickname == nickname).Count() > 0;
+        }
+        public bool SessionTokenExists(string session)
+        {
+            return DatabaseCollection.AsQueryable().Where(d => d.Session == session).Count() > 0;
         }
 
         public GameProfileScheme? FindBySession(string session)
@@ -343,6 +271,55 @@ namespace CommanderCS.Database.Handlers
 
             return resource;
         }
+
+        public UserInformationResponse.Resource? UserResources2Resource(UserResources resources)
+        {
+            UserInformationResponse.Resource resource = new()
+            {
+                __nickname = resources.nickname,
+                __annCoin = Convert.ToString(resources.annCoin),
+                __level = Convert.ToString(resources.level),
+                __blackChallenge = Convert.ToString(resources.BlackChallenge),
+                __blueprintArmy = Convert.ToString(resources.blueprintArmy),
+                __blueprintNavy = Convert.ToString(resources.blueprintNavy),
+                __bullet = Convert.ToString(resources.bullet),
+                __cash = Convert.ToString(resources.cash),
+                __challenge = Convert.ToString(resources.challenge),
+                __challengeCoin = Convert.ToString(resources.challengeCoin),
+                __chip = Convert.ToString(resources.chip),
+                __commanderGift = Convert.ToString(resources.commanderGift),
+                __commanderPromotionPoint = Convert.ToString(resources.commanderPromotionPoint),
+                __eventRaidTicket = Convert.ToString(resources.eventRaidTicket),
+                __exp = Convert.ToString(resources.exp),
+                __explorationTicket = Convert.ToString(resources.explorationTicket),
+                __gold = Convert.ToString(resources.gold),
+                __guildCoin = Convert.ToString(resources.guildCoin),
+                __honor = Convert.ToString(resources.honor),
+                __oil = Convert.ToString(resources.oil),
+                __opcon = Convert.ToString(resources.opcon),
+                __opener = Convert.ToString(resources.opener),
+                __raidCoin = Convert.ToString(resources.raidCoin),
+                __ring = Convert.ToString(resources.ring),
+                __sweepTicket = Convert.ToString(resources.sweepTicket),
+                __thumbnailId = Convert.ToString(resources.thumbnailId),
+                __vipExp = Convert.ToString(resources.vipExp),
+                __vipLevel = Convert.ToString(resources.vipLevel),
+                __waveDuelCoin = Convert.ToString(resources.waveDuelCoin),
+                __waveDuelTicket = Convert.ToString(resources.waveDuelTicket),
+                __weaponImmediateTicket = Convert.ToString(resources.weaponImmediateTicket),
+                __weaponMakeTicket = Convert.ToString(resources.weaponMakeTicket),
+                __weaponMaterial1 = Convert.ToString(resources.weaponMaterial1),
+                __weaponMaterial2 = Convert.ToString(resources.weaponMaterial2),
+                __weaponMaterial3 = Convert.ToString(resources.weaponMaterial3),
+                __weaponMaterial4 = Convert.ToString(resources.weaponMaterial4),
+                __worldDuelCoin = Convert.ToString(resources.worldDuelCoin),
+                __worldDuelTicket = Convert.ToString(resources.worldDuelTicket),
+                __worldDuelUpgradeCoin = Convert.ToString(resources.worldDuelUpgradeCoin),
+            };
+
+            return resource;
+        }
+
 
         public void UpdateUserResources(string session, UserResources resources)
         {

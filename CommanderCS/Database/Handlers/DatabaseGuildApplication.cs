@@ -9,9 +9,7 @@ namespace CommanderCS.Database.Handlers
 {
     public class DatabaseGuildApplication : DatabaseTable<GuildApplicationScheme>
     {
-        public DatabaseGuildApplication() : base("GuildApplications")
-        {
-        }
+        public DatabaseGuildApplication() : base("GuildApplications") { }
         public ErrorCode CreateGuildApplication(string session, int guildIdx)
         {
             if(CheckIfAnyApplicationExists(session) == "reg")
@@ -91,19 +89,6 @@ namespace CommanderCS.Database.Handlers
             if (tryGuild != null) { return "reg"; }
 
             return string.Empty;
-        }
-        public bool DeleteGuildApplication(string session, int guildIdx)
-        {
-            var user = DatabaseManager.GameProfile.FindBySession(session);
-
-            if (user == null) { }
-
-            var filter = Builders<GuildApplicationScheme>.Filter.And(Builders<GuildApplicationScheme>.Filter.Eq("Uno", user.Uno),
-                         Builders<GuildApplicationScheme>.Filter.Eq("GuildId", guildIdx));
-
-            var result = DatabaseCollection.DeleteOne(filter);
-
-            return result.DeletedCount > 0;
         }
 
         public bool DeleteGuildApplication(int uno, int guildIdx)

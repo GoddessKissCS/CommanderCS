@@ -55,7 +55,7 @@ namespace CommanderCS.Host
         InsufficientEnergy = 21006,
         InsufficientParticipationEntries = 21007, // Those migh be swapped
         FederationNameAlreadyExists = 71005,
-        FederationNameContainsBadwordsOrInvalid = 71009,
+        FederationNameContainsBadwordsOrIsInvalid = 71009,
         CannotProceedWithConquestBattleAtThisTime = 71501,
         InappropriateWordsInGuildBoardMessage = 71131,
         FederationSettingsChangedRecently = 71007,

@@ -5,9 +5,7 @@ namespace CommanderCS.Database.Handlers
 {
     public class DatabaseGameTableVersion : DatabaseTable<DatabaseVersionScheme>
     {
-        public DatabaseGameTableVersion() : base("GameTableVersion")
-        {
-        }
+        public DatabaseGameTableVersion() : base("GameTableVersion") { }
 
         public DatabaseVersionScheme Insert(double version)
         {
