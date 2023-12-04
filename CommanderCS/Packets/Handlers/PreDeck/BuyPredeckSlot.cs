@@ -8,9 +8,9 @@ namespace CommanderCS.Packets.Handlers.PreDeck
 	[Packet(Id = Method.BuyPredeckSlot)]
     public class BuyPredeckSlot : BaseMethodHandler<BuyPredeckSlotRequest>
     {
-		private int openCost = 1200;
-		private int addOpenCost = 200;
-		private int basePredeckCount = 5;
+		private readonly int openCost = 1200;
+		private readonly int addOpenCost = 200;
+		private readonly int basePredeckCount = 5;
 
         public override object Handle(BuyPredeckSlotRequest @params)
         {
@@ -26,7 +26,7 @@ namespace CommanderCS.Packets.Handlers.PreDeck
             user = GetUserGameProfile();
             var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
             var battlestats = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(user.UserStatistics);
-            var guild = DatabaseManager.Guild. (user.GuildId, user.Uno);
+            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
             UserInformationResponse userInformationResponse = new()
             {
