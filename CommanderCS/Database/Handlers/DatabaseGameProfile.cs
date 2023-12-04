@@ -4,6 +4,7 @@ using CommanderCS.Host.Handlers.Login;
 using CommanderCS.ExcelReader;
 using CommanderCS.Protocols;
 using CommanderCSLibrary.Utils;
+using static CommanderCS.Protocols.UserInformationResponse;
 
 namespace CommanderCS.Database.Handlers
 {
@@ -72,32 +73,32 @@ namespace CommanderCS.Database.Handlers
                 [
                     new()
                     {
+                        idx = 0,
+                        name = "Deck 1",
+                        deckData = []
+                    },
+                    new()
+                    {
                         idx = 1,
-                        name = "1",
+                        name = "Deck 2",
                         deckData = []
                     },
                     new()
                     {
                         idx = 2,
-                        name = "2",
+                        name = "Deck 3",
                         deckData = []
                     },
                     new()
                     {
                         idx = 3,
-                        name = "3",
+                        name = "Deck 4",
                         deckData = []
                     },
                     new()
                     {
                         idx = 4,
-                        name = "4",
-                        deckData = []
-                    },
-                    new()
-                    {
-                        idx = 5,
-                        name = "5",
+                        name = "Deck 5",
                         deckData = []
                     }
 
@@ -136,7 +137,7 @@ namespace CommanderCS.Database.Handlers
                     ercnt = 0,
                     iftw = 0,
                 },
-                VipRechargeData = [new(){count = 0, idx = 601,mid = 0, }],
+                VipRechargeData = [ new(){ count = 0, idx = 601, mid = 0 }],
                 BlockedUsers = [],
                 BoughtCashShopItems = [],
                 Session = string.Empty,
@@ -161,10 +162,8 @@ namespace CommanderCS.Database.Handlers
             {
                 return tryUser;
             }
-            else
-            {
-                return GetOrCreate(memberId, server);
-            }
+
+            return GetOrCreate(memberId, server);
         }
 
         public bool AccountExists(string nickname)
@@ -213,11 +212,11 @@ namespace CommanderCS.Database.Handlers
         }
 
 
-        public UserInformationResponse.BattleStatistics UserStatisticsFromSession(string session)
+        public BattleStatistics UserStatisticsFromSession(string session)
         {
             var statistics = FindBySession(session).UserStatistics;
 
-            UserInformationResponse.BattleStatistics BattleStatisticstis = new()
+            BattleStatistics BattleStatisticstis = new()
             {
                 navyCommanderDestroyCount = statistics.NavyCommanderDestroyCount,
                 stageClearCount = statistics.StageClearCount,
@@ -252,11 +251,48 @@ namespace CommanderCS.Database.Handlers
             return BattleStatisticstis;
         }
 
-        public UserInformationResponse.Resource? UserResourcesFromSession(string session)
+        public BattleStatistics UserStatistics2BattleStatistics(UserBattleStatistics statistics)
+        {
+            BattleStatistics BattleStatisticstis = new()
+            {
+                navyCommanderDestroyCount = statistics.NavyCommanderDestroyCount,
+                stageClearCount = statistics.StageClearCount,
+                sweepClearCount = statistics.SweepClearCount,
+                preWinStreak = statistics.PreWinStreak,
+                raidHighScore = statistics.RaidHighScore,
+                vipShop = statistics.VipShop,
+                vipShopResetTime = statistics.VipShopResetTime,
+                weaponMakeSlotCount = statistics.weaponMakeSlotCount,
+                winMostStreak = statistics.WinMostStreak,
+                winStreak = statistics.WinStreak,
+                arenaHighRank = statistics.ArenaHighRank,
+                armyCommanderDestroyCount = statistics.ArmyCommanderDestroyCount,
+                armyUnitDestroyCount = statistics.ArmyUnitDestroyCount,
+                commanderDestroyCount = statistics.CommanderDestroyCount,
+                firstPayment = statistics.firstPayment,
+                navyUnitDestroyCount = statistics.NavyUnitDestroyCount,
+                normalGachaCount = statistics.NormalGachaCount,
+                predeckCount = statistics.PredeckCount,
+                premiumGachaCount = statistics.PremiumGachaCount,
+                pveLoseCount = statistics.PveLoseCount,
+                pveWinCount = statistics.PveWinCount,
+                pvpLoseCount = statistics.PvpLoseCount,
+                pvpWinCount = statistics.PvpWinCount,
+                raidHighRank = statistics.RaidHighRank,
+                totalGold = statistics.TotalGold,
+                totalPlunderGold = statistics.TotalPlunderGold,
+                weaponInventoryCount = statistics.weaponInventoryCount,
+                unitDestroyCount = statistics.UnitDestroyCount,
+            };
+
+            return BattleStatisticstis;
+        }
+
+        public Resource? UserResourcesFromSession(string session)
         {
             var resources = FindBySession(session).UserResources;
 
-            UserInformationResponse.Resource resource = new()
+            Resource resource = new()
             {
                 __nickname = resources.nickname,
                 __annCoin = Convert.ToString(resources.annCoin),
@@ -302,9 +338,9 @@ namespace CommanderCS.Database.Handlers
             return resource;
         }
 
-        public UserInformationResponse.Resource? UserResources2Resource(UserResources resources)
+        public Resource? UserResources2Resource(UserResources resources)
         {
-            UserInformationResponse.Resource resource = new()
+            Resource resource = new()
             {
                 __nickname = resources.nickname,
                 __annCoin = Convert.ToString(resources.annCoin),
@@ -681,5 +717,32 @@ namespace CommanderCS.Database.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        public void UpdatePreDeck(string session, List<PreDeck> preDecks)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
+            var update = Builders<GameProfileScheme>.Update.Set("PreDeck", preDecks);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        public void AddEmptyPreDeckSlot(string session, int preDeckCount)
+        {
+            string preDeckDefaultName = string.Format("Deck {0}", preDeckCount + 1);
+
+            PreDeck emptyPreDeck = new()
+            {
+                idx = preDeckCount,
+                name = preDeckDefaultName,
+                deckData = []
+            };
+
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
+            var update = Builders<GameProfileScheme>.Update.Push("PreDeck", emptyPreDeck);
+            DatabaseCollection.UpdateOne(filter, update);
+
+            var filter2 = Builders<GameProfileScheme>.Filter.Eq("Session", session);
+            var update2 = Builders<GameProfileScheme>.Update.Set("UserStatistics.PredeckCount", preDeckCount + 1); // Adjusted to use (idx + 1)
+            DatabaseCollection.UpdateOne(filter2, update2);
+        }
     }
 }
