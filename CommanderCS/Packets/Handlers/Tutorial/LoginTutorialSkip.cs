@@ -1,6 +1,4 @@
 ﻿using CommanderCS.Database;
-using CommanderCS.ExcelReader;
-using CommanderCS.Host.Handlers.Commander;
 using CommanderCS.Protocols;
 using Newtonsoft.Json;
 
@@ -13,11 +11,13 @@ namespace CommanderCS.Host.Handlers.Tutorial
         {
             var session = GetSession();
 
-            UserInformationResponse.TutorialData TData = RequestTutorialData(session, Convert.ToBoolean(@params.skip));
+            UserInformationResponse.TutorialData tutorialData = new() { skip = Convert.ToBoolean(@params.skip), step = 12 };
+
+            DatabaseManager.GameProfile.UpdateTutorialData(session, tutorialData);
 
             TutorialStep lts = new()
             {
-                ttrl = TData,
+                ttrl = tutorialData,
             };
 
             ResponsePacket response = new()
@@ -27,15 +27,6 @@ namespace CommanderCS.Host.Handlers.Tutorial
             };
 
             return response;
-        }
-
-        private static UserInformationResponse.TutorialData RequestTutorialData(string session, bool skipTutorial)
-        {
-            UserInformationResponse.TutorialData tutorialData = new() { skip = skipTutorial, step = 12 };
-
-            DatabaseManager.GameProfile.UpdateTutorialData(session, tutorialData);
-
-            return tutorialData;
         }
 
         private class TutorialStep

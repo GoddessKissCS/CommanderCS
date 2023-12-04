@@ -9,11 +9,11 @@ namespace CommanderCS.Host.Handlers.Tutorial
     {
         public override object Handle(GetTutorialStepRequest @params)
         {
-            UserInformationResponse.TutorialData tutorialData = RequestTutorialData(GetSession());
+            var user = GetUserGameProfile();
 
             TutorialStep tutorialStep = new()
             {
-                ttrl = tutorialData
+                ttrl = user.TutorialData,
             };
 
             ResponsePacket response = new()
@@ -23,13 +23,6 @@ namespace CommanderCS.Host.Handlers.Tutorial
             };
 
             return response;
-        }
-
-        private static UserInformationResponse.TutorialData RequestTutorialData(string sess)
-        {
-            var user = DatabaseManager.GameProfile.FindBySession(sess).TutorialData;
-
-            return user;
         }
 
         public class TutorialStep

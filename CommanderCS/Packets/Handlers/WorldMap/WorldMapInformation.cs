@@ -10,9 +10,10 @@ namespace CommanderCS.Host.Handlers.WorldMap
         {
             var user = GetUserGameProfile();
 
-            user.WorldMapData.Stages.TryGetValue(@params.world.ToString(), out List<WorldMapInformationResponse> stages);
+            string worldId = @params.world.ToString();
 
-            user.WorldMapData.StageReward.TryGetValue(@params.world.ToString(), out int isRewardCollected);
+            user.WorldMapData.Stages.TryGetValue(worldId, out List<WorldMapInformationResponse> stages);
+            user.WorldMapData.StageReward.TryGetValue(worldId, out int isRewardCollected);
 
             WorldMapResponse worldmap = new()
             {
