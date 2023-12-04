@@ -10,7 +10,9 @@ namespace CommanderCS.Database.Handlers
 {
     public class DatabaseGameProfile : DatabaseTable<GameProfileScheme>
     {
-        public DatabaseGameProfile() : base("GameProfile") { }
+        public DatabaseGameProfile() : base("GameProfile")
+        {
+        }
 
         public GameProfileScheme? GetOrCreate(int memberId, int server)
         {
@@ -101,7 +103,6 @@ namespace CommanderCS.Database.Handlers
                         name = "Deck 5",
                         deckData = []
                     }
-
                 ],
                 TutorialData = new() { skip = false, step = 0 },
                 UserDevice = new() { },
@@ -144,7 +145,11 @@ namespace CommanderCS.Database.Handlers
                 MailDataList = [],
                 DailyBonusCheck = [],
                 PvPDefenderDeck = [],
-                RankingUserData = new(),
+                RankingData = new()
+                {
+                    PvPDuelRankingData = new(),
+                    WaveDuelRankingData = new()
+                },
             };
 
             DatabaseCollection.InsertOne(user);
@@ -172,6 +177,7 @@ namespace CommanderCS.Database.Handlers
         {
             return DatabaseCollection.AsQueryable().Where(d => d.UserResources.nickname == nickname).Any();
         }
+
         public bool SessionTokenExists(string session)
         {
             return DatabaseCollection.AsQueryable().Where(d => d.Session == session).Any();
@@ -199,6 +205,7 @@ namespace CommanderCS.Database.Handlers
         {
             return DatabaseCollection.AsQueryable().Where(d => d.UserResources.nickname == nickname).FirstOrDefault();
         }
+
         public List<GameProfileScheme> FindByMemberIdList(string memberId)
         {
             return DatabaseCollection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).ToList();
@@ -212,7 +219,6 @@ namespace CommanderCS.Database.Handlers
 
             return count.ToString();
         }
-
 
         public BattleStatistics UserStatisticsFromSession(string session)
         {
@@ -388,7 +394,6 @@ namespace CommanderCS.Database.Handlers
             return resource;
         }
 
-
         public void UpdateUserResources(string session, UserResources resources)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
@@ -501,7 +506,6 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
-
 
         public void UpdateCommanderDataAndMedalData(string session, Dictionary<string, UserInformationResponse.Commander> commanderList, Dictionary<string, int> medalsdata)
         {
@@ -703,7 +707,6 @@ namespace CommanderCS.Database.Handlers
             DatabaseCollection.ReplaceOne(filter, user);
         }
 
-
         public void UpdateGuild(int uno, object? guildId)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq("Uno", uno);
@@ -711,7 +714,6 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
-
 
         public void UpdateGuildId(int uno, int guildId)
         {

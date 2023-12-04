@@ -29,7 +29,6 @@ namespace CommanderCS.Packets.Handlers.Guild
         [JsonProperty("type")]
         public int type { get; set; }
     }
-
 }
 
 /*	// Token: 0x060060C8 RID: 24776 RVA: 0x000120F8 File Offset: 0x000102F8

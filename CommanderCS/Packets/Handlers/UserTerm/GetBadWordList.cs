@@ -7,7 +7,6 @@ namespace CommanderCS.Host.Handlers.UserTerm
     {
         public override object Handle(GetBadWordListRequest @params)
         {
-
             List<string> en = ["."];
 
             BadWordListResponse badWord = new()

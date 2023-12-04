@@ -16,7 +16,6 @@ namespace CommanderCS.Host.Handlers.Sign
 
             if (code != ErrorCode.Success)
             {
-
                 ErrorPacket error = new()
                 {
                     Id = BasePacket.Id,

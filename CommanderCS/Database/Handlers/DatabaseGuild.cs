@@ -10,7 +10,9 @@ namespace CommanderCS.Database.Handlers
 {
     public class DatabaseGuild : DatabaseTable<GuildScheme>
     {
-        public DatabaseGuild() : base("Guild ") { }
+        public DatabaseGuild() : base("Guild ")
+        {
+        }
 
         public void Create(string guildname, int emblem, int guildtype, int levellimit, string session)
         {
@@ -102,6 +104,7 @@ namespace CommanderCS.Database.Handlers
         {
             return DatabaseCollection.AsQueryable().Where(d => d.Name == guildName).FirstOrDefault();
         }
+
         public GuildScheme FindByUid(int? guildId)
         {
             return DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
@@ -157,6 +160,7 @@ namespace CommanderCS.Database.Handlers
 
             return userGuild;
         }
+
         public List<GuildMember.MemberData> RequestGuildMembers(int? guildId)
         {
             if (guildId == null)
@@ -196,6 +200,7 @@ namespace CommanderCS.Database.Handlers
 
             return guildMember;
         }
+
         public void UpdateGuildName(int guildId, string newGuildName)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
@@ -204,6 +209,7 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
         public void UpdateGuildEmblem(int guildId, string emblemId)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
@@ -212,6 +218,7 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
         public void UpdateGuildType(int guildId, string guildType)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
@@ -220,6 +227,7 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
         public void UpdateLimitLevel(int guildId, string newLimitLevel)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
@@ -228,6 +236,7 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
         public void UpdateGuildNotice(int guildId, string newGuildNotice)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
@@ -236,6 +245,7 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
         public List<RoGuild> GetAllGuilds(string session)
         {
             var allGuilds = DatabaseCollection.AsQueryable().ToList();
@@ -271,6 +281,7 @@ namespace CommanderCS.Database.Handlers
 
             return returnGuilds;
         }
+
         public List<GuildBoardData> GetGuildBoard(int? guildId, out ErrorCode code)
         {
             GuildScheme? guild = DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
@@ -281,6 +292,7 @@ namespace CommanderCS.Database.Handlers
 
             return guild.BoardListData;
         }
+
         public void AddGuildBoardEntry(int? guildId, GuildBoardData guildBoardData)
         {
             GuildScheme? guild = DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
@@ -301,6 +313,7 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
         public void DeleteGuildBoardEntry(int? guildId, int entryId)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
@@ -309,9 +322,9 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
         public ErrorCode UpdateGuildInfo(int act, string val, string session)
         {
-
             if (Misc.NameCheck(val))
             {
                 return ErrorCode.FederationNameContainsBadwordsOrIsInvalid;
@@ -342,16 +355,20 @@ namespace CommanderCS.Database.Handlers
                     UpdateGuildName(guild.GuildId, val);
                     DatabaseManager.GameProfile.UpdateCash(user.Session, 500, false);
                     break;
+
                 case 1:
                     UpdateGuildEmblem(guild.GuildId, val);
                     DatabaseManager.GameProfile.UpdateCash(user.Session, 100, false);
                     break;
+
                 case 2:
                     UpdateLimitLevel(guild.GuildId, val);
                     break;
+
                 case 3:
                     UpdateGuildType(guild.GuildId, val);
                     break;
+
                 case 4:
                     UpdateGuildNotice(guild.GuildId, val);
                     break;
@@ -359,6 +376,7 @@ namespace CommanderCS.Database.Handlers
 
             return ErrorCode.Success;
         }
+
         public void AddFreeJoinGuildMember(int uno, int guildId)
         {
             var user = DatabaseManager.GameProfile.FindByUno(uno);
@@ -382,7 +400,6 @@ namespace CommanderCS.Database.Handlers
 
             var guild = FindByUid(guildId);
 
-
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
             var update = Builders<GuildScheme>.Update.Push("MemberData", memberData).Set("Count", guild.MemberData.Count + 1);
 
@@ -390,6 +407,7 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
         public void AddGuildMember(int uno, int guildId, GuildMember.MemberData member)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
@@ -406,6 +424,7 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter2, update2);
         }
+
         public bool AppointSubMaster(int uno, int? guildId)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId)
@@ -418,6 +437,7 @@ namespace CommanderCS.Database.Handlers
 
             return result.ModifiedCount > 0;
         }
+
         public int GetTotalSubMasters(int? guildId)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId)
@@ -428,6 +448,7 @@ namespace CommanderCS.Database.Handlers
 
             return (int)count;
         }
+
         public void UpdateGuildPointLevelMaxCount(int? GuildId, GuildScheme guild)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", GuildId);
@@ -436,6 +457,7 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
         public void UpdateGuildSkill(int? guildId, List<UserInformationResponse.UserGuild.GuildSkill> SkillDada, int newPoint)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
@@ -443,6 +465,7 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
         public void CloseDownGuild(int? guildId, double closeTime)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
@@ -450,6 +473,7 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
         public void ResetMemberGrades(int? guildId)
         {
             var filter = Builders<GuildScheme>.Filter.And(
@@ -465,6 +489,7 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateMany(filter, update, updateOptions);
         }
+
         public void AppointNewGuildMaster(int? guildId, int uno, int tuno)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId)
@@ -483,6 +508,7 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filterTuno, updateTuno);
         }
+
         public void UpdateSpecificMemberGrade(int? guildId, int uno, int memberGrade)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId)
@@ -493,6 +519,7 @@ namespace CommanderCS.Database.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
         public bool IsUnoInMemberData(int? guildId, int uno)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId) & Builders<GuildScheme>.Filter.ElemMatch("MemberData", Builders<MemberData>.Filter.Eq("uno", uno));

@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Enum;
+﻿using CommanderCS.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Protocols
 {

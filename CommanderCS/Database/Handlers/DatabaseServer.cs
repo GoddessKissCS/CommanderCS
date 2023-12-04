@@ -5,7 +5,9 @@ namespace CommanderCS.Database.Handlers
 {
     public class DatabaseServer : DatabaseTable<ServerScheme>
     {
-        public DatabaseServer() : base("Server") { }
+        public DatabaseServer() : base("Server")
+        {
+        }
 
         public void Insert(int id, string region, int maxlevel, string maxstage, double openDt, int playercount, int servercount)
         {

@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Utils;
+﻿using CommanderCS.Utils;
+using Newtonsoft.Json;
 
 namespace CommanderCS.ExcelReader
 {
     public class CommanderRankData : BaseExcelReader<CommanderRankData, CommanderRankDataExcel>
     {
-        public override string FileName { get { return "CommanderRankDataTable.json"; } }
+        public override string FileName
+        { get { return "CommanderRankDataTable.json"; } }
 
         public CommanderRankDataExcel? FromRank(string CommanderRank)
         {

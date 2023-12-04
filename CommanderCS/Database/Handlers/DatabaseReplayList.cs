@@ -4,6 +4,8 @@ namespace CommanderCS.Database.Handlers
 {
     public class DatabaseReplayList : DatabaseTable<GuildScheme>
     {
-        public DatabaseReplayList() : base("ReplayList") { }
+        public DatabaseReplayList() : base("ReplayList")
+        {
+        }
     }
 }

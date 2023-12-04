@@ -15,7 +15,6 @@ namespace CommanderCS.Utils
             return isBadWord;
         }
 
-
         public static int GetVipRechargeCount(List<VipRechargeData> vipRechargedata, int key)
         {
             VipRechargeData matchingItem = vipRechargedata.FirstOrDefault(item => item.idx == key);
@@ -34,6 +33,5 @@ namespace CommanderCS.Utils
 
             return vipRechargedata;
         }
-
     }
 }

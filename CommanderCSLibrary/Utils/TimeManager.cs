@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CommanderCSLibrary.Utils
+﻿namespace CommanderCSLibrary.Utils
 {
     public class TimeManager
     {
@@ -84,7 +78,6 @@ namespace CommanderCSLibrary.Utils
             return difference;
         }
 
-
         public static double GetTimeDifferenceInMinutes(double timeInSeconds)
         {
             double currentTimeInSeconds = CurrentEpoch;
@@ -114,6 +107,5 @@ namespace CommanderCSLibrary.Utils
 
             return differenceInDays;
         }
-
     }
 }

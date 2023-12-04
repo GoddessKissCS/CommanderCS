@@ -7,7 +7,9 @@ namespace CommanderCS.Database.Handlers
 {
     public class DatabaseDeviceCode : DatabaseTable<DeviceChangeCodeScheme>
     {
-        public DatabaseDeviceCode() : base("DeviceChangeCode") { }
+        public DatabaseDeviceCode() : base("DeviceChangeCode")
+        {
+        }
 
         public DeviceChangeCodeScheme Create(int id)
         {
@@ -62,6 +64,5 @@ namespace CommanderCS.Database.Handlers
             }
             return devicechange.Code;
         }
-
     }
 }

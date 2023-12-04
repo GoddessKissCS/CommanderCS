@@ -12,7 +12,6 @@ namespace CommanderCS.Packets.Handlers.Commander
             var user = GetUserGameProfile();
             var session = GetSession();
 
-
             // maybe check if you own the costume first?
 
             user.CommanderData["" + @params.cid].currentCostume = @params.cos;
@@ -26,9 +25,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             };
 
             return response;
-
         }
-
     }
 
     public class ChangeCommanderCostumeRequest
@@ -39,7 +36,6 @@ namespace CommanderCS.Packets.Handlers.Commander
         [JsonProperty("tokn")]
         public int cos { get; set; }
     }
-
 }
 
 /*	// Token: 0x0600609A RID: 24730 RVA: 0x000120F8 File Offset: 0x000102F8

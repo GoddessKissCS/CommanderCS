@@ -19,7 +19,6 @@ namespace CommanderCS.Host.Handlers.Profile
                 success = DatabaseManager.GameProfile.ChangeThumbnailId(session, @params.idx);
             }
 
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

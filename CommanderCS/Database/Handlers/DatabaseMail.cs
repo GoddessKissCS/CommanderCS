@@ -4,6 +4,8 @@ namespace CommanderCS.Database.Handlers
 {
     public class DatabaseMail : DatabaseTable<GuildScheme>
     {
-        public DatabaseMail() : base("Mail") { }
+        public DatabaseMail() : base("Mail")
+        {
+        }
     }
 }

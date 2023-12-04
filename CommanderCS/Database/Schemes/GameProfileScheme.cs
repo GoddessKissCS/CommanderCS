@@ -35,7 +35,7 @@ namespace CommanderCS.Database.Schemes
         public List<MailInfo.MailData>? MailDataList { get; set; }
         public List<DailyBonusCheckResponse> DailyBonusCheck { get; set; }
         public Dictionary<string, string> PvPDefenderDeck { get; set; }
-        public RankingUserData RankingUserData { get; set; }
+        public RankingData RankingData { get; set; }
 
         //public List<WaveBattleInfoList.WaveBattleInfo> WaveBattleInfos { get; set; }
     }
@@ -174,6 +174,13 @@ namespace CommanderCS.Database.Schemes
     public class BattleData
     {
         public Dictionary<string, List<int>> SweepClearData { get; set; }
+    }
+
+    public class RankingData
+    {
+        public RankingUserData PvPDuelRankingData { get; set; }
+
+        public RankingUserData WaveDuelRankingData { get; set; }
     }
 
 }

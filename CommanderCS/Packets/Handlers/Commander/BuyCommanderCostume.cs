@@ -44,7 +44,6 @@ namespace CommanderCS.Packets.Handlers.Commander
                 user.UserResources.cash -= costumeData.sellPrice;
             }
 
-
             DatabaseManager.GameProfile.UpdateProfile(session, user);
 
             var goods = DatabaseManager.GameProfile.UserResourcesFromSession(session);
@@ -89,7 +88,6 @@ namespace CommanderCS.Packets.Handlers.Commander
         }
     }
 
-
     public class BuyCommanderCostumeRequest
     {
         [JsonProperty("cid")]
@@ -98,7 +96,6 @@ namespace CommanderCS.Packets.Handlers.Commander
         [JsonProperty("cos")]
         public int cos { get; set; }
     }
-
 }
 
 /*	// Token: 0x06006098 RID: 24728 RVA: 0x000120F8 File Offset: 0x000102F8

@@ -1,16 +1,12 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommanderCS.Utils;
+using Newtonsoft.Json;
 
 namespace CommanderCS.ExcelReader
 {
     public class GuildSkillData : BaseExcelReader<GuildSkillData, GuildSkillExcel>
     {
-        public override string FileName { get { return "GuildSkillDataTable.json"; } }
+        public override string FileName
+        { get { return "GuildSkillDataTable.json"; } }
 
         public GuildSkillExcel? FromSkillLevel(int skilllevel)
         {
@@ -20,7 +16,6 @@ namespace CommanderCS.ExcelReader
 
     public class GuildSkillExcel
     {
-
         [JsonProperty("index")]
         public int index { get; set; }
 
@@ -29,6 +24,7 @@ namespace CommanderCS.ExcelReader
 
         [JsonProperty("skilllevel")]
         public int skilllevel { get; set; }
+
         [JsonProperty("value")]
         public int value { get; set; }
 
@@ -37,11 +33,11 @@ namespace CommanderCS.ExcelReader
 
         [JsonProperty("cost")]
         public int cost { get; set; }
+
         [JsonProperty("name")]
         public int name { get; set; }
 
         [JsonProperty("description")]
         public int description { get; set; }
-
     }
 }

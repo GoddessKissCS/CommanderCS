@@ -13,9 +13,7 @@ namespace CommanderCS.Packets.Handlers.Raid
                 Result = null,
             };
 
-
             CommanderCS.Protocols.PvPRankingList pvPRankingList = new();
-
 
             return response;
         }
@@ -23,7 +21,6 @@ namespace CommanderCS.Packets.Handlers.Raid
 
     public class GetRaidRankListRequest
     {
-
     }
 }
 

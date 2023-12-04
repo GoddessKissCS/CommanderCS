@@ -1,12 +1,13 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Protocols;
+﻿using CommanderCS.Protocols;
 using CommanderCS.Utils;
+using Newtonsoft.Json;
 
 namespace CommanderCS.ExcelReader
 {
     public class CommanderCostumeData : BaseExcelReader<CommanderCostumeData, CommanderCostumeExcel>
     {
-        public override string FileName { get { return "CommanderCostumeDataTable.json"; } }
+        public override string FileName
+        { get { return "CommanderCostumeDataTable.json"; } }
 
         public CommanderCostumeExcel? FromId(int idx)
         {
@@ -72,6 +73,7 @@ namespace CommanderCS.ExcelReader
 
             return commanderDataDict;
         }
+
         public Dictionary<string, UserInformationResponse.Commander> AddSpecificCommander(int commanderID)
         {
             Dictionary<string, UserInformationResponse.Commander> commanderDataDict = new();
@@ -114,6 +116,7 @@ namespace CommanderCS.ExcelReader
 
             return commanderDataDict;
         }
+
         public Dictionary<string, UserInformationResponse.Commander> AddSpecificCommander(Dictionary<string, UserInformationResponse.Commander> commanderDict, int commanderID)
         {
             string path = File.ReadAllText($"Resources\\ExcelOutputAsset\\{FileName}");
@@ -154,6 +157,7 @@ namespace CommanderCS.ExcelReader
 
             return commanderDict;
         }
+
         public Dictionary<string, int> GetAllCommandersMedalsWithDefaultValue()
         {
             Dictionary<string, int> commanderDataDict = new();
@@ -176,6 +180,7 @@ namespace CommanderCS.ExcelReader
 
             return commanderDataDict;
         }
+
         public Dictionary<string, int> AddSpecificCommanderMedals(int commanderId)
         {
             Dictionary<string, int> commanderDataDict = [];

@@ -14,7 +14,6 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             var list = DatabaseManager.Guild.GetGuildBoard(user.GuildId, out ErrorCode code);
 
-
             if (code != ErrorCode.Success)
             {
                 ErrorPacket error = new()
@@ -68,6 +67,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             return response;
         }
     }
+
     public class GetGuildBoardRequest
     {
         [JsonProperty("page")]

@@ -43,11 +43,9 @@ namespace CommanderCS.Packets.Handlers.Guild
         }
     }
 
-
     public class UpgradeGuildLevelRequest
     {
     }
-
 }
 
 /*	// Token: 0x0600604F RID: 24655 RVA: 0x000120F8 File Offset: 0x000102F8

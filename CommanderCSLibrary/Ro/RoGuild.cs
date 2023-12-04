@@ -1,4 +1,3 @@
-using System;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Ro
@@ -39,6 +38,4 @@ namespace CommanderCS.Ro
         [JsonProperty]
         public int world { get; set; }
     }
-
 }
-

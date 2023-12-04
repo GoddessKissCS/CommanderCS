@@ -46,7 +46,6 @@ namespace CommanderCS.Host.Handlers.Guild
                 __commanderInfo = JObject.FromObject(user.CommanderData),
             };
 
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

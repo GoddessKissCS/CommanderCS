@@ -47,7 +47,6 @@ namespace CommanderCS.Packets.Handlers.Profile
                 __commanderInfo = JObject.FromObject(user.CommanderData),
             };
 
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
@@ -55,7 +54,6 @@ namespace CommanderCS.Packets.Handlers.Profile
             };
 
             return response;
-
         }
     }
 

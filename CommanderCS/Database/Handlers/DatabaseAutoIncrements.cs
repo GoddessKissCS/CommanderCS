@@ -5,7 +5,9 @@ namespace CommanderCS.Database.Handlers
 {
     public class DatabaseAutoIncrements : DatabaseTable<AIScheme>
     {
-        public DatabaseAutoIncrements() : base("AutoIncrements") { }
+        public DatabaseAutoIncrements() : base("AutoIncrements")
+        {
+        }
 
         public int GetNextNumber(string name, int starting = 100)
         {

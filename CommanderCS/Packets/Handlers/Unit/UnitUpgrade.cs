@@ -23,7 +23,6 @@ namespace CommanderCS.Packets.Handlers.Unit
         [JsonProperty("idx")]
         public int idx { get; set; }
     }
-
 }
 
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "4304", true, true)]

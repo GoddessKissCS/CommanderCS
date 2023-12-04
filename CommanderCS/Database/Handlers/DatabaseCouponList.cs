@@ -1,4 +1,5 @@
 ﻿namespace CommanderCS.Database.Handlers
 {
-    public class DatabaseCouponList { }
+    public class DatabaseCouponList
+    { }
 }

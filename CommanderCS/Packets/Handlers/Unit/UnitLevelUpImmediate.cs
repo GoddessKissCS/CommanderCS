@@ -8,7 +8,6 @@ namespace CommanderCS.Packets.Handlers.Unit
     {
         public override object Handle(UnitLevelUpImmediateRequest @params)
         {
-
             ResponsePacket response = new()
             {
                 Result = null,
@@ -18,7 +17,6 @@ namespace CommanderCS.Packets.Handlers.Unit
             return response;
         }
     }
-
 
     public class UnitLevelUpImmediateRequest
     {
@@ -31,7 +29,6 @@ namespace CommanderCS.Packets.Handlers.Unit
         [JsonProperty("cash")]
         public int cash { get; set; }
     }
-
 }
 
 /*

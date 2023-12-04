@@ -35,6 +35,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             return response;
         }
     }
+
     public class DelegatingGuildRequest
     {
         [JsonProperty("tuno")]

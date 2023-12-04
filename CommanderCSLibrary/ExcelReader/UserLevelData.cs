@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Utils;
+﻿using CommanderCS.Utils;
+using Newtonsoft.Json;
 
 namespace CommanderCS.ExcelReader
 {
     public class UserLevelData : BaseExcelReader<UserLevelData, UserLevelDataExcel>
     {
-        public override string FileName { get { return "UserLevelDataTable.json"; } }
+        public override string FileName
+        { get { return "UserLevelDataTable.json"; } }
 
         public UserLevelDataExcel? FromLevel(int level)
         {

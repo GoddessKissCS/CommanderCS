@@ -26,7 +26,6 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
@@ -36,6 +35,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             return response;
         }
     }
+
     public class ApplyGuildJoinRequest
     {
         [JsonProperty("gidx")]

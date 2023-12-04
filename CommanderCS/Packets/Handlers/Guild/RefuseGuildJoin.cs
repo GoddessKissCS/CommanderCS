@@ -30,12 +30,12 @@ namespace CommanderCS.Packets.Handlers.Guild
             return response;
         }
     }
+
     public class RefuseGuildJoinRequest
     {
         [JsonProperty("uno")]
         public int uno { get; set; }
     }
-
 }
 
 /*	// Token: 0x0600603B RID: 24635 RVA: 0x000120F8 File Offset: 0x000102F8

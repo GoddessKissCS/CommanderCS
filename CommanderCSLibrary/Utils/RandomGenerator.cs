@@ -1,16 +1,10 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CommanderCSLibrary.Utils
+﻿namespace CommanderCSLibrary.Utils
 {
     public static class RandomGenerator
     {
         private static int SeedCache = (int)TimeManager.CurrentEpoch;
         private static Random SharedPrivate = new(SeedCache);
+
         public static Random Shared
         {
             get
@@ -25,7 +19,6 @@ namespace CommanderCSLibrary.Utils
             }
         }
 
-
         public static List<int> BankRoulletLuck(int spins)
         {
             List<int> luck = [];
@@ -37,6 +30,5 @@ namespace CommanderCSLibrary.Utils
 
             return luck;
         }
-
     }
 }

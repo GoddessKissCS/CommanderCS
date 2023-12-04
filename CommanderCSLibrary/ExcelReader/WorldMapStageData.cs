@@ -1,12 +1,13 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Protocols;
+﻿using CommanderCS.Protocols;
 using CommanderCS.Utils;
+using Newtonsoft.Json;
 
 namespace CommanderCS.ExcelReader
 {
     public class WorldMapStageData : BaseExcelReader<WorldMapStageData, WorldMapStageDataExcel>
     {
-        public override string FileName { get { return "WorldMapStageDataTable_2.json"; } }
+        public override string FileName
+        { get { return "WorldMapStageDataTable_2.json"; } }
 
         public WorldMapStageDataExcel? FromWorldMapId(int worldMapId)
         {

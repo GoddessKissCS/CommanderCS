@@ -60,7 +60,6 @@ namespace CommanderCS.Packets.Handlers.Guild
         [JsonProperty("tuno")]
         public int tuno { get; set; }
     }
-
 }
 
 /*	// Token: 0x06006043 RID: 24643 RVA: 0x000120F8 File Offset: 0x000102F8
@@ -88,7 +87,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110228"));
 		}
 		else if (code = 71307)
-		{   
+		{
 			You cannot kick out a member on the same day of joining, and you can only kick out up to 5 members in 1 day.
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110118"));
 		}

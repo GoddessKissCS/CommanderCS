@@ -27,9 +27,9 @@ namespace CommanderCS.Packets.Handlers.Guild
                 Result = "accepted",
             };
             return response;
-
         }
     }
+
     public class ApproveGuildJoinRequest
     {
         [JsonProperty("uno")]

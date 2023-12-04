@@ -18,7 +18,7 @@ namespace CommanderCS.Packets.Handlers.PvP
                 openRemain = 86400,
                 remain = 86400,
                 time = (int)time,
-                user = user.RankingUserData
+                user = user.RankingData.PvPDuelRankingData
             };
 
             ResponsePacket response = new()
@@ -34,7 +34,6 @@ namespace CommanderCS.Packets.Handlers.PvP
     public class PvPDuelListRequest
     {
     }
-
 }
 
 /*	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3125", true, true)]

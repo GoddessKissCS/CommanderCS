@@ -8,7 +8,10 @@ namespace CommanderCS.Database.Handlers
 {
     public class DatabaseGuildApplication : DatabaseTable<GuildApplicationScheme>
     {
-        public DatabaseGuildApplication() : base("GuildApplications") { }
+        public DatabaseGuildApplication() : base("GuildApplications")
+        {
+        }
+
         public ErrorCode CreateGuildApplication(string session, int guildIdx)
         {
             if (CheckIfAnyApplicationExists(session) == "reg")
@@ -38,7 +41,6 @@ namespace CommanderCS.Database.Handlers
                     world = user.Server,
                 },
                 ApplyTime = time,
-
             };
 
             DatabaseCollection.InsertOne(guildApplication);
@@ -72,9 +74,9 @@ namespace CommanderCS.Database.Handlers
                             .Where(d => d.Uno == uno)
                             .FirstOrDefault();
 
-
             return tryGuild.GuildId;
         }
+
         public string CheckIfAnyApplicationExists(string session)
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
@@ -116,7 +118,6 @@ namespace CommanderCS.Database.Handlers
             return guilds;
         }
 
-
         public ErrorCode DeclineGuildJoinRequest(int uno)
         {
             var guildId = RetrieveGuildApplicationFromId(uno);
@@ -137,8 +138,7 @@ namespace CommanderCS.Database.Handlers
                 return ErrorCode.RequestDataHasBeenChanged;
             }
 
-
-#warning TODO  
+#warning TODO
             // blablabla if federation settings change blabla
             // add thing here
 
@@ -167,7 +167,7 @@ namespace CommanderCS.Database.Handlers
                 return ErrorCode.RequestDataHasBeenChanged;
             }
 
-#warning TODO  
+#warning TODO
             // blablabla if federation settings change blabla
             // add thing here
 
@@ -175,13 +175,11 @@ namespace CommanderCS.Database.Handlers
             DatabaseManager.Guild.AddGuildMember(uno, guildId, application.JoinMemberData);
 
             return ErrorCode.Success;
-
         }
 
         private bool CheckIfRequestMemberDataChanged(GuildApplicationScheme guildApplication, GameProfileScheme user)
         {
             return guildApplication.JoinMemberData.thumnail != user.UserResources.thumbnailId || guildApplication.JoinMemberData.level != user.UserResources.level || guildApplication.JoinMemberData.name != user.UserResources.nickname || user.GuildId != null;
         }
-
     }
 }

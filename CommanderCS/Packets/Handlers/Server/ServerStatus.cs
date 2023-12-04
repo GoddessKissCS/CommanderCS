@@ -16,7 +16,6 @@ namespace CommanderCS.Host.Handlers.Server
 
             while (serverinfos.Count < 1)
             {
-
                 if (serverinfos.Any(server => server.idx == nextIdx))
                 {
                     nextIdx++;

@@ -8,7 +8,6 @@ namespace CommanderCS.Packets.Handlers.Unit
     {
         public override object Handle(UnitLevelUpRequest @params)
         {
-
             ResponsePacket response = new()
             {
                 Result = null,

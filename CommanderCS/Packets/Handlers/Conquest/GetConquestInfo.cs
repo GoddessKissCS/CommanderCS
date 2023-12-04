@@ -7,7 +7,6 @@ namespace CommanderCS.Packets.Handlers.Conquest
     {
         public override object Handle(GetConquestInfoRequest @params)
         {
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
@@ -20,9 +19,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 
     public class GetConquestInfoRequest
     {
-
     }
-
 }
 
 /*	// Token: 0x0600605D RID: 24669 RVA: 0x000120F8 File Offset: 0x000102F8

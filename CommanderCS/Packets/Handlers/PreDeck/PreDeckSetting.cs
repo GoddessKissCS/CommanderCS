@@ -26,13 +26,11 @@ namespace CommanderCS.Packets.Handlers.PreDeck
         }
     }
 
-
     public class PreDeckSettingRequest
     {
         [JsonProperty("list")]
         public JArray list { get; set; }
     }
-
 }
 
 /*	// Token: 0x06006094 RID: 24724 RVA: 0x000120F8 File Offset: 0x000102F8

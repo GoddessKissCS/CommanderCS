@@ -9,8 +9,8 @@ namespace CommanderCS.Host
 
         [JsonProperty("result")]
         public object Result { get; set; }
-
     }
+
     public class ErrorPacket
     {
         [JsonProperty("id")]

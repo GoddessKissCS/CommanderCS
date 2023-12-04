@@ -44,9 +44,9 @@ namespace CommanderCS.Packets.Handlers.Guild
             };
 
             return response;
-
         }
     }
+
     public class AppointSubMasterRequest
     {
         [JsonProperty("tuno")]

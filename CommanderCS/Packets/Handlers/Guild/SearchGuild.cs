@@ -3,7 +3,6 @@ using CommanderCS.Database.Schemes;
 using CommanderCS.Host;
 using Newtonsoft.Json;
 
-
 namespace CommanderCS.Packets.Handlers.Guild
 {
     [Packet(Id = Method.SearchGuild)]
@@ -33,7 +32,6 @@ namespace CommanderCS.Packets.Handlers.Guild
             }
 
             return response;
-
         }
 
         public static Ro.RoGuild Guild2RoGuild(GuildScheme guild, string session)
@@ -64,7 +62,6 @@ namespace CommanderCS.Packets.Handlers.Guild
         [JsonProperty("gnm")]
         public string gnm { get; set; }
     }
-
 }
 
 /*	// Token: 0x06006022 RID: 24610 RVA: 0x000120F8 File Offset: 0x000102F8

@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Utils;
+﻿using CommanderCS.Utils;
+using Newtonsoft.Json;
 
 namespace CommanderCS.ExcelReader
 {
     public class DailyBonusData : BaseExcelReader<DailyBonusData, DailyBonusDataExcel>
     {
-        public override string FileName { get { return "DailyBonusDataTable.json"; } }
+        public override string FileName
+        { get { return "DailyBonusDataTable.json"; } }
 
         public DailyBonusDataExcel? FromDay(int day, int startTime)
         {

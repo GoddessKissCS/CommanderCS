@@ -21,6 +21,7 @@ namespace CommanderCS.Host.Handlers.UserTerm
 
             return response;
         }
+
         private class UserTermResponse
         {
             [JsonProperty("member")]

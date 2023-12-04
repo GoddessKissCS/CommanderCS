@@ -2,25 +2,24 @@ using CommanderCS.Host;
 
 namespace CommanderCS.Packets.Handlers.PvP
 {
-	[Packet(Id = Method.PvPRankingList)]
+    [Packet(Id = Method.PvPRankingList)]
     public class PvPRankingList : BaseMethodHandler<PvPRankingListRequest>
     {
         public override object Handle(PvPRankingListRequest @params)
         {
-			Protocols.PvPRankingList pvPRankingList = new()
-			{
+            Protocols.PvPRankingList pvPRankingList = new()
+            {
+            };
 
-			};
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+            };
 
-
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-			};
-
-			return response;
+            return response;
         }
     }
+
     public class PvPRankingListRequest
     {
     }

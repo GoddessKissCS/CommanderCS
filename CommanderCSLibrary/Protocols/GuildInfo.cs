@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Ro;
+﻿using CommanderCS.Ro;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Protocols
 {

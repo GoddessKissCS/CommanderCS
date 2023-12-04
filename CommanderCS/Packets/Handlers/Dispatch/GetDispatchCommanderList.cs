@@ -33,9 +33,9 @@ namespace CommanderCS.Packets.Handlers.Dispatch
             return response;
         }
     }
+
     public class GetDispatchCommanderListRequest
     {
-
     }
 }
 

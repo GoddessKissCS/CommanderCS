@@ -7,7 +7,6 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
     {
         public override object Handle(WaveBattleListRequest @params)
         {
-
             Protocols.WaveBattleInfoList waveBattleInfoList = new();
 
             // Need to figure out the daily shit for this thing
@@ -20,7 +19,6 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
 
             return packet;
         }
-
     }
 
     public class WaveBattleListRequest

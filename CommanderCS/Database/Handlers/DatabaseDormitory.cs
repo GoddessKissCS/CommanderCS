@@ -5,11 +5,12 @@ namespace CommanderCS.Database.Handlers
 {
     public class DatabaseDormitory : DatabaseTable<DormitoryScheme>
     {
-        public DatabaseDormitory() : base("Dormitory") { }
+        public DatabaseDormitory() : base("Dormitory")
+        {
+        }
 
         public void Create(int id)
         {
-
             DormitoryScheme? tryUser = DatabaseCollection.AsQueryable().Where(d => d.Uno == id).FirstOrDefault();
             if (tryUser != null) { return; }
 

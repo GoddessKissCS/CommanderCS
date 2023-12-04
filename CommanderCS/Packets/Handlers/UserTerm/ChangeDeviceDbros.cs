@@ -8,7 +8,6 @@ namespace CommanderCS.Packets.Handlers.UserTerm
     [Packet(Id = Method.ChangeDeviceDbros)]
     public class ChangeDeviceDbros : BaseMethodHandler<ChangeDeviceDbrosRequest>
     {
-
         // I think it should be finished but you never know
 
         // Something might not work fully

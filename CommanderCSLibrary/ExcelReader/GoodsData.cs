@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Utils;
+﻿using CommanderCS.Utils;
+using Newtonsoft.Json;
 
 namespace CommanderCS.ExcelReader
 {
     public class GoodsData : BaseExcelReader<GoodsData, GoodsDataExcel>
     {
-        public override string FileName { get { return "GoodsDataTable.json"; } }
+        public override string FileName
+        { get { return "GoodsDataTable.json"; } }
 
         public GoodsDataExcel? FromServerFieldName(string name)
         {

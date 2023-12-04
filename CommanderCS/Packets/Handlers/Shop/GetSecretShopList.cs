@@ -21,14 +21,16 @@ namespace CommanderCS.Packets.Handlers.Shop
             {
                 case 1: // normal shop
                     break;
+
                 case 2: // ChallengeShop shop
                     break;
+
                 case 3: // raid shop
                     break;
+
                 case 7: //waveduel shop
                     break;
             }
-
 
             ResponsePacket response = new()
             {
@@ -39,6 +41,7 @@ namespace CommanderCS.Packets.Handlers.Shop
             return response;
         }
     }
+
     public class GetSecretShopListRequest
     {
         [JsonProperty("styp")]

@@ -3,7 +3,6 @@ using CommanderCS.Host;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-
     [Packet(Id = Method.LeaveGuild)]
     public class LeaveGuild : BaseMethodHandler<LeaveGuildRequest>
     {
@@ -22,6 +21,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             return response;
         }
     }
+
     public class LeaveGuildRequest
     {
     }

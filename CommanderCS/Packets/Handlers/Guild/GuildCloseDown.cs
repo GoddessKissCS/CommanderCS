@@ -40,9 +40,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         [JsonProperty("ctime")]
         public double ctime { get; set; }
-
     }
-
 }
 
 /*	// Token: 0x0600603E RID: 24638 RVA: 0x000120F8 File Offset: 0x000102F8

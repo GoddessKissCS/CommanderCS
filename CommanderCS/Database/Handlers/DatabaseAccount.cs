@@ -12,7 +12,9 @@ namespace CommanderCS.Database.Handlers
 {
     public class DatabaseAccount : DatabaseTable<AccountScheme>
     {
-        public DatabaseAccount() : base("Account") { }
+        public DatabaseAccount() : base("Account")
+        {
+        }
 
         public AccountScheme Create(string name = "", string password = "", int platformid = 0, int channel = 0)
         {
@@ -77,8 +79,6 @@ namespace CommanderCS.Database.Handlers
 
             return FindByUid(user.MemberId);
         }
-
-
 
         public ErrorCode ChangeMemberShip(string changeName, string password, int platformId, string guestName, int channel)
         {

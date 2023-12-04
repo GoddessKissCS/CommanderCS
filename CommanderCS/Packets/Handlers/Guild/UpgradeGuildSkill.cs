@@ -5,11 +5,9 @@ using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-
     [Packet(Id = Method.UpgradeGuildSkill)]
     public class UpgradeGuildSkill : BaseMethodHandler<UpgradeGuildSkillRequest>
     {
-
         public override object Handle(UpgradeGuildSkillRequest @params)
         {
             var user = GetUserGameProfile();
@@ -41,7 +39,6 @@ namespace CommanderCS.Packets.Handlers.Guild
 
                 return error;
             }
-
 
             int index = guild.SkillDada.FindIndex(skill => skill.idx == @params.gsid);
 

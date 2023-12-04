@@ -18,13 +18,12 @@ namespace CommanderCS.Packets.Handlers.Profile
 
             DatabaseManager.Account.ChangeMemberShipOpenPlatform(@params.puid, (int)@params.plfm, @params.tokn, @params.ch);
 
-
             response.Id = BasePacket.Id;
             response.Result = "{}";
             return response;
         }
-
     }
+
     public class ChangeMembershipOpenPlatformRequest
     {
         [JsonProperty("tokn")]
@@ -69,5 +68,4 @@ namespace CommanderCS.Packets.Handlers.Profile
     }
 
     */
-
 }

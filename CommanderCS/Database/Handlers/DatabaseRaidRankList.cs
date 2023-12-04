@@ -4,6 +4,8 @@ namespace CommanderCS.Database.Handlers
 {
     public class DatabaseRaidRankList : DatabaseTable<GuildScheme>
     {
-        public DatabaseRaidRankList() : base("RaidRankList") { }
+        public DatabaseRaidRankList() : base("RaidRankList")
+        {
+        }
     }
 }

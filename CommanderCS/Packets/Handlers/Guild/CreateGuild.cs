@@ -42,15 +42,12 @@ namespace CommanderCS.Packets.Handlers.Guild
                 };
 
                 return error;
-
             }
             else
             {
-
                 DatabaseManager.GameProfile.UpdateCash(session, 300, false);
 
                 DatabaseManager.Guild.Create(@params.gnm, @params.emb, @params.gtyp, @params.lvlm, session);
-
 
                 var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
 
@@ -70,12 +67,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             return response;
         }
-
-
     }
-
-
-
 
     public class CreateGuildRequest
     {
@@ -91,7 +83,6 @@ namespace CommanderCS.Packets.Handlers.Guild
         [JsonProperty("emb")]
         public int emb { get; set; }
     }
-
 }
 
 /*	// Token: 0x0600601F RID: 24607 RVA: 0x000492CD File Offset: 0x000474CD

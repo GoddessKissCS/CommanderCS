@@ -76,8 +76,6 @@ namespace CommanderCS.Host.Handlers.Login
             return response;
         }
 
-
-
         public string GenerateUniqueSessionToken()
         {
             string session;

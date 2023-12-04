@@ -108,7 +108,6 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             return response;
         }
 
-
         public static Protocols.WorldMapReward UserWorldReward(string commanderId, GameProfileScheme user, string session)
         {
             int medals = 20;
@@ -139,7 +138,6 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 
             return WorldMapReward;
         }
-
     }
 
     public class WorldMapRewardRequest
@@ -148,10 +146,6 @@ namespace CommanderCS.Packets.Handlers.WorldMap
         public int world { get; set; }
     }
 }
-
-
-
-
 
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "2209", true, true)]
 	public void WorldMapReward(int world)

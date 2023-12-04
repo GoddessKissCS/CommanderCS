@@ -13,7 +13,6 @@ namespace CommanderCS.Host.Handlers.UserTerm
 
             if (result == null)
             {
-
                 ErrorPacket error = new()
                 {
                     Id = BasePacket.Id,
@@ -45,6 +44,7 @@ namespace CommanderCS.Host.Handlers.UserTerm
             public Platform plfm { get; set; }
         }
     }
+
     public class CheckChangeDeviceCodeRequest
     {
         [JsonProperty("dac")]

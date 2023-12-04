@@ -29,8 +29,6 @@ namespace CommanderCS.Database.Schemes
         public double LastEdit { get; set; }
     }
 
-
-
     public class MemberData
     {
         [JsonProperty("uno")]
@@ -66,5 +64,4 @@ namespace CommanderCS.Database.Schemes
         [JsonProperty("world")]
         public int world { get; set; }
     }
-
 }

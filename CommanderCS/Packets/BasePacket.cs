@@ -10,6 +10,7 @@ namespace CommanderCS.Host
     {
         public Method Id { get; set; }
     }
+
     public class ParamsPacket : BasePacket
     {
         [JsonProperty("params")]
@@ -38,6 +39,7 @@ namespace CommanderCS.Host
         {
             return BasePacket.Session;
         }
+
         public AccountScheme? GetUserAccount()
         {
             return DatabaseManager.Account.FindBySession(BasePacket.Session);
@@ -62,7 +64,6 @@ namespace CommanderCS.Host
         {
             return DatabaseManager.Guild.FindByUid(guildId);
         }
-
     }
 
     public enum Method : int

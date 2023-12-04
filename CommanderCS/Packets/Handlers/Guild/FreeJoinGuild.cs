@@ -14,7 +14,6 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             var session = GetSession();
 
-
             DatabaseManager.Guild.AddFreeJoinGuildMember(user.Uno, @params.gidx);
 
             var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
@@ -33,7 +32,6 @@ namespace CommanderCS.Packets.Handlers.Guild
                 guildList = null,
             };
 
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
@@ -49,7 +47,6 @@ namespace CommanderCS.Packets.Handlers.Guild
         [JsonProperty("gidx")]
         public int gidx { get; set; }
     }
-
 }
 
 /*	// Token: 0x06006024 RID: 24612 RVA: 0x000120F8 File Offset: 0x000102F8

@@ -3,7 +3,6 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
-using static CommanderCS.Protocols.UserInformationResponse;
 
 namespace CommanderCS.Utils
 {
@@ -89,6 +88,5 @@ namespace CommanderCS.Utils
 
             return localIP;
         }
-
     }
 }
