@@ -6,7 +6,7 @@ namespace CommanderCS.Host.Handlers.Login
     public class Logout : BaseMethodHandler<LogoutRequest>
     {
         public override object Handle(LogoutRequest @params)
-        {            
+        {
             logout logout = new() { success = true };
 
             ResponsePacket response = new()

@@ -8,10 +8,7 @@ namespace CommanderCS.Host.Handlers.Shop
     {
         public override object Handle(GetCashShopListRequest @params)
         {
-#warning TODO
-            // NEED TO ADD A MONTHLY BUYABLE package
-
-            List<CashShopData> csl = new() { };
+            List<CashShopData> csl = [];
             CashShopData c = new()
             {
                 price = "1",

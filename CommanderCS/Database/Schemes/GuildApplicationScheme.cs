@@ -1,5 +1,5 @@
-﻿using MongoDB.Bson;
-using CommanderCS.Protocols;
+﻿using CommanderCS.Protocols;
+using MongoDB.Bson;
 
 namespace CommanderCS.Database.Schemes
 {

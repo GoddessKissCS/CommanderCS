@@ -1,39 +1,39 @@
-using Newtonsoft.Json;
 using CommanderCS.Database;
 using CommanderCS.Host;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.ApproveGuildJoin)]
+    [Packet(Id = Method.ApproveGuildJoin)]
     public class ApproveGuildJoin : BaseMethodHandler<ApproveGuildJoinRequest>
     {
         public override object Handle(ApproveGuildJoinRequest @params)
         {
-			ErrorCode code = DatabaseManager.GuildApplication.ApproveGuildJoinRequest(@params.uno);
+            ErrorCode code = DatabaseManager.GuildApplication.ApproveGuildJoinRequest(@params.uno);
 
-			if(code != ErrorCode.Success)
-			{
-				ErrorPacket error = new()
-				{
-					Error = new() { code = code},
-					Id = BasePacket.Id
-				};
-				return error;
-			}
+            if (code != ErrorCode.Success)
+            {
+                ErrorPacket error = new()
+                {
+                    Error = new() { code = code },
+                    Id = BasePacket.Id
+                };
+                return error;
+            }
 
             ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = "accepted",
-			};
-			return response;	
+            {
+                Id = BasePacket.Id,
+                Result = "accepted",
+            };
+            return response;
 
         }
     }
     public class ApproveGuildJoinRequest
     {
-		[JsonProperty("uno")]
-		public int uno {  get; set; }
+        [JsonProperty("uno")]
+        public int uno { get; set; }
     }
 }
 

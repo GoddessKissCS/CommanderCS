@@ -1,5 +1,4 @@
 ﻿using CommanderCS.Database;
-using CommanderCS.Database.Schemes;
 
 namespace CommanderCS.Host.Handlers.UserTerm
 {

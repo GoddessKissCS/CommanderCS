@@ -1,27 +1,27 @@
-using Newtonsoft.Json;
 using CommanderCS.Database;
 using CommanderCS.Host;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.GuildBoardDelete)]
+    [Packet(Id = Method.GuildBoardDelete)]
     public class GuildBoardDelete : BaseMethodHandler<GuildBoardDeleteRequest>
     {
         public override object Handle(GuildBoardDeleteRequest @params)
         {
             var user = GetUserGameProfile();
 
-			DatabaseManager.Guild.DeleteGuildBoardEntry(user.GuildId, @params.idx);
+            DatabaseManager.Guild.DeleteGuildBoardEntry(user.GuildId, @params.idx);
 
 #warning TODO ADD THE TIMECHECK FAIL
 
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = true,
-			};	
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = true,
+            };
 
-			return response;
+            return response;
         }
     }
 

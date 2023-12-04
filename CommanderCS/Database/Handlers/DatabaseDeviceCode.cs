@@ -1,7 +1,7 @@
-﻿using MongoDB.Driver;
-using CommanderCS.Database.Schemes;
+﻿using CommanderCS.Database.Schemes;
 using CommanderCS.Utils;
 using CommanderCSLibrary.Utils;
+using MongoDB.Driver;
 
 namespace CommanderCS.Database.Handlers
 {

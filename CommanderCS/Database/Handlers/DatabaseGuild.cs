@@ -1,14 +1,10 @@
-﻿using MongoDB.Bson;
-using MongoDB.Driver;
-using CommanderCS.Database.Schemes;
+﻿using CommanderCS.Database.Schemes;
 using CommanderCS.Host;
 using CommanderCS.Protocols;
 using CommanderCS.Ro;
 using CommanderCS.Utils;
-using System;
-using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 using CommanderCSLibrary.Utils;
-using System.Collections.Generic;
+using MongoDB.Driver;
 
 namespace CommanderCS.Database.Handlers
 {
@@ -156,7 +152,7 @@ namespace CommanderCS.Database.Handlers
                 notice = guild.Notice,
                 occupy = guild.Occupy,
                 point = guild.Point,
-                world = guild.World,  
+                world = guild.World,
             };
 
             return userGuild;
@@ -267,14 +263,14 @@ namespace CommanderCS.Database.Handlers
                     lev = guild.Level,
                     ntc = guild.Notice,
                     world = guild.World,
-                    list = isApplyingForGuild,      
+                    list = isApplyingForGuild,
                 };
 
                 returnGuilds.Add(newGuild);
             }
 
             return returnGuilds;
-        }   
+        }
         public List<GuildBoardData> GetGuildBoard(int? guildId, out ErrorCode code)
         {
             GuildScheme? guild = DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
@@ -321,7 +317,7 @@ namespace CommanderCS.Database.Handlers
                 return ErrorCode.FederationNameContainsBadwordsOrIsInvalid;
             }
 
-            if(act == 0)
+            if (act == 0)
             {
                 if (FindByName(val) != null)
                 {
@@ -335,14 +331,14 @@ namespace CommanderCS.Database.Handlers
 
             var timeDifference = TimeManager.GetTimeDifference(guild.LastEdit);
 
-            if(timeDifference < 30)
+            if (timeDifference < 30)
             {
                 return ErrorCode.FederationSettingsChangedRecently_2;
             }
 
             switch (act)
-            { 
-                case 0:                  
+            {
+                case 0:
                     UpdateGuildName(guild.GuildId, val);
                     DatabaseManager.GameProfile.UpdateCash(user.Session, 500, false);
                     break;
@@ -395,7 +391,7 @@ namespace CommanderCS.Database.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
         public void AddGuildMember(int uno, int guildId, GuildMember.MemberData member)
-        {       
+        {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
             var update = Builders<GuildScheme>.Update.Push("MemberData", member);
 
@@ -436,7 +432,7 @@ namespace CommanderCS.Database.Handlers
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", GuildId);
 
-            var update = Builders<GuildScheme>.Update.Set("Point", guild.Point).Set("Level", guild.Level).Set("MaxCount",guild.MaxCount);
+            var update = Builders<GuildScheme>.Update.Set("Point", guild.Point).Set("Level", guild.Level).Set("MaxCount", guild.MaxCount);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -463,7 +459,7 @@ namespace CommanderCS.Database.Handlers
 
             var update = Builders<GuildScheme>.Update.Set("MemberData.$[elem].memberGrade", 0);
 
-            var arrayFilters = new List<ArrayFilterDefinition>{ new JsonArrayFilterDefinition<MemberData>("{'elem.memberGrade': {$gt: 0}}") };
+            var arrayFilters = new List<ArrayFilterDefinition> { new JsonArrayFilterDefinition<MemberData>("{'elem.memberGrade': {$gt: 0}}") };
 
             var updateOptions = new UpdateOptions { ArrayFilters = arrayFilters };
 

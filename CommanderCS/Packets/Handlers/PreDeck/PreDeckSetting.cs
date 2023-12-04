@@ -2,36 +2,35 @@ using CommanderCS.Database;
 using CommanderCS.Host;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Linq;
 
 namespace CommanderCS.Packets.Handlers.PreDeck
 {
-	[Packet(Id = Method.PreDeckSetting)]
+    [Packet(Id = Method.PreDeckSetting)]
     public class PreDeckSetting : BaseMethodHandler<PreDeckSettingRequest>
     {
         public override object Handle(PreDeckSettingRequest @params)
         {
-			var session = GetSession();
+            var session = GetSession();
 
             var preDeckList = @params.list.ToObject<List<Protocols.UserInformationResponse.PreDeck>>();
 
             DatabaseManager.GameProfile.UpdatePreDeck(session, preDeckList);
 
             ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = "changed"
+            {
+                Id = BasePacket.Id,
+                Result = "changed"
             };
 
-			return response;
+            return response;
         }
     }
 
 
     public class PreDeckSettingRequest
     {
-		[JsonProperty("list")]
-		public JArray list {  get; set; }
+        [JsonProperty("list")]
+        public JArray list { get; set; }
     }
 
 }

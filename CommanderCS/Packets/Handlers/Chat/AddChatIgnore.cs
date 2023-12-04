@@ -1,7 +1,7 @@
-using Newtonsoft.Json;
 using CommanderCS.Database;
 using CommanderCS.Host;
 using CommanderCS.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Chat
 {

@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using CommanderCS.Cryptography;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using CommanderCS.Cryptography;
 
 namespace CommanderCS.Host
 {

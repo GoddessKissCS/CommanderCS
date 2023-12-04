@@ -1,6 +1,5 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Host;
-using CommanderCS.Protocols;
+﻿using CommanderCS.Host;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Unit
 {

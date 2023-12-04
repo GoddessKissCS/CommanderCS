@@ -1,8 +1,7 @@
-using Microsoft.AspNetCore.Razor.Hosting;
-using Newtonsoft.Json;
 using CommanderCS.Database;
 using CommanderCS.Host;
 using CommanderCS.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -11,22 +10,22 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(FreeJoinGuildRequest @params)
         {
-			var user = GetUserGameProfile();
+            var user = GetUserGameProfile();
 
-			var session = GetSession();
+            var session = GetSession();
 
 
             DatabaseManager.Guild.AddFreeJoinGuildMember(user.Uno, @params.gidx);
 
-			var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
 
             var userGuild = DatabaseManager.Guild.RequestGuild(@params.gidx, user.Uno);
 
-			var members = DatabaseManager.Guild.RequestGuildMembers(@params.gidx);
+            var members = DatabaseManager.Guild.RequestGuildMembers(@params.gidx);
 
 #warning STILL NEED TO ADD THE MISSING ERRORPACKET IF IT FAILS
 
-			GuildInfo guildList = new()
+            GuildInfo guildList = new()
             {
                 resource = rsoc,
                 guildInfo = userGuild,

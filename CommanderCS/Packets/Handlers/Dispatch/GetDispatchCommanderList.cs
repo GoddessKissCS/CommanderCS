@@ -3,19 +3,19 @@ using CommanderCSLibrary.Utils;
 
 namespace CommanderCS.Packets.Handlers.Dispatch
 {
-	[Packet(Id = Method.GetDispatchCommanderList)]
+    [Packet(Id = Method.GetDispatchCommanderList)]
     public class GetDispatchCommanderList : BaseMethodHandler<GetDispatchCommanderListRequest>
     {
         public override object Handle(GetDispatchCommanderListRequest @params)
         {
-			var user = GetUserGameProfile();
+            var user = GetUserGameProfile();
 
-			var guild = GetUserGuild(user.GuildId);
+            var guild = GetUserGuild(user.GuildId);
 
-			var difference = TimeManager.GetTimeDifference(guild.LastEdit);
+            var difference = TimeManager.GetTimeDifference(guild.LastEdit);
 
-			if(difference < 30)
-			{
+            if (difference < 30)
+            {
                 ErrorPacket error = new()
                 {
                     Error = new() { code = ErrorCode.FederationSettingsChangedWhileGettingGuildBoard },
@@ -25,18 +25,18 @@ namespace CommanderCS.Packets.Handlers.Dispatch
             }
 
             ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = user.DispatchedCommanders,
-			};
+            {
+                Id = BasePacket.Id,
+                Result = user.DispatchedCommanders,
+            };
 
-			return response;
+            return response;
         }
     }
-	public class GetDispatchCommanderListRequest
-	{
+    public class GetDispatchCommanderListRequest
+    {
 
-	}
+    }
 }
 
 /*	// Token: 0x060060B8 RID: 24760 RVA: 0x000120F8 File Offset: 0x000102F8

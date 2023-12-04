@@ -1,18 +1,17 @@
 using CommanderCS.Database;
-using CommanderCS.Host;
 using CommanderCS.ExcelReader;
-using CommanderCS.Database.Schemes;
+using CommanderCS.Host;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.UpgradeGuildLevel)]
-	public class UpgradeGuildLevel : BaseMethodHandler<UpgradeGuildLevelRequest>
-	{
-		public override object Handle(UpgradeGuildLevelRequest @params)
-		{
-			var user = GetUserGameProfile();
+    [Packet(Id = Method.UpgradeGuildLevel)]
+    public class UpgradeGuildLevel : BaseMethodHandler<UpgradeGuildLevelRequest>
+    {
+        public override object Handle(UpgradeGuildLevelRequest @params)
+        {
+            var user = GetUserGameProfile();
 
-			var guild = DatabaseManager.Guild.FindByUid(user.GuildId);
+            var guild = DatabaseManager.Guild.FindByUid(user.GuildId);
 
             var guildUpgradeData = GuildLevelInfoData.GetInstance().FromLevel(guild.Level + 1);
 
@@ -24,25 +23,25 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             DatabaseManager.Guild.UpdateGuildPointLevelMaxCount(user.GuildId, guild);
 
-			var guildInfo = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+            var guildInfo = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
-			Protocols.GuildInfo guildList = new()
-			{
-				resource = null,
-				guildInfo = guildInfo,
-				memberData = null,
-				guildList = null,
-			};
+            Protocols.GuildInfo guildList = new()
+            {
+                resource = null,
+                guildInfo = guildInfo,
+                memberData = null,
+                guildList = null,
+            };
 
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = guildList,
-			};
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = guildList,
+            };
 
-			return response;
-		}
-	} 
+            return response;
+        }
+    }
 
 
     public class UpgradeGuildLevelRequest

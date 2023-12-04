@@ -1,6 +1,4 @@
-﻿using CommanderCS.Database.Schemes;
-using Newtonsoft.Json;
-using System.IO;
+﻿using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.UserTerm
 {

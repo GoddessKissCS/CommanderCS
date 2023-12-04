@@ -1,38 +1,38 @@
-using Newtonsoft.Json;
 using CommanderCS.Database;
 using CommanderCS.Database.Schemes;
 using CommanderCS.Host;
+using Newtonsoft.Json;
 
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.SearchGuild)]
+    [Packet(Id = Method.SearchGuild)]
     public class SearchGuild : BaseMethodHandler<SearchGuildRequest>
     {
         public override object Handle(SearchGuildRequest @params)
         {
-			var session = GetSession();
+            var session = GetSession();
 
             ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-			};	
+            {
+                Id = BasePacket.Id,
+            };
 
-			var guild = DatabaseManager.Guild.FindByName(@params.gnm);
+            var guild = DatabaseManager.Guild.FindByName(@params.gnm);
 
-			if (guild != null)
-			{
-				var roguild = Guild2RoGuild(guild, session);
-				response.Result = roguild;
-			}
-			else
-			{
-				Ro.RoGuild Roguild = new() { };
+            if (guild != null)
+            {
+                var roguild = Guild2RoGuild(guild, session);
+                response.Result = roguild;
+            }
+            else
+            {
+                Ro.RoGuild Roguild = new() { };
 
-				response.Result = Roguild;
+                response.Result = Roguild;
             }
 
-			return response;
+            return response;
 
         }
 
@@ -50,20 +50,20 @@ namespace CommanderCS.Packets.Handlers.Guild
                 gtyp = guild.GuildType,
                 lev = guild.Level,
                 list = isApplyingForGuild,
-				mxCnt = guild.MaxCount,
-				ntc = guild.Notice,
-				world = guild.World,
+                mxCnt = guild.MaxCount,
+                ntc = guild.Notice,
+                world = guild.World,
             };
 
             return Roguild;
         }
     }
 
-	public class SearchGuildRequest
-	{
-		[JsonProperty("gnm")]
-		public string gnm { get; set;}
-	}
+    public class SearchGuildRequest
+    {
+        [JsonProperty("gnm")]
+        public string gnm { get; set; }
+    }
 
 }
 

@@ -1,6 +1,6 @@
-using MongoDB.Bson;
 using CommanderCS.Enum;
 using CommanderCS.Protocols;
+using MongoDB.Bson;
 
 namespace CommanderCS.Database.Schemes
 {
@@ -34,6 +34,8 @@ namespace CommanderCS.Database.Schemes
         public List<BlockUser> BlockedUsers { get; set; }
         public List<MailInfo.MailData>? MailDataList { get; set; }
         public List<DailyBonusCheckResponse> DailyBonusCheck { get; set; }
+        public Dictionary<string, string> PvPDefenderDeck { get; set; }
+        public RankingUserData RankingUserData { get; set; }
 
         //public List<WaveBattleInfoList.WaveBattleInfo> WaveBattleInfos { get; set; }
     }
@@ -93,7 +95,7 @@ namespace CommanderCS.Database.Schemes
         public int BlackChallenge { get; set; } = 0;
         public int blueprintArmy { get; set; } = 0;
         public int blueprintNavy { get; set; } = 0;
-        public int bullet { get; set; } = 1500;
+        public int bullet { get; set; } = 500;
         public int cash { get; set; } = 500;
         public int challenge { get; set; } = 0;
         public int challengeCoin { get; set; } = 0;

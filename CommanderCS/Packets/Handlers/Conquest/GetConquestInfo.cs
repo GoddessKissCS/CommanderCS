@@ -2,26 +2,26 @@ using CommanderCS.Host;
 
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-	[Packet(Id = Method.GetConquestInfo)]
+    [Packet(Id = Method.GetConquestInfo)]
     public class GetConquestInfo : BaseMethodHandler<GetConquestInfoRequest>
     {
         public override object Handle(GetConquestInfoRequest @params)
         {
-            
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = null,
-			};
 
-			return response;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = null,
+            };
+
+            return response;
         }
     }
 
     public class GetConquestInfoRequest
-	{
+    {
 
-	}
+    }
 
 }
 

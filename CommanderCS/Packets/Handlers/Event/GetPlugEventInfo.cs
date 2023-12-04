@@ -7,7 +7,7 @@ namespace CommanderCS.Host.Handlers.Event
     {
         public override object Handle(GetPlugEventInfoRequest @params)
         {
-            
+
 
             GetPlugEventInfoPacket plugEventInfo = new()
             {

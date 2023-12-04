@@ -1,33 +1,33 @@
-using Newtonsoft.Json;
 using CommanderCS.Database;
 using CommanderCS.Host;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Commander
 {
     [Packet(Id = Method.ChangeCommanderCostume)]
     public class ChangeCommanderCostume : BaseMethodHandler<ChangeCommanderCostumeRequest>
     {
-		public override object Handle(ChangeCommanderCostumeRequest @params)
-		{
-			var user = GetUserGameProfile();
-			var session = GetSession();
+        public override object Handle(ChangeCommanderCostumeRequest @params)
+        {
+            var user = GetUserGameProfile();
+            var session = GetSession();
 
 
-			// maybe check if you own the costume first?
+            // maybe check if you own the costume first?
 
-			user.CommanderData["" + @params.cid].currentCostume = @params.cos;
+            user.CommanderData["" + @params.cid].currentCostume = @params.cos;
 
-			DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
 
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = "{}"
-			};
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "{}"
+            };
 
-			return response;
+            return response;
 
-		}
+        }
 
     }
 

@@ -19,7 +19,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             bool kicked5peopleToday = false;
 
-            if(difference < 1 || kicked5peopleToday == true)
+            if (difference < 1 || kicked5peopleToday == true)
             {
                 ErrorPacket error = new()
                 {

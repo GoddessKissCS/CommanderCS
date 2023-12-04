@@ -1,27 +1,24 @@
-using Microsoft.AspNetCore.Server.Kestrel.Core;
 using CommanderCS.Host;
 
 namespace CommanderCS.Packets.Handlers.WaveDuel
 {
-	[Packet(Id = Method.WaveBattleList)]
+    [Packet(Id = Method.WaveBattleList)]
     public class WaveBattleList : BaseMethodHandler<WaveBattleListRequest>
     {
         public override object Handle(WaveBattleListRequest @params)
         {
 
-			Protocols.WaveBattleInfoList waveBattleInfoList = new();
+            Protocols.WaveBattleInfoList waveBattleInfoList = new();
 
+            // Need to figure out the daily shit for this thing
 
-			// Need to figure out the daily shit for this thing
+            ResponsePacket packet = new()
+            {
+                Id = BasePacket.Id,
+                Result = waveBattleInfoList,
+            };
 
-			ResponsePacket packet = new()
-			{
-				Id = BasePacket.Id,
-				Result = waveBattleInfoList,
-			};
-
-			return packet;
-
+            return packet;
         }
 
     }

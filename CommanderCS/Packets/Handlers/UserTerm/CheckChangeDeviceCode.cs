@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
+﻿using CommanderCS.Database;
 using CommanderCS.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.UserTerm
 {
@@ -44,7 +44,7 @@ namespace CommanderCS.Host.Handlers.UserTerm
             [JsonProperty("plfm")]
             public Platform plfm { get; set; }
         }
-   }
+    }
     public class CheckChangeDeviceCodeRequest
     {
         [JsonProperty("dac")]

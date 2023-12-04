@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
+﻿using CommanderCS.Database;
 using CommanderCS.Database.Schemes;
 using CommanderCS.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Server
 {
@@ -71,7 +71,7 @@ namespace CommanderCS.Host.Handlers.Server
                     idx = i,
                     lastLoginTime = profile.LastLoginTime,
                     level = profile.UserResources.level,
-                    thumnail = profile.UserResources.thumbnailId                     
+                    thumnail = profile.UserResources.thumbnailId
                 };
                 i++;
 

@@ -1,45 +1,45 @@
-using Newtonsoft.Json;
 using CommanderCS.Database;
 using CommanderCS.Host;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.ApplyGuildJoin)]
+    [Packet(Id = Method.ApplyGuildJoin)]
     public class ApplyGuildJoin : BaseMethodHandler<ApplyGuildJoinRequest>
     {
         public override object Handle(ApplyGuildJoinRequest @params)
-        {           
-			var session = GetSession();
+        {
+            var session = GetSession();
 
-			ErrorCode code = DatabaseManager.GuildApplication.CreateGuildApplication(session, @params.gidx);
+            ErrorCode code = DatabaseManager.GuildApplication.CreateGuildApplication(session, @params.gidx);
 
 #warning TODO NEED TO ADD ALL ERRORCODES
 
-			if(code != ErrorCode.Success)
-			{
-				ErrorPacket error = new()
-				{
-					Error = new() { code = code },
-					Id = BasePacket.Id,
-				};
+            if (code != ErrorCode.Success)
+            {
+                ErrorPacket error = new()
+                {
+                    Error = new() { code = code },
+                    Id = BasePacket.Id,
+                };
 
-				return error;
-			}
+                return error;
+            }
 
 
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = "applied",
-			};
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "applied",
+            };
 
-			return response;
+            return response;
         }
     }
     public class ApplyGuildJoinRequest
     {
-		[JsonProperty("gidx")]
-		public int gidx { get; set; }
+        [JsonProperty("gidx")]
+        public int gidx { get; set; }
     }
 }
 

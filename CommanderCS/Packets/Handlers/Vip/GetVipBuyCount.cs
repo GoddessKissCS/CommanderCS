@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Protocols;
+﻿using CommanderCS.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Vip
 {
@@ -9,7 +9,7 @@ namespace CommanderCS.Host.Handlers.Vip
         public override object Handle(GetVipBuyCountRequest @params)
         {
             //gets send EVipRechargeType enum + ["rchg"]
-			//
+            //
             GetVIPBuyCountResponse getVIPBuyCount = new();
 
             var user = GetUserGameProfile();

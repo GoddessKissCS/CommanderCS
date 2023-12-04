@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
+﻿using CommanderCS.Database;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.VersionCheck
 {

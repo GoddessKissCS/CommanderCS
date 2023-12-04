@@ -1,8 +1,5 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
-using CommanderCS.Host;
-using CommanderCS.Packets.Handlers.Chat;
-using CommanderCS.Protocols;
+﻿using CommanderCS.Host;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Unit
 {
@@ -25,7 +22,7 @@ namespace CommanderCS.Packets.Handlers.Unit
 
     public class UnitLevelUpImmediateRequest
     {
-		[JsonProperty("idx")]
+        [JsonProperty("idx")]
         public int idx { get; set; }
     }
 

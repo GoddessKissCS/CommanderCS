@@ -1,22 +1,21 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
-using System.Collections.Generic;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.ManageGuildJoinMember)]
+    [Packet(Id = Method.ManageGuildJoinMember)]
     public class ManageGuildJoinMember : BaseMethodHandler<ManageGuildJoinMemberRequest>
     {
         public override object Handle(ManageGuildJoinMemberRequest @params)
         {
             var user = GetUserGameProfile();
 
-			var application = DatabaseManager.GuildApplication.GetGuildApplications(user.GuildId);
+            var application = DatabaseManager.GuildApplication.GetGuildApplications(user.GuildId);
 
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = application,
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = application,
             };
 
             return response;

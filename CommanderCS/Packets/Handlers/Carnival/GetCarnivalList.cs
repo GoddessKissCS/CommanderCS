@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Protocols;
+﻿using CommanderCS.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Carnival
 {

@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
+﻿using CommanderCS.Database;
 using CommanderCS.Database.Schemes;
+using Newtonsoft.Json;
 using static CommanderCS.Cryptography.Crypto;
 
 namespace CommanderCS.Host.Handlers.Sign

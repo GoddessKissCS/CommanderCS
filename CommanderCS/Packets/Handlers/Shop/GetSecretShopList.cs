@@ -1,48 +1,48 @@
-using Newtonsoft.Json;
 using CommanderCS.Host;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Shop
 {
-	[Packet(Id = Method.GetSecretShopList)]
+    [Packet(Id = Method.GetSecretShopList)]
     public class GetSecretShopList : BaseMethodHandler<GetSecretShopListRequest>
     {
         public override object Handle(GetSecretShopListRequest @params)
         {
-			CommanderCS.Protocols.SecretShop shop = new()
-			{
-				refreshCount = 86400,
-				reset = 86400,
-				shopList = [],
-				resource = null,
-				refreshTime = 86400,
-			};
+            Protocols.SecretShop shop = new()
+            {
+                refreshCount = 86400,
+                reset = 86400,
+                shopList = [],
+                resource = null,
+                refreshTime = 86400,
+            };
 
             switch (@params.styp)
-			{
-				case 1: // normal shop
-					break;
+            {
+                case 1: // normal shop
+                    break;
                 case 2: // ChallengeShop shop
                     break;
                 case 3: // raid shop
-					break;
-				case 7: //waveduel shop
-					break;
-			}
+                    break;
+                case 7: //waveduel shop
+                    break;
+            }
 
 
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = shop,
-			};
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = shop,
+            };
 
-			return response;
+            return response;
         }
     }
-    public class GetSecretShopListRequest 
+    public class GetSecretShopListRequest
     {
-		[JsonProperty("styp")]
-		public int styp { get; set; }
+        [JsonProperty("styp")]
+        public int styp { get; set; }
     }
 }
 

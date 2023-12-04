@@ -1,12 +1,12 @@
-﻿using MongoDB.Driver;
-using CommanderCS.Database.Schemes;
+﻿using CommanderCS.Database.Schemes;
+using CommanderCS.Enum;
 using CommanderCS.Host;
 using CommanderCS.Host.Handlers.Login;
 using CommanderCS.Packets.Handlers.UserTerm;
-using CommanderCS.Enum;
 using CommanderCS.Utils;
-using static CommanderCS.Cryptography.Crypto;
 using CommanderCSLibrary.Utils;
+using MongoDB.Driver;
+using static CommanderCS.Cryptography.Crypto;
 
 namespace CommanderCS.Database.Handlers
 {
@@ -43,11 +43,13 @@ namespace CommanderCS.Database.Handlers
             {
                 user.Clearance = Clearance.Guest;
                 user.Name = Utility.CreateGuestName();
-            } else {
+            }
+            else
+            {
                 user.Name = name;
                 user.Password_Hash = ComputeSha256Hash(password);
                 user.Clearance = Clearance.Player;
-            }            
+            }
 
             DatabaseCollection.InsertOne(user);
 

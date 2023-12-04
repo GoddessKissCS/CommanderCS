@@ -1,8 +1,5 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
-using CommanderCS.ExcelReader;
-using CommanderCS.Protocols;
-using System.Security.Cryptography;
+﻿using CommanderCS.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.WorldMap
 {

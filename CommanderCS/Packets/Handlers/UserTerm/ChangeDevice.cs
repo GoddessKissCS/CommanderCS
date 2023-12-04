@@ -1,7 +1,7 @@
-using Newtonsoft.Json;
 using CommanderCS.Database;
-using CommanderCS.Host;
 using CommanderCS.Enum;
+using CommanderCS.Host;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.UserTerm
 {

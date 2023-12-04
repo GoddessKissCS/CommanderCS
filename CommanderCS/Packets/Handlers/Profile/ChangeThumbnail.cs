@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
+﻿using CommanderCS.Database;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Profile
 {
@@ -9,7 +9,7 @@ namespace CommanderCS.Host.Handlers.Profile
         public override object Handle(ChangeThumbnailRequest @params)
         {
             string session = GetSession();
-            
+
             var user = GetUserGameProfile();
 
             bool success = false;

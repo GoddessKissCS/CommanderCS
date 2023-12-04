@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
+﻿using CommanderCS.Database;
 using CommanderCS.ExcelReader;
 using CommanderCS.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Commander
 {
@@ -55,7 +55,8 @@ namespace CommanderCS.Host.Handlers.Commander
 
                 if (!TryRecruitCommander(commanderData.grade, ref commanderMedals))
                 {
-                    ErrorPacket error = new() { 
+                    ErrorPacket error = new()
+                    {
                         Id = BasePacket.Id,
                         Error = new() { code = ErrorCode.NotEnoughResources },
                     };

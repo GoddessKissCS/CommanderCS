@@ -1,20 +1,20 @@
-using Newtonsoft.Json;
 using CommanderCS.Database;
 using CommanderCS.Host;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.AppointSubMaster)]
+    [Packet(Id = Method.AppointSubMaster)]
     public class AppointSubMaster : BaseMethodHandler<AppointSubMasterRequest>
     {
         public override object Handle(AppointSubMasterRequest @params)
         {
             var user = GetUserGameProfile();
 
-			int submaster = DatabaseManager.Guild.GetTotalSubMasters(user.GuildId);
+            int submaster = DatabaseManager.Guild.GetTotalSubMasters(user.GuildId);
 
-			if(submaster > 2)
-			{
+            if (submaster > 2)
+            {
                 ErrorPacket error = new()
                 {
                     Error = new() { code = ErrorCode.YouCanOnlyAppointUpTo2SubMaster },
@@ -24,33 +24,33 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-			bool succeed = DatabaseManager.Guild.AppointSubMaster(@params.tuno, user.GuildId);
+            bool succeed = DatabaseManager.Guild.AppointSubMaster(@params.tuno, user.GuildId);
 
-			if (!succeed)
-			{
-				ErrorPacket error = new()
-				{
-					Error = new() { code = ErrorCode.YouAlreadyLeftTheFederation },
-					Id = BasePacket.Id,
-				};
+            if (!succeed)
+            {
+                ErrorPacket error = new()
+                {
+                    Error = new() { code = ErrorCode.YouAlreadyLeftTheFederation },
+                    Id = BasePacket.Id,
+                };
 
-				return error;
-			}
+                return error;
+            }
 
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = "appointed",
-			};	
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "appointed",
+            };
 
-			return response;
+            return response;
 
         }
     }
     public class AppointSubMasterRequest
     {
-		[JsonProperty("tuno")]
-		public int tuno {  get; set; }
+        [JsonProperty("tuno")]
+        public int tuno { get; set; }
     }
 }
 

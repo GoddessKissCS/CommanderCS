@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
-using CommanderCS.Host;
+﻿using CommanderCS.Database;
 using CommanderCS.Enum;
+using CommanderCS.Host;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Profile
 {
@@ -16,9 +16,9 @@ namespace CommanderCS.Packets.Handlers.Profile
 
             // should be finished? idk it shouldnt affect anything but you never know
 
-            DatabaseManager.Account.ChangeMemberShipOpenPlatform(@params.puid, (int)@params.plfm, @params.tokn, @params.ch);       
+            DatabaseManager.Account.ChangeMemberShipOpenPlatform(@params.puid, (int)@params.plfm, @params.tokn, @params.ch);
 
-        
+
             response.Id = BasePacket.Id;
             response.Result = "{}";
             return response;

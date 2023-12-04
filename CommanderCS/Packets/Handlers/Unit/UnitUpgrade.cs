@@ -1,6 +1,5 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Host;
-using CommanderCS.Protocols;
+﻿using CommanderCS.Host;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Unit
 {
@@ -11,8 +10,8 @@ namespace CommanderCS.Packets.Handlers.Unit
         {
             ResponsePacket response = new()
             {
-				Result = null,
-				Id = BasePacket.Id
+                Result = null,
+                Id = BasePacket.Id
             };
 
             return response;

@@ -1,35 +1,35 @@
-using Newtonsoft.Json;
 using CommanderCS.Database;
-using CommanderCS.Host;
 using CommanderCS.ExcelReader;
-using System.ComponentModel;
+using CommanderCS.Host;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
 
     [Packet(Id = Method.UpgradeGuildSkill)]
-    public class UpgradeGuildSkill : BaseMethodHandler<UpgradeGuildSkillRequest> {
+    public class UpgradeGuildSkill : BaseMethodHandler<UpgradeGuildSkillRequest>
+    {
 
         public override object Handle(UpgradeGuildSkillRequest @params)
         {
-			var user = GetUserGameProfile();
+            var user = GetUserGameProfile();
 
-			var guild = DatabaseManager.Guild.FindByUid(user.GuildId);
+            var guild = DatabaseManager.Guild.FindByUid(user.GuildId);
 
-			var guildSkill = guild.SkillDada.Where(d => d.idx == @params.gsid).FirstOrDefault();
+            var guildSkill = guild.SkillDada.Where(d => d.idx == @params.gsid).FirstOrDefault();
 
-			var upgradeSkill = GuildSkillData.GetInstance().FromSkillLevel(guildSkill.level + 1);
+            var upgradeSkill = GuildSkillData.GetInstance().FromSkillLevel(guildSkill.level + 1);
 
-			if(upgradeSkill.level < guild.Level)
-			{
-				ErrorPacket error = new()
-				{
-					Error = new() { code = ErrorCode.HigherFederationLevelRequired},
-					Id = BasePacket.Id,
-				};
+            if (upgradeSkill.level < guild.Level)
+            {
+                ErrorPacket error = new()
+                {
+                    Error = new() { code = ErrorCode.HigherFederationLevelRequired },
+                    Id = BasePacket.Id,
+                };
 
-				return error;
-			}
+                return error;
+            }
 
             if (upgradeSkill.cost < guild.Point)
             {
@@ -51,7 +51,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 guild.SkillDada[index] = guildSkill;
             }
 
-			guild.Point -= upgradeSkill.cost;
+            guild.Point -= upgradeSkill.cost;
 
             DatabaseManager.Guild.UpdateGuildSkill(user.GuildId, guild.SkillDada, guild.Point);
 
@@ -71,15 +71,15 @@ namespace CommanderCS.Packets.Handlers.Guild
                 Result = guildList,
             };
 
-			return response;
+            return response;
         }
     }
 
-	public class UpgradeGuildSkillRequest
-	{
-		[JsonProperty("gsid")]
-		public int gsid { get; set; }
-	}
+    public class UpgradeGuildSkillRequest
+    {
+        [JsonProperty("gsid")]
+        public int gsid { get; set; }
+    }
 }
 
 /*	// Token: 0x0600604C RID: 24652 RVA: 0x000120F8 File Offset: 0x000102F8

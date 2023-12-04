@@ -1,9 +1,8 @@
-using MongoDB.Driver;
 using CommanderCS.Database.Schemes;
 using CommanderCS.Host;
 using CommanderCS.Protocols;
-using CommanderCS.Utils;
 using CommanderCSLibrary.Utils;
+using MongoDB.Driver;
 
 namespace CommanderCS.Database.Handlers
 {
@@ -12,7 +11,7 @@ namespace CommanderCS.Database.Handlers
         public DatabaseGuildApplication() : base("GuildApplications") { }
         public ErrorCode CreateGuildApplication(string session, int guildIdx)
         {
-            if(CheckIfAnyApplicationExists(session) == "reg")
+            if (CheckIfAnyApplicationExists(session) == "reg")
             {
                 return ErrorCode.CannotSentMoreThanOneFederationJoinRequest;
             }
@@ -39,7 +38,7 @@ namespace CommanderCS.Database.Handlers
                     world = user.Server,
                 },
                 ApplyTime = time,
-              
+
             };
 
             DatabaseCollection.InsertOne(guildApplication);
@@ -109,9 +108,9 @@ namespace CommanderCS.Database.Handlers
 
             List<GuildApplicationScheme> matchingEntries = DatabaseCollection.Find(filter).ToList();
 
-            foreach(var entry in matchingEntries)
+            foreach (var entry in matchingEntries)
             {
-                guilds.Add(entry.JoinMemberData);  
+                guilds.Add(entry.JoinMemberData);
             }
 
             return guilds;
@@ -160,10 +159,10 @@ namespace CommanderCS.Database.Handlers
             }
 
             var application = FindApplicationByUno(uno, guildId);
-            
+
             var user = DatabaseManager.GameProfile.FindByUno(uno);
 
-            if(CheckIfRequestMemberDataChanged(application, user)) 
+            if (CheckIfRequestMemberDataChanged(application, user))
             {
                 return ErrorCode.RequestDataHasBeenChanged;
             }

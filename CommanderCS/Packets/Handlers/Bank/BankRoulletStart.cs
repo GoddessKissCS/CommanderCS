@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
+﻿using CommanderCS.Database;
 using CommanderCS.ExcelReader;
 using CommanderCS.Protocols;
 using CommanderCSLibrary.Utils;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Bank
 {

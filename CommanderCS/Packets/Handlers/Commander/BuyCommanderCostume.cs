@@ -1,10 +1,9 @@
+using CommanderCS.Database;
+using CommanderCS.ExcelReader;
+using CommanderCS.Host;
+using CommanderCS.Protocols;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using CommanderCS.Database;
-using CommanderCS.Host;
-using CommanderCS.ExcelReader;
-using CommanderCS.Protocols;
-using System.Net;
 
 namespace CommanderCS.Packets.Handlers.Commander
 {
@@ -13,20 +12,20 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(BuyCommanderCostumeRequest @params)
         {
-			var user = GetUserGameProfile();
-			var session = GetSession();
+            var user = GetUserGameProfile();
+            var session = GetSession();
 
-			var costumeData = CommanderCostumeData.GetInstance().FromCostumeId(@params.cos);
+            var costumeData = CommanderCostumeData.GetInstance().FromCostumeId(@params.cos);
 
             // ig implement a check to check if you actually have enough cash ?
             // seems overrated but you never know ig?
 
-            if(user.UserResources.cash > 1200)
+            if (user.UserResources.cash > 1200)
             {
-               //user.UserResources.cash = 0;
+                //user.UserResources.cash = 0;
             }
 
-			string cid = "" + @params.cid;
+            string cid = "" + @params.cid;
 
             if (user.CommanderData.ContainsKey(cid) && user.UserInventory.donHaveCommCostumeData.ContainsKey(cid))
             {

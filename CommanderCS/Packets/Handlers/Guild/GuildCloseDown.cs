@@ -1,12 +1,11 @@
-using Newtonsoft.Json;
 using CommanderCS.Database;
 using CommanderCS.Host;
-using CommanderCS.Utils;
 using CommanderCSLibrary.Utils;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.GuildCloseDown)]
+    [Packet(Id = Method.GuildCloseDown)]
     public class GuildCloseDown : BaseMethodHandler<GuildCloseDownRequest>
     {
         public override object Handle(GuildCloseDownRequest @params)
@@ -15,21 +14,21 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             var closeTime = TimeManager.CurrentEpoch;
 
-			DatabaseManager.Guild.CloseDownGuild(user.GuildId, closeTime);
-			DatabaseManager.Guild.ResetMemberGrades(user.GuildId);
+            DatabaseManager.Guild.CloseDownGuild(user.GuildId, closeTime);
+            DatabaseManager.Guild.ResetMemberGrades(user.GuildId);
 
-			var res = new GuildCloseDownResponse()
-			{
-				ctime = closeTime,
-			};
-
-            ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = res	
+            var res = new GuildCloseDownResponse()
+            {
+                ctime = closeTime,
             };
 
-			return response;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = res
+            };
+
+            return response;
         }
     }
 
@@ -38,9 +37,9 @@ namespace CommanderCS.Packets.Handlers.Guild
     }
 
     public class GuildCloseDownResponse
-	{
-		[JsonProperty("ctime")]
-		public double ctime {  get; set; }	
+    {
+        [JsonProperty("ctime")]
+        public double ctime { get; set; }
 
     }
 

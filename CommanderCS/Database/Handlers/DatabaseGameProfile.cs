@@ -1,9 +1,9 @@
-﻿using MongoDB.Driver;
-using CommanderCS.Database.Schemes;
-using CommanderCS.Host.Handlers.Login;
+﻿using CommanderCS.Database.Schemes;
 using CommanderCS.ExcelReader;
+using CommanderCS.Host.Handlers.Login;
 using CommanderCS.Protocols;
 using CommanderCSLibrary.Utils;
+using MongoDB.Driver;
 using static CommanderCS.Protocols.UserInformationResponse;
 
 namespace CommanderCS.Database.Handlers
@@ -103,7 +103,7 @@ namespace CommanderCS.Database.Handlers
                     }
 
                 ],
-                TutorialData = new() { skip = false , step = 0 },
+                TutorialData = new() { skip = false, step = 0 },
                 UserDevice = new() { },
                 UserInventory = new UserInventory(),
                 ResetDateTime = 0,
@@ -137,17 +137,19 @@ namespace CommanderCS.Database.Handlers
                     ercnt = 0,
                     iftw = 0,
                 },
-                VipRechargeData = [ new(){ count = 0, idx = 601, mid = 0 }],
+                VipRechargeData = [new() { count = 0, idx = 601, mid = 0 }],
                 BlockedUsers = [],
                 BoughtCashShopItems = [],
                 Session = string.Empty,
                 MailDataList = [],
                 DailyBonusCheck = [],
+                PvPDefenderDeck = [],
+                RankingUserData = new(),
             };
 
             DatabaseCollection.InsertOne(user);
 
-            DatabaseManager.Dormitory.Create(uno);          
+            DatabaseManager.Dormitory.Create(uno);
 
             return user;
         }
@@ -405,7 +407,9 @@ namespace CommanderCS.Database.Handlers
                 user.UserResources.gold += new_gold;
                 user.UserStatistics.TotalGold += new_gold;
                 user.UserResources.cash += new_cash;
-            } else {
+            }
+            else
+            {
                 user.UserResources.gold -= new_gold;
                 user.UserStatistics.TotalGold -= new_gold;
                 user.UserResources.cash -= new_cash;

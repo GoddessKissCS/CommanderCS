@@ -1,8 +1,40 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Utils;
+
 namespace CommanderCS.Packets.Handlers.PvP
 {
-    public class PvPDuelList
+    [Packet(Id = Method.PvPDuelList)]
+    public class PvPDuelList : BaseMethodHandler<PvPDuelListRequest>
+    {
+        public override object Handle(PvPDuelListRequest @params)
+        {
+            var time = TimeManager.CurrentEpoch;
+
+            var user = GetUserGameProfile();
+
+            Protocols.PvPDuelList pvPDuel = new()
+            {
+                duelList = [],
+                openRemain = 86400,
+                remain = 86400,
+                time = (int)time,
+                user = user.RankingUserData
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = pvPDuel,
+            };
+
+            return response;
+        }
+    }
+
+    public class PvPDuelListRequest
     {
     }
+
 }
 
 /*	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3125", true, true)]

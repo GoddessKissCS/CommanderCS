@@ -1,5 +1,5 @@
-﻿using MongoDB.Bson;
-using CommanderCS.Enum;
+﻿using CommanderCS.Enum;
+using MongoDB.Bson;
 
 namespace CommanderCS.Database.Schemes
 {

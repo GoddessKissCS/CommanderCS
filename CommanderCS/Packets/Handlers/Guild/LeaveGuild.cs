@@ -9,9 +9,9 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(LeaveGuildRequest @params)
         {
-			var user = GetUserGameProfile();
+            var user = GetUserGameProfile();
 
-			DatabaseManager.Guild.QuitGuild(user.GuildId, user.Uno);
+            DatabaseManager.Guild.QuitGuild(user.GuildId, user.Uno);
 
             ResponsePacket response = new()
             {

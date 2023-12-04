@@ -5,23 +5,23 @@ using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.PreDeck
 {
-	[Packet(Id = Method.BuyPredeckSlot)]
+    [Packet(Id = Method.BuyPredeckSlot)]
     public class BuyPredeckSlot : BaseMethodHandler<BuyPredeckSlotRequest>
     {
-		private readonly int openCost = 1200;
-		private readonly int addOpenCost = 200;
-		private readonly int basePredeckCount = 5;
+        private readonly int openCost = 1200;
+        private readonly int addOpenCost = 200;
+        private readonly int basePredeckCount = 5;
 
         public override object Handle(BuyPredeckSlotRequest @params)
         {
             var session = GetSession();
-			var user = GetUserGameProfile();
+            var user = GetUserGameProfile();
 
-			int cashCost = openCost + addOpenCost * (user.UserStatistics.PredeckCount - basePredeckCount);
+            int cashCost = openCost + addOpenCost * (user.UserStatistics.PredeckCount - basePredeckCount);
 
-			DatabaseManager.GameProfile.UpdateCash(session, cashCost, false);
+            DatabaseManager.GameProfile.UpdateCash(session, cashCost, false);
 
-			DatabaseManager.GameProfile.AddEmptyPreDeckSlot(session, user.UserStatistics.PredeckCount);
+            DatabaseManager.GameProfile.AddEmptyPreDeckSlot(session, user.UserStatistics.PredeckCount);
 
             user = GetUserGameProfile();
             var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
@@ -44,7 +44,7 @@ namespace CommanderCS.Packets.Handlers.PreDeck
                 partData = user.UserInventory.partData,
 
                 resetRemain = user.ResetDateTime, // should be set?
-                /// pronabably set it globally?
+                /// probably set it globally?
 
                 equipItem = user.UserInventory.equipItem,
 

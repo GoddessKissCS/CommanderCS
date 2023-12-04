@@ -1,8 +1,7 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using CommanderCS.Database;
+﻿using CommanderCS.Database;
 using CommanderCS.Protocols;
-using System.Numerics;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Host.Handlers.Guild
 {

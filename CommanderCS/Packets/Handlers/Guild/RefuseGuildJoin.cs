@@ -1,10 +1,10 @@
-using Newtonsoft.Json;
 using CommanderCS.Database;
 using CommanderCS.Host;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.RefuseGuildJoin)]
+    [Packet(Id = Method.RefuseGuildJoin)]
     public class RefuseGuildJoin : BaseMethodHandler<RefuseGuildJoinRequest>
     {
         public override object Handle(RefuseGuildJoinRequest @params)

@@ -1,5 +1,4 @@
 ﻿using CommanderCS.Host;
-using CommanderCS.Protocols;
 
 namespace CommanderCS.Packets.Handlers.Unit
 {

@@ -1,8 +1,8 @@
-using Newtonsoft.Json;
 using CommanderCS.Database;
 using CommanderCS.Database.Schemes;
-using CommanderCS.Host;
 using CommanderCS.ExcelReader;
+using CommanderCS.Host;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.WorldMap
 {
@@ -117,13 +117,15 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 
             user.CommanderData.TryGetValue(commanderId, out var commander);
 
-            if(commander != null)
+            if (commander != null)
             {
                 user.UserInventory.medalData[commanderId] += medals;
                 user.CommanderData[commanderId].medl += medals;
 
                 WorldMapReward.commanderData = user.CommanderData;
-            } else {
+            }
+            else
+            {
                 int cid = int.Parse(commanderId);
 
                 var commanderdata = CommanderCostumeData.GetInstance().AddSpecificCommander(user.CommanderData, cid);

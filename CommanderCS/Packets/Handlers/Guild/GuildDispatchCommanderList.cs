@@ -3,31 +3,31 @@ using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.GuildDispatchCommanderList)]
+    [Packet(Id = Method.GuildDispatchCommanderList)]
     public class GuildDispatchCommanderList : BaseMethodHandler<GuildDispatchCommanderListRequest>
     {
         public override object Handle(GuildDispatchCommanderListRequest @params)
         {
-			Protocols.GuildDispatchCommanderList vs = new()
-			{
-				commanderList = [],
-				npcList = [],
-			};
+            Protocols.GuildDispatchCommanderList vs = new()
+            {
+                commanderList = [],
+                npcList = [],
+            };
 
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = vs,
-			};
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = vs,
+            };
 
-			return response;
+            return response;
         }
     }
 
     public class GuildDispatchCommanderListRequest
     {
-		[JsonProperty("type")] 
-		public int type { get; set; }
+        [JsonProperty("type")]
+        public int type { get; set; }
     }
 
 }

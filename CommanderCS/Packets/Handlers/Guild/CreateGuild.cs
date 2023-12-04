@@ -1,12 +1,12 @@
-using Newtonsoft.Json;
 using CommanderCS.Database;
 using CommanderCS.Host;
 using CommanderCS.Protocols;
 using CommanderCS.Utils;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.CreateGuild)]
+    [Packet(Id = Method.CreateGuild)]
     public class CreateGuild : BaseMethodHandler<CreateGuildRequest>
     {
         public override object Handle(CreateGuildRequest @params)
@@ -16,12 +16,12 @@ namespace CommanderCS.Packets.Handlers.Guild
             var user = GetUserGameProfile();
 
             ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-			};
+            {
+                Id = BasePacket.Id,
+            };
 
-			if (Misc.NameCheck(@params.gnm))
-			{
+            if (Misc.NameCheck(@params.gnm))
+            {
                 ErrorPacket error = new()
                 {
                     Id = BasePacket.Id,
@@ -34,39 +34,41 @@ namespace CommanderCS.Packets.Handlers.Guild
             var guild = DatabaseManager.Guild.FindByName(@params.gnm);
 
             if (guild != null)
-			{
+            {
                 ErrorPacket error = new()
                 {
                     Id = BasePacket.Id,
                     Error = new() { code = ErrorCode.FederationNameAlreadyExists },
                 };
 
-                return error;   
-				
-            } else {
+                return error;
 
-				DatabaseManager.GameProfile.UpdateCash(session, 300, false);
+            }
+            else
+            {
 
-				DatabaseManager.Guild.Create(@params.gnm, @params.emb, @params.gtyp, @params.lvlm, session);
-			
+                DatabaseManager.GameProfile.UpdateCash(session, 300, false);
+
+                DatabaseManager.Guild.Create(@params.gnm, @params.emb, @params.gtyp, @params.lvlm, session);
+
 
                 var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
 
                 var userguild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
-				var memberdata = DatabaseManager.Guild.RequestGuildMembers(user.GuildId);
+                var memberdata = DatabaseManager.Guild.RequestGuildMembers(user.GuildId);
 
                 GuildInfo guildInfo = new()
                 {
-					guildInfo = userguild,
-					resource = rsoc,
-					memberData = memberdata
+                    guildInfo = userguild,
+                    resource = rsoc,
+                    memberData = memberdata
                 };
 
-				response.Result = guildInfo;
+                response.Result = guildInfo;
             }
 
-			return response;
+            return response;
         }
 
 
@@ -75,10 +77,10 @@ namespace CommanderCS.Packets.Handlers.Guild
 
 
 
-	public class CreateGuildRequest
-	{
-		[JsonProperty("gnm")]
-		public string gnm { get; set; }
+    public class CreateGuildRequest
+    {
+        [JsonProperty("gnm")]
+        public string gnm { get; set; }
 
         [JsonProperty("gtyp")]
         public int gtyp { get; set; }
@@ -88,7 +90,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
         [JsonProperty("emb")]
         public int emb { get; set; }
-	}
+    }
 
 }
 

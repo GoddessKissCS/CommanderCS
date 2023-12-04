@@ -1,39 +1,39 @@
-using Newtonsoft.Json;
 using CommanderCS.Database;
 using CommanderCS.Host;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.UpdateGuildInfo)]
+    [Packet(Id = Method.UpdateGuildInfo)]
     public class UpdateGuildInfo : BaseMethodHandler<UpdateGuildInfoRequest>
     {
         public override object Handle(UpdateGuildInfoRequest @params)
-        {      
-			var user = GetUserGameProfile();
-			var session = GetSession();
+        {
+            var user = GetUserGameProfile();
+            var session = GetSession();
 
             ErrorCode code = DatabaseManager.Guild.UpdateGuildInfo(@params.act, @params.val, session);
 
-			if(code != ErrorCode.Success)
-			{
-				ErrorPacket error = new()
-				{
-					Error = new() { code = code },
-					Id = BasePacket.Id,
-				};
-				return error;
-			}
+            if (code != ErrorCode.Success)
+            {
+                ErrorPacket error = new()
+                {
+                    Error = new() { code = code },
+                    Id = BasePacket.Id,
+                };
+                return error;
+            }
 
-			var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
-			var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
             Protocols.GuildInfo guildInfo = new()
-			{
-				resource = rsoc,
-				guildInfo = guild,
-				guildList = null,
-				memberData = null,
-			};
+            {
+                resource = rsoc,
+                guildInfo = guild,
+                guildList = null,
+                memberData = null,
+            };
 
             ResponsePacket response = new()
             {
@@ -45,14 +45,14 @@ namespace CommanderCS.Packets.Handlers.Guild
         }
     }
 
-	public class UpdateGuildInfoRequest
-	{
+    public class UpdateGuildInfoRequest
+    {
         [JsonProperty("act")]
         public int act { get; set; }
 
-		[JsonProperty("val")]
-		public string val { get; set; }
-	}
+        [JsonProperty("val")]
+        public string val { get; set; }
+    }
 
 }
 
