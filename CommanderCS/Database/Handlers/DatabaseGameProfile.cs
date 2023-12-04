@@ -105,7 +105,21 @@ namespace CommanderCS.Database.Handlers
                 ],
                 TutorialData = new() { skip = false, step = 0 },
                 UserDevice = new() { },
-                UserInventory = new UserInventory(),
+                UserInventory = new UserInventory()
+                {
+                    medalData = new()
+                    {
+                        { "1", 10 }
+                    },
+                    equipItem = [],
+                    itemData = [],
+                    foodData = [],
+                    groupItemData = [],
+                    partData = [],
+                    weaponList = [],
+                    eventResourceData = [],
+                    donHaveCommCostumeData = [],
+                },
                 ResetDateTime = 0,
                 UserResources = new() { },
                 Uno = uno,
@@ -146,7 +160,10 @@ namespace CommanderCS.Database.Handlers
                 PvPDefenderDeck = [],
                 RankingData = new()
                 {
-                    PvPDuelRankingData = new(),
+                    PvPDuelRankingData = new()
+                    {
+                        score = 1000
+                    },
                     WaveDuelRankingData = new()
                 },
             };
@@ -395,9 +412,8 @@ namespace CommanderCS.Database.Handlers
 
         public void UpdateUserResources(string session, UserResources resources)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
-
-            var update = Builders<GameProfileScheme>.Update.Set("UserResources", resources);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources, resources);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -419,9 +435,8 @@ namespace CommanderCS.Database.Handlers
                 user.UserResources.cash -= new_cash;
             }
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
-
-            var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", user.UserResources.gold).Set("UserResources.cash", user.UserResources.cash).Set("UserStatistics.totalGold", user.UserStatistics.TotalGold);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.gold, user.UserResources.gold).Set(x => x.UserResources.cash, user.UserResources.cash).Set(x => x.UserStatistics.TotalGold, user.UserStatistics.TotalGold);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -441,9 +456,8 @@ namespace CommanderCS.Database.Handlers
                 user.UserStatistics.TotalGold -= gold;
             }
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
-
-            var update = Builders<GameProfileScheme>.Update.Set("UserResources.gold", user.UserResources.gold).Set("UserStatistics.totalGold", user.UserStatistics.TotalGold);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.gold, user.UserResources.gold).Set(x => x.UserStatistics.TotalGold, user.UserStatistics.TotalGold);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -461,9 +475,8 @@ namespace CommanderCS.Database.Handlers
                 user.UserResources.cash -= cash;
             }
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
-
-            var update = Builders<GameProfileScheme>.Update.Set("UserResources.cash", user.UserResources.cash);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.cash, user.UserResources.cash);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -488,10 +501,10 @@ namespace CommanderCS.Database.Handlers
 
             var CurrTimeStamp = TimeManager.CurrentEpoch;
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("MemberId", @params.memberId) &
-                         Builders<GameProfileScheme>.Filter.Eq("Server", @params.world);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, @params.memberId) &
+                         Builders<GameProfileScheme>.Filter.Eq(x => x.Server, @params.world);
 
-            var update = Builders<GameProfileScheme>.Update.Set("Session", session).Set("UserDevice", userDevice).Set("LastLoginTime", CurrTimeStamp);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Session, session).Set(x => x.UserDevice, userDevice).Set(x => x.LastLoginTime, CurrTimeStamp);
 
             DatabaseCollection.UpdateOne(filter, update);
 
@@ -514,14 +527,6 @@ namespace CommanderCS.Database.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
-        public void UpdateCommanderData(int id, Dictionary<string, UserInformationResponse.Commander> commanderList)
-        {
-            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, id);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.CommanderData, commanderList);
-
-            DatabaseCollection.UpdateOne(filter, update);
-        }
-
         public void UpdateMedalData(string session, Dictionary<string, int> medalsdata)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
@@ -530,13 +535,6 @@ namespace CommanderCS.Database.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
-        public void UpdateMedalData(int id, Dictionary<string, int> medalsdata)
-        {
-            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, id);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.medalData, medalsdata);
-
-            DatabaseCollection.UpdateOne(filter, update);
-        }
 
         public void UpdateItemData(string session, Dictionary<string, int> goods)
         {
@@ -546,26 +544,20 @@ namespace CommanderCS.Database.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
-        public UserInformationResponse.TutorialData UpdateTutorialData(string session, UserInformationResponse.TutorialData tutorialData)
+        public void UpdateTutorialData(string session, UserInformationResponse.TutorialData tutorialData)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
-
-            var update = Builders<GameProfileScheme>.Update.Set("TutorialData", tutorialData);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.TutorialData, tutorialData);
 
             DatabaseCollection.UpdateOne(filter, update);
-
-            var rtutorialData = FindBySession(session).TutorialData;
-
-            return rtutorialData;
         }
 
         public bool ChangeThumbnailId(string session, int idx)
         {
             int id = CommanderCostumeData.GetInstance().FromId(idx).ctid;
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
-
-            var update = Builders<GameProfileScheme>.Update.Set("UserResources.thumbnailId", id);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.thumbnailId, id);
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
@@ -574,27 +566,24 @@ namespace CommanderCS.Database.Handlers
 
         public void UpdateTutorialStep(string session, int tutorialStep)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
-
-            var update = Builders<GameProfileScheme>.Update.Set("TutorialData.step", tutorialStep);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.TutorialData.step, tutorialStep);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
 
         public void UpdateNickName(string session, string accountName)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
-
-            var update = Builders<GameProfileScheme>.Update.Set("UserResources.nickname", accountName);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.nickname, accountName);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
 
         public bool AddBlockedUser(BlockUser toBeBlocked, string session)
         {
-            var user = DatabaseManager.GameProfile.FindBySession(session);
-            var filter = Builders<GameProfileScheme>.Filter.Eq("MemberId", user.MemberId);
-            var update = Builders<GameProfileScheme>.Update.Push("BlockedUsers", toBeBlocked);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Push(x => x.BlockedUsers, toBeBlocked);
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
@@ -602,15 +591,13 @@ namespace CommanderCS.Database.Handlers
         }
 
         public bool DelBlockedUser(string session, int channel, string uno)
-        {
-            var user = DatabaseManager.GameProfile.FindBySession(session);
-
+        { 
             var filter = Builders<GameProfileScheme>.Filter.And(
-                Builders<GameProfileScheme>.Filter.Eq("MemberId", user.MemberId),
+                Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
                 Builders<GameProfileScheme>.Filter.ElemMatch(x => x.BlockedUsers,
                     Builders<BlockUser>.Filter.And(
-                        Builders<BlockUser>.Filter.Eq("ch", channel),
-                        Builders<BlockUser>.Filter.Eq("uno", uno)
+                        Builders<BlockUser>.Filter.Eq(x => x.channel, channel),
+                        Builders<BlockUser>.Filter.Eq(x => x.uno, uno)
                     )
                 )
             );
@@ -624,11 +611,11 @@ namespace CommanderCS.Database.Handlers
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("MemberId", user.MemberId);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, user.MemberId);
 
-            var update = Builders<GameProfileScheme>.Update.PullFilter("MailInfo",
+            var update = Builders<GameProfileScheme>.Update.PullFilter(x => x.MailDataList,
                 Builders<MailInfo.MailData>.Filter.And(
-                    Builders<MailInfo.MailData>.Filter.Eq("idx", MailIdx)
+                    Builders<MailInfo.MailData>.Filter.Eq(x => x.idx, MailIdx)
                 ));
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
@@ -638,8 +625,8 @@ namespace CommanderCS.Database.Handlers
 
         public bool UpdateNotifaction(string session, int onoff)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
-            var update = Builders<GameProfileScheme>.Update.Set("Notifaction", Convert.ToBoolean(onoff));
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Notifaction, Convert.ToBoolean(onoff));
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
@@ -654,8 +641,8 @@ namespace CommanderCS.Database.Handlers
 
             user.WorldMapData.StageReward[worldMapid] = 1;
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
-            var update = Builders<GameProfileScheme>.Update.Set("WorldMapData.StageReward", user.WorldMapData.StageReward);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.WorldMapData.StageReward, user.WorldMapData.StageReward);
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
@@ -664,8 +651,8 @@ namespace CommanderCS.Database.Handlers
 
         public void UpdateVipRechargeData(string session, List<UserInformationResponse.VipRechargeData> vipRechargedata)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
-            var update = Builders<GameProfileScheme>.Update.Set("VipRechargeData", vipRechargedata);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.VipRechargeData, vipRechargedata);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -673,7 +660,7 @@ namespace CommanderCS.Database.Handlers
         public void UpdateVipRechargeCount(string session, int idx, int newCount)
         {
             var filter = Builders<GameProfileScheme>.Filter.And(
-                Builders<GameProfileScheme>.Filter.Eq("Session", session),
+                Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
                 Builders<GameProfileScheme>.Filter.Eq("VipRechargeData.idx", idx)
             );
 
@@ -688,7 +675,7 @@ namespace CommanderCS.Database.Handlers
         public int GetVipRechargeCount(string session, int idx)
         {
             var filter = Builders<GameProfileScheme>.Filter.And(
-                Builders<GameProfileScheme>.Filter.Eq("Session", session),
+                Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
                 Builders<GameProfileScheme>.Filter.Eq("VipRechargeData.idx", idx)
             );
 
@@ -701,31 +688,31 @@ namespace CommanderCS.Database.Handlers
 
         public void UpdateProfile(string session, GameProfileScheme user)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
 
             DatabaseCollection.ReplaceOne(filter, user);
         }
 
         public void UpdateGuild(int uno, object? guildId)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Uno", uno);
-            var update = Builders<GameProfileScheme>.Update.Set("GuildId", guildId);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Uno, uno);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.GuildId, guildId);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
 
         public void UpdateGuildId(int uno, int guildId)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Uno", uno);
-            var update = Builders<GameProfileScheme>.Update.Set("GuildId", guildId);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Uno, uno);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.GuildId, guildId);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
 
         public void UpdatePreDeck(string session, List<UserInformationResponse.PreDeck> preDecks)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
-            var update = Builders<GameProfileScheme>.Update.Set("PreDeck", preDecks);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.PreDeck, preDecks);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -741,12 +728,12 @@ namespace CommanderCS.Database.Handlers
                 deckData = []
             };
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
-            var update = Builders<GameProfileScheme>.Update.Push("PreDeck", emptyPreDeck);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Push(x => x.PreDeck, emptyPreDeck);
             DatabaseCollection.UpdateOne(filter, update);
 
-            var filter2 = Builders<GameProfileScheme>.Filter.Eq("Session", session);
-            var update2 = Builders<GameProfileScheme>.Update.Set("UserStatistics.PredeckCount", preDeckCount + 1); // Adjusted to use (idx + 1)
+            var filter2 = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update2 = Builders<GameProfileScheme>.Update.Set(x => x.UserStatistics.PredeckCount, preDeckCount + 1); // Adjusted to use (idx + 1)
             DatabaseCollection.UpdateOne(filter2, update2);
         }
     }

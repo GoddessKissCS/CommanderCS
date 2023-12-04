@@ -9,11 +9,8 @@ namespace CommanderCS.Host.Handlers.Commander
     public class CommanderRankUp : BaseMethodHandler<CommanderRankUpRequest>
     {
         public override object Handle(CommanderRankUpRequest @params)
-        {
-            ResponsePacket response = new();
-
+        {      
             string session = GetSession();
-
             var user = GetUserGameProfile();
 
             string cid = @params.cid.ToString();
@@ -85,15 +82,20 @@ namespace CommanderCS.Host.Handlers.Commander
 
             var newResources = GetUserGameProfile();
 
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(newResources.UserResources);
+
             CommanderRankUpResponse cmrup = new()
             {
-                rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session),
+                rsoc = rsoc,
                 medl = newResources.UserInventory.medalData,
                 comm = newResources.CommanderData,
             };
 
-            response.Result = cmrup;
-            response.Id = BasePacket.Id;
+            ResponsePacket response = new()
+            {
+                Result = cmrup,
+                Id = BasePacket.Id
+            };
 
             return response;
         }
@@ -148,7 +150,7 @@ namespace CommanderCS.Host.Handlers.Commander
             return true;
         }
 
-        private static UserInformationResponse.Commander CreateCommander(string commanderid, int costumeid, int commanderMedals, int grade)
+        public static UserInformationResponse.Commander CreateCommander(string commanderid, int costumeid, int commanderMedals, int grade)
         {
             UserInformationResponse.Commander __commander = new()
             {
@@ -160,23 +162,23 @@ namespace CommanderCS.Host.Handlers.Commander
                 __cls = "0",
                 __exp = "0",
                 __level = "1",
-                __rank = "" + grade,
+                __rank =  grade.ToString(),
                 favorRewardStep = 0,
                 favorStep = 0,
                 currentCostume = costumeid,
-                eventCostume = new() { },
-                equipItemInfo = new() { },
-                equipWeaponInfo = new() { },
+                eventCostume = [],
+                equipItemInfo = [],
+                equipWeaponInfo = [],
                 favorPoint = 0,
                 favr = 0,
                 fvrd = 0,
-                haveCostume = new() { costumeid },
+                haveCostume = [costumeid],
                 id = commanderid,
                 marry = 0,
                 medl = commanderMedals,
 #warning TODO CREATE A ROLE TABLE
                 role = "A",
-                transcendence = new() { 0, 0, 0, 0 },
+                transcendence = [0, 0, 0, 0],
             };
 
             return __commander;
