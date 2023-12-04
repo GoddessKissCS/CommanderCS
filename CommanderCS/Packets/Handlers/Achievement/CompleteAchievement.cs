@@ -1,6 +1,24 @@
+using CommanderCS.Host;
+
 namespace CommanderCS.Packets.Handlers.Achievement
 {
-    public class CompleteAchievement
+	[Packet(Id = Method.CompleteAchievement)]
+    public class CompleteAchievement : BaseMethodHandler<CompleteAchievementRequest>
+    {
+        public override object Handle(CompleteAchievementRequest @params)
+        {
+
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = Array.Empty<Protocols.CompleteAchievementInfo>(),
+            };
+
+			return response;	
+        }
+    }
+
+    public class CompleteAchievementRequest
     {
     }
 }

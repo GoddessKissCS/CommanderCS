@@ -11,7 +11,6 @@ namespace CommanderCS.Host.Handlers.Guild
         public override object Handle(GuildInfoRequest @params)
         {
             var session = GetSession();
-
             var user = GetUserGameProfile();
 
             var goods = DatabaseManager.GameProfile.UserResourcesFromSession(session);

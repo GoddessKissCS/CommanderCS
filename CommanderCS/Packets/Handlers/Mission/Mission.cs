@@ -1,8 +1,51 @@
+using CommanderCS.Host;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.Mission
 {
-    public class Mission
+	[Packet(Id = Method.Mission)]
+    public class Mission : BaseMethodHandler<MissionRequest>
     {
+        public override object Handle(MissionRequest @params)
+        {
+			switch (@params.type)
+			{
+
+			}
+			Protocols.AchievementInfo achievement = new()
+			{
+				AchievementList = [],
+				completeCount = 0,
+				goal = 0,
+			};
+
+			Protocols.MissionInfo missionInfo = new()
+			{
+				completeCount = 0,
+				goal = 0,
+				missionList = []
+			};
+
+
+            ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = null,
+			};	
+
+			return response;
+
+        }
     }
+
+
+    public class MissionRequest
+    {
+		[JsonProperty("type")]
+		public List<string> type { get; set; }
+    }
+
 }
 
 /*	// Token: 0x06005FA0 RID: 24480 RVA: 0x000120F8 File Offset: 0x000102F8

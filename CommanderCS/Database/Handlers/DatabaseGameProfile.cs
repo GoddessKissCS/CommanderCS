@@ -4,7 +4,6 @@ using CommanderCS.Host.Handlers.Login;
 using CommanderCS.Protocols;
 using CommanderCSLibrary.Utils;
 using MongoDB.Driver;
-using static CommanderCS.Protocols.UserInformationResponse;
 
 namespace CommanderCS.Database.Handlers
 {
@@ -220,11 +219,11 @@ namespace CommanderCS.Database.Handlers
             return count.ToString();
         }
 
-        public BattleStatistics UserStatisticsFromSession(string session)
+        public UserInformationResponse.BattleStatistics UserStatisticsFromSession(string session)
         {
             var statistics = FindBySession(session).UserStatistics;
 
-            BattleStatistics BattleStatisticstis = new()
+            UserInformationResponse.BattleStatistics BattleStatisticstis = new()
             {
                 navyCommanderDestroyCount = statistics.NavyCommanderDestroyCount,
                 stageClearCount = statistics.StageClearCount,
@@ -259,9 +258,9 @@ namespace CommanderCS.Database.Handlers
             return BattleStatisticstis;
         }
 
-        public BattleStatistics UserStatistics2BattleStatistics(UserBattleStatistics statistics)
+        public UserInformationResponse.BattleStatistics UserStatistics2BattleStatistics(UserBattleStatistics statistics)
         {
-            BattleStatistics BattleStatisticstis = new()
+            UserInformationResponse.BattleStatistics BattleStatisticstis = new()
             {
                 navyCommanderDestroyCount = statistics.NavyCommanderDestroyCount,
                 stageClearCount = statistics.StageClearCount,
@@ -296,11 +295,11 @@ namespace CommanderCS.Database.Handlers
             return BattleStatisticstis;
         }
 
-        public Resource? UserResourcesFromSession(string session)
+        public UserInformationResponse.Resource? UserResourcesFromSession(string session)
         {
             var resources = FindBySession(session).UserResources;
 
-            Resource resource = new()
+            UserInformationResponse.Resource resource = new()
             {
                 __nickname = resources.nickname,
                 __annCoin = Convert.ToString(resources.annCoin),
@@ -346,9 +345,9 @@ namespace CommanderCS.Database.Handlers
             return resource;
         }
 
-        public Resource? UserResources2Resource(UserResources resources)
+        public UserInformationResponse.Resource? UserResources2Resource(UserResources resources)
         {
-            Resource resource = new()
+            UserInformationResponse.Resource resource = new()
             {
                 __nickname = resources.nickname,
                 __annCoin = Convert.ToString(resources.annCoin),
@@ -639,7 +638,7 @@ namespace CommanderCS.Database.Handlers
 
         public bool UpdateNotifaction(string session, int onoff)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq("session", session);
+            var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
             var update = Builders<GameProfileScheme>.Update.Set("Notifaction", Convert.ToBoolean(onoff));
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
@@ -723,7 +722,7 @@ namespace CommanderCS.Database.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
-        public void UpdatePreDeck(string session, List<PreDeck> preDecks)
+        public void UpdatePreDeck(string session, List<UserInformationResponse.PreDeck> preDecks)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq("Session", session);
             var update = Builders<GameProfileScheme>.Update.Set("PreDeck", preDecks);
@@ -735,7 +734,7 @@ namespace CommanderCS.Database.Handlers
         {
             string preDeckDefaultName = string.Format("Deck {0}", preDeckCount + 1);
 
-            PreDeck emptyPreDeck = new()
+            UserInformationResponse.PreDeck emptyPreDeck = new()
             {
                 idx = preDeckCount,
                 name = preDeckDefaultName,

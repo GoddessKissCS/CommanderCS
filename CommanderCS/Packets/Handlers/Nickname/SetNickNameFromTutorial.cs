@@ -1,4 +1,5 @@
 ﻿using CommanderCS.Database;
+using CommanderCS.Database.Schemes;
 using CommanderCS.Utils;
 using Newtonsoft.Json;
 
@@ -44,31 +45,25 @@ namespace CommanderCS.Host.Handlers.Nickname
                 return ErrorCode.InappropriateWords;
             }
 
-            var user = DatabaseManager.GameProfile.FindByNick(nickname);
-
-            if (user == null)
-            {
-                var userGameProfile = DatabaseManager.GameProfile.FindBySession(sess);
-
-                if (userGameProfile.TutorialData.skip = true)
-                {
-                    DatabaseManager.GameProfile.UpdateTutorialStep(sess, 12);
-                }
-                else
-                {
-                    DatabaseManager.GameProfile.UpdateTutorialStep(sess, 2);
-                }
-
-                DatabaseManager.GameProfile.UpdateNickName(sess, nickname);
-
-                return ErrorCode.Success;
-            }
-            else if (user.UserResources.nickname == nickname)
+            if (DatabaseManager.GameProfile.AccountExists(nickname))
             {
                 return ErrorCode.AlreadyInUse;
             }
 
-            return 0;
+            var userGameProfile = DatabaseManager.GameProfile.FindBySession(sess);
+
+            if (userGameProfile.TutorialData.skip = true)
+            {
+                DatabaseManager.GameProfile.UpdateTutorialStep(sess, 12);
+            }
+            else
+            {
+                DatabaseManager.GameProfile.UpdateTutorialStep(sess, 2);
+            }
+
+            DatabaseManager.GameProfile.UpdateNickName(sess, nickname);
+
+            return ErrorCode.Success;
         }
 
         internal class SetNickNameResponse
