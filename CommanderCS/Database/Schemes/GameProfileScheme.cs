@@ -34,7 +34,6 @@ namespace CommanderCS.Database.Schemes
         public List<BlockUser> BlockedUsers { get; set; }
         public List<MailInfo.MailData>? MailDataList { get; set; }
         public List<DailyBonusCheckResponse> DailyBonusCheck { get; set; }
-        public Dictionary<string, string> PvPDefenderDeck { get; set; }
         public RankingData RankingData { get; set; }
         public DefenderDeck DefenderDeck { get; set; }
 
@@ -187,6 +186,8 @@ namespace CommanderCS.Database.Schemes
     public class DefenderDeck
     {
         public Dictionary<string, string> PvPDefenderDeck { get; set; }
+
+        public Dictionary<string, Dictionary<string, string>> WaveDuelDefenderDecks { get; set; }
     }
 
 }
