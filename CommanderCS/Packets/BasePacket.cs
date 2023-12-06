@@ -60,9 +60,9 @@ namespace CommanderCS.Host
             return DatabaseManager.DeviceCode.RequestForChangeDeviceCode(GetUserAccount());
         }
 
-        public GuildScheme GetUserGuild(int? guildId)
+        public GuildScheme GetUserGuild()
         {
-            return DatabaseManager.Guild.FindByUid(guildId);
+            return DatabaseManager.Guild.FindBySession(BasePacket.Session);
         }
     }
 

@@ -110,6 +110,14 @@ namespace CommanderCS.Database.Handlers
             return DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
         }
 
+
+        public GuildScheme FindBySession(string session)
+        {
+            var user = DatabaseManager.GameProfile.FindBySession(session);
+
+            return DatabaseCollection.AsQueryable().Where(d => d.GuildId == user.GuildId).FirstOrDefault();
+        }
+
         public int GetMemberGrade(int? guildId, int uno)
         {
             return DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault().MemberData.Where(d => d.uno == uno).FirstOrDefault().memberGrade;

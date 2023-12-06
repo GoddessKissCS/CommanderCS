@@ -11,7 +11,7 @@ namespace CommanderCS.Packets.Handlers.Guild
         public override object Handle(DeportGuildMemberRequest @params)
         {
             var user = GetUserGameProfile();
-            var guild = GetUserGuild(user.GuildId);
+            var guild = GetUserGuild();
 
             var target = guild.MemberData.FirstOrDefault(member => member.uno == @params.tuno);
 

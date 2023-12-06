@@ -10,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
         {
             var user = GetUserGameProfile();
 
-            var guild = GetUserGuild(user.GuildId);
+            var guild = GetUserGuild();
 
             var difference = TimeManager.GetTimeDifference(guild.LastEdit);
 
