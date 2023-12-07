@@ -1,6 +1,41 @@
+using CommanderCS.Database;
+using CommanderCS.Host;
+using CommanderCSLibrary.Utils;
+using CommanderCS.Protocols;
+
 namespace StellarGK.Packets.Handlers.WaveDuel
 {
-    public class RefreshPvPWaveDuelList
+    [Packet(Id = Method.RefreshPvPWaveDuelList)]
+    public class RefreshPvPWaveDuelList : BaseMethodHandler<RefreshPvPWaveDuelListRequest>
+    {
+        public override object Handle(RefreshPvPWaveDuelListRequest @params)
+        {
+            var user = GetUserGameProfile();
+
+            // need to check score and the get duelist between the range
+
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+
+            RefreshPvPDuel refreshDuel = new()
+            {
+                duelList = [],
+                openRemain = 86400,
+                remain = 86400,
+                time = (int)TimeManager.CurrentEpoch,
+                rsoc = rsoc,
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = refreshDuel,
+            };
+
+            return response;
+        }
+
+    }
+    public class RefreshPvPWaveDuelListRequest
     {
     }
 }

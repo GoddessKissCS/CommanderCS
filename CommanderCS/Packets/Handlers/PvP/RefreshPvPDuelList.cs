@@ -1,6 +1,42 @@
+using CommanderCS.Database;
+using CommanderCS.Host;
+using CommanderCSLibrary.Utils;
+
 namespace CommanderCS.Packets.Handlers.PvP
 {
-    public class RefreshPvPDuelList
+
+    [Packet(Id = Method.RefreshPvPDuelList)]
+    public class RefreshPvPDuelList : BaseMethodHandler<RefreshPvPDuelListRequest>
+    {
+        public override object Handle(RefreshPvPDuelListRequest @params)
+        {
+            var user = GetUserGameProfile();
+
+            // need to check score and the get duelist between the range
+
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+
+            Protocols.RefreshPvPDuel refreshDuel = new()
+            {
+                duelList = [],
+                openRemain = 86400,
+                remain = 86400,
+                time = (int)TimeManager.CurrentEpoch,
+                rsoc = rsoc,             
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = refreshDuel,
+            };
+
+            return response;
+        }
+
+    }
+
+    public class RefreshPvPDuelListRequest
     {
     }
 }

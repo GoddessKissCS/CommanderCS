@@ -18,7 +18,7 @@ namespace CommanderCS.Host.Handlers.WorldMap
             WorldMapResponse worldmap = new()
             {
                 stage = stages,
-                rwd = Convert.ToInt32(isRewardCollected),
+                rwd = isRewardCollected,
             };
 
             ResponsePacket response = new()

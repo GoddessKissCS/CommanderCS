@@ -8,10 +8,11 @@ namespace CommanderCS.Packets.Handlers.Defender
     {
         public override object Handle(GetDefenderInfoRequest @params)
         {
-#warning add defender info if it exists
+            var user = GetUserGameProfile();
+                
             GetDefenderInfoResponse getDefenderInfo = new()
             {
-                deck = []
+                deck = user.DefenderDeck.PvPDefenderDeck,
             };
 
             ResponsePacket response = new()

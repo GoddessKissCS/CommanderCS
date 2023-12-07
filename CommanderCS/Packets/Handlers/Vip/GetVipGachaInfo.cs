@@ -7,7 +7,7 @@ namespace CommanderCS.Host.Handlers.Vip
     {
         public override object Handle(GetVipGachaInfoRequest @params)
         {
-            VipGacha result = new VipGacha();
+            VipGacha result = new();
 
             //Protocols.VipGacha
 

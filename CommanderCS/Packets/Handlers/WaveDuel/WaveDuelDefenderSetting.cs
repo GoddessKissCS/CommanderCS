@@ -1,10 +1,28 @@
+using CommanderCS.Host;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.WaveDuel
 {
-    public class WaveDuelDefenderSetting
+	[Packet(Id = Method.WaveDuelDefenderSetting)]
+    public class WaveDuelDefenderSetting : BaseMethodHandler<WaveDuelDefenderSettingRequest>
     {
+        public override object Handle(WaveDuelDefenderSettingRequest @params)
+        {
+			//Dictionary<string, Dictionary<string, string>> dictionary = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(@params.Decks.ToString());
+
+			bool bol = true;
+
+			string boolean = bol.ToString();
+
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = boolean,
+            };
+
+			return response;
+        }
     }
 
     public class WaveDuelDefenderSettingRequest

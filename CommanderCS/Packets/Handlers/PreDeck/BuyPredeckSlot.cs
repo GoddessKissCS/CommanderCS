@@ -19,11 +19,10 @@ namespace CommanderCS.Packets.Handlers.PreDeck
 
             int cashCost = openCost + addOpenCost * (user.UserStatistics.PredeckCount - basePredeckCount);
 
-            DatabaseManager.GameProfile.UpdateCash(session, cashCost, false);
+            user = DatabaseManager.GameProfile.UpdateCash(session, cashCost, false);
 
             DatabaseManager.GameProfile.AddEmptyPreDeckSlot(session, user.UserStatistics.PredeckCount);
 
-            user = GetUserGameProfile();
             var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
             var battlestats = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(user.UserStatistics);
             var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);

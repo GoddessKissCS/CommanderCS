@@ -8,16 +8,16 @@ namespace CommanderCS.Packets.Handlers.PvP
     {
         public override object Handle(PvPDuelListRequest @params)
         {
-            var time = TimeManager.CurrentEpoch;
-
             var user = GetUserGameProfile();
+
+			// need to check score and the get duelist between the range
 
             Protocols.PvPDuelList pvPDuel = new()
             {
                 duelList = [],
                 openRemain = 86400,
                 remain = 86400,
-                time = (int)time,
+                time = (int)TimeManager.CurrentEpoch,
                 user = user.RankingData.PvPDuelRankingData
             };
 

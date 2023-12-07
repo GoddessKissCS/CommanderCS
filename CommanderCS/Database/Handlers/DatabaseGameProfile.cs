@@ -466,7 +466,7 @@ namespace CommanderCS.Database.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
-        public void UpdateCash(string session, int cash, bool useAddition)
+        public GameProfileScheme UpdateCash(string session, int cash, bool useAddition)
         {
             var user = FindBySession(session);
 
@@ -482,7 +482,15 @@ namespace CommanderCS.Database.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
             var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.cash, user.UserResources.cash);
 
-            DatabaseCollection.UpdateOne(filter, update);
+
+            var options = new FindOneAndUpdateOptions<GameProfileScheme>
+            {
+                ReturnDocument = ReturnDocument.After, // Return the updated document
+            };
+
+            var updatedUser = DatabaseCollection.FindOneAndUpdate(filter, update, options);
+
+            return updatedUser;
         }
 
         public void UpdateOnLogin(LoginRequest @params, string session)
@@ -723,12 +731,10 @@ namespace CommanderCS.Database.Handlers
 
         public void AddEmptyPreDeckSlot(string session, int preDeckCount)
         {
-            string preDeckDefaultName = string.Format("Deck {0}", preDeckCount + 1);
-
             UserInformationResponse.PreDeck emptyPreDeck = new()
             {
                 idx = preDeckCount,
-                name = preDeckDefaultName,
+                name = string.Empty,
                 deckData = []
             };
 
@@ -737,7 +743,7 @@ namespace CommanderCS.Database.Handlers
             DatabaseCollection.UpdateOne(filter, update);
 
             var filter2 = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update2 = Builders<GameProfileScheme>.Update.Set(x => x.UserStatistics.PredeckCount, preDeckCount + 1); // Adjusted to use (idx + 1)
+            var update2 = Builders<GameProfileScheme>.Update.Set(x => x.UserStatistics.PredeckCount, preDeckCount + 1);
             DatabaseCollection.UpdateOne(filter2, update2);
         }
     }

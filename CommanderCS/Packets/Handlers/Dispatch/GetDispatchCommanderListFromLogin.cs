@@ -5,10 +5,12 @@
     {
         public override object Handle(GetDispatchCommanderListFromLoginRequest @params)
         {
+            var user = GetUserGameProfile();
+
             ResponsePacket responsePacket = new()
             {
                 Id = BasePacket.Id,
-                Result = GetUserGameProfile().DispatchedCommanders,
+                Result = user.DispatchedCommanders,
             };
 
             return responsePacket;

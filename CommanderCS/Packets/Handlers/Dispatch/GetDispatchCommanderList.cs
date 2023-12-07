@@ -9,7 +9,6 @@ namespace CommanderCS.Packets.Handlers.Dispatch
         public override object Handle(GetDispatchCommanderListRequest @params)
         {
             var user = GetUserGameProfile();
-
             var guild = GetUserGuild();
 
             var difference = TimeManager.GetTimeDifference(guild.LastEdit);
