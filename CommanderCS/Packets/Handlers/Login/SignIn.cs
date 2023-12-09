@@ -10,8 +10,6 @@ namespace CommanderCS.Host.Handlers.Sign
     {
         public override object Handle(SignInRequest @params)
         {
-            ResponsePacket response = new();
-
             ErrorCode code = RequestSignIn(@params.uid, @params.pwd, out SignInP SignInP);
 
             if (code != ErrorCode.Success)
@@ -25,8 +23,11 @@ namespace CommanderCS.Host.Handlers.Sign
                 return error;
             }
 
-            response.Id = BasePacket.Id;
-            response.Result = SignInP;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = SignInP
+            };
 
             DatabaseManager.Account.UpdateLoginTime(@params.uid);
 

@@ -12,7 +12,7 @@ namespace CommanderCS.Host.Handlers.Login
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = logout.success
+                Result = logout
             };
 
             return response;

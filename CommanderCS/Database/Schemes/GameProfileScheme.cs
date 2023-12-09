@@ -35,6 +35,7 @@ namespace CommanderCS.Database.Schemes
         public List<DailyBonusCheckResponse> DailyBonusCheck { get; set; }
         public RankingData RankingData { get; set; }
         public DefenderDeck DefenderDeck { get; set; }
+        public List<ExplorationData> ExplorationData { get; set; }
 
         //public List<WaveBattleInfoList.WaveBattleInfo> WaveBattleInfos { get; set; }
     }
@@ -184,5 +185,6 @@ namespace CommanderCS.Database.Schemes
 
         public Dictionary<string, Dictionary<string, string>> WaveDuelDefenderDecks { get; set; }
     }
+
 
 }

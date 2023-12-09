@@ -9,11 +9,6 @@ namespace CommanderCS.Host.Handlers.Sign
     {
         public override object Handle(SignUpRequest @params)
         {
-            ResponsePacket response = new()
-            {
-                Id = BasePacket.Id
-            };
-
             ErrorCode code = RequestSignUp(@params.uid, @params.pwd, @params.plfm, @params.ch);
 
             if (code != ErrorCode.Success)
@@ -32,7 +27,11 @@ namespace CommanderCS.Host.Handlers.Sign
                 uid = @params.uid,
             };
 
-            response.Result = SignUp;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = SignUp
+            };
 
             return response;
         }

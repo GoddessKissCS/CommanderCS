@@ -8,13 +8,12 @@ namespace CommanderCS.Host.Handlers.Profile
     {
         public override object Handle(ChangeMemberShipRequest @params)
         {
-            ResponsePacket response = new();
 
             // SHOULD BE FINISHED?
 
             ErrorCode code = DatabaseManager.Account.ChangeMemberShip(@params.uid, @params.pwd, @params.plfm, @params.puid, @params.ch);
 
-            if (code == ErrorCode.IdAlreadyExists || code == ErrorCode.InappropriateWords)
+            if (code != ErrorCode.Success)
             {
                 ErrorPacket error = new()
                 {
@@ -25,8 +24,12 @@ namespace CommanderCS.Host.Handlers.Profile
                 return error;
             }
 
-            response.Id = BasePacket.Id;
-            response.Result = "{}";
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "{}"
+            };
+
             return response;
         }
     }

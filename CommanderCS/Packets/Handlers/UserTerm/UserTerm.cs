@@ -7,10 +7,14 @@ namespace CommanderCS.Host.Handlers.UserTerm
     {
         public override object Handle(UserTermRequest @params)
         {
+            string wemade = File.ReadAllText($"Resources\\PrivacyPolicy\\TermsOfService.txt");
+            string member = File.ReadAllText($"Resources\\PrivacyPolicy\\PrivacyPolicy.txt");
+
+
             UserTermResponse userterm = new()
             {
-                wemade = File.ReadAllText($"Resources\\PrivacyPolicy\\TermsOfService.txt"),
-                member = File.ReadAllText($"Resources\\PrivacyPolicy\\PrivacyPolicy.txt")
+                wemade = wemade,
+                member = member
             };
 
             ResponsePacket response = new()

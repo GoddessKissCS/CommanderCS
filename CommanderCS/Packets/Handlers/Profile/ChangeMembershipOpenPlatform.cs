@@ -10,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.Profile
     {
         public override object Handle(ChangeMembershipOpenPlatformRequest @params)
         {
-            ResponsePacket response = new();
+
 
             //TODO - changing the platform from like google -> dbros? idk
 
@@ -18,8 +18,12 @@ namespace CommanderCS.Packets.Handlers.Profile
 
             DatabaseManager.Account.ChangeMemberShipOpenPlatform(@params.puid, (int)@params.plfm, @params.tokn, @params.ch);
 
-            response.Id = BasePacket.Id;
-            response.Result = "{}";
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "{}"
+            };
+
             return response;
         }
     }

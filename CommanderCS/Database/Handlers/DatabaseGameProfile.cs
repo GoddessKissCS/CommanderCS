@@ -1,8 +1,10 @@
 ﻿using CommanderCS.Database.Schemes;
 using CommanderCS.ExcelReader;
+using CommanderCS.Host;
 using CommanderCS.Host.Handlers.Login;
 using CommanderCS.Host.Handlers.WorldMap;
 using CommanderCS.Protocols;
+using CommanderCS.Utils;
 using CommanderCSLibrary.Utils;
 using MongoDB.Driver;
 
@@ -39,6 +41,7 @@ namespace CommanderCS.Database.Handlers
                 CommanderData = [],
                 CompleteRewardGroupIdx = [],
                 DispatchedCommanders = null,
+                ExplorationData = [],
                 GuildId = null,
                 MemberId = memberId,
                 Notifaction = false,
@@ -92,6 +95,7 @@ namespace CommanderCS.Database.Handlers
                     eventResourceData = [],
                     donHaveCommCostumeData = [],
                     costumeData = [],
+                   
                 },
                 ResetDateTime = 0,
                 UserResources = new() { },
@@ -743,5 +747,50 @@ namespace CommanderCS.Database.Handlers
             var update2 = Builders<GameProfileScheme>.Update.Set(x => x.UserStatistics.PredeckCount, preDeckCount + 1);
             DatabaseCollection.UpdateOne(filter2, update2);
         }
+
+        public ErrorCode RequestNicknameAfterTutorial(string sess, string nickname)
+        {
+            if (Misc.NameCheck(nickname))
+            {
+                return ErrorCode.InappropriateWords;
+            }
+
+            if (AccountExists(nickname))
+            {
+                return ErrorCode.AlreadyInUse;
+            }
+
+            var userGameProfile = FindBySession(sess);
+
+            if (userGameProfile.TutorialData.skip != true)
+            {
+                UpdateTutorialStep(sess, 2);
+            }
+
+            DatabaseManager.GameProfile.UpdateNickName(sess, nickname);
+
+            return ErrorCode.Success;
+        }
+
+
+        public ErrorCode RequestNickNameChange(string AccountName, string sess)
+        {
+            if (Misc.NameCheck(AccountName))
+            {
+                return ErrorCode.InappropriateWords;
+            }
+
+            if (AccountExists(AccountName))
+            {
+                return ErrorCode.AlreadyInUse;
+            }
+
+            DatabaseManager.GameProfile.UpdateNickName(sess, AccountName);
+            DatabaseManager.GameProfile.UpdateCash(sess, 100, false);
+
+            return ErrorCode.Success;
+        }
+
+
     }
 }
