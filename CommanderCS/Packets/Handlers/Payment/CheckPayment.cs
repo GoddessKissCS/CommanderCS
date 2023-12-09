@@ -1,6 +1,12 @@
+using CommanderCS.Host;
+
 namespace CommanderCS.Packets.Handlers.Payment
 {
     public class CheckPayment
+    {
+    }
+
+    public class CheckPaymentRequest
     {
     }
 }

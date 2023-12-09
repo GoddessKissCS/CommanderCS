@@ -12,7 +12,6 @@ namespace CommanderCS.Packets.Handlers.Profile
         public override object Handle(GetUserInformationRequest @params)
         {
             var session = GetSession();
-
             var user = GetUserGameProfile();
 
             var goods = DatabaseManager.GameProfile.UserResourcesFromSession(session);

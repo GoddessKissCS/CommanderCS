@@ -12,8 +12,8 @@ namespace CommanderCS.Host.Handlers.WorldMap
 
             string worldId = @params.world.ToString();
 
-            user.WorldMapData.Stages.TryGetValue(worldId, out List<WorldMapInformationResponse> stages);
-            user.WorldMapData.StageReward.TryGetValue(worldId, out int isRewardCollected);
+            user.BattleData.WorldMapStages.TryGetValue(worldId, out List<WorldMapInformationResponse> stages);
+            user.BattleData.WorldMapStageReward.TryGetValue(worldId, out int isRewardCollected);
 
             WorldMapResponse worldmap = new()
             {

@@ -97,13 +97,13 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 
             var worldmap = UserWorldReward(commanderId, user, session);
 
+            DatabaseManager.GameProfile.UpdateWorldMapReward(session, @params.world, user.BattleData.WorldMapStageReward);
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
                 Result = worldmap
             };
-
-            DatabaseManager.GameProfile.UpdateWorldMapReward(session, @params.world);
 
             return response;
         }

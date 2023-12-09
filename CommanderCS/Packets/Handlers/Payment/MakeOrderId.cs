@@ -1,7 +1,42 @@
+using CommanderCS.Host;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Payment
 {
-    public class MakeOrderId
+	[Packet(Id = Method.MakeOrderId)]
+    public class MakeOrderId : BaseMethodHandler<MakeOrderIdRequest>
     {
+        public override object Handle(MakeOrderIdRequest @params)
+        {
+
+			var payload = Cryptography.Crypto.ComputeSha256Hash(@params.productId);
+
+
+            MakeOrderIdResponse makeOrderIdResponse = new()
+			{
+				payload = payload,
+			};
+
+            ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = makeOrderIdResponse
+            };
+
+			return response;
+        }
+    }
+
+    public class MakeOrderIdRequest
+    {
+		[JsonProperty("productId")]
+		public string productId {  get; set; }
+    }
+
+    public class MakeOrderIdResponse
+    {
+        [JsonProperty("payload")]
+        public string payload { get; set; }
     }
 }
 

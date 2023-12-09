@@ -22,7 +22,6 @@ namespace CommanderCS.Database.Schemes
         public UserResources UserResources { get; set; }
         public UserInventory UserInventory { get; set; }
         public UserBadges UserBadges { get; set; }
-        public WorldMapData WorldMapData { get; set; }
         public BattleData BattleData { get; set; }
         public UserInformationResponse.TutorialData TutorialData { get; set; }
         public Dictionary<string, UserInformationResponse.Commander> CommanderData { get; set; }
@@ -142,6 +141,7 @@ namespace CommanderCS.Database.Schemes
         public Dictionary<string, Dictionary<int, EquipItemInfo>> equipItem { get; set; }
         public Dictionary<string, WeaponData> weaponList { get; set; }
         public Dictionary<string, List<int>> donHaveCommCostumeData { get; set; }
+        public List<Dictionary<string, RewardInfo.HaveCostumeInfo>> costumeData { get; set; }
     }
 
     public class UserBadges
@@ -164,15 +164,10 @@ namespace CommanderCS.Database.Schemes
         public int iftw { get; set; }
     }
 
-    public class WorldMapData
-    {
-        public Dictionary<string, List<WorldMapInformationResponse>> Stages { get; set; }
-
-        public Dictionary<string, int> StageReward { get; set; }
-    }
-
     public class BattleData
     {
+        public Dictionary<string, List<WorldMapInformationResponse>> WorldMapStages { get; set; }
+        public Dictionary<string, int> WorldMapStageReward { get; set; }
         public Dictionary<string, List<int>> SweepClearData { get; set; }
     }
 

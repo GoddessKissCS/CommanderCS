@@ -8,11 +8,16 @@ namespace CommanderCS.Host.Handlers.Profile
     {
         public override object Handle(UpdateTutorialStepRequest @params)
         {
-            UpdateTutorialStepInfo utsi = new();
 
-            DatabaseManager.GameProfile.UpdateTutorialStep(GetSession(), @params.step);
+            var session = GetSession();
 
-            utsi.step = @params.step;
+
+            DatabaseManager.GameProfile.UpdateTutorialStep(session, @params.step);
+
+            UpdateTutorialStepInfo utsi = new()
+            {
+                step = @params.step
+            };
 
             ResponsePacket response = new()
             {

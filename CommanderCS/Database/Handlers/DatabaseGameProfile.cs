@@ -1,6 +1,7 @@
 ﻿using CommanderCS.Database.Schemes;
 using CommanderCS.ExcelReader;
 using CommanderCS.Host.Handlers.Login;
+using CommanderCS.Host.Handlers.WorldMap;
 using CommanderCS.Protocols;
 using CommanderCSLibrary.Utils;
 using MongoDB.Driver;
@@ -33,10 +34,6 @@ namespace CommanderCS.Database.Handlers
             GameProfileScheme user = new()
             {
                 Server = server,
-                BattleData = new()
-                {
-                    SweepClearData = []
-                },
                 LastStage = 0,
                 UserStatistics = new() { },
                 CommanderData = [],
@@ -94,6 +91,7 @@ namespace CommanderCS.Database.Handlers
                     weaponList = [],
                     eventResourceData = [],
                     donHaveCommCostumeData = [],
+                    costumeData = [],
                 },
                 ResetDateTime = 0,
                 UserResources = new() { },
@@ -132,9 +130,14 @@ namespace CommanderCS.Database.Handlers
                 Session = string.Empty,
                 MailDataList = [],
                 DailyBonusCheck = [],
-                WorldMapData = new()
+                DefenderDeck = new()
                 {
-                    StageReward = new() {
+                    PvPDefenderDeck = [],
+                    WaveDuelDefenderDecks = []                 
+                },
+                BattleData = new()
+                {
+                    WorldMapStageReward = new() {
                         { "0", 0 },
                         { "1", 0 },
                         { "2", 0 },
@@ -155,12 +158,8 @@ namespace CommanderCS.Database.Handlers
                         { "17", 0 },
                         { "18", 0 },
                     },
-                    Stages = WorldMapStages
-                },
-                DefenderDeck = new()
-                {
-                    PvPDefenderDeck = [],
-                    WaveDuelDefenderDecks = []                 
+                    WorldMapStages = WorldMapStages,
+                    SweepClearData = []
                 },
                 RankingData = new()
                 {
@@ -645,16 +644,14 @@ namespace CommanderCS.Database.Handlers
             return updateResult.ModifiedCount > 0;
         }
 
-        public bool UpdateWorldMapReward(string session, int worldMapId)
+        public bool UpdateWorldMapReward(string session, int worldMapId, Dictionary<string, int> StageReward)
         {
-            var user = FindBySession(session);
-
             string worldMapid = worldMapId.ToString();
 
-            user.WorldMapData.StageReward[worldMapid] = 1;
+            StageReward[worldMapid] = 1;
 
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.WorldMapData.StageReward, user.WorldMapData.StageReward);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.BattleData.WorldMapStageReward, StageReward);
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
