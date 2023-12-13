@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CommanderCS.Enum.Packet;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Host.Handlers.Battle

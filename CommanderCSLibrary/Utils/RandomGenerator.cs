@@ -1,4 +1,4 @@
-﻿namespace CommanderCSLibrary.Utils
+﻿namespace CommanderCS.Utils
 {
     public static class RandomGenerator
     {

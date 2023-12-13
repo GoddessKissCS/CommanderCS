@@ -5,7 +5,7 @@ using CommanderCS.Host.Handlers.Login;
 using CommanderCS.Host.Handlers.WorldMap;
 using CommanderCS.Protocols;
 using CommanderCS.Utils;
-using CommanderCSLibrary.Utils;
+using CommanderCS.Utils;
 using MongoDB.Driver;
 
 namespace CommanderCS.Database.Handlers
@@ -595,10 +595,10 @@ namespace CommanderCS.Database.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
-        public bool AddBlockedUser(BlockUser toBeBlocked, string session)
+        public bool AddBlockedUser(string session, BlockUser blockUser)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Push(x => x.BlockedUsers, toBeBlocked);
+            var update = Builders<GameProfileScheme>.Update.Push(x => x.BlockedUsers, blockUser);
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 

@@ -3,6 +3,11 @@ namespace CommanderCS.Packets.Handlers.Achievement
     public class AllAchievementReward
     {
     }
+
+    public class AllAchievementRewardRequest
+    {
+    }
+
 }
 
 /*	// Token: 0x06005FAA RID: 24490 RVA: 0x000120F8 File Offset: 0x000102F8

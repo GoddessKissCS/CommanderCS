@@ -1,6 +1,6 @@
 ﻿using CommanderCS.Database;
-using CommanderCS.Enum;
 using Newtonsoft.Json;
+using CommanderCS.Enum.Packet;
 
 namespace CommanderCS.Host.Handlers.Nickname
 {

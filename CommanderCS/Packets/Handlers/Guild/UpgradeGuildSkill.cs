@@ -2,6 +2,7 @@ using CommanderCS.Database;
 using CommanderCS.ExcelReader;
 using CommanderCS.Host;
 using Newtonsoft.Json;
+using CommanderCS.Enum.Packet;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {

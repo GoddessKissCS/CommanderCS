@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using CommanderCS.Enum.Packet;
 
 namespace CommanderCS.Host.Handlers.UserTerm
 {

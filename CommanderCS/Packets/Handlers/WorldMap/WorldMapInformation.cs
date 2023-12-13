@@ -1,5 +1,6 @@
 ﻿using CommanderCS.Protocols;
 using Newtonsoft.Json;
+using CommanderCS.Enum.Packet;
 
 namespace CommanderCS.Host.Handlers.WorldMap
 {

@@ -1,4 +1,5 @@
 ﻿using CommanderCS.Cryptography;
+using CommanderCS.Enum.Packet;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

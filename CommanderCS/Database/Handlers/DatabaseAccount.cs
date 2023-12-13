@@ -4,7 +4,7 @@ using CommanderCS.Host;
 using CommanderCS.Host.Handlers.Login;
 using CommanderCS.Packets.Handlers.UserTerm;
 using CommanderCS.Utils;
-using CommanderCSLibrary.Utils;
+using CommanderCS.Utils;
 using MongoDB.Driver;
 using static CommanderCS.Cryptography.Crypto;
 

@@ -2,8 +2,8 @@ using CommanderCS.Database;
 using CommanderCS.Host;
 using CommanderCS.Protocols;
 using CommanderCS.Utils;
-using CommanderCSLibrary.Utils;
 using Newtonsoft.Json;
+using CommanderCS.Enum.Packet;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -33,7 +33,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 idx = nextIdx,
                 msg = @params.msg,
                 regdt = TimeManager.CurrentEpochMilliseconds,
-                thumb = "" + user.UserResources.thumbnailId,
+                thumb = user.UserResources.thumbnailId.ToString(),
                 unm = user.UserResources.nickname,
                 uno = user.Uno,
             };

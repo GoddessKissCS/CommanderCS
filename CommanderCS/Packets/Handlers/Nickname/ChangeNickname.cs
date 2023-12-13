@@ -2,6 +2,7 @@
 using CommanderCS.Protocols;
 using CommanderCS.Utils;
 using Newtonsoft.Json;
+using CommanderCS.Enum.Packet;
 
 namespace CommanderCS.Host.Handlers.Nickname
 {

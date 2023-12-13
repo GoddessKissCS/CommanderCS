@@ -1,4 +1,5 @@
 using CommanderCS.Host;
+using CommanderCS.Enum.Packet;
 
 namespace CommanderCS.Packets.Handlers.WaveDuel
 {

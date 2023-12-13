@@ -1,4 +1,5 @@
 using CommanderCS.Database;
+using CommanderCS.Enum.Packet;
 using CommanderCS.Host;
 using CommanderCS.Protocols;
 using Newtonsoft.Json;
@@ -20,7 +21,7 @@ namespace CommanderCS.Packets.Handlers.Chat
                 uno = @params.uno,
             };
 
-            DatabaseManager.GameProfile.AddBlockedUser(blockUser, session);
+            DatabaseManager.GameProfile.AddBlockedUser(session, blockUser);
 
             ResponsePacket response = new()
             {

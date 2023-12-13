@@ -1,4 +1,6 @@
-﻿namespace CommanderCS.Host.Handlers.Chat
+﻿using CommanderCS.Enum.Packet;
+
+namespace CommanderCS.Host.Handlers.Chat
 {
     [Packet(Id = Method.GetChatIgnoreList)]
     public class GetChatIgnoreList : BaseMethodHandler<GetChatIgnoreListRequest>

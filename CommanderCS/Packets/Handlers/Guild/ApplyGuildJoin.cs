@@ -1,6 +1,7 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
 using Newtonsoft.Json;
+using CommanderCS.Enum.Packet;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -62,30 +63,36 @@ namespace CommanderCS.Packets.Handlers.Guild
 	{
 		if (code = 71301)
 		{
+			Federation setting has been changed.
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110303"));
 			int num = int.Parse(this._FindRequestProperty(request, "gidx"));
 			UIManager.instance.world.guild.RomoveGuildList(num);
 		}
 		else if (code = 71302)
 		{
+			Federation setting has been changed.
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110303"));
 			int num2 = int.Parse(this._FindRequestProperty(request, "gidx"));
 			UIManager.instance.world.guild.ChangeGuildItemType(num2, 1);
 		}
 		else if (code = 71303)
 		{
+			You can join or send a request to join to only 1 Federation.
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110219"));
 		}
 		else if (code = 71110)
 		{
+			You can request or be accepted in a different Federation up to 2 times in 7 days.
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110265"));
 		}
 		else if (code = 71111)
 		{
+			You cannot send a request to join the same Federation again\nfor 48 hours after leaving a Federation
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110266"));
 		}
 		else if (code = 71112)
 		{
+			You cannot send a request to join another Federation for 1 hour after leaving a Federation.
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110306"));
 		}
 		yield break;

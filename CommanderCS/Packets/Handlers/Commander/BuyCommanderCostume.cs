@@ -1,4 +1,5 @@
 using CommanderCS.Database;
+using CommanderCS.Enum.Packet;
 using CommanderCS.ExcelReader;
 using CommanderCS.Host;
 using CommanderCS.Protocols;

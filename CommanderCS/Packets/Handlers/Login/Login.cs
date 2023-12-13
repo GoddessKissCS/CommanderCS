@@ -3,6 +3,7 @@ using CommanderCS.Enum;
 using CommanderCS.Protocols;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using CommanderCS.Enum.Packet;
 
 namespace CommanderCS.Host.Handlers.Login
 {

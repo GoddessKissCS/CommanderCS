@@ -1,4 +1,5 @@
-﻿using CommanderCS.ExcelReader;
+﻿using CommanderCS.Enum.Packet;
+using CommanderCS.ExcelReader;
 using CommanderCS.Protocols;
 using Newtonsoft.Json;
 

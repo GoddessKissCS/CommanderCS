@@ -1,7 +1,7 @@
 using CommanderCS.Database.Schemes;
 using CommanderCS.Host;
 using CommanderCS.Protocols;
-using CommanderCSLibrary.Utils;
+using CommanderCS.Utils;
 using MongoDB.Driver;
 
 namespace CommanderCS.Database.Handlers

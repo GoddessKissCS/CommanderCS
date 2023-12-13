@@ -1,4 +1,6 @@
-﻿namespace CommanderCS.Host.Handlers.Dispatch
+﻿using CommanderCS.Enum.Packet;
+
+namespace CommanderCS.Host.Handlers.Dispatch
 {
     [Packet(Id = Method.GetDispatchCommanderListFromLogin)]
     public class GetDispatchCommanderListFromLogin : BaseMethodHandler<GetDispatchCommanderListFromLoginRequest>

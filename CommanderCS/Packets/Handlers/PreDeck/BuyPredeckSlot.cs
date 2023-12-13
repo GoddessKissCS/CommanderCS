@@ -2,6 +2,7 @@ using CommanderCS.Database;
 using CommanderCS.Host;
 using CommanderCS.Protocols;
 using Newtonsoft.Json.Linq;
+using CommanderCS.Enum.Packet;
 
 namespace CommanderCS.Packets.Handlers.PreDeck
 {

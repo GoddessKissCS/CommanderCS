@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CommanderCS.Enum.Packet;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Carnival
 {
@@ -7,28 +8,30 @@ namespace CommanderCS.Host.Handlers.Carnival
     {
         public override object Handle(CheckBadgeRequest @params)
         {
-            var user = GetUserGameProfile().UserBadges;
+            var user = GetUserGameProfile();
+
+            var badges = user.UserBadges;
 
 #warning TODO ADJUST THIS SHIT
             CheckBadgeMaster checkBadgeMaster = new()
             {
                 id = BasePacket.Id,
-                arena = user.arena,
-                dlms = user.dlms,
-                achv = user.achv,
-                rwd = user.rwd,
-                shop = user.shop,
-                cnvl = user.cnvl,
-                ccnv = user.ccnv,
-                cnvl2 = user.cnvl2,
-                ccvn2 = user.ccvn2,
-                cnvl3 = user.cnvl3,
-                ccvn3 = user.ccvn3,
-                wb = user.wb,
-                gb = user.gb,
-                grp = user.grp,
-                ercnt = user.ercnt,
-                iftw = user.iftw,
+                arena = badges.arena,
+                dlms = badges.dlms,
+                achv = badges.achv,
+                rwd = badges.rwd,
+                shop = badges.shop,
+                cnvl = badges.cnvl,
+                ccnv = badges.ccnv,
+                cnvl2 = badges.cnvl2,
+                ccvn2 = badges.ccvn2,
+                cnvl3 = badges.cnvl3,
+                ccvn3 = badges.ccvn3,
+                wb = badges.wb,
+                gb = badges.gb,
+                grp = badges.grp,
+                ercnt = badges.ercnt,
+                iftw = badges.iftw,
             };
 
             return checkBadgeMaster;

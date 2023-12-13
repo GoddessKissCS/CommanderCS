@@ -1,5 +1,6 @@
 using CommanderCS.Host;
 using Newtonsoft.Json;
+using CommanderCS.Enum.Packet;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {

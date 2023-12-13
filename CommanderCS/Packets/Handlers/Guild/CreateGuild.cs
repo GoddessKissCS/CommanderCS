@@ -3,6 +3,7 @@ using CommanderCS.Host;
 using CommanderCS.Protocols;
 using CommanderCS.Utils;
 using Newtonsoft.Json;
+using CommanderCS.Enum.Packet;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {

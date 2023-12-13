@@ -1,3 +1,4 @@
+using CommanderCS.Enum.Packet;
 using CommanderCS.Host;
 
 namespace CommanderCS.Packets.Handlers.Bank
