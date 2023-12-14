@@ -36,7 +36,6 @@
     <None Remove="Resources\ExcelOutputAsset\CooperateBattleDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\DailyBonusDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\DailyEventDataTable.json" />
-    <None Remove="Resources\ExcelOutputAsset\DefineDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\DormitoryBodyCostumeDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\DormitoryDecorationDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\DormitoryHeadCostumeDataTable.json" />
@@ -75,7 +74,6 @@
     <None Remove="Resources\ExcelOutputAsset\InteractionDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\ItemExchangeDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\LevelPatternDataTable.json" />
-    <None Remove="Resources\ExcelOutputAsset\LoadingTipDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\MetroBankLuckDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\MissionTable.json" />
     <None Remove="Resources\ExcelOutputAsset\NPCMercenaryDataTable.json" />
@@ -112,7 +110,6 @@
     <None Remove="Resources\ExcelOutputAsset\WeaponSetDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\WeaponUpgradeDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\WorldMapDataTable.json" />
-    <None Remove="Resources\ExcelOutputAsset\WorldMapStageDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\WorldMapStageDataTable_2.json" />
     <None Remove="Resources\ExcelOutputAsset\WorldMapStageTypeDataTable.json" />
     <None Remove="Resources\Regulation\AchievementTable.json" />
@@ -330,11 +327,6 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="Resources\ExcelOutputAsset\DefineDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
     <Content Include="Resources\ExcelOutputAsset\DormitoryBodyCostumeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
@@ -525,11 +517,6 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="Resources\ExcelOutputAsset\LoadingTipDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
     <Content Include="Resources\ExcelOutputAsset\MetroBankLuckDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
@@ -706,11 +693,6 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\WorldMapDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Resources\ExcelOutputAsset\WorldMapStageDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

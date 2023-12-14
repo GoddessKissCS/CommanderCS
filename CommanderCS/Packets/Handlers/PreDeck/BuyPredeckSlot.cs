@@ -3,15 +3,15 @@ using CommanderCS.Host;
 using CommanderCS.Protocols;
 using Newtonsoft.Json.Linq;
 using CommanderCS.Enum.Packet;
+using CommanderCS.Utils;
+using static CommanderCS.Utils.Constants;
+
 
 namespace CommanderCS.Packets.Handlers.PreDeck
 {
     [Packet(Id = Method.BuyPredeckSlot)]
     public class BuyPredeckSlot : BaseMethodHandler<BuyPredeckSlotRequest>
     {
-        private readonly int openCost = 1200;
-        private readonly int addOpenCost = 200;
-        private readonly int basePredeckCount = 5;
 
         public override object Handle(BuyPredeckSlotRequest @params)
         {
@@ -29,7 +29,18 @@ namespace CommanderCS.Packets.Handlers.PreDeck
                 return errorPacket;
             }
 
-            int cashCost = openCost + addOpenCost * (user.UserStatistics.PredeckCount - basePredeckCount);
+            int cashCost = DefineDataTable.DECK_PLUS_CASH + DefineDataTable.DECK_PLUS_CASH_VALUE * (user.UserStatistics.PredeckCount - DefineDataTable.BASE_DECK_COUNT);
+
+            if (user.UserResources.cash > cashCost)
+            {
+                ErrorPacket errorPacket = new()
+                {
+                    Error = new() { code = ErrorCode.TimedOut },
+                    Id = BasePacket.Id,
+                };
+
+                return errorPacket;
+            }
 
             user = DatabaseManager.GameProfile.UpdateCash(session, cashCost, false);
 
