@@ -1,4 +1,8 @@
-﻿namespace CommanderCSLibrary.Shared
+﻿using CommanderCSLibrary.Shared.ExcelReader;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
+
+namespace CommanderCSLibrary.Shared
 {
     public static partial class Constants
     {
@@ -206,5 +210,68 @@
             public const int INFINITY_TOWER_MAX_FIELD = 78;
             public const int INFINITY_TOWER_PAGE_COUNT = 25;
         }
+
+
+        public static Dictionary<string, List<WorldMapInformationResponse>> GetAllWorldMapStages()
+        {
+            Dictionary<string, List<WorldMapInformationResponse>> stages = [];
+
+            var stageList = regulation.worldMapStageDtbl;
+
+            foreach (var stage in stageList)
+            {
+                stages = stageList
+                .GroupBy(s => s.worldMapId)
+                    .ToDictionary(
+                g => g.Key.ToString(),
+                g => g.Select(s => new WorldMapInformationResponse
+                {
+                    stageId = s.id,
+                    clearCount = 0,
+                    star = 0
+                }).ToList());
+            }
+            return stages;
+        }
+
+
+        public static Dictionary<string, UserInformationResponse.Commander> AddSpecificCommander(Dictionary<string, UserInformationResponse.Commander> commanderDict, int commanderID)
+        {
+            var item = regulation.commanderCostumeDtbl.FirstOrDefault(c => c.cid == commanderID);
+
+            UserInformationResponse.Commander commanderData = new()
+            {
+                state = "N",
+                __skv1 = "1",
+                __skv2 = "1",
+                __skv3 = "0",
+                __skv4 = "0",
+                favorRewardStep = 0,
+                favorStep = 0,
+                currentCostume = item.ctid,
+                equipItemInfo = [],
+                equipWeaponInfo = [],
+                eventCostume = [],
+                favorPoint = new() { },
+                favr = 0,
+                fvrd = 0,
+                haveCostume = [item.ctid],
+                id = "" + commanderID,
+                marry = 0,
+                medl = 0,
+                role = "A",
+                transcendence = [0, 0, 0, 0],
+                __cls = "1",
+                __exp = "0",
+                __level = "1",
+                __rank = "1",
+            };
+
+            commanderDict.Add(commanderID.ToString(), commanderData);
+
+            return commanderDict;
+        }
+
+
     }
 }

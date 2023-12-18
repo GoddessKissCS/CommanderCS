@@ -1,9 +1,11 @@
 using CommanderCS.Database;
 using CommanderCS.Database.Schemes;
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.ExcelReader;
 using Newtonsoft.Json;
+using System.Reflection.Metadata;
 
 namespace CommanderCS.Packets.Handlers.WorldMap
 {
@@ -128,7 +130,7 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             {
                 int cid = int.Parse(commanderId);
 
-                var commanderdata = CommanderCostumeData.GetInstance().AddSpecificCommander(user.CommanderData, cid);
+                var commanderdata = Constants.AddSpecificCommander(user.CommanderData, cid);
 
                 WorldMapReward.commanderData = commanderdata;
             }

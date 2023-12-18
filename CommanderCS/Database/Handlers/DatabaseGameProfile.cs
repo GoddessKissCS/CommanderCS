@@ -4,6 +4,7 @@ using CommanderCS.Host.Handlers.Login;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.ExcelReader;
 using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Regulation;
 using MongoDB.Driver;
 
 namespace CommanderCS.Database.Handlers
@@ -27,7 +28,7 @@ namespace CommanderCS.Database.Handlers
 
             int uno = DatabaseManager.AutoIncrements.GetNextNumber("UNO");
 
-            var WorldMapStages = WorldMapStageData.GetInstance().AddAllStagesAtDefault();
+            var WorldMapStages = Constants.GetAllWorldMapStages();
 
             var currTime = TimeManager.CurrentEpoch;
 
@@ -565,7 +566,7 @@ namespace CommanderCS.Database.Handlers
 
         public bool ChangeThumbnailId(string session, int idx)
         {
-            int id = CommanderCostumeData.GetInstance().FromId(idx).ctid;
+            int id = Constants.regulation.commanderCostumeDtbl.FirstOrDefault(x => x.cid == idx).ctid;
 
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
             var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.thumbnailId, id);

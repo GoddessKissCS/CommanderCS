@@ -15,8 +15,9 @@ namespace CommanderCS.Packets.Handlers.Commander
         {
             var user = GetUserGameProfile();
             var session = GetSession();
+            var rg = GetRegulation();
 
-            var costumeData = CommanderCostumeData.GetInstance().FromCostumeId(@params.cos);
+            var costumeData = rg.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == @params.cos);
 
             // ig implement a check to check if you actually have enough cash ?
             // seems overrated but you never know ig?

@@ -13,12 +13,13 @@ namespace CommanderCS.Host.Handlers.Commander
         {
             string session = GetSession();
             var user = GetUserGameProfile();
+            var rg = GetRegulation();
 
             string cid = @params.cid.ToString();
 
             if (user.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
             {
-                var commanderRankData = CommanderRankData.GetInstance().FromRank(commander.__rank);
+                var commanderRankData = rg.commanderRankDtbl.FirstOrDefault(x => x.rank == int.Parse(commander.__rank));
 
                 user.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
 
@@ -36,7 +37,7 @@ namespace CommanderCS.Host.Handlers.Commander
                 commander.__rank = (Convert.ToInt32(commander.__rank) + 1).ToString();
                 commander.medl = commanderMedals;
 
-                commanderRankData = CommanderRankData.GetInstance().FromRank(commander.__rank);
+                commanderRankData = rg.commanderRankDtbl.FirstOrDefault(x => x.rank == commanderRankData.rank);
 
                 user.UserInventory.medalData[cid] = commanderMedals;
                 user.CommanderData[cid] = commander;
@@ -47,9 +48,9 @@ namespace CommanderCS.Host.Handlers.Commander
             {
                 user.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
 
-                var CostumeData = CommanderCostumeData.GetInstance().FromId(cid);
+                var CostumeData = rg.commanderCostumeDtbl.FirstOrDefault(x => x.cid == int.Parse(cid));
 
-                var commanderData = CommanderData.GetInstance().FromId(cid);
+                var commanderData = rg.commanderDtbl.FirstOrDefault(x => x.id == cid);
 
                 if (!TryRecruitCommander(commanderData.grade, ref commanderMedals))
                 {

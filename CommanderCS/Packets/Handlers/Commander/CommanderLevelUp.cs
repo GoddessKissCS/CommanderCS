@@ -10,6 +10,8 @@ namespace CommanderCS.Host.Handlers.Commander
     {
         public override object Handle(CommanderLevelUpRequest @params)
         {
+            var rg = GetRegulation();
+
             // "cid":13,"cnt":1,"ctt":"ctt1"
 
             // packet.count = cnt
@@ -25,7 +27,7 @@ namespace CommanderCS.Host.Handlers.Commander
 
             if (commanderList.TryGetValue(@params.commanderId.ToString(), out UserInformationResponse.Commander commander) && commander != null)
             {
-                string sid = GoodsData.GetInstance().FromServerFieldName(@params.commanderTrainingTicket).type;
+                string sid = rg.goodsDtbl.FirstOrDefault(x => x.serverFieldName == @params.commanderTrainingTicket).type;
 
                 int id = int.Parse(sid);
 

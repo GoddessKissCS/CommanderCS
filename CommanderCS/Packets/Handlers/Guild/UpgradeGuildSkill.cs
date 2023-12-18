@@ -12,12 +12,14 @@ namespace CommanderCS.Packets.Handlers.Guild
         public override object Handle(UpgradeGuildSkillRequest @params)
         {
             var user = GetUserGameProfile();
+            var rg = GetRegulation();
+
 
             var guild = DatabaseManager.Guild.FindByUid(user.GuildId);
 
             var guildSkill = guild.SkillDada.Where(d => d.idx == @params.gsid).FirstOrDefault();
-
-            var upgradeSkill = GuildSkillData.GetInstance().FromSkillLevel(guildSkill.level + 1);
+            
+            var upgradeSkill = rg.guildSkillDtbl.FirstOrDefault(x => x.level == guildSkill.level + 1);
 
             if (upgradeSkill.level < guild.Level)
             {
