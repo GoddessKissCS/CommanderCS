@@ -1,5 +1,7 @@
 ﻿using CommanderCS.Database;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+
 
 namespace CommanderCS.Host.Handlers.Guild
 {
@@ -8,7 +10,7 @@ namespace CommanderCS.Host.Handlers.Guild
     {
         public override object Handle(GuildListRequest @params)
         {
-            Protocols.GuildInfo guildList = new()
+            CommanderCSLibrary.Shared.Protocols.GuildInfo guildList = new()
             {
                 resource = null,
                 guildInfo = null,

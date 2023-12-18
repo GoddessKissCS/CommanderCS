@@ -1,8 +1,8 @@
 ﻿using CommanderCS.Database;
-using CommanderCS.Enum.Packet;
-using CommanderCS.ExcelReader;
-using CommanderCS.Protocols;
+using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
+using CommanderCSLibrary.Shared.ExcelReader;
 
 namespace CommanderCS.Host.Handlers.Commander
 {

@@ -1,6 +1,8 @@
 using CommanderCS.Host;
 using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+
 
 namespace CommanderCS.Packets.Handlers.Shop
 {
@@ -9,7 +11,7 @@ namespace CommanderCS.Packets.Handlers.Shop
     {
         public override object Handle(GetSecretShopListRequest @params)
         {
-            Protocols.SecretShop shop = new()
+            SecretShop shop = new()
             {
                 refreshCount = 86400,
                 reset = 86400,

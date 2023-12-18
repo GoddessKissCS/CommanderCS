@@ -1,6 +1,6 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {

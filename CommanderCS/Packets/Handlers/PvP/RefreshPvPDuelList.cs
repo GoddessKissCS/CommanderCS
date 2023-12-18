@@ -1,7 +1,9 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
-using CommanderCS.Utils;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared;
+
 
 namespace CommanderCS.Packets.Handlers.PvP
 {
@@ -17,7 +19,7 @@ namespace CommanderCS.Packets.Handlers.PvP
 
             var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
 
-            Protocols.RefreshPvPDuel refreshDuel = new()
+            RefreshPvPDuel refreshDuel = new()
             {
                 duelList = [],
                 openRemain = 86400,

@@ -1,4 +1,4 @@
-﻿using CommanderCS.Enum.Packet;
+﻿using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Carnival

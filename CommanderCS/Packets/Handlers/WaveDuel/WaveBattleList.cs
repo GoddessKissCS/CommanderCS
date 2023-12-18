@@ -1,5 +1,6 @@
 using CommanderCS.Host;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Packets.Handlers.WaveDuel
 {
@@ -8,7 +9,7 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
     {
         public override object Handle(WaveBattleListRequest @params)
         {
-            Protocols.WaveBattleInfoList waveBattleInfoList = new();
+            WaveBattleInfoList waveBattleInfoList = new();
 
             // Need to figure out the daily shit for this thing
 

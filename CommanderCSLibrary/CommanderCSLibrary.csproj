@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Shared\Ro\xRoCommander.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\BadWordList\En.json" />
     <None Remove="Resources\ExcelOutputAsset\AchievementTable.json" />
     <None Remove="Resources\ExcelOutputAsset\AnnihilateBattleDataTable.json" />
@@ -36,6 +40,8 @@
     <None Remove="Resources\ExcelOutputAsset\CooperateBattleDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\DailyBonusDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\DailyEventDataTable.json" />
+    <None Remove="Resources\ExcelOutputAsset\DBList.txt" />
+    <None Remove="Resources\ExcelOutputAsset\DefineDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\DormitoryBodyCostumeDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\DormitoryDecorationDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\DormitoryHeadCostumeDataTable.json" />
@@ -55,6 +61,7 @@
     <None Remove="Resources\ExcelOutputAsset\EventBattleScenarioDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\EventRaidDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\EventRemaingTimeDataTable.json" />
+    <None Remove="Resources\ExcelOutputAsset\EventScenarioLocalization.txt" />
     <None Remove="Resources\ExcelOutputAsset\FavorDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\FavorStepDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\FireActionDataTable.json" />
@@ -71,9 +78,12 @@
     <None Remove="Resources\ExcelOutputAsset\GuildStruggleDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\InAppProductDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\InfinityFieldDataTable.json" />
+    <None Remove="Resources\ExcelOutputAsset\InfinityScenarioLocalization.txt" />
     <None Remove="Resources\ExcelOutputAsset\InteractionDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\ItemExchangeDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\LevelPatternDataTable.json" />
+    <None Remove="Resources\ExcelOutputAsset\LoadingTipDataTable.json" />
+    <None Remove="Resources\ExcelOutputAsset\Localization.txt" />
     <None Remove="Resources\ExcelOutputAsset\MetroBankLuckDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\MissionTable.json" />
     <None Remove="Resources\ExcelOutputAsset\NPCMercenaryDataTable.json" />
@@ -88,6 +98,7 @@
     <None Remove="Resources\ExcelOutputAsset\RewardDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\ScenarioBattleDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\ScenarioBattleUnitDataTable.json" />
+    <None Remove="Resources\ExcelOutputAsset\ScenarioLocalization.txt" />
     <None Remove="Resources\ExcelOutputAsset\ScenarioQuarterDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\ShopDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\SkillCostDataTable.json" />
@@ -110,111 +121,9 @@
     <None Remove="Resources\ExcelOutputAsset\WeaponSetDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\WeaponUpgradeDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\WorldMapDataTable.json" />
+    <None Remove="Resources\ExcelOutputAsset\WorldMapStageDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\WorldMapStageDataTable_2.json" />
     <None Remove="Resources\ExcelOutputAsset\WorldMapStageTypeDataTable.json" />
-    <None Remove="Resources\Regulation\AchievementTable.json" />
-    <None Remove="Resources\Regulation\AnnihilateBattleDataTable.json" />
-    <None Remove="Resources\Regulation\BattleFieldSearchDataTable.json" />
-    <None Remove="Resources\Regulation\BattleTimeDataTable.json" />
-    <None Remove="Resources\Regulation\BuildingLevelDataTable.json" />
-    <None Remove="Resources\Regulation\CarnivalDataTable.json" />
-    <None Remove="Resources\Regulation\CarnivalTypeDataTable.json" />
-    <None Remove="Resources\Regulation\ClassPatternDataTable.json" />
-    <None Remove="Resources\Regulation\CommanderClassDataTable.json" />
-    <None Remove="Resources\Regulation\CommanderCostumeDataTable.json" />
-    <None Remove="Resources\Regulation\CommanderDataTable.json" />
-    <None Remove="Resources\Regulation\CommanderGiftDataTable.json" />
-    <None Remove="Resources\Regulation\CommanderLevelDataTable.json" />
-    <None Remove="Resources\Regulation\CommanderRankDataTable.json" />
-    <None Remove="Resources\Regulation\CommanderScenarioDataTable.json" />
-    <None Remove="Resources\Regulation\CommanderTrainingTicketDataTable.json" />
-    <None Remove="Resources\Regulation\CommanderVoiceDataTable.json" />
-    <None Remove="Resources\Regulation\CooperateBattleDataTable.json" />
-    <None Remove="Resources\Regulation\DailyBonusDataTable.json" />
-    <None Remove="Resources\Regulation\DailyEventDataTable.json" />
-    <None Remove="Resources\Regulation\DBList.txt" />
-    <None Remove="Resources\Regulation\DefineDataTable.json" />
-    <None Remove="Resources\Regulation\DormitoryBodyCostumeDataTable.json" />
-    <None Remove="Resources\Regulation\DormitoryDecorationDataTable.json" />
-    <None Remove="Resources\Regulation\DormitoryHeadCostumeDataTable.json" />
-    <None Remove="Resources\Regulation\DormitoryShopDataTable.json" />
-    <None Remove="Resources\Regulation\DormitoryThemeDataTable.json" />
-    <None Remove="Resources\Regulation\DormitoryUpgradeDataTable.json" />
-    <None Remove="Resources\Regulation\DormitoryWallPaperDataTable.json" />
-    <None Remove="Resources\Regulation\DropGoldPatternDataTable.json" />
-    <None Remove="Resources\Regulation\EnemyCommanderDataTable.json" />
-    <None Remove="Resources\Regulation\EnemyUnitDataTable.json" />
-    <None Remove="Resources\Regulation\EquipItemDataTable.json" />
-    <None Remove="Resources\Regulation\EquipItemDisassembleDataTable.json" />
-    <None Remove="Resources\Regulation\EquipItemUpgradeDataTable.json" />
-    <None Remove="Resources\Regulation\EventBattleDataTable.json" />
-    <None Remove="Resources\Regulation\EventBattleFieldDataTable.json" />
-    <None Remove="Resources\Regulation\EventBattleGachaRewardDataTable.json" />
-    <None Remove="Resources\Regulation\EventBattleScenarioDataTable.json" />
-    <None Remove="Resources\Regulation\EventRaidDataTable.json" />
-    <None Remove="Resources\Regulation\EventRemaingTimeDataTable.json" />
-    <None Remove="Resources\Regulation\EventScenarioLocalization.txt" />
-    <None Remove="Resources\Regulation\FavorDataTable.json" />
-    <None Remove="Resources\Regulation\FavorStepDataTable.json" />
-    <None Remove="Resources\Regulation\FireActionDataTable.json" />
-    <None Remove="Resources\Regulation\GachaCostDataTable.json" />
-    <None Remove="Resources\Regulation\GachaDataTable.json" />
-    <None Remove="Resources\Regulation\GachaRewardDataTable.json" />
-    <None Remove="Resources\Regulation\GoodsComposeDataTable.json" />
-    <None Remove="Resources\Regulation\GoodsDataTable.json" />
-    <None Remove="Resources\Regulation\GroupInfoDataTable.json" />
-    <None Remove="Resources\Regulation\GroupMemberDataTable.json" />
-    <None Remove="Resources\Regulation\GuildLevelInfoDataTable.json" />
-    <None Remove="Resources\Regulation\GuildOccupyDataTable.json" />
-    <None Remove="Resources\Regulation\GuildSkillDataTable.json" />
-    <None Remove="Resources\Regulation\GuildStruggleDataTable.json" />
-    <None Remove="Resources\Regulation\InAppProductDataTable.json" />
-    <None Remove="Resources\Regulation\InfinityFieldDataTable.json" />
-    <None Remove="Resources\Regulation\InfinityScenarioLocalization.txt" />
-    <None Remove="Resources\Regulation\InteractionDataTable.json" />
-    <None Remove="Resources\Regulation\ItemExchangeDataTable.json" />
-    <None Remove="Resources\Regulation\LevelPatternDataTable.json" />
-    <None Remove="Resources\Regulation\LoadingTipDataTable.json" />
-    <None Remove="Resources\Regulation\Localization.txt" />
-    <None Remove="Resources\Regulation\MetroBankLuckDataTable.json" />
-    <None Remove="Resources\Regulation\MissionTable.json" />
-    <None Remove="Resources\Regulation\NPCMercenaryDataTable.json" />
-    <None Remove="Resources\Regulation\PartDataTable.json" />
-    <None Remove="Resources\Regulation\ProjectileDataTable.json" />
-    <None Remove="Resources\Regulation\ProjectileMotionPhaseDataTable.json" />
-    <None Remove="Resources\Regulation\RaidChallengeDataTable.json" />
-    <None Remove="Resources\Regulation\RaidDataTable.json" />
-    <None Remove="Resources\Regulation\RandomBoxRewardDataTable.json" />
-    <None Remove="Resources\Regulation\RankingDataTable.json" />
-    <None Remove="Resources\Regulation\RankingRewardDataTable.json" />
-    <None Remove="Resources\Regulation\RewardDataTable.json" />
-    <None Remove="Resources\Regulation\ScenarioBattleDataTable.json" />
-    <None Remove="Resources\Regulation\ScenarioBattleUnitDataTable.json" />
-    <None Remove="Resources\Regulation\ScenarioLocalization.txt" />
-    <None Remove="Resources\Regulation\ScenarioQuarterDataTable.json" />
-    <None Remove="Resources\Regulation\ShopDataTable.json" />
-    <None Remove="Resources\Regulation\SkillCostDataTable.json" />
-    <None Remove="Resources\Regulation\SkillDamagePatternDataTable.json" />
-    <None Remove="Resources\Regulation\SkillDataTable.json" />
-    <None Remove="Resources\Regulation\SkillUpgradeDataTable.json" />
-    <None Remove="Resources\Regulation\StatusEffectDataTable.json" />
-    <None Remove="Resources\Regulation\StrongestBuffBattleDataTable.json" />
-    <None Remove="Resources\Regulation\SweepDataTable.json" />
-    <None Remove="Resources\Regulation\ThumbnailDataTable.json" />
-    <None Remove="Resources\Regulation\TranscendenceSlotDataTable.json" />
-    <None Remove="Resources\Regulation\TranscendenceStepUpgradeDataTable.json" />
-    <None Remove="Resources\Regulation\UnitDataTable.json" />
-    <None Remove="Resources\Regulation\UnitMotionDataTable.json" />
-    <None Remove="Resources\Regulation\UserLevelDataTable.json" />
-    <None Remove="Resources\Regulation\VipExpDataTable.json" />
-    <None Remove="Resources\Regulation\VipRechargeDataTable.json" />
-    <None Remove="Resources\Regulation\WaveBattleDataTable.json" />
-    <None Remove="Resources\Regulation\WeaponDataTable.json" />
-    <None Remove="Resources\Regulation\WeaponSetDataTable.json" />
-    <None Remove="Resources\Regulation\WeaponUpgradeDataTable.json" />
-    <None Remove="Resources\Regulation\WorldMapDataTable.json" />
-    <None Remove="Resources\Regulation\WorldMapStageDataTable.json" />
-    <None Remove="Resources\Regulation\WorldMapStageTypeDataTable.json" />
     <None Remove="Resources\ServerSettings\reset_time.txt" />
   </ItemGroup>
 
@@ -224,796 +133,317 @@
     </Content>
     <Content Include="Resources\ExcelOutputAsset\AchievementTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\AnnihilateBattleDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\BattleFieldSearchDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\BattleTimeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\BuildingLevelDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CarnivalDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CarnivalTypeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\ClassPatternDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CommanderClassDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CommanderCostumeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CommanderDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CommanderGiftDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CommanderLevelDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CommanderRankDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CommanderRoleDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CommanderScenarioDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CommanderTrainingTicketDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CommanderVoiceDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CooperateBattleDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\DailyBonusDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\DailyEventDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Resources\ExcelOutputAsset\DBList.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ExcelOutputAsset\DefineDataTable.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\DormitoryBodyCostumeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\DormitoryDecorationDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\DormitoryHeadCostumeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\DormitoryShopDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\DormitoryThemeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\DormitoryUpgradeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\DormitoryWallPaperDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\DropGoldPatternDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\EnemyCommanderDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\EnemyUnitDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\EquipItemDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\EquipItemDisassembleDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\EquipItemUpgradeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\EventBattleDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\EventBattleFieldDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\EventBattleGachaRewardDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\EventBattleScenarioDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\EventRaidDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\EventRemaingTimeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Resources\ExcelOutputAsset\EventScenarioLocalization.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\FavorDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\FavorStepDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\FireActionDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\GachaCostDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\GachaDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\GachaRewardDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\GoodsComposeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\GoodsDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\GroupInfoDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\GroupMemberDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\GuildLevelInfoDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\GuildOccupyDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\GuildSkillDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\GuildStruggleDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\InAppProductDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\InfinityFieldDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Resources\ExcelOutputAsset\InfinityScenarioLocalization.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\InteractionDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\ItemExchangeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\LevelPatternDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Resources\ExcelOutputAsset\LoadingTipDataTable.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ExcelOutputAsset\Localization.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\MetroBankLuckDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\MissionTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\NPCMercenaryDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\PartDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\ProjectileDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\ProjectileMotionPhaseDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\RaidChallengeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\RaidDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\RandomBoxRewardDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\RankingDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\RankingRewardDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\RewardDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\ScenarioBattleDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\ScenarioBattleUnitDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Resources\ExcelOutputAsset\ScenarioLocalization.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\ScenarioQuarterDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\ShopDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\SkillCostDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\SkillDamagePatternDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\SkillDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\SkillUpgradeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\StatusEffectDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\StrongestBuffBattleDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\SweepDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\ThumbnailDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\TranscendenceSlotDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\TranscendenceStepUpgradeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\UnitDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\UnitMotionDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\UserLevelDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\VipExpDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\VipRechargeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\WaveBattleDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\WeaponDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\WeaponSetDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\WeaponUpgradeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\WorldMapDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Resources\ExcelOutputAsset\WorldMapStageDataTable.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\WorldMapStageDataTable_2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\WorldMapStageTypeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\AchievementTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\AnnihilateBattleDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\BattleFieldSearchDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\BattleTimeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\BuildingLevelDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\CarnivalDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\CarnivalTypeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\ClassPatternDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\CommanderClassDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\CommanderCostumeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\CommanderDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\CommanderGiftDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\CommanderLevelDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\CommanderRankDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\CommanderScenarioDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\CommanderTrainingTicketDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\CommanderVoiceDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\CooperateBattleDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\DailyBonusDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\DailyEventDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\DBList.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\DefineDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\DormitoryBodyCostumeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\DormitoryDecorationDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\DormitoryHeadCostumeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\DormitoryShopDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\DormitoryThemeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\DormitoryUpgradeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\DormitoryWallPaperDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\DropGoldPatternDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\EnemyCommanderDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\EnemyUnitDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\EquipItemDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\EquipItemDisassembleDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\EquipItemUpgradeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\EventBattleDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\EventBattleFieldDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\EventBattleGachaRewardDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\EventBattleScenarioDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\EventRaidDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\EventRemaingTimeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\EventScenarioLocalization.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\FavorDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\FavorStepDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\FireActionDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\GachaCostDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\GachaDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\GachaRewardDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\GoodsComposeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\GoodsDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\GroupInfoDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\GroupMemberDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\GuildLevelInfoDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\GuildOccupyDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\GuildSkillDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\GuildStruggleDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\InAppProductDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\InfinityFieldDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\InfinityScenarioLocalization.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\InteractionDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\ItemExchangeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\LevelPatternDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\LoadingTipDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\Localization.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\MetroBankLuckDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\MissionTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\NPCMercenaryDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\PartDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\ProjectileDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\ProjectileMotionPhaseDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\RaidChallengeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\RaidDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\RandomBoxRewardDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\RankingDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\RankingRewardDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\RewardDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\ScenarioBattleDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\ScenarioBattleUnitDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\ScenarioLocalization.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\ScenarioQuarterDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\ShopDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\SkillCostDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\SkillDamagePatternDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\SkillDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\SkillUpgradeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\StatusEffectDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\StrongestBuffBattleDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\SweepDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\ThumbnailDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\TranscendenceSlotDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\TranscendenceStepUpgradeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\UnitDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\UnitMotionDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\UserLevelDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\VipExpDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\VipRechargeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\WaveBattleDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\WeaponDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\WeaponSetDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\WeaponUpgradeDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\WorldMapDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\WorldMapStageDataTable.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Regulation\WorldMapStageTypeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

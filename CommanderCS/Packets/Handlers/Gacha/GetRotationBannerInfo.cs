@@ -1,6 +1,5 @@
-﻿using CommanderCS.Enum;
-using CommanderCS.Protocols;
-using CommanderCS.Enum.Packet;
+﻿using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Host.Handlers.Gacha
 {

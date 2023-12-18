@@ -1,16 +1,17 @@
 using CommanderCS.Host;
 using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Cryptography;
 
 namespace CommanderCS.Packets.Handlers.Payment
 {
-	[Packet(Id = Method.MakeOrderId)]
+    [Packet(Id = Method.MakeOrderId)]
     public class MakeOrderId : BaseMethodHandler<MakeOrderIdRequest>
     {
         public override object Handle(MakeOrderIdRequest @params)
         {
 
-			var payload = Cryptography.Crypto.ComputeSha256Hash(@params.productId);
+			var payload = Crypto.ComputeSha256Hash(@params.productId);
 
 
             MakeOrderIdResponse makeOrderIdResponse = new()

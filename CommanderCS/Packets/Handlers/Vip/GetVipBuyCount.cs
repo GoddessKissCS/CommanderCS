@@ -1,6 +1,6 @@
-﻿using CommanderCS.Protocols;
+﻿using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Host.Handlers.Vip
 {

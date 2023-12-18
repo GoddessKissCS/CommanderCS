@@ -1,6 +1,6 @@
 using CommanderCS.Database;
-using CommanderCS.Enum.Packet;
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Chat

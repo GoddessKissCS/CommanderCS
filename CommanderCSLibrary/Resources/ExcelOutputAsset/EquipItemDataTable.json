@@ -1,6 +1,6 @@
 [
   {
-    "key": 1,
+    "key": "1",
     "pointType": 1,
     "setItemType": 1,
     "statEffect": 800,
@@ -9,12 +9,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_01_01",
-    "equipitemName": 5000101,
-    "equipitemSubText": 5001101
+    "equipItemIcon": "icon_oopats_red_01_01",
+    "equipItemName": "5000101",
+    "equipItemSubText": "5001101"
   },
   {
-    "key": 2,
+    "key": "2",
     "pointType": 1,
     "setItemType": 1,
     "statEffect": 800,
@@ -23,12 +23,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_01_01",
-    "equipitemName": 5000201,
-    "equipitemSubText": 5001201
+    "equipItemIcon": "icon_oopats_green_01_01",
+    "equipItemName": "5000201",
+    "equipItemSubText": "5001201"
   },
   {
-    "key": 3,
+    "key": "3",
     "pointType": 1,
     "setItemType": 1,
     "statEffect": 800,
@@ -37,12 +37,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_01_01",
-    "equipitemName": 5000301,
-    "equipitemSubText": 5001301
+    "equipItemIcon": "icon_oopats_yellow_01_01",
+    "equipItemName": "5000301",
+    "equipItemSubText": "5001301"
   },
   {
-    "key": 4,
+    "key": "4",
     "pointType": 1,
     "setItemType": 1,
     "statEffect": 800,
@@ -51,12 +51,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_01_01",
-    "equipitemName": 5000401,
-    "equipitemSubText": 5001401
+    "equipItemIcon": "icon_oopats_blue_01_01",
+    "equipItemName": "5000401",
+    "equipItemSubText": "5001401"
   },
   {
-    "key": 5,
+    "key": "5",
     "pointType": 1,
     "setItemType": 2,
     "statEffect": 80,
@@ -65,12 +65,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_01_02",
-    "equipitemName": 5000102,
-    "equipitemSubText": 5001102
+    "equipItemIcon": "icon_oopats_red_01_02",
+    "equipItemName": "5000102",
+    "equipItemSubText": "5001102"
   },
   {
-    "key": 6,
+    "key": "6",
     "pointType": 1,
     "setItemType": 2,
     "statEffect": 80,
@@ -79,12 +79,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_01_02",
-    "equipitemName": 5000202,
-    "equipitemSubText": 5001202
+    "equipItemIcon": "icon_oopats_green_01_02",
+    "equipItemName": "5000202",
+    "equipItemSubText": "5001202"
   },
   {
-    "key": 7,
+    "key": "7",
     "pointType": 1,
     "setItemType": 2,
     "statEffect": 80,
@@ -93,12 +93,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_01_02",
-    "equipitemName": 5000302,
-    "equipitemSubText": 5001302
+    "equipItemIcon": "icon_oopats_yellow_01_02",
+    "equipItemName": "5000302",
+    "equipItemSubText": "5001302"
   },
   {
-    "key": 8,
+    "key": "8",
     "pointType": 1,
     "setItemType": 2,
     "statEffect": 80,
@@ -107,12 +107,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_01_02",
-    "equipitemName": 5000402,
-    "equipitemSubText": 5001402
+    "equipItemIcon": "icon_oopats_blue_01_02",
+    "equipItemName": "5000402",
+    "equipItemSubText": "5001402"
   },
   {
-    "key": 9,
+    "key": "9",
     "pointType": 1,
     "setItemType": 3,
     "statEffect": 160,
@@ -121,12 +121,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_01_03",
-    "equipitemName": 5000103,
-    "equipitemSubText": 5001103
+    "equipItemIcon": "icon_oopats_red_01_03",
+    "equipItemName": "5000103",
+    "equipItemSubText": "5001103"
   },
   {
-    "key": 10,
+    "key": "10",
     "pointType": 1,
     "setItemType": 3,
     "statEffect": 160,
@@ -135,12 +135,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_01_03",
-    "equipitemName": 5000203,
-    "equipitemSubText": 5001203
+    "equipItemIcon": "icon_oopats_green_01_03",
+    "equipItemName": "5000203",
+    "equipItemSubText": "5001203"
   },
   {
-    "key": 11,
+    "key": "11",
     "pointType": 1,
     "setItemType": 3,
     "statEffect": 160,
@@ -149,12 +149,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_01_03",
-    "equipitemName": 5000303,
-    "equipitemSubText": 5001303
+    "equipItemIcon": "icon_oopats_yellow_01_03",
+    "equipItemName": "5000303",
+    "equipItemSubText": "5001303"
   },
   {
-    "key": 12,
+    "key": "12",
     "pointType": 1,
     "setItemType": 3,
     "statEffect": 160,
@@ -163,12 +163,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_01_03",
-    "equipitemName": 5000403,
-    "equipitemSubText": 5001403
+    "equipItemIcon": "icon_oopats_blue_01_03",
+    "equipItemName": "5000403",
+    "equipItemSubText": "5001403"
   },
   {
-    "key": 13,
+    "key": "13",
     "pointType": 1,
     "setItemType": 4,
     "statEffect": 20,
@@ -177,12 +177,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_01_04",
-    "equipitemName": 5000104,
-    "equipitemSubText": 5001104
+    "equipItemIcon": "icon_oopats_red_01_04",
+    "equipItemName": "5000104",
+    "equipItemSubText": "5001104"
   },
   {
-    "key": 14,
+    "key": "14",
     "pointType": 1,
     "setItemType": 4,
     "statEffect": 20,
@@ -191,12 +191,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_01_04",
-    "equipitemName": 5000204,
-    "equipitemSubText": 5001204
+    "equipItemIcon": "icon_oopats_green_01_04",
+    "equipItemName": "5000204",
+    "equipItemSubText": "5001204"
   },
   {
-    "key": 15,
+    "key": "15",
     "pointType": 1,
     "setItemType": 4,
     "statEffect": 20,
@@ -205,12 +205,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_01_04",
-    "equipitemName": 5000304,
-    "equipitemSubText": 5001304
+    "equipItemIcon": "icon_oopats_yellow_01_04",
+    "equipItemName": "5000304",
+    "equipItemSubText": "5001304"
   },
   {
-    "key": 16,
+    "key": "16",
     "pointType": 1,
     "setItemType": 4,
     "statEffect": 20,
@@ -219,12 +219,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_01_04",
-    "equipitemName": 5000404,
-    "equipitemSubText": 5001404
+    "equipItemIcon": "icon_oopats_blue_01_04",
+    "equipItemName": "5000404",
+    "equipItemSubText": "5001404"
   },
   {
-    "key": 17,
+    "key": "17",
     "pointType": 1,
     "setItemType": 5,
     "statEffect": 10,
@@ -233,12 +233,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_01_05",
-    "equipitemName": 5000105,
-    "equipitemSubText": 5001105
+    "equipItemIcon": "icon_oopats_red_01_05",
+    "equipItemName": "5000105",
+    "equipItemSubText": "5001105"
   },
   {
-    "key": 18,
+    "key": "18",
     "pointType": 1,
     "setItemType": 5,
     "statEffect": 10,
@@ -247,12 +247,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_01_05",
-    "equipitemName": 5000205,
-    "equipitemSubText": 5001205
+    "equipItemIcon": "icon_oopats_green_01_05",
+    "equipItemName": "5000205",
+    "equipItemSubText": "5001205"
   },
   {
-    "key": 19,
+    "key": "19",
     "pointType": 1,
     "setItemType": 5,
     "statEffect": 10,
@@ -261,12 +261,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_01_05",
-    "equipitemName": 5000305,
-    "equipitemSubText": 5001305
+    "equipItemIcon": "icon_oopats_yellow_01_05",
+    "equipItemName": "5000305",
+    "equipItemSubText": "5001305"
   },
   {
-    "key": 20,
+    "key": "20",
     "pointType": 1,
     "setItemType": 5,
     "statEffect": 10,
@@ -275,12 +275,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_01_05",
-    "equipitemName": 5000405,
-    "equipitemSubText": 5001405
+    "equipItemIcon": "icon_oopats_blue_01_05",
+    "equipItemName": "5000405",
+    "equipItemSubText": "5001405"
   },
   {
-    "key": 21,
+    "key": "21",
     "pointType": 1,
     "setItemType": 6,
     "statEffect": 30,
@@ -289,12 +289,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_01_06",
-    "equipitemName": 5000106,
-    "equipitemSubText": 5001106
+    "equipItemIcon": "icon_oopats_red_01_06",
+    "equipItemName": "5000106",
+    "equipItemSubText": "5001106"
   },
   {
-    "key": 22,
+    "key": "22",
     "pointType": 1,
     "setItemType": 6,
     "statEffect": 30,
@@ -303,12 +303,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_01_06",
-    "equipitemName": 5000206,
-    "equipitemSubText": 5001206
+    "equipItemIcon": "icon_oopats_green_01_06",
+    "equipItemName": "5000206",
+    "equipItemSubText": "5001206"
   },
   {
-    "key": 23,
+    "key": "23",
     "pointType": 1,
     "setItemType": 6,
     "statEffect": 30,
@@ -317,12 +317,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_01_06",
-    "equipitemName": 5000306,
-    "equipitemSubText": 5001306
+    "equipItemIcon": "icon_oopats_yellow_01_06",
+    "equipItemName": "5000306",
+    "equipItemSubText": "5001306"
   },
   {
-    "key": 24,
+    "key": "24",
     "pointType": 1,
     "setItemType": 6,
     "statEffect": 30,
@@ -331,12 +331,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_01_06",
-    "equipitemName": 5000406,
-    "equipitemSubText": 5001406
+    "equipItemIcon": "icon_oopats_blue_01_06",
+    "equipItemName": "5000406",
+    "equipItemSubText": "5001406"
   },
   {
-    "key": 25,
+    "key": "25",
     "pointType": 2,
     "setItemType": 1,
     "statEffect": 800,
@@ -345,12 +345,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_02_01",
-    "equipitemName": 5000101,
-    "equipitemSubText": 5001101
+    "equipItemIcon": "icon_oopats_red_02_01",
+    "equipItemName": "5000101",
+    "equipItemSubText": "5001101"
   },
   {
-    "key": 26,
+    "key": "26",
     "pointType": 2,
     "setItemType": 1,
     "statEffect": 800,
@@ -359,12 +359,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_02_01",
-    "equipitemName": 5000201,
-    "equipitemSubText": 5001201
+    "equipItemIcon": "icon_oopats_green_02_01",
+    "equipItemName": "5000201",
+    "equipItemSubText": "5001201"
   },
   {
-    "key": 27,
+    "key": "27",
     "pointType": 2,
     "setItemType": 1,
     "statEffect": 800,
@@ -373,12 +373,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_02_01",
-    "equipitemName": 5000301,
-    "equipitemSubText": 5001301
+    "equipItemIcon": "icon_oopats_yellow_02_01",
+    "equipItemName": "5000301",
+    "equipItemSubText": "5001301"
   },
   {
-    "key": 28,
+    "key": "28",
     "pointType": 2,
     "setItemType": 1,
     "statEffect": 800,
@@ -387,12 +387,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_02_01",
-    "equipitemName": 5000401,
-    "equipitemSubText": 5001401
+    "equipItemIcon": "icon_oopats_blue_02_01",
+    "equipItemName": "5000401",
+    "equipItemSubText": "5001401"
   },
   {
-    "key": 29,
+    "key": "29",
     "pointType": 2,
     "setItemType": 2,
     "statEffect": 80,
@@ -401,12 +401,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_02_02",
-    "equipitemName": 5000102,
-    "equipitemSubText": 5001102
+    "equipItemIcon": "icon_oopats_red_02_02",
+    "equipItemName": "5000102",
+    "equipItemSubText": "5001102"
   },
   {
-    "key": 30,
+    "key": "30",
     "pointType": 2,
     "setItemType": 2,
     "statEffect": 80,
@@ -415,12 +415,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_02_02",
-    "equipitemName": 5000202,
-    "equipitemSubText": 5001202
+    "equipItemIcon": "icon_oopats_green_02_02",
+    "equipItemName": "5000202",
+    "equipItemSubText": "5001202"
   },
   {
-    "key": 31,
+    "key": "31",
     "pointType": 2,
     "setItemType": 2,
     "statEffect": 80,
@@ -429,12 +429,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_02_02",
-    "equipitemName": 5000302,
-    "equipitemSubText": 5001302
+    "equipItemIcon": "icon_oopats_yellow_02_02",
+    "equipItemName": "5000302",
+    "equipItemSubText": "5001302"
   },
   {
-    "key": 32,
+    "key": "32",
     "pointType": 2,
     "setItemType": 2,
     "statEffect": 80,
@@ -443,12 +443,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_02_02",
-    "equipitemName": 5000402,
-    "equipitemSubText": 5001402
+    "equipItemIcon": "icon_oopats_blue_02_02",
+    "equipItemName": "5000402",
+    "equipItemSubText": "5001402"
   },
   {
-    "key": 33,
+    "key": "33",
     "pointType": 2,
     "setItemType": 3,
     "statEffect": 160,
@@ -457,12 +457,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_02_03",
-    "equipitemName": 5000103,
-    "equipitemSubText": 5001103
+    "equipItemIcon": "icon_oopats_red_02_03",
+    "equipItemName": "5000103",
+    "equipItemSubText": "5001103"
   },
   {
-    "key": 34,
+    "key": "34",
     "pointType": 2,
     "setItemType": 3,
     "statEffect": 160,
@@ -471,12 +471,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_02_03",
-    "equipitemName": 5000203,
-    "equipitemSubText": 5001203
+    "equipItemIcon": "icon_oopats_green_02_03",
+    "equipItemName": "5000203",
+    "equipItemSubText": "5001203"
   },
   {
-    "key": 35,
+    "key": "35",
     "pointType": 2,
     "setItemType": 3,
     "statEffect": 160,
@@ -485,12 +485,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_02_03",
-    "equipitemName": 5000303,
-    "equipitemSubText": 5001303
+    "equipItemIcon": "icon_oopats_yellow_02_03",
+    "equipItemName": "5000303",
+    "equipItemSubText": "5001303"
   },
   {
-    "key": 36,
+    "key": "36",
     "pointType": 2,
     "setItemType": 3,
     "statEffect": 160,
@@ -499,12 +499,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_02_03",
-    "equipitemName": 5000403,
-    "equipitemSubText": 5001403
+    "equipItemIcon": "icon_oopats_blue_02_03",
+    "equipItemName": "5000403",
+    "equipItemSubText": "5001403"
   },
   {
-    "key": 37,
+    "key": "37",
     "pointType": 2,
     "setItemType": 4,
     "statEffect": 20,
@@ -513,12 +513,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_02_04",
-    "equipitemName": 5000104,
-    "equipitemSubText": 5001104
+    "equipItemIcon": "icon_oopats_red_02_04",
+    "equipItemName": "5000104",
+    "equipItemSubText": "5001104"
   },
   {
-    "key": 38,
+    "key": "38",
     "pointType": 2,
     "setItemType": 4,
     "statEffect": 20,
@@ -527,12 +527,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_02_04",
-    "equipitemName": 5000204,
-    "equipitemSubText": 5001204
+    "equipItemIcon": "icon_oopats_green_02_04",
+    "equipItemName": "5000204",
+    "equipItemSubText": "5001204"
   },
   {
-    "key": 39,
+    "key": "39",
     "pointType": 2,
     "setItemType": 4,
     "statEffect": 20,
@@ -541,12 +541,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_02_04",
-    "equipitemName": 5000304,
-    "equipitemSubText": 5001304
+    "equipItemIcon": "icon_oopats_yellow_02_04",
+    "equipItemName": "5000304",
+    "equipItemSubText": "5001304"
   },
   {
-    "key": 40,
+    "key": "40",
     "pointType": 2,
     "setItemType": 4,
     "statEffect": 20,
@@ -555,12 +555,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_02_04",
-    "equipitemName": 5000404,
-    "equipitemSubText": 5001404
+    "equipItemIcon": "icon_oopats_blue_02_04",
+    "equipItemName": "5000404",
+    "equipItemSubText": "5001404"
   },
   {
-    "key": 41,
+    "key": "41",
     "pointType": 2,
     "setItemType": 5,
     "statEffect": 10,
@@ -569,12 +569,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_02_05",
-    "equipitemName": 5000105,
-    "equipitemSubText": 5001105
+    "equipItemIcon": "icon_oopats_red_02_05",
+    "equipItemName": "5000105",
+    "equipItemSubText": "5001105"
   },
   {
-    "key": 42,
+    "key": "42",
     "pointType": 2,
     "setItemType": 5,
     "statEffect": 10,
@@ -583,12 +583,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_02_05",
-    "equipitemName": 5000205,
-    "equipitemSubText": 5001205
+    "equipItemIcon": "icon_oopats_green_02_05",
+    "equipItemName": "5000205",
+    "equipItemSubText": "5001205"
   },
   {
-    "key": 43,
+    "key": "43",
     "pointType": 2,
     "setItemType": 5,
     "statEffect": 10,
@@ -597,12 +597,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_02_05",
-    "equipitemName": 5000305,
-    "equipitemSubText": 5001305
+    "equipItemIcon": "icon_oopats_yellow_02_05",
+    "equipItemName": "5000305",
+    "equipItemSubText": "5001305"
   },
   {
-    "key": 44,
+    "key": "44",
     "pointType": 2,
     "setItemType": 5,
     "statEffect": 10,
@@ -611,12 +611,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_02_05",
-    "equipitemName": 5000405,
-    "equipitemSubText": 5001405
+    "equipItemIcon": "icon_oopats_blue_02_05",
+    "equipItemName": "5000405",
+    "equipItemSubText": "5001405"
   },
   {
-    "key": 45,
+    "key": "45",
     "pointType": 2,
     "setItemType": 6,
     "statEffect": 30,
@@ -625,12 +625,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_02_06",
-    "equipitemName": 5000106,
-    "equipitemSubText": 5001106
+    "equipItemIcon": "icon_oopats_red_02_06",
+    "equipItemName": "5000106",
+    "equipItemSubText": "5001106"
   },
   {
-    "key": 46,
+    "key": "46",
     "pointType": 2,
     "setItemType": 6,
     "statEffect": 30,
@@ -639,12 +639,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_02_06",
-    "equipitemName": 5000206,
-    "equipitemSubText": 5001206
+    "equipItemIcon": "icon_oopats_green_02_06",
+    "equipItemName": "5000206",
+    "equipItemSubText": "5001206"
   },
   {
-    "key": 47,
+    "key": "47",
     "pointType": 2,
     "setItemType": 6,
     "statEffect": 30,
@@ -653,12 +653,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_02_06",
-    "equipitemName": 5000306,
-    "equipitemSubText": 5001306
+    "equipItemIcon": "icon_oopats_yellow_02_06",
+    "equipItemName": "5000306",
+    "equipItemSubText": "5001306"
   },
   {
-    "key": 48,
+    "key": "48",
     "pointType": 2,
     "setItemType": 6,
     "statEffect": 30,
@@ -667,12 +667,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_02_06",
-    "equipitemName": 5000406,
-    "equipitemSubText": 5001406
+    "equipItemIcon": "icon_oopats_blue_02_06",
+    "equipItemName": "5000406",
+    "equipItemSubText": "5001406"
   },
   {
-    "key": 49,
+    "key": "49",
     "pointType": 3,
     "setItemType": 1,
     "statEffect": 800,
@@ -681,12 +681,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_03_01",
-    "equipitemName": 5000101,
-    "equipitemSubText": 5001101
+    "equipItemIcon": "icon_oopats_red_03_01",
+    "equipItemName": "5000101",
+    "equipItemSubText": "5001101"
   },
   {
-    "key": 50,
+    "key": "50",
     "pointType": 3,
     "setItemType": 1,
     "statEffect": 800,
@@ -695,12 +695,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_03_01",
-    "equipitemName": 5000201,
-    "equipitemSubText": 5001201
+    "equipItemIcon": "icon_oopats_green_03_01",
+    "equipItemName": "5000201",
+    "equipItemSubText": "5001201"
   },
   {
-    "key": 51,
+    "key": "51",
     "pointType": 3,
     "setItemType": 1,
     "statEffect": 800,
@@ -709,12 +709,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_03_01",
-    "equipitemName": 5000301,
-    "equipitemSubText": 5001301
+    "equipItemIcon": "icon_oopats_yellow_03_01",
+    "equipItemName": "5000301",
+    "equipItemSubText": "5001301"
   },
   {
-    "key": 52,
+    "key": "52",
     "pointType": 3,
     "setItemType": 1,
     "statEffect": 800,
@@ -723,12 +723,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_03_01",
-    "equipitemName": 5000401,
-    "equipitemSubText": 5001401
+    "equipItemIcon": "icon_oopats_blue_03_01",
+    "equipItemName": "5000401",
+    "equipItemSubText": "5001401"
   },
   {
-    "key": 53,
+    "key": "53",
     "pointType": 3,
     "setItemType": 2,
     "statEffect": 80,
@@ -737,12 +737,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_03_02",
-    "equipitemName": 5000102,
-    "equipitemSubText": 5001102
+    "equipItemIcon": "icon_oopats_red_03_02",
+    "equipItemName": "5000102",
+    "equipItemSubText": "5001102"
   },
   {
-    "key": 54,
+    "key": "54",
     "pointType": 3,
     "setItemType": 2,
     "statEffect": 80,
@@ -751,12 +751,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_03_02",
-    "equipitemName": 5000202,
-    "equipitemSubText": 5001202
+    "equipItemIcon": "icon_oopats_green_03_02",
+    "equipItemName": "5000202",
+    "equipItemSubText": "5001202"
   },
   {
-    "key": 55,
+    "key": "55",
     "pointType": 3,
     "setItemType": 2,
     "statEffect": 80,
@@ -765,12 +765,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_03_02",
-    "equipitemName": 5000302,
-    "equipitemSubText": 5001302
+    "equipItemIcon": "icon_oopats_yellow_03_02",
+    "equipItemName": "5000302",
+    "equipItemSubText": "5001302"
   },
   {
-    "key": 56,
+    "key": "56",
     "pointType": 3,
     "setItemType": 2,
     "statEffect": 80,
@@ -779,12 +779,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_03_02",
-    "equipitemName": 5000402,
-    "equipitemSubText": 5001402
+    "equipItemIcon": "icon_oopats_blue_03_02",
+    "equipItemName": "5000402",
+    "equipItemSubText": "5001402"
   },
   {
-    "key": 57,
+    "key": "57",
     "pointType": 3,
     "setItemType": 3,
     "statEffect": 160,
@@ -793,12 +793,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_03_03",
-    "equipitemName": 5000103,
-    "equipitemSubText": 5001103
+    "equipItemIcon": "icon_oopats_red_03_03",
+    "equipItemName": "5000103",
+    "equipItemSubText": "5001103"
   },
   {
-    "key": 58,
+    "key": "58",
     "pointType": 3,
     "setItemType": 3,
     "statEffect": 160,
@@ -807,12 +807,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_03_03",
-    "equipitemName": 5000203,
-    "equipitemSubText": 5001203
+    "equipItemIcon": "icon_oopats_green_03_03",
+    "equipItemName": "5000203",
+    "equipItemSubText": "5001203"
   },
   {
-    "key": 59,
+    "key": "59",
     "pointType": 3,
     "setItemType": 3,
     "statEffect": 160,
@@ -821,12 +821,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_03_03",
-    "equipitemName": 5000303,
-    "equipitemSubText": 5001303
+    "equipItemIcon": "icon_oopats_yellow_03_03",
+    "equipItemName": "5000303",
+    "equipItemSubText": "5001303"
   },
   {
-    "key": 60,
+    "key": "60",
     "pointType": 3,
     "setItemType": 3,
     "statEffect": 160,
@@ -835,12 +835,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_03_03",
-    "equipitemName": 5000403,
-    "equipitemSubText": 5001403
+    "equipItemIcon": "icon_oopats_blue_03_03",
+    "equipItemName": "5000403",
+    "equipItemSubText": "5001403"
   },
   {
-    "key": 61,
+    "key": "61",
     "pointType": 3,
     "setItemType": 4,
     "statEffect": 20,
@@ -849,12 +849,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_03_04",
-    "equipitemName": 5000104,
-    "equipitemSubText": 5001104
+    "equipItemIcon": "icon_oopats_red_03_04",
+    "equipItemName": "5000104",
+    "equipItemSubText": "5001104"
   },
   {
-    "key": 62,
+    "key": "62",
     "pointType": 3,
     "setItemType": 4,
     "statEffect": 20,
@@ -863,12 +863,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_03_04",
-    "equipitemName": 5000204,
-    "equipitemSubText": 5001204
+    "equipItemIcon": "icon_oopats_green_03_04",
+    "equipItemName": "5000204",
+    "equipItemSubText": "5001204"
   },
   {
-    "key": 63,
+    "key": "63",
     "pointType": 3,
     "setItemType": 4,
     "statEffect": 20,
@@ -877,12 +877,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_03_04",
-    "equipitemName": 5000304,
-    "equipitemSubText": 5001304
+    "equipItemIcon": "icon_oopats_yellow_03_04",
+    "equipItemName": "5000304",
+    "equipItemSubText": "5001304"
   },
   {
-    "key": 64,
+    "key": "64",
     "pointType": 3,
     "setItemType": 4,
     "statEffect": 20,
@@ -891,12 +891,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_03_04",
-    "equipitemName": 5000404,
-    "equipitemSubText": 5001404
+    "equipItemIcon": "icon_oopats_blue_03_04",
+    "equipItemName": "5000404",
+    "equipItemSubText": "5001404"
   },
   {
-    "key": 65,
+    "key": "65",
     "pointType": 3,
     "setItemType": 5,
     "statEffect": 10,
@@ -905,12 +905,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_03_05",
-    "equipitemName": 5000105,
-    "equipitemSubText": 5001105
+    "equipItemIcon": "icon_oopats_red_03_05",
+    "equipItemName": "5000105",
+    "equipItemSubText": "5001105"
   },
   {
-    "key": 66,
+    "key": "66",
     "pointType": 3,
     "setItemType": 5,
     "statEffect": 10,
@@ -919,12 +919,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_03_05",
-    "equipitemName": 5000205,
-    "equipitemSubText": 5001205
+    "equipItemIcon": "icon_oopats_green_03_05",
+    "equipItemName": "5000205",
+    "equipItemSubText": "5001205"
   },
   {
-    "key": 67,
+    "key": "67",
     "pointType": 3,
     "setItemType": 5,
     "statEffect": 10,
@@ -933,12 +933,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_03_05",
-    "equipitemName": 5000305,
-    "equipitemSubText": 5001305
+    "equipItemIcon": "icon_oopats_yellow_03_05",
+    "equipItemName": "5000305",
+    "equipItemSubText": "5001305"
   },
   {
-    "key": 68,
+    "key": "68",
     "pointType": 3,
     "setItemType": 5,
     "statEffect": 10,
@@ -947,12 +947,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_03_05",
-    "equipitemName": 5000405,
-    "equipitemSubText": 5001405
+    "equipItemIcon": "icon_oopats_blue_03_05",
+    "equipItemName": "5000405",
+    "equipItemSubText": "5001405"
   },
   {
-    "key": 69,
+    "key": "69",
     "pointType": 3,
     "setItemType": 6,
     "statEffect": 30,
@@ -961,12 +961,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_03_06",
-    "equipitemName": 5000106,
-    "equipitemSubText": 5001106
+    "equipItemIcon": "icon_oopats_red_03_06",
+    "equipItemName": "5000106",
+    "equipItemSubText": "5001106"
   },
   {
-    "key": 70,
+    "key": "70",
     "pointType": 3,
     "setItemType": 6,
     "statEffect": 30,
@@ -975,12 +975,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_03_06",
-    "equipitemName": 5000206,
-    "equipitemSubText": 5001206
+    "equipItemIcon": "icon_oopats_green_03_06",
+    "equipItemName": "5000206",
+    "equipItemSubText": "5001206"
   },
   {
-    "key": 71,
+    "key": "71",
     "pointType": 3,
     "setItemType": 6,
     "statEffect": 30,
@@ -989,12 +989,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_03_06",
-    "equipitemName": 5000306,
-    "equipitemSubText": 5001306
+    "equipItemIcon": "icon_oopats_yellow_03_06",
+    "equipItemName": "5000306",
+    "equipItemSubText": "5001306"
   },
   {
-    "key": 72,
+    "key": "72",
     "pointType": 3,
     "setItemType": 6,
     "statEffect": 30,
@@ -1003,12 +1003,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_03_06",
-    "equipitemName": 5000406,
-    "equipitemSubText": 5001406
+    "equipItemIcon": "icon_oopats_blue_03_06",
+    "equipItemName": "5000406",
+    "equipItemSubText": "5001406"
   },
   {
-    "key": 73,
+    "key": "73",
     "pointType": 4,
     "setItemType": 1,
     "statEffect": 800,
@@ -1017,12 +1017,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_04_01",
-    "equipitemName": 5000101,
-    "equipitemSubText": 5001101
+    "equipItemIcon": "icon_oopats_red_04_01",
+    "equipItemName": "5000101",
+    "equipItemSubText": "5001101"
   },
   {
-    "key": 74,
+    "key": "74",
     "pointType": 4,
     "setItemType": 1,
     "statEffect": 800,
@@ -1031,12 +1031,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_04_01",
-    "equipitemName": 5000201,
-    "equipitemSubText": 5001201
+    "equipItemIcon": "icon_oopats_green_04_01",
+    "equipItemName": "5000201",
+    "equipItemSubText": "5001201"
   },
   {
-    "key": 75,
+    "key": "75",
     "pointType": 4,
     "setItemType": 1,
     "statEffect": 800,
@@ -1045,12 +1045,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_04_01",
-    "equipitemName": 5000301,
-    "equipitemSubText": 5001301
+    "equipItemIcon": "icon_oopats_yellow_04_01",
+    "equipItemName": "5000301",
+    "equipItemSubText": "5001301"
   },
   {
-    "key": 76,
+    "key": "76",
     "pointType": 4,
     "setItemType": 1,
     "statEffect": 800,
@@ -1059,12 +1059,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_04_01",
-    "equipitemName": 5000401,
-    "equipitemSubText": 5001401
+    "equipItemIcon": "icon_oopats_blue_04_01",
+    "equipItemName": "5000401",
+    "equipItemSubText": "5001401"
   },
   {
-    "key": 77,
+    "key": "77",
     "pointType": 4,
     "setItemType": 2,
     "statEffect": 80,
@@ -1073,12 +1073,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_04_02",
-    "equipitemName": 5000102,
-    "equipitemSubText": 5001102
+    "equipItemIcon": "icon_oopats_red_04_02",
+    "equipItemName": "5000102",
+    "equipItemSubText": "5001102"
   },
   {
-    "key": 78,
+    "key": "78",
     "pointType": 4,
     "setItemType": 2,
     "statEffect": 80,
@@ -1087,12 +1087,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_04_02",
-    "equipitemName": 5000202,
-    "equipitemSubText": 5001202
+    "equipItemIcon": "icon_oopats_green_04_02",
+    "equipItemName": "5000202",
+    "equipItemSubText": "5001202"
   },
   {
-    "key": 79,
+    "key": "79",
     "pointType": 4,
     "setItemType": 2,
     "statEffect": 80,
@@ -1101,12 +1101,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_04_02",
-    "equipitemName": 5000302,
-    "equipitemSubText": 5001302
+    "equipItemIcon": "icon_oopats_yellow_04_02",
+    "equipItemName": "5000302",
+    "equipItemSubText": "5001302"
   },
   {
-    "key": 80,
+    "key": "80",
     "pointType": 4,
     "setItemType": 2,
     "statEffect": 80,
@@ -1115,12 +1115,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_04_02",
-    "equipitemName": 5000402,
-    "equipitemSubText": 5001402
+    "equipItemIcon": "icon_oopats_blue_04_02",
+    "equipItemName": "5000402",
+    "equipItemSubText": "5001402"
   },
   {
-    "key": 81,
+    "key": "81",
     "pointType": 4,
     "setItemType": 3,
     "statEffect": 160,
@@ -1129,12 +1129,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_04_03",
-    "equipitemName": 5000103,
-    "equipitemSubText": 5001103
+    "equipItemIcon": "icon_oopats_red_04_03",
+    "equipItemName": "5000103",
+    "equipItemSubText": "5001103"
   },
   {
-    "key": 82,
+    "key": "82",
     "pointType": 4,
     "setItemType": 3,
     "statEffect": 160,
@@ -1143,12 +1143,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_04_03",
-    "equipitemName": 5000203,
-    "equipitemSubText": 5001203
+    "equipItemIcon": "icon_oopats_green_04_03",
+    "equipItemName": "5000203",
+    "equipItemSubText": "5001203"
   },
   {
-    "key": 83,
+    "key": "83",
     "pointType": 4,
     "setItemType": 3,
     "statEffect": 160,
@@ -1157,12 +1157,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_04_03",
-    "equipitemName": 5000303,
-    "equipitemSubText": 5001303
+    "equipItemIcon": "icon_oopats_yellow_04_03",
+    "equipItemName": "5000303",
+    "equipItemSubText": "5001303"
   },
   {
-    "key": 84,
+    "key": "84",
     "pointType": 4,
     "setItemType": 3,
     "statEffect": 160,
@@ -1171,12 +1171,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_04_03",
-    "equipitemName": 5000403,
-    "equipitemSubText": 5001403
+    "equipItemIcon": "icon_oopats_blue_04_03",
+    "equipItemName": "5000403",
+    "equipItemSubText": "5001403"
   },
   {
-    "key": 85,
+    "key": "85",
     "pointType": 4,
     "setItemType": 4,
     "statEffect": 20,
@@ -1185,12 +1185,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_04_04",
-    "equipitemName": 5000104,
-    "equipitemSubText": 5001104
+    "equipItemIcon": "icon_oopats_red_04_04",
+    "equipItemName": "5000104",
+    "equipItemSubText": "5001104"
   },
   {
-    "key": 86,
+    "key": "86",
     "pointType": 4,
     "setItemType": 4,
     "statEffect": 20,
@@ -1199,12 +1199,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_04_04",
-    "equipitemName": 5000204,
-    "equipitemSubText": 5001204
+    "equipItemIcon": "icon_oopats_green_04_04",
+    "equipItemName": "5000204",
+    "equipItemSubText": "5001204"
   },
   {
-    "key": 87,
+    "key": "87",
     "pointType": 4,
     "setItemType": 4,
     "statEffect": 20,
@@ -1213,12 +1213,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_04_04",
-    "equipitemName": 5000304,
-    "equipitemSubText": 5001304
+    "equipItemIcon": "icon_oopats_yellow_04_04",
+    "equipItemName": "5000304",
+    "equipItemSubText": "5001304"
   },
   {
-    "key": 88,
+    "key": "88",
     "pointType": 4,
     "setItemType": 4,
     "statEffect": 20,
@@ -1227,12 +1227,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_04_04",
-    "equipitemName": 5000404,
-    "equipitemSubText": 5001404
+    "equipItemIcon": "icon_oopats_blue_04_04",
+    "equipItemName": "5000404",
+    "equipItemSubText": "5001404"
   },
   {
-    "key": 89,
+    "key": "89",
     "pointType": 4,
     "setItemType": 5,
     "statEffect": 10,
@@ -1241,12 +1241,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_04_05",
-    "equipitemName": 5000105,
-    "equipitemSubText": 5001105
+    "equipItemIcon": "icon_oopats_red_04_05",
+    "equipItemName": "5000105",
+    "equipItemSubText": "5001105"
   },
   {
-    "key": 90,
+    "key": "90",
     "pointType": 4,
     "setItemType": 5,
     "statEffect": 10,
@@ -1255,12 +1255,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_04_05",
-    "equipitemName": 5000205,
-    "equipitemSubText": 5001205
+    "equipItemIcon": "icon_oopats_green_04_05",
+    "equipItemName": "5000205",
+    "equipItemSubText": "5001205"
   },
   {
-    "key": 91,
+    "key": "91",
     "pointType": 4,
     "setItemType": 5,
     "statEffect": 10,
@@ -1269,12 +1269,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_04_05",
-    "equipitemName": 5000305,
-    "equipitemSubText": 5001305
+    "equipItemIcon": "icon_oopats_yellow_04_05",
+    "equipItemName": "5000305",
+    "equipItemSubText": "5001305"
   },
   {
-    "key": 92,
+    "key": "92",
     "pointType": 4,
     "setItemType": 5,
     "statEffect": 10,
@@ -1283,12 +1283,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_04_05",
-    "equipitemName": 5000405,
-    "equipitemSubText": 5001405
+    "equipItemIcon": "icon_oopats_blue_04_05",
+    "equipItemName": "5000405",
+    "equipItemSubText": "5001405"
   },
   {
-    "key": 93,
+    "key": "93",
     "pointType": 4,
     "setItemType": 6,
     "statEffect": 30,
@@ -1297,12 +1297,12 @@
     "statAddPoint": 10,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red_04_06",
-    "equipitemName": 5000106,
-    "equipitemSubText": 5001106
+    "equipItemIcon": "icon_oopats_red_04_06",
+    "equipItemName": "5000106",
+    "equipItemSubText": "5001106"
   },
   {
-    "key": 94,
+    "key": "94",
     "pointType": 4,
     "setItemType": 6,
     "statEffect": 30,
@@ -1311,12 +1311,12 @@
     "statAddPoint": 1,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green_04_06",
-    "equipitemName": 5000206,
-    "equipitemSubText": 5001206
+    "equipItemIcon": "icon_oopats_green_04_06",
+    "equipItemName": "5000206",
+    "equipItemSubText": "5001206"
   },
   {
-    "key": 95,
+    "key": "95",
     "pointType": 4,
     "setItemType": 6,
     "statEffect": 30,
@@ -1325,12 +1325,12 @@
     "statAddPoint": 11,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow_04_06",
-    "equipitemName": 5000306,
-    "equipitemSubText": 5001306
+    "equipItemIcon": "icon_oopats_yellow_04_06",
+    "equipItemName": "5000306",
+    "equipItemSubText": "5001306"
   },
   {
-    "key": 96,
+    "key": "96",
     "pointType": 4,
     "setItemType": 6,
     "statEffect": 30,
@@ -1339,12 +1339,12 @@
     "statAddPoint": 2,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue_04_06",
-    "equipitemName": 5000406,
-    "equipitemSubText": 5001406
+    "equipItemIcon": "icon_oopats_blue_04_06",
+    "equipItemName": "5000406",
+    "equipItemSubText": "5001406"
   },
   {
-    "key": 97,
+    "key": "97",
     "pointType": 1,
     "setItemType": 6,
     "statEffect": 30,
@@ -1353,12 +1353,12 @@
     "statAddPoint": 12,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red2year_01",
-    "equipitemName": 5000407,
-    "equipitemSubText": 5001407
+    "equipItemIcon": "icon_oopats_red2year_01",
+    "equipItemName": "5000407",
+    "equipItemSubText": "5001407"
   },
   {
-    "key": 98,
+    "key": "98",
     "pointType": 1,
     "setItemType": 6,
     "statEffect": 30,
@@ -1367,12 +1367,12 @@
     "statAddPoint": 2,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green2year_01",
-    "equipitemName": 5000408,
-    "equipitemSubText": 5001408
+    "equipItemIcon": "icon_oopats_green2year_01",
+    "equipItemName": "5000408",
+    "equipItemSubText": "5001408"
   },
   {
-    "key": 99,
+    "key": "99",
     "pointType": 1,
     "setItemType": 6,
     "statEffect": 30,
@@ -1381,12 +1381,12 @@
     "statAddPoint": 15,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow2year_01",
-    "equipitemName": 5000409,
-    "equipitemSubText": 5001409
+    "equipItemIcon": "icon_oopats_yellow2year_01",
+    "equipItemName": "5000409",
+    "equipItemSubText": "5001409"
   },
   {
-    "key": 100,
+    "key": "100",
     "pointType": 1,
     "setItemType": 6,
     "statEffect": 30,
@@ -1395,12 +1395,12 @@
     "statAddPoint": 3,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue2year_01",
-    "equipitemName": 5000410,
-    "equipitemSubText": 5001410
+    "equipItemIcon": "icon_oopats_blue2year_01",
+    "equipItemName": "5000410",
+    "equipItemSubText": "5001410"
   },
   {
-    "key": 101,
+    "key": "101",
     "pointType": 2,
     "setItemType": 6,
     "statEffect": 30,
@@ -1409,12 +1409,12 @@
     "statAddPoint": 12,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red2year_02",
-    "equipitemName": 5000407,
-    "equipitemSubText": 5001407
+    "equipItemIcon": "icon_oopats_red2year_02",
+    "equipItemName": "5000407",
+    "equipItemSubText": "5001407"
   },
   {
-    "key": 102,
+    "key": "102",
     "pointType": 2,
     "setItemType": 6,
     "statEffect": 30,
@@ -1423,12 +1423,12 @@
     "statAddPoint": 2,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green2year_02",
-    "equipitemName": 5000408,
-    "equipitemSubText": 5001408
+    "equipItemIcon": "icon_oopats_green2year_02",
+    "equipItemName": "5000408",
+    "equipItemSubText": "5001408"
   },
   {
-    "key": 103,
+    "key": "103",
     "pointType": 2,
     "setItemType": 6,
     "statEffect": 30,
@@ -1437,12 +1437,12 @@
     "statAddPoint": 15,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow2year_02",
-    "equipitemName": 5000409,
-    "equipitemSubText": 5001409
+    "equipItemIcon": "icon_oopats_yellow2year_02",
+    "equipItemName": "5000409",
+    "equipItemSubText": "5001409"
   },
   {
-    "key": 104,
+    "key": "104",
     "pointType": 2,
     "setItemType": 6,
     "statEffect": 30,
@@ -1451,12 +1451,12 @@
     "statAddPoint": 3,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue2year_02",
-    "equipitemName": 5000410,
-    "equipitemSubText": 5001410
+    "equipItemIcon": "icon_oopats_blue2year_02",
+    "equipItemName": "5000410",
+    "equipItemSubText": "5001410"
   },
   {
-    "key": 105,
+    "key": "105",
     "pointType": 3,
     "setItemType": 6,
     "statEffect": 30,
@@ -1465,12 +1465,12 @@
     "statAddPoint": 12,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red2year_03",
-    "equipitemName": 5000407,
-    "equipitemSubText": 5001407
+    "equipItemIcon": "icon_oopats_red2year_03",
+    "equipItemName": "5000407",
+    "equipItemSubText": "5001407"
   },
   {
-    "key": 106,
+    "key": "106",
     "pointType": 3,
     "setItemType": 6,
     "statEffect": 30,
@@ -1479,12 +1479,12 @@
     "statAddPoint": 2,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green2year_03",
-    "equipitemName": 5000408,
-    "equipitemSubText": 5001408
+    "equipItemIcon": "icon_oopats_green2year_03",
+    "equipItemName": "5000408",
+    "equipItemSubText": "5001408"
   },
   {
-    "key": 107,
+    "key": "107",
     "pointType": 3,
     "setItemType": 6,
     "statEffect": 30,
@@ -1493,12 +1493,12 @@
     "statAddPoint": 15,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow2year_03",
-    "equipitemName": 5000409,
-    "equipitemSubText": 5001409
+    "equipItemIcon": "icon_oopats_yellow2year_03",
+    "equipItemName": "5000409",
+    "equipItemSubText": "5001409"
   },
   {
-    "key": 108,
+    "key": "108",
     "pointType": 3,
     "setItemType": 6,
     "statEffect": 30,
@@ -1507,12 +1507,12 @@
     "statAddPoint": 3,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue2year_03",
-    "equipitemName": 5000410,
-    "equipitemSubText": 5001410
+    "equipItemIcon": "icon_oopats_blue2year_03",
+    "equipItemName": "5000410",
+    "equipItemSubText": "5001410"
   },
   {
-    "key": 109,
+    "key": "109",
     "pointType": 4,
     "setItemType": 6,
     "statEffect": 30,
@@ -1521,12 +1521,12 @@
     "statAddPoint": 12,
     "UpgradeType": 1,
     "disassembleType": 1,
-    "equipitemIcon": "icon_oopats_red2year_04",
-    "equipitemName": 5000407,
-    "equipitemSubText": 5001407
+    "equipItemIcon": "icon_oopats_red2year_04",
+    "equipItemName": "5000407",
+    "equipItemSubText": "5001407"
   },
   {
-    "key": 110,
+    "key": "110",
     "pointType": 4,
     "setItemType": 6,
     "statEffect": 30,
@@ -1535,12 +1535,12 @@
     "statAddPoint": 2,
     "UpgradeType": 2,
     "disassembleType": 2,
-    "equipitemIcon": "icon_oopats_green2year_04",
-    "equipitemName": 5000408,
-    "equipitemSubText": 5001408
+    "equipItemIcon": "icon_oopats_green2year_04",
+    "equipItemName": "5000408",
+    "equipItemSubText": "5001408"
   },
   {
-    "key": 111,
+    "key": "111",
     "pointType": 4,
     "setItemType": 6,
     "statEffect": 30,
@@ -1549,12 +1549,12 @@
     "statAddPoint": 15,
     "UpgradeType": 3,
     "disassembleType": 3,
-    "equipitemIcon": "icon_oopats_yellow2year_04",
-    "equipitemName": 5000409,
-    "equipitemSubText": 5001409
+    "equipItemIcon": "icon_oopats_yellow2year_04",
+    "equipItemName": "5000409",
+    "equipItemSubText": "5001409"
   },
   {
-    "key": 112,
+    "key": "112",
     "pointType": 4,
     "setItemType": 6,
     "statEffect": 30,
@@ -1563,8 +1563,8 @@
     "statAddPoint": 3,
     "UpgradeType": 4,
     "disassembleType": 4,
-    "equipitemIcon": "icon_oopats_blue2year_04",
-    "equipitemName": 5000410,
-    "equipitemSubText": 5001410
+    "equipItemIcon": "icon_oopats_blue2year_04",
+    "equipItemName": "5000410",
+    "equipItemSubText": "5001410"
   }
 ]

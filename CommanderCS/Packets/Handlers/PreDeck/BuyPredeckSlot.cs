@@ -1,10 +1,9 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
-using CommanderCS.Protocols;
+using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json.Linq;
-using CommanderCS.Enum.Packet;
-using CommanderCS.Utils;
-using static CommanderCS.Utils.Constants;
+using static CommanderCSLibrary.Shared.Constants;
+using CommanderCSLibrary.Shared.Enum;
 
 
 namespace CommanderCS.Packets.Handlers.PreDeck

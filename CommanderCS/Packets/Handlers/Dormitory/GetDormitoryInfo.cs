@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Host.Handlers.Dormitory
 {
@@ -10,7 +10,7 @@ namespace CommanderCS.Host.Handlers.Dormitory
         {
             var dormitoryInfo = GetUserDormitory();
 
-            CommanderCS.Protocols.Dormitory.Info DormitoryInfo = new()
+            CommanderCSLibrary.Shared.Protocols.Dormitory.Info DormitoryInfo = new()
             {
                 costumeBody = dormitoryInfo.CostumeBody,
                 itemNormal = dormitoryInfo.ItemNormal,

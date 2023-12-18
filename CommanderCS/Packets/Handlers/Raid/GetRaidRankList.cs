@@ -1,5 +1,7 @@
 using CommanderCS.Host;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+
 
 namespace CommanderCS.Packets.Handlers.Raid
 {
@@ -14,7 +16,7 @@ namespace CommanderCS.Packets.Handlers.Raid
                 Result = null,
             };
 
-            CommanderCS.Protocols.PvPRankingList pvPRankingList = new();
+            PvPRankingList pvPRankingList = new();
 
             return response;
         }

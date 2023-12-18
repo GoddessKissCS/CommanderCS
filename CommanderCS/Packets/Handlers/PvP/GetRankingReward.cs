@@ -1,11 +1,13 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
 using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+
 
 namespace CommanderCS.Packets.Handlers.PvP
 {
-	[Packet(Id = Method.GetRankingReward)]
+    [Packet(Id = Method.GetRankingReward)]
     public class GetRankingReward : BaseMethodHandler<GetRankingRewardRequest>
     {
         public override object Handle(GetRankingRewardRequest @params)
@@ -15,7 +17,7 @@ namespace CommanderCS.Packets.Handlers.PvP
 
 			var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
 
-            Protocols.RankingReward reward = new()
+            RankingReward reward = new()
 			{
 				commanderData = user.CommanderData,
 				equipItem = user.UserInventory.equipItem,

@@ -1,5 +1,5 @@
-using CommanderCS.Enum;
-using CommanderCS.Protocols;
+using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Enum;
 using MongoDB.Bson;
 
 namespace CommanderCS.Database.Schemes

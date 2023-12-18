@@ -1,5 +1,7 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Regulation;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json.Converters;
 using System.Text.Json;
@@ -76,10 +78,10 @@ namespace CommanderCS
                 return PacketHandler.ProcessRequest(context, provider);
             });
 
-            var wsOptions = new WebSocketOptions()
-            {
-                KeepAliveInterval = TimeSpan.FromMilliseconds(1000),
-            };
+            //var wsOptions = new WebSocketOptions()
+            //{
+            //    KeepAliveInterval = TimeSpan.FromMilliseconds(1000),
+            //};
 
             //app.UseWebSockets(wsOptions);
 
@@ -137,6 +139,8 @@ namespace CommanderCS
             //app.UseAuthorization();
 
             DatabaseManager.Init();
+
+            Constants.regulation = Regulation.Create();
 
             app.Run();
         }

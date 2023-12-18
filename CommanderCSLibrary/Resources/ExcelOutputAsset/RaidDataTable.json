@@ -3,8 +3,6 @@
     "index": 0,
     "key": 1,
     "phase": 0,
-    "pos": 3,
-    "health": 9999999,
     "attackIncrease": 0,
     "defenseIncrease": 100,
     "accuracyIncrease": 200000,
@@ -12,14 +10,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 3,
+    "health": 9999999
   },
   {
     "index": 1,
     "key": 1,
     "phase": 0,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 0,
     "defenseIncrease": 100,
     "accuracyIncrease": 200000,
@@ -27,14 +25,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 2,
     "key": 1,
     "phase": 0,
-    "pos": 5,
-    "health": 9999999,
     "attackIncrease": 0,
     "defenseIncrease": 100,
     "accuracyIncrease": 200000,
@@ -42,14 +40,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 5,
+    "health": 9999999
   },
   {
     "index": 3,
     "key": 1,
     "phase": 3,
-    "pos": 3,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -57,14 +55,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30013_Phase01"
+    "effectName": "fx_30013_Phase01",
+    "pos": 3,
+    "health": 0
   },
   {
     "index": 4,
     "key": 1,
     "phase": 3,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -72,14 +70,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30011_Phase01"
+    "effectName": "fx_30011_Phase01",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 5,
     "key": 1,
     "phase": 3,
-    "pos": 5,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -87,14 +85,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30012_Phase01"
+    "effectName": "fx_30012_Phase01",
+    "pos": 5,
+    "health": 0
   },
   {
     "index": 6,
     "key": 1,
     "phase": 7,
-    "pos": 3,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -102,14 +100,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30013_Phase02"
+    "effectName": "fx_30013_Phase02",
+    "pos": 3,
+    "health": 0
   },
   {
     "index": 7,
     "key": 1,
     "phase": 7,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -117,14 +115,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30011_Phase02"
+    "effectName": "fx_30011_Phase02",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 8,
     "key": 1,
     "phase": 7,
-    "pos": 5,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -132,14 +130,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30012_Phase02"
+    "effectName": "fx_30012_Phase02",
+    "pos": 5,
+    "health": 0
   },
   {
     "index": 9,
     "key": 1,
     "phase": 11,
-    "pos": 3,
-    "health": 0,
     "attackIncrease": 2500000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -147,14 +145,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30013_Phase03"
+    "effectName": "fx_30013_Phase03",
+    "pos": 3,
+    "health": 0
   },
   {
     "index": 10,
     "key": 1,
     "phase": 11,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 2500000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -162,14 +160,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30011_Phase03"
+    "effectName": "fx_30011_Phase03",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 11,
     "key": 1,
     "phase": 11,
-    "pos": 5,
-    "health": 0,
     "attackIncrease": 2500000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -177,14 +175,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30012_Phase03"
+    "effectName": "fx_30012_Phase03",
+    "pos": 5,
+    "health": 0
   },
   {
     "index": 12,
     "key": 1,
     "phase": 15,
-    "pos": 3,
-    "health": 0,
     "attackIncrease": 4000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -192,14 +190,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30013_Phase03"
+    "effectName": "fx_30013_Phase03",
+    "pos": 3,
+    "health": 0
   },
   {
     "index": 13,
     "key": 1,
     "phase": 15,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -207,14 +205,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30011_Phase03"
+    "effectName": "fx_30011_Phase03",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 14,
     "key": 1,
     "phase": 15,
-    "pos": 5,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -222,14 +220,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30012_Phase03"
+    "effectName": "fx_30012_Phase03",
+    "pos": 5,
+    "health": 0
   },
   {
     "index": 15,
     "key": 1,
     "phase": 19,
-    "pos": 3,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 2400,
     "accuracyIncrease": 200000,
@@ -237,14 +235,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30013_Phase04"
+    "effectName": "fx_30013_Phase04",
+    "pos": 3,
+    "health": 0
   },
   {
     "index": 16,
     "key": 1,
     "phase": 19,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 2400,
     "accuracyIncrease": 200000,
@@ -252,14 +250,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30011_Phase04"
+    "effectName": "fx_30011_Phase04",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 17,
     "key": 1,
     "phase": 19,
-    "pos": 5,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 2400,
     "accuracyIncrease": 200000,
@@ -267,14 +265,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30012_Phase04"
+    "effectName": "fx_30012_Phase04",
+    "pos": 5,
+    "health": 0
   },
   {
     "index": 18,
     "key": 2,
     "phase": 0,
-    "pos": 1,
-    "health": 9999999,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -282,14 +280,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 9999999
   },
   {
     "index": 19,
     "key": 2,
     "phase": 0,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -297,14 +295,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 20,
     "key": 2,
     "phase": 0,
-    "pos": 7,
-    "health": 9999999,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -312,14 +310,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 9999999
   },
   {
     "index": 21,
     "key": 2,
     "phase": 4,
-    "pos": 1,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -327,14 +325,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 0
   },
   {
     "index": 22,
     "key": 2,
     "phase": 4,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -342,14 +340,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30002_Phase01"
+    "effectName": "fx_30002_Phase01",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 23,
     "key": 2,
     "phase": 4,
-    "pos": 7,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -357,14 +355,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 0
   },
   {
     "index": 24,
     "key": 2,
     "phase": 7,
-    "pos": 1,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -372,14 +370,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 0
   },
   {
     "index": 25,
     "key": 2,
     "phase": 7,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -387,14 +385,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30002_Phase02"
+    "effectName": "fx_30002_Phase02",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 26,
     "key": 2,
     "phase": 7,
-    "pos": 7,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -402,14 +400,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 0
   },
   {
     "index": 27,
     "key": 2,
     "phase": 11,
-    "pos": 1,
-    "health": 0,
     "attackIncrease": 2500000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -417,14 +415,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 0
   },
   {
     "index": 28,
     "key": 2,
     "phase": 11,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 2500000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -432,14 +430,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30002_Phase03"
+    "effectName": "fx_30002_Phase03",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 29,
     "key": 2,
     "phase": 11,
-    "pos": 7,
-    "health": 0,
     "attackIncrease": 2500000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -447,14 +445,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 0
   },
   {
     "index": 30,
     "key": 2,
     "phase": 15,
-    "pos": 1,
-    "health": 0,
     "attackIncrease": 4000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -462,14 +460,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 0
   },
   {
     "index": 31,
     "key": 2,
     "phase": 15,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -477,14 +475,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30002_Phase03"
+    "effectName": "fx_30002_Phase03",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 32,
     "key": 2,
     "phase": 15,
-    "pos": 7,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -492,14 +490,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 0
   },
   {
     "index": 33,
     "key": 2,
     "phase": 19,
-    "pos": 1,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -507,14 +505,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 0
   },
   {
     "index": 34,
     "key": 2,
     "phase": 19,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -522,14 +520,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30002_Phase04"
+    "effectName": "fx_30002_Phase04",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 35,
     "key": 2,
     "phase": 19,
-    "pos": 7,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -537,14 +535,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 0
   },
   {
     "index": 36,
     "key": 3,
     "phase": 0,
-    "pos": 0,
-    "health": 9999999,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -552,14 +550,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 0,
+    "health": 9999999
   },
   {
     "index": 37,
     "key": 3,
     "phase": 0,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -567,14 +565,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 38,
     "key": 3,
     "phase": 0,
-    "pos": 8,
-    "health": 9999999,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -582,14 +580,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 8,
+    "health": 9999999
   },
   {
     "index": 39,
     "key": 3,
     "phase": 4,
-    "pos": 0,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -597,14 +595,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 0,
+    "health": 0
   },
   {
     "index": 40,
     "key": 3,
     "phase": 4,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -612,14 +610,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30031_Phase01"
+    "effectName": "fx_30031_Phase01",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 41,
     "key": 3,
     "phase": 4,
-    "pos": 8,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -627,14 +625,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 8,
+    "health": 0
   },
   {
     "index": 42,
     "key": 3,
     "phase": 7,
-    "pos": 0,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -642,14 +640,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 0,
+    "health": 0
   },
   {
     "index": 43,
     "key": 3,
     "phase": 7,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -657,14 +655,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 44,
     "key": 3,
     "phase": 7,
-    "pos": 8,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -672,14 +670,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 8,
+    "health": 0
   },
   {
     "index": 45,
     "key": 3,
     "phase": 11,
-    "pos": 0,
-    "health": 0,
     "attackIncrease": 1000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -687,14 +685,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 0,
+    "health": 0
   },
   {
     "index": 46,
     "key": 3,
     "phase": 11,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 1000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -702,14 +700,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30031_Phase02"
+    "effectName": "fx_30031_Phase02",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 47,
     "key": 3,
     "phase": 11,
-    "pos": 8,
-    "health": 0,
     "attackIncrease": 1000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -717,14 +715,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 8,
+    "health": 0
   },
   {
     "index": 48,
     "key": 3,
     "phase": 15,
-    "pos": 0,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -732,14 +730,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 0,
+    "health": 0
   },
   {
     "index": 49,
     "key": 3,
     "phase": 15,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -747,14 +745,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30031_Phase02"
+    "effectName": "fx_30031_Phase02",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 50,
     "key": 3,
     "phase": 15,
-    "pos": 8,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -762,14 +760,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 8,
+    "health": 0
   },
   {
     "index": 51,
     "key": 3,
     "phase": 19,
-    "pos": 0,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -777,14 +775,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 0,
+    "health": 0
   },
   {
     "index": 52,
     "key": 3,
     "phase": 19,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -792,14 +790,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 53,
     "key": 3,
     "phase": 19,
-    "pos": 8,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -807,14 +805,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 8,
+    "health": 0
   },
   {
     "index": 54,
     "key": 4,
     "phase": 0,
-    "pos": 3,
-    "health": 9999999,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -822,14 +820,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 3,
+    "health": 9999999
   },
   {
     "index": 55,
     "key": 4,
     "phase": 0,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -837,14 +835,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 56,
     "key": 4,
     "phase": 0,
-    "pos": 5,
-    "health": 9999999,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -852,14 +850,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 5,
+    "health": 9999999
   },
   {
     "index": 57,
     "key": 4,
     "phase": 3,
-    "pos": 3,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -867,14 +865,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30013_Phase01"
+    "effectName": "fx_30013_Phase01",
+    "pos": 3,
+    "health": 0
   },
   {
     "index": 58,
     "key": 4,
     "phase": 3,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -882,14 +880,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30011_Phase01"
+    "effectName": "fx_30011_Phase01",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 59,
     "key": 4,
     "phase": 3,
-    "pos": 5,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -897,14 +895,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30012_Phase01"
+    "effectName": "fx_30012_Phase01",
+    "pos": 5,
+    "health": 0
   },
   {
     "index": 60,
     "key": 4,
     "phase": 7,
-    "pos": 3,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -912,14 +910,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30013_Phase02"
+    "effectName": "fx_30013_Phase02",
+    "pos": 3,
+    "health": 0
   },
   {
     "index": 61,
     "key": 4,
     "phase": 7,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -927,14 +925,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30011_Phase02"
+    "effectName": "fx_30011_Phase02",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 62,
     "key": 4,
     "phase": 7,
-    "pos": 5,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -942,14 +940,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30012_Phase02"
+    "effectName": "fx_30012_Phase02",
+    "pos": 5,
+    "health": 0
   },
   {
     "index": 63,
     "key": 4,
     "phase": 11,
-    "pos": 3,
-    "health": 0,
     "attackIncrease": 1000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -957,14 +955,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30013_Phase03"
+    "effectName": "fx_30013_Phase03",
+    "pos": 3,
+    "health": 0
   },
   {
     "index": 64,
     "key": 4,
     "phase": 11,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 1000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -972,14 +970,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30011_Phase03"
+    "effectName": "fx_30011_Phase03",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 65,
     "key": 4,
     "phase": 11,
-    "pos": 5,
-    "health": 0,
     "attackIncrease": 1000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -987,14 +985,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30012_Phase03"
+    "effectName": "fx_30012_Phase03",
+    "pos": 5,
+    "health": 0
   },
   {
     "index": 66,
     "key": 4,
     "phase": 15,
-    "pos": 3,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -1002,14 +1000,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30013_Phase03"
+    "effectName": "fx_30013_Phase03",
+    "pos": 3,
+    "health": 0
   },
   {
     "index": 67,
     "key": 4,
     "phase": 15,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -1017,14 +1015,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30011_Phase03"
+    "effectName": "fx_30011_Phase03",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 68,
     "key": 4,
     "phase": 15,
-    "pos": 5,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -1032,14 +1030,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30012_Phase03"
+    "effectName": "fx_30012_Phase03",
+    "pos": 5,
+    "health": 0
   },
   {
     "index": 69,
     "key": 4,
     "phase": 19,
-    "pos": 3,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -1047,14 +1045,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30013_Phase04"
+    "effectName": "fx_30013_Phase04",
+    "pos": 3,
+    "health": 0
   },
   {
     "index": 70,
     "key": 4,
     "phase": 19,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -1062,14 +1060,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30011_Phase04"
+    "effectName": "fx_30011_Phase04",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 71,
     "key": 4,
     "phase": 19,
-    "pos": 5,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -1077,14 +1075,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30012_Phase04"
+    "effectName": "fx_30012_Phase04",
+    "pos": 5,
+    "health": 0
   },
   {
     "index": 72,
     "key": 5,
     "phase": 0,
-    "pos": 1,
-    "health": 9999999,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -1092,14 +1090,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 9999999
   },
   {
     "index": 73,
     "key": 5,
     "phase": 0,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -1107,14 +1105,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 74,
     "key": 5,
     "phase": 0,
-    "pos": 7,
-    "health": 9999999,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -1122,14 +1120,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 9999999
   },
   {
     "index": 75,
     "key": 5,
     "phase": 4,
-    "pos": 1,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -1137,14 +1135,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 0
   },
   {
     "index": 76,
     "key": 5,
     "phase": 4,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -1152,14 +1150,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30002_Phase01"
+    "effectName": "fx_30002_Phase01",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 77,
     "key": 5,
     "phase": 4,
-    "pos": 7,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -1167,14 +1165,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 0
   },
   {
     "index": 78,
     "key": 5,
     "phase": 7,
-    "pos": 1,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -1182,14 +1180,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 0
   },
   {
     "index": 79,
     "key": 5,
     "phase": 7,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -1197,14 +1195,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30002_Phase02"
+    "effectName": "fx_30002_Phase02",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 80,
     "key": 5,
     "phase": 7,
-    "pos": 7,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -1212,14 +1210,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 0
   },
   {
     "index": 81,
     "key": 5,
     "phase": 11,
-    "pos": 1,
-    "health": 0,
     "attackIncrease": 1000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1227,14 +1225,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 0
   },
   {
     "index": 82,
     "key": 5,
     "phase": 11,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 1000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1242,14 +1240,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30002_Phase03"
+    "effectName": "fx_30002_Phase03",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 83,
     "key": 5,
     "phase": 11,
-    "pos": 7,
-    "health": 0,
     "attackIncrease": 1000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1257,14 +1255,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 0
   },
   {
     "index": 84,
     "key": 5,
     "phase": 15,
-    "pos": 1,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1272,14 +1270,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 0
   },
   {
     "index": 85,
     "key": 5,
     "phase": 15,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1287,14 +1285,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30002_Phase03"
+    "effectName": "fx_30002_Phase03",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 86,
     "key": 5,
     "phase": 15,
-    "pos": 7,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1302,14 +1300,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 0
   },
   {
     "index": 87,
     "key": 5,
     "phase": 19,
-    "pos": 1,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -1317,14 +1315,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 0
   },
   {
     "index": 88,
     "key": 5,
     "phase": 19,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -1332,14 +1330,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30002_Phase04"
+    "effectName": "fx_30002_Phase04",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 89,
     "key": 5,
     "phase": 19,
-    "pos": 7,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -1347,14 +1345,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 0
   },
   {
     "index": 90,
     "key": 6,
     "phase": 0,
-    "pos": 0,
-    "health": 9999999,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -1362,14 +1360,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 0,
+    "health": 9999999
   },
   {
     "index": 91,
     "key": 6,
     "phase": 0,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -1377,14 +1375,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 92,
     "key": 6,
     "phase": 0,
-    "pos": 8,
-    "health": 9999999,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -1392,14 +1390,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 8,
+    "health": 9999999
   },
   {
     "index": 93,
     "key": 6,
     "phase": 4,
-    "pos": 0,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -1407,14 +1405,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 0,
+    "health": 0
   },
   {
     "index": 94,
     "key": 6,
     "phase": 4,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -1422,14 +1420,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30031_Phase01"
+    "effectName": "fx_30031_Phase01",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 95,
     "key": 6,
     "phase": 4,
-    "pos": 8,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -1437,14 +1435,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 8,
+    "health": 0
   },
   {
     "index": 96,
     "key": 6,
     "phase": 7,
-    "pos": 0,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -1452,14 +1450,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 0,
+    "health": 0
   },
   {
     "index": 97,
     "key": 6,
     "phase": 7,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -1467,14 +1465,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 98,
     "key": 6,
     "phase": 7,
-    "pos": 8,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -1482,14 +1480,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 8,
+    "health": 0
   },
   {
     "index": 99,
     "key": 6,
     "phase": 11,
-    "pos": 0,
-    "health": 0,
     "attackIncrease": 1000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1497,14 +1495,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 0,
+    "health": 0
   },
   {
     "index": 100,
     "key": 6,
     "phase": 11,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 1000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1512,14 +1510,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30031_Phase02"
+    "effectName": "fx_30031_Phase02",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 101,
     "key": 6,
     "phase": 11,
-    "pos": 8,
-    "health": 0,
     "attackIncrease": 1000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1527,14 +1525,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 8,
+    "health": 0
   },
   {
     "index": 102,
     "key": 6,
     "phase": 15,
-    "pos": 0,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1542,14 +1540,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 0,
+    "health": 0
   },
   {
     "index": 103,
     "key": 6,
     "phase": 15,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1557,14 +1555,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30031_Phase02"
+    "effectName": "fx_30031_Phase02",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 104,
     "key": 6,
     "phase": 15,
-    "pos": 8,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1572,14 +1570,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 8,
+    "health": 0
   },
   {
     "index": 105,
     "key": 6,
     "phase": 19,
-    "pos": 0,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -1587,14 +1585,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 0,
+    "health": 0
   },
   {
     "index": 106,
     "key": 6,
     "phase": 19,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -1602,14 +1600,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 107,
     "key": 6,
     "phase": 19,
-    "pos": 8,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -1617,14 +1615,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 8,
+    "health": 0
   },
   {
     "index": 108,
     "key": 7,
     "phase": 0,
-    "pos": 1,
-    "health": 9999999,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -1632,14 +1630,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 9999999
   },
   {
     "index": 109,
     "key": 7,
     "phase": 0,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -1647,14 +1645,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 110,
     "key": 7,
     "phase": 0,
-    "pos": 7,
-    "health": 9999999,
     "attackIncrease": 0,
     "defenseIncrease": 150,
     "accuracyIncrease": 200000,
@@ -1662,14 +1660,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 9999999
   },
   {
     "index": 111,
     "key": 7,
     "phase": 4,
-    "pos": 1,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -1677,14 +1675,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 0
   },
   {
     "index": 112,
     "key": 7,
     "phase": 4,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -1692,14 +1690,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30002_Phase01"
+    "effectName": "fx_30002_Phase01",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 113,
     "key": 7,
     "phase": 4,
-    "pos": 7,
-    "health": 0,
     "attackIncrease": 3000,
     "defenseIncrease": 200,
     "accuracyIncrease": 200000,
@@ -1707,14 +1705,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 0
   },
   {
     "index": 114,
     "key": 7,
     "phase": 7,
-    "pos": 1,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -1722,14 +1720,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 0
   },
   {
     "index": 115,
     "key": 7,
     "phase": 7,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -1737,14 +1735,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30002_Phase02"
+    "effectName": "fx_30002_Phase02",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 116,
     "key": 7,
     "phase": 7,
-    "pos": 7,
-    "health": 0,
     "attackIncrease": 50000,
     "defenseIncrease": 300,
     "accuracyIncrease": 200000,
@@ -1752,14 +1750,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 0
   },
   {
     "index": 117,
     "key": 7,
     "phase": 11,
-    "pos": 1,
-    "health": 0,
     "attackIncrease": 1000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1767,14 +1765,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 0
   },
   {
     "index": 118,
     "key": 7,
     "phase": 11,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 1000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1782,14 +1780,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30002_Phase03"
+    "effectName": "fx_30002_Phase03",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 119,
     "key": 7,
     "phase": 11,
-    "pos": 7,
-    "health": 0,
     "attackIncrease": 1000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1797,14 +1795,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 0
   },
   {
     "index": 120,
     "key": 7,
     "phase": 15,
-    "pos": 1,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1812,14 +1810,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 0
   },
   {
     "index": 121,
     "key": 7,
     "phase": 15,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1827,14 +1825,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30002_Phase03"
+    "effectName": "fx_30002_Phase03",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 122,
     "key": 7,
     "phase": 15,
-    "pos": 7,
-    "health": 0,
     "attackIncrease": 5000000,
     "defenseIncrease": 600,
     "accuracyIncrease": 200000,
@@ -1842,14 +1840,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 0
   },
   {
     "index": 123,
     "key": 7,
     "phase": 19,
-    "pos": 1,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -1857,14 +1855,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 1,
+    "health": 0
   },
   {
     "index": 124,
     "key": 7,
     "phase": 19,
-    "pos": 4,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -1872,14 +1870,14 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "fx_30002_Phase04"
+    "effectName": "fx_30002_Phase04",
+    "pos": 4,
+    "health": 0
   },
   {
     "index": 125,
     "key": 7,
     "phase": 19,
-    "pos": 7,
-    "health": 0,
     "attackIncrease": 10000000,
     "defenseIncrease": 1200,
     "accuracyIncrease": 200000,
@@ -1887,6 +1885,8 @@
     "criticalIncrease": 0,
     "criticalDmgIncrease": 0,
     "speedIncrease": 0,
-    "effectName": "-"
+    "effectName": "-",
+    "pos": 7,
+    "health": 0
   }
 ]

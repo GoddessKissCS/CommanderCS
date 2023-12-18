@@ -1,6 +1,6 @@
 ﻿using CommanderCS.Database;
 using CommanderCS.Database.Schemes;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

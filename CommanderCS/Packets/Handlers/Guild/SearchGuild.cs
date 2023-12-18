@@ -2,7 +2,8 @@ using CommanderCS.Database;
 using CommanderCS.Database.Schemes;
 using CommanderCS.Host;
 using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Ro;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -27,7 +28,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             }
             else
             {
-                Ro.RoGuild Roguild = new() { };
+                RoGuild Roguild = new() { };
 
                 response.Result = Roguild;
             }
@@ -35,11 +36,11 @@ namespace CommanderCS.Packets.Handlers.Guild
             return response;
         }
 
-        public static Ro.RoGuild Guild2RoGuild(GuildScheme guild, string session)
+        public static RoGuild Guild2RoGuild(GuildScheme guild, string session)
         {
             string isApplyingForGuild = DatabaseManager.GuildApplication.RetrieveGuildApplication(session, guild.GuildId);
 
-            Ro.RoGuild Roguild = new()
+            RoGuild Roguild = new()
             {
                 apnt = guild.aPoint,
                 cnt = guild.Count,

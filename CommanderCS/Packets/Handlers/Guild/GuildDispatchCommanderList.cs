@@ -1,6 +1,6 @@
 using CommanderCS.Host;
 using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -9,7 +9,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(GuildDispatchCommanderListRequest @params)
         {
-            Protocols.GuildDispatchCommanderList vs = new()
+            CommanderCSLibrary.Shared.Protocols.GuildDispatchCommanderList vs = new()
             {
                 commanderList = [],
                 npcList = [],

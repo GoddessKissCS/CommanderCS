@@ -1,9 +1,9 @@
-using CommanderCS.Enum.Packet;
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.Achievement
 {
-	[Packet(Id = Method.CompleteAchievement)]
+    [Packet(Id = Method.CompleteAchievement)]
     public class CompleteAchievement : BaseMethodHandler<CompleteAchievementRequest>
     {
         public override object Handle(CompleteAchievementRequest @params)
@@ -12,7 +12,7 @@ namespace CommanderCS.Packets.Handlers.Achievement
 			ResponsePacket response = new()
 			{
 				Id = BasePacket.Id,
-				Result = Array.Empty<Protocols.CompleteAchievementInfo>(),
+				Result = Array.Empty<CommanderCSLibrary.Shared.Protocols.CompleteAchievementInfo>(),
             };
 
 			return response;	

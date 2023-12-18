@@ -1,6 +1,6 @@
-﻿using CommanderCS.ExcelReader;
-using CommanderCS.Protocols;
-using CommanderCS.Enum.Packet;
+﻿using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.ExcelReader;
 
 namespace CommanderCS.Host.Handlers.KeepAlives
 {

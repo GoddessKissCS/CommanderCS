@@ -1,11 +1,11 @@
-using CommanderCS.Enum.Packet;
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Defender
 {
-	[Packet(Id = Method.DefenderSetting)]
+    [Packet(Id = Method.DefenderSetting)]
     public class DefenderSetting : BaseMethodHandler<DefenderSettingRequest>
     {
         public override object Handle(DefenderSettingRequest @params)

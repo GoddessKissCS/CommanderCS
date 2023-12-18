@@ -1,7 +1,7 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
 using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.KeepAlives
 {

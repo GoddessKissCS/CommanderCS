@@ -1,7 +1,7 @@
-﻿using CommanderCS.Enum.Packet;
-using CommanderCS.ExcelReader;
-using CommanderCS.Protocols;
+﻿using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
+using CommanderCSLibrary.Shared.ExcelReader;
 
 namespace CommanderCS.Host.Handlers.Commander
 {
@@ -25,7 +25,9 @@ namespace CommanderCS.Host.Handlers.Commander
 
             if (commanderList.TryGetValue(@params.commanderId.ToString(), out UserInformationResponse.Commander commander) && commander != null)
             {
-                int id = GoodsData.GetInstance().FromServerFieldName(@params.commanderTrainingTicket).type;
+                string sid = GoodsData.GetInstance().FromServerFieldName(@params.commanderTrainingTicket).type;
+
+                int id = int.Parse(sid);
 
                 int commanderXP = Convert.ToInt32(commander.__exp);
 

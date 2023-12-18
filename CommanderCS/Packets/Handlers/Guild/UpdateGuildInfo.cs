@@ -1,7 +1,7 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
 using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -28,7 +28,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
             var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
-            Protocols.GuildInfo guildInfo = new()
+            CommanderCSLibrary.Shared.Protocols.GuildInfo guildInfo = new()
             {
                 resource = rsoc,
                 guildInfo = guild,

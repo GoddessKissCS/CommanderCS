@@ -1,8 +1,8 @@
 using CommanderCS.Database;
-using CommanderCS.ExcelReader;
 using CommanderCS.Host;
 using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.ExcelReader;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -55,7 +55,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             var guildInfo = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
-            Protocols.GuildInfo guildList = new()
+            CommanderCSLibrary.Shared.Protocols.GuildInfo guildList = new()
             {
                 resource = null,
                 guildInfo = guildInfo,

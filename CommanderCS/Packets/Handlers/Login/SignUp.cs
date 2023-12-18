@@ -1,7 +1,7 @@
 ﻿using CommanderCS.Database;
-using CommanderCS.Utils;
 using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared;
 
 namespace CommanderCS.Host.Handlers.Sign
 {

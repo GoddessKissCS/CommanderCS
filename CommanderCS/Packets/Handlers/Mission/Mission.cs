@@ -1,10 +1,10 @@
 using CommanderCS.Host;
 using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.Mission
 {
-	[Packet(Id = Method.Mission)]
+    [Packet(Id = Method.Mission)]
     public class Mission : BaseMethodHandler<MissionRequest>
     {
         public override object Handle(MissionRequest @params)
@@ -13,14 +13,14 @@ namespace CommanderCS.Packets.Handlers.Mission
 			{
 
 			}
-			Protocols.AchievementInfo achievement = new()
+            CommanderCSLibrary.Shared.Protocols.AchievementInfo achievement = new()
 			{
 				AchievementList = [],
 				completeCount = 0,
 				goal = 0,
 			};
 
-			Protocols.MissionInfo missionInfo = new()
+            CommanderCSLibrary.Shared.Protocols.MissionInfo missionInfo = new()
 			{
 				completeCount = 0,
 				goal = 0,

@@ -9,7 +9,7 @@ namespace CommanderCS.Database.Handlers
         {
         }
 
-        public int GetNextNumber(string name, int starting = 100)
+        public int GetNextNumber(string name, int starting = 1000)
         {
             AIScheme AutoIncrement = DatabaseCollection.FindOneAndUpdate(Builders<AIScheme>.Filter.Eq("Name", name), Builders<AIScheme>.Update.SetOnInsert("Count", starting), new FindOneAndUpdateOptions<AIScheme> { IsUpsert = true, ReturnDocument = ReturnDocument.After });
             DatabaseCollection.UpdateOne(Builders<AIScheme>.Filter.Eq("Name", AutoIncrement.Name), Builders<AIScheme>.Update.Inc("Count", 1));

@@ -1,9 +1,9 @@
 using CommanderCS.Database;
 using CommanderCS.Database.Schemes;
-using CommanderCS.ExcelReader;
 using CommanderCS.Host;
 using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.ExcelReader;
 
 namespace CommanderCS.Packets.Handlers.WorldMap
 {
@@ -109,11 +109,11 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             return response;
         }
 
-        public static Protocols.WorldMapReward UserWorldReward(string commanderId, GameProfileScheme user, string session)
+        public static CommanderCSLibrary.Shared.Protocols.WorldMapReward UserWorldReward(string commanderId, GameProfileScheme user, string session)
         {
             int medals = 20;
 
-            Protocols.WorldMapReward WorldMapReward = new();
+            CommanderCSLibrary.Shared.Protocols.WorldMapReward WorldMapReward = new();
 
             user.CommanderData.TryGetValue(commanderId, out var commander);
 

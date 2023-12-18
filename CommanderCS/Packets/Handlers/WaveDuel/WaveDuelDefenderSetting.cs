@@ -1,11 +1,11 @@
 using CommanderCS.Host;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.WaveDuel
 {
-	[Packet(Id = Method.WaveDuelDefenderSetting)]
+    [Packet(Id = Method.WaveDuelDefenderSetting)]
     public class WaveDuelDefenderSetting : BaseMethodHandler<WaveDuelDefenderSettingRequest>
     {
         public override object Handle(WaveDuelDefenderSettingRequest @params)

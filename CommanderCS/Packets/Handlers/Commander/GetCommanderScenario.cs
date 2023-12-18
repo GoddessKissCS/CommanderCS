@@ -1,5 +1,5 @@
-﻿using CommanderCS.Enum.Packet;
-using CommanderCS.Protocols;
+﻿using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Host.Handlers.Commander
 {

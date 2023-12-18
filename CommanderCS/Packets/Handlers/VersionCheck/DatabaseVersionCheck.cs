@@ -1,6 +1,6 @@
 ﻿using CommanderCS.Database;
 using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Host.Handlers.VersionCheck
 {

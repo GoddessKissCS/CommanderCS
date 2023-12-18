@@ -1,9 +1,9 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
-using CommanderCS.Protocols;
-using CommanderCS.Utils;
+using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {

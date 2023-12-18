@@ -1,7 +1,8 @@
 ﻿using CommanderCS.Database;
 using CommanderCS.Database.Schemes;
 using Newtonsoft.Json;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Cryptography;
 
 namespace CommanderCS.Host.Handlers.Sign
 {
@@ -36,7 +37,7 @@ namespace CommanderCS.Host.Handlers.Sign
 
         private static ErrorCode RequestSignIn(string AccountName, string password, out SignInP signInP)
         {
-            var password_hash = Cryptography.Crypto.ComputeSha256Hash(password);
+            var password_hash = Crypto.ComputeSha256Hash(password);
 
             signInP = new();
             if (!DatabaseManager.Account.AccountExists(AccountName))

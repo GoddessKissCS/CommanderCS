@@ -1,12 +1,11 @@
 ﻿using CommanderCS.Database.Schemes;
-using CommanderCS.Enum;
 using CommanderCS.Host;
 using CommanderCS.Host.Handlers.Login;
 using CommanderCS.Packets.Handlers.UserTerm;
-using CommanderCS.Utils;
-using CommanderCS.Utils;
+using CommanderCSLibrary.Shared.Enum;
 using MongoDB.Driver;
-using static CommanderCS.Cryptography.Crypto;
+using CommanderCSLibrary.Cryptography;
+using CommanderCSLibrary.Shared;
 
 namespace CommanderCS.Database.Handlers
 {
@@ -49,7 +48,7 @@ namespace CommanderCS.Database.Handlers
             else
             {
                 user.Name = name;
-                user.Password_Hash = ComputeSha256Hash(password);
+                user.Password_Hash = Crypto.ComputeSha256Hash(password);
                 user.Clearance = Clearance.Player;
             }
 
@@ -94,7 +93,7 @@ namespace CommanderCS.Database.Handlers
 
             var account = FindByName(guestName);
 
-            var password_hash = ComputeSha256Hash(password);
+            var password_hash = Crypto.ComputeSha256Hash(password);
 
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
             var update = Builders<AccountScheme>.Update.Set("Name", changeName).Set("Password_Hash", password_hash).Set("PlatformId", platformId).Set("Channel", channel);

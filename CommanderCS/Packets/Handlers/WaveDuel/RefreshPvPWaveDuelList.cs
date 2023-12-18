@@ -1,8 +1,8 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
-using CommanderCS.Protocols;
-using CommanderCS.Enum.Packet;
-using CommanderCS.Utils;
+using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared;
 
 namespace StellarGK.Packets.Handlers.WaveDuel
 {

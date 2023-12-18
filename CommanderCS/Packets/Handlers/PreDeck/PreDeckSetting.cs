@@ -2,7 +2,8 @@ using CommanderCS.Database;
 using CommanderCS.Host;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Packets.Handlers.PreDeck
 {
@@ -13,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.PreDeck
         {
             var session = GetSession();
 
-            var preDeckList = @params.list.ToObject<List<Protocols.UserInformationResponse.PreDeck>>();
+            var preDeckList = @params.list.ToObject<List<UserInformationResponse.PreDeck>>();
 
             DatabaseManager.GameProfile.UpdatePreDeck(session, preDeckList);
 

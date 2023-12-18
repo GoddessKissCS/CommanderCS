@@ -1,6 +1,6 @@
 using CommanderCS.Host;
-using CommanderCS.Utils;
-using CommanderCS.Enum.Packet;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared;
 
 namespace CommanderCS.Packets.Handlers.Dispatch
 {

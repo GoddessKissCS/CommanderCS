@@ -4,7 +4,7 @@ using Org.BouncyCastle.Crypto.Parameters;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace CommanderCS.Cryptography
+namespace CommanderCSLibrary.Cryptography
 {
     public class Crypto
     {
