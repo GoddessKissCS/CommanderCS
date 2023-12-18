@@ -1,8 +1,8 @@
 ﻿using CommanderCS.Database;
 using CommanderCS.Database.Schemes;
+using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
-using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Host.Handlers.Server
 {

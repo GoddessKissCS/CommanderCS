@@ -1,6 +1,6 @@
 using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Packets.Handlers.Mail
 {
@@ -9,7 +9,7 @@ namespace CommanderCS.Packets.Handlers.Mail
     {
         public override object Handle(GetMailListRequest @params)
         {
-			var user = GetUserGameProfile();
+            var user = GetUserGameProfile();
 
             MailInfo mailInfo = new()
             {

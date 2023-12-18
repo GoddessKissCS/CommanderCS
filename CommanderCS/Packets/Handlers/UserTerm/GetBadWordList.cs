@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.UserTerm
 {
@@ -12,7 +12,8 @@ namespace CommanderCS.Host.Handlers.UserTerm
 
             BadWordListResponse badWord = new()
             {
-                word = new() {
+                word = new()
+                {
                     {"en", en }
                 }
             };

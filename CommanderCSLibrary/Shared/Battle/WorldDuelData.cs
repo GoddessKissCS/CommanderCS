@@ -41,7 +41,7 @@ public class WorldDuelData
 
     private Dictionary<EWorldDuelBuff, int> InitBuffs(Regulation.Regulation regulation, List<string> ownerBuffs, List<string> enemyBuffs)
     {
-        Dictionary<EWorldDuelBuff, int> dictionary = new Dictionary<EWorldDuelBuff, int>
+        Dictionary<EWorldDuelBuff, int> dictionary = new()
         {
             { EWorldDuelBuff.att, 0 },
             { EWorldDuelBuff.def, 0 },

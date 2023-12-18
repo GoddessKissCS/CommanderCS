@@ -1,9 +1,9 @@
 ﻿using CommanderCS.Database.Schemes;
 using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Protocols;
-using MongoDB.Driver;
-using CommanderCSLibrary.Shared.Ro;
 using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Ro;
+using MongoDB.Driver;
 
 namespace CommanderCS.Database.Handlers
 {
@@ -108,7 +108,6 @@ namespace CommanderCS.Database.Handlers
         {
             return DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
         }
-
 
         public GuildScheme FindBySession(string session)
         {
@@ -486,7 +485,7 @@ namespace CommanderCS.Database.Handlers
             var filter = Builders<GuildScheme>.Filter.And(
                 Builders<GuildScheme>.Filter.Eq("GuildId", guildId),
                 Builders<GuildScheme>.Filter.ElemMatch("MemberData", Builders<MemberData>.Filter.Gt("memberGrade", 0))
-            );
+                                                         );
 
             var update = Builders<GuildScheme>.Update.Set("MemberData.$[elem].memberGrade", 0);
 
@@ -508,8 +507,8 @@ namespace CommanderCS.Database.Handlers
             DatabaseCollection.UpdateOne(filter, updateUno);
 
             var filterTuno = Builders<GuildScheme>.Filter.Eq("GuildId", guildId)
-                              & Builders<GuildScheme>.Filter.ElemMatch("MemberData",
-                                  Builders<MemberData>.Filter.Eq("uno", tuno));
+                             & Builders<GuildScheme>.Filter.ElemMatch("MemberData",
+                                   Builders<MemberData>.Filter.Eq("uno", tuno));
 
             var updateTuno = Builders<GuildScheme>.Update.Set("MemberData.$.memberGrade", 1);
 

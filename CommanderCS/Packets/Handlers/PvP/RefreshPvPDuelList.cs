@@ -1,13 +1,11 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
-using CommanderCSLibrary.Shared;
-
 
 namespace CommanderCS.Packets.Handlers.PvP
 {
-
     [Packet(Id = Method.RefreshPvPDuelList)]
     public class RefreshPvPDuelList : BaseMethodHandler<RefreshPvPDuelListRequest>
     {
@@ -25,7 +23,7 @@ namespace CommanderCS.Packets.Handlers.PvP
                 openRemain = 86400,
                 remain = 86400,
                 time = (int)TimeManager.CurrentEpoch,
-                rsoc = rsoc,             
+                rsoc = rsoc,
             };
 
             ResponsePacket response = new()
@@ -36,7 +34,6 @@ namespace CommanderCS.Packets.Handlers.PvP
 
             return response;
         }
-
     }
 
     public class RefreshPvPDuelListRequest

@@ -1,5 +1,5 @@
-using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 using MongoDB.Bson;
 
 namespace CommanderCS.Database.Schemes
@@ -185,6 +185,4 @@ namespace CommanderCS.Database.Schemes
 
         public Dictionary<string, Dictionary<string, string>> WaveDuelDefenderDecks { get; set; }
     }
-
-
 }

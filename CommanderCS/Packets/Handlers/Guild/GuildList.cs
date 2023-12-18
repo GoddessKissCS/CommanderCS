@@ -1,7 +1,5 @@
 ﻿using CommanderCS.Database;
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
-
 
 namespace CommanderCS.Host.Handlers.Guild
 {

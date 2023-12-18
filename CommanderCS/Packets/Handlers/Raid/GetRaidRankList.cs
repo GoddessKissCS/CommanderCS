@@ -2,7 +2,6 @@ using CommanderCS.Host;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 
-
 namespace CommanderCS.Packets.Handlers.Raid
 {
     [Packet(Id = Method.GetRaidRankList)]

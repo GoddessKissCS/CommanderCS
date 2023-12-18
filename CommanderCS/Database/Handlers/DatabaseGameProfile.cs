@@ -1,10 +1,10 @@
 ﻿using CommanderCS.Database.Schemes;
 using CommanderCS.Host;
 using CommanderCS.Host.Handlers.Login;
-using CommanderCSLibrary.Shared.Protocols;
-using MongoDB.Driver;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.ExcelReader;
+using CommanderCSLibrary.Shared.Protocols;
+using MongoDB.Driver;
 
 namespace CommanderCS.Database.Handlers
 {
@@ -93,7 +93,6 @@ namespace CommanderCS.Database.Handlers
                     eventResourceData = [],
                     donHaveCommCostumeData = [],
                     costumeData = [],
-                   
                 },
                 ResetDateTime = 0,
                 UserResources = new() { },
@@ -135,11 +134,12 @@ namespace CommanderCS.Database.Handlers
                 DefenderDeck = new()
                 {
                     PvPDefenderDeck = [],
-                    WaveDuelDefenderDecks = []                 
+                    WaveDuelDefenderDecks = []
                 },
                 BattleData = new()
                 {
-                    WorldMapStageReward = new() {
+                    WorldMapStageReward = new()
+                    {
                         { "0", 0 },
                         { "1", 0 },
                         { "2", 0 },
@@ -183,8 +183,8 @@ namespace CommanderCS.Database.Handlers
         public GameProfileScheme? FromUidAndServer(int memberId, int server)
         {
             var tryUser = DatabaseCollection.AsQueryable()
-                       .Where(d => d.Server == server && d.MemberId == memberId)
-                       .FirstOrDefault();
+                          .Where(d => d.Server == server && d.MemberId == memberId)
+                          .FirstOrDefault();
 
             if (tryUser != null)
             {
@@ -207,8 +207,8 @@ namespace CommanderCS.Database.Handlers
         public GameProfileScheme? FindBySession(string session)
         {
             var tryUser = DatabaseCollection.AsQueryable()
-                       .Where(d => d.Session == session)
-                       .FirstOrDefault();
+                          .Where(d => d.Session == session)
+                          .FirstOrDefault();
 
             if (tryUser == null)
             {
@@ -483,7 +483,6 @@ namespace CommanderCS.Database.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
             var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.cash, user.UserResources.cash);
 
-
             var options = new FindOneAndUpdateOptions<GameProfileScheme>
             {
                 ReturnDocument = ReturnDocument.After, // Return the updated document
@@ -548,7 +547,6 @@ namespace CommanderCS.Database.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
-
         public void UpdateItemData(string session, Dictionary<string, int> goods)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
@@ -604,16 +602,16 @@ namespace CommanderCS.Database.Handlers
         }
 
         public bool DelBlockedUser(string session, int channel, string uno)
-        { 
+        {
             var filter = Builders<GameProfileScheme>.Filter.And(
                 Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
                 Builders<GameProfileScheme>.Filter.ElemMatch(x => x.BlockedUsers,
                     Builders<BlockUser>.Filter.And(
                         Builders<BlockUser>.Filter.Eq(x => x.channel, channel),
                         Builders<BlockUser>.Filter.Eq(x => x.uno, uno)
-                    )
-                )
-            );
+                                                  )
+                                                            )
+                                                               );
 
             var deleteResult = DatabaseCollection.DeleteOne(filter);
 
@@ -629,7 +627,7 @@ namespace CommanderCS.Database.Handlers
             var update = Builders<GameProfileScheme>.Update.PullFilter(x => x.MailDataList,
                 Builders<MailInfo.MailData>.Filter.And(
                     Builders<MailInfo.MailData>.Filter.Eq(x => x.idx, MailIdx)
-                ));
+                                                      ));
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
@@ -673,12 +671,12 @@ namespace CommanderCS.Database.Handlers
             var filter = Builders<GameProfileScheme>.Filter.And(
                 Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
                 Builders<GameProfileScheme>.Filter.Eq("VipRechargeData.idx", idx)
-            );
+                                                               );
 
             var update = Builders<GameProfileScheme>.Update.Set(
                 "VipRechargeData.$.count",
                 newCount
-            );
+                                                               );
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -688,7 +686,7 @@ namespace CommanderCS.Database.Handlers
             var filter = Builders<GameProfileScheme>.Filter.And(
                 Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
                 Builders<GameProfileScheme>.Filter.Eq("VipRechargeData.idx", idx)
-            );
+                                                               );
 
             var projection = Builders<GameProfileScheme>.Projection.Expression(x => x.VipRechargeData[-1].count);
 
@@ -770,7 +768,6 @@ namespace CommanderCS.Database.Handlers
             return ErrorCode.Success;
         }
 
-
         public ErrorCode RequestNickNameChange(string AccountName, string sess)
         {
             if (Misc.NameCheck(AccountName))
@@ -788,7 +785,5 @@ namespace CommanderCS.Database.Handlers
 
             return ErrorCode.Success;
         }
-
-
     }
 }

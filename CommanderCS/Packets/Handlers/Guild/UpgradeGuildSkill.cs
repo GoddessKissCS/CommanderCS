@@ -1,8 +1,8 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
-using Newtonsoft.Json;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.ExcelReader;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {

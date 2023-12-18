@@ -1,6 +1,6 @@
 using CommanderCS.Host;
-using Newtonsoft.Json;
 using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Mission
 {
@@ -9,43 +9,38 @@ namespace CommanderCS.Packets.Handlers.Mission
     {
         public override object Handle(MissionRequest @params)
         {
-			switch (@params.type)
-			{
-
-			}
+            switch (@params.type)
+            {
+            }
             CommanderCSLibrary.Shared.Protocols.AchievementInfo achievement = new()
-			{
-				AchievementList = [],
-				completeCount = 0,
-				goal = 0,
-			};
+            {
+                AchievementList = [],
+                completeCount = 0,
+                goal = 0,
+            };
 
             CommanderCSLibrary.Shared.Protocols.MissionInfo missionInfo = new()
-			{
-				completeCount = 0,
-				goal = 0,
-				missionList = []
-			};
-
+            {
+                completeCount = 0,
+                goal = 0,
+                missionList = []
+            };
 
             ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = null,
-			};	
+            {
+                Id = BasePacket.Id,
+                Result = null,
+            };
 
-			return response;
-
+            return response;
         }
     }
 
-
     public class MissionRequest
     {
-		[JsonProperty("type")]
-		public List<string> type { get; set; }
+        [JsonProperty("type")]
+        public List<string> type { get; set; }
     }
-
 }
 
 /*	// Token: 0x06005FA0 RID: 24480 RVA: 0x000120F8 File Offset: 0x000102F8

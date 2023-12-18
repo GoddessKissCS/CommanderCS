@@ -1,8 +1,8 @@
 ﻿using CommanderCS.Database;
-using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Enum;
-using Newtonsoft.Json;
 using CommanderCSLibrary.Shared.ExcelReader;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Commander
 {
@@ -10,7 +10,7 @@ namespace CommanderCS.Host.Handlers.Commander
     public class CommanderRankUp : BaseMethodHandler<CommanderRankUpRequest>
     {
         public override object Handle(CommanderRankUpRequest @params)
-        {      
+        {
             string session = GetSession();
             var user = GetUserGameProfile();
 
@@ -163,7 +163,7 @@ namespace CommanderCS.Host.Handlers.Commander
                 __cls = "0",
                 __exp = "0",
                 __level = "1",
-                __rank =  grade.ToString(),
+                __rank = grade.ToString(),
                 favorRewardStep = 0,
                 favorStep = 0,
                 currentCostume = costumeid,

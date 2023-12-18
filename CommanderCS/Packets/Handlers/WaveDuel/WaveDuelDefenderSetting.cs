@@ -1,7 +1,7 @@
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.WaveDuel
 {
@@ -10,19 +10,19 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
     {
         public override object Handle(WaveDuelDefenderSettingRequest @params)
         {
-			//Dictionary<string, Dictionary<string, string>> dictionary = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(@params.Decks.ToString());
+            //Dictionary<string, Dictionary<string, string>> dictionary = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(@params.Decks.ToString());
 
-			bool bol = true;
+            bool bol = true;
 
-			string boolean = bol.ToString();
+            string boolean = bol.ToString();
 
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = boolean,
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = boolean,
             };
 
-			return response;
+            return response;
         }
     }
 

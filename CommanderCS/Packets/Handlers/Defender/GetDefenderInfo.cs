@@ -10,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.Defender
         public override object Handle(GetDefenderInfoRequest @params)
         {
             var user = GetUserGameProfile();
-                
+
             GetDefenderInfoResponse getDefenderInfo = new()
             {
                 deck = user.DefenderDeck.PvPDefenderDeck,

@@ -1,8 +1,8 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Protocols;
-using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 
 namespace StellarGK.Packets.Handlers.WaveDuel
 {
@@ -34,8 +34,8 @@ namespace StellarGK.Packets.Handlers.WaveDuel
 
             return response;
         }
-
     }
+
     public class RefreshPvPWaveDuelListRequest
     {
     }

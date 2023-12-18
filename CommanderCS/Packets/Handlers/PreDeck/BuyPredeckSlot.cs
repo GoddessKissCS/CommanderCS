@@ -1,23 +1,21 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json.Linq;
 using static CommanderCSLibrary.Shared.Constants;
-using CommanderCSLibrary.Shared.Enum;
-
 
 namespace CommanderCS.Packets.Handlers.PreDeck
 {
     [Packet(Id = Method.BuyPredeckSlot)]
     public class BuyPredeckSlot : BaseMethodHandler<BuyPredeckSlotRequest>
     {
-
         public override object Handle(BuyPredeckSlotRequest @params)
         {
             var session = GetSession();
             var user = GetUserGameProfile();
 
-            if(user.UserStatistics.PredeckCount >= 20)
+            if (user.UserStatistics.PredeckCount >= 20)
             {
                 ErrorPacket errorPacket = new()
                 {
@@ -66,7 +64,6 @@ namespace CommanderCS.Packets.Handlers.PreDeck
 
                 resetRemain = user.ResetDateTime, // should be set?
                 /// probably set it globally?
-
                 equipItem = user.UserInventory.equipItem,
 
                 donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,

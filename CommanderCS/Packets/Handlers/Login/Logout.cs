@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Login
 {

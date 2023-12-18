@@ -8,13 +8,12 @@ namespace CommanderCS.Packets.Handlers.Achievement
 
     public class AchievementRewardRequest
     {
-		[JsonProperty("acid")]
-		public int acid {  get; set; }
+        [JsonProperty("acid")]
+        public int acid { get; set; }
 
         [JsonProperty("asot")]
         public int asot { get; set; }
     }
-
 }
 
 /*	// Token: 0x06005FA8 RID: 24488 RVA: 0x000120F8 File Offset: 0x000102F8

@@ -1,8 +1,8 @@
 ﻿using CommanderCS.Database;
 using CommanderCS.Database.Schemes;
-using Newtonsoft.Json;
-using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Cryptography;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Sign
 {

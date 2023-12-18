@@ -2,10 +2,10 @@
 using CommanderCS.Host;
 using CommanderCS.Host.Handlers.Login;
 using CommanderCS.Packets.Handlers.UserTerm;
-using CommanderCSLibrary.Shared.Enum;
-using MongoDB.Driver;
 using CommanderCSLibrary.Cryptography;
 using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Enum;
+using MongoDB.Driver;
 
 namespace CommanderCS.Database.Handlers
 {

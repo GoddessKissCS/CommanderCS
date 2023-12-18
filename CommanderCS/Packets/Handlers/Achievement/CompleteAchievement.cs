@@ -8,14 +8,13 @@ namespace CommanderCS.Packets.Handlers.Achievement
     {
         public override object Handle(CompleteAchievementRequest @params)
         {
-
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = Array.Empty<CommanderCSLibrary.Shared.Protocols.CompleteAchievementInfo>(),
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = Array.Empty<CommanderCSLibrary.Shared.Protocols.CompleteAchievementInfo>(),
             };
 
-			return response;	
+            return response;
         }
     }
 

@@ -1,7 +1,7 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Chat

@@ -1,7 +1,7 @@
 ﻿using CommanderCS.Database;
 using CommanderCS.Host;
-using Newtonsoft.Json;
 using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Profile
 {
@@ -10,8 +10,6 @@ namespace CommanderCS.Packets.Handlers.Profile
     {
         public override object Handle(ChangeMembershipOpenPlatformRequest @params)
         {
-
-
             //TODO - changing the platform from like google -> dbros? idk
 
             // should be finished? idk it shouldnt affect anything but you never know

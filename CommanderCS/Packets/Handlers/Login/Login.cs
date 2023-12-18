@@ -1,8 +1,8 @@
 ﻿using CommanderCS.Database;
+using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Host.Handlers.Login
 {
@@ -49,7 +49,6 @@ namespace CommanderCS.Host.Handlers.Login
 
                 resetRemain = user.ResetDateTime, // should be set?
                 /// pronabably set it globally?
-
                 equipItem = user.UserInventory.equipItem,
 
                 donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,

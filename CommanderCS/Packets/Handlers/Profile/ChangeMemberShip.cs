@@ -1,6 +1,6 @@
 ﻿using CommanderCS.Database;
-using Newtonsoft.Json;
 using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Profile
 {
@@ -9,7 +9,6 @@ namespace CommanderCS.Host.Handlers.Profile
     {
         public override object Handle(ChangeMemberShipRequest @params)
         {
-
             // SHOULD BE FINISHED?
 
             ErrorCode code = DatabaseManager.Account.ChangeMemberShip(@params.uid, @params.pwd, @params.plfm, @params.puid, @params.ch);

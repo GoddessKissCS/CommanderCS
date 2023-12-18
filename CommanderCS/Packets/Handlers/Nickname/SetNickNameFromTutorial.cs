@@ -1,6 +1,6 @@
 ﻿using CommanderCS.Database;
-using Newtonsoft.Json;
 using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Nickname
 {
@@ -59,9 +59,7 @@ namespace CommanderCS.Host.Handlers.Nickname
             //    __commanderinfo = jobject.fromobject(user.commanderdata),
             //};
 
-
             //string result = JsonConvert.SerializeObject(userInformationResponse);
-
 
             SetNickNameResponse SetNickNameF1 = new()
             {
@@ -76,7 +74,6 @@ namespace CommanderCS.Host.Handlers.Nickname
 
             return response;
         }
-
 
         internal class SetNickNameResponse
         {

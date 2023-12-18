@@ -1,9 +1,8 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
-using Newtonsoft.Json;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
-
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.PvP
 {
@@ -12,25 +11,25 @@ namespace CommanderCS.Packets.Handlers.PvP
     {
         public override object Handle(GetRankingRewardRequest @params)
         {
-			var user = GetUserGameProfile();
-			var session = GetSession();
+            var user = GetUserGameProfile();
+            var session = GetSession();
 
-			var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
 
             RankingReward reward = new()
-			{
-				commanderData = user.CommanderData,
-				equipItem = user.UserInventory.equipItem,
-				resource = rsoc,
-				costumeData = user.UserInventory.costumeData,
-				eventResourceData = user.UserInventory.eventResourceData,
-				foodData = user.UserInventory.foodData,
-				itemData = user.UserInventory.itemData,
-				medalData = user.UserInventory.medalData,
-				partData = user.UserInventory.partData,
-				receiveIdx = null,
-				rewardList = null,
-			};
+            {
+                commanderData = user.CommanderData,
+                equipItem = user.UserInventory.equipItem,
+                resource = rsoc,
+                costumeData = user.UserInventory.costumeData,
+                eventResourceData = user.UserInventory.eventResourceData,
+                foodData = user.UserInventory.foodData,
+                itemData = user.UserInventory.itemData,
+                medalData = user.UserInventory.medalData,
+                partData = user.UserInventory.partData,
+                receiveIdx = null,
+                rewardList = null,
+            };
 
             ResponsePacket response = new()
             {
@@ -39,22 +38,17 @@ namespace CommanderCS.Packets.Handlers.PvP
             };
 
             return response;
-
         }
     }
 
-
     public class GetRankingRewardRequest
     {
-		[JsonProperty("type")]
-		public int type { get; set; }
+        [JsonProperty("type")]
+        public int type { get; set; }
 
         [JsonProperty("ridx")]
         public int ridx { get; set; }
-
     }
-
-
 }
 
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "6105", true, true)]

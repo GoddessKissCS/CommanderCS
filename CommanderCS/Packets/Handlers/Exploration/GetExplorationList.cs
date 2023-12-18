@@ -1,5 +1,4 @@
 ﻿using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.Exploration

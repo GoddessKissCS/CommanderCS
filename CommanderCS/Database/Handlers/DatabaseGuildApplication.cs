@@ -59,9 +59,9 @@ namespace CommanderCS.Database.Handlers
             if (user == null) { return string.Empty; }
 
             var tryGuild = DatabaseCollection.AsQueryable()
-                            .Where(d => d.Uno == user.Uno)
-                            .Where(d => d.GuildId == guildIdx)
-                            .FirstOrDefault();
+                           .Where(d => d.Uno == user.Uno)
+                           .Where(d => d.GuildId == guildIdx)
+                           .FirstOrDefault();
 
             if (tryGuild != null) { return "req"; }
 
@@ -71,8 +71,8 @@ namespace CommanderCS.Database.Handlers
         public int RetrieveGuildApplicationFromId(int uno)
         {
             var tryGuild = DatabaseCollection.AsQueryable()
-                            .Where(d => d.Uno == uno)
-                            .FirstOrDefault();
+                           .Where(d => d.Uno == uno)
+                           .FirstOrDefault();
 
             return tryGuild.GuildId;
         }
@@ -84,8 +84,8 @@ namespace CommanderCS.Database.Handlers
             if (user == null) { return string.Empty; }
 
             var tryGuild = DatabaseCollection.AsQueryable()
-                            .Where(d => d.Uno == user.Uno)
-                            .FirstOrDefault();
+                           .Where(d => d.Uno == user.Uno)
+                           .FirstOrDefault();
 
             if (tryGuild != null) { return "reg"; }
 
@@ -95,7 +95,7 @@ namespace CommanderCS.Database.Handlers
         public bool DeleteGuildApplication(int uno, int guildIdx)
         {
             var filter = Builders<GuildApplicationScheme>.Filter.And(Builders<GuildApplicationScheme>.Filter.Eq("Uno", uno),
-             Builders<GuildApplicationScheme>.Filter.Eq("GuildId", guildIdx));
+            Builders<GuildApplicationScheme>.Filter.Eq("GuildId", guildIdx));
 
             var result = DatabaseCollection.DeleteOne(filter);
 

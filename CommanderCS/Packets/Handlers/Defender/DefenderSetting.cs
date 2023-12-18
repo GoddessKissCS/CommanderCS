@@ -10,18 +10,17 @@ namespace CommanderCS.Packets.Handlers.Defender
     {
         public override object Handle(DefenderSettingRequest @params)
         {
-			//Dictionary<string, string> dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>()
+            //Dictionary<string, string> dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>()
 
-			return "{}";
+            return "{}";
         }
     }
 
     public class DefenderSettingRequest
     {
-		[JsonProperty("deck")]
-		public static JObject deck {  get; set; }
+        [JsonProperty("deck")]
+        public static JObject deck { get; set; }
     }
-
 }
 
 /*	// Token: 0x06005F8F RID: 24463 RVA: 0x000120F8 File Offset: 0x000102F8

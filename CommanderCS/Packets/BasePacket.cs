@@ -66,6 +66,4 @@ namespace CommanderCS.Host
             return DatabaseManager.Guild.FindBySession(BasePacket.Session);
         }
     }
-
-   
 }
