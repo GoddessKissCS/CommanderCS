@@ -1,5 +1,6 @@
 using CommanderCS.Database;
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.ExcelReader;
 
@@ -11,10 +12,11 @@ namespace CommanderCS.Packets.Handlers.Guild
         public override object Handle(UpgradeGuildLevelRequest @params)
         {
             var user = GetUserGameProfile();
+            var rg = GetRegulation();
 
             var guild = DatabaseManager.Guild.FindByUid(user.GuildId);
 
-            var guildUpgradeData = GuildLevelInfoData.GetInstance().FromLevel(guild.Level + 1);
+            var guildUpgradeData = rg.guildLevelInfoDtbl.FirstOrDefault(x => x.level == guild.Level + 1);
 
             guild.Point -= guildUpgradeData.cost;
 

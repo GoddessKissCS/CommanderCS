@@ -24,7 +24,7 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public const string DataTableSuffix = "Dtbl";
 
-        public static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings
+        public static readonly JsonSerializerSettings SerializerSettings = new()
         {
             ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
             DefaultValueHandling = DefaultValueHandling.Include,
@@ -47,66 +47,36 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         protected Dictionary<string, PropertyInfo> properties;
 
-        public static Dictionary<string, string> RegulationFile = new Dictionary<string, string>();
-
+        public static Dictionary<string, string> RegulationFile = [];
         public double version { get; private set; }
-
         public DataTable<RewardDataRow> rewardDtbl { get; private set; }
-
         public DataTable<UserLevelDataRow> userLevelDtbl { get; private set; }
-
         public DataTable<PartDataRow> partDtbl { get; private set; }
-
         public DataTable<InteractionDataRow> interactionDtbl { get; private set; }
-
         public DataTable<GoodsDataRow> goodsDtbl { get; private set; }
-
         public DataTable<BuildingLevelDataRow> buildingLevelDtbl { get; private set; }
-
         public DataTable<CommanderDataRow> commanderDtbl { get; private set; }
-
         public DataTable<CommanderLevelDataRow> commanderLevelDtbl { get; private set; }
-
         public DataTable<CommanderRankDataRow> commanderRankDtbl { get; private set; }
-
         public DataTable<CommanderTrainingTicketDataRow> commanderTrainingTicketDtbl { get; private set; }
-
         public DataTable<CommanderClassDataRow> commanderClassDtbl { get; private set; }
-
         public DataTable<CommanderCostumeDataRow> commanderCostumeDtbl { get; private set; }
-
         public DataTable<CommanderGiftDataRow> commanderGiftDtbl { get; private set; }
-
         public DataTable<CommanderVoiceDataRow> commanderVoiceDtbl { get; private set; }
-
         public DataTable<FavorDataRow> favorDtbl { get; private set; }
-
         public DataTable<WorldMapDataRow> worldMapDtbl { get; private set; }
-
         public DataTable<WorldMapStageDataRow> worldMapStageDtbl { get; private set; }
-
         public DataTable<WorldMapStageTypeDataRow> worldMapStageTypeDtbl { get; private set; }
-
         public DataTable<EnemyCommanderDataRow> enemyCommanderDtbl { get; private set; }
-
         public DataTable<EnemyUnitDataRow> enemyUnitDtbl { get; private set; }
-
         public DataTable<FireActionDataRow> fireActionDtbl { get; private set; }
-
         public DataTable<UnitDataRow> unitDtbl { get; private set; }
-
         public DataTable<SkillDataRow> skillDtbl { get; private set; }
-
         public DataTable<SkillCostDataRow> skillCostDtbl { get; private set; }
-
         public DataTable<SkillUpgradeDataRow> skillUpgradeDtbl { get; private set; }
-
         public DataTable<ProjectileDataRow> projectileDtbl { get; private set; }
-
         public DataTable<StatusEffectDataRow> statusEffectDtbl { get; private set; }
-
         public DataTable<SkillDamagePatternDataRow> skillDamagePatternDtbl { get; private set; }
-
         public SkillDamagePatternTable skillDamagePattern
         {
             get
@@ -119,133 +89,76 @@ namespace CommanderCSLibrary.Shared.Regulation
                 return _skillDamagePattern;
             }
         }
-
         public DataTable<UnitMotionDataRow> unitMotionDtbl { get; private set; }
-
         public DataTable<ProjectileMotionPhaseDataRow> projectileMotionPhaseDtbl { get; private set; }
-
         public DataTable<DailyBonusDataRow> dailyBonusDtbl { get; private set; }
-
         public DataTable<GachaDataRow> gachaDtbl { get; private set; }
-
         public DataTable<GachaRewardDataRow> gachaRewardDtbl { get; private set; }
-
         public DataTable<GachaCostDataRow> gachaCostDtbl { get; private set; }
-
         public DataTable<SweepDataRow> sweepDtbl { get; private set; }
-
         public DataTable<RaidDataRow> raidDtbl { get; private set; }
-
         public DataTable<RaidChallengeDataRow> raidChallengeDtbl { get; private set; }
-
         public DataTable<LevelPatternDataRow> levelPatternDtbl { get; private set; }
-
         public DataTable<ClassPatternDataRow> classPatternDtbl { get; private set; }
-
         public DataTable<DropGoldPatternDataRow> dropGoldPatternDtbl { get; private set; }
-
         public DataTable<MetroBankLuckDataRow> metroBankLuckDtbl { get; private set; }
-
         public DataTable<VipRechargeDataRow> vipRechargeDtbl { get; private set; }
-
         public DataTable<RankingRewardDataRow> rankingRewardDtbl { get; private set; }
-
         public DataTable<RankingDataRow> rankingDtbl { get; private set; }
-
         public DataTable<GuildSkillDataRow> guildSkillDtbl { get; private set; }
-
         public DataTable<GuildStruggleDataRow> guildStruggleDtbl { get; private set; }
-
         public DataTable<GuildLevelInfoDataRow> guildLevelInfoDtbl { get; private set; }
-
         public DataTable<GuildOccupyDataRow> guildOccupyDtbl { get; private set; }
-
         public DataTable<VipExpDataRow> vipExpDtbl { get; private set; }
-
         public DataTable<FavorStepDataRow> favorStepDtbl { get; private set; }
-
         public DataTable<ShopDataRow> shopDtbl { get; private set; }
-
         public DataTable<ThumbnailDataRow> thumbnailDtbl { get; private set; }
-
         public DataTable<ItemExchangeDataRow> itemExchangeDtbl { get; private set; }
-
         public DataTable<DailyEventDataRow> dailyEventDtbl { get; private set; }
-
         public DataTable<DefineDataRow> defineDtbl { get; private set; }
-
         public DataTable<LoadingTipDataRow> loadingTipDtbl { get; private set; }
-
         public DataTable<AnnihilateBattleDataRow> annihilateBattleDtbl { get; private set; }
-
         public DataTable<InAppProductDataRow> inAppProductDtbl { get; private set; }
-
         public DataTable<CarnivalDataRow> carnivalDtbl { get; private set; }
-
         public DataTable<CarnivalTypeDataRow> carnivalTypeDtbl { get; private set; }
-
         public DataTable<GroupInfoDataRow> groupInfoDtbl { get; private set; }
-
         public DataTable<GroupMemberDataRow> groupMemberDtbl { get; private set; }
-
         public DataTable<CommanderScenarioDataRow> commanderScenarioDtbl { get; private set; }
-
         public DataTable<ScenarioQuarterDataRow> scenarioQuarterDtbl { get; private set; }
-
         public DataTable<ScenarioBattleDataRow> scenarioBattleDtbl { get; private set; }
-
         public DataTable<ScenarioBattleUnitDataRow> scenarioBattleUnitDtbl { get; private set; }
-
         public DataTable<WaveBattleDataRow> waveBattleDtbl { get; private set; }
-
         public DataTable<EquipItemDataRow> equipItemDtbl { get; private set; }
-
         public DataTable<EquipItemUpgradeDataRow> equipItemUpgradeDtbl { get; private set; }
-
         public DataTable<EquipItemDisassembleDataRow> equipItemDisassembleDtbl { get; private set; }
-
         public DataTable<EventBattleDataRow> eventBattleDtbl { get; private set; }
-
         public DataTable<EventBattleFieldDataRow> eventBattleFieldDtbl { get; private set; }
-
         public DataTable<EventRaidDataRow> eventRaidDtbl { get; private set; }
-
         public DataTable<EventBattleScenarioDataRow> eventBattleScenarioDtbl { get; private set; }
-
         public DataTable<EventBattleGachaRewardDataRow> eventBattleGachaRewardDtbl { get; private set; }
-
         public DataTable<EventRemaingTimeDataRow> eventRemaingTimeDtbl { get; private set; }
-
         public DataTable<RandomBoxRewardDataRow> randomBoxRewardDtbl { get; private set; }
         public DataTable<ExplorationDataRow> explorationDtbl { get; private set; }
-
         public DataTable<DormitoryUpgradeDataRow> dormitoryUpgradeDtbl { get; private set; }
-
         public DataTable<DormitoryHeadCostumeDataRow> dormitoryHeadCostumeDtbl { get; private set; }
-
         public DataTable<DormitoryBodyCostumeDataRow> dormitoryBodyCostumeDtbl { get; private set; }
-
         public DataTable<DormitoryDecorationDataRow> dormitoryDecorationDtbl { get; private set; }
-
         public DataTable<DormitoryWallpaperDataRow> dormitoryWallPaperDtbl { get; private set; }
-
         public DataTable<DormitoryShopDataRow> dormitoryShopDtbl { get; private set; }
-
         public DataTable<DormitoryThemeDataRow> dormitoryThemeDtbl { get; private set; }
-
         public Dictionary<string, List<DormitoryHeadCostumeDataRow>> dormitoryHeadCostumeMap
         {
             get
             {
                 if (_dormitoryHeadCostumeMap == null)
                 {
-                    _dormitoryHeadCostumeMap = new Dictionary<string, List<DormitoryHeadCostumeDataRow>>();
+                    _dormitoryHeadCostumeMap = [];
                     for (int i = 0; i < dormitoryHeadCostumeDtbl.length; i++)
                     {
                         string cid = dormitoryHeadCostumeDtbl[i].cid;
                         if (!_dormitoryHeadCostumeMap.ContainsKey(cid))
                         {
-                            _dormitoryHeadCostumeMap.Add(cid, new List<DormitoryHeadCostumeDataRow>());
+                            _dormitoryHeadCostumeMap.Add(cid, []);
                         }
                         _dormitoryHeadCostumeMap[cid].Add(dormitoryHeadCostumeDtbl[i]);
                     }
@@ -253,20 +166,19 @@ namespace CommanderCSLibrary.Shared.Regulation
                 return _dormitoryHeadCostumeMap;
             }
         }
-
         public Dictionary<string, List<DormitoryThemeDataRow>> dormitoryThemeMap
         {
             get
             {
                 if (_dormitoryThemeMap == null)
                 {
-                    _dormitoryThemeMap = new Dictionary<string, List<DormitoryThemeDataRow>>();
+                    _dormitoryThemeMap = [];
                     for (int i = 0; i < dormitoryThemeDtbl.length; i++)
                     {
                         DormitoryThemeDataRow dormitoryThemeDataRow = dormitoryThemeDtbl[i];
                         if (!_dormitoryThemeMap.ContainsKey(dormitoryThemeDataRow.id))
                         {
-                            _dormitoryThemeMap.Add(dormitoryThemeDataRow.id, new List<DormitoryThemeDataRow>());
+                            _dormitoryThemeMap.Add(dormitoryThemeDataRow.id, []);
                         }
                         _dormitoryThemeMap[dormitoryThemeDataRow.id].Add(dormitoryThemeDataRow);
                     }
@@ -274,20 +186,16 @@ namespace CommanderCSLibrary.Shared.Regulation
                 return _dormitoryThemeMap;
             }
         }
-
         public DataTable<CooperateBattleDataRow> cooperateBattleDtbl { get; private set; }
-
         public DataTable<NPCMercenaryDataRow> npcMercenaryDtbl { get; private set; }
-
         public DataTable<InfinityFieldDataRow> infinityFieldDtbl { get; private set; }
-
         public Dictionary<int, List<CooperateBattleDataRow>> cooperateBattleStepDtbl
         {
             get
             {
                 if (_cooperateBattleStepDtbl == null)
                 {
-                    _cooperateBattleStepDtbl = new Dictionary<int, List<CooperateBattleDataRow>>();
+                    _cooperateBattleStepDtbl = [];
                     for (int i = 0; i < cooperateBattleDtbl.length; i++)
                     {
                         CooperateBattleDataRow cooperateBattleDataRow = cooperateBattleDtbl[i];
@@ -301,21 +209,17 @@ namespace CommanderCSLibrary.Shared.Regulation
                 return _cooperateBattleStepDtbl;
             }
         }
-
         public DataTable<StrongestBuffBattleDataRow> strongestBuffBattleDtbl { get; private set; }
-
         public DataTable<WeaponDataRow> weaponDtbl { get; private set; }
-
         public DataTable<WeaponUpgradeDataRow> weaponUpgradeDtbl { get; private set; }
-
         public DataTable<WeaponSetDataRow> weaponSetDtbl { get; private set; }
-
         public DataTable<GoodsComposeDataRow> goodsComposeDtbl { get; private set; }
-
         public DataTable<TranscendenceSlotDataRow> transcendenceSlotDtbl { get; private set; }
-
         public DataTable<TranscendenceStepUpgradeDataRow> transcendenceStepUpgradeDtbl { get; private set; }
-
+        public DataTable<AchievementDataRow> achievementDtbl { get; private set; }
+        public DataTable<BattleTimeDataRow> battletimeDtbl { get; private set; }
+        public DataTable<CommanderRoleDataRow> commanderRoleDtbl { get; private set; }
+        public DataTable<MissionDataRow> missionDtbl { get; private set; }
         private Regulation()
         {
         }
@@ -400,7 +304,7 @@ namespace CommanderCSLibrary.Shared.Regulation
             commanderScenarioDtbl = JsonConvert.DeserializeObject<DataTable<CommanderScenarioDataRow>>(LoadJson("CommanderScenarioDataTable.json"), SerializerSettings);
             scenarioQuarterDtbl = JsonConvert.DeserializeObject<DataTable<ScenarioQuarterDataRow>>(LoadJson("ScenarioQuarterDataTable.json"), SerializerSettings);
             scenarioBattleDtbl = JsonConvert.DeserializeObject<DataTable<ScenarioBattleDataRow>>(LoadJson("ScenarioBattleDataTable.json"), SerializerSettings);
-            //  scenarioBattleUnitDtbl = JsonConvert.DeserializeObject<DataTable<ScenarioBattleUnitDataRow>>(LoadJson("ScenarioBattleUnitData.json"),SerializerSettings);
+            //scenarioBattleUnitDtbl = JsonConvert.DeserializeObject<DataTable<ScenarioBattleUnitDataRow>>(LoadJson("ScenarioBattleUnitData.json"),SerializerSettings);
             waveBattleDtbl = JsonConvert.DeserializeObject<DataTable<WaveBattleDataRow>>(LoadJson("WaveBattleDataTable.json"), SerializerSettings);
             equipItemDtbl = JsonConvert.DeserializeObject<DataTable<EquipItemDataRow>>(LoadJson("EquipItemDataTable.json"), SerializerSettings);
             equipItemUpgradeDtbl = JsonConvert.DeserializeObject<DataTable<EquipItemUpgradeDataRow>>(LoadJson("EquipItemUpgradeDataTable.json"), SerializerSettings);
@@ -422,6 +326,12 @@ namespace CommanderCSLibrary.Shared.Regulation
             weaponUpgradeDtbl = JsonConvert.DeserializeObject<DataTable<WeaponUpgradeDataRow>>(LoadJson("WeaponUpgradeDataTable.json"), SerializerSettings);
             weaponSetDtbl = JsonConvert.DeserializeObject<DataTable<WeaponSetDataRow>>(LoadJson("WeaponSetDataTable.json"), SerializerSettings);
             goodsComposeDtbl = JsonConvert.DeserializeObject<DataTable<GoodsComposeDataRow>>(LoadJson("GoodsComposeDataTable.json"), SerializerSettings);
+
+            missionDtbl = JsonConvert.DeserializeObject<DataTable<MissionDataRow>>(LoadJson("MissionTable.json"), SerializerSettings);
+            achievementDtbl = JsonConvert.DeserializeObject<DataTable<AchievementDataRow>>(LoadJson("AchievementTable.json"), SerializerSettings);
+            commanderRoleDtbl = JsonConvert.DeserializeObject<DataTable<CommanderRoleDataRow>>(LoadJson("CommanderRoleDataTable.json"), SerializerSettings);
+            battletimeDtbl = JsonConvert.DeserializeObject<DataTable<BattleTimeDataRow>>(LoadJson("BattleTimeDataTable.json"), SerializerSettings);
+
 #pragma warning restore CS8601 // Possible null reference assignment.
         }
 

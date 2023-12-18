@@ -25,7 +25,7 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public float positionY { get; private set; }
 
-        public Vector3 position => new Vector3(positionX, positionY, 0f);
+        public Vector3 position => new(positionX, positionY, 0f);
 
         public string typeId { get; private set; }
 

@@ -1,6 +1,8 @@
 ﻿using CommanderCS.Database;
 using CommanderCS.Database.Schemes;
+using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -64,6 +66,11 @@ namespace CommanderCS.Host
         public GuildScheme GetUserGuild()
         {
             return DatabaseManager.Guild.FindBySession(BasePacket.Session);
+        }
+
+        public Regulation GetRegulation()
+        {
+            return Constants.regulation;
         }
     }
 }
