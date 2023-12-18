@@ -2,45 +2,48 @@ using CommanderCSLibrary.Shared.Enum;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Regulation;
-
-[Serializable]
-[JsonObject]
-public class PartDataRow : DataRow
+namespace CommanderCSLibrary.Shared.Regulation
 {
-	public static readonly string itemBGPrefix = "icon_bg";
+    [Serializable]
+    [JsonObject]
+    public class PartDataRow : DataRow
+    {
+        public static readonly string itemBGPrefix = "icon_bg";
 
-	public static readonly string itemMarkPrefix = "icon_mark";
+        public static readonly string itemMarkPrefix = "icon_mark";
 
-	public static readonly string itemOutlinePrefix = "icon_outline";
+        public static readonly string itemOutlinePrefix = "icon_outline";
 
-	public string type { get; private set; }
+        public string type { get; private set; }
 
-	public int grade { get; private set; }
+        public int grade { get; private set; }
 
-	public string name { get; private set; }
+        public string name { get; private set; }
 
-	public EUnitType mark { get; private set; }
+        public EUnitType mark { get; private set; }
 
-	public string serverFieldName { get; private set; }
+        public string serverFieldName { get; private set; }
 
-	public int max { get; private set; }
+        public int max { get; private set; }
 
-	public string description { get; private set; }
+        public string description { get; private set; }
 
-	public string bgResource => itemBGPrefix + grade;
+        public string bgResource => itemBGPrefix + grade;
 
-	public string markResource => itemMarkPrefix + (int)mark;
+        public string markResource => itemMarkPrefix + (int)mark;
 
-	public string gradeResource => itemOutlinePrefix + grade;
+        public string gradeResource => itemOutlinePrefix + grade;
 
-	public string GetKey()
-	{
-		return type.ToString();
-	}
+        public string GetKey()
+        {
+            return type.ToString();
+        }
 
-	[OnDeserialized]
-	private void OnDeserialized(StreamingContext context)
-	{
-	}
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context)
+        {
+        }
+    }
+
 }
+

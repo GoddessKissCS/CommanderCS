@@ -2,25 +2,27 @@ using CommanderCSLibrary.Shared.Enum;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Regulation;
-
-[Serializable]
-[JsonObject]
-public class GuildLevelInfoDataRow : DataRow
+namespace CommanderCSLibrary.Shared.Regulation
 {
-	public int level { get; private set; }
+    [Serializable]
+    [JsonObject]
+    public class GuildLevelInfoDataRow : DataRow
+    {
+        public int level { get; private set; }
 
-	public int maxcount { get; private set; }
+        public int maxcount { get; private set; }
 
-	public int cost { get; private set; }
+        public int cost { get; private set; }
 
-	public string GetKey()
-	{
-		return level.ToString();
-	}
+        public string GetKey()
+        {
+            return level.ToString();
+        }
 
-	[OnDeserialized]
-	private void OnDeserialized(StreamingContext context)
-	{
-	}
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context)
+        {
+        }
+    }
+
 }

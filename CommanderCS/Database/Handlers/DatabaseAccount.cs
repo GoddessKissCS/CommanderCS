@@ -57,7 +57,7 @@ namespace CommanderCS.Database.Handlers
             return user;
         }
 
-        public AccountScheme FindByName(string accountName)
+        public AccountScheme? FindByName(string accountName)
         {
             return DatabaseCollection.AsQueryable().Where(d => d.Name == accountName).FirstOrDefault();
         }
@@ -74,7 +74,7 @@ namespace CommanderCS.Database.Handlers
 
         public AccountScheme? FindBySession(string session)
         {
-            var user = DatabaseManager.GameProfile.FindBySession(session);
+            GameProfileScheme? user = DatabaseManager.GameProfile.FindBySession(session);
 
             return FindByUid(user.MemberId);
         }
@@ -116,18 +116,6 @@ namespace CommanderCS.Database.Handlers
             var CurrTimeStamp = TimeManager.CurrentEpoch;
 
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", id);
-            var update = Builders<AccountScheme>.Update.Set("LastLoginTime", CurrTimeStamp);
-
-            DatabaseCollection.UpdateOne(filter, update);
-        }
-
-        public void UpdateLoginTime(string name)
-        {
-            var account = FindByName(name);
-
-            var CurrTimeStamp = TimeManager.CurrentEpoch;
-
-            var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
             var update = Builders<AccountScheme>.Update.Set("LastLoginTime", CurrTimeStamp);
 
             DatabaseCollection.UpdateOne(filter, update);

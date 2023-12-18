@@ -2,29 +2,32 @@ using CommanderCSLibrary.Shared.Enum;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Regulation;
-
-[Serializable]
-[JsonObject]
-public class GoodsComposeDataRow : DataRow
+namespace CommanderCSLibrary.Shared.Regulation
 {
-	public string idx { get; private set; }
+    [Serializable]
+    [JsonObject]
+    public class GoodsComposeDataRow : DataRow
+    {
+        public string idx { get; private set; }
 
-	public string composeIdx { get; private set; }
+        public string composeIdx { get; private set; }
 
-	public int value { get; private set; }
+        public int value { get; private set; }
 
-	public string rewardIdx { get; private set; }
+        public string rewardIdx { get; private set; }
 
-	public int rewardValue { get; private set; }
+        public int rewardValue { get; private set; }
 
-	public string GetKey()
-	{
-		return composeIdx;
-	}
+        public string GetKey()
+        {
+            return composeIdx;
+        }
 
-	[OnDeserialized]
-	private void OnDeserialized(StreamingContext context)
-	{
-	}
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context)
+        {
+        }
+    }
+
 }
+

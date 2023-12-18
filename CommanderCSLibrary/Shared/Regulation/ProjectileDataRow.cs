@@ -3,70 +3,73 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Regulation;
-
-[Serializable]
-[JsonObject]
-public class ProjectileDataRow : DataRow
+namespace CommanderCSLibrary.Shared.Regulation
 {
-	public const int StatusEffectCount = 2;
 
-	[JsonProperty("clingingTurn")]
-	private List<int> _clingingTurns;
+    [Serializable]
+    [JsonObject]
+    public class ProjectileDataRow : DataRow
+    {
+        public const int StatusEffectCount = 2;
 
-	[JsonProperty("statusEffectDrks")]
-	private List<string> _statusEffectDrks;
+        [JsonProperty("clingingTurn")]
+        private List<int> _clingingTurns;
 
-	public string key { get; private set; }
+        [JsonProperty("statusEffectDrks")]
+        private List<string> _statusEffectDrks;
 
-	public string motionSetId { get; private set; }
+        public string key { get; private set; }
 
-	public string splashPattern { get; private set; }
+        public string motionSetId { get; private set; }
 
-	public bool shouldRenderSplash { get; private set; }
+        public string splashPattern { get; private set; }
 
-	public int accuracyScale { get; private set; }
+        public bool shouldRenderSplash { get; private set; }
 
-	public int attackDamageScale { get; private set; }
+        public int accuracyScale { get; private set; }
 
-	public int criticalChanceScale { get; private set; }
+        public int attackDamageScale { get; private set; }
 
-	public int depletionScale { get; private set; }
+        public int criticalChanceScale { get; private set; }
 
-	public int healingScale { get; private set; }
+        public int depletionScale { get; private set; }
 
-	public EProjectileTargetScaleType targetScaleType { get; private set; }
+        public int healingScale { get; private set; }
 
-	public int targetAttackerScale { get; private set; }
+        public EProjectileTargetScaleType targetScaleType { get; private set; }
 
-	public int targetDefenderScale { get; private set; }
+        public int targetAttackerScale { get; private set; }
 
-	public int targetSupporterScale { get; private set; }
+        public int targetDefenderScale { get; private set; }
 
-	[JsonProperty("dmPtn")]
-	public int damagePattern { get; private set; }
+        public int targetSupporterScale { get; private set; }
 
-	public int clingingTime { get; private set; }
+        [JsonProperty("dmPtn")]
+        public int damagePattern { get; private set; }
 
-	[JsonIgnore]
-	public IList<int> clingingTurns => _clingingTurns.AsReadOnly();
+        public int clingingTime { get; private set; }
 
-	[JsonIgnore]
-	public IList<string> statusEffectDrks => _statusEffectDrks.AsReadOnly();
+        [JsonIgnore]
+        public IList<int> clingingTurns => _clingingTurns.AsReadOnly();
 
-	private ProjectileDataRow()
-	{
-	}
+        [JsonIgnore]
+        public IList<string> statusEffectDrks => _statusEffectDrks.AsReadOnly();
 
-	public string GetKey()
-	{
-		return key;
-	}
+        private ProjectileDataRow()
+        {
+        }
 
-	[OnDeserialized]
-	private void OnDeserialized(StreamingContext context)
-	{
-		Regulation.FillList(ref _statusEffectDrks, 2);
-		Regulation.FillList(ref _clingingTurns, 2);
-	}
+        public string GetKey()
+        {
+            return key;
+        }
+
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context)
+        {
+            Regulation.FillList(ref _statusEffectDrks, 2);
+            Regulation.FillList(ref _clingingTurns, 2);
+        }
+    }
+
 }

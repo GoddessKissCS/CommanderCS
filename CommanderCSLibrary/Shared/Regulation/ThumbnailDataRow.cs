@@ -1,28 +1,30 @@
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Regulation;
-
-[Serializable]
-[JsonObject]
-public class ThumbnailDataRow : DataRow
+namespace CommanderCSLibrary.Shared.Regulation
 {
-	public int idx { get; private set; }
+    [Serializable]
+    [JsonObject]
+    public class ThumbnailDataRow : DataRow
+    {
+        public int idx { get; private set; }
 
-	public ThumbnailType category { get; private set; }
+        public ThumbnailType category { get; private set; }
 
-	public string c_idx { get; private set; }
+        public string c_idx { get; private set; }
 
-	public string resource { get; private set; }
+        public string resource { get; private set; }
 
-	public string resourceName => resource;
+        public string resourceName => resource;
 
-	private ThumbnailDataRow()
-	{
-	}
+        private ThumbnailDataRow()
+        {
+        }
 
-	public string GetKey()
-	{
-		return idx.ToString();
-	}
+        public string GetKey()
+        {
+            return idx.ToString();
+        }
+    }
+
 }

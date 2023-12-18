@@ -1,6 +1,8 @@
-namespace CommanderCSLibrary.Shared.Regulation;
-
-public interface DataRow
+namespace CommanderCSLibrary.Shared.Regulation
 {
-	string GetKey();
+    public interface DataRow
+    {
+        string GetKey();
+    }
+
 }

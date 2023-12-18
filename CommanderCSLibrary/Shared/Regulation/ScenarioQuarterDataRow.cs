@@ -2,23 +2,25 @@ using CommanderCSLibrary.Shared.Enum;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Regulation;
-
-[Serializable]
-[JsonObject]
-public class ScenarioQuarterDataRow : DataRow
+namespace CommanderCSLibrary.Shared.Regulation
 {
-	public string csid;
+    [Serializable]
+    [JsonObject]
+    public class ScenarioQuarterDataRow : DataRow
+    {
+        public string csid;
 
-	public string quarter;
+        public string quarter;
 
-	public string GetKey()
-	{
-		return quarter.ToString();
-	}
+        public string GetKey()
+        {
+            return quarter.ToString();
+        }
 
-	[OnDeserialized]
-	private void OnDeserialized(StreamingContext context)
-	{
-	}
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context)
+        {
+        }
+    }
+
 }

@@ -39,12 +39,15 @@ public class Input
 
 	public static Input Copy(Input src)
 	{
-		Input input = new Input();
-		input._unitIndex = src._unitIndex;
-		input._skillIndex = src._skillIndex;
-		input._targetIndex = src._targetIndex;
-		input._result = src._result;
-		return input;
+        Input input = new()
+        {
+            _unitIndex = src._unitIndex,
+            _skillIndex = src._skillIndex,
+            _targetIndex = src._targetIndex,
+            _result = src._result
+        };
+
+        return input;
 	}
 
 	public static bool IsSame(Input f1, Input f2)

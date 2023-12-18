@@ -2,27 +2,29 @@ using CommanderCSLibrary.Shared.Enum;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Regulation;
-
-[Serializable]
-[JsonObject]
-public class WorldMapStageTypeDataRow : DataRow
+namespace CommanderCSLibrary.Shared.Regulation
 {
-	public string id { get; private set; }
+    [Serializable]
+    [JsonObject]
+    public class WorldMapStageTypeDataRow : DataRow
+    {
+        public string id { get; private set; }
 
-	public string resourceId { get; private set; }
+        public string resourceId { get; private set; }
 
-	public int battleCount { get; private set; }
+        public int battleCount { get; private set; }
 
-	public string bgm { get; private set; }
+        public string bgm { get; private set; }
 
-	public string GetKey()
-	{
-		return id;
-	}
+        public string GetKey()
+        {
+            return id;
+        }
 
-	[OnDeserialized]
-	private void OnDeserialized(StreamingContext context)
-	{
-	}
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context)
+        {
+        }
+    }
+
 }

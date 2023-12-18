@@ -30,8 +30,6 @@ namespace CommanderCS.Host.Handlers.Sign
                 Result = SignInP
             };
 
-            DatabaseManager.Account.UpdateLoginTime(@params.uid);
-
             return response;
         }
 

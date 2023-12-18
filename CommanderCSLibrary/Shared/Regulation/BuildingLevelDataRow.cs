@@ -3,64 +3,66 @@ using System.Runtime.Serialization;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Regulation;
+namespace CommanderCSLibrary.Shared.Regulation {
+    [Serializable]
+    [JsonObject]
+    public class BuildingLevelDataRow : DataRow
+    {
+        public static readonly string ResourceIdFormat = "thum_{0}";
 
-[Serializable]
-[JsonObject]
-public class BuildingLevelDataRow : DataRow
-{
-	public static readonly string ResourceIdFormat = "thum_{0}";
+        public int index { get; set; }
 
-	public int index { get; set; }
+        public EBuilding type { get; private set; }
 
-	public EBuilding type { get; private set; }
+        public string resourceId => type.ToString();
 
-	public string resourceId => type.ToString();
+        public int level { get; private set; }
 
-	public int level { get; private set; }
+        public string name { get; private set; }
 
-	public string name { get; private set; }
+        public int userLevel { get; private set; }
 
-	public int userLevel { get; private set; }
+        public int vipLevel { get; private set; }
 
-	public int vipLevel { get; private set; }
+        public string locNameKey => name;
 
-	public string locNameKey => name;
+        public string locInformationMessageKey => _CombineLocalizeKey("Information.Message");
 
-	public string locInformationMessageKey => _CombineLocalizeKey("Information.Message");
+        public string locInformationSubMessageKey => _CombineLocalizeKey("Information.SubMessage");
 
-	public string locInformationSubMessageKey => _CombineLocalizeKey("Information.SubMessage");
+        public string locDescriptionKey => _CombineLocalizeKey("Description");
 
-	public string locDescriptionKey => _CombineLocalizeKey("Description");
+        public string locFuctionKey => _CombineLocalizeKey("Function");
 
-	public string locFuctionKey => _CombineLocalizeKey("Function");
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context)
+        {
+        }
 
-	[OnDeserialized]
-	private void OnDeserialized(StreamingContext context)
-	{
-	}
+        public string GetKey()
+        {
+            return index.ToString();
+        }
 
-	public string GetKey()
-	{
-		return index.ToString();
-	}
+        private string _CombineLocalizeKey(string postfix)
+        {
+            if (postfix == "Name")
+            {
+                return (type + 1899).ToString();
+            }
+            return $"Building.{type}.{postfix}";
+        }
 
-	private string _CombineLocalizeKey(string postfix)
-	{
-		if (postfix == "Name")
-		{
-			return (type + 1899).ToString();
-		}
-		return $"Building.{type}.{postfix}";
-	}
+        public string GetLocalizedDescriptionTitleKey(int idx)
+        {
+            return $"Building.{type}.Information.Description.{idx}.Title";
+        }
 
-	public string GetLocalizedDescriptionTitleKey(int idx)
-	{
-		return $"Building.{type}.Information.Description.{idx}.Title";
-	}
+        public string GetLocalizedDescriptionValueKey(int idx)
+        {
+            return $"Building.{type}.Information.Description.{idx}.Value";
+        }
+    }
 
-	public string GetLocalizedDescriptionValueKey(int idx)
-	{
-		return $"Building.{type}.Information.Description.{idx}.Value";
-	}
 }
+

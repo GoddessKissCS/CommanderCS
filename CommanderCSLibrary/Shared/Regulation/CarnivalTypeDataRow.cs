@@ -3,49 +3,52 @@ using System.Runtime.Serialization;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Regulation;
-
-[Serializable]
-[JsonObject]
-public class CarnivalTypeDataRow : DataRow
+namespace CommanderCSLibrary.Shared.Regulation
 {
-	public string idx { get; private set; }
+    [Serializable]
+    [JsonObject]
+    public class CarnivalTypeDataRow : DataRow
+    {
+        public string idx { get; private set; }
 
-	public string name { get; private set; }
+        public string name { get; private set; }
 
-	public int sort { get; private set; }
+        public int sort { get; private set; }
 
-	public ECarnivalType Type { get; private set; }
+        public ECarnivalType Type { get; private set; }
 
-	public string startDate { get; private set; }
+        public string startDate { get; private set; }
 
-	public string startTime { get; private set; }
+        public string startTime { get; private set; }
 
-	public string endDate { get; private set; }
+        public string endDate { get; private set; }
 
-	public string endTime { get; private set; }
+        public string endTime { get; private set; }
 
-	public int startLevel { get; private set; }
+        public int startLevel { get; private set; }
 
-	public int endLevel { get; private set; }
+        public int endLevel { get; private set; }
 
-	public int etc { get; private set; }
+        public int etc { get; private set; }
 
-	public string img { get; private set; }
+        public string img { get; private set; }
 
-	public ECarnivalCategory categoryType { get; private set; }
+        public ECarnivalCategory categoryType { get; private set; }
 
-	private CarnivalTypeDataRow()
-	{
-	}
+        private CarnivalTypeDataRow()
+        {
+        }
 
-	public string GetKey()
-	{
-		return idx;
-	}
+        public string GetKey()
+        {
+            return idx;
+        }
 
-	[OnDeserialized]
-	private void OnDeserialized(StreamingContext context)
-	{
-	}
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context)
+        {
+        }
+    }
+
 }
+

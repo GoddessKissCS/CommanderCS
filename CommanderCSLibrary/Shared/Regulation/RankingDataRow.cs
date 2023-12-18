@@ -2,39 +2,41 @@ using CommanderCSLibrary.Shared.Enum;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Regulation;
-
-[Serializable]
-[JsonObject]
-public class RankingDataRow : DataRow
+namespace CommanderCSLibrary.Shared.Regulation
 {
-	public int r_idx { get; private set; }
+    [Serializable]
+    [JsonObject]
+    public class RankingDataRow : DataRow
+    {
+        public int r_idx { get; private set; }
 
-	public ERankingContentsType type { get; private set; }
+        public ERankingContentsType type { get; private set; }
 
-	public ERankingType rankingType1 { get; private set; }
+        public ERankingType rankingType1 { get; private set; }
 
-	public int ranking1 { get; private set; }
+        public int ranking1 { get; private set; }
 
-	public ERankingType rankingType2 { get; private set; }
+        public ERankingType rankingType2 { get; private set; }
 
-	public int ranking2 { get; private set; }
+        public int ranking2 { get; private set; }
 
-	public int rankingWin { get; private set; }
+        public int rankingWin { get; private set; }
 
-	public int rankingLose { get; private set; }
+        public int rankingLose { get; private set; }
 
-	public string icon { get; private set; }
+        public string icon { get; private set; }
 
-	public string name { get; private set; }
+        public string name { get; private set; }
 
-	public string GetKey()
-	{
-		return r_idx.ToString();
-	}
+        public string GetKey()
+        {
+            return r_idx.ToString();
+        }
 
-	[OnDeserialized]
-	private void OnDeserialized(StreamingContext context)
-	{
-	}
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context)
+        {
+        }
+    }
+
 }
