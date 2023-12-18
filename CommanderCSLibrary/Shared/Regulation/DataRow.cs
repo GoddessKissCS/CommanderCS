@@ -4,5 +4,4 @@ namespace CommanderCSLibrary.Shared.Regulation
     {
         string GetKey();
     }
-
 }

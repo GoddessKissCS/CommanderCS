@@ -111,5 +111,4 @@ namespace CommanderCSLibrary.Shared.Regulation
             return id;
         }
     }
-
 }

@@ -1,5 +1,3 @@
-using CommanderCSLibrary.Shared.Enum;
-
 namespace CommanderCSLibrary.Shared.Regulation
 {
     [Serializable]
@@ -20,7 +18,6 @@ namespace CommanderCSLibrary.Shared.Regulation
         public string GetKey()
         {
             return idx.ToString();
-
         }
     }
 }

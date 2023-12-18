@@ -1,6 +1,3 @@
-using CommanderCSLibrary.Shared.Enum;
-using System.Collections.Generic;
-
 namespace CommanderCSLibrary.Shared.Regulation
 {
     [Serializable]

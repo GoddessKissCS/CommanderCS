@@ -30,5 +30,3 @@ namespace CommanderCSLibrary.Shared.Regulation
         }
     }
 }
-
-

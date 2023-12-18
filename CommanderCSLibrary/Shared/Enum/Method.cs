@@ -1,10 +1,4 @@
-﻿using CommanderCSLibrary.Shared.Enum;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CommanderCSLibrary.Shared.Enum
+﻿namespace CommanderCSLibrary.Shared.Enum
 {
     public enum Method : int
     {

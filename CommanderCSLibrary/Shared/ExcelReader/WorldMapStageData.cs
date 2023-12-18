@@ -1,12 +1,12 @@
-﻿using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCSLibrary.Shared.ExcelReader
 {
     public class WorldMapStageData : BaseExcelReader<WorldMapStageData, WorldMapStageDataExcel>
     {
-        public override string FileName { get { return "WorldMapStageDataTable.json"; } }
+        public override string FileName
+        { get { return "WorldMapStageDataTable.json"; } }
 
         public WorldMapStageDataExcel? FromWorldMapId(string worldMapId)
         {
@@ -29,7 +29,7 @@ namespace CommanderCSLibrary.Shared.ExcelReader
             foreach (var stage in stageList)
             {
                 stages = stageList
-                 .GroupBy(s => s.worldMapId)
+                .GroupBy(s => s.worldMapId)
                     .ToDictionary(
                 g => g.Key.ToString(),
                 g => g.Select(s => new WorldMapInformationResponse

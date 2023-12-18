@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
@@ -39,7 +37,7 @@ namespace CommanderCSLibrary.Shared.Ro
         }
 
         public static RoWeapon Create(string idx, string wIdx, int lv, int commanderId = 0)
-        { 
+        {
             WeaponDataRow weaponDataRow = Constants.regulation.weaponDtbl.Find((WeaponDataRow row) => row.idx == wIdx);
             RoWeapon roWeapon = new()
             {
@@ -108,6 +106,4 @@ namespace CommanderCSLibrary.Shared.Ro
         {
         }
     }
-
 }
-

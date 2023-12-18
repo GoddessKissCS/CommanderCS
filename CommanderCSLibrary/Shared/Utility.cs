@@ -65,7 +65,7 @@ namespace CommanderCSLibrary.Shared
             {
                 if (networkInterface.OperationalStatus == OperationalStatus.Up &&
                     (networkInterface.NetworkInterfaceType ==
-                         NetworkInterfaceType.Wireless80211 ||
+                        NetworkInterfaceType.Wireless80211 ||
                      networkInterface.NetworkInterfaceType ==
                          NetworkInterfaceType.Ethernet))
                 {
@@ -115,6 +115,7 @@ namespace CommanderCSLibrary.Shared
             }
             return new DateTime(result, result2, result3);
         }
+
         public static string GetStringToDay(double time)
         {
             if (time == 0.0)
@@ -138,6 +139,7 @@ namespace CommanderCSLibrary.Shared
                     stringBuilder.Append("/");
                     stringBuilder.Append(Localization.Format("5768", dateTime.Day));
                     break;
+
                 case "S_En":
                     stringBuilder.Append(Localization.Format("5135", dateTime.Month));
                     stringBuilder.Append("/");
@@ -145,6 +147,7 @@ namespace CommanderCSLibrary.Shared
                     stringBuilder.Append("/");
                     stringBuilder.Append(Localization.Format("5134", dateTime.Year));
                     break;
+
                 default:
                     stringBuilder.Append(Localization.Format("5134", dateTime.Year));
                     stringBuilder.Append("/");
@@ -161,6 +164,5 @@ namespace CommanderCSLibrary.Shared
             stringBuilder.Append(dateTime.Second.ToString("D2"));
             return stringBuilder.ToString();
         }
-
     }
 }

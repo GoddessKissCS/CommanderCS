@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
@@ -560,5 +559,4 @@ namespace CommanderCSLibrary.Shared.Ro
             return list;
         }
     }
-
 }

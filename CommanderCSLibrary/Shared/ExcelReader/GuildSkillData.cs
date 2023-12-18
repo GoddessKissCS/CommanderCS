@@ -1,11 +1,11 @@
-﻿using CommanderCSLibrary.Shared;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace CommanderCSLibrary.Shared.ExcelReader
 {
     public class GuildSkillData : BaseExcelReader<GuildSkillData, GuildSkillExcel>
     {
-        public override string FileName { get { return "GuildSkillDataTable.json"; } }
+        public override string FileName
+        { get { return "GuildSkillDataTable.json"; } }
 
         public GuildSkillExcel? FromSkillLevel(int skilllevel)
         {

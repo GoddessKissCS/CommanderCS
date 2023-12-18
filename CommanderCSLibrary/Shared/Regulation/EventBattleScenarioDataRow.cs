@@ -28,5 +28,4 @@ namespace CommanderCSLibrary.Shared.Regulation
             return eventIdx + playTurn;
         }
     }
-
 }

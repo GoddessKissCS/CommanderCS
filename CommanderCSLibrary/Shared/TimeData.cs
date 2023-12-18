@@ -127,5 +127,4 @@ namespace CommanderCSLibrary.Shared
             return TimeManager.GetCurrentTime();
         }
     }
-
 }

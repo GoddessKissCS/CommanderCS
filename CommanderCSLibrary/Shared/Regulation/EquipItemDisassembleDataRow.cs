@@ -44,5 +44,4 @@ namespace CommanderCSLibrary.Shared.Regulation
             return string.Concat(disassembleType, level.ToString());
         }
     }
-
 }

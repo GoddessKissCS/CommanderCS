@@ -1,12 +1,12 @@
-﻿using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCSLibrary.Shared.ExcelReader
 {
     public class CommanderCostumeData : BaseExcelReader<CommanderCostumeData, CommanderCostumeExcel>
     {
-        public override string FileName { get { return "CommanderCostumeDataTable.json"; } }
+        public override string FileName
+        { get { return "CommanderCostumeDataTable.json"; } }
 
         public CommanderCostumeExcel? FromId(int idx)
         {

@@ -2,8 +2,8 @@ namespace CommanderCSLibrary.Shared.Enum;
 
 public enum LocalizationType
 {
-	None,
-	Scenario,
-	Event,
-	Infinity
+    None,
+    Scenario,
+    Event,
+    Infinity
 }

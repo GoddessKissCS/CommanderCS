@@ -1,4 +1,3 @@
-using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
 namespace CommanderCSLibrary.Shared.Regulation
@@ -30,5 +29,4 @@ namespace CommanderCSLibrary.Shared.Regulation
             return id;
         }
     }
-
 }

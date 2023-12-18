@@ -4,7 +4,8 @@ namespace CommanderCSLibrary.Shared
 {
     public static class Misc
     {
-        public static string[] Badwords = {
+        public static string[] Badwords =
+        {
             "/", ".", "=", "Mod", "Admin", "Owner", "_", "?", "&", "$", "!",
         };
 

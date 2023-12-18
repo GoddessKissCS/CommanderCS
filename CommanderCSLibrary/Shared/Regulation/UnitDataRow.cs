@@ -1,11 +1,9 @@
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Ro;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
 namespace CommanderCSLibrary.Shared.Regulation
 {
-
     [Serializable]
     public class UnitDataRow : DataRow
     {
@@ -423,7 +421,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         //                   break;
         //               case StatType.MOB:
         //                   speed += commanderCostumeDataRow.stat3;
-        //                   break;	
+        //                   break;
         //           }
 
         //       }
@@ -975,5 +973,4 @@ namespace CommanderCSLibrary.Shared.Regulation
             return result;
         }
     }
-
 }

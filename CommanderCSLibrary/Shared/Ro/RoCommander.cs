@@ -1,9 +1,6 @@
-using System.Collections.Generic;
-using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
-
 
 namespace CommanderCSLibrary.Shared.Ro
 {
@@ -619,15 +616,19 @@ namespace CommanderCSLibrary.Shared.Ro
                 case 1:
                     result = skillList[4];
                     break;
+
                 case 2:
                     result = skillList[1];
                     break;
+
                 case 3:
                     result = skillList[0];
                     break;
+
                 case 4:
                     result = skillList[2];
                     break;
+
                 case 5:
                     result = skillList[3];
                     break;
@@ -1074,8 +1075,6 @@ namespace CommanderCSLibrary.Shared.Ro
             return materialDiction;
         }
 
-
-
         public void SetCostume(int ctid)
         {
             if (haveCostumeList == null)
@@ -1171,6 +1170,4 @@ namespace CommanderCSLibrary.Shared.Ro
             return slot;
         }
     }
-
 }
-

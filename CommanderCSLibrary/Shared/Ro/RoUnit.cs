@@ -1,9 +1,6 @@
-using System.Collections.Generic;
-using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
-
 
 namespace CommanderCSLibrary.Shared.Ro
 {
@@ -301,6 +298,4 @@ namespace CommanderCSLibrary.Shared.Ro
             }
         }
     }
-
 }
-

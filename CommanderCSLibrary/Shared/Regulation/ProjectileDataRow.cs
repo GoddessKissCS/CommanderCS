@@ -1,11 +1,9 @@
 using CommanderCSLibrary.Shared.Enum;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using System.Runtime.Serialization;
 
 namespace CommanderCSLibrary.Shared.Regulation
 {
-
     [Serializable]
     [JsonObject]
     public class ProjectileDataRow : DataRow
@@ -71,5 +69,4 @@ namespace CommanderCSLibrary.Shared.Regulation
             Regulation.FillList(ref _clingingTurns, 2);
         }
     }
-
 }

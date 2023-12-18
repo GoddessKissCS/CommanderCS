@@ -1,11 +1,9 @@
 using CommanderCSLibrary.Shared.Enum;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using System.Runtime.Serialization;
 
 namespace CommanderCSLibrary.Shared.Regulation
 {
-
     [Serializable]
     [JsonObject]
     public class WeaponDataRow : DataRow
@@ -73,5 +71,4 @@ namespace CommanderCSLibrary.Shared.Regulation
             return basePoint + level * addPoint;
         }
     }
-
 }

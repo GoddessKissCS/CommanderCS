@@ -1,10 +1,8 @@
-using CommanderCSLibrary.Shared.Enum;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace CommanderCSLibrary.Shared.Regulation
 {
-
     [Serializable]
     [JsonObject]
     public class ProjectileMotionPhaseDataRow : DataRow

@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
 
@@ -38,6 +36,4 @@ namespace CommanderCSLibrary.Shared.Ro
             return RaidData.Create(raidId, raidStartTime, raidEndTime, raidCurTime);
         }
     }
-
 }
-

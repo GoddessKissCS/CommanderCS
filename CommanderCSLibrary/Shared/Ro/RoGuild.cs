@@ -38,6 +38,4 @@ namespace CommanderCSLibrary.Shared.Ro
         [JsonProperty]
         public int world { get; set; }
     }
-
 }
-

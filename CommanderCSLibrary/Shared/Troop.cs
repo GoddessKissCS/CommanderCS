@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using CommanderCSLibrary.Shared.Battle;
 using CommanderCSLibrary.Shared.Ro;
 using Newtonsoft.Json;
@@ -563,6 +562,4 @@ namespace CommanderCSLibrary.Shared
             return true;
         }
     }
-
 }
-

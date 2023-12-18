@@ -1,6 +1,5 @@
-using CommanderCSLibrary.Shared.Enum;
-using System.Reflection;
 using Newtonsoft.Json;
+using System.Reflection;
 
 namespace CommanderCSLibrary.Shared.Regulation
 {
@@ -24,5 +23,4 @@ namespace CommanderCSLibrary.Shared.Regulation
             return genericTypeDefinition == typeof(DataTable<>);
         }
     }
-
 }

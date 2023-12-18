@@ -1,12 +1,11 @@
-﻿using CommanderCSLibrary.Shared;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace CommanderCSLibrary.Shared.ExcelReader
 {
     public class SweepData : BaseExcelReader<SweepData, SweepDataExcel>
     {
-        public override string FileName { get { return "SweepDataTable.json"; } }
-
+        public override string FileName
+        { get { return "SweepDataTable.json"; } }
     }
 
     public class SweepDataExcel

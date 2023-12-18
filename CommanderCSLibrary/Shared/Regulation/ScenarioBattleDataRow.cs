@@ -1,9 +1,7 @@
-using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
 namespace CommanderCSLibrary.Shared.Regulation
 {
-
     [Serializable]
     [JsonObject]
     public class ScenarioBattleDataRow : DataRow
@@ -27,5 +25,4 @@ namespace CommanderCSLibrary.Shared.Regulation
             return battleIdx;
         }
     }
-
 }

@@ -1,9 +1,4 @@
-﻿using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json;
-using System.Reflection;
-using CommanderCSLibrary.Shared.Regulation;
-
-namespace CommanderCSLibrary.Shared
+﻿namespace CommanderCSLibrary.Shared
 {
     public static partial class Constants
     {
@@ -210,9 +205,6 @@ namespace CommanderCSLibrary.Shared
             public const int WEAPON_WEIGHT_CONVERSION_VALUE = 10000;
             public const int INFINITY_TOWER_MAX_FIELD = 78;
             public const int INFINITY_TOWER_PAGE_COUNT = 25;
-
         }
-
-
     }
 }

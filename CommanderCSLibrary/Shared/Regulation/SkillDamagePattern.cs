@@ -1,6 +1,3 @@
-using CommanderCSLibrary.Shared.Enum;
-using System.Collections.Generic;
-
 namespace CommanderCSLibrary.Shared.Regulation
 {
     [Serializable]
@@ -31,5 +28,4 @@ namespace CommanderCSLibrary.Shared.Regulation
             _dataRows.Add(row);
         }
     }
-
 }

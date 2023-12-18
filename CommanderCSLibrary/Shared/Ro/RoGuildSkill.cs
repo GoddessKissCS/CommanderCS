@@ -1,7 +1,6 @@
 using CommanderCSLibrary.Shared.Battle;
 using CommanderCSLibrary.Shared.Regulation;
 
-
 namespace CommanderCSLibrary.Shared.Ro
 {
     public class RoGuildSkill
@@ -106,5 +105,4 @@ namespace CommanderCSLibrary.Shared.Ro
             return GuildSkillState.Create(idx, skillLevel, reg);
         }
     }
-
 }

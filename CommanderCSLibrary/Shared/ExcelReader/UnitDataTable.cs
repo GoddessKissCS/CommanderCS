@@ -1,11 +1,9 @@
-﻿
-
-namespace CommanderCSLibrary.Shared.ExcelReader
+﻿namespace CommanderCSLibrary.Shared.ExcelReader
 {
     public class UnitDataTable : BaseExcelReader<UnitDataTable, UnitDataExcel>
     {
-        public override string FileName { get { return "UnitDataTable.json"; } }
-
+        public override string FileName
+        { get { return "UnitDataTable.json"; } }
     }
 
     public class UnitDataExcel
@@ -57,5 +55,4 @@ namespace CommanderCSLibrary.Shared.ExcelReader
         public int partBody { get; set; }
         public int partSpecial { get; set; }
     }
-
 }

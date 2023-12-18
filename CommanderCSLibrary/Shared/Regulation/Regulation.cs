@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Runtime.Serialization;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
+using System.Reflection;
 
 namespace CommanderCSLibrary.Shared.Regulation
 {
@@ -337,9 +333,9 @@ namespace CommanderCSLibrary.Shared.Regulation
         }
 
 #pragma warning disable CS8601 // Possible null reference assignment.
+
         public void Init()
         {
-
             rewardDtbl = JsonConvert.DeserializeObject<DataTable<RewardDataRow>>(LoadJson("RewardDataTable.json"), SerializerSettings);
             userLevelDtbl = JsonConvert.DeserializeObject<DataTable<UserLevelDataRow>>(LoadJson("UserLevelDataTable.json"), SerializerSettings);
             partDtbl = JsonConvert.DeserializeObject<DataTable<PartDataRow>>(LoadJson("PartDataTable.json"), SerializerSettings);
@@ -538,6 +534,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
             return commanderDtbl.Find((CommanderDataRow row) => row.unitId == unitId);
         }
+
         public CommanderDataRow GetCommander(string commanderId)
         {
             return commanderDtbl.Find((CommanderDataRow row) => row.id == commanderId);
@@ -1076,5 +1073,4 @@ namespace CommanderCSLibrary.Shared.Regulation
             };
         }
     }
-
 }

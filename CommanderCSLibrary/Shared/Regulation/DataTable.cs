@@ -1,8 +1,6 @@
-using CommanderCSLibrary.Shared.Enum;
-using System.Collections;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Collections;
 
 namespace CommanderCSLibrary.Shared.Regulation
 {
@@ -93,5 +91,4 @@ namespace CommanderCSLibrary.Shared.Regulation
             return _dataRows.FindAll(match);
         }
     }
-
 }

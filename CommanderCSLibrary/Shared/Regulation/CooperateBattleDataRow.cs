@@ -1,6 +1,4 @@
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Enum;
-using System.Collections.Generic;
 
 namespace CommanderCSLibrary.Shared.Regulation
 {
@@ -48,6 +46,4 @@ namespace CommanderCSLibrary.Shared.Regulation
             return idx;
         }
     }
-
 }
-

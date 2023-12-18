@@ -15,9 +15,9 @@ namespace CommanderCSLibrary.Cryptography
         {
             _keys =
             [
-                 _encoding.GetBytes("Zb*!W-$&TA6mrIEU-F=ShH7=($ucOZdg"),
-                 _encoding.GetBytes("IU is Korea Best Singer! really!"),
-                 _encoding.GetBytes("JSON134c4dabedcd462bad9d775873de")
+                _encoding.GetBytes("Zb*!W-$&TA6mrIEU-F=ShH7=($ucOZdg"),
+                _encoding.GetBytes("IU is Korea Best Singer! really!"),
+                _encoding.GetBytes("JSON134c4dabedcd462bad9d775873de")
             ];
         }
 

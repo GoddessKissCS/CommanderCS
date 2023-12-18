@@ -1,6 +1,6 @@
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using System.Numerics;
+using System.Runtime.Serialization;
 
 namespace CommanderCSLibrary.Shared.Regulation
 {
@@ -32,6 +32,4 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
         }
     }
-
 }
-

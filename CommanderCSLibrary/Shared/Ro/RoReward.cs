@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
+using System.Runtime.Serialization;
 
 namespace CommanderCSLibrary.Shared.Ro
 {
@@ -205,5 +202,4 @@ namespace CommanderCSLibrary.Shared.Ro
             return roReward;
         }
     }
-
 }

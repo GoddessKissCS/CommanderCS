@@ -26,5 +26,4 @@ namespace CommanderCSLibrary.Shared.Regulation
             return idx.ToString();
         }
     }
-
 }

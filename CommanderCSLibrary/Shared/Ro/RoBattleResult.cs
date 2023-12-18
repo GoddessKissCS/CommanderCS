@@ -22,5 +22,4 @@ namespace CommanderCSLibrary.Shared.Ro
             this.record = record;
         }
     }
-
 }

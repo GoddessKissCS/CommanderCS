@@ -78,5 +78,4 @@ namespace CommanderCSLibrary.Shared
             return raidData;
         }
     }
-
 }

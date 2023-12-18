@@ -1,6 +1,6 @@
 using CommanderCSLibrary.Shared.Enum;
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using System.Runtime.Serialization;
 
 namespace CommanderCSLibrary.Shared.Regulation
 {
@@ -27,4 +27,3 @@ namespace CommanderCSLibrary.Shared.Regulation
         }
     }
 }
-

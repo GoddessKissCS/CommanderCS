@@ -1,7 +1,8 @@
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Regulation {
+namespace CommanderCSLibrary.Shared.Regulation
+{
     [Serializable]
     [JsonObject]
     public class EquipItemDataRow : DataRow
@@ -40,6 +41,4 @@ namespace CommanderCSLibrary.Shared.Regulation {
             return statBasePoint + (level - 1) * statAddPoint;
         }
     }
-
 }
-

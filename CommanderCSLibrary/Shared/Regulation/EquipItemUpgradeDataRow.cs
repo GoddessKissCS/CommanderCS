@@ -40,5 +40,4 @@ namespace CommanderCSLibrary.Shared.Regulation
             return string.Concat(upgradeType, level.ToString());
         }
     }
-
 }

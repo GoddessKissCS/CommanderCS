@@ -71,7 +71,6 @@
             }
         }
 
-
         public static double GetCurrentTime()
         {
             return CurrentEpoch;

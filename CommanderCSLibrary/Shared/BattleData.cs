@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using CommanderCSLibrary.Shared.Battle;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Ro;
@@ -134,5 +133,4 @@ namespace CommanderCSLibrary.Shared
             return battleData;
         }
     }
-
 }

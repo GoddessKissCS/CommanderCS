@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using CommanderCSLibrary.Shared.Enum;
+using System.Text;
 
 namespace CommanderCSLibrary.Shared
 {
@@ -132,6 +130,7 @@ namespace CommanderCSLibrary.Shared
             mDictionary.Clear();
             return false;
         }
+
         public static void Set(string languageName, byte[] bytes)
         {
             ByteReader byteReader = new(bytes);
@@ -238,12 +237,15 @@ namespace CommanderCSLibrary.Shared
                         case LocalizationType.None:
                             AddCSV(betterList2, array, dictionary2);
                             break;
+
                         case LocalizationType.Scenario:
                             ScenarioAddCSV(betterList2, array, dictionary2);
                             break;
+
                         case LocalizationType.Event:
                             EventAddCSV(betterList2, array, dictionary2);
                             break;
+
                         case LocalizationType.Infinity:
                             InfinityAddCSV(betterList2, array, dictionary2);
                             break;
@@ -554,8 +556,5 @@ namespace CommanderCSLibrary.Shared
             }
             return key;
         }
-
-
     }
 }
-
