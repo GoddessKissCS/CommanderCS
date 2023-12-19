@@ -77,8 +77,8 @@ public class ByteReader
 
     public Dictionary<string, string> ReadDictionary()
     {
-        Dictionary<string, string> dictionary = new Dictionary<string, string>();
-        char[] separator = new char[1] { '=' };
+        Dictionary<string, string> dictionary = [];
+        char[] separator = ['='];
         while (canRead)
         {
             string text = ReadLine();

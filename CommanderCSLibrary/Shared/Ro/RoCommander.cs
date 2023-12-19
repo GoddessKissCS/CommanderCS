@@ -21,11 +21,11 @@ namespace CommanderCSLibrary.Shared.Ro
 
             private static int _ByRank(RoCommander a, RoCommander b, int dir = 1)
             {
-                if ((int)a.rank == (int)b.rank)
+                if (a.rank == b.rank)
                 {
-                    return ((int)a.level - (int)b.level) * dir;
+                    return (a.level - b.level) * dir;
                 }
-                return ((int)a.rank - (int)b.rank) * dir;
+                return (a.rank - b.rank) * dir;
             }
         }
 
@@ -74,11 +74,11 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public int conquestDeckId;
 
-        public Dictionary<int, RoWeapon> WeaponItem = new Dictionary<int, RoWeapon>();
+        public Dictionary<int, RoWeapon> WeaponItem = [];
 
         private Dictionary<int, RoItem> EquipItem;
 
-        private Dictionary<int, int[]> materialDiction = new Dictionary<int, int[]>();
+        private Dictionary<int, int[]> materialDiction = [];
 
         [JsonIgnore]
         private int _currentCostume = 0;
@@ -114,7 +114,7 @@ namespace CommanderCSLibrary.Shared.Ro
             }
             set
             {
-                if ((int)_level != (int)value)
+                if (_level != value)
                 {
                     _level = value;
                     unitReg = null;
@@ -131,7 +131,7 @@ namespace CommanderCSLibrary.Shared.Ro
             }
             set
             {
-                if ((int)_cls != (int)value)
+                if (_cls != value)
                 {
                     _cls = value;
                     unitReg = null;
@@ -173,7 +173,7 @@ namespace CommanderCSLibrary.Shared.Ro
                 CommanderLevelDataRow commanderLevelDataRow = null;
                 CommanderLevelDataRow commanderLevelDataRow2 = null;
                 commanderLevelDataRow = regulation.GetCommanderLevelDataRow(level);
-                commanderLevelDataRow2 = regulation.GetCommanderLevelDataRow((int)level + 1);
+                commanderLevelDataRow2 = regulation.GetCommanderLevelDataRow(level + 1);
                 return commanderLevelDataRow2.aexp - commanderLevelDataRow.aexp;
             }
         }
@@ -186,7 +186,7 @@ namespace CommanderCSLibrary.Shared.Ro
             }
             set
             {
-                if ((int)_rank != (int)value)
+                if (_rank != value)
                 {
                     _rank = value;
                     currLevelUnitReg = null;
@@ -212,7 +212,7 @@ namespace CommanderCSLibrary.Shared.Ro
             {
                 Regulation.Regulation regulation = Constants.regulation;
                 int num = int.Parse(regulation.defineDtbl["ANNIHILATE_PILOT_CLASS_LIMIT"].value);
-                return (int)cls >= num;
+                return cls >= num;
             }
         }
 
@@ -226,7 +226,7 @@ namespace CommanderCSLibrary.Shared.Ro
             }
         }
 
-        public int hp => currLevelUnitReg.maxHealth - (int)dmgHp;
+        public int hp => currLevelUnitReg.maxHealth - dmgHp;
 
         public int dmgHp { get; set; }
 
@@ -299,7 +299,7 @@ namespace CommanderCSLibrary.Shared.Ro
             get
             {
                 int num = 0;
-                for (int i = 1; i < (int)level; i++)
+                for (int i = 1; i < level; i++)
                 {
                     CommanderLevelDataRow commanderLevelDataRow = Constants.regulation.commanderLevelDtbl[i];
                     num += commanderLevelDataRow.AddLeadership;
@@ -328,9 +328,9 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public bool product => string.Equals(role, "P");
 
-        public int GetdispatchGold => (int)((float)(((int)level + (int)cls) * (int)rank) / 11f * 60f);
+        public int GetdispatchGold => (int)((level + cls) * rank / 11f * 60f);
 
-        public float GetdispatchFloatGold => (float)(((int)level + (int)cls) * (int)rank) / 11f * 60f;
+        public float GetdispatchFloatGold => (level + cls) * rank / 11f * 60f;
 
         public ECommanderState state { get; set; }
 
@@ -360,7 +360,7 @@ namespace CommanderCSLibrary.Shared.Ro
                 {
                     return commanderRankDataRow.medal;
                 }
-                CommanderRankDataRow commanderRankDataRow2 = regulation.GetCommanderRankDataRow((int)rank + 1);
+                CommanderRankDataRow commanderRankDataRow2 = regulation.GetCommanderRankDataRow(rank + 1);
                 return commanderRankDataRow2.medal - commanderRankDataRow.medal;
             }
         }
@@ -405,7 +405,7 @@ namespace CommanderCSLibrary.Shared.Ro
             }
             set
             {
-                if ((int)_currentCostume != (int)value)
+                if (_currentCostume != value)
                 {
                     _currentCostume = value;
                     unitReg = null;
@@ -430,7 +430,7 @@ namespace CommanderCSLibrary.Shared.Ro
             }
             set
             {
-                if ((int)_favorRewardStep != (int)value)
+                if (_favorRewardStep != value)
                 {
                     _favorRewardStep = value;
                     unitReg = null;
@@ -457,7 +457,7 @@ namespace CommanderCSLibrary.Shared.Ro
             }
             set
             {
-                if ((int)_marry != (int)value)
+                if (_marry != value)
                 {
                     _marry = value;
                     unitReg = null;
@@ -470,7 +470,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public RoCommander()
         {
-            skillList = new List<int>();
+            skillList = [];
             for (int i = 0; i < 5; i++)
             {
                 skillList.Add(1);
@@ -498,7 +498,7 @@ namespace CommanderCSLibrary.Shared.Ro
             int slotType = weapon.data.slotType;
             if (WeaponItem == null)
             {
-                WeaponItem = new Dictionary<int, RoWeapon>();
+                WeaponItem = [];
             }
             if (!WeaponItem.ContainsKey(slotType))
             {
@@ -675,7 +675,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             if (EquipItem == null)
             {
-                EquipItem = new Dictionary<int, RoItem>();
+                EquipItem = [];
             }
             if (!EquipItem.ContainsKey(pointType))
             {
@@ -761,30 +761,32 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public void SetSp(float fer)
         {
-            sp = (int)((float)(int)maxSp * fer * 0.01f);
+            sp = (int)(maxSp * fer * 0.01f);
         }
 
         public static RoCommander Create(string id, int level, int rank, int cls, int costume, int favorRewardStep, int marry, List<int> transcendence, string role = "N")
         {
-            RoCommander roCommander = new RoCommander();
-            roCommander.id = id;
-            roCommander.level = level;
-            roCommander.rank = rank;
-            roCommander.cls = cls;
-            roCommander.currentCostume = costume;
-            roCommander.favorRewardStep = favorRewardStep;
-            roCommander.marry = marry;
-            roCommander.transcendence = transcendence;
-            roCommander.role = role;
-            roCommander.state = ECommanderState.Undefined;
-            roCommander.rankUpTime = TimeData.Create();
-            roCommander.isAdvance = false;
-            roCommander.isDie = false;
-            roCommander.isDispatch = false;
-            roCommander.isExploration = false;
-            roCommander.sp = 0;
-            roCommander.dmgHp = 0;
-            roCommander.isEngaged = 1;
+            RoCommander roCommander = new()
+            {
+                id = id,
+                level = level,
+                rank = rank,
+                cls = cls,
+                currentCostume = costume,
+                favorRewardStep = favorRewardStep,
+                marry = marry,
+                transcendence = transcendence,
+                role = role,
+                state = ECommanderState.Undefined,
+                rankUpTime = TimeData.Create(),
+                isAdvance = false,
+                isDie = false,
+                isDispatch = false,
+                isExploration = false,
+                sp = 0,
+                dmgHp = 0,
+                isEngaged = 1
+            };
             return roCommander;
         }
 
@@ -797,17 +799,17 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public RoCommander CreateNextLevel()
         {
-            return Create(id, (int)level + 1, rank, cls, currentCostume, favorRewardStep, marry, transcendence);
+            return Create(id, level + 1, rank, cls, currentCostume, favorRewardStep, marry, transcendence);
         }
 
         public RoCommander CreateNextRank()
         {
-            return Create(id, level, (int)rank + 1, cls, currentCostume, favorRewardStep, marry, transcendence);
+            return Create(id, level, rank + 1, cls, currentCostume, favorRewardStep, marry, transcendence);
         }
 
         public RoCommander CreateBeforeLevel()
         {
-            return Create(id, (int)level - 1, rank, cls, currentCostume, favorRewardStep, marry, transcendence);
+            return Create(id, level - 1, rank, cls, currentCostume, favorRewardStep, marry, transcendence);
         }
 
         public RoCommander CreateOriginCommander()
@@ -819,12 +821,12 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public RoCommander CreateBeforeRank()
         {
-            return Create(id, level, (int)rank - 1, cls, currentCostume, favorRewardStep, marry, transcendence);
+            return Create(id, level, rank - 1, cls, currentCostume, favorRewardStep, marry, transcendence);
         }
 
         public RoCommander CreateBeforeClass()
         {
-            return Create(id, level, rank, (int)cls - 1, currentCostume, favorRewardStep, marry, transcendence);
+            return Create(id, level, rank, cls - 1, currentCostume, favorRewardStep, marry, transcendence);
         }
 
         //public bool TrainingEnable(ETrainingTicketType ticket)
@@ -919,7 +921,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public void StartRankUp()
         {
             Regulation.Regulation regulation = Constants.regulation;
-            CommanderRankDataRow commanderRankDataRow = regulation.GetCommanderRankDataRow((int)rank + 1);
+            CommanderRankDataRow commanderRankDataRow = regulation.GetCommanderRankDataRow(rank + 1);
             if (commanderRankDataRow != null)
             {
                 rankUpTime.SetByDuration(commanderRankDataRow.time);
@@ -987,7 +989,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public List<string> GetSkillIdList()
         {
-            List<string> list = new List<string>();
+            List<string> list = [];
             RoWeapon roWeapon = null;
             string empty = string.Empty;
             roWeapon = FindWeaponItem(3);
@@ -1051,14 +1053,14 @@ namespace CommanderCSLibrary.Shared.Ro
         public Dictionary<int, int[]> GetClassUpMaterial()
         {
             materialDiction.Clear();
-            CommanderClassDataRow commanderClassDataRow = Constants.regulation.commanderClassDtbl.Find((CommanderClassDataRow list) => list.index == int.Parse(id) && list.cls == (int)cls);
+            CommanderClassDataRow commanderClassDataRow = Constants.regulation.commanderClassDtbl.Find((CommanderClassDataRow list) => list.index == int.Parse(id) && list.cls == cls);
             if (commanderClassDataRow != null)
             {
                 for (int i = 1; i <= commanderClassDataRow.pidx.Count; i++)
                 {
                     int num = commanderClassDataRow.pidx[i.ToString()];
                     int num2 = commanderClassDataRow.pvalue[i.ToString()];
-                    int[] value = new int[2] { num, num2 };
+                    int[] value = [num, num2];
                     materialDiction.Add(i, value);
                 }
             }
@@ -1079,8 +1081,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             if (haveCostumeList == null)
             {
-                haveCostumeList = new List<int>();
-                haveCostumeList.Add(ctid);
+                haveCostumeList = [ctid];
             }
             currentCostume = ctid;
         }
@@ -1157,7 +1158,7 @@ namespace CommanderCSLibrary.Shared.Ro
             };
             for (int i = 0; i < unitReg.skillDrks.Count; i++)
             {
-                Troop.Slot.Skill skill = new Troop.Slot.Skill();
+                Troop.Slot.Skill skill = new();
                 SkillDataRow skillDataRow = regulation.skillDtbl[unitReg.skillDrks[i]];
                 if (skillDataRow.isActiveSkillType)
                 {

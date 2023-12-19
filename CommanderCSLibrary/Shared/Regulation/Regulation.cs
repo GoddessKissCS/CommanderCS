@@ -1,4 +1,5 @@
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Reflection;
@@ -339,7 +340,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
             if (list == null)
             {
-                list = new List<T>();
+                list = [];
             }
             for (int i = list.Count; i < count; i++)
             {
@@ -429,7 +430,7 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public List<CommanderDataRow> GetCommanderList(ECommanderType type)
         {
-            List<CommanderDataRow> list = new List<CommanderDataRow>();
+            List<CommanderDataRow> list = [];
             commanderDtbl.ForEach(delegate (CommanderDataRow row)
             {
                 if (row.C_Type == type)
@@ -442,27 +443,27 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public CommanderDataRow GetCommanderByUnitId(string unitId)
         {
-            return commanderDtbl.Find((CommanderDataRow row) => row.unitId == unitId);
+            return commanderDtbl.Find(row => row.unitId == unitId);
         }
 
         public CommanderDataRow GetCommander(string commanderId)
         {
-            return commanderDtbl.Find((CommanderDataRow row) => row.id == commanderId);
+            return commanderDtbl.Find(row => row.id == commanderId);
         }
 
         public CommanderDataRow GetCommanderByResourceId(string resourceId)
         {
-            return commanderDtbl.Find((CommanderDataRow row) => row.resourceId == resourceId);
+            return commanderDtbl.Find(row => row.resourceId == resourceId);
         }
 
         public List<CommanderTrainingTicketDataRow> GetTrainingTicketList()
         {
-            return commanderTrainingTicketDtbl.FindAll((CommanderTrainingTicketDataRow row) => true);
+            return commanderTrainingTicketDtbl.FindAll(row => true);
         }
 
         public List<SkillDataRow> GetSkillList()
         {
-            return skillDtbl.FindAll((SkillDataRow row) => true);
+            return skillDtbl.FindAll(row => true);
         }
 
         public int GetSkillMaxLevel(int index, int unitLevel)
@@ -480,7 +481,7 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public List<UnitDataRow> GetUnitList(EBranch branch, bool includeHidden)
         {
-            return unitDtbl.FindAll((UnitDataRow row) => (branch == EBranch.Undefined || branch == row.branch) && (!row.isHidden || (includeHidden && row.isHidden)));
+            return unitDtbl.FindAll(row => (branch == EBranch.Undefined || branch == row.branch) && (!row.isHidden || (includeHidden && row.isHidden)));
         }
 
         public CommanderLevelDataRow GetCommanderLevelDataRow(int level)
@@ -503,22 +504,22 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public GoodsDataRow FindGoodsServerFieldName(string id)
         {
-            return goodsDtbl.Find((GoodsDataRow row) => row.type == id);
+            return goodsDtbl.Find(row => row.type == id);
         }
 
         public List<SweepDataRow> FindSweepRow(int type)
         {
-            return sweepDtbl.FindAll((SweepDataRow row) => row.type == type);
+            return sweepDtbl.FindAll(row => row.type == type);
         }
 
         public SweepDataRow FindSweepRow(int type, int level)
         {
-            return sweepDtbl.Find((SweepDataRow row) => row.type == type && row.level == level);
+            return sweepDtbl.Find(row => row.type == type && row.level == level);
         }
 
         public List<GachaRewardDataRow> FindGachaRewardList(string gachaType)
         {
-            return gachaRewardDtbl.FindAll((GachaRewardDataRow row) => row.gachaType == gachaType);
+            return gachaRewardDtbl.FindAll(row => row.gachaType == gachaType);
         }
 
         public UserLevelDataRow GetUserLevelDataRow(int level)
@@ -532,37 +533,37 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public GoodsDataRow FindGoodsByServerFieldName(string fieldName)
         {
-            return goodsDtbl.Find((GoodsDataRow row) => row.serverFieldName == fieldName);
+            return goodsDtbl.Find(row => row.serverFieldName == fieldName);
         }
 
         public GoodsDataRow FindGoodsServerFieldName(int id)
         {
-            return goodsDtbl.Find((GoodsDataRow row) => row.type == id.ToString());
+            return goodsDtbl.Find(row => row.type == id.ToString());
         }
 
         public GachaCostDataRow FindGachaCost(string gachaType, int count)
         {
-            return gachaCostDtbl.Find((GachaCostDataRow row) => row.type == gachaType && row.count == count);
+            return gachaCostDtbl.Find(row => row.type == gachaType && row.count == count);
         }
 
         public CommanderTrainingTicketDataRow FindCommanderTrainingTicketData(ETrainingTicketType Type)
         {
-            return commanderTrainingTicketDtbl.Find((CommanderTrainingTicketDataRow row) => row.type == Type);
+            return commanderTrainingTicketDtbl.Find(row => row.type == Type);
         }
 
         public CommanderRankDataRow FindCommanderRankData(int rank)
         {
-            return commanderRankDtbl.Find((CommanderRankDataRow row) => row.rank == rank);
+            return commanderRankDtbl.Find(row => row.rank == rank);
         }
 
         public List<BuildingLevelDataRow> GetOpenBuildingDataList()
         {
-            return buildingLevelDtbl.FindAll((BuildingLevelDataRow row) => row.type != EBuilding.Headquarters);
+            return buildingLevelDtbl.FindAll(row => row.type != EBuilding.Headquarters);
         }
 
         public List<int> FindMetroBankLuckList()
         {
-            List<int> list = new List<int>();
+            List<int> list = [];
             metroBankLuckDtbl.ForEach(delegate (MetroBankLuckDataRow row)
             {
                 if (int.Parse(row.Luck) < 100)
@@ -593,7 +594,7 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public List<int> FindRaidDataIndexList(int raidId)
         {
-            List<int> list = new List<int>();
+            List<int> list = [];
             string key = $"{raidId}_{1}";
             int num = raidDtbl.FindIndex(key);
             if (num >= 0)
@@ -611,32 +612,32 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public PartDataRow FindPartData(string partType)
         {
-            return partDtbl.Find((PartDataRow row) => row.type == partType);
+            return partDtbl.Find(row => row.type == partType);
         }
 
         public InteractionDataRow FindInteractionData(string id, InteractionType type, int count)
         {
-            return interactionDtbl.Find((InteractionDataRow row) => row.resourceId == id && row.type == type && row.count == count);
+            return interactionDtbl.Find(row => row.resourceId == id && row.type == type && row.count == count);
         }
 
         public List<InteractionDataRow> FindInteractionData(string id, InteractionType type)
         {
-            return interactionDtbl.FindAll((InteractionDataRow row) => row.resourceId == id && row.type == type);
+            return interactionDtbl.FindAll(row => row.resourceId == id && row.type == type);
         }
 
         public List<InteractionDataRow> FindVoiceInteractionData(string id)
         {
-            return interactionDtbl.FindAll((InteractionDataRow row) => row.resourceId == id && row.type < InteractionType.DATE_HEAD_FAVOR1);
+            return interactionDtbl.FindAll(row => row.resourceId == id && row.type < InteractionType.DATE_HEAD_FAVOR1);
         }
 
         public InteractionDataRow FindInteractionData(string id, int idx)
         {
-            return interactionDtbl.Find((InteractionDataRow row) => row.resourceId == id && row.favorup == idx);
+            return interactionDtbl.Find(row => row.resourceId == id && row.favorup == idx);
         }
 
         public List<RankingDataRow> FindDuelRankingList(ERankingContentsType type)
         {
-            return rankingDtbl.FindAll((RankingDataRow row) => row.type == type);
+            return rankingDtbl.FindAll(row => row.type == type);
         }
 
         public List<RewardDataRow> FindDuelRankingRewardList(int type, int typeIdx)
@@ -646,22 +647,22 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public GuildSkillDataRow FindGuildSkillData(int idx, int level)
         {
-            return guildSkillDtbl.Find((GuildSkillDataRow row) => row.idx == idx && row.level == level);
+            return guildSkillDtbl.Find(row => row.idx == idx && row.level == level);
         }
 
         public List<GuildSkillDataRow> FindGuildSkillDataLevel(int level)
         {
-            return guildSkillDtbl.FindAll((GuildSkillDataRow row) => row.level == level);
+            return guildSkillDtbl.FindAll(row => row.level == level);
         }
 
         public GuildLevelInfoDataRow FindGuildLevelInfoData(int level)
         {
-            return guildLevelInfoDtbl.Find((GuildLevelInfoDataRow row) => row.level == level);
+            return guildLevelInfoDtbl.Find(row => row.level == level);
         }
 
         public VipExpDataRow FindVipExpData(int idx)
         {
-            return vipExpDtbl.Find((VipExpDataRow row) => row.Idx == idx);
+            return vipExpDtbl.Find(row => row.Idx == idx);
         }
 
         public VipRechargeDataRow FindVipRechargeData(EVipRechargeType type)
@@ -676,27 +677,27 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public FavorStepDataRow FindFavorStepData(int step)
         {
-            return favorStepDtbl.Find((FavorStepDataRow row) => row.step == step);
+            return favorStepDtbl.Find(row => row.step == step);
         }
 
         public ItemExchangeDataRow FindExchangeItemData(EStorageType type, string idx)
         {
-            return itemExchangeDtbl.Find((ItemExchangeDataRow row) => row.type == type && row.typeidx == idx);
+            return itemExchangeDtbl.Find(row => row.type == type && row.typeidx == idx);
         }
 
         public CommanderClassDataRow FindCommandClassData(int cidx, int cls)
         {
-            return commanderClassDtbl.Find((CommanderClassDataRow row) => row.index == cidx && row.cls == cls);
+            return commanderClassDtbl.Find(row => row.index == cidx && row.cls == cls);
         }
 
         public List<CommanderCostumeDataRow> FindCommandCostumeData(string cid)
         {
-            return commanderCostumeDtbl.FindAll((CommanderCostumeDataRow row) => row.cid == int.Parse(cid));
+            return commanderCostumeDtbl.FindAll(row => row.cid == int.Parse(cid));
         }
 
         public CommanderCostumeDataRow FindCostumeData(int ctid)
         {
-            return commanderCostumeDtbl.Find((CommanderCostumeDataRow row) => row.ctid == ctid);
+            return commanderCostumeDtbl.Find(row => row.ctid == ctid);
         }
 
         public string GetCostumeName(string ctid)
@@ -731,12 +732,12 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public List<FavorDataRow> FindFavorData(int cid)
         {
-            return favorDtbl.FindAll((FavorDataRow row) => row.cid == cid);
+            return favorDtbl.FindAll(row => row.cid == cid);
         }
 
         public CommanderGiftDataRow FindGiftData(int idx)
         {
-            return commanderGiftDtbl.Find((CommanderGiftDataRow row) => row.idx == idx);
+            return commanderGiftDtbl.Find(row => row.idx == idx);
         }
 
         public List<CommanderGiftDataRow> GetCommanderAllGiftList()
@@ -746,12 +747,12 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public List<CommanderGiftDataRow> GetCommanderGiftList()
         {
-            return commanderGiftDtbl.FindAll((CommanderGiftDataRow row) => row.type == 1);
+            return commanderGiftDtbl.FindAll(row => row.type == 1);
         }
 
         public CommanderGiftDataRow GetCommanderGift(string idx)
         {
-            return commanderGiftDtbl.Find((CommanderGiftDataRow row) => row.idx == int.Parse(idx));
+            return commanderGiftDtbl.Find(row => row.idx == int.Parse(idx));
         }
 
         public CommanderDataRow FindRaidCommander(int raidId)
@@ -787,12 +788,12 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public InAppProductDataRow GetInAppProduct(string idx)
         {
-            return inAppProductDtbl.Find((InAppProductDataRow row) => row.googlePlayID == idx);
+            return inAppProductDtbl.Find(row => row.googlePlayID == idx);
         }
 
         public List<CommanderScenarioDataRow> FindCommanderScenarioList(string cid)
         {
-            return commanderScenarioDtbl.FindAll((CommanderScenarioDataRow row) => row.cid == cid);
+            return commanderScenarioDtbl.FindAll(row => row.cid == cid);
         }
 
         public List<string> FindScenarioQuarterList(string csid)
@@ -810,12 +811,12 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public CommanderScenarioDataRow FindCommanderScenario(int csid)
         {
-            return commanderScenarioDtbl.Find((CommanderScenarioDataRow row) => row.csid == csid);
+            return commanderScenarioDtbl.Find(row => row.csid == csid);
         }
 
         public CommanderScenarioDataRow FindCommanderScenario(string cid, int heart)
         {
-            return commanderScenarioDtbl.Find((CommanderScenarioDataRow row) => row.cid == cid && row.heart == heart);
+            return commanderScenarioDtbl.Find(row => row.cid == cid && row.heart == heart);
         }
 
         public string CombineStringCidAndOrder(int csid)
@@ -832,12 +833,12 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public int GetCompleteScenarioQuarterCount(string csid)
         {
-            return scenarioQuarterDtbl.FindAll((ScenarioQuarterDataRow row) => row.csid == csid).Count;
+            return scenarioQuarterDtbl.FindAll(row => row.csid == csid).Count;
         }
 
         public List<ScenarioBattleUnitDataRow> FindScenarioBattleUnitInfo(string battleIdx, int uType)
         {
-            List<ScenarioBattleUnitDataRow> list = new List<ScenarioBattleUnitDataRow>();
+            List<ScenarioBattleUnitDataRow> list = [];
             for (int i = 0; i < scenarioBattleUnitDtbl.length; i++)
             {
                 if (scenarioBattleUnitDtbl[i].battleIdx == battleIdx && scenarioBattleUnitDtbl[i].uType == uType)
@@ -862,32 +863,32 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public CommanderScenarioDataRow FindScenarioInfo(int csid)
         {
-            return commanderScenarioDtbl.Find((CommanderScenarioDataRow row) => row.csid == csid);
+            return commanderScenarioDtbl.Find(row => row.csid == csid);
         }
 
         public RewardDataRow FindScenarioCompleteReward(int cid, int csid)
         {
-            return rewardDtbl.Find((RewardDataRow row) => row.type == cid && row.typeIndex == csid);
+            return rewardDtbl.Find(row => row.type == cid && row.typeIndex == csid);
         }
 
         public WaveBattleDataRow FindWaveBattleData(int battleIdx)
         {
-            return waveBattleDtbl.Find((WaveBattleDataRow row) => row.idx == battleIdx.ToString());
+            return waveBattleDtbl.Find(row => row.idx == battleIdx.ToString());
         }
 
         public List<EnemyUnitDataRow> FindNextWaveBattleEnemy(string enemyId, int nextWave)
         {
-            return enemyUnitDtbl.FindAll((EnemyUnitDataRow row) => row.id == enemyId && row.wave == nextWave);
+            return enemyUnitDtbl.FindAll(row => row.id == enemyId && row.wave == nextWave);
         }
 
         public EnemyUnitDataRow FindNextWaveBattleEnemy(string enemyId)
         {
-            return enemyUnitDtbl.Find((EnemyUnitDataRow row) => row.unitId == enemyId);
+            return enemyUnitDtbl.Find(row => row.unitId == enemyId);
         }
 
         public List<UnitDataRow> TextEnemyList(int nextStageIdx)
         {
-            List<UnitDataRow> list = new List<UnitDataRow>();
+            List<UnitDataRow> list = [];
             for (int i = nextStageIdx; i < nextStageIdx + 5; i++)
             {
                 list.Add(unitDtbl[i]);
@@ -897,72 +898,72 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public ECarnivalType FindCarnivalType(string idx)
         {
-            return carnivalTypeDtbl.Find((CarnivalTypeDataRow row) => row.idx == idx).Type;
+            return carnivalTypeDtbl.Find(row => row.idx == idx).Type;
         }
 
         public List<GroupInfoDataRow> FindGroupInfoList()
         {
-            return groupInfoDtbl.FindAll((GroupInfoDataRow row) => true);
+            return groupInfoDtbl.FindAll(row => true);
         }
 
         public GroupInfoDataRow FindGroupInfo(string idx)
         {
-            return groupInfoDtbl.Find((GroupInfoDataRow row) => row.tabidx == idx);
+            return groupInfoDtbl.Find(row => row.tabidx == idx);
         }
 
         public GroupInfoDataRow FindGroupInfoWhereGroupIdx(string idx)
         {
-            return groupInfoDtbl.Find((GroupInfoDataRow row) => row.groupIdx == idx);
+            return groupInfoDtbl.Find(row => row.groupIdx == idx);
         }
 
         public List<GroupMemberDataRow> FindGroupMemberList(string idx)
         {
-            return groupMemberDtbl.FindAll((GroupMemberDataRow row) => row.gidx == idx);
+            return groupMemberDtbl.FindAll(row => row.gidx == idx);
         }
 
         public EquipItemUpgradeDataRow FindUpgradeItemInfo(EItemStatType type, int level)
         {
-            return equipItemUpgradeDtbl.Find((EquipItemUpgradeDataRow row) => row.upgradeType == type && row.level == level);
+            return equipItemUpgradeDtbl.Find(row => row.upgradeType == type && row.level == level);
         }
 
         public EquipItemDisassembleDataRow FindDisassembleItemInfo(EItemStatType type, int level)
         {
-            return equipItemDisassembleDtbl.Find((EquipItemDisassembleDataRow row) => row.disassembleType == type && row.level == level);
+            return equipItemDisassembleDtbl.Find(row => row.disassembleType == type && row.level == level);
         }
 
         public List<EventBattleFieldDataRow> FindEventBattleList(int idx)
         {
-            return eventBattleFieldDtbl.FindAll((EventBattleFieldDataRow row) => row.eventIdx == idx);
+            return eventBattleFieldDtbl.FindAll(row => row.eventIdx == idx);
         }
 
         public EventBattleFieldDataRow FindEventBattle(int idx, int level)
         {
-            return eventBattleFieldDtbl.Find((EventBattleFieldDataRow row) => row.eventIdx == idx && row.idx == level);
+            return eventBattleFieldDtbl.Find(row => row.eventIdx == idx && row.idx == level);
         }
 
         public List<EventBattleScenarioDataRow> FindEventScenarioList(string eidx)
         {
-            return eventBattleScenarioDtbl.FindAll((EventBattleScenarioDataRow row) => row.eventIdx == eidx);
+            return eventBattleScenarioDtbl.FindAll(row => row.eventIdx == eidx);
         }
 
         public NPCMercenaryDataRow FindNpcMercenary(string id)
         {
-            return npcMercenaryDtbl.Find((NPCMercenaryDataRow row) => row.id == id);
+            return npcMercenaryDtbl.Find(row => row.id == id);
         }
 
         public TranscendenceSlotDataRow FindTranscendenceSlot(int slot)
         {
-            return transcendenceSlotDtbl.Find((TranscendenceSlotDataRow row) => row.slot == slot);
+            return transcendenceSlotDtbl.Find(row => row.slot == slot);
         }
 
         public TranscendenceStepUpgradeDataRow FindTranscendenceStepUpgrade(int step)
         {
-            return transcendenceStepUpgradeDtbl.Find((TranscendenceStepUpgradeDataRow row) => row.step == step);
+            return transcendenceStepUpgradeDtbl.Find(row => row.step == step);
         }
 
         public List<TranscendenceStepUpgradeDataRow> FindTranscendenceStepUpgradeListPoint(int stepPoint)
         {
-            return transcendenceStepUpgradeDtbl.FindAll((TranscendenceStepUpgradeDataRow row) => row.stepPoint <= stepPoint);
+            return transcendenceStepUpgradeDtbl.FindAll(row => row.stepPoint <= stepPoint);
         }
 
         public static EWeaponSkill ParseWeaponSkillType(int skillIdx)
@@ -972,15 +973,83 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public static int ParseWeaponSkillIndex(WeaponDataRow weapon)
         {
-            return weapon.slotType switch
+            switch (weapon.slotType)
             {
-                1 => 4,
-                2 => 1,
-                3 => 0,
-                4 => 2,
-                5 => 3,
-                _ => -1,
-            };
+                case 1:
+                    return 4;
+                case 2: 
+                    return 1;
+                case 3:
+                    return 0;
+                case 4:
+                    return 2;
+                case 5:
+                    return 3;
+                default: 
+                    return -1;
+            }
         }
+
+        public Dictionary<string, List<WorldMapInformationResponse>> GetAllWorldMapStages()
+        {
+            Dictionary<string, List<WorldMapInformationResponse>> stages = [];
+
+            
+
+            foreach (var stage in worldMapStageDtbl)
+            {
+                stages = worldMapStageDtbl
+                .GroupBy(s => s.worldMapId)
+                    .ToDictionary(
+                g => g.Key.ToString(),
+                g => g.Select(s => new WorldMapInformationResponse
+                {
+                    stageId = s.id,
+                    clearCount = 0,
+                    star = 0
+                }).ToList());
+            }
+            return stages;
+        }
+
+
+        public Dictionary<string, UserInformationResponse.Commander> AddSpecificCommander(Dictionary<string, UserInformationResponse.Commander> commanderDict, int commanderID)
+        {
+            var item = commanderCostumeDtbl.FirstOrDefault(c => c.cid == commanderID);
+
+            UserInformationResponse.Commander commanderData = new()
+            {
+                state = "N",
+                __skv1 = "1",
+                __skv2 = "1",
+                __skv3 = "0",
+                __skv4 = "0",
+                favorRewardStep = 0,
+                favorStep = 0,
+                currentCostume = item.ctid,
+                equipItemInfo = [],
+                equipWeaponInfo = [],
+                eventCostume = [],
+                favorPoint = new() { },
+                favr = 0,
+                fvrd = 0,
+                haveCostume = [item.ctid],
+                id = "" + commanderID,
+                marry = 0,
+                medl = 0,
+                role = "A",
+                transcendence = [0, 0, 0, 0],
+                __cls = "1",
+                __exp = "0",
+                __level = "1",
+                __rank = "1",
+            };
+
+            commanderDict.Add(commanderID.ToString(), commanderData);
+
+            return commanderDict;
+        }
+
+
     }
 }

@@ -28,7 +28,7 @@ namespace CommanderCS.Database.Handlers
 
             int uno = DatabaseManager.AutoIncrements.GetNextNumber("UNO");
 
-            var WorldMapStages = Constants.GetAllWorldMapStages();
+            var WorldMapStages = Constants.regulation.GetAllWorldMapStages();
 
             var currTime = TimeManager.CurrentEpoch;
 
