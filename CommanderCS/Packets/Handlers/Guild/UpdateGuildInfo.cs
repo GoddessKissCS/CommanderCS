@@ -13,7 +13,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             var user = GetUserGameProfile();
             var session = GetSession();
 
-            ErrorCode code = DatabaseManager.Guild.UpdateGuildInfo(@params.act, @params.val, session);
+            ErrorCode code = DatabaseManager.Guild.UpdateGuildInfo(session, @params.act, @params.val);
 
             if (code != ErrorCode.Success)
             {
@@ -25,7 +25,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
             var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
             CommanderCSLibrary.Shared.Protocols.GuildInfo guildInfo = new()

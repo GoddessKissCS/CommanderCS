@@ -14,13 +14,6 @@ namespace CommanderCS.Packets.Handlers.Guild
         {
             string session = GetSession();
 
-            var user = GetUserGameProfile();
-
-            ResponsePacket response = new()
-            {
-                Id = BasePacket.Id,
-            };
-
             if (Misc.NameCheck(@params.gnm))
             {
                 ErrorPacket error = new()
@@ -44,27 +37,14 @@ namespace CommanderCS.Packets.Handlers.Guild
 
                 return error;
             }
-            else
+
+            GuildInfo createGuild = DatabaseManager.Guild.CreateGuild(session, @params.gnm, @params.emb, @params.gtyp, @params.lvlm);
+
+            ResponsePacket response = new()
             {
-                DatabaseManager.GameProfile.UpdateCash(session, 300, false);
-
-                DatabaseManager.Guild.Create(@params.gnm, @params.emb, @params.gtyp, @params.lvlm, session);
-
-                var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
-
-                var userguild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
-
-                var memberdata = DatabaseManager.Guild.RequestGuildMembers(user.GuildId);
-
-                GuildInfo guildInfo = new()
-                {
-                    guildInfo = userguild,
-                    resource = rsoc,
-                    memberData = memberdata
-                };
-
-                response.Result = guildInfo;
-            }
+                Id = BasePacket.Id,
+				Result = createGuild,
+            };
 
             return response;
         }

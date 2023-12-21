@@ -3,6 +3,7 @@ using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Reflection;
+using static CommanderCSLibrary.Shared.Protocols.UserInformationResponse;
 
 namespace CommanderCSLibrary.Shared.Regulation
 {
@@ -675,6 +676,25 @@ namespace CommanderCSLibrary.Shared.Regulation
             });
         }
 
+        public static int GetVipRechargeCount(List<VipRechargeData> vipRechargedata, int key)
+        {
+            VipRechargeData matchingItem = vipRechargedata.FirstOrDefault(item => item.idx == key);
+
+            return matchingItem.count;
+        }
+
+        public static List<VipRechargeData> UpdateVipRechargeCount(List<VipRechargeData> vipRechargedata, int key, int count)
+        {
+            int index = vipRechargedata.FindIndex(item => item.idx == key);
+
+            if (index != null)
+            {
+                vipRechargedata[index].count = count;
+            }
+
+            return vipRechargedata;
+        }
+
         public FavorStepDataRow FindFavorStepData(int step)
         {
             return favorStepDtbl.Find(row => row.step == step);
@@ -1017,6 +1037,9 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
             var item = commanderCostumeDtbl.FirstOrDefault(c => c.cid == commanderID);
 
+            var role = commanderRoleDtbl.FirstOrDefault(x => x.commanderId == commanderID);
+
+
             UserInformationResponse.Commander commanderData = new()
             {
                 state = "N",
@@ -1037,7 +1060,7 @@ namespace CommanderCSLibrary.Shared.Regulation
                 id = "" + commanderID,
                 marry = 0,
                 medl = 0,
-                role = "A",
+                role = role.commanderRole,
                 transcendence = [0, 0, 0, 0],
                 __cls = "1",
                 __exp = "0",

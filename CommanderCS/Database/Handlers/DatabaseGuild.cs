@@ -13,7 +13,7 @@ namespace CommanderCS.Database.Handlers
         {
         }
 
-        public void Create(string guildname, int emblem, int guildtype, int levellimit, string session)
+        public void Create(string session, string guildname, int emblem, int guildtype, int levellimit)
         {
             int guildId = DatabaseManager.AutoIncrements.GetNextNumber("GuildId");
 
@@ -121,6 +121,31 @@ namespace CommanderCS.Database.Handlers
             return DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault().MemberData.Where(d => d.uno == uno).FirstOrDefault().memberGrade;
         }
 
+        public GuildInfo CreateGuild(string session, string guildName, int emblem, int guildType, int guildLevelLimit)
+        {
+            DatabaseManager.GameProfile.UpdateCash(session, Constants.DefineDataTable.GUILD_CREATION_PRICE, false);
+
+            Create(session, guildName, emblem, guildType, guildLevelLimit);
+
+            var user = DatabaseManager.GameProfile.FindBySession(session);
+
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+
+            var userguild = RequestGuild(user.GuildId, user.Uno);
+
+            var memberdata = RequestGuildMembers(user.GuildId);
+
+            GuildInfo guildInfo = new()
+            {
+                guildInfo = userguild,
+                resource = rsoc,
+                memberData = memberdata
+            };
+
+            return guildInfo;
+
+        }
+
         public UserInformationResponse.UserGuild RequestGuild(int? guildId, int uno)
         {
             if (guildId == null)
@@ -128,14 +153,14 @@ namespace CommanderCS.Database.Handlers
                 return null;
             }
 
-            GuildScheme? guild = DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
+            GuildScheme? requestGuild = DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
 
-            if (guild == null)
+            if (requestGuild == null)
             {
                 return null;
             }
 
-            var requestMember = guild.MemberData.Where(member => member.uno == uno).FirstOrDefault();
+            var requestMember = requestGuild.MemberData.Where(member => member.uno == uno).FirstOrDefault();
 
             if (requestMember == null)
             {
@@ -144,24 +169,24 @@ namespace CommanderCS.Database.Handlers
 
             UserInformationResponse.UserGuild userGuild = new()
             {
-                skillDada = guild.SkillDada,
-                state = guild.State,
-                aPoint = guild.aPoint,
-                closeTime = guild.CloseTime,
-                count = guild.Count,
-                createTime = guild.CreateTime,
-                emblem = guild.Emblem,
-                guildType = guild.GuildType,
-                idx = guild.GuildId,
-                level = guild.Level,
-                limitLevel = guild.Limitlevel,
-                maxCount = guild.MaxCount,
+                skillDada = requestGuild.SkillDada,
+                state = requestGuild.State,
+                aPoint = requestGuild.aPoint,
+                closeTime = requestGuild.CloseTime,
+                count = requestGuild.Count,
+                createTime = requestGuild.CreateTime,
+                emblem = requestGuild.Emblem,
+                guildType = requestGuild.GuildType,
+                idx = requestGuild.GuildId,
+                level = requestGuild.Level,
+                limitLevel = requestGuild.Limitlevel,
+                maxCount = requestGuild.MaxCount,
                 memberGrade = requestMember.memberGrade,
-                name = guild.Name,
-                notice = guild.Notice,
-                occupy = guild.Occupy,
-                point = guild.Point,
-                world = guild.World,
+                name = requestGuild.Name,
+                notice = requestGuild.Notice,
+                occupy = requestGuild.Occupy,
+                point = requestGuild.Point,
+                world = requestGuild.World,
             };
 
             return userGuild;
@@ -181,15 +206,17 @@ namespace CommanderCS.Database.Handlers
                 return null;
             }
 
-            List<GuildMember.MemberData> guildMember = [];
+            List<GuildMember.MemberData> memberData = [];
 
             foreach (var member in guild.MemberData)
             {
                 var user = DatabaseManager.GameProfile.FindByUno(member.uno);
 
-                GuildMember.MemberData member1 = new()
+                var lastTime = TimeManager.GetTimeDifference(user.LastLoginTime);
+
+                GuildMember.MemberData guildMember = new()
                 {
-                    lastTime = TimeManager.GetTimeDifference(user.LastLoginTime),
+                    lastTime = lastTime,
                     level = user.UserResources.level,
                     name = user.UserResources.nickname,
                     world = member.world,
@@ -201,16 +228,15 @@ namespace CommanderCS.Database.Handlers
                     totalPoint = member.totalPoint
                 };
 
-                guildMember.Add(member1);
+                memberData.Add(guildMember);
             }
 
-            return guildMember;
+            return memberData;
         }
 
         public void UpdateGuildName(int guildId, string newGuildName)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
-
             var update = Builders<GuildScheme>.Update.Set("Name", newGuildName);
 
             DatabaseCollection.UpdateOne(filter, update);
@@ -219,7 +245,6 @@ namespace CommanderCS.Database.Handlers
         public void UpdateGuildEmblem(int guildId, string emblemId)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
-
             var update = Builders<GuildScheme>.Update.Set("Emblem", int.Parse(emblemId));
 
             DatabaseCollection.UpdateOne(filter, update);
@@ -228,7 +253,6 @@ namespace CommanderCS.Database.Handlers
         public void UpdateGuildType(int guildId, string guildType)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
-
             var update = Builders<GuildScheme>.Update.Set("GuildType", int.Parse(guildType));
 
             DatabaseCollection.UpdateOne(filter, update);
@@ -237,7 +261,6 @@ namespace CommanderCS.Database.Handlers
         public void UpdateLimitLevel(int guildId, string newLimitLevel)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
-
             var update = Builders<GuildScheme>.Update.Set("Limitlevel", int.Parse(newLimitLevel));
 
             DatabaseCollection.UpdateOne(filter, update);
@@ -246,7 +269,6 @@ namespace CommanderCS.Database.Handlers
         public void UpdateGuildNotice(int guildId, string newGuildNotice)
         {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
-
             var update = Builders<GuildScheme>.Update.Set("Notice", newGuildNotice);
 
             DatabaseCollection.UpdateOne(filter, update);
@@ -254,7 +276,7 @@ namespace CommanderCS.Database.Handlers
 
         public List<RoGuild> GetAllGuilds(string session)
         {
-            var allGuilds = DatabaseCollection.AsQueryable().ToList();
+            var allGuilds = DatabaseCollection.AsQueryable().Take(20).ToList();
 
             if (allGuilds == null)
             {
@@ -265,7 +287,7 @@ namespace CommanderCS.Database.Handlers
 
             foreach (var guild in allGuilds)
             {
-                string isApplyingForGuild = DatabaseManager.GuildApplication.RetrieveGuildApplication(session, guild.GuildId);
+                string isApplyingForGuild = DatabaseManager.GuildApplication.GuildApplicationFromGuildId(session, guild.GuildId);
 
                 RoGuild newGuild = new()
                 {
@@ -329,7 +351,7 @@ namespace CommanderCS.Database.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
-        public ErrorCode UpdateGuildInfo(int act, string val, string session)
+        public ErrorCode UpdateGuildInfo(string session, int act, string val)
         {
             if (Misc.NameCheck(val))
             {
@@ -359,12 +381,12 @@ namespace CommanderCS.Database.Handlers
             {
                 case 0:
                     UpdateGuildName(guild.GuildId, val);
-                    DatabaseManager.GameProfile.UpdateCash(user.Session, 500, false);
+                    DatabaseManager.GameProfile.UpdateCash(user.Session, Constants.DefineDataTable.GUILD_NAME_CHANGE_PRICE, false);
                     break;
 
                 case 1:
                     UpdateGuildEmblem(guild.GuildId, val);
-                    DatabaseManager.GameProfile.UpdateCash(user.Session, 100, false);
+                    DatabaseManager.GameProfile.UpdateCash(user.Session, Constants.DefineDataTable.GUILD_EMBLEM_CHANGE_PRICE, false);
                     break;
 
                 case 2:

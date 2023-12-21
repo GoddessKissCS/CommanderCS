@@ -3,9 +3,7 @@ using CommanderCS.Database.Schemes;
 using CommanderCS.Host;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.ExcelReader;
 using Newtonsoft.Json;
-using System.Reflection.Metadata;
 
 namespace CommanderCS.Packets.Handlers.WorldMap
 {
@@ -17,86 +15,7 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             var user = GetUserGameProfile();
             var session = GetSession();
 
-            string commanderId = string.Empty;
-
-            switch (@params.world)
-            {
-                case 0:
-                    commanderId = "5";
-                    break;
-
-                case 1:
-                    commanderId = "26";
-                    break;
-
-                case 2:
-                    commanderId = "14";
-                    break;
-
-                case 3:
-                    commanderId = "19";
-                    break;
-
-                case 4:
-                    commanderId = "15";
-                    break;
-
-                case 5:
-                    commanderId = "12";
-                    break;
-
-                case 6:
-                    commanderId = "27";
-                    break;
-
-                case 7:
-                    commanderId = "10";
-                    break;
-
-                case 8:
-                    commanderId = "20";
-                    break;
-
-                case 9:
-                    commanderId = "30";
-                    break;
-
-                case 10:
-                    commanderId = "616";
-                    break;
-
-                case 11:
-                    commanderId = "47";
-                    break;
-
-                case 12:
-                    commanderId = "50";
-                    break;
-
-                case 13:
-                    commanderId = "51";
-                    break;
-
-                case 14:
-                    commanderId = "48";
-                    break;
-
-                case 15:
-                    commanderId = "62";
-                    break;
-
-                case 16:
-                    commanderId = "75";
-                    break;
-
-                case 17:
-                    commanderId = "85";
-                    break;
-
-                case 18:
-                    commanderId = "92";
-                    break;
-            }
+            string commanderId = GetCommanderIdForWorld(@params.world);
 
             var worldmap = UserWorldReward(commanderId, user, session);
 
@@ -111,7 +30,53 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             return response;
         }
 
-        public static CommanderCSLibrary.Shared.Protocols.WorldMapReward UserWorldReward(string commanderId, GameProfileScheme user, string session)
+        private static string GetCommanderIdForWorld(int world)
+        {
+            switch (world)
+            {
+                case 0:
+                    return "5";
+                case 1:
+                    return "26";
+                case 2:
+                    return "14";
+                case 3:
+                    return "19";
+                case 4:
+                    return "15";
+                case 5:
+                    return "12";
+                case 6:
+                    return "27";
+                case 7:
+                    return "10";
+                case 8:
+                    return "20";
+                case 9:
+                    return "30";
+                case 10:
+                    return "616";
+                case 11:
+                    return "47";
+                case 12:
+                    return "50";
+                case 13:
+                    return "51";
+                case 14:
+                    return "48";
+                case 15:
+                    return "62";
+                case 16:
+                    return "75";
+                case 17:
+                    return "85";
+                case 18:
+                    return "92";
+                default:
+                    return string.Empty;
+            }
+        }
+        private static CommanderCSLibrary.Shared.Protocols.WorldMapReward UserWorldReward(string commanderId, GameProfileScheme user, string session)
         {
             int medals = 20;
 

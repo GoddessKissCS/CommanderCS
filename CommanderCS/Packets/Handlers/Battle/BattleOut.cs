@@ -11,12 +11,14 @@ namespace CommanderCS.Host.Handlers.Battle
     {
         public override object Handle(BattleOutRequest @params)
         {
+			var rg = GetRegulation();
+
             string serializedJson = JsonConvert.SerializeObject(@params.info, Formatting.Indented);
 
             Record record = (Record)@params.info;
             Result result = (Result)@params.result;
 
-            var sim = Simulator.Simulation(Constants.regulation, serializedJson, false);
+            var sim = Simulator.Simulation(rg, serializedJson, false);
 
             var record1 = JsonConvert.SerializeObject(record, Formatting.Indented);
             var result1 = JsonConvert.SerializeObject(result, Formatting.Indented);

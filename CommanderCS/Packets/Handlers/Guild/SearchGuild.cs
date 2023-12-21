@@ -19,18 +19,16 @@ namespace CommanderCS.Packets.Handlers.Guild
                 Id = BasePacket.Id,
             };
 
+            RoGuild roGuild = new() { };
+
             var guild = DatabaseManager.Guild.FindByName(@params.gnm);
 
             if (guild != null)
             {
-                var roguild = Guild2RoGuild(guild, session);
-                response.Result = roguild;
-            }
-            else
-            {
-                RoGuild Roguild = new() { };
-
-                response.Result = Roguild;
+                roGuild = Guild2RoGuild(guild, session);
+                response.Result = roGuild;
+            } else {
+                response.Result = roGuild;
             }
 
             return response;
@@ -38,7 +36,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
         public static RoGuild Guild2RoGuild(GuildScheme guild, string session)
         {
-            string isApplyingForGuild = DatabaseManager.GuildApplication.RetrieveGuildApplication(session, guild.GuildId);
+            string isApplyingForGuild = DatabaseManager.GuildApplication.GuildApplicationFromGuildId(session, guild.GuildId);
 
             RoGuild Roguild = new()
             {

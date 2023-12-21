@@ -52,7 +52,7 @@ namespace CommanderCS.Database.Handlers
             return DatabaseCollection.AsQueryable().Where(d => d.Uno == Uno).Where(d => d.GuildId == guildId).FirstOrDefault();
         }
 
-        public string RetrieveGuildApplication(string session, int guildIdx)
+        public string GuildApplicationFromGuildId(string session, int guildIdx)
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
 

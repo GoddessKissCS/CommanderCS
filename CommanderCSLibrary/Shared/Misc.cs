@@ -1,5 +1,4 @@
-﻿using static CommanderCSLibrary.Shared.Protocols.UserInformationResponse;
-
+﻿
 namespace CommanderCSLibrary.Shared
 {
     public static class Misc
@@ -14,25 +13,6 @@ namespace CommanderCSLibrary.Shared
             var name = username.ToLower();
             bool isBadWord = Badwords.Any(name.Contains);
             return isBadWord;
-        }
-
-        public static int GetVipRechargeCount(List<VipRechargeData> vipRechargedata, int key)
-        {
-            VipRechargeData matchingItem = vipRechargedata.FirstOrDefault(item => item.idx == key);
-
-            return matchingItem.count;
-        }
-
-        public static List<VipRechargeData> UpdateVipRechargeCount(List<VipRechargeData> vipRechargedata, int key, int count)
-        {
-            int index = vipRechargedata.FindIndex(item => item.idx == key);
-
-            if (index != null)
-            {
-                vipRechargedata[index].count = count;
-            }
-
-            return vipRechargedata;
         }
     }
 }
