@@ -22,11 +22,11 @@ namespace CommanderCS.Host.Handlers.Server
 
             ServerInfo korea = new()
             {
-                maxLv = server.MaxLevel,
-                maxSt = server.MaxStage,
-                openDt = server.OpenDate,
-                svcnt = "1",
-                plcnt = playerCount,
+                maxLevel = server.MaxLevel,
+                maxStage = server.MaxStage,
+                openDateTime = server.OpenDate,
+                server_count = "1",
+                player_count = playerCount,
             };
 
             Dictionary<string, ServerInfo> serverInfo = new()
@@ -44,22 +44,22 @@ namespace CommanderCS.Host.Handlers.Server
             return response;
         }
 
-        internal class ServerInfo
+        private class ServerInfo
         {
             [JsonProperty("openDt")]
-            public double openDt { get; set; }
+            public double openDateTime { get; set; }
 
             [JsonProperty("maxLv")]
-            public int maxLv { get; set; }
+            public int maxLevel { get; set; }
 
             [JsonProperty("maxSt")]
-            public string maxSt { get; set; }
+            public string maxStage { get; set; }
 
             [JsonProperty("plcnt")]
-            public string plcnt { get; set; }
+            public string player_count { get; set; }
 
             [JsonProperty("svcnt")]
-            public string svcnt { get; set; }
+            public string server_count { get; set; }
         }
     }
 

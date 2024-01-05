@@ -77,6 +77,9 @@ namespace CommanderCS
                 return PacketHandler.ProcessRequest(context, provider);
             });
 
+
+            //app.MapControllers();
+
             //var wsOptions = new WebSocketOptions()
             //{
             //    KeepAliveInterval = TimeSpan.FromMilliseconds(1000),
@@ -125,6 +128,10 @@ namespace CommanderCS
                 HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
                 ServeUnknownFileTypes = true
             });
+
+           // app.UseWebSockets(new WebSocketOptions() { 
+           //     KeepAliveInterval = TimeSpan.FromSeconds(60),
+           //});
 
             #endregion StaticFileServer
 

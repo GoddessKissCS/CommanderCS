@@ -10,7 +10,7 @@ namespace CommanderCS.Host.Handlers.Gacha
         {
             ResponsePacket response = new();
 
-            Dictionary<string, GachaInformationResponse> test = new();
+            Dictionary<string, GachaInformationResponse> test = [];
 
             GachaInformationResponse w = new()
             {

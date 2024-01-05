@@ -222,14 +222,13 @@ namespace CommanderCSLibrary.Shared
                     marry = src.marry,
                     dropItemCnt = src.dropItemCnt,
                     scale = src.scale,
-                    charType = src.charType
+                    charType = src.charType,
+                    mainIdx = src.mainIdx,
+                    partIdx = src.partIdx,
+                    statsAttack = src.statsAttack,
+                    statsDefense = src.statsDefense,
+                    statsHealing = src.statsHealing,
                 };
-                slot.favorRewardStep = src.favorRewardStep;
-                slot.mainIdx = src.mainIdx;
-                slot.partIdx = src.partIdx;
-                slot.statsAttack = src.statsAttack;
-                slot.statsHealing = src.statsHealing;
-                slot.statsDefense = src.statsDefense;
                 if (src.skills != null)
                 {
                     for (int i = 0; i < src.skills.Count; i++)

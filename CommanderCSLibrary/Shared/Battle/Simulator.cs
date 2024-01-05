@@ -1599,10 +1599,12 @@ public class Simulator
             return;
         }
         Skill skill2 = Skill._Create(regulation, text);
-        Troop.Slot.Skill skill3 = new Troop.Slot.Skill();
-        skill3.id = text;
-        skill3.lv = slot.level;
-        skill3.sp = 0;
+        Troop.Slot.Skill skill3 = new()
+        {
+            id = text,
+            lv = slot.level,
+            sp = 0
+        };
         _InitSkillData(unit, skill2, skill3);
         _InitWeaponSkillData(unit, skill2, slot);
         _AddUnitSkill(unit, skill2);
@@ -1611,26 +1613,28 @@ public class Simulator
     private Frame _CreateInitFrame()
     {
         Random random = new Random(initState.randomSeed);
-        Frame frame = new Frame();
-        frame._units = _CreateInitStateUnits();
-        frame._lhsTroopStartIndex = GetLhsTroopStartIndex(0);
-        frame._rhsTroopStartIndex = GetRhsTroopStartIndex(0);
-        frame._lhsTimeLine = new List<int>();
-        frame._rhsTimeLine = new List<int>();
-        frame._isWaitingInput = false;
-        frame._isWaitingNextTurn = false;
-        frame._isWaitingNextWave = false;
-        frame._turn = 0;
-        frame._waveTurn = 0;
-        frame._rhsWave = 1;
-        frame._lhsWave = 1;
-        frame._onTurn = false;
-        frame._lhsOnWave = false;
-        frame._rhsOnWave = false;
-        frame._onWaveTurn = false;
-        frame._gold = 0;
-        frame._armyDestoryCnt = 0;
-        frame._navyDestoryCnt = 0;
+        Frame frame = new()
+        {
+            _units = _CreateInitStateUnits(),
+            _lhsTroopStartIndex = GetLhsTroopStartIndex(0),
+            _rhsTroopStartIndex = GetRhsTroopStartIndex(0),
+            _lhsTimeLine = [],
+            _rhsTimeLine = [],
+            _isWaitingInput = false,
+            _isWaitingNextTurn = false,
+            _isWaitingNextWave = false,
+            _turn = 0,
+            _waveTurn = 0,
+            _rhsWave = 1,
+            _lhsWave = 1,
+            _onTurn = false,
+            _lhsOnWave = false,
+            _rhsOnWave = false,
+            _onWaveTurn = false,
+            _gold = 0,
+            _armyDestoryCnt = 0,
+            _navyDestoryCnt = 0
+        };
         _AccessFrame(new _StatusEffectCleaner(), frame);
         _AccessFrame(new _SkillInitializer(random), frame);
         if (initState.battleType == EBattleType.WaveBattle)
@@ -1674,11 +1678,13 @@ public class Simulator
 
     private Frame _CreateNextFrame(Frame curr, Input lhsInput, Input rhsInput)
     {
-        Random random = new Random(curr.randomSeed);
-        Frame frame = new Frame();
-        frame._lhsInput = ((lhsInput != null) ? Input.Copy(lhsInput) : null);
-        frame._rhsInput = ((rhsInput != null) ? Input.Copy(rhsInput) : null);
-        frame._units = new List<Unit>();
+        Random random = new(curr.randomSeed);
+        Frame frame = new()
+        {
+            _lhsInput = ((lhsInput != null) ? Input.Copy(lhsInput) : null),
+            _rhsInput = ((rhsInput != null) ? Input.Copy(rhsInput) : null),
+            _units = []
+        };
         for (int i = 0; i < curr._units.Count; i++)
         {
             if (curr._units[i] == null)
@@ -1873,7 +1879,7 @@ public class Simulator
                 return false;
             }
         }
-        List<Troop> list = new List<Troop>();
+        List<Troop> list = [];
         for (int i = 0; i < lhsTroops.Count; i++)
         {
             int lhsTroopStartIndex = GetLhsTroopStartIndex(i);
@@ -2537,8 +2543,6 @@ public class Simulator
             }
             simulator.Step(lhsInput, null);
         }
-        JToken jToken = (JToken)simulator.record;
-        JToken jToken2 = (JToken)simulator.record.result;
         return simulator.record;
     }
 

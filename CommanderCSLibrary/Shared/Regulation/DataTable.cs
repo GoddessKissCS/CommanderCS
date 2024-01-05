@@ -21,7 +21,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         public DataTable(JsonSerializer serializer, JsonReader reader)
         {
             _dataRows = serializer.Deserialize<List<T>>(reader);
-            _indexMap = new Dictionary<string, int>();
+            _indexMap = [];
             int num = -1;
             try
             {

@@ -1,5 +1,6 @@
-﻿using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.ExcelReader;
+﻿using CommanderCS.Database.Schemes;
+using CommanderCSLibrary.Shared.Enum;
+
 using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Host.Handlers.KeepAlives
@@ -10,8 +11,9 @@ namespace CommanderCS.Host.Handlers.KeepAlives
         public override object Handle(BulletChargeResult @params)
         {
             var user = GetUserGameProfile();
+            var rg = GetRegulation();
 
-            int bullets = UserLevelData.GetInstance().FromLevel(user.UserResources.level).maxBullet;
+            int bullets = rg.userLevelDtbl.Find(x => x.level == user.UserResources.level).maxBullet;
 
             ResourceRecharge resource = new()
             {

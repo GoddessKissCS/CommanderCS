@@ -1,4 +1,4 @@
-namespace CommanderCS.Packets.Handlers.Dispatch
+namespace StellarGK.Packets.Handlers.Annihilation
 {
     public class DispatchAdvancedParty
     {
