@@ -1,53 +1,55 @@
 using CommanderCSLibrary.Shared.Enum;
 
-namespace CommanderCSLibrary.Shared.Battle;
-
-public class ClearMissionItem
+namespace CommanderCSLibrary.Shared.Battle
 {
-    public int id;
 
-    private bool _finish;
-
-    private bool _success = true;
-
-    private EBattleClearCondition _condition;
-
-    private string _conditionValue;
-
-    public bool isFinish
+    public class ClearMissionItem
     {
-        get
-        {
-            return _finish;
-        }
-        set
-        {
-            _finish = value;
-        }
-    }
+        public int id;
 
-    public bool isSuccess
-    {
-        get
+        private bool _finish;
+
+        private bool _success = true;
+
+        private EBattleClearCondition _condition;
+
+        private string _conditionValue;
+
+        public bool isFinish
         {
-            return _success;
+            get
+            {
+                return _finish;
+            }
+            set
+            {
+                _finish = value;
+            }
         }
-        set
+
+        public bool isSuccess
         {
-            _success = value;
+            get
+            {
+                return _success;
+            }
+            set
+            {
+                _success = value;
+            }
         }
-    }
 
-    public EBattleClearCondition condition => _condition;
+        public EBattleClearCondition condition => _condition;
 
-    public string conditionValue => _conditionValue;
+        public string conditionValue => _conditionValue;
 
-    public ClearMissionItem(EBattleClearCondition condition, int id, string conditionValue = "0")
-    {
-        this.id = id;
-        _finish = false;
-        _success = true;
-        _condition = condition;
-        _conditionValue = conditionValue;
+        public ClearMissionItem(EBattleClearCondition condition, int id, string conditionValue = "0")
+        {
+            this.id = id;
+            _finish = false;
+            _success = true;
+            _condition = condition;
+            _conditionValue = conditionValue;
+        }
     }
 }

@@ -112,14 +112,17 @@ namespace CommanderCS.Packets.Handlers.Guild
 	{
 		if (code = 71005)
 		{
+			That Federation name already exists
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110021"));
 		}
 		else if (code = 71009)
 		{
+		You have entered an invalid word for a Federation name.
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110022"));
 		}
 		else if (code = 71303)
 		{
+			You can join or send a request to join to only 1 Federation.
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110219"));
 		}
 		yield break;

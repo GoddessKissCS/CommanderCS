@@ -80,9 +80,11 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public static RoGuildSkill Create(int idx, int level = 0)
         {
-            RoGuildSkill roGuildSkill = new RoGuildSkill();
-            roGuildSkill.idx = idx;
-            roGuildSkill.skillLevel = level;
+            RoGuildSkill roGuildSkill = new()
+            {
+                idx = idx,
+                skillLevel = level
+            };
             roGuildSkill.name = roGuildSkill.reg.name;
             roGuildSkill.description = roGuildSkill.reg.description;
             return roGuildSkill;

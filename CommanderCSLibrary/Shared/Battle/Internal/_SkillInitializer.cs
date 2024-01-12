@@ -1,28 +1,29 @@
-namespace CommanderCSLibrary.Shared.Battle.Internal;
-
-public class _SkillInitializer : FrameAccessor
+namespace CommanderCSLibrary.Shared.Battle.Internal
 {
-    private Random _random;
-
-    private Regulation.Regulation _reg;
-
-    internal _SkillInitializer(Random random)
+    public class _SkillInitializer : FrameAccessor
     {
-        _random = random;
-    }
+        private Random _random;
 
-    public override bool OnFrameAccessStart()
-    {
-        _reg = simulator.regulation;
-        return true;
-    }
+        private Regulation.Regulation _reg;
 
-    public override bool OnSkillAccessStart()
-    {
-        if (simulator.option.playMode == Option.PlayMode.RealTime && skillIndex == 0)
+        internal _SkillInitializer(Random random)
         {
-            skill._sp = _random.Next(0, skillDr.maxSp);
+            _random = random;
         }
-        return false;
+
+        public override bool OnFrameAccessStart()
+        {
+            _reg = simulator.regulation;
+            return true;
+        }
+
+        public override bool OnSkillAccessStart()
+        {
+            if (simulator.option.playMode == Option.PlayMode.RealTime && skillIndex == 0)
+            {
+                skill._sp = _random.Next(0, skillDr.maxSp);
+            }
+            return false;
+        }
     }
 }
