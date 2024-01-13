@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
+﻿using CommanderCS.MongoDB;
 using CommanderCS.Host;
-using CommanderCS.Enum;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Profile
 {
@@ -10,21 +10,22 @@ namespace CommanderCS.Packets.Handlers.Profile
     {
         public override object Handle(ChangeMembershipOpenPlatformRequest @params)
         {
-            ResponsePacket response = new();
-
             //TODO - changing the platform from like google -> dbros? idk
 
             // should be finished? idk it shouldnt affect anything but you never know
 
-            DatabaseManager.Account.ChangeMemberShipOpenPlatform(@params.puid, (int)@params.plfm, @params.tokn, @params.ch);       
+            DatabaseManager.Account.ChangeMemberShipOpenPlatform(@params.puid, (int)@params.plfm, @params.tokn, @params.ch);
 
-        
-            response.Id = BasePacket.Id;
-            response.Result = "{}";
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "{}"
+            };
+
             return response;
         }
-
     }
+
     public class ChangeMembershipOpenPlatformRequest
     {
         [JsonProperty("tokn")]
@@ -69,5 +70,4 @@ namespace CommanderCS.Packets.Handlers.Profile
     }
 
     */
-
 }

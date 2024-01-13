@@ -1,5 +1,6 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.VersionCheck
 {
@@ -7,7 +8,7 @@ namespace CommanderCS.Host.Handlers.VersionCheck
     public class GameVersionInfo : BaseMethodHandler<GameVersionInfoRequest>
     {
         public override object Handle(GameVersionInfoRequest @params)
-        {         
+        {
             var info = DatabaseManager.GameVersionInfo.Get(@params.ch);
 
             GameVersionInfoResponse gameversion = new()

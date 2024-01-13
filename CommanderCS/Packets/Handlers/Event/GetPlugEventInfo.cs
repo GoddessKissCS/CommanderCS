@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Event
 {
@@ -7,8 +8,6 @@ namespace CommanderCS.Host.Handlers.Event
     {
         public override object Handle(GetPlugEventInfoRequest @params)
         {
-            
-
             GetPlugEventInfoPacket plugEventInfo = new()
             {
                 cmt = [],

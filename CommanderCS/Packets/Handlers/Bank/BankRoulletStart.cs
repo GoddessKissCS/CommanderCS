@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
-using CommanderCS.ExcelReader;
-using CommanderCS.Protocols;
-using CommanderCSLibrary.Utils;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Bank
 {
@@ -43,9 +43,9 @@ namespace CommanderCS.Host.Handlers.Bank
         {
             var roulettLuck = RandomGenerator.BankRoulletLuck(spins);
 
-            var userLevel = DatabaseManager.GameProfile.FindBySession(sessionId).UserResources.level;
+            var userLevel = DatabaseManager.GameProfile.FindBySession(sessionId).UserResources.level;           
 
-            int bankGold = UserLevelData.GetInstance().FromLevel(userLevel).bankGold;
+            int bankGold = Constants.regulation.userLevelDtbl.FirstOrDefault(x => x.level == userLevel).bankGold;
 
             int updatedGold = roulettLuck.Sum() * bankGold;
 

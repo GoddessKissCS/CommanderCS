@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Battle;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Host.Handlers.Battle
@@ -8,18 +11,31 @@ namespace CommanderCS.Host.Handlers.Battle
     {
         public override object Handle(BattleOutRequest @params)
         {
-            string serializedJson = JsonConvert.SerializeObject(@params, Formatting.Indented);
+			var rg = GetRegulation();
 
-            //Record record = (Record)@params.info;
-            //Result result = (Result)@params.result;
+            string serializedJson = JsonConvert.SerializeObject(@params.info, Formatting.Indented);
 
-            //string serializedRecord = JsonConvert.SerializeObject(record, Formatting.Indented);
-            //string serializedResult = JsonConvert.SerializeObject(result, Formatting.Indented);
+            Record record = (Record)@params.info;
+            Result result = (Result)@params.result;
 
-            string filePath = "output.json";
-            File.WriteAllText(filePath, serializedJson);
-            //File.WriteAllText("record.json", serializedRecord);
-            //File.WriteAllText("result.json", serializedResult);
+            var sim = Simulator.Simulation(rg, serializedJson, false);
+
+            var record1 = JsonConvert.SerializeObject(record, Formatting.Indented);
+            var result1 = JsonConvert.SerializeObject(result, Formatting.Indented);
+            var simRec = JsonConvert.SerializeObject(sim, Formatting.Indented);
+            var simRes = JsonConvert.SerializeObject(sim.result, Formatting.Indented);
+
+            if (result.winSide == sim.result.winSide)
+            {
+                if (result.totalAttackDamage == sim.result.totalAttackDamage)
+                {
+                }
+            }
+
+            File.WriteAllText("record.json", record1);
+            File.WriteAllText("result1.json", result1);
+            File.WriteAllText("simRec.json", simRec);
+            File.WriteAllText("simRes.json", simRes);
 
             return "{}";
         }

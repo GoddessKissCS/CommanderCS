@@ -1,8 +1,6 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
-using CommanderCS.ExcelReader;
-using CommanderCS.Protocols;
-using System.Security.Cryptography;
+﻿using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.WorldMap
 {
@@ -13,14 +11,15 @@ namespace CommanderCS.Host.Handlers.WorldMap
         {
             var user = GetUserGameProfile();
 
-            user.WorldMapData.Stages.TryGetValue(@params.world.ToString(), out List<WorldMapInformationResponse> stages);
+            string worldId = @params.world.ToString();
 
-            user.WorldMapData.StageReward.TryGetValue(@params.world.ToString(), out int isRewardCollected);
+            user.BattleData.WorldMapStages.TryGetValue(worldId, out List<WorldMapInformationResponse> stages);
+            user.BattleData.WorldMapStageReward.TryGetValue(worldId, out int isRewardCollected);
 
             WorldMapResponse worldmap = new()
             {
                 stage = stages,
-                rwd = Convert.ToInt32(isRewardCollected),
+                rwd = isRewardCollected,
             };
 
             ResponsePacket response = new()

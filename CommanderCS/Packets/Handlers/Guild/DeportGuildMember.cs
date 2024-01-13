@@ -1,5 +1,7 @@
-using CommanderCS.Database;
+using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -10,10 +12,26 @@ namespace CommanderCS.Packets.Handlers.Guild
         public override object Handle(DeportGuildMemberRequest @params)
         {
             var user = GetUserGameProfile();
+            var guild = GetUserGuild();
+
+            var target = guild.MemberData.FirstOrDefault(member => member.uno == @params.tuno);
+
+            var difference = TimeManager.GetTimeDifferenceInDays(target.joinDate);
+
+            bool kicked5peopleToday = false;
+
+            if (difference < 1 || kicked5peopleToday == true)
+            {
+                ErrorPacket error = new()
+                {
+                    Error = new() { code = ErrorCode.CanOnlyKickUpTo5MemberWithinADayAndNotOnTheJoinDay },
+                    Id = BasePacket.Id,
+                };
+
+                return error;
+            }
 
             bool isInGuild = DatabaseManager.Guild.IsUnoInMemberData(user.GuildId, user.Uno);
-
-#warning add the error checks
 
             bool isntRemoved = DatabaseManager.Guild.RemoveMemberDataByUno(user.GuildId, @params.tuno);
 
@@ -31,7 +49,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = "accepted",
+                Result = "deported",
             };
 
             return response;
@@ -43,7 +61,6 @@ namespace CommanderCS.Packets.Handlers.Guild
         [JsonProperty("tuno")]
         public int tuno { get; set; }
     }
-
 }
 
 /*	// Token: 0x06006043 RID: 24643 RVA: 0x000120F8 File Offset: 0x000102F8
@@ -71,7 +88,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110228"));
 		}
 		else if (code = 71307)
-		{   
+		{
 			You cannot kick out a member on the same day of joining, and you can only kick out up to 5 members in 1 day.
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110118"));
 		}

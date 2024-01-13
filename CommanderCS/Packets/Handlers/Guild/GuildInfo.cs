@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using CommanderCS.Database;
-using CommanderCS.Protocols;
-using System.Numerics;
 
 namespace CommanderCS.Host.Handlers.Guild
 {
@@ -12,7 +12,6 @@ namespace CommanderCS.Host.Handlers.Guild
         public override object Handle(GuildInfoRequest @params)
         {
             var session = GetSession();
-
             var user = GetUserGameProfile();
 
             var goods = DatabaseManager.GameProfile.UserResourcesFromSession(session);
@@ -46,7 +45,6 @@ namespace CommanderCS.Host.Handlers.Guild
                 weaponList = user.UserInventory.weaponList,
                 __commanderInfo = JObject.FromObject(user.CommanderData),
             };
-
 
             ResponsePacket response = new()
             {

@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Host;
-using CommanderCS.Protocols;
+﻿using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Unit
 {
@@ -9,7 +9,6 @@ namespace CommanderCS.Packets.Handlers.Unit
     {
         public override object Handle(UnitLevelUpRequest @params)
         {
-
             ResponsePacket response = new()
             {
                 Result = null,

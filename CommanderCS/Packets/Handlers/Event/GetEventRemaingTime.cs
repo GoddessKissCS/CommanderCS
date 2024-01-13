@@ -1,4 +1,5 @@
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Event

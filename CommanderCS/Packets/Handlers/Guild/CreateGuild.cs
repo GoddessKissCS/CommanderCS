@@ -1,27 +1,25 @@
-using Newtonsoft.Json;
-using CommanderCS.Database;
+using CommanderCS.MongoDB;
 using CommanderCS.Host;
-using CommanderCS.Protocols;
-using CommanderCS.Utils;
+using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.CreateGuild)]
+    [Packet(Id = Method.CreateGuild)]
     public class CreateGuild : BaseMethodHandler<CreateGuildRequest>
     {
         public override object Handle(CreateGuildRequest @params)
-        {	
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-			};
+        {
+            string session = GetSession();
 
-			if (Misc.NameCheck(@params.gnm))
-			{
+            if (Misc.NameCheck(@params.gnm))
+            {
                 ErrorPacket error = new()
                 {
                     Id = BasePacket.Id,
-                    Error = new() { code = ErrorCode.FederationNameContainsBadwordsOrInvalid },
+                    Error = new() { code = ErrorCode.FederationNameContainsBadwordsOrIsInvalid },
                 };
 
                 return error;
@@ -30,49 +28,32 @@ namespace CommanderCS.Packets.Handlers.Guild
             var guild = DatabaseManager.Guild.FindByName(@params.gnm);
 
             if (guild != null)
-			{
+            {
                 ErrorPacket error = new()
                 {
                     Id = BasePacket.Id,
                     Error = new() { code = ErrorCode.FederationNameAlreadyExists },
                 };
 
-                return error;   
-				
-            } else {
-                string session = GetSession();
-
-				DatabaseManager.GameProfile.UpdateCash(session, 300, false);
-
-				var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
-
-				DatabaseManager.Guild.Create(@params.gnm, @params.emb, @params.gtyp, @params.lvlm, session);
-
-				var user = GetUserGameProfile();
-
-				var userguild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
-
-				var memberdata = DatabaseManager.Guild.RequestGuildMembers(user.GuildId);
-
-                GuildInfo guildInfo = new()
-                {
-					guildInfo = userguild,
-					resource = rsoc,
-					memberData = memberdata
-                };
-
-				response.Result = guildInfo;
+                return error;
             }
 
-			return response;
+            GuildInfo createGuild = DatabaseManager.Guild.CreateGuild(session, @params.gnm, @params.emb, @params.gtyp, @params.lvlm);
 
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+				Result = createGuild,
+            };
+
+            return response;
         }
     }
 
-	public class CreateGuildRequest
-	{
-		[JsonProperty("gnm")]
-		public string gnm { get; set; }
+    public class CreateGuildRequest
+    {
+        [JsonProperty("gnm")]
+        public string gnm { get; set; }
 
         [JsonProperty("gtyp")]
         public int gtyp { get; set; }
@@ -82,8 +63,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
         [JsonProperty("emb")]
         public int emb { get; set; }
-	}
-
+    }
 }
 
 /*	// Token: 0x0600601F RID: 24607 RVA: 0x000492CD File Offset: 0x000474CD
@@ -132,14 +112,17 @@ namespace CommanderCS.Packets.Handlers.Guild
 	{
 		if (code = 71005)
 		{
+			That Federation name already exists
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110021"));
 		}
 		else if (code = 71009)
 		{
+		You have entered an invalid word for a Federation name.
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110022"));
 		}
 		else if (code = 71303)
 		{
+			You can join or send a request to join to only 1 Federation.
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110219"));
 		}
 		yield break;

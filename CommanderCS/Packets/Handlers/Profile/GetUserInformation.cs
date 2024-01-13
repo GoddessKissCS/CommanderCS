@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using CommanderCS.Database;
+﻿using CommanderCS.MongoDB;
 using CommanderCS.Host;
-using CommanderCS.Protocols;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Profile
 {
@@ -12,7 +13,6 @@ namespace CommanderCS.Packets.Handlers.Profile
         public override object Handle(GetUserInformationRequest @params)
         {
             var session = GetSession();
-
             var user = GetUserGameProfile();
 
             var goods = DatabaseManager.GameProfile.UserResourcesFromSession(session);
@@ -47,7 +47,6 @@ namespace CommanderCS.Packets.Handlers.Profile
                 __commanderInfo = JObject.FromObject(user.CommanderData),
             };
 
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
@@ -55,7 +54,6 @@ namespace CommanderCS.Packets.Handlers.Profile
             };
 
             return response;
-
         }
     }
 
@@ -65,18 +63,3 @@ namespace CommanderCS.Packets.Handlers.Profile
         public List<string> Type { get; set; }
     }
 }
-
-/*
-
-public void GetUserInformation(List<string> type)
-{
-}
-
-private IEnumerator GetUserInformationResult(JsonRpcClient.Request request, Protocols.UserInformationResponse result)
-{
-    this._CheckReceiveTestData("GetUserInformation");
-    this.localUser.FromNetwork(result);
-    UIManager.instance.RefreshOpenedUI();
-    yield break;
-}
-*/

@@ -1,6 +1,7 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.ExcelReader;
-using CommanderCS.Protocols;
+﻿using CommanderCSLibrary.Shared.Enum;
+
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Commander
 {
@@ -9,6 +10,8 @@ namespace CommanderCS.Host.Handlers.Commander
     {
         public override object Handle(CommanderLevelUpRequest @params)
         {
+            var rg = GetRegulation();
+
             // "cid":13,"cnt":1,"ctt":"ctt1"
 
             // packet.count = cnt
@@ -24,7 +27,9 @@ namespace CommanderCS.Host.Handlers.Commander
 
             if (commanderList.TryGetValue(@params.commanderId.ToString(), out UserInformationResponse.Commander commander) && commander != null)
             {
-                int id = GoodsData.GetInstance().FromServerFieldName(@params.commanderTrainingTicket).type;
+                string sid = rg.goodsDtbl.FirstOrDefault(x => x.serverFieldName == @params.commanderTrainingTicket).type;
+
+                int id = int.Parse(sid);
 
                 int commanderXP = Convert.ToInt32(commander.__exp);
 

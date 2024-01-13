@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using CommanderCS.Database;
-using CommanderCS.Enum;
-using CommanderCS.Protocols;
 
 namespace CommanderCS.Host.Handlers.Login
 {
@@ -11,21 +11,11 @@ namespace CommanderCS.Host.Handlers.Login
     {
         public override object Handle(LoginRequest @params)
         {
-#warning TODO ADD UNABLE TO JOIN
-            ResponsePacket response = new()
-            {
-                Id = BasePacket.Id
-            };
-
-            //@params.world
-            // first we need to check if the world has a profile if not create a new one
-
-            string session = Guid.NewGuid().ToString();
+            string session = GenerateUniqueSessionToken();
 
             var user = DatabaseManager.GameProfile.GetOrCreate(@params.memberId, @params.world);
 
             ErrorCode code = DatabaseManager.Account.RequestLogin(@params, session);
-
 
             if (code != ErrorCode.Success)
             {
@@ -38,7 +28,7 @@ namespace CommanderCS.Host.Handlers.Login
                 return error;
             }
 
-            var goods = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+            var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
             var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(session);
             var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
@@ -58,7 +48,7 @@ namespace CommanderCS.Host.Handlers.Login
                 partData = user.UserInventory.partData,
 
                 resetRemain = user.ResetDateTime, // should be set?
-
+                /// pronabably set it globally?
                 equipItem = user.UserInventory.equipItem,
 
                 donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,
@@ -76,9 +66,25 @@ namespace CommanderCS.Host.Handlers.Login
                 sess = session
             };
 
-            response.Result = Login;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = Login
+            };
 
             return response;
+        }
+
+        public string GenerateUniqueSessionToken()
+        {
+            string session;
+
+            do
+            {
+                session = Guid.NewGuid().ToString();
+            } while (DatabaseManager.GameProfile.SessionTokenExists(session));
+
+            return session;
         }
 
         private class LoginPacket

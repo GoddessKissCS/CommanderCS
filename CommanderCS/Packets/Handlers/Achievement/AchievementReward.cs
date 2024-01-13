@@ -1,7 +1,18 @@
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Achievement
 {
     public class AchievementReward
     {
+    }
+
+    public class AchievementRewardRequest
+    {
+        [JsonProperty("acid")]
+        public int acid { get; set; }
+
+        [JsonProperty("asot")]
+        public int asot { get; set; }
     }
 }
 

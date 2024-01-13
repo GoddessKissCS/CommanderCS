@@ -1,51 +1,44 @@
-using Newtonsoft.Json;
-using CommanderCS.Database;
-using CommanderCS.Database.Schemes;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using CommanderCS.Host;
-
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Ro;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.SearchGuild)]
+    [Packet(Id = Method.SearchGuild)]
     public class SearchGuild : BaseMethodHandler<SearchGuildRequest>
     {
         public override object Handle(SearchGuildRequest @params)
         {
-
-			var session = GetSession();
+            var session = GetSession();
 
             ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-			};	
+            {
+                Id = BasePacket.Id,
+            };
 
-			var guild = DatabaseManager.Guild.FindByName(@params.gnm);
+            RoGuild roGuild = new() { };
 
-			if (guild != null)
-			{
-				var roguild = Guild2RoGuild(guild, session);
-				response.Result = roguild;
-			}
-			else
-			{
-				Ro.RoGuild Roguild = new()
-				{
+            var guild = DatabaseManager.Guild.FindByName(@params.gnm);
 
-				};
-
-				response.Result = Roguild;
+            if (guild != null)
+            {
+                roGuild = Guild2RoGuild(guild, session);
+                response.Result = roGuild;
+            } else {
+                response.Result = roGuild;
             }
 
-
-			return response;
-
+            return response;
         }
 
-        public static Ro.RoGuild Guild2RoGuild(GuildScheme guild, string session)
+        public static RoGuild Guild2RoGuild(GuildScheme guild, string session)
         {
-            string isApplyingForGuild = DatabaseManager.GuildApplication.RetrieveGuildApplication(session, guild.GuildId);
+            string isApplyingForGuild = DatabaseManager.GuildApplication.GuildApplicationFromGuildId(session, guild.GuildId);
 
-            Ro.RoGuild Roguild = new()
+            RoGuild Roguild = new()
             {
                 apnt = guild.aPoint,
                 cnt = guild.Count,
@@ -55,23 +48,20 @@ namespace CommanderCS.Packets.Handlers.Guild
                 gtyp = guild.GuildType,
                 lev = guild.Level,
                 list = isApplyingForGuild,
-				mxCnt = guild.MaxCount,
-				ntc = guild.Notice,
-				world = guild.World,
+                mxCnt = guild.MaxCount,
+                ntc = guild.Notice,
+                world = guild.World,
             };
 
             return Roguild;
-
         }
-
     }
 
-	public class SearchGuildRequest
-	{
-		[JsonProperty("gnm")]
-		public string gnm { get; set;}
-	}
-
+    public class SearchGuildRequest
+    {
+        [JsonProperty("gnm")]
+        public string gnm { get; set; }
+    }
 }
 
 /*	// Token: 0x06006022 RID: 24610 RVA: 0x000120F8 File Offset: 0x000102F8

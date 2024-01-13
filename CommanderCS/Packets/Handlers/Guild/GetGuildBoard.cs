@@ -1,38 +1,38 @@
-using Newtonsoft.Json;
-using CommanderCS.Database;
+using CommanderCS.MongoDB;
 using CommanderCS.Host;
-using CommanderCS.Protocols;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.GetGuildBoard)]
+    [Packet(Id = Method.GetGuildBoard)]
     public class GetGuildBoard : BaseMethodHandler<GetGuildBoardRequest>
     {
         public override object Handle(GetGuildBoardRequest @params)
         {
-			var user = GetUserGameProfile();
+            var user = GetUserGameProfile();
 
-			var list = DatabaseManager.Guild.GetGuildBoard(user.GuildId, out ErrorCode code);
+            var list = DatabaseManager.Guild.GetGuildBoard(user.GuildId, out ErrorCode code);
 
+            if (code != ErrorCode.Success)
+            {
+                ErrorPacket error = new()
+                {
+                    Error = new() { code = code },
+                    Id = BasePacket.Id,
+                };
+            }
 
-			if(code != ErrorCode.Success)
-			{
-				ErrorPacket error = new()
-				{
-					Error = new() { code = code },
-					Id = BasePacket.Id,
-				};
-			}
+            var memberGrade = DatabaseManager.Guild.GetMemberGrade(user.GuildId, user.Uno);
 
-			var memberGrade = DatabaseManager.Guild.GetMemberGrade(user.GuildId, user.Uno);
-
-			if(memberGrade == 1)
-			{
+            if (memberGrade == 1)
+            {
                 list.ForEach(boardData =>
                 {
                     if (boardData.dauth == 0)
                     {
-                        boardData.dauth = 1; 
+                        boardData.dauth = 1;
                     }
                 });
             }
@@ -52,12 +52,12 @@ namespace CommanderCS.Packets.Handlers.Guild
 
 #warning TODO ADD the PAGES counter below
 
-			GetGuildBoardResponse getGuildBoard = new()
-			{
-				list = list,
-				page = 0,
-				tPage = 0,
-			};
+            GetGuildBoardResponse getGuildBoard = new()
+            {
+                list = list,
+                page = 0,
+                tPage = 0,
+            };
 
             ResponsePacket response = new()
             {
@@ -68,14 +68,15 @@ namespace CommanderCS.Packets.Handlers.Guild
             return response;
         }
     }
-	public class GetGuildBoardRequest
-	{
-		[JsonProperty("page")]
-		public int page { get; set; }
-	}
 
-	public class GetGuildBoardResponse
-	{
+    public class GetGuildBoardRequest
+    {
+        [JsonProperty("page")]
+        public int page { get; set; }
+    }
+
+    public class GetGuildBoardResponse
+    {
         public int tPage { get; set; }
         public int page { get; set; }
         public List<GuildBoardData> list { get; set; }

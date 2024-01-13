@@ -1,5 +1,6 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Sign
 {
@@ -8,9 +9,11 @@ namespace CommanderCS.Host.Handlers.Sign
     {
         public override object Handle(GuestSignUpRequest @params)
         {
+            var name = RequestSignUp(@params.plfm, @params.ch);
+
             GuestSignUpPacket SignUp = new()
             {
-                uid = RequestSignUp(@params.plfm, @params.ch),
+                uid = name,
             };
 
             ResponsePacket response = new()

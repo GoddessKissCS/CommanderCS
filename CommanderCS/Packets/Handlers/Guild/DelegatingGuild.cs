@@ -1,44 +1,46 @@
-using Newtonsoft.Json;
-using CommanderCS.Database;
+using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.DelegatingGuild)]
+    [Packet(Id = Method.DelegatingGuild)]
     public class DelegatingGuild : BaseMethodHandler<DelegatingGuildRequest>
     {
         public override object Handle(DelegatingGuildRequest @params)
         {
-			var user = GetUserGameProfile();
+            var user = GetUserGameProfile();
 
-			bool isInGuild = DatabaseManager.Guild.IsUnoInMemberData(user.GuildId, user.Uno);
+            bool isInGuild = DatabaseManager.Guild.IsUnoInMemberData(user.GuildId, user.Uno);
 
             if (!isInGuild)
-			{
-				ErrorPacket error = new()
-				{
-					Error = new() { code = ErrorCode.YouAlreadyLeftTheFederation },
-					Id = BasePacket.Id,
-				};
+            {
+                ErrorPacket error = new()
+                {
+                    Error = new() { code = ErrorCode.YouAlreadyLeftTheFederation },
+                    Id = BasePacket.Id,
+                };
 
-				return error;
-			}
+                return error;
+            }
 
             DatabaseManager.Guild.AppointNewGuildMaster(user.GuildId, user.Uno, @params.tuno);
 
             ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = "accepted",
-			};
+            {
+                Id = BasePacket.Id,
+                Result = "accepted",
+            };
 
-			return response;
+            return response;
         }
     }
+
     public class DelegatingGuildRequest
-	{
-		[JsonProperty("tuno")]		
-		public int tuno {  get; set; }
+    {
+        [JsonProperty("tuno")]
+        public int tuno { get; set; }
     }
 }
 

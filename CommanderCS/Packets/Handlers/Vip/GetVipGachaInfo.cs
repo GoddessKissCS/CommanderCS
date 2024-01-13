@@ -1,4 +1,5 @@
-﻿using CommanderCS.Protocols;
+﻿using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Host.Handlers.Vip
 {
@@ -7,7 +8,7 @@ namespace CommanderCS.Host.Handlers.Vip
     {
         public override object Handle(GetVipGachaInfoRequest @params)
         {
-            VipGacha result = new VipGacha();
+            VipGacha result = new();
 
             //Protocols.VipGacha
 

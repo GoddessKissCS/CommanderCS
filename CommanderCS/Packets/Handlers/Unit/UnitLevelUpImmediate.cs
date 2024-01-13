@@ -1,8 +1,6 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
-using CommanderCS.Host;
-using CommanderCS.Packets.Handlers.Chat;
-using CommanderCS.Protocols;
+﻿using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Unit
 {
@@ -11,7 +9,6 @@ namespace CommanderCS.Packets.Handlers.Unit
     {
         public override object Handle(UnitLevelUpImmediateRequest @params)
         {
-
             ResponsePacket response = new()
             {
                 Result = null,
@@ -22,10 +19,9 @@ namespace CommanderCS.Packets.Handlers.Unit
         }
     }
 
-
     public class UnitLevelUpImmediateRequest
     {
-		[JsonProperty("idx")]
+        [JsonProperty("idx")]
         public int idx { get; set; }
     }
 
@@ -34,7 +30,6 @@ namespace CommanderCS.Packets.Handlers.Unit
         [JsonProperty("cash")]
         public int cash { get; set; }
     }
-
 }
 
 /*

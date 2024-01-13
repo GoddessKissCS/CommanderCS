@@ -1,7 +1,39 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Defender
 {
-    public class GetDefenderInfo
+    [Packet(Id = Method.GetDefenderInfo)]
+    public class GetDefenderInfo : BaseMethodHandler<GetDefenderInfoRequest>
     {
+        public override object Handle(GetDefenderInfoRequest @params)
+        {
+            var user = GetUserGameProfile();
+
+            GetDefenderInfoResponse getDefenderInfo = new()
+            {
+                deck = user.DefenderDeck.PvPDefenderDeck,
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = getDefenderInfo,
+            };
+
+            return response;
+        }
+    }
+
+    public class GetDefenderInfoRequest
+    {
+    }
+
+    public class GetDefenderInfoResponse
+    {
+        [JsonProperty("deck")]
+        public Dictionary<string, string> deck { get; set; }
     }
 }
 

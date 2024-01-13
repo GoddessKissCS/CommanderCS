@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json;
-using Org.BouncyCastle.Crypto.Engines;
+﻿using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.Crypto.Paddings;
 using Org.BouncyCastle.Crypto.Parameters;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace CommanderCS.Cryptography
+namespace CommanderCSLibrary.Cryptography
 {
     public class Crypto
     {
@@ -16,9 +15,9 @@ namespace CommanderCS.Cryptography
         {
             _keys =
             [
-                 _encoding.GetBytes("Zb*!W-$&TA6mrIEU-F=ShH7=($ucOZdg"),
-                 _encoding.GetBytes("IU is Korea Best Singer! really!"),
-                 _encoding.GetBytes("JSON134c4dabedcd462bad9d775873de")
+                _encoding.GetBytes("Zb*!W-$&TA6mrIEU-F=ShH7=($ucOZdg"),
+                _encoding.GetBytes("IU is Korea Best Singer! really!"),
+                _encoding.GetBytes("JSON134c4dabedcd462bad9d775873de")
             ];
         }
 

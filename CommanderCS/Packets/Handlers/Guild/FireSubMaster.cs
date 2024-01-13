@@ -1,6 +1,7 @@
-using Newtonsoft.Json;
-using CommanderCS.Database;
+using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -35,6 +36,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             return response;
         }
     }
+
     public class FireSubMasterRequest
     {
         [JsonProperty("tuno")]

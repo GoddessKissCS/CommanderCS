@@ -1,7 +1,34 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Guild
 {
-    public class GuildDispatchCommanderList
+    [Packet(Id = Method.GuildDispatchCommanderList)]
+    public class GuildDispatchCommanderList : BaseMethodHandler<GuildDispatchCommanderListRequest>
     {
+        public override object Handle(GuildDispatchCommanderListRequest @params)
+        {
+            CommanderCSLibrary.Shared.Protocols.GuildDispatchCommanderList vs = new()
+            {
+                commanderList = [],
+                npcList = [],
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = vs,
+            };
+
+            return response;
+        }
+    }
+
+    public class GuildDispatchCommanderListRequest
+    {
+        [JsonProperty("type")]
+        public int type { get; set; }
     }
 }
 

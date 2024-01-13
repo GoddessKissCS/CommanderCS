@@ -1,33 +1,35 @@
-using Newtonsoft.Json;
-using CommanderCS.Database;
+using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.CancelGuildJoin)]
+    [Packet(Id = Method.CancelGuildJoin)]
     public class CancelGuildJoin : BaseMethodHandler<CancelGuildJoinRequest>
     {
         public override object Handle(CancelGuildJoinRequest @params)
         {
             var user = GetUserGameProfile();
 
-			bool result = DatabaseManager.GuildApplication.DeleteGuildApplication(user.Uno, @params.gidx);
+            bool result = DatabaseManager.GuildApplication.DeleteGuildApplication(user.Uno, @params.gidx);
 
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = result,
-			};
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = result,
+            };
 
 #warning TODO ADD THE FAIL
 
-			return response;
+            return response;
         }
     }
+
     public class CancelGuildJoinRequest
     {
-		[JsonProperty("gidx")]
-		public int gidx { get; set; }	
+        [JsonProperty("gidx")]
+        public int gidx { get; set; }
     }
 }
 

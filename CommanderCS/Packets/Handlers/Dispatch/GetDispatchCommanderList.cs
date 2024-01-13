@@ -1,6 +1,40 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Enum;
+
 namespace CommanderCS.Packets.Handlers.Dispatch
 {
-    public class GetDispatchCommanderList
+    [Packet(Id = Method.GetDispatchCommanderList)]
+    public class GetDispatchCommanderList : BaseMethodHandler<GetDispatchCommanderListRequest>
+    {
+        public override object Handle(GetDispatchCommanderListRequest @params)
+        {
+            var user = GetUserGameProfile();
+            var guild = GetUserGuild();
+
+            var difference = TimeManager.GetTimeDifference(guild.LastEdit);
+
+            if (difference < 30)
+            {
+                ErrorPacket error = new()
+                {
+                    Error = new() { code = ErrorCode.FederationSettingsChangedWhileGettingGuildBoard },
+                    Id = BasePacket.Id,
+                };
+                return error;
+            }
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = user.DispatchedCommanders,
+            };
+
+            return response;
+        }
+    }
+
+    public class GetDispatchCommanderListRequest
     {
     }
 }

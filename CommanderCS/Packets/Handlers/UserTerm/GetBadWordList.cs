@@ -1,6 +1,5 @@
-﻿using CommanderCS.Database.Schemes;
+﻿using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
-using System.IO;
 
 namespace CommanderCS.Host.Handlers.UserTerm
 {
@@ -9,12 +8,12 @@ namespace CommanderCS.Host.Handlers.UserTerm
     {
         public override object Handle(GetBadWordListRequest @params)
         {
-
             List<string> en = ["."];
 
             BadWordListResponse badWord = new()
             {
-                word = new() {
+                word = new()
+                {
                     {"en", en }
                 }
             };

@@ -1,28 +1,26 @@
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-	[Packet(Id = Method.GetConquestInfo)]
+    [Packet(Id = Method.GetConquestInfo)]
     public class GetConquestInfo : BaseMethodHandler<GetConquestInfoRequest>
     {
         public override object Handle(GetConquestInfoRequest @params)
         {
-            
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = null,
-			};
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = null,
+            };
 
-			return response;
+            return response;
         }
     }
 
     public class GetConquestInfoRequest
-	{
-
-	}
-
+    {
+    }
 }
 
 /*	// Token: 0x0600605D RID: 24669 RVA: 0x000120F8 File Offset: 0x000102F8

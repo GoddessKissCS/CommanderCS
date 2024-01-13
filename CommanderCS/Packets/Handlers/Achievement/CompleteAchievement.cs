@@ -1,6 +1,24 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+
 namespace CommanderCS.Packets.Handlers.Achievement
 {
-    public class CompleteAchievement
+    [Packet(Id = Method.CompleteAchievement)]
+    public class CompleteAchievement : BaseMethodHandler<CompleteAchievementRequest>
+    {
+        public override object Handle(CompleteAchievementRequest @params)
+        {
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = Array.Empty<CommanderCSLibrary.Shared.Protocols.CompleteAchievementInfo>(),
+            };
+
+            return response;
+        }
+    }
+
+    public class CompleteAchievementRequest
     {
     }
 }

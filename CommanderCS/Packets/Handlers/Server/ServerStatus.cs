@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
-using CommanderCS.Database.Schemes;
-using CommanderCS.Protocols;
+﻿using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Server
 {
@@ -16,7 +17,6 @@ namespace CommanderCS.Host.Handlers.Server
 
             while (serverinfos.Count < 1)
             {
-
                 if (serverinfos.Any(server => server.idx == nextIdx))
                 {
                     nextIdx++;
@@ -71,7 +71,7 @@ namespace CommanderCS.Host.Handlers.Server
                     idx = i,
                     lastLoginTime = profile.LastLoginTime,
                     level = profile.UserResources.level,
-                    thumnail = profile.UserResources.thumbnailId                     
+                    thumnail = profile.UserResources.thumbnailId
                 };
                 i++;
 

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Login
 {
@@ -6,13 +7,13 @@ namespace CommanderCS.Host.Handlers.Login
     public class Logout : BaseMethodHandler<LogoutRequest>
     {
         public override object Handle(LogoutRequest @params)
-        {            
+        {
             logout logout = new() { success = true };
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = logout.success
+                Result = logout
             };
 
             return response;

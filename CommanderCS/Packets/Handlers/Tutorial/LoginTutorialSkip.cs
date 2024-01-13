@@ -1,6 +1,7 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
-using CommanderCS.Protocols;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Tutorial
 {
@@ -9,34 +10,24 @@ namespace CommanderCS.Host.Handlers.Tutorial
     {
         public override object Handle(LoginTutorialSkipRequest @params)
         {
-            ResponsePacket response = new();
+            var session = GetSession();
 
-            UserInformationResponse.TutorialData TData = RequestTutorialData(GetSession(), Convert.ToBoolean(@params.skip));
+            UserInformationResponse.TutorialData tutorialData = new() { skip = Convert.ToBoolean(@params.skip), step = 12 };
+
+            DatabaseManager.GameProfile.UpdateTutorialData(session, tutorialData);
 
             TutorialStep lts = new()
             {
-                ttrl = TData,
+                ttrl = tutorialData,
             };
 
-            response.Id = BasePacket.Id;
-            response.Result = lts;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = lts
+            };
 
             return response;
-        }
-
-        private static UserInformationResponse.TutorialData RequestTutorialData(string session, bool skipTutorial)
-        {
-            UserInformationResponse.TutorialData tutorialData = new() { skip = skipTutorial, step = 0 };
-
-            if (skipTutorial)
-            {
-                tutorialData.step = 12;
-                return DatabaseManager.GameProfile.UpdateTutorialData(session, tutorialData);
-            }
-            else
-            {
-                return DatabaseManager.GameProfile.UpdateTutorialData(session, tutorialData);
-            }
         }
 
         private class TutorialStep

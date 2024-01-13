@@ -1,5 +1,5 @@
+using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
-using CommanderCS.Enum;
 
 namespace CommanderCS.Packets.Handlers.Profile
 {

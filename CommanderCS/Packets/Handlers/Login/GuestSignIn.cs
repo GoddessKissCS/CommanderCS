@@ -1,5 +1,6 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Sign
 {
@@ -28,16 +29,14 @@ namespace CommanderCS.Host.Handlers.Sign
             {
                 return Sign;
             }
-            else
-            {
-                DatabaseManager.Account.UpdateLoginTime(user.MemberId);
 
-                Sign.tokn = user.Token;
-                Sign.srv = user.LastServerLoggedIn;
-                Sign.mIdx = user.MemberId;
+            DatabaseManager.Account.UpdateLoginTime(user.MemberId);
 
-                return Sign;
-            }
+            Sign.tokn = user.Token;
+            Sign.srv = user.LastServerLoggedIn;
+            Sign.mIdx = user.MemberId;
+
+            return Sign;
         }
 
         private class SignInP

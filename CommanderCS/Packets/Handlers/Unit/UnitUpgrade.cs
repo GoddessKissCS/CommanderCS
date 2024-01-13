@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Host;
-using CommanderCS.Protocols;
+﻿using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Unit
 {
@@ -11,8 +11,8 @@ namespace CommanderCS.Packets.Handlers.Unit
         {
             ResponsePacket response = new()
             {
-				Result = null,
-				Id = BasePacket.Id
+                Result = null,
+                Id = BasePacket.Id
             };
 
             return response;
@@ -24,7 +24,6 @@ namespace CommanderCS.Packets.Handlers.Unit
         [JsonProperty("idx")]
         public int idx { get; set; }
     }
-
 }
 
 /*[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "4304", true, true)]

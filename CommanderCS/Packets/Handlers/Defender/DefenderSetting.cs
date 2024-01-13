@@ -1,7 +1,25 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.Defender
 {
-    public class DefenderSetting
+    [Packet(Id = Method.DefenderSetting)]
+    public class DefenderSetting : BaseMethodHandler<DefenderSettingRequest>
     {
+        public override object Handle(DefenderSettingRequest @params)
+        {
+            //Dictionary<string, string> dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>()
+
+            return "{}";
+        }
+    }
+
+    public class DefenderSettingRequest
+    {
+        [JsonProperty("deck")]
+        public static JObject deck { get; set; }
     }
 }
 

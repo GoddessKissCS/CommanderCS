@@ -1,5 +1,5 @@
 ﻿using CommanderCS.Host;
-using CommanderCS.Protocols;
+using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.Exploration
 {
@@ -8,16 +8,13 @@ namespace CommanderCS.Packets.Handlers.Exploration
     {
         public override object Handle(GetExplorationListRequest @params)
         {
-            ResponsePacket response = new();
+            var user = GetUserGameProfile();
 
-            List<string> cids = new();
-
-            List<ExplorationData> GetExplorationList1 = new()
+            ResponsePacket response = new()
             {
+                Result = user.ExplorationData,
+                Id = BasePacket.Id
             };
-
-            response.Result = GetExplorationList1;
-            response.Id = BasePacket.Id;
 
             return response;
         }

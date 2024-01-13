@@ -41,7 +41,7 @@
   },
   {
     "key": "ARENA_POINT_WIN",
-    "value": 2
+    "value": "2"
   },
   {
     "key": "ARENA_RANK_LOSING",
@@ -125,7 +125,7 @@
   },
   {
     "key": "COOPERATE_BATTLE_COUNT",
-    "value": 1
+    "value": "1"
   },
   {
     "key": "COOPERATE_BATTLE_COUNT_RESET_TIME",
@@ -141,11 +141,11 @@
   },
   {
     "key": "COOPERATE_BATTLE_STEP",
-    "value": 3
+    "value": "3"
   },
   {
     "key": "DAILYBATTLE_END_TURN",
-    "value": 5
+    "value": "5"
   },
   {
     "key": "DAILYMISSION_MIN_VIP",
@@ -169,7 +169,7 @@
   },
   {
     "key": "DORMITORY_BASE_COSTUME",
-    "value": 1
+    "value": "1"
   },
   {
     "key": "DORMITORY_BASE_WALLPAPER",
@@ -177,55 +177,55 @@
   },
   {
     "key": "DORMITORY_COMMODITY_INDIVIDUAL_LIMIT",
-    "value": 99
+    "value": "99"
   },
   {
     "key": "DORMITORY_INVENTORY_ADD",
-    "value": 10
+    "value": "10"
   },
   {
     "key": "DORMITORY_INVENTORY_BASE",
-    "value": 50
+    "value": "50"
   },
   {
     "key": "DORMITORY_INVENTORY_CASH",
-    "value": 100
+    "value": "100"
   },
   {
     "key": "DORMITORY_INVENTORY_LIMIT",
-    "value": 100
+    "value": "100"
   },
   {
     "key": "DORMITORY_ITEM_LIMIT",
-    "value": 999
+    "value": "999"
   },
   {
     "key": "DORMITORY_MARK_MAX",
-    "value": 50
+    "value": "50"
   },
   {
     "key": "DORMITORY_NAME_CHANGE_CASH",
-    "value": 50
+    "value": "50"
   },
   {
     "key": "DORMITORY_PEOPLE_MAX",
-    "value": 5
+    "value": "5"
   },
   {
     "key": "DORMITORY_POINT_BASE",
-    "value": 1
+    "value": "1"
   },
   {
     "key": "DORMITORY_POINT_RATE",
-    "value": 5
+    "value": "5"
   },
   {
     "key": "DORMITORY_UPGRADE_MAX",
-    "value": 10
+    "value": "10"
   },
   {
     "key": "DORMITORY_USER_POINT_BASE",
-    "value": 5000
+    "value": "5000"
   },
   {
     "key": "ENEMY_DIFFICULTY",
@@ -253,15 +253,15 @@
   },
   {
     "key": "EVENTBATTLE_GACHA_MAX_COUNT",
-    "value": 30
+    "value": "30"
   },
   {
     "key": "EVENTBATTLE_GACHA_MIN_COUNT",
-    "value": 10
+    "value": "10"
   },
   {
     "key": "FIRST_PAYMENT_OPEN",
-    "value": 1
+    "value": "1"
   },
   {
     "key": "FIRST_START_BULLET",
@@ -337,7 +337,7 @@
   },
   {
     "key": "GUILD_EMPLOY_LIMIT",
-    "value": 5
+    "value": "5"
   },
   {
     "key": "GUILD_EXPIRE_COUNT",
@@ -417,7 +417,7 @@
   },
   {
     "key": "GUILD_OCCUPY_TELEPORT_PRICE",
-    "value": 50
+    "value": "50"
   },
   {
     "key": "GUILD_OCCUPY_TIE_REWARD",
@@ -441,7 +441,7 @@
   },
   {
     "key": "GUILD_PREMIUM_EMPLOY",
-    "value": 10
+    "value": "10"
   },
   {
     "key": "GUILD_REQUEST_COUNT_LIMIT",
@@ -497,23 +497,23 @@
   },
   {
     "key": "NO_GET_COMMANDER_LEVEL",
-    "value": 140
+    "value": "140"
   },
   {
     "key": "NO_GET_COMMANDER_SKILL01",
-    "value": 140
+    "value": "140"
   },
   {
     "key": "NO_GET_COMMANDER_SKILL02",
-    "value": 140
+    "value": "140"
   },
   {
     "key": "NO_GET_COMMANDER_SKILL03",
-    "value": 139
+    "value": "139"
   },
   {
     "key": "NO_GET_COMMANDER_SKILL04",
-    "value": 131
+    "value": "131"
   },
   {
     "key": "NO_GET_COMMANDER_STAR",
@@ -545,7 +545,7 @@
   },
   {
     "key": "RETURNUSER_DATE",
-    "value": 28
+    "value": "28"
   },
   {
     "key": "SENDBOX_LIST_LIMIT_TIME",
@@ -565,15 +565,15 @@
   },
   {
     "key": "SKY_SHOP_RESET_TIME",
-    "value": 3600
+    "value": "3600"
   },
   {
     "key": "STRONGEST_REWARD",
-    "value": 88002
+    "value": "88002"
   },
   {
     "key": "SUPPLEMENT_LAND_OPEN_LEVEL",
-    "value": 1
+    "value": "1"
   },
   {
     "key": "TREASURE_COSTUME_RATE",
@@ -593,23 +593,23 @@
   },
   {
     "key": "VIPGRADE_ANNIHILATE_RESET",
-    "value": 11
+    "value": "11"
   },
   {
     "key": "VIPGRADE_BATTLESHOP_REFRESH",
-    "value": 13
+    "value": "13"
   },
   {
     "key": "VIPGRADE_DISPATCH_GOLD",
-    "value": 7
+    "value": "7"
   },
   {
     "key": "VIPGRADE_GACHA_DELAY_FREE",
-    "value": 3
+    "value": "3"
   },
   {
     "key": "VIPGRADE_GACHA_FREE_PREMIUM",
-    "value": 2
+    "value": "2"
   },
   {
     "key": "VIPGRADE_GACHA_FREE_PREMIUM_TIME",
@@ -637,7 +637,7 @@
   },
   {
     "key": "TRANSCRNDENCE_MEDALS_VALUE",
-    "value": 10
+    "value": "10"
   },
   {
     "key": "TRANSCRNDENCE_MEDALS_VALUE_VIP",
@@ -645,27 +645,27 @@
   },
   {
     "key": "WEAPON_ECHANT_TICKET_ARMOR",
-    "value": 60005
+    "value": "60005"
   },
   {
     "key": "WEAPON_ECHANT_TICKET_CORE",
-    "value": 60002
+    "value": "60002"
   },
   {
     "key": "WEAPON_ECHANT_TICKET_DEFAULT",
-    "value": 60001
+    "value": "60001"
   },
   {
     "key": "WEAPON_ECHANT_TICKET_SHIELD",
-    "value": 60004
+    "value": "60004"
   },
   {
     "key": "WEAPON_ECHANT_TICKET_SPECIAL",
-    "value": 60006
+    "value": "60006"
   },
   {
     "key": "WEAPON_ECHANT_TICKET_WEAPON",
-    "value": 60003
+    "value": "60003"
   },
   {
     "key": "WEAPON_INVENTORY_ADD",
@@ -749,6 +749,6 @@
   },
   {
     "key": "INFINITY_TOWER_PAGE_COUNT",
-    "value": 25
+    "value": "25"
   }
 ]

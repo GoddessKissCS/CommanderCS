@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
-using CommanderCS.Database.Schemes;
-using static CommanderCS.Cryptography.Crypto;
+﻿using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
+using CommanderCSLibrary.Cryptography;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Sign
 {
@@ -10,13 +11,10 @@ namespace CommanderCS.Host.Handlers.Sign
     {
         public override object Handle(SignInRequest @params)
         {
-            ResponsePacket response = new();
-
             ErrorCode code = RequestSignIn(@params.uid, @params.pwd, out SignInP SignInP);
 
             if (code != ErrorCode.Success)
             {
-
                 ErrorPacket error = new()
                 {
                     Id = BasePacket.Id,
@@ -26,17 +24,18 @@ namespace CommanderCS.Host.Handlers.Sign
                 return error;
             }
 
-            response.Id = BasePacket.Id;
-            response.Result = SignInP;
-
-            DatabaseManager.Account.UpdateLoginTime(@params.uid);
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = SignInP
+            };
 
             return response;
         }
 
         private static ErrorCode RequestSignIn(string AccountName, string password, out SignInP signInP)
         {
-            var password_hash = ComputeSha256Hash(password);
+            var password_hash = Crypto.ComputeSha256Hash(password);
 
             signInP = new();
             if (!DatabaseManager.Account.AccountExists(AccountName))

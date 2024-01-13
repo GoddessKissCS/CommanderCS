@@ -1,162 +1,477 @@
 [
   {
-    "idx": 1,
+    "idx": "1",
     "positionx": 250,
     "positiony": 230,
     "guildpoint": 5,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 250.0,
+      "y": 230.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.73593103885650635,
+        "y": 0.67705655097961426,
+        "z": 0.0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.0000001192092896
+      },
+      "magnitude": 339.70574951171875,
+      "sqrMagnitude": 115400.0
+    }
   },
   {
-    "idx": 2,
+    "idx": "2",
     "positionx": 403,
     "positiony": 373,
     "guildpoint": 10,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 403.0,
+      "y": 373.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.73389518260955811,
+        "y": 0.67926275730133057,
+        "z": 0.0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.0
+      },
+      "magnitude": 549.124755859375,
+      "sqrMagnitude": 301538.0
+    }
   },
   {
-    "idx": 3,
+    "idx": "3",
     "positionx": 170,
     "positiony": 520,
     "guildpoint": 15,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 170.0,
+      "y": 520.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.31073886156082153,
+        "y": 0.95049530267715454,
+        "z": 0.0,
+        "normalized": {
+          "x": 0.31073889136314392,
+          "y": 0.95049536228179932,
+          "z": 0.0,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1.0000001192092896
+        },
+        "magnitude": 0.99999994039535522,
+        "sqrMagnitude": 0.99999994039535522
+      },
+      "magnitude": 547.08319091796875,
+      "sqrMagnitude": 299300.0
+    }
   },
   {
-    "idx": 4,
+    "idx": "4",
     "positionx": 360,
     "positiony": 625,
     "guildpoint": 20,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 360.0,
+      "y": 625.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.49912220239639282,
+        "y": 0.8665316104888916,
+        "z": 0.0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.0
+      },
+      "magnitude": 721.2662353515625,
+      "sqrMagnitude": 520225.0
+    }
   },
   {
-    "idx": 5,
+    "idx": "5",
     "positionx": 591,
     "positiony": 577,
     "guildpoint": 25,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 591.0,
+      "y": 577.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.71553099155426025,
+        "y": 0.6985810399055481,
+        "z": 0.0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.0000001192092896
+      },
+      "magnitude": 825.96002197265625,
+      "sqrMagnitude": 682210.0
+    }
   },
   {
-    "idx": 6,
+    "idx": "6",
     "positionx": 654,
     "positiony": 368,
     "guildpoint": 30,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 654.0,
+      "y": 368.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.87150430679321289,
+        "y": 0.49038773775100708,
+        "z": 0.0,
+        "normalized": {
+          "x": 0.87150436639785767,
+          "y": 0.49038776755332947,
+          "z": 0.0,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1.0
+        },
+        "magnitude": 0.99999994039535522,
+        "sqrMagnitude": 0.99999988079071045
+      },
+      "magnitude": 750.42657470703125,
+      "sqrMagnitude": 563140.0
+    }
   },
   {
-    "idx": 7,
+    "idx": "7",
     "positionx": 659,
     "positiony": 174,
     "guildpoint": 35,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 659.0,
+      "y": 174.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.9668651819229126,
+        "y": 0.25528761744499207,
+        "z": 0.0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.0
+      },
+      "magnitude": 681.58416748046875,
+      "sqrMagnitude": 464557.0
+    }
   },
   {
-    "idx": 8,
+    "idx": "8",
     "positionx": 934,
     "positiony": 240,
     "guildpoint": 40,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 934.0,
+      "y": 240.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.96853578090667725,
+        "y": 0.24887429177761078,
+        "z": 0.0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.0
+      },
+      "magnitude": 964.34228515625,
+      "sqrMagnitude": 929956.0
+    }
   },
   {
-    "idx": 9,
+    "idx": "9",
     "positionx": 886,
     "positiony": 493,
     "guildpoint": 45,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 886.0,
+      "y": 493.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.87383145093917847,
+        "y": 0.48622900247573853,
+        "z": 0.0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.0
+      },
+      "magnitude": 1013.925537109375,
+      "sqrMagnitude": 1028045.0
+    }
   },
   {
-    "idx": 10,
+    "idx": "10",
     "positionx": 1068,
     "positiony": 564,
     "guildpoint": 50,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 1068.0,
+      "y": 564.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.88427084684371948,
+        "y": 0.46697446703910828,
+        "z": 0.0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.0000001192092896
+      },
+      "magnitude": 1207.7747802734375,
+      "sqrMagnitude": 1458720.0
+    }
   },
   {
-    "idx": 11,
+    "idx": "11",
     "positionx": 1530,
     "positiony": 532,
     "guildpoint": 55,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 1530.0,
+      "y": 532.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.94453012943267822,
+        "y": 0.328424870967865,
+        "z": 0.0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.0000001192092896
+      },
+      "magnitude": 1619.85302734375,
+      "sqrMagnitude": 2623924.0
+    }
   },
   {
-    "idx": 12,
+    "idx": "12",
     "positionx": 1683,
     "positiony": 615,
     "guildpoint": 60,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 1683.0,
+      "y": 615.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.9392545223236084,
+        "y": 0.34322136640548706,
+        "z": 0.0,
+        "normalized": {
+          "x": 0.93925458192825317,
+          "y": 0.34322139620780945,
+          "z": 0.0,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1.0000001192092896
+        },
+        "magnitude": 0.99999994039535522,
+        "sqrMagnitude": 0.99999994039535522
+      },
+      "magnitude": 1791.8465576171875,
+      "sqrMagnitude": 3210714.0
+    }
   },
   {
-    "idx": 13,
+    "idx": "13",
     "positionx": 1450,
     "positiony": 368,
     "guildpoint": 65,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 1450.0,
+      "y": 368.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.96927124261856079,
+        "y": 0.24599435925483704,
+        "z": 0.0,
+        "normalized": {
+          "x": 0.96927130222320557,
+          "y": 0.24599437415599823,
+          "z": 0.0,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1.0000001192092896
+        },
+        "magnitude": 0.99999994039535522,
+        "sqrMagnitude": 0.99999994039535522
+      },
+      "magnitude": 1495.96923828125,
+      "sqrMagnitude": 2237924.0
+    }
   },
   {
-    "idx": 14,
+    "idx": "14",
     "positionx": 1640,
     "positiony": 169,
     "guildpoint": 70,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 1640.0,
+      "y": 169.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.99473243951797485,
+        "y": 0.10250595957040787,
+        "z": 0.0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.0000001192092896
+      },
+      "magnitude": 1648.6845703125,
+      "sqrMagnitude": 2718161.0
+    }
   },
   {
-    "idx": 15,
+    "idx": "15",
     "positionx": 1871,
     "positiony": 310,
     "guildpoint": 75,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 1871.0,
+      "y": 310.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.98655027151107788,
+        "y": 0.16345834732055664,
+        "z": 0.0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.0000001192092896
+      },
+      "magnitude": 1896.507568359375,
+      "sqrMagnitude": 3596741.0
+    }
   },
   {
-    "idx": 16,
+    "idx": "16",
     "positionx": 1934,
     "positiony": 559,
     "guildpoint": 80,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 1934.0,
+      "y": 559.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.96067589521408081,
+        "y": 0.27767211198806763,
+        "z": 0.0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.0
+      },
+      "magnitude": 2013.1658935546875,
+      "sqrMagnitude": 4052837.0
+    }
   },
   {
-    "idx": 17,
+    "idx": "17",
     "positionx": 1939,
     "positiony": 650,
     "guildpoint": 85,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 1939.0,
+      "y": 650.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.94814401865005493,
+        "y": 0.31784096360206604,
+        "z": 0.0,
+        "normalized": {
+          "x": 0.94814407825469971,
+          "y": 0.31784099340438843,
+          "z": 0.0,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1.0000001192092896
+        },
+        "magnitude": 0.99999994039535522,
+        "sqrMagnitude": 0.99999994039535522
+      },
+      "magnitude": 2045.0479736328125,
+      "sqrMagnitude": 4182221.0
+    }
   },
   {
-    "idx": 18,
+    "idx": "18",
     "positionx": 2214,
     "positiony": 512,
     "guildpoint": 90,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 2214.0,
+      "y": 512.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.97428727149963379,
+        "y": 0.22530943155288696,
+        "z": 0.0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.0
+      },
+      "magnitude": 2272.430419921875,
+      "sqrMagnitude": 5163940.0
+    }
   },
   {
-    "idx": 19,
+    "idx": "19",
     "positionx": 2166,
     "positiony": 302,
     "guildpoint": 95,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 2166.0,
+      "y": 302.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.99041944742202759,
+        "y": 0.13809172809123993,
+        "z": 0.0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.0
+      },
+      "magnitude": 2186.9521484375,
+      "sqrMagnitude": 4782760.0
+    }
   },
   {
-    "idx": 20,
+    "idx": "20",
     "positionx": 2348,
     "positiony": 164,
     "guildpoint": 100,
     "battlemap": "land_needleleaf",
-    "enemymap": "land_needleleaf"
+    "enemymap": "land_needleleaf",
+    "position": {
+      "x": 2348.0,
+      "y": 164.0,
+      "z": 0.0,
+      "normalized": {
+        "x": 0.99756962060928345,
+        "y": 0.069676920771598816,
+        "z": 0.0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.0
+      },
+      "magnitude": 2353.720458984375,
+      "sqrMagnitude": 5540000.0
+    }
   }
 ]

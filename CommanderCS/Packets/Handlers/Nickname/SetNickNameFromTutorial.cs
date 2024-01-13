@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
-using CommanderCS.Utils;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Nickname
 {
@@ -9,14 +9,11 @@ namespace CommanderCS.Host.Handlers.Nickname
     {
         public override object Handle(SetNickNameFromTutorialRequest @params)
         {
-            ErrorCode code = RequestNicknameAfterTutorial(GetSession(), @params.Unm);
+            var session = GetSession();
 
-            ResponsePacket response = new()
-            {
-                Id = BasePacket.Id,
-            };
+            ErrorCode code = DatabaseManager.GameProfile.RequestNicknameAfterTutorial(session, @params.Unm);
 
-            if (code == ErrorCode.InappropriateWords || code == ErrorCode.AlreadyInUse)
+            if (code != ErrorCode.Success)
             {
                 ErrorPacket error = new()
                 {
@@ -27,48 +24,55 @@ namespace CommanderCS.Host.Handlers.Nickname
                 return error;
             }
 
+            //var user = getusergameprofile();
+
+            //var goods = databasemanager.gameprofile.userresources2resource(user.userresources);
+            //var battlestats = databasemanager.gameprofile.userstatisticsfromsession(session);
+            //var guild = databasemanager.guild.requestguild(user.guildid, user.uno);
+
+            //userinformationresponse userinformationresponse = new()
+            //{
+            //    goodsinfo = goods,
+            //    battlestatisticsinfo = battlestats,
+            //    uno = user.uno.tostring(),
+            //    stage = user.laststage,
+            //    notification = user.notifaction,
+
+            //    fooddata = user.userinventory.fooddata,
+            //    eventresourcedata = user.userinventory.eventresourcedata,
+            //    groupitemdata = user.userinventory.groupitemdata,
+            //    itemdata = user.userinventory.itemdata,
+            //    medaldata = user.userinventory.medaldata,
+            //    partdata = user.userinventory.partdata,
+
+            //    resetremain = user.resetdatetime, // should be set?
+            //    / pronabably set it globally ?
+
+            //    equipitem = user.userinventory.equipitem,
+
+            //    donhavecommcostumedata = user.userinventory.donhavecommcostumedata,
+            //    completerewardgroupidx = user.completerewardgroupidx,
+            //    guildinfo = guild,
+            //    sweepcleardata = user.battledata.sweepcleardata,
+            //    predeck = user.predeck,
+            //    weaponlist = user.userinventory.weaponlist,
+            //    __commanderinfo = jobject.fromobject(user.commanderdata),
+            //};
+
+            //string result = JsonConvert.SerializeObject(userInformationResponse);
+
             SetNickNameResponse SetNickNameF1 = new()
             {
                 step = @params.Step,
             };
 
-            response.Result = SetNickNameF1;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = SetNickNameF1,
+            };
 
             return response;
-        }
-
-        internal static ErrorCode RequestNicknameAfterTutorial(string sess, string nickname)
-        {
-            if (Misc.NameCheck(nickname))
-            {
-                return ErrorCode.InappropriateWords;
-            }
-
-            var user = DatabaseManager.GameProfile.FindByNick(nickname);
-
-            if (user == null)
-            {
-                var userGameProfile = DatabaseManager.GameProfile.FindBySession(sess);
-
-                if (userGameProfile.TutorialData.skip = true)
-                {
-                    DatabaseManager.GameProfile.UpdateTutorialStep(sess, 12);
-                }
-                else
-                {
-                    DatabaseManager.GameProfile.UpdateTutorialStep(sess, 2);
-                }
-
-                DatabaseManager.GameProfile.UpdateNickName(sess, nickname);
-
-                return ErrorCode.Success;
-            }
-            else if (user.UserResources.nickname == nickname)
-            {
-                return ErrorCode.AlreadyInUse;
-            }
-
-            return 0;
         }
 
         internal class SetNickNameResponse

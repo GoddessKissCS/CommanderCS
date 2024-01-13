@@ -1,5 +1,6 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Profile
 {
@@ -9,7 +10,7 @@ namespace CommanderCS.Host.Handlers.Profile
         public override object Handle(ChangeThumbnailRequest @params)
         {
             string session = GetSession();
-            
+
             var user = GetUserGameProfile();
 
             bool success = false;
@@ -18,7 +19,6 @@ namespace CommanderCS.Host.Handlers.Profile
             {
                 success = DatabaseManager.GameProfile.ChangeThumbnailId(session, @params.idx);
             }
-
 
             ResponsePacket response = new()
             {

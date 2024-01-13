@@ -1,17 +1,17 @@
-using CommanderCS.Database;
+using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-
     [Packet(Id = Method.LeaveGuild)]
     public class LeaveGuild : BaseMethodHandler<LeaveGuildRequest>
     {
         public override object Handle(LeaveGuildRequest @params)
         {
-			var user = GetUserGameProfile();
+            var user = GetUserGameProfile();
 
-			DatabaseManager.Guild.QuitGuild(user.GuildId, user.Uno);
+            DatabaseManager.Guild.QuitGuild(user.GuildId, user.Uno);
 
             ResponsePacket response = new()
             {
@@ -22,6 +22,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             return response;
         }
     }
+
     public class LeaveGuildRequest
     {
     }

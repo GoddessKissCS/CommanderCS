@@ -1,506 +1,578 @@
 [
   {
     "idx": 2011,
-    "worldMap": 1,
+    "worldMap": "1",
     "minClass": 1,
     "searchTime": 1,
-    "searchExp": 50
+    "searchExp": 50,
+    "worldMapDescription": null
   },
   {
     "idx": 2012,
-    "worldMap": 1,
+    "worldMap": "1",
     "minClass": 1,
     "searchTime": 6,
-    "searchExp": 300
+    "searchExp": 300,
+    "worldMapDescription": null
   },
   {
     "idx": 2013,
-    "worldMap": 1,
+    "worldMap": "1",
     "minClass": 1,
     "searchTime": 12,
-    "searchExp": 600
+    "searchExp": 600,
+    "worldMapDescription": null
   },
   {
     "idx": 2021,
-    "worldMap": 2,
+    "worldMap": "2",
     "minClass": 1,
     "searchTime": 1,
-    "searchExp": 100
+    "searchExp": 100,
+    "worldMapDescription": null
   },
   {
     "idx": 2022,
-    "worldMap": 2,
+    "worldMap": "2",
     "minClass": 1,
     "searchTime": 6,
-    "searchExp": 600
+    "searchExp": 600,
+    "worldMapDescription": null
   },
   {
     "idx": 2023,
-    "worldMap": 2,
+    "worldMap": "2",
     "minClass": 1,
     "searchTime": 12,
-    "searchExp": 1200
+    "searchExp": 1200,
+    "worldMapDescription": null
   },
   {
     "idx": 2031,
-    "worldMap": 3,
+    "worldMap": "3",
     "minClass": 2,
     "searchTime": 1,
-    "searchExp": 150
+    "searchExp": 150,
+    "worldMapDescription": null
   },
   {
     "idx": 2032,
-    "worldMap": 3,
+    "worldMap": "3",
     "minClass": 2,
     "searchTime": 6,
-    "searchExp": 900
+    "searchExp": 900,
+    "worldMapDescription": null
   },
   {
     "idx": 2033,
-    "worldMap": 3,
+    "worldMap": "3",
     "minClass": 2,
     "searchTime": 12,
-    "searchExp": 1800
+    "searchExp": 1800,
+    "worldMapDescription": null
   },
   {
     "idx": 2041,
-    "worldMap": 4,
+    "worldMap": "4",
     "minClass": 4,
     "searchTime": 1,
-    "searchExp": 200
+    "searchExp": 200,
+    "worldMapDescription": null
   },
   {
     "idx": 2042,
-    "worldMap": 4,
+    "worldMap": "4",
     "minClass": 4,
     "searchTime": 6,
-    "searchExp": 1200
+    "searchExp": 1200,
+    "worldMapDescription": null
   },
   {
     "idx": 2043,
-    "worldMap": 4,
+    "worldMap": "4",
     "minClass": 4,
     "searchTime": 12,
-    "searchExp": 2400
+    "searchExp": 2400,
+    "worldMapDescription": null
   },
   {
     "idx": 2051,
-    "worldMap": 5,
+    "worldMap": "5",
     "minClass": 5,
     "searchTime": 1,
-    "searchExp": 250
+    "searchExp": 250,
+    "worldMapDescription": null
   },
   {
     "idx": 2052,
-    "worldMap": 5,
+    "worldMap": "5",
     "minClass": 5,
     "searchTime": 6,
-    "searchExp": 1500
+    "searchExp": 1500,
+    "worldMapDescription": null
   },
   {
     "idx": 2053,
-    "worldMap": 5,
+    "worldMap": "5",
     "minClass": 5,
     "searchTime": 12,
-    "searchExp": 3000
+    "searchExp": 3000,
+    "worldMapDescription": null
   },
   {
     "idx": 2061,
-    "worldMap": 6,
+    "worldMap": "6",
     "minClass": 6,
     "searchTime": 1,
-    "searchExp": 300
+    "searchExp": 300,
+    "worldMapDescription": null
   },
   {
     "idx": 2062,
-    "worldMap": 6,
+    "worldMap": "6",
     "minClass": 6,
     "searchTime": 6,
-    "searchExp": 1800
+    "searchExp": 1800,
+    "worldMapDescription": null
   },
   {
     "idx": 2063,
-    "worldMap": 6,
+    "worldMap": "6",
     "minClass": 6,
     "searchTime": 12,
-    "searchExp": 3600
+    "searchExp": 3600,
+    "worldMapDescription": null
   },
   {
     "idx": 2071,
-    "worldMap": 7,
+    "worldMap": "7",
     "minClass": 7,
     "searchTime": 1,
-    "searchExp": 350
+    "searchExp": 350,
+    "worldMapDescription": null
   },
   {
     "idx": 2072,
-    "worldMap": 7,
+    "worldMap": "7",
     "minClass": 7,
     "searchTime": 6,
-    "searchExp": 2100
+    "searchExp": 2100,
+    "worldMapDescription": null
   },
   {
     "idx": 2073,
-    "worldMap": 7,
+    "worldMap": "7",
     "minClass": 7,
     "searchTime": 12,
-    "searchExp": 4200
+    "searchExp": 4200,
+    "worldMapDescription": null
   },
   {
     "idx": 2081,
-    "worldMap": 8,
+    "worldMap": "8",
     "minClass": 8,
     "searchTime": 1,
-    "searchExp": 400
+    "searchExp": 400,
+    "worldMapDescription": null
   },
   {
     "idx": 2082,
-    "worldMap": 8,
+    "worldMap": "8",
     "minClass": 8,
     "searchTime": 6,
-    "searchExp": 2400
+    "searchExp": 2400,
+    "worldMapDescription": null
   },
   {
     "idx": 2083,
-    "worldMap": 8,
+    "worldMap": "8",
     "minClass": 8,
     "searchTime": 12,
-    "searchExp": 4800
+    "searchExp": 4800,
+    "worldMapDescription": null
   },
   {
     "idx": 2091,
-    "worldMap": 9,
+    "worldMap": "9",
     "minClass": 9,
     "searchTime": 1,
-    "searchExp": 450
+    "searchExp": 450,
+    "worldMapDescription": null
   },
   {
     "idx": 2092,
-    "worldMap": 9,
+    "worldMap": "9",
     "minClass": 9,
     "searchTime": 6,
-    "searchExp": 2700
+    "searchExp": 2700,
+    "worldMapDescription": null
   },
   {
     "idx": 2093,
-    "worldMap": 9,
+    "worldMap": "9",
     "minClass": 9,
     "searchTime": 12,
-    "searchExp": 5400
+    "searchExp": 5400,
+    "worldMapDescription": null
   },
   {
     "idx": 2101,
-    "worldMap": 10,
+    "worldMap": "10",
     "minClass": 10,
     "searchTime": 1,
-    "searchExp": 500
+    "searchExp": 500,
+    "worldMapDescription": null
   },
   {
     "idx": 2102,
-    "worldMap": 10,
+    "worldMap": "10",
     "minClass": 10,
     "searchTime": 6,
-    "searchExp": 3000
+    "searchExp": 3000,
+    "worldMapDescription": null
   },
   {
     "idx": 2103,
-    "worldMap": 10,
+    "worldMap": "10",
     "minClass": 10,
     "searchTime": 12,
-    "searchExp": 6000
+    "searchExp": 6000,
+    "worldMapDescription": null
   },
   {
     "idx": 2111,
-    "worldMap": 11,
+    "worldMap": "11",
     "minClass": 13,
     "searchTime": 1,
-    "searchExp": 550
+    "searchExp": 550,
+    "worldMapDescription": null
   },
   {
     "idx": 2112,
-    "worldMap": 11,
+    "worldMap": "11",
     "minClass": 13,
     "searchTime": 6,
-    "searchExp": 3300
+    "searchExp": 3300,
+    "worldMapDescription": null
   },
   {
     "idx": 2113,
-    "worldMap": 11,
+    "worldMap": "11",
     "minClass": 13,
     "searchTime": 12,
-    "searchExp": 6600
+    "searchExp": 6600,
+    "worldMapDescription": null
   },
   {
     "idx": 2121,
-    "worldMap": 12,
+    "worldMap": "12",
     "minClass": 14,
     "searchTime": 1,
-    "searchExp": 600
+    "searchExp": 600,
+    "worldMapDescription": null
   },
   {
     "idx": 2122,
-    "worldMap": 12,
+    "worldMap": "12",
     "minClass": 14,
     "searchTime": 6,
-    "searchExp": 3600
+    "searchExp": 3600,
+    "worldMapDescription": null
   },
   {
     "idx": 2123,
-    "worldMap": 12,
+    "worldMap": "12",
     "minClass": 14,
     "searchTime": 12,
-    "searchExp": 7200
+    "searchExp": 7200,
+    "worldMapDescription": null
   },
   {
     "idx": 2131,
-    "worldMap": 13,
+    "worldMap": "13",
     "minClass": 15,
     "searchTime": 1,
-    "searchExp": 650
+    "searchExp": 650,
+    "worldMapDescription": null
   },
   {
     "idx": 2132,
-    "worldMap": 13,
+    "worldMap": "13",
     "minClass": 15,
     "searchTime": 6,
-    "searchExp": 3900
+    "searchExp": 3900,
+    "worldMapDescription": null
   },
   {
     "idx": 2133,
-    "worldMap": 13,
+    "worldMap": "13",
     "minClass": 15,
     "searchTime": 12,
-    "searchExp": 7800
+    "searchExp": 7800,
+    "worldMapDescription": null
   },
   {
     "idx": 2134,
-    "worldMap": 14,
+    "worldMap": "14",
     "minClass": 16,
     "searchTime": 1,
-    "searchExp": 700
+    "searchExp": 700,
+    "worldMapDescription": null
   },
   {
     "idx": 2135,
-    "worldMap": 14,
+    "worldMap": "14",
     "minClass": 16,
     "searchTime": 6,
-    "searchExp": 4200
+    "searchExp": 4200,
+    "worldMapDescription": null
   },
   {
     "idx": 2136,
-    "worldMap": 14,
+    "worldMap": "14",
     "minClass": 16,
     "searchTime": 12,
-    "searchExp": 8400
+    "searchExp": 8400,
+    "worldMapDescription": null
   },
   {
     "idx": 2137,
-    "worldMap": 15,
+    "worldMap": "15",
     "minClass": 17,
     "searchTime": 1,
-    "searchExp": 750
+    "searchExp": 750,
+    "worldMapDescription": null
   },
   {
     "idx": 2138,
-    "worldMap": 15,
+    "worldMap": "15",
     "minClass": 17,
     "searchTime": 6,
-    "searchExp": 4500
+    "searchExp": 4500,
+    "worldMapDescription": null
   },
   {
     "idx": 2139,
-    "worldMap": 15,
+    "worldMap": "15",
     "minClass": 17,
     "searchTime": 12,
-    "searchExp": 9000
+    "searchExp": 9000,
+    "worldMapDescription": null
   },
   {
     "idx": 2140,
-    "worldMap": 16,
+    "worldMap": "16",
     "minClass": 18,
     "searchTime": 1,
-    "searchExp": 800
+    "searchExp": 800,
+    "worldMapDescription": null
   },
   {
     "idx": 2141,
-    "worldMap": 16,
+    "worldMap": "16",
     "minClass": 18,
     "searchTime": 6,
-    "searchExp": 4800
+    "searchExp": 4800,
+    "worldMapDescription": null
   },
   {
     "idx": 2142,
-    "worldMap": 16,
+    "worldMap": "16",
     "minClass": 18,
     "searchTime": 12,
-    "searchExp": 9600
+    "searchExp": 9600,
+    "worldMapDescription": null
   },
   {
     "idx": 2143,
-    "worldMap": 17,
+    "worldMap": "17",
     "minClass": 19,
     "searchTime": 1,
-    "searchExp": 850
+    "searchExp": 850,
+    "worldMapDescription": null
   },
   {
     "idx": 2144,
-    "worldMap": 17,
+    "worldMap": "17",
     "minClass": 19,
     "searchTime": 6,
-    "searchExp": 5100
+    "searchExp": 5100,
+    "worldMapDescription": null
   },
   {
     "idx": 2145,
-    "worldMap": 17,
+    "worldMap": "17",
     "minClass": 19,
     "searchTime": 12,
-    "searchExp": 10200
+    "searchExp": 10200,
+    "worldMapDescription": null
   },
   {
     "idx": 2146,
-    "worldMap": 18,
+    "worldMap": "18",
     "minClass": 20,
     "searchTime": 1,
-    "searchExp": 900
+    "searchExp": 900,
+    "worldMapDescription": null
   },
   {
     "idx": 2147,
-    "worldMap": 18,
+    "worldMap": "18",
     "minClass": 20,
     "searchTime": 6,
-    "searchExp": 5400
+    "searchExp": 5400,
+    "worldMapDescription": null
   },
   {
     "idx": 2148,
-    "worldMap": 18,
+    "worldMap": "18",
     "minClass": 20,
     "searchTime": 12,
-    "searchExp": 10800
+    "searchExp": 10800,
+    "worldMapDescription": null
   },
   {
     "idx": 3001,
-    "worldMap": 1,
+    "worldMap": "1",
     "minClass": 1,
     "searchTime": 22,
-    "searchExp": 1100
+    "searchExp": 1100,
+    "worldMapDescription": null
   },
   {
     "idx": 3002,
-    "worldMap": 2,
+    "worldMap": "2",
     "minClass": 1,
     "searchTime": 22,
-    "searchExp": 2200
+    "searchExp": 2200,
+    "worldMapDescription": null
   },
   {
     "idx": 3003,
-    "worldMap": 3,
+    "worldMap": "3",
     "minClass": 2,
     "searchTime": 22,
-    "searchExp": 3300
+    "searchExp": 3300,
+    "worldMapDescription": null
   },
   {
     "idx": 3004,
-    "worldMap": 4,
+    "worldMap": "4",
     "minClass": 4,
     "searchTime": 22,
-    "searchExp": 4400
+    "searchExp": 4400,
+    "worldMapDescription": null
   },
   {
     "idx": 3005,
-    "worldMap": 5,
+    "worldMap": "5",
     "minClass": 5,
     "searchTime": 22,
-    "searchExp": 5500
+    "searchExp": 5500,
+    "worldMapDescription": null
   },
   {
     "idx": 3006,
-    "worldMap": 6,
+    "worldMap": "6",
     "minClass": 6,
     "searchTime": 22,
-    "searchExp": 6600
+    "searchExp": 6600,
+    "worldMapDescription": null
   },
   {
     "idx": 3007,
-    "worldMap": 7,
+    "worldMap": "7",
     "minClass": 7,
     "searchTime": 22,
-    "searchExp": 7700
+    "searchExp": 7700,
+    "worldMapDescription": null
   },
   {
     "idx": 3008,
-    "worldMap": 8,
+    "worldMap": "8",
     "minClass": 8,
     "searchTime": 22,
-    "searchExp": 8800
+    "searchExp": 8800,
+    "worldMapDescription": null
   },
   {
     "idx": 3009,
-    "worldMap": 9,
+    "worldMap": "9",
     "minClass": 9,
     "searchTime": 22,
-    "searchExp": 9900
+    "searchExp": 9900,
+    "worldMapDescription": null
   },
   {
     "idx": 3010,
-    "worldMap": 10,
+    "worldMap": "10",
     "minClass": 10,
     "searchTime": 22,
-    "searchExp": 11000
+    "searchExp": 11000,
+    "worldMapDescription": null
   },
   {
     "idx": 3011,
-    "worldMap": 11,
+    "worldMap": "11",
     "minClass": 13,
     "searchTime": 22,
-    "searchExp": 12100
+    "searchExp": 12100,
+    "worldMapDescription": null
   },
   {
     "idx": 3012,
-    "worldMap": 12,
+    "worldMap": "12",
     "minClass": 14,
     "searchTime": 22,
-    "searchExp": 13200
+    "searchExp": 13200,
+    "worldMapDescription": null
   },
   {
     "idx": 3013,
-    "worldMap": 13,
+    "worldMap": "13",
     "minClass": 15,
     "searchTime": 22,
-    "searchExp": 14300
+    "searchExp": 14300,
+    "worldMapDescription": null
   },
   {
     "idx": 3014,
-    "worldMap": 14,
+    "worldMap": "14",
     "minClass": 16,
     "searchTime": 22,
-    "searchExp": 15400
+    "searchExp": 15400,
+    "worldMapDescription": null
   },
   {
     "idx": 3015,
-    "worldMap": 15,
+    "worldMap": "15",
     "minClass": 17,
     "searchTime": 22,
-    "searchExp": 16500
+    "searchExp": 16500,
+    "worldMapDescription": null
   },
   {
     "idx": 3016,
-    "worldMap": 16,
+    "worldMap": "16",
     "minClass": 18,
     "searchTime": 22,
-    "searchExp": 17600
+    "searchExp": 17600,
+    "worldMapDescription": null
   },
   {
     "idx": 3017,
-    "worldMap": 17,
+    "worldMap": "17",
     "minClass": 19,
     "searchTime": 22,
-    "searchExp": 18700
+    "searchExp": 18700,
+    "worldMapDescription": null
   },
   {
     "idx": 3018,
-    "worldMap": 18,
+    "worldMap": "18",
     "minClass": 20,
     "searchTime": 22,
-    "searchExp": 19800
+    "searchExp": 19800,
+    "worldMapDescription": null
   }
 ]

@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
-using CommanderCS.ExcelReader;
-using CommanderCS.Protocols;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
+
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Commander
 {
@@ -10,17 +11,15 @@ namespace CommanderCS.Host.Handlers.Commander
     {
         public override object Handle(CommanderRankUpRequest @params)
         {
-            ResponsePacket response = new();
-
             string session = GetSession();
-
             var user = GetUserGameProfile();
+            var rg = GetRegulation();
 
             string cid = @params.cid.ToString();
 
             if (user.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
             {
-                var commanderRankData = CommanderRankData.GetInstance().FromRank(commander.__rank);
+                var commanderRankData = rg.commanderRankDtbl.FirstOrDefault(x => x.rank == int.Parse(commander.__rank));
 
                 user.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
 
@@ -38,7 +37,7 @@ namespace CommanderCS.Host.Handlers.Commander
                 commander.__rank = (Convert.ToInt32(commander.__rank) + 1).ToString();
                 commander.medl = commanderMedals;
 
-                commanderRankData = CommanderRankData.GetInstance().FromRank(commander.__rank);
+                commanderRankData = rg.commanderRankDtbl.FirstOrDefault(x => x.rank == commanderRankData.rank);
 
                 user.UserInventory.medalData[cid] = commanderMedals;
                 user.CommanderData[cid] = commander;
@@ -49,13 +48,14 @@ namespace CommanderCS.Host.Handlers.Commander
             {
                 user.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
 
-                var CostumeData = CommanderCostumeData.GetInstance().FromId(cid);
+                var CostumeData = rg.commanderCostumeDtbl.FirstOrDefault(x => x.cid == int.Parse(cid));
 
-                var commanderData = CommanderData.GetInstance().FromId(cid);
+                var commanderData = rg.commanderDtbl.FirstOrDefault(x => x.id == cid);
 
                 if (!TryRecruitCommander(commanderData.grade, ref commanderMedals))
                 {
-                    ErrorPacket error = new() { 
+                    ErrorPacket error = new()
+                    {
                         Id = BasePacket.Id,
                         Error = new() { code = ErrorCode.NotEnoughResources },
                     };
@@ -84,15 +84,20 @@ namespace CommanderCS.Host.Handlers.Commander
 
             var newResources = GetUserGameProfile();
 
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(newResources.UserResources);
+
             CommanderRankUpResponse cmrup = new()
             {
-                rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session),
+                rsoc = rsoc,
                 medl = newResources.UserInventory.medalData,
                 comm = newResources.CommanderData,
             };
 
-            response.Result = cmrup;
-            response.Id = BasePacket.Id;
+            ResponsePacket response = new()
+            {
+                Result = cmrup,
+                Id = BasePacket.Id
+            };
 
             return response;
         }
@@ -147,7 +152,7 @@ namespace CommanderCS.Host.Handlers.Commander
             return true;
         }
 
-        private static UserInformationResponse.Commander CreateCommander(string commanderid, int costumeid, int commanderMedals, int grade)
+        public static UserInformationResponse.Commander CreateCommander(string commanderid, int costumeid, int commanderMedals, int grade)
         {
             UserInformationResponse.Commander __commander = new()
             {
@@ -159,23 +164,23 @@ namespace CommanderCS.Host.Handlers.Commander
                 __cls = "0",
                 __exp = "0",
                 __level = "1",
-                __rank = "" + grade,
+                __rank = grade.ToString(),
                 favorRewardStep = 0,
                 favorStep = 0,
                 currentCostume = costumeid,
-                eventCostume = new() { },
-                equipItemInfo = new() { },
-                equipWeaponInfo = new() { },
+                eventCostume = [],
+                equipItemInfo = [],
+                equipWeaponInfo = [],
                 favorPoint = 0,
                 favr = 0,
                 fvrd = 0,
-                haveCostume = new() { costumeid },
+                haveCostume = [costumeid],
                 id = commanderid,
                 marry = 0,
                 medl = commanderMedals,
 #warning TODO CREATE A ROLE TABLE
                 role = "A",
-                transcendence = new() { 0, 0, 0, 0 },
+                transcendence = [0, 0, 0, 0],
             };
 
             return __commander;

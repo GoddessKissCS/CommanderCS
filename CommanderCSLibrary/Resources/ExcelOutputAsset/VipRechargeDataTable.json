@@ -1,6 +1,6 @@
 [
   {
-    "idx": 101,
+    "idx": "101",
     "type": 1,
     "typeIndex": 5,
     "startVip": 0,
@@ -13,7 +13,7 @@
     "rechargeAmount": 200
   },
   {
-    "idx": 102,
+    "idx": "102",
     "type": 1,
     "typeIndex": 6,
     "startVip": 0,
@@ -26,7 +26,7 @@
     "rechargeAmount": 1
   },
   {
-    "idx": 103,
+    "idx": "103",
     "type": 1,
     "typeIndex": 7,
     "startVip": 8,
@@ -39,7 +39,7 @@
     "rechargeAmount": 5
   },
   {
-    "idx": 105,
+    "idx": "105",
     "type": 1,
     "typeIndex": 9,
     "startVip": 0,
@@ -52,7 +52,7 @@
     "rechargeAmount": 1
   },
   {
-    "idx": 106,
+    "idx": "106",
     "type": 1,
     "typeIndex": 10,
     "startVip": 0,
@@ -65,7 +65,7 @@
     "rechargeAmount": 1
   },
   {
-    "idx": 109,
+    "idx": "109",
     "type": 1,
     "typeIndex": 1003,
     "startVip": 0,
@@ -78,7 +78,7 @@
     "rechargeAmount": 10
   },
   {
-    "idx": 110,
+    "idx": "110",
     "type": 1,
     "typeIndex": 56,
     "startVip": 0,
@@ -91,7 +91,7 @@
     "rechargeAmount": 5
   },
   {
-    "idx": 111,
+    "idx": "111",
     "type": 1,
     "typeIndex": 24,
     "startVip": 0,
@@ -104,7 +104,7 @@
     "rechargeAmount": 1
   },
   {
-    "idx": 201,
+    "idx": "201",
     "type": 2,
     "typeIndex": 1,
     "startVip": 0,
@@ -117,7 +117,7 @@
     "rechargeAmount": 3
   },
   {
-    "idx": 302,
+    "idx": "302",
     "type": 3,
     "typeIndex": 3,
     "startVip": 0,
@@ -130,7 +130,7 @@
     "rechargeAmount": 1
   },
   {
-    "idx": 401,
+    "idx": "401",
     "type": 4,
     "typeIndex": 1,
     "startVip": 0,
@@ -143,7 +143,7 @@
     "rechargeAmount": 1
   },
   {
-    "idx": 601,
+    "idx": "601",
     "type": 6,
     "typeIndex": 1,
     "startVip": 0,
@@ -156,7 +156,7 @@
     "rechargeAmount": 1
   },
   {
-    "idx": 701,
+    "idx": "701",
     "type": 1,
     "typeIndex": 57,
     "startVip": 0,
@@ -169,7 +169,7 @@
     "rechargeAmount": 1
   },
   {
-    "idx": 801,
+    "idx": "801",
     "type": 1,
     "typeIndex": 8001,
     "startVip": 0,

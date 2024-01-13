@@ -1,4 +1,5 @@
-﻿using CommanderCS.Protocols;
+﻿using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Host.Handlers.Gacha
 {
@@ -9,7 +10,7 @@ namespace CommanderCS.Host.Handlers.Gacha
         {
             ResponsePacket response = new();
 
-            Dictionary<string, GachaInformationResponse> test = new();
+            Dictionary<string, GachaInformationResponse> test = [];
 
             GachaInformationResponse w = new()
             {

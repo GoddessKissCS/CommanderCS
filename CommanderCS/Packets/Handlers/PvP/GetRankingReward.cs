@@ -1,7 +1,53 @@
+using CommanderCS.MongoDB;
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.PvP
 {
-    public class GetRankingReward
+    [Packet(Id = Method.GetRankingReward)]
+    public class GetRankingReward : BaseMethodHandler<GetRankingRewardRequest>
     {
+        public override object Handle(GetRankingRewardRequest @params)
+        {
+            var user = GetUserGameProfile();
+            var session = GetSession();
+
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+
+            RankingReward reward = new()
+            {
+                commanderData = user.CommanderData,
+                equipItem = user.UserInventory.equipItem,
+                resource = rsoc,
+                costumeData = user.UserInventory.costumeData,
+                eventResourceData = user.UserInventory.eventResourceData,
+                foodData = user.UserInventory.foodData,
+                itemData = user.UserInventory.itemData,
+                medalData = user.UserInventory.medalData,
+                partData = user.UserInventory.partData,
+                receiveIdx = null,
+                rewardList = null,
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = reward,
+            };
+
+            return response;
+        }
+    }
+
+    public class GetRankingRewardRequest
+    {
+        [JsonProperty("type")]
+        public int type { get; set; }
+
+        [JsonProperty("ridx")]
+        public int ridx { get; set; }
     }
 }
 

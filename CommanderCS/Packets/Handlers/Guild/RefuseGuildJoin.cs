@@ -1,10 +1,11 @@
-using Newtonsoft.Json;
-using CommanderCS.Database;
+using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-	[Packet(Id = Method.RefuseGuildJoin)]
+    [Packet(Id = Method.RefuseGuildJoin)]
     public class RefuseGuildJoin : BaseMethodHandler<RefuseGuildJoinRequest>
     {
         public override object Handle(RefuseGuildJoinRequest @params)
@@ -30,12 +31,12 @@ namespace CommanderCS.Packets.Handlers.Guild
             return response;
         }
     }
+
     public class RefuseGuildJoinRequest
     {
         [JsonProperty("uno")]
         public int uno { get; set; }
     }
-
 }
 
 /*	// Token: 0x0600603B RID: 24635 RVA: 0x000120F8 File Offset: 0x000102F8

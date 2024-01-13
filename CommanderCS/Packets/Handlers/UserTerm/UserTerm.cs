@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.UserTerm
 {
@@ -7,10 +8,13 @@ namespace CommanderCS.Host.Handlers.UserTerm
     {
         public override object Handle(UserTermRequest @params)
         {
+            string wemade = File.ReadAllText($"Resources\\PrivacyPolicy\\TermsOfService.txt");
+            string member = File.ReadAllText($"Resources\\PrivacyPolicy\\PrivacyPolicy.txt");
+
             UserTermResponse userterm = new()
             {
-                wemade = File.ReadAllText($"Resources\\PrivacyPolicy\\TermsOfService.txt"),
-                member = File.ReadAllText($"Resources\\PrivacyPolicy\\PrivacyPolicy.txt")
+                wemade = wemade,
+                member = member
             };
 
             ResponsePacket response = new()
@@ -21,6 +25,7 @@ namespace CommanderCS.Host.Handlers.UserTerm
 
             return response;
         }
+
         private class UserTermResponse
         {
             [JsonProperty("member")]

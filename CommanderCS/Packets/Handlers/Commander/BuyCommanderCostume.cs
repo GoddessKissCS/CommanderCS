@@ -1,10 +1,9 @@
+using CommanderCS.MongoDB;
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using CommanderCS.Database;
-using CommanderCS.Host;
-using CommanderCS.ExcelReader;
-using CommanderCS.Protocols;
-using System.Net;
 
 namespace CommanderCS.Packets.Handlers.Commander
 {
@@ -13,20 +12,21 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(BuyCommanderCostumeRequest @params)
         {
-			var user = GetUserGameProfile();
-			var session = GetSession();
+            var user = GetUserGameProfile();
+            var session = GetSession();
+            var rg = GetRegulation();
 
-			var costumeData = CommanderCostumeData.GetInstance().FromCostumeId(@params.cos);
+            var costumeData = rg.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == @params.cos);
 
             // ig implement a check to check if you actually have enough cash ?
             // seems overrated but you never know ig?
 
-            if(user.UserResources.cash > 1200)
+            if (user.UserResources.cash > 1200)
             {
-               //user.UserResources.cash = 0;
+                //user.UserResources.cash = 0;
             }
 
-			string cid = "" + @params.cid;
+            string cid = "" + @params.cid;
 
             if (user.CommanderData.ContainsKey(cid) && user.UserInventory.donHaveCommCostumeData.ContainsKey(cid))
             {
@@ -44,7 +44,6 @@ namespace CommanderCS.Packets.Handlers.Commander
                 user.UserInventory.donHaveCommCostumeData[cid].Add(@params.cos);
                 user.UserResources.cash -= costumeData.sellPrice;
             }
-
 
             DatabaseManager.GameProfile.UpdateProfile(session, user);
 
@@ -90,7 +89,6 @@ namespace CommanderCS.Packets.Handlers.Commander
         }
     }
 
-
     public class BuyCommanderCostumeRequest
     {
         [JsonProperty("cid")]
@@ -99,7 +97,6 @@ namespace CommanderCS.Packets.Handlers.Commander
         [JsonProperty("cos")]
         public int cos { get; set; }
     }
-
 }
 
 /*	// Token: 0x06006098 RID: 24728 RVA: 0x000120F8 File Offset: 0x000102F8

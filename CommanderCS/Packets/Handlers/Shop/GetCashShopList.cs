@@ -1,5 +1,5 @@
-﻿using CommanderCS.Enum;
-using CommanderCS.Protocols;
+﻿using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Host.Handlers.Shop
 {
@@ -8,10 +8,7 @@ namespace CommanderCS.Host.Handlers.Shop
     {
         public override object Handle(GetCashShopListRequest @params)
         {
-#warning TODO
-            // NEED TO ADD A MONTHLY BUYABLE package
-
-            List<CashShopData> csl = new() { };
+            List<CashShopData> csl = [];
             CashShopData c = new()
             {
                 price = "1",
@@ -141,28 +138,3 @@ namespace CommanderCS.Host.Handlers.Shop
                "gk.package.110000r5":
              * */
 }
-
-/*
-	// Token: 0x06006007 RID: 24583 RVA: 0x000120F8 File Offset: 0x000102F8
-	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7100", true, true)]
-	public void GetCashShopList()
-	{
-	}
-
-	// Token: 0x06006008 RID: 24584 RVA: 0x001AFC54 File Offset: 0x001ADE54
-	private IEnumerator GetCashShopListResult(JsonRpcClient.Request request, List<Protocols.CashShopData> result)
-	{
-		if (result != null)
-		{
-			if (result.Count != 0)
-			{
-				this.regulation.cashShopDtbl = result;
-			}
-			if (UIManager.instance.world != null)
-			{
-				UIManager.instance.world.mainCommand.OpenAndInitDiamondShop();
-			}
-			Message.Send("Shop.Open.CashShop");
-		}
-		yield break;
-	}*/

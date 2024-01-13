@@ -1,6 +1,38 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Enum;
+
 namespace CommanderCS.Packets.Handlers.PvP
 {
-    public class PvPDuelList
+    [Packet(Id = Method.PvPDuelList)]
+    public class PvPDuelList : BaseMethodHandler<PvPDuelListRequest>
+    {
+        public override object Handle(PvPDuelListRequest @params)
+        {
+            var user = GetUserGameProfile();
+
+            // need to check score and the get duelist between the range
+
+            CommanderCSLibrary.Shared.Protocols.PvPDuelList pvPDuel = new()
+            {
+                duelList = [],
+                openRemain = 86400,
+                remain = 86400,
+                time = (int)TimeManager.CurrentEpoch,
+                user = user.RankingData.PvPDuelRankingData
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = pvPDuel,
+            };
+
+            return response;
+        }
+    }
+
+    public class PvPDuelListRequest
     {
     }
 }

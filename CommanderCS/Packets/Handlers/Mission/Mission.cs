@@ -1,7 +1,45 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Mission
 {
-    public class Mission
+    [Packet(Id = Method.Mission)]
+    public class Mission : BaseMethodHandler<MissionRequest>
     {
+        public override object Handle(MissionRequest @params)
+        {
+            switch (@params.type)
+            {
+            }
+            CommanderCSLibrary.Shared.Protocols.AchievementInfo achievement = new()
+            {
+                AchievementList = [],
+                completeCount = 0,
+                goal = 0,
+            };
+
+            CommanderCSLibrary.Shared.Protocols.MissionInfo missionInfo = new()
+            {
+                completeCount = 0,
+                goal = 0,
+                missionList = []
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = null,
+            };
+
+            return response;
+        }
+    }
+
+    public class MissionRequest
+    {
+        [JsonProperty("type")]
+        public List<string> type { get; set; }
     }
 }
 

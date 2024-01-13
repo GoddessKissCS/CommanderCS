@@ -1,14 +1,13 @@
-using Newtonsoft.Json;
-using CommanderCS.Database;
+using CommanderCS.MongoDB;
 using CommanderCS.Host;
-using CommanderCS.Enum;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.UserTerm
 {
     [Packet(Id = Method.ChangeDeviceDbros)]
     public class ChangeDeviceDbros : BaseMethodHandler<ChangeDeviceDbrosRequest>
     {
-
         // I think it should be finished but you never know
 
         // Something might not work fully

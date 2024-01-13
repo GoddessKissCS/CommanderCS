@@ -1,6 +1,27 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+
 namespace CommanderCS.Packets.Handlers.PvP
 {
-    public class PvPRankingList
+    [Packet(Id = Method.PvPRankingList)]
+    public class PvPRankingList : BaseMethodHandler<PvPRankingListRequest>
+    {
+        public override object Handle(PvPRankingListRequest @params)
+        {
+            CommanderCSLibrary.Shared.Protocols.PvPRankingList pvPRankingList = new()
+            {
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+            };
+
+            return response;
+        }
+    }
+
+    public class PvPRankingListRequest
     {
     }
 }

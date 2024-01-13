@@ -1,6 +1,6 @@
-using Newtonsoft.Json;
 using CommanderCS.Host;
-using CommanderCS.Enum;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Annihilation
 {

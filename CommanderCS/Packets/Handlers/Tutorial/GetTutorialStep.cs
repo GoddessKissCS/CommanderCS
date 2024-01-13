@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
-using CommanderCS.Protocols;
+﻿using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Tutorial
 {
@@ -9,11 +9,11 @@ namespace CommanderCS.Host.Handlers.Tutorial
     {
         public override object Handle(GetTutorialStepRequest @params)
         {
-            UserInformationResponse.TutorialData tutorialData = RequestTutorialData(GetSession());
+            var user = GetUserGameProfile();
 
             TutorialStep tutorialStep = new()
             {
-                ttrl = tutorialData
+                ttrl = user.TutorialData,
             };
 
             ResponsePacket response = new()
@@ -23,13 +23,6 @@ namespace CommanderCS.Host.Handlers.Tutorial
             };
 
             return response;
-        }
-
-        private static UserInformationResponse.TutorialData RequestTutorialData(string sess)
-        {
-            var user = DatabaseManager.GameProfile.FindBySession(sess).TutorialData;
-
-            return user;
         }
 
         public class TutorialStep

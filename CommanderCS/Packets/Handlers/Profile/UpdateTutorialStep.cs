@@ -1,5 +1,6 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Profile
 {
@@ -8,11 +9,14 @@ namespace CommanderCS.Host.Handlers.Profile
     {
         public override object Handle(UpdateTutorialStepRequest @params)
         {
-            UpdateTutorialStepInfo utsi = new();
+            var session = GetSession();
 
-            DatabaseManager.GameProfile.UpdateTutorialStep(GetSession(), @params.step);
+            DatabaseManager.GameProfile.UpdateTutorialStep(session, @params.step);
 
-            utsi.step = @params.step;
+            UpdateTutorialStepInfo utsi = new()
+            {
+                step = @params.step
+            };
 
             ResponsePacket response = new()
             {

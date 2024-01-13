@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using CommanderCS.Database;
-using CommanderCS.Protocols;
-using CommanderCS.Utils;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Nickname
 {
@@ -10,14 +10,11 @@ namespace CommanderCS.Host.Handlers.Nickname
     {
         public override object Handle(ChangeNicknameRequest @params)
         {
-            ResponsePacket response = new()
-            {
-                Id = BasePacket.Id
-            };
+            var session = GetSession();
 
-            ErrorCode code = RequestNickNameChange(@params.nickname, GetSession());
+            ErrorCode code = DatabaseManager.GameProfile.RequestNickNameChange(@params.nickname, session);
 
-            if (code == ErrorCode.AlreadyInUse || code == ErrorCode.InappropriateWords)
+            if (code != ErrorCode.Success)
             {
                 ErrorPacket error = new()
                 {
@@ -28,38 +25,20 @@ namespace CommanderCS.Host.Handlers.Nickname
                 return error;
             }
 
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+
             ChangeNicknameResponse data = new()
             {
-                rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(GetSession()),
+                rsoc = rsoc,
             };
 
-            response.Result = data;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = data
+            };
 
             return response;
-        }
-
-        internal static ErrorCode RequestNickNameChange(string AccountName, string sess)
-        {
-            if (Misc.NameCheck(AccountName))
-            {
-                return ErrorCode.InappropriateWords;
-            }
-
-            var user = DatabaseManager.GameProfile.FindByNick(AccountName);
-            if (user == null)
-            {
-                int cash = user.UserResources.cash - 100;
-
-                DatabaseManager.GameProfile.UpdateCash(sess, cash, false);
-
-                return ErrorCode.Success;
-            }
-            else if (user.UserResources.nickname == AccountName)
-            {
-                return ErrorCode.AlreadyInUse;
-            }
-
-            return ErrorCode.Success;
         }
 
         internal class ChangeNicknameResponse

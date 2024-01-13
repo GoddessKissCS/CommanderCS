@@ -1,8 +1,8 @@
-using Microsoft.AspNetCore.Razor.Hosting;
-using Newtonsoft.Json;
-using CommanderCS.Database;
+using CommanderCS.MongoDB;
 using CommanderCS.Host;
-using CommanderCS.Protocols;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -11,29 +11,27 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(FreeJoinGuildRequest @params)
         {
-			var user = GetUserGameProfile();
+            var user = GetUserGameProfile();
 
-			var session = GetSession();
-
+            var session = GetSession();
 
             DatabaseManager.Guild.AddFreeJoinGuildMember(user.Uno, @params.gidx);
 
-			var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
 
             var userGuild = DatabaseManager.Guild.RequestGuild(@params.gidx, user.Uno);
 
-			var members = DatabaseManager.Guild.RequestGuildMembers(@params.gidx);
+            var members = DatabaseManager.Guild.RequestGuildMembers(@params.gidx);
 
 #warning STILL NEED TO ADD THE MISSING ERRORPACKET IF IT FAILS
 
-			GuildInfo guildList = new()
+            GuildInfo guildList = new()
             {
                 resource = rsoc,
                 guildInfo = userGuild,
                 memberData = members,
                 guildList = null,
             };
-
 
             ResponsePacket response = new()
             {
@@ -50,7 +48,6 @@ namespace CommanderCS.Packets.Handlers.Guild
         [JsonProperty("gidx")]
         public int gidx { get; set; }
     }
-
 }
 
 /*	// Token: 0x06006024 RID: 24612 RVA: 0x000120F8 File Offset: 0x000102F8
