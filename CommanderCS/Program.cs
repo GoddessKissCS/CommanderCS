@@ -156,5 +156,6 @@ namespace CommanderCS
     {
         public string Message { get; set; }
         public List<string> CommandsLoaded { get; set; }
+
     }
 }
