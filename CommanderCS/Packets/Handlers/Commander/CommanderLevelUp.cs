@@ -1,6 +1,7 @@
 ﻿using CommanderCSLibrary.Shared.Enum;
 
 using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Commander
@@ -29,35 +30,44 @@ namespace CommanderCS.Host.Handlers.Commander
             {
                 string sid = rg.goodsDtbl.FirstOrDefault(x => x.serverFieldName == @params.commanderTrainingTicket).type;
 
-                int id = int.Parse(sid);
-
                 int commanderXP = Convert.ToInt32(commander.__exp);
 
                 for (int i = 0; i < @params.count; i++)
                 {
-                    TryLevelingUp(id, ref commanderXP);
+                    TryLevelingUp(sid, rg, ref commander);
                 }
 
-                commander.__exp = "" + commanderXP;
+                commander.__exp = commanderXP.ToString();
             }
 
             return "{}";
         }
 
-        private static Dictionary<int, int> ExpList { get; set; } = new Dictionary<int, int>()
+        private static Dictionary<string, int> ExpList { get; set; } = new Dictionary<string, int>()
         {
-            {8,50 },
-            {16,300 },
-            {17,1000 },
-            {18,3000 },
-            {19,10000 }
+            { "8"  , 50 },
+            { "16" , 300 },
+            { "17" , 1000 },
+            { "18" , 3000 },
+            { "19" , 10000 }
         };
 
-        private static bool TryLevelingUp(int ticketId, ref int xp)
+        private static bool TryLevelingUp(string ticketId, Regulation rg, ref UserInformationResponse.Commander commander)
         {
             if (!ExpList.TryGetValue(ticketId, out var addingXp))
             {
                 throw new Exception($"Grade {ticketId} Not Defined");
+            }
+
+            int xp = 0;
+
+            int commanderXp = int.Parse(commander.__exp);
+
+            var row = rg.commanderLevelDtbl.Find(x => x.exp >= commanderXp);
+
+            if (commanderXp > row.exp)
+            {
+
             }
 
             if (xp < addingXp)
@@ -68,6 +78,8 @@ namespace CommanderCS.Host.Handlers.Commander
             xp += addingXp;
 
             return true;
+
+            // needs to add check for the level up while adding xp and checking if the commander level isnt higher than user level
         }
     }
 

@@ -20,8 +20,6 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             string cid = @params.cid.ToString();
 
-            user.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander);
-
             int totalCost = 0;
 
             int skillIndex = @params.sidx;
