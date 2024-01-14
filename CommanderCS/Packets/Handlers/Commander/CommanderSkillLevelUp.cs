@@ -25,7 +25,6 @@ namespace CommanderCS.Packets.Handlers.Commander
             int totalCost = 0;
 
             int skillIndex = @params.sidx;
-
             int upgradeLevel = @params.cnt;
 
             string upgradeLevelStringed = upgradeLevel.ToString();
@@ -36,7 +35,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
                 if (skillcostdtbl != null && skillIndex < skillcostdtbl.typeCost.Count)
                 {
-                    var cost = skillcostdtbl.typeCost[skillIndex];
+                    var cost = skillcostdtbl.typeCost[skillIndex - 1];
                     totalCost += cost;
                 }
 
