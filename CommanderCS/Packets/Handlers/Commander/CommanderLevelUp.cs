@@ -1,8 +1,11 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
 
 using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.ComponentModel;
 
 namespace CommanderCS.Host.Handlers.Commander
 {
@@ -11,36 +14,98 @@ namespace CommanderCS.Host.Handlers.Commander
     {
         public override object Handle(CommanderLevelUpRequest @params)
         {
+            var session = GetSession();
+            var user = GetUserGameProfile();
             var rg = GetRegulation();
 
-            // "cid":13,"cnt":1,"ctt":"ctt1"
+            string sid = rg.goodsDtbl.FirstOrDefault(x => x.serverFieldName == @params.commanderTrainingTicket).type;
 
-            // packet.count = cnt
-            // packet.commanderTrainingTicket = ctt
-#warning TODO ADD MAXLEVEL CHECK SO YOU CANT OVERLEVEL THEM OVER YOUR LEVEL
-            //GIVES OUT ERRORCODE 20001 or 20003
-
-            var user = GetUserGameProfile();
-
-            var commanderList = user.CommanderData;
-
-            var itemData = user.UserInventory.itemData;
-
-            if (commanderList.TryGetValue(@params.commanderId.ToString(), out UserInformationResponse.Commander commander) && commander != null)
+            if (@params.count > user.UserInventory.itemData[sid])
             {
-                string sid = rg.goodsDtbl.FirstOrDefault(x => x.serverFieldName == @params.commanderTrainingTicket).type;
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = ErrorCode.NotEnoughResources },
+                };
 
+                return error;
+            }
+
+            if (user.CommanderData.TryGetValue(@params.commanderId.ToString(), out UserInformationResponse.Commander commander) && commander != null)
+            {
                 int commanderXP = Convert.ToInt32(commander.__exp);
 
-                for (int i = 0; i < @params.count; i++)
-                {
-                    TryLevelingUp(sid, rg, ref commander);
+                for (int i = 1; i < @params.count;)
+                {             
+                    if (user.UserInventory.itemData[sid] > 0)
+                    {
+                        user.UserInventory.itemData[sid] -= 1;
+                    }
+
+                    TryLevelingUp(sid, ref commanderXP);
+
+                    i++;
                 }
 
                 commander.__exp = commanderXP.ToString();
+
+                commander = CheckCommanderLevel(commander, rg);
             }
 
-            return "{}";
+            if(int.Parse(commander.__level) > user.UserResources.level)
+            {
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = ErrorCode.CommanderCantLevelHigherThanUser },
+                };
+
+                return error;
+            }
+
+
+            DatabaseManager.GameProfile.UpdateItemData(session, user.UserInventory.itemData);
+            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+
+            var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+            var battlestats = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(user.UserStatistics);
+            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+
+            UserInformationResponse userInformationResponse = new()
+            {
+                goodsInfo = goods,
+                battleStatisticsInfo = battlestats,
+                uno = user.Uno.ToString(),
+                stage = user.LastStage,
+                notification = user.Notifaction,
+
+                foodData = user.UserInventory.foodData,
+                eventResourceData = user.UserInventory.eventResourceData,
+                groupItemData = user.UserInventory.groupItemData,
+                itemData = user.UserInventory.itemData,
+                medalData = user.UserInventory.medalData,
+                partData = user.UserInventory.partData,
+
+                resetRemain = user.ResetDateTime, // should be set?
+
+                equipItem = user.UserInventory.equipItem,
+
+                donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,
+                completeRewardGroupIdx = user.CompleteRewardGroupIdx,
+                guildInfo = guild,
+                sweepClearData = user.BattleData.SweepClearData,
+                preDeck = user.PreDeck,
+                weaponList = user.UserInventory.weaponList,
+                __commanderInfo = JObject.FromObject(user.CommanderData),
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = userInformationResponse,
+            };
+
+            return response;
         }
 
         private static Dictionary<string, int> ExpList { get; set; } = new Dictionary<string, int>()
@@ -52,22 +117,36 @@ namespace CommanderCS.Host.Handlers.Commander
             { "19" , 10000 }
         };
 
-        private static bool TryLevelingUp(string ticketId, Regulation rg, ref UserInformationResponse.Commander commander)
+        private static UserInformationResponse.Commander CheckCommanderLevel(UserInformationResponse.Commander commander, Regulation rg)
+        {
+            return CheckCommanderLevelRecursive(commander, rg);
+        }
+
+
+        private static UserInformationResponse.Commander CheckCommanderLevelRecursive(UserInformationResponse.Commander commander, Regulation rg)
+        {
+            int commanderLevel = int.Parse(commander.__level);
+
+            var row = rg.commanderLevelDtbl.Find(x => x.level == commanderLevel);
+
+            int commanderXp = int.Parse(commander.__exp);
+
+            if(commanderXp > row.exp)
+            {
+                commander.__level = (commanderLevel + 1).ToString();
+                commander.__exp = (commanderXp -= row.exp).ToString();
+
+                return CheckCommanderLevelRecursive(commander, rg);
+            }
+
+            return commander;
+        }
+
+        private static bool TryLevelingUp(string ticketId, ref int xp)
         {
             if (!ExpList.TryGetValue(ticketId, out var addingXp))
             {
                 throw new Exception($"Grade {ticketId} Not Defined");
-            }
-
-            int xp = 0;
-
-            int commanderXp = int.Parse(commander.__exp);
-
-            var row = rg.commanderLevelDtbl.Find(x => x.exp >= commanderXp);
-
-            if (commanderXp > row.exp)
-            {
-
             }
 
             if (xp < addingXp)

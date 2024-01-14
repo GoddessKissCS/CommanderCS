@@ -42,7 +42,7 @@ namespace CommanderCS.Host
         NotEnoughResources = 20001,
         CommanderCantLevelHigherThanUser = 20003,
         TimedOut = 70003,
-        UnknownErrorCode_1 = 30003,
+        NotEnoughResources_1 = 30003,
         EnteredInappropriateWords = 53010, // SOMEHOW IN BANKROULLETSTART
         FederationSettingsChanged = 71301,
         FederationGuildSettingsChanged = 71302,
