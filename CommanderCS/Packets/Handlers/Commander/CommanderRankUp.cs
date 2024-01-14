@@ -1,4 +1,5 @@
 ﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 
 using CommanderCSLibrary.Shared.Protocols;
@@ -154,13 +155,15 @@ namespace CommanderCS.Host.Handlers.Commander
 
         public static UserInformationResponse.Commander CreateCommander(string commanderid, int costumeid, int commanderMedals, int grade)
         {
+            var commanderRole = Constants.regulation.commanderRoleDtbl.Find(x => x.commanderId == int.Parse(commanderid)).commanderRole;
+
             UserInformationResponse.Commander __commander = new()
             {
                 state = "N",
                 __skv1 = "1",
                 __skv2 = "1",
-                __skv3 = "1",
-                __skv4 = "1",
+                __skv3 = "0",
+                __skv4 = "0",
                 __cls = "0",
                 __exp = "0",
                 __level = "1",
@@ -178,8 +181,7 @@ namespace CommanderCS.Host.Handlers.Commander
                 id = commanderid,
                 marry = 0,
                 medl = commanderMedals,
-#warning TODO CREATE A ROLE TABLE
-                role = "A",
+                role = commanderRole,
                 transcendence = [0, 0, 0, 0],
             };
 

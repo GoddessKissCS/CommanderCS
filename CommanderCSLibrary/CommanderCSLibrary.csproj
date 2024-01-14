@@ -124,7 +124,6 @@
     <None Remove="Resources\ExcelOutputAsset\WorldMapStageDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\WorldMapStageDataTable_2.json" />
     <None Remove="Resources\ExcelOutputAsset\WorldMapStageTypeDataTable.json" />
-    <None Remove="Resources\ServerSettings\reset_time.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -452,12 +451,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
     <PackageReference Include="Tival.GZipCompressor" Version="1.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Resources\ServerSettings\reset_time.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>

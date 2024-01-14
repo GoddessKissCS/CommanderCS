@@ -20,12 +20,12 @@ namespace CommanderCS.MongoDB.Schemes
         public Platform Platform { get; set; }
     }
 
-    public enum Clearance : int
+    public enum Clearance
     {
-        Guest = 0,
-        Player = 1,
-        Moderator = 2,
-        Administrator = 3,
-        Owner = 4,
+        Guest,
+        Player,
+        Moderator,
+        Administrator,
+        Owner,
     }
 }
