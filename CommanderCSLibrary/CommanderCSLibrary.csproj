@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -28,6 +28,7 @@
     <None Remove="Resources\ExcelOutputAsset\CarnivalTypeDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\ClassPatternDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\CommanderClassDataTable.json" />
+    <None Remove="Resources\ExcelOutputAsset\CommanderClassUpDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\CommanderCostumeDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\CommanderDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\CommanderGiftDataTable.json" />
@@ -155,6 +156,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CommanderClassDataTable.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ExcelOutputAsset\CommanderClassUpDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CommanderCostumeDataTable.json">

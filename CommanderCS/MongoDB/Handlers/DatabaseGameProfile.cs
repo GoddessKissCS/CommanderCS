@@ -554,6 +554,14 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        public void UpdatePartData(string session, Dictionary<string, int> goods)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.partData, goods);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
         public void UpdateTutorialData(string session, UserInformationResponse.TutorialData tutorialData)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);

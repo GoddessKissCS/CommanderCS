@@ -25,8 +25,6 @@ namespace CommanderCS.Packets.Handlers.Commander
             int skillIndex = @params.sidx;
             int upgradeLevel = @params.cnt;
 
-            string upgradeLevelStringed = upgradeLevel.ToString();
-
             for (var i = 1; i <= upgradeLevel;)
             {
                 var skillcostdtbl = rg.skillCostDtbl.Find(x => x.level == i);
@@ -43,16 +41,16 @@ namespace CommanderCS.Packets.Handlers.Commander
             switch (skillIndex)
             {
                 case 1:
-                    user.CommanderData[cid].__skv1 = upgradeLevelStringed;
+                    user.CommanderData[cid].__skv1 = upgradeLevel.ToString();
                     break;
                 case 2: 
-                    user.CommanderData[cid].__skv2 = upgradeLevelStringed;
+                    user.CommanderData[cid].__skv2 = upgradeLevel.ToString();
                     break;
                 case 3:
-                    user.CommanderData[cid].__skv3 = upgradeLevelStringed;
+                    user.CommanderData[cid].__skv3 = upgradeLevel.ToString();
                     break;
                 case 4:
-                    user.CommanderData[cid].__skv4 = upgradeLevelStringed;
+                    user.CommanderData[cid].__skv4 = upgradeLevel.ToString();
                     break;
             }
 

@@ -222,6 +222,8 @@ namespace CommanderCSLibrary.Shared.Regulation
         public DataTable<BattleTimeDataRow> battletimeDtbl { get; private set; }
         public DataTable<CommanderRoleDataRow> commanderRoleDtbl { get; private set; }
         public DataTable<MissionDataRow> missionDtbl { get; private set; }
+        public DataTable<CommanderClassUpDataRow> classUpDtbl { get; private set; }
+
         private Regulation()
         {
         }
@@ -333,6 +335,8 @@ namespace CommanderCSLibrary.Shared.Regulation
             achievementDtbl = JsonConvert.DeserializeObject<DataTable<AchievementDataRow>>(LoadJson("AchievementTable.json"), SerializerSettings);
             commanderRoleDtbl = JsonConvert.DeserializeObject<DataTable<CommanderRoleDataRow>>(LoadJson("CommanderRoleDataTable.json"), SerializerSettings);
             battletimeDtbl = JsonConvert.DeserializeObject<DataTable<BattleTimeDataRow>>(LoadJson("BattleTimeDataTable.json"), SerializerSettings);
+
+            classUpDtbl = JsonConvert.DeserializeObject<DataTable<CommanderClassUpDataRow>>(LoadJson("CommanderClassUpDataTable.json"), SerializerSettings);
 
 #pragma warning restore CS8601 // Possible null reference assignment.
         }

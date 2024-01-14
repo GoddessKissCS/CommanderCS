@@ -13,6 +13,8 @@ namespace CommanderCS.Host.Handlers.Login
         {
             string session = GenerateUniqueSessionToken();
 
+            var rg = GetRegulation();
+
             var user = DatabaseManager.GameProfile.GetOrCreate(@params.memberId, @params.world);
 
             ErrorCode code = DatabaseManager.Account.RequestLogin(@params, session);
@@ -27,6 +29,7 @@ namespace CommanderCS.Host.Handlers.Login
 
                 return error;
             }
+
 
             var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
             var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(session);

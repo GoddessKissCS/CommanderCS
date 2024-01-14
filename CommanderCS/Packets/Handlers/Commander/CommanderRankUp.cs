@@ -164,7 +164,7 @@ namespace CommanderCS.Host.Handlers.Commander
                 __skv2 = "1",
                 __skv3 = "0",
                 __skv4 = "0",
-                __cls = "0",
+                __cls = "1",
                 __exp = "0",
                 __level = "1",
                 __rank = grade.ToString(),

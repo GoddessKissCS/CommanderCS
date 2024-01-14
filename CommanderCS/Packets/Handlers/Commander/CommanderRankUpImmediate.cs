@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Commander
 {
-    [Packet(Id = Method.CommanderRankUp)]
+    [Packet(Id = Method.CommanderRankUpImmediate)]
     public class CommanderRankUpImmediate : BaseMethodHandler<CommanderRankUpImmediateRequest>
     {
         public override object Handle(CommanderRankUpImmediateRequest @params)

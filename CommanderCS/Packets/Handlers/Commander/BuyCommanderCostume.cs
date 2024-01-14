@@ -26,7 +26,7 @@ namespace CommanderCS.Packets.Handlers.Commander
                 //user.UserResources.cash = 0;
             }
 
-            string cid = "" + @params.cid;
+            string cid = @params.cid.ToString();
 
             if (user.CommanderData.ContainsKey(cid) && user.UserInventory.donHaveCommCostumeData.ContainsKey(cid))
             {
