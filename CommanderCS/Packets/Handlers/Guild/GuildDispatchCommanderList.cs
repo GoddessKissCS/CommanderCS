@@ -9,11 +9,14 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(GuildDispatchCommanderListRequest @params)
         {
+//TODO: ADD everyones heros into the guild commanderlist
+//and check here if the commander is your owns and then remove them
             CommanderCSLibrary.Shared.Protocols.GuildDispatchCommanderList vs = new()
             {
                 commanderList = [],
                 npcList = [],
             };
+
 
             ResponsePacket response = new()
             {

@@ -1,8 +1,29 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+
 namespace CommanderCS.Packets.Handlers.Inventory
 {
-    public class GetWeaponProgressList
+	[Packet(Id = Method.GetWeaponProgressList)]
+    public class GetWeaponProgressList : BaseMethodHandler<GetWeaponProgressListRequest>
+    {
+        public override object Handle(GetWeaponProgressListRequest @params)
+        {
+            var user = GetUserGameProfile();
+
+            ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = user.WeaponInformation.WeaponProgressList,
+            };
+
+			return response;
+        }
+    }
+
+    public class GetWeaponProgressListRequest
     {
     }
+
 }
 
 /*	// Token: 0x06006160 RID: 24928 RVA: 0x000120F8 File Offset: 0x000102F8

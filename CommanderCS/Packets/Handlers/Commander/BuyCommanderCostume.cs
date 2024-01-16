@@ -37,6 +37,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             {
                 user.UserInventory.donHaveCommCostumeData[cid].Add(@params.cos);
             }
+
             user.UserResources.cash -= costumeData.sellPrice;
 
             DatabaseManager.GameProfile.UpdateCash(session, costumeData.sellPrice, false);

@@ -1,5 +1,6 @@
 using CommanderCS.Host;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Annihilation
@@ -7,9 +8,31 @@ namespace CommanderCS.Packets.Handlers.Annihilation
     [Packet(Id = Method.GetAnnihilationMapInfo)]
     public class GetAnnihilationMapInfo : BaseMethodHandler<GetAnnihilationMapInfoRequest>
     {
-        public override object Handle(GetAnnihilationMapInfoRequest @params)
-        {
-            return "{}";
+		public override object Handle(GetAnnihilationMapInfoRequest @params)
+		{
+			var user = GetUserGameProfile();
+
+// still needs work
+			var annimap = new AnnihilationMapInfo()
+			{
+				stage = 0,
+				remainTime = 0,
+				commanderStatusList = null,
+				dieCommanderList = null,
+				clear = 0,
+				enemyList = [],
+				isPlayAdvanceParty = 0,
+				mode = 0,
+				__advancePartyReward = 0,		
+			};
+
+            ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = annimap
+			};
+
+			return response;
         }
     }
 

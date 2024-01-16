@@ -36,6 +36,7 @@ namespace CommanderCS.MongoDB.Schemes
         public RankingData RankingData { get; set; }
         public DefenderDeck DefenderDeck { get; set; }
         public List<ExplorationData> ExplorationData { get; set; }
+        public WeaponInformation WeaponInformation { get; set; }
     }
 
     public class UserDevice
@@ -192,4 +193,10 @@ namespace CommanderCS.MongoDB.Schemes
         public int getGold { get; set; }
         public double DispatchTime { get; set; }
     }
+
+    public class WeaponInformation
+    {
+        public List<WeaponProgressSlotData> WeaponProgressList { get; set; }
+    }
+
 }

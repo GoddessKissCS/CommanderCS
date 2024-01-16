@@ -15,7 +15,9 @@ namespace CommanderCS.Packets.Handlers.Gift
             var user = GetUserGameProfile();
             var session = GetSession();
 
-            user.CommanderData[@params.cid.ToString()].marry = 1;
+            string cid = @params.cid.ToString();
+
+            user.CommanderData[cid].marry = 1;
             user.UserResources.ring -= 1;
 
             DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);

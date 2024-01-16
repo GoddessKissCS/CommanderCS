@@ -4,6 +4,7 @@ using CommanderCS.MongoDB.Schemes;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Protocols;
 using MongoDB.Driver;
+using static CommanderCSLibrary.Shared.Protocols.ConquestStageUser;
 
 namespace CommanderCS.MongoDB.Handlers
 {
@@ -34,7 +35,11 @@ namespace CommanderCS.MongoDB.Handlers
             {
                 Server = server,
                 LastStage = 0,
-                UserStatistics = new() { },
+                UserStatistics = new() 
+                { 
+                    weaponMakeSlotCount = 2,
+                    weaponInventoryCount = 200
+                },
                 CommanderData = [],
                 CompleteRewardGroupIdx = [],
                 DispatchedCommanders = null,
@@ -170,6 +175,10 @@ namespace CommanderCS.MongoDB.Handlers
                     },
                     WaveDuelRankingData = new()
                 },
+                WeaponInformation = new()
+                {
+                    WeaponProgressList = []
+                }
             };
 
             DatabaseCollection.InsertOne(user);
@@ -821,6 +830,30 @@ namespace CommanderCS.MongoDB.Handlers
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
             var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.ring, ring);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        public void UpdateWeaponInventoryCount(string session, int weaponInventoryCount)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserStatistics.weaponInventoryCount, weaponInventoryCount);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        public void UpdatePvPDefenderDeck(string session, Dictionary<string, string> deck)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.DefenderDeck.PvPDefenderDeck, deck);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        public void UpdateWaveDefenderDecks(string session, Dictionary<string, Dictionary<string, string>> decks)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.DefenderDeck.WaveDuelDefenderDecks, decks);
 
             DatabaseCollection.UpdateOne(filter, update);
         }

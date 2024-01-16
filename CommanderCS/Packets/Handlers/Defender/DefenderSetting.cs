@@ -1,4 +1,5 @@
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -10,7 +11,12 @@ namespace CommanderCS.Packets.Handlers.Defender
     {
         public override object Handle(DefenderSettingRequest @params)
         {
-            //Dictionary<string, string> dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>()
+			var session = GetSession();
+            var user = GetUserGameProfile();
+
+            Dictionary<string, string> deck = @params.deck.ToObject<Dictionary<string, string>>();
+
+			DatabaseManager.GameProfile.UpdatePvPDefenderDeck(session, deck);
 
             return "{}";
         }
@@ -19,7 +25,7 @@ namespace CommanderCS.Packets.Handlers.Defender
     public class DefenderSettingRequest
     {
         [JsonProperty("deck")]
-        public static JObject deck { get; set; }
+        public JObject deck { get; set; }
     }
 }
 

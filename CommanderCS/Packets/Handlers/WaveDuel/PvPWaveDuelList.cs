@@ -1,7 +1,40 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Enum;
+using static StellarGK.Packets.Handlers.WaveDuel.PvPWaveDuelList;
+
 namespace StellarGK.Packets.Handlers.WaveDuel
 {
-    public class PvPWaveDuelList
+	[Packet(Id = Method.PvPWaveDuelList)]
+    public class PvPWaveDuelList : BaseMethodHandler<PvPWaveDuelListRequest>
     {
+        public override object Handle(PvPWaveDuelListRequest @params)
+        {
+            var user = GetUserGameProfile();
+// TODO FINISH
+// need to check score and the get duelist between the range
+
+            CommanderCSLibrary.Shared.Protocols.PvPDuelList pvPDuel = new()
+            {
+                duelList = [],
+                openRemain = 86400,
+                remain = 86400,
+                time = (int)TimeManager.CurrentEpoch,
+                user = user.RankingData.PvPDuelRankingData
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = pvPDuel,
+            };
+
+            return response;
+        }
+
+        public class PvPWaveDuelListRequest
+        {
+        }
     }
 }
 

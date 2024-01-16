@@ -29,12 +29,6 @@ namespace CommanderCS.Host.Handlers.Dispatch
                     if (runtime >= 1)
                     {
                         gold = runtime * GetDispatchGold(commander.__level, commander.__cls, commander.__rank);
-
-                        if(engageCount >= 1)
-                        {
-                            gold += engageCount * (int)(GetdispatchFloatGold(commander.__level, commander.__cls, commander.__rank) * 10f);
-                        }
-
                     }
 
                     DiapatchCommanderInfo diapatchCommander = new()

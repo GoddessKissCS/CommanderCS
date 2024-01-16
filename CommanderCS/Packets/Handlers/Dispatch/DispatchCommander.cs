@@ -13,6 +13,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
         public override object Handle(DispatchCommanderRequest @params)
         {
             var session = GetSession();
+
             DispatchedCommanderInfo commanderInfo = new()
             {
                 cid = @params.cid,
