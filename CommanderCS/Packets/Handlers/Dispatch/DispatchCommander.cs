@@ -1,7 +1,51 @@
+using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
+using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Dispatch
 {
-    public class DispatchCommander
+    [Packet(Id = Method.DispatchCommander)]
+    public class DispatchCommander : BaseMethodHandler<DispatchCommanderRequest>
     {
+        public override object Handle(DispatchCommanderRequest @params)
+        {
+            var session = GetSession();
+            DispatchedCommanderInfo commanderInfo = new()
+            {
+                cid = @params.cid,
+                engageCnt = 0,
+                getGold = 0,
+                runtime = 0,
+                DispatchTime = TimeManager.GetCurrentTime(),
+            };
+
+            Dictionary<string, DispatchedCommanderInfo> dispatchedcommanders = new()
+            {
+                { @params.slot.ToString(), commanderInfo }
+            };
+
+            DatabaseManager.GameProfile.UpdateDispatchedCommander(session, dispatchedcommanders);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = dispatchedcommanders,
+            };
+
+            return response;
+        }
+    }
+
+    public class DispatchCommanderRequest
+    {
+        [JsonProperty("cid")]
+        public int cid { get; set; }
+
+        [JsonProperty("slot")]
+        public int slot { get; set; }
     }
 }
 

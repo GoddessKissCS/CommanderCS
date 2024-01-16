@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Regulation;
 using Microsoft.Extensions.FileProviders;
@@ -77,7 +77,6 @@ namespace CommanderCS
                 return PacketHandler.ProcessRequest(context, provider);
             });
 
-
             //app.MapControllers();
 
             //var wsOptions = new WebSocketOptions()
@@ -129,9 +128,9 @@ namespace CommanderCS
                 ServeUnknownFileTypes = true
             });
 
-           // app.UseWebSockets(new WebSocketOptions() { 
-           //     KeepAliveInterval = TimeSpan.FromSeconds(60),
-           //});
+            // app.UseWebSockets(new WebSocketOptions() {
+            //     KeepAliveInterval = TimeSpan.FromSeconds(60),
+            //});
 
             #endregion StaticFileServer
 
@@ -156,6 +155,5 @@ namespace CommanderCS
     {
         public string Message { get; set; }
         public List<string> CommandsLoaded { get; set; }
-
     }
 }

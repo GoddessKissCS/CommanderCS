@@ -35,10 +35,12 @@ namespace CommanderCS.Host.Handlers.Commander
                     return error;
                 }
 
-                commander.__rank = (Convert.ToInt32(commander.__rank) + 1).ToString();
-                commander.medl = commanderMedals;
+                int upgradedRank = Convert.ToInt32(commander.__rank) + 1;
 
-                commanderRankData = rg.commanderRankDtbl.FirstOrDefault(x => x.rank == commanderRankData.rank);
+                commander.__rank = upgradedRank.ToString();
+                commander.state = "N";
+
+                commanderRankData = rg.commanderRankDtbl.FirstOrDefault(x => x.rank == upgradedRank);
 
                 user.UserInventory.medalData[cid] = commanderMedals;
                 user.CommanderData[cid] = commander;
@@ -68,30 +70,27 @@ namespace CommanderCS.Host.Handlers.Commander
 
                 var newestCommander = CreateCommander(cid, CostumeData.ctid, commanderMedals, commanderData.grade);
 
-                int newcommanderId = 1;
-
-                if (user.CommanderData.Count > 0)
-                {
-                    newcommanderId = Convert.ToInt32(user.CommanderData.Last().Key) + 1;
-                }
-
-                user.CommanderData.Add(newcommanderId.ToString(), newestCommander);
-
+                user.CommanderData.Add(cid, newestCommander);
                 DatabaseManager.GameProfile.UpdateGold(session, commanderData.recruitGold, false);
             }
 
             DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
             DatabaseManager.GameProfile.UpdateMedalData(session, user.UserInventory.medalData);
 
-            var newResources = GetUserGameProfile();
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(newResources.UserResources);
+            user.CommanderData.TryGetValue(cid, out var commander1);
+
+            Dictionary<string, UserInformationResponse.Commander> uprankedCommander = new()
+            {
+                { cid, commander1 }
+            };
 
             CommanderRankUpResponse cmrup = new()
             {
                 rsoc = rsoc,
-                medl = newResources.UserInventory.medalData,
-                comm = newResources.CommanderData,
+                medl = user.UserInventory.medalData,
+                comm = uprankedCommander,
             };
 
             ResponsePacket response = new()
@@ -180,7 +179,7 @@ namespace CommanderCS.Host.Handlers.Commander
                 haveCostume = [costumeid],
                 id = commanderid,
                 marry = 0,
-                medl = commanderMedals,
+                medl = 0,
                 role = commanderRole,
                 transcendence = [0, 0, 0, 0],
             };

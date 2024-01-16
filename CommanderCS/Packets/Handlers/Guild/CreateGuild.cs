@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
@@ -43,7 +43,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-				Result = createGuild,
+                Result = createGuild,
             };
 
             return response;

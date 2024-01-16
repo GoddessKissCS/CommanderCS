@@ -1,6 +1,6 @@
-﻿using CommanderCS.MongoDB.Schemes;
-using CommanderCS.Host;
+﻿using CommanderCS.Host;
 using CommanderCS.Host.Handlers.Login;
+using CommanderCS.MongoDB.Schemes;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Protocols;
 using MongoDB.Driver;
@@ -530,6 +530,22 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        public void UpdateFoodData(string session, Dictionary<string, int> foodData)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.foodData, foodData);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        public void UpdateDontHaveCommanderCostumeData(string session, Dictionary<string, List<int>> donthaveCostumes)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.donHaveCommCostumeData, donthaveCostumes);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
         public void UpdateCommanderDataAndMedalData(string session, Dictionary<string, UserInformationResponse.Commander> commanderList, Dictionary<string, int> medalsdata)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
@@ -791,6 +807,22 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseManager.GameProfile.UpdateCash(sess, 100, false);
 
             return ErrorCode.Success;
+        }
+
+        public void UpdateDispatchedCommander(string session, Dictionary<string, DispatchedCommanderInfo> dispatchedCommanderList)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.DispatchedCommanders, dispatchedCommanderList);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        public void UpdateRings(string session, int ring)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.ring, ring);
+
+            DatabaseCollection.UpdateOne(filter, update);
         }
     }
 }

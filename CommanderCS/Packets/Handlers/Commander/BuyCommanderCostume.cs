@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
@@ -16,39 +16,35 @@ namespace CommanderCS.Packets.Handlers.Commander
             var session = GetSession();
             var rg = GetRegulation();
 
-            var costumeData = rg.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == @params.cos);
-
             // ig implement a check to check if you actually have enough cash ?
             // seems overrated but you never know ig?
-
-            if (user.UserResources.cash > 1200)
-            {
-                //user.UserResources.cash = 0;
-            }
+            // client says no if you cant buy, but ig you could in theory send a request and buy it anyways
 
             string cid = @params.cid.ToString();
+
+            var costumeData = rg.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == @params.cos);
 
             if (user.CommanderData.ContainsKey(cid) && user.UserInventory.donHaveCommCostumeData.ContainsKey(cid))
             {
                 user.CommanderData[cid].haveCostume.Add(@params.cos);
                 user.UserInventory.donHaveCommCostumeData[cid].Add(@params.cos);
-                user.UserResources.cash -= costumeData.sellPrice;
             }
             else if (!user.UserInventory.donHaveCommCostumeData.ContainsKey(cid))
             {
                 user.UserInventory.donHaveCommCostumeData.Add(cid, [@params.cos]);
-                user.UserResources.cash -= costumeData.sellPrice;
             }
             else
             {
                 user.UserInventory.donHaveCommCostumeData[cid].Add(@params.cos);
-                user.UserResources.cash -= costumeData.sellPrice;
             }
+            user.UserResources.cash -= costumeData.sellPrice;
 
-            DatabaseManager.GameProfile.UpdateProfile(session, user);
+            DatabaseManager.GameProfile.UpdateCash(session, costumeData.sellPrice, false);
+            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+            DatabaseManager.GameProfile.UpdateDontHaveCommanderCostumeData(session, user.UserInventory.donHaveCommCostumeData);
 
-            var goods = DatabaseManager.GameProfile.UserResourcesFromSession(session);
-            var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(session);
+            var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+            var battlestats = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(user.UserStatistics);
             var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
             UserInformationResponse userInformationResponse = new()

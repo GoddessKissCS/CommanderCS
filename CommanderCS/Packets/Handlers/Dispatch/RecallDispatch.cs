@@ -2,6 +2,19 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 {
     public class RecallDispatch
     {
+        public int GetDispatchGold(string level, string cls, string rank) => GetDispatchGold(int.Parse(level), int.Parse(cls), int.Parse(rank));
+
+        public int GetDispatchGold(int level, int cls, int rank)
+        {
+            return (int)((level + cls) * rank / 11f * 60f);
+        }
+
+        public float GetdispatchFloatGold(string level, string cls, string rank) => GetDispatchGold(int.Parse(level), int.Parse(cls), int.Parse(rank));
+
+        public float GetdispatchFloatGold(int level, int cls, int rank)
+        {
+            return (level + cls) * rank / 11f * 60f;
+        }
     }
 }
 

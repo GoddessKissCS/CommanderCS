@@ -206,7 +206,6 @@ namespace CommanderCS.Packets.Handlers.Commander
         [JsonProperty("comm")]
         public SimpleCommanderInfo comm { get; set; }
     }
-
 }
 
 /*

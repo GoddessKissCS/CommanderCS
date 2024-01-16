@@ -1,7 +1,169 @@
+using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Regulation;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.Gift
 {
-    public class GiftFood
+    [Packet(Id = Method.GiftFood)]
+    public class GiftFood : BaseMethodHandler<GiftFoodRequest>
     {
+        public override object Handle(GiftFoodRequest @params)
+        {
+            var user = GetUserGameProfile();
+            var rg = GetRegulation();
+            var session = GetSession();
+
+            string cid = @params.cid.ToString();
+
+            string cgid = @params.cgid.ToString();
+
+            user.CommanderData.TryGetValue(cid, out var commander);
+
+            int favorPoint = commander.favorPoint;
+
+            for (var i = 1; i <= @params.amnt;)
+            {
+                if (user.UserInventory.foodData[cgid] > 0)
+                {
+                    user.UserInventory.foodData[cgid] -= 1;
+                }
+
+                TryAddingFavour(@params.cgid, ref favorPoint);
+
+                i++;
+            }
+
+            commander.favr += favorPoint;
+
+            commander.favorPoint = favorPoint;
+
+            user.CommanderData[cid] = CheckCommanderFavour(commander, rg);
+
+            DatabaseManager.GameProfile.UpdateFoodData(session, user.UserInventory.foodData);
+            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+
+            var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+            var battlestats = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(user.UserStatistics);
+            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+
+            UserInformationResponse userInformationResponse = new()
+            {
+                goodsInfo = goods,
+                battleStatisticsInfo = battlestats,
+                uno = user.Uno.ToString(),
+                stage = user.LastStage,
+                notification = user.Notifaction,
+
+                foodData = user.UserInventory.foodData,
+                eventResourceData = user.UserInventory.eventResourceData,
+                groupItemData = user.UserInventory.groupItemData,
+                itemData = user.UserInventory.itemData,
+                medalData = user.UserInventory.medalData,
+                partData = user.UserInventory.partData,
+
+                resetRemain = user.ResetDateTime, // should be set?
+
+                equipItem = user.UserInventory.equipItem,
+
+                donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,
+                completeRewardGroupIdx = user.CompleteRewardGroupIdx,
+                guildInfo = guild,
+                sweepClearData = user.BattleData.SweepClearData,
+                preDeck = user.PreDeck,
+                weaponList = user.UserInventory.weaponList,
+                __commanderInfo = JObject.FromObject(user.CommanderData),
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = userInformationResponse,
+            };
+
+            return response;
+        }
+
+        private static bool TryAddingFavour(int affectionId, ref int favour)
+        {
+            if (!AffectionList.TryGetValue(affectionId, out var addingFavour))
+            {
+                throw new Exception($"Grade {affectionId} Not Defined");
+            }
+
+            favour += addingFavour;
+
+            return true;
+        }
+
+        private static Dictionary<int, int> AffectionList = new Dictionary<int, int>()
+        {
+            { 50, 10 },
+            { 51, 30 },
+            { 52, 50 },
+            { 53, 150 },
+            { 54, 300 },
+            { 55, 500 },
+            { 59, 1000 },
+            { 60, 2000 },
+            { 61, 3000 },
+            { 62, 4000 },
+            { 63, 6000 },
+            { 64, 9000 }
+        };
+
+        private static UserInformationResponse.Commander CheckCommanderFavour(UserInformationResponse.Commander commander, Regulation rg)
+        {
+            return CheckCommanderFavourRecursive(commander, rg);
+        }
+
+        private static UserInformationResponse.Commander CheckCommanderFavourRecursive(UserInformationResponse.Commander commander, Regulation rg)
+        {
+            FavorStepDataRow row = new();
+            if (commander.favorStep == 0)
+            {
+                row = rg.favorStepDtbl.Find(x => x.step == 1);
+            }
+            else
+            {
+                row = rg.favorStepDtbl.Find(x => x.step == commander.favorStep + 1);
+            }
+
+            if (row == null)
+            {
+                row = rg.favorStepDtbl.Find(x => x.step == 15);
+            }
+
+            if (commander.favorPoint > row.favor)
+            {
+                commander.favorStep += 1;
+                commander.favorPoint -= row.favor;
+
+                if (commander.favorStep == 15 && commander.favorPoint >= 1000000)
+                {
+                    commander.favorPoint = 1000000;
+                }
+
+                return CheckCommanderFavourRecursive(commander, rg);
+            }
+
+            return commander;
+        }
+    }
+
+    public class GiftFoodRequest
+    {
+        [JsonProperty("cid")]
+        public int cid { get; set; }
+
+        [JsonProperty("cgid")]
+        public int cgid { get; set; }
+
+        [JsonProperty("amnt")]
+        public int amnt { get; set; }
     }
 }
 

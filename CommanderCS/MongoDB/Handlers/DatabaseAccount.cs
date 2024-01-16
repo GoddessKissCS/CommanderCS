@@ -1,6 +1,6 @@
-﻿using CommanderCS.MongoDB.Schemes;
-using CommanderCS.Host;
+﻿using CommanderCS.Host;
 using CommanderCS.Host.Handlers.Login;
+using CommanderCS.MongoDB.Schemes;
 using CommanderCS.Packets.Handlers.UserTerm;
 using CommanderCSLibrary.Cryptography;
 using CommanderCSLibrary.Shared;

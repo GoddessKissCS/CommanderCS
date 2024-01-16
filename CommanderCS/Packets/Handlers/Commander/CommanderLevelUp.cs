@@ -5,7 +5,6 @@ using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.ComponentModel;
 
 namespace CommanderCS.Host.Handlers.Commander
 {
@@ -36,7 +35,7 @@ namespace CommanderCS.Host.Handlers.Commander
                 int commanderXP = Convert.ToInt32(commander.__exp);
 
                 for (int i = 1; i < @params.count;)
-                {             
+                {
                     if (user.UserInventory.itemData[sid] > 0)
                     {
                         user.UserInventory.itemData[sid] -= 1;
@@ -52,7 +51,7 @@ namespace CommanderCS.Host.Handlers.Commander
                 commander = CheckCommanderLevel(commander, rg);
             }
 
-            if(int.Parse(commander.__level) > user.UserResources.level)
+            if (int.Parse(commander.__level) > user.UserResources.level)
             {
                 ErrorPacket error = new()
                 {
@@ -62,7 +61,6 @@ namespace CommanderCS.Host.Handlers.Commander
 
                 return error;
             }
-
 
             DatabaseManager.GameProfile.UpdateItemData(session, user.UserInventory.itemData);
             DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
@@ -122,7 +120,6 @@ namespace CommanderCS.Host.Handlers.Commander
             return CheckCommanderLevelRecursive(commander, rg);
         }
 
-
         private static UserInformationResponse.Commander CheckCommanderLevelRecursive(UserInformationResponse.Commander commander, Regulation rg)
         {
             int commanderLevel = int.Parse(commander.__level);
@@ -131,7 +128,7 @@ namespace CommanderCS.Host.Handlers.Commander
 
             int commanderXp = int.Parse(commander.__exp);
 
-            if(commanderXp > row.exp)
+            if (commanderXp > row.exp)
             {
                 commander.__level = (commanderLevel + 1).ToString();
                 commander.__exp = (commanderXp -= row.exp).ToString();

@@ -1,6 +1,6 @@
+using CommanderCS.Host;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCS.Host;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Ro;
 using Newtonsoft.Json;
@@ -27,7 +27,9 @@ namespace CommanderCS.Packets.Handlers.Guild
             {
                 roGuild = Guild2RoGuild(guild, session);
                 response.Result = roGuild;
-            } else {
+            }
+            else
+            {
                 response.Result = roGuild;
             }
 

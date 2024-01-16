@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
@@ -12,10 +12,24 @@ namespace CommanderCS.Packets.Handlers.Commander
         {
             var user = GetUserGameProfile();
             var session = GetSession();
+            var rg = GetRegulation();
 
-            // maybe check if you own the costume first?
+            string cid = @params.cid.ToString();
 
-            user.CommanderData["" + @params.cid].currentCostume = @params.cos;
+            user.CommanderData[cid].currentCostume = @params.cos;
+
+            var costumeRow = rg.commanderCostumeDtbl.Find(x => x.ctid == @params.cos);
+            var thumbnailRow = rg.commanderCostumeDtbl.Find(x => x.ctid == user.UserResources.thumbnailId);
+
+            if (costumeRow.cid == thumbnailRow.cid)
+            {
+                DatabaseManager.GameProfile.ChangeThumbnailId(session, @params.cos);
+
+                if (user.GuildId != null)
+                {
+                    DatabaseManager.Guild.UpdateSpecificMemberThumbnail(user.GuildId, user.Uno, @params.cos);
+                }
+            }
 
             DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
 
@@ -34,7 +48,7 @@ namespace CommanderCS.Packets.Handlers.Commander
         [JsonProperty("cid")]
         public int cid { get; set; }
 
-        [JsonProperty("tokn")]
+        [JsonProperty("cos")]
         public int cos { get; set; }
     }
 }

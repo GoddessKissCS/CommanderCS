@@ -12,7 +12,6 @@ namespace CommanderCS.Host.Handlers.Login
         public override object Handle(LoginRequest @params)
         {
             string session = GenerateUniqueSessionToken();
-
             var rg = GetRegulation();
 
             var user = DatabaseManager.GameProfile.GetOrCreate(@params.memberId, @params.world);
@@ -30,6 +29,14 @@ namespace CommanderCS.Host.Handlers.Login
                 return error;
             }
 
+            //var items = rg.goodsDtbl;
+
+            //foreach (var item in items)
+            //{
+            //    user.UserInventory.itemData.Add(item.type, int.Parse(item.type));
+            //}
+
+            DatabaseManager.GameProfile.UpdateMedalData(session, user.UserInventory.medalData);
 
             var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
             var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(session);
@@ -63,7 +70,7 @@ namespace CommanderCS.Host.Handlers.Login
                 __commanderInfo = JObject.FromObject(user.CommanderData),
             };
 
-            LoginPacket Login = new()
+            LoginResponse loginResponse = new()
             {
                 info = userInformationResponse,
                 sess = session
@@ -72,7 +79,7 @@ namespace CommanderCS.Host.Handlers.Login
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = Login
+                Result = loginResponse
             };
 
             return response;
@@ -90,7 +97,7 @@ namespace CommanderCS.Host.Handlers.Login
             return session;
         }
 
-        private class LoginPacket
+        private class LoginResponse
         {
             [JsonProperty("sess")]
             public string sess { get; set; }

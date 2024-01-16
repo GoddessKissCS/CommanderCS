@@ -1,6 +1,7 @@
 using CommanderCS.Host;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Packets.Handlers.Dispatch
 {
@@ -24,14 +25,71 @@ namespace CommanderCS.Packets.Handlers.Dispatch
                 return error;
             }
 
+            Dictionary<string, DiapatchCommanderInfo> dispatchedcommanders = [];
+
+            if (user.DispatchedCommanders != null)
+            {
+                foreach (var item in user.DispatchedCommanders)
+                {
+                    int runtime = (int)TimeManager.GetTimeDifferenceInHours(item.Value.DispatchTime);
+                    int dispatchTime = (int)TimeManager.GetTimeDifference(item.Value.DispatchTime);
+
+                    int gold = 0;
+
+                    int engageCount = item.Value.engageCnt;
+
+                    user.CommanderData.TryGetValue(item.Value.cid.ToString(), out var commander);
+
+                    if (runtime >= 1)
+                    {
+                        gold = runtime * GetDispatchGold(commander.__level, commander.__cls, commander.__rank);
+
+                        if (engageCount >= 1)
+                        {
+                            gold += engageCount * (int)(GetdispatchFloatGold(commander.__level, commander.__cls, commander.__rank) * 10f);
+                        }
+
+                    }
+
+                    DiapatchCommanderInfo diapatchCommander = new()
+                    {
+                        cid = item.Value.cid,
+                        engageCnt = engageCount,
+                        runtime = dispatchTime,
+                        getGold = gold
+                    };
+
+                    dispatchedcommanders.Add(item.Key, diapatchCommander);
+                }
+            }
+            else
+            {
+                dispatchedcommanders = null;
+            }
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = user.DispatchedCommanders,
+                Result = dispatchedcommanders,
             };
 
             return response;
         }
+
+        public int GetDispatchGold(string level, string cls, string rank) => GetDispatchGold(int.Parse(level), int.Parse(cls), int.Parse(rank));
+
+        public int GetDispatchGold(int level, int cls, int rank)
+        {
+            return (int)((level + cls) * rank / 11f * 60f);
+        }
+
+        public float GetdispatchFloatGold(string level, string cls, string rank) => GetDispatchGold(int.Parse(level), int.Parse(cls), int.Parse(rank));
+
+        public float GetdispatchFloatGold(int level, int cls, int rank)
+        {
+            return (level + cls) * rank / 11f * 60f;
+        }
+
     }
 
     public class GetDispatchCommanderListRequest

@@ -4,12 +4,10 @@ using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography;
 
 namespace CommanderCS.Packets.Handlers.Commander
 {
-	[Packet(Id = Method.CommanderSkillLevelUp)]
+    [Packet(Id = Method.CommanderSkillLevelUp)]
     public class CommanderSkillLevelUp : BaseMethodHandler<CommanderSkillLevelUpRequest>
     {
         public override object Handle(CommanderSkillLevelUpRequest @params)
@@ -41,16 +39,19 @@ namespace CommanderCS.Packets.Handlers.Commander
             switch (skillIndex)
             {
                 case 1:
-                    user.CommanderData[cid].__skv1 = upgradeLevel.ToString();
+                    user.CommanderData[cid].__skv1 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv1)).ToString();
                     break;
-                case 2: 
-                    user.CommanderData[cid].__skv2 = upgradeLevel.ToString();
+
+                case 2:
+                    user.CommanderData[cid].__skv2 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv2)).ToString();
                     break;
+
                 case 3:
-                    user.CommanderData[cid].__skv3 = upgradeLevel.ToString();
+                    user.CommanderData[cid].__skv3 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv3)).ToString();
                     break;
+
                 case 4:
-                    user.CommanderData[cid].__skv4 = upgradeLevel.ToString();
+                    user.CommanderData[cid].__skv4 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv4)).ToString();
                     break;
             }
 
@@ -100,17 +101,18 @@ namespace CommanderCS.Packets.Handlers.Commander
             return response;
         }
     }
-	public class CommanderSkillLevelUpRequest
-	{
+
+    public class CommanderSkillLevelUpRequest
+    {
         [JsonProperty("cid")]
-		public int cid { get; set; }
+        public int cid { get; set; }
 
         [JsonProperty("sidx")]
         public int sidx { get; set; }
 
         [JsonProperty("cnt")]
         public int cnt { get; set; }
-	}
+    }
 }
 
 /*public void CommanderSkillLevelUp(int cid, int sidx, int cnt)

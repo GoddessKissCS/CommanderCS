@@ -1,5 +1,4 @@
-﻿using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Battle;
+﻿using CommanderCSLibrary.Shared.Battle;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -11,7 +10,7 @@ namespace CommanderCS.Host.Handlers.Battle
     {
         public override object Handle(BattleOutRequest @params)
         {
-			var rg = GetRegulation();
+            var rg = GetRegulation();
 
             string serializedJson = JsonConvert.SerializeObject(@params.info, Formatting.Indented);
 

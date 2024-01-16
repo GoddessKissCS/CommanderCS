@@ -1,5 +1,5 @@
-﻿using CommanderCS.MongoDB.Schemes;
-using CommanderCS.Host;
+﻿using CommanderCS.Host;
+using CommanderCS.MongoDB.Schemes;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Ro;
@@ -143,7 +143,6 @@ namespace CommanderCS.MongoDB.Handlers
             };
 
             return guildInfo;
-
         }
 
         public UserInformationResponse.UserGuild RequestGuild(int? guildId, int uno)
@@ -596,6 +595,17 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter2, update2);
 
             return result.ModifiedCount > 0;
+        }
+
+        public void UpdateSpecificMemberThumbnail(int? guildId, int uno, int costumeId)
+        {
+            var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId)
+                         & Builders<GuildScheme>.Filter.ElemMatch("MemberData",
+                             Builders<MemberData>.Filter.Eq("uno", uno));
+
+            var update = Builders<GuildScheme>.Update.Set("MemberData.$.thumnail", costumeId);
+
+            DatabaseCollection.UpdateOne(filter, update);
         }
     }
 }

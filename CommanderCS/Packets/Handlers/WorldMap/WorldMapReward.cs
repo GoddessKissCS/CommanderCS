@@ -1,6 +1,6 @@
+using CommanderCS.Host;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCS.Host;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
@@ -36,46 +36,66 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             {
                 case 0:
                     return "5";
+
                 case 1:
                     return "26";
+
                 case 2:
                     return "14";
+
                 case 3:
                     return "19";
+
                 case 4:
                     return "15";
+
                 case 5:
                     return "12";
+
                 case 6:
                     return "27";
+
                 case 7:
                     return "10";
+
                 case 8:
                     return "20";
+
                 case 9:
                     return "30";
+
                 case 10:
                     return "616";
+
                 case 11:
                     return "47";
+
                 case 12:
                     return "50";
+
                 case 13:
                     return "51";
+
                 case 14:
                     return "48";
+
                 case 15:
                     return "62";
+
                 case 16:
                     return "75";
+
                 case 17:
                     return "85";
+
                 case 18:
                     return "92";
+
                 default:
                     return string.Empty;
             }
         }
+
         private static CommanderCSLibrary.Shared.Protocols.WorldMapReward UserWorldReward(string commanderId, GameProfileScheme user, string session)
         {
             int medals = 20;

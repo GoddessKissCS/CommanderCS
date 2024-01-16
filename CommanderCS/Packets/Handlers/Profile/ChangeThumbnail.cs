@@ -15,9 +15,18 @@ namespace CommanderCS.Host.Handlers.Profile
 
             bool success = false;
 
-            if (user.CommanderData["" + @params.idx] != null)
+            string idx = @params.idx.ToString();
+
+            if (user.CommanderData[idx] != null)
             {
-                success = DatabaseManager.GameProfile.ChangeThumbnailId(session, @params.idx);
+                int costumeId = user.CommanderData[idx].currentCostume;
+
+                success = DatabaseManager.GameProfile.ChangeThumbnailId(session, costumeId);
+
+                if (user.GuildId != null)
+                {
+                    DatabaseManager.Guild.UpdateSpecificMemberThumbnail(user.GuildId, user.Uno, costumeId);
+                }
             }
 
             ResponsePacket response = new()

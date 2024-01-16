@@ -27,7 +27,7 @@ namespace CommanderCS.MongoDB.Schemes
         public Dictionary<string, UserInformationResponse.Commander> CommanderData { get; set; }
         public List<UserInformationResponse.PreDeck> PreDeck { get; set; }
         public List<int> CompleteRewardGroupIdx { get; set; }
-        public Dictionary<string, DiapatchCommanderInfo> DispatchedCommanders { get; set; }
+        public Dictionary<string, DispatchedCommanderInfo> DispatchedCommanders { get; set; }
         public List<UserInformationResponse.VipRechargeData> VipRechargeData { get; set; }
         public Dictionary<string, int> BoughtCashShopItems { get; set; }
         public List<BlockUser> BlockedUsers { get; set; }
@@ -36,8 +36,6 @@ namespace CommanderCS.MongoDB.Schemes
         public RankingData RankingData { get; set; }
         public DefenderDeck DefenderDeck { get; set; }
         public List<ExplorationData> ExplorationData { get; set; }
-
-        //public List<WaveBattleInfoList.WaveBattleInfo> WaveBattleInfos { get; set; }
     }
 
     public class UserDevice
@@ -184,5 +182,14 @@ namespace CommanderCS.MongoDB.Schemes
         public Dictionary<string, string> PvPDefenderDeck { get; set; }
 
         public Dictionary<string, Dictionary<string, string>> WaveDuelDefenderDecks { get; set; }
+    }
+
+    public class DispatchedCommanderInfo
+    {
+        public int cid { get; set; }
+        public int runtime { get; set; }
+        public int engageCnt { get; set; }
+        public int getGold { get; set; }
+        public double DispatchTime { get; set; }
     }
 }
