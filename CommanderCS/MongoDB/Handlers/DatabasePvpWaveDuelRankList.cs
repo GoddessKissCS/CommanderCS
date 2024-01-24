@@ -1,19 +1,20 @@
-﻿using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCS.MongoDB.Schemes;
+using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Protocols;
 using StellarGK.MongoDB.Schemes;
 
-namespace CommanderCS.MongoDB.Handlers
+namespace StellarGK.MongoDB.Handlers
 {
-    public class DatabasePvpRankList : DatabaseTable<PvpRankListScheme>
+    public class DatabasePvpWaveDuelRankList : DatabaseTable<PvpWaveDuelRankListScheme>
     {
-        public DatabasePvpRankList() : base("PvpRankList")
+        public DatabasePvpWaveDuelRankList() : base("PvpWaveDuelRankList")
         {
         }
-
-        public void Insert(int uno, RankingUserData rankingData, Dictionary<string, string> deck)
+        public void Insert(int uno, RankingUserData rankingData, Dictionary<string, Dictionary<string, string>> decks)
         {
 
             //TODO: NEEDS TO BE ADJUSTED FOR RANKING AND ETC
-            PvpRankListScheme rankList = new()
+            PvpWaveDuelRankListScheme waveduel = new()
             {
                 Uno = uno,
                 score = rankingData.score,
@@ -34,11 +35,11 @@ namespace CommanderCS.MongoDB.Handlers
                 winCnt = rankingData.winCnt,
                 winRank = rankingData.winRank,
                 winRankIdx = rankingData.winRankIdx,
-                deck = deck
+                decks = decks      
             };
 
 
-            DatabaseCollection.InsertOne(rankList);
+            DatabaseCollection.InsertOne(waveduel);
         }
     }
 }

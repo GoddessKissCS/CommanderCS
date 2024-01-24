@@ -11,8 +11,9 @@ namespace CommanderCS.Packets.Handlers.Raid
         public override object Handle(GetRaidRankListRequest @params)
         {
 
+//TODO: ADD RAIDRANKING TO DATABASE
 
-			PvPRankingList pvPRankingList = new()
+			PvPRankingList raidRankingList = new()
 			{
 				info = new() 
 				{ 
@@ -43,6 +44,16 @@ namespace CommanderCS.Packets.Handlers.Raid
 				bossData = []
 			};
 
+
+			// SPEFICIC BOSS ON SPECIFIC DAYS
+
+            // Monday - Friday 
+
+            Dictionary<string, int> bossData3 = new()
+            {
+                { "3", 172800 },
+            };
+
             // Tuesday - Thursday - Saturday 
 
             Dictionary<string, int> bossData = new()
@@ -57,21 +68,14 @@ namespace CommanderCS.Packets.Handlers.Raid
                 { "2", 86400 },
             };
 
-            // Monday - Friday 
-
-            Dictionary<string, int> bossData3 = new()
-            {
-                { "3", 172800 },
-            };
-
-            pvPRankingList.bossData.Add(bossData);
-            pvPRankingList.bossData.Add(bossData2);
-            pvPRankingList.bossData.Add(bossData3);
+            //pvPRankingList.bossData.Add(bossData);
+            //pvPRankingList.bossData.Add(bossData2);
+            //pvPRankingList.bossData.Add(bossData3);
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = JObject.FromObject(pvPRankingList),
+                Result = JObject.FromObject(raidRankingList),
             };
             return response;
         }

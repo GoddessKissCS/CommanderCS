@@ -10,7 +10,7 @@ namespace CommanderCS.MongoDB.Handlers
         {
         }
 
-        public DeviceChangeCodeScheme Create(int id)
+        public DeviceChangeCodeScheme Insert(int id)
         {
             var Code = Utility.ChangeDeviceCode();
             var CreateTime = TimeManager.CurrentEpoch;
@@ -52,7 +52,7 @@ namespace CommanderCS.MongoDB.Handlers
             {
                 if (devicechange == null)
                 {
-                    var device = DatabaseManager.DeviceCode.Create(account.MemberId);
+                    var device = DatabaseManager.DeviceCode.Insert(account.MemberId);
 
                     return device.Code;
                 }

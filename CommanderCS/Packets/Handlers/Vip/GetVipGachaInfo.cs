@@ -10,7 +10,7 @@ namespace CommanderCS.Host.Handlers.Vip
         {
             VipGacha result = new();
 
-            //Protocols.VipGacha
+//TODO: I FORGOT WHAT THIS IS EVEN FOR
 
             return "{}";
         }

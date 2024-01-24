@@ -59,6 +59,7 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 
         private static CommanderCSLibrary.Shared.Protocols.WorldMapReward UserWorldReward(string commanderId, GameProfileScheme user, string session)
         {
+//TODO: needs to be changed
             int medals = 20;
 
             CommanderCSLibrary.Shared.Protocols.WorldMapReward WorldMapReward = new();

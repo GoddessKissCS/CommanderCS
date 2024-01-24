@@ -20,6 +20,8 @@ namespace CommanderCS.Host.Handlers.Server
 
             var playerCount = DatabaseManager.GameProfile.GetGameProfileSchemeCount();
 
+//TODO: MAKE IT BETTER LOOKING
+
             ServerInfo korea = new()
             {
                 maxLevel = server.MaxLevel,

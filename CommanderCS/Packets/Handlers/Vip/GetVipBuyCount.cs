@@ -11,6 +11,7 @@ namespace CommanderCS.Host.Handlers.Vip
         {
             //gets send EVipRechargeType enum + ["rchg"]
 
+//TODO: MIGHT NEED A BE CHECKED IF ITS CORRECT
             var user = GetUserGameProfile();
 
             GetVIPBuyCountResponse getVIPBuyCount = new()
