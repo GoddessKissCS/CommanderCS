@@ -1,6 +1,7 @@
 using CommanderCS.Host;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Raid
 {
@@ -9,14 +10,69 @@ namespace CommanderCS.Packets.Handlers.Raid
     {
         public override object Handle(GetRaidRankListRequest @params)
         {
-            ResponsePacket response = new ResponsePacket()
-            {
-                Id = BasePacket.Id,
-                Result = null,
+
+
+			PvPRankingList pvPRankingList = new()
+			{
+				info = new() 
+				{ 
+					endTime = 86400
+                },
+				user = new()
+				{
+					score = 0,
+					averageScore = 0,
+					losingStreak = 0,
+					bestScore = 0,
+					nextScore = 0,
+					winningStreak = 0,
+					duelPoint = 0,
+					loseCnt = 0,
+					raidCnt = 0,
+					raidRank = 0,
+					raidRewardPoint = 0,
+					ranking = 0,
+					rankingRate = 0,
+					rewardDuelPoint = 0,
+					rewardId = 0,
+					winCnt = 0,
+					winRank = 0,
+					winRankIdx = 0,
+				},
+				rankList = [],
+				bossData = []
+			};
+
+            // Tuesday - Thursday - Saturday 
+
+            Dictionary<string, int> bossData = new()
+			{
+                { "1", 15 },
             };
 
-            PvPRankingList pvPRankingList = new();
+            // Wednesday - Sunday 
 
+            Dictionary<string, int> bossData2 = new()
+            {
+                { "2", 86400 },
+            };
+
+            // Monday - Friday 
+
+            Dictionary<string, int> bossData3 = new()
+            {
+                { "3", 172800 },
+            };
+
+            pvPRankingList.bossData.Add(bossData);
+            pvPRankingList.bossData.Add(bossData2);
+            pvPRankingList.bossData.Add(bossData3);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = JObject.FromObject(pvPRankingList),
+            };
             return response;
         }
     }

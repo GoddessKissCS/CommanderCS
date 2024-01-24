@@ -1,7 +1,9 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
+using MongoDB.Driver;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -24,19 +26,9 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             var costumeData = rg.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == @params.cos);
 
-            if (user.CommanderData.ContainsKey(cid) && user.UserInventory.donHaveCommCostumeData.ContainsKey(cid))
-            {
-                user.CommanderData[cid].haveCostume.Add(@params.cos);
-                user.UserInventory.donHaveCommCostumeData[cid].Add(@params.cos);
-            }
-            else if (!user.UserInventory.donHaveCommCostumeData.ContainsKey(cid))
-            {
-                user.UserInventory.donHaveCommCostumeData.Add(cid, [@params.cos]);
-            }
-            else
-            {
-                user.UserInventory.donHaveCommCostumeData[cid].Add(@params.cos);
-            }
+            user = AddCostumeData(cid, @params.cos, user);
+
+            // TODO CHECK WHEN WE CREATE A CHARACTER TO SEE IF WE OWN ANY COSTUMES AND THEN TRANSFER THEM TO THE haveCostume and delete them from donHaveCommCostume
 
             user.UserResources.cash -= costumeData.sellPrice;
 
@@ -84,6 +76,24 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             return response;
         }
+
+        public GameProfileScheme AddCostumeData(string cid, int costumeId, GameProfileScheme user)
+        {
+            if (!user.CommanderData.ContainsKey(cid))
+            {
+                if (!user.UserInventory.donHaveCommCostumeData.ContainsKey(cid))
+                {
+                    user.UserInventory.donHaveCommCostumeData.Add(cid, [costumeId]);
+                }
+            }
+            else
+            {
+                user.CommanderData[cid].haveCostume.Add(costumeId);
+            }
+            return user;
+        }
+
+
     }
 
     public class BuyCommanderCostumeRequest

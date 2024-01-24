@@ -19,8 +19,6 @@ namespace CommanderCS.MongoDB.Handlers
 
             double time = TimeManager.CurrentEpochMilliseconds;
 
-            var editTIME = TimeManager.CurrentEpoch;
-
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
             // TODO PROBABLY NEEDS AN OVERHAUL OR SO IDK
@@ -91,7 +89,7 @@ namespace CommanderCS.MongoDB.Handlers
                 Point = 0,
                 MaxCount = 20,
                 BoardListData = [],
-                LastEdit = editTIME,
+                LastEdit = null,
             };
 
             DatabaseManager.GameProfile.UpdateGuildId(user.Uno, guildId);
@@ -369,12 +367,22 @@ namespace CommanderCS.MongoDB.Handlers
 
             var guild = FindByUid(user.GuildId);
 
-            var timeDifference = TimeManager.GetTimeDifference(guild.LastEdit);
 
-            if (timeDifference < 30)
+            if(guild.LastEdit != null)
             {
-                return ErrorCode.FederationSettingsChangedRecently_2;
+                double time = (double)guild.LastEdit;
+
+                var timeDifference = TimeManager.GetTimeDifference(time);
+
+                if (timeDifference < 30)
+                {
+                    return ErrorCode.FederationSettingsChangedRecently_2;
+                }
+
             }
+
+
+
 
             switch (act)
             {

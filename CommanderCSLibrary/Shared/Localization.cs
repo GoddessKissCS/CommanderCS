@@ -78,9 +78,9 @@ namespace CommanderCSLibrary.Shared
                     array = Encoding.UTF8.GetBytes(Local);
                     string Local2 = File.ReadAllText($"Resources\\ExcelOutputAsset\\ScenarioLocalization.txt");
                     bytes = Encoding.UTF8.GetBytes(Local2);
-                    string Local3 = File.ReadAllText($"Resources\\ExcelOutputAsset\\EventLocalization.txt");
+                    string Local3 = File.ReadAllText($"Resources\\ExcelOutputAsset\\EventScenarioLocalization.txt");
                     bytes2 = Encoding.UTF8.GetBytes(Local3);
-                    string Local4 = File.ReadAllText($"Resources\\ExcelOutputAsset\\InfinityLocalization.txt");
+                    string Local4 = File.ReadAllText($"Resources\\ExcelOutputAsset\\InfinityScenarioLocalization.txt");
                     bytes3 = Encoding.UTF8.GetBytes(Local4);
                 }
                 localizationHasBeenSet = true;

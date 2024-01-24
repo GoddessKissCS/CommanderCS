@@ -174,8 +174,8 @@ namespace CommanderCS.MongoDB.Schemes
     public class RankingData
     {
         public RankingUserData PvPDuelRankingData { get; set; }
-
         public RankingUserData WaveDuelRankingData { get; set; }
+        public RankingUserData RaidRankingData { get; set; }
     }
 
     public class DefenderDeck

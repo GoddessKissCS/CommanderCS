@@ -26,7 +26,7 @@ namespace CommanderCS.MongoDB.Schemes
         public int Occupy { get; set; }
         public int World { get; set; }
         public List<GuildBoardData> BoardListData { get; set; }
-        public double LastEdit { get; set; }
+        public double? LastEdit { get; set; }
     }
 
     public class MemberData

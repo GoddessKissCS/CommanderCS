@@ -1,5 +1,7 @@
-﻿using CommanderCSLibrary.Shared.Battle;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Battle;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -10,7 +12,9 @@ namespace CommanderCS.Host.Handlers.Battle
     {
         public override object Handle(BattleOutRequest @params)
         {
+			var user = GetUserGameProfile();
             var rg = GetRegulation();
+			var session = GetSession();
 
             string serializedJson = JsonConvert.SerializeObject(@params.info, Formatting.Indented);
 
@@ -36,7 +40,44 @@ namespace CommanderCS.Host.Handlers.Battle
             File.WriteAllText("simRec.json", simRec);
             File.WriteAllText("simRes.json", simRes);
 
-            return "{}";
+			var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+
+
+			int __exp = int.Parse(rsoc.__exp);
+            int __level = int.Parse(rsoc.__level);
+
+			__exp += 6;
+
+            rsoc.__exp = "1";
+			rsoc.__level = "2";
+
+			UserInformationResponse.BattleResult battleResult = new()
+			{
+				save = false,
+				VipShopOpen = 0,
+				VipShopResetTime = 0,
+				commanderData = user.CommanderData,
+				commanderFavor = [],
+				eventResourceData = user.UserInventory.eventResourceData,
+				foodData = user.UserInventory.foodData,
+				groupItemData = user.UserInventory.groupItemData,
+				infinityData = new(),
+				itemData = user.UserInventory.itemData,
+				medalData = user.UserInventory.medalData,
+				partData = user.UserInventory.partData,
+				rewardList = [],
+				user = new(),
+				__resource = rsoc,
+			};
+
+
+			ResponsePacket response = new() 
+			{ 
+				Id = BasePacket.Id,
+				Result = JObject.FromObject(battleResult),
+			};
+
+            return response;
         }
     }
 

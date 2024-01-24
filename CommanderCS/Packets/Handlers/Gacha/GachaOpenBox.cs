@@ -1,5 +1,9 @@
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Handlers;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Gacha
@@ -9,7 +13,64 @@ namespace CommanderCS.Packets.Handlers.Gacha
     {
         public override object Handle(GachaOpenBoxRequest @params)
         {
-            throw new NotImplementedException();
+			var user = GetUserGameProfile();
+			var session = GetSession();
+			var rg = GetRegulation();
+
+            List<GachaOpenBoxResponse.Reward> rewards = [];
+
+            GachaInformationResponse ws = new()
+            {
+                freeOpenRemainTime = 259200,
+                freeOpenRemainCount = 0,
+                pilotRate = 0,
+                type = "2"
+            };
+
+            // TODO : ADD RANDOM RNG GENERATOR FOR LOOT AND IF ITS COMMANDER ADD IT TO THE USER IF NOT ADD MEDALS AND ETC
+
+            // PUT THE GachaInformationResponse INTO GAMEPROFILESCHEME TO SEE IF USER X KEEPS ETC SHIT AND DO A
+
+            switch (@params.gbIdx)
+			{
+				case 1:
+					rewards.Add(new() { count = 5, id = "8", type = ERewardType.Goods });
+                    user.UserInventory.itemData.Add("8", 5);
+                    DatabaseManager.GameProfile.UpdateItemData(session, user.UserInventory.itemData);
+                    break;
+				case 2:
+                    rewards.Add(new() { count = 1, id = "2", type = ERewardType.Commander });
+                    user.CommanderData = rg.AddSpecificCommander(user.CommanderData, 2);
+                    DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+                    break;
+			}
+
+
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+
+            GachaOpenBoxResponse gachaOpen = new()
+            {
+                changedGachaInformation = ws,
+                rewardList = rewards,
+                goodsResult = rsoc,
+                costumeData = user.UserInventory.costumeData,
+                foodData = user.UserInventory.foodData,
+                partData = user.UserInventory.partData,
+                itemData = user.UserInventory.itemData,
+                medalData = user.UserInventory.medalData,
+                commanderIdDict = user.CommanderData,
+                eventResourceData = user.UserInventory.eventResourceData,
+                equipItem = user.UserInventory.equipItem
+            };
+
+
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = gachaOpen,
+            };
+
+			return response;
         }
     }
 

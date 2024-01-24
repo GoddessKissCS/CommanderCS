@@ -14,8 +14,10 @@ namespace CommanderCS.Host.Handlers.WorldMap
             var session = GetSession();
             WorldMapStageStartResponse wmssr = new();
 
+//TODO: look at the
             List<RewardInfo.RewardData> test = [];
 
+//TODO: find out how to add exp
             wmssr.reward = test;
 
             wmssr.rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);

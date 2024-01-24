@@ -30,7 +30,9 @@ namespace CommanderCS.Host.Handlers.Commander
                 return error;
             }
 
-            if (user.CommanderData.TryGetValue(@params.commanderId.ToString(), out UserInformationResponse.Commander commander) && commander != null)
+            string cid = @params.commanderId.ToString();
+
+            if (user.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
             {
                 int commanderXP = Convert.ToInt32(commander.__exp);
 

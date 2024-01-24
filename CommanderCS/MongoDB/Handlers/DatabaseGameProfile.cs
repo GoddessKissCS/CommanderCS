@@ -35,8 +35,8 @@ namespace CommanderCS.MongoDB.Handlers
             {
                 Server = server,
                 LastStage = 0,
-                UserStatistics = new() 
-                { 
+                UserStatistics = new()
+                {
                     weaponMakeSlotCount = 2,
                     weaponInventoryCount = 200
                 },
@@ -89,7 +89,10 @@ namespace CommanderCS.MongoDB.Handlers
                         { "1", 10 }
                     },
                     equipItem = [],
-                    itemData = [],
+                    itemData = new()
+                    {
+                        { "10", 5 } // BOSS Tickets
+                    },
                     foodData = [],
                     groupItemData = [],
                     partData = [],
@@ -174,6 +177,13 @@ namespace CommanderCS.MongoDB.Handlers
                         score = 1000
                     },
                     WaveDuelRankingData = new()
+                    {
+
+                    },
+                    RaidRankingData = new()
+                    {
+
+                    },              
                 },
                 WeaponInformation = new()
                 {
@@ -595,12 +605,10 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
-        public bool ChangeThumbnailId(string session, int idx)
+        public bool ChangeThumbnailId(string session, int costumeId)
         {
-            int id = Constants.regulation.commanderCostumeDtbl.FirstOrDefault(x => x.cid == idx).ctid;
-
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.thumbnailId, id);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.thumbnailId, costumeId);
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
@@ -795,7 +803,7 @@ namespace CommanderCS.MongoDB.Handlers
                 UpdateTutorialStep(sess, 2);
             }
 
-            DatabaseManager.GameProfile.UpdateNickName(sess, nickname);
+            UpdateNickName(sess, nickname);
 
             return ErrorCode.Success;
         }

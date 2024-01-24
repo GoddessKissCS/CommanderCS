@@ -237,11 +237,10 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public string LoadJson(string filename)
         {
-            return File.ReadAllText($"Resources\\ExcelOutputAsset\\{filename}");
+            return File.ReadAllText($"\\Resources\\ExcelOutputAsset\\{filename}");
         }
 
 #pragma warning disable CS8601 // Possible null reference assignment.
-
         public void Init()
         {
             rewardDtbl = JsonConvert.DeserializeObject<DataTable<RewardDataRow>>(LoadJson("RewardDataTable.json"), SerializerSettings);

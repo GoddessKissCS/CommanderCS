@@ -15,12 +15,21 @@ namespace CommanderCS.Host.Handlers.Gacha
             GachaInformationResponse w = new()
             {
                 freeOpenRemainTime = 0,
-                freeOpenRemainCount = 0,
+                freeOpenRemainCount = 1,
                 pilotRate = 1,
                 type = "1"
             };
 
+            GachaInformationResponse ws = new()
+            {
+                freeOpenRemainTime = 0,
+                freeOpenRemainCount = 1,
+                pilotRate = 0,
+                type = "2"
+            };
+
             test.Add("1", w);
+            test.Add("2", ws);
 
             response.Id = BasePacket.Id;
             response.Result = test;

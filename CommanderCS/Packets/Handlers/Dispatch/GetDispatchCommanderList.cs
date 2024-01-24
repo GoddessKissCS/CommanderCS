@@ -13,16 +13,19 @@ namespace CommanderCS.Packets.Handlers.Dispatch
             var user = GetUserGameProfile();
             var guild = GetUserGuild();
 
-            var difference = TimeManager.GetTimeDifference(guild.LastEdit);
-
-            if (difference < 30)
+            if(guild.LastEdit != null)
             {
-                ErrorPacket error = new()
+                var difference = TimeManager.GetTimeDifference((double)guild.LastEdit);
+
+                if (difference < 30)
                 {
-                    Error = new() { code = ErrorCode.FederationSettingsChangedWhileGettingGuildBoard },
-                    Id = BasePacket.Id,
-                };
-                return error;
+                    ErrorPacket error = new()
+                    {
+                        Error = new() { code = ErrorCode.FederationSettingsChangedWhileGettingGuildBoard },
+                        Id = BasePacket.Id,
+                    };
+                    return error;
+                }
             }
 
             Dictionary<string, DiapatchCommanderInfo> dispatchedcommanders = [];

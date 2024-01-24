@@ -12,17 +12,27 @@ namespace CommanderCS.Packets.Handlers.Annihilation
 		{
 			var user = GetUserGameProfile();
 
-// still needs work
+
+			switch (@params.goReady)
+			{
+				case 0:
+					break;
+			}
+
+			// still needs work
+
+			AnnihilationMode mode = AnnihilationMode.NONE;
+
 			var annimap = new AnnihilationMapInfo()
 			{
 				stage = 0,
 				remainTime = 0,
-				commanderStatusList = null,
-				dieCommanderList = null,
+				commanderStatusList = [],
+				dieCommanderList = [],
 				clear = 0,
 				enemyList = [],
 				isPlayAdvanceParty = 0,
-				mode = 0,
+				mode = mode,
 				__advancePartyReward = 0,		
 			};
 
