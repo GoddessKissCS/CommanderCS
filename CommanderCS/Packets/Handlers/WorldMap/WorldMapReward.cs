@@ -15,6 +15,7 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             var user = GetUserGameProfile();
             var session = GetSession();
 
+#warning TODO: REVAMP THIS FUNCTION
             string commanderId = GetCommanderIdForWorld(@params.world);
 
             var worldmap = UserWorldReward(commanderId, user, session);
@@ -59,7 +60,6 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 
         private static CommanderCSLibrary.Shared.Protocols.WorldMapReward UserWorldReward(string commanderId, GameProfileScheme user, string session)
         {
-//TODO: needs to be changed
             int medals = 20;
 
             CommanderCSLibrary.Shared.Protocols.WorldMapReward WorldMapReward = new();

@@ -1,7 +1,49 @@
+using CommanderCS.Host;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace StellarGK.Packets.Handlers.WorldDuel
 {
-    public class PvPStartWorldDuel
+	[Packet(Id = CommanderCSLibrary.Shared.Enum.Method.PvPStartWorldDuel)]
+    public class PvPStartWorldDuel : BaseMethodHandler<PvPStartWorldDuelRequest>
     {
+        public override object Handle(PvPStartWorldDuelRequest @params)
+        {
+			CommanderCSLibrary.Shared.Protocols.UserInformationResponse.BattleResult battleResult = new() { };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = JObject.FromObject(battleResult),
+            };
+
+            return response;
+        }
+    }
+
+
+	public class PvPStartWorldDuelRequest
+	{
+		[JsonProperty("type")]
+		public int type { get; set; }
+
+        [JsonProperty("retry")]
+        public int retry { get; set; }
+
+        [JsonProperty("deck")]
+        public JObject deck { get; set; }
+
+        [JsonProperty("idx")]
+        public int idx { get; set; }
+
+        [JsonProperty("checkSum")]
+        public string checkSum { get; set; }
+
+        [JsonProperty("info")]
+        public JArray info { get; set; }
+
+        [JsonProperty("result")]
+        public JArray result { get; set; }
     }
 }
 

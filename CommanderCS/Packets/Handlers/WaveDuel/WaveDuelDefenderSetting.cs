@@ -16,11 +16,11 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
             Dictionary<string, Dictionary<string, string>> decks = @params.decks.ToObject<Dictionary<string, Dictionary<string, string>>>();
 
             DatabaseManager.GameProfile.UpdateWaveDefenderDecks(session, decks);
-
-            ResponsePacket response = new()
+#warning TODO CHECK IF FAILS
+			ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = true.ToString(),
+                Result =  "false",
             };
 
             return response;

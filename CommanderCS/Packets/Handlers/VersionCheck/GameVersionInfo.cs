@@ -11,17 +11,22 @@ namespace CommanderCS.Host.Handlers.VersionCheck
         {
             var info = DatabaseManager.GameVersionInfo.Get(@params.ch);
 
+            double policy = Convert.ToDouble(info.showPolicy);
+            int fileCheckingEnabled = Convert.ToInt32(info.fileCheck);
+            int googleLoginEnabled = Convert.ToInt32(info.enableGoogleLogin);
+            int isVersionOutdated = Convert.ToInt32(info.Version_State);
+
             GameVersionInfoResponse gameversion = new()
             {
-                policy = Convert.ToDouble(info.showPolicy),
+                policy = policy,
                 chat = info.Chat_Url,
                 cdn = info.Cdn_Url,
                 game = info.Game_Url,
-                fc = Convert.ToInt32(info.fileCheck),
-                gglogin = Convert.ToInt32(info.enableGoogleLogin),
+                fc = fileCheckingEnabled,
+                gglogin = googleLoginEnabled,
                 ver = info.Version,
                 word = info.Word,
-                stat = Convert.ToInt32(info.Version_State)
+                stat = isVersionOutdated
             };
 
             ResponsePacket ResponsePacket = new()

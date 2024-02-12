@@ -477,7 +477,7 @@ namespace CommanderCSLibrary.Shared
             mOldDictionary = dictionary;
             localizationHasBeenSet = true;
             mLanguageIndex = -1;
-            mLanguages = new string[1] { languageName };
+            mLanguages = [languageName];
             if (onLocalize != null)
             {
                 onLocalize();

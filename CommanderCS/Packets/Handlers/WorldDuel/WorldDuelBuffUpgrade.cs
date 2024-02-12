@@ -1,9 +1,32 @@
+using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Handlers;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.WorldDuel
 {
-    public class WorldDuelBuffUpgrade
+	[Packet(Id = CommanderCSLibrary.Shared.Enum.Method.WorldDuelBuffUpgrade)]
+    public class WorldDuelBuffUpgrade : BaseMethodHandler<WorldDuelBuffUpgradeRequest>
     {
+        public override object Handle(WorldDuelBuffUpgradeRequest @params)
+        {
+            var user = GetUserGameProfile();
+
+            WorldDuelBuffUpgradeResponse worldDuelBuffUpgradeResponse = new WorldDuelBuffUpgradeResponse()
+            {
+                rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources),
+                buff = [],
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = worldDuelBuffUpgradeResponse,
+            };
+
+            return response;
+
+        }
     }
 
     public class WorldDuelBuffUpgradeRequest
@@ -11,6 +34,16 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
         [JsonProperty("type")]
         public string Type { get; set; }
     }
+
+    public class WorldDuelBuffUpgradeResponse
+    {
+        [JsonProperty("rsoc")]
+        public CommanderCSLibrary.Shared.Protocols.UserInformationResponse.Resource rsoc  { get; set; }
+
+        [JsonProperty("buff")]
+        public Dictionary<string, int> buff { get; set; }
+    }
+
 }
 
 /*	// Token: 0x06006157 RID: 24919 RVA: 0x000120F8 File Offset: 0x000102F8

@@ -865,5 +865,13 @@ namespace CommanderCS.MongoDB.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
+        public void UpdateWorldDefenderDeck(string session, Dictionary<string, string> decks)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.DefenderDeck.WorldDuelDefenderDeck, decks);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
     }
 }

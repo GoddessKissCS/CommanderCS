@@ -181,7 +181,7 @@ namespace CommanderCS.MongoDB.Schemes
     public class DefenderDeck
     {
         public Dictionary<string, string> PvPDefenderDeck { get; set; }
-
+        public Dictionary<string, string> WorldDuelDefenderDeck { get; set; }
         public Dictionary<string, Dictionary<string, string>> WaveDuelDefenderDecks { get; set; }
     }
 
