@@ -1,9 +1,24 @@
+using CommanderCS.Host;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Achievement
 {
-    public class AchievementReward
+	[Packet(Id = CommanderCSLibrary.Shared.Enum.Method.AchievementReward)]
+    public class AchievementReward : BaseMethodHandler<AchievementRewardRequest>
     {
+        public override object Handle(AchievementRewardRequest @params)
+        {
+           
+
+			ResponsePacket response = new() 
+			{ 
+				Id = BasePacket.Id,
+				Result = new CommanderCSLibrary.Shared.Protocols.RewardInfo()
+
+            };
+
+			return response;
+        }
     }
 
     public class AchievementRewardRequest
