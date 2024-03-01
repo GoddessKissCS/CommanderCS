@@ -1,7 +1,30 @@
+using CommanderCS.Host;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Troop
 {
-    public class ChangeTroopNickname
+	[Packet(Id = CommanderCSLibrary.Shared.Enum.Method.ChangeTroopNickname)]
+    public class ChangeTroopNickname : BaseMethodHandler<ChangeTroopNicknameRequest>
     {
+        public override object Handle(ChangeTroopNicknameRequest @params)
+        {
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = "ok",
+			};
+
+			return response;
+        }
+    }
+
+    public class ChangeTroopNicknameRequest
+    {
+		[JsonProperty("cid")]
+		public int cid { get; set; }
+
+        [JsonProperty("name")]
+        public string name { get; set; }
     }
 }
 

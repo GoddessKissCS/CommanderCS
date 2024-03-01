@@ -1,4 +1,6 @@
 ﻿
+using CommanderCSLibrary.Shared.Protocols;
+
 namespace CommanderCSLibrary.Shared
 {
     public static class Misc

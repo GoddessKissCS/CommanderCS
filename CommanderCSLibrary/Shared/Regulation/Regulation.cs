@@ -1036,14 +1036,13 @@ namespace CommanderCSLibrary.Shared.Regulation
         }
 
 
-        public Dictionary<string, UserInformationResponse.Commander> AddSpecificCommander(Dictionary<string, UserInformationResponse.Commander> commanderDict, int commanderID)
+        public Dictionary<string, Commander> AddSpecificCommander(Dictionary<string, Commander> commanderDict, int commanderID)
         {
             var item = commanderCostumeDtbl.FirstOrDefault(c => c.cid == commanderID);
 
             var role = commanderRoleDtbl.FirstOrDefault(x => x.commanderId == commanderID);
 
-
-            UserInformationResponse.Commander commanderData = new()
+            Commander commanderData = new()
             {
                 state = "N",
                 __skv1 = "1",

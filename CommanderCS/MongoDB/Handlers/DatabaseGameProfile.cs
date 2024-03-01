@@ -541,6 +541,13 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseManager.Account.UpdateLastServerLoggedIn(@params.world, @params.memberId);
         }
 
+        public void UpdateUserData(string session, GameProfileScheme user)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+
+            DatabaseCollection.ReplaceOne(filter, user);
+        }
+
         public void UpdateCommanderData(string session, Dictionary<string, UserInformationResponse.Commander> commanderList)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
@@ -596,7 +603,6 @@ namespace CommanderCS.MongoDB.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
-
         public void UpdateTutorialData(string session, UserInformationResponse.TutorialData tutorialData)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);

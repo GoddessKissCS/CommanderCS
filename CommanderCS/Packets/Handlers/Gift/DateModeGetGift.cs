@@ -1,8 +1,28 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Protocols;
+
 namespace CommanderCS.Packets.Handlers.Gift
 {
-    public class DateModeGetGift
+	[Packet(Id = CommanderCSLibrary.Shared.Enum.Method.DateModeGetGift)]
+    public class DateModeGetGift : BaseMethodHandler<DateModeGetGiftRequest>
+    {
+        public override object Handle(DateModeGetGiftRequest @params)
+        {
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = new RewardInfo()
+			};
+
+
+			return response;
+        }
+    }
+
+    public class DateModeGetGiftRequest
     {
     }
+
 }
 
 /*	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "4402", true, true)]

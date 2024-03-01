@@ -38,50 +38,17 @@ namespace CommanderCS.Packets.Handlers.Gift
             }
 
             commander.favr += favorPoint;
-
             commander.favorPoint = favorPoint;
 
             user.CommanderData[cid] = CheckCommanderFavour(commander, rg);
 
-            DatabaseManager.GameProfile.UpdateFoodData(session, user.UserInventory.foodData);
-            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
-
-            var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
-            var battlestats = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(user.UserStatistics);
-            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
-
-            UserInformationResponse userInformationResponse = new()
-            {
-                goodsInfo = goods,
-                battleStatisticsInfo = battlestats,
-                uno = user.Uno.ToString(),
-                stage = user.LastStage,
-                notification = user.Notifaction,
-
-                foodData = user.UserInventory.foodData,
-                eventResourceData = user.UserInventory.eventResourceData,
-                groupItemData = user.UserInventory.groupItemData,
-                itemData = user.UserInventory.itemData,
-                medalData = user.UserInventory.medalData,
-                partData = user.UserInventory.partData,
-
-                resetRemain = user.ResetDateTime, // should be set?
-
-                equipItem = user.UserInventory.equipItem,
-
-                donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,
-                completeRewardGroupIdx = user.CompleteRewardGroupIdx,
-                guildInfo = guild,
-                sweepClearData = user.BattleData.SweepClearData,
-                preDeck = user.PreDeck,
-                weaponList = user.UserInventory.weaponList,
-                __commanderInfo = JObject.FromObject(user.CommanderData),
-            };
+            DatabaseManager.GameProfile.UpdateUserData(session, user);
+            UserInformationResponse informationResponse = GetUserInformationResponse(user);
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = userInformationResponse,
+                Result = informationResponse,
             };
 
             return response;
@@ -99,7 +66,7 @@ namespace CommanderCS.Packets.Handlers.Gift
             return true;
         }
 
-        private static Dictionary<int, int> AffectionList = new Dictionary<int, int>()
+        private static Dictionary<int, int> AffectionList = new()
         {
             { 50, 10 },
             { 51, 30 },
@@ -114,15 +81,10 @@ namespace CommanderCS.Packets.Handlers.Gift
             { 63, 6000 },
             { 64, 9000 }
         };
-
         private static UserInformationResponse.Commander CheckCommanderFavour(UserInformationResponse.Commander commander, Regulation rg)
         {
-            return CheckCommanderFavourRecursive(commander, rg);
-        }
-
-        private static UserInformationResponse.Commander CheckCommanderFavourRecursive(UserInformationResponse.Commander commander, Regulation rg)
-        {
             FavorStepDataRow row = new();
+
             if (commander.favorStep == 0)
             {
                 row = rg.favorStepDtbl.Find(x => x.step == 1);
@@ -147,7 +109,7 @@ namespace CommanderCS.Packets.Handlers.Gift
                     commander.favorPoint = 1000000;
                 }
 
-                return CheckCommanderFavourRecursive(commander, rg);
+                return CheckCommanderFavour(commander, rg);
             }
 
             return commander;

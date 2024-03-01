@@ -20,40 +20,8 @@ namespace CommanderCS.Packets.Handlers.Gift
             user.CommanderData[cid].marry = 1;
             user.UserResources.ring -= 1;
 
-            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
-            DatabaseManager.GameProfile.UpdateRings(session, user.UserResources.ring);
-
-            var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
-            var battlestats = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(user.UserStatistics);
-            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
-
-            UserInformationResponse userInformationResponse = new()
-            {
-                goodsInfo = goods,
-                battleStatisticsInfo = battlestats,
-                uno = user.Uno.ToString(),
-                stage = user.LastStage,
-                notification = user.Notifaction,
-
-                foodData = user.UserInventory.foodData,
-                eventResourceData = user.UserInventory.eventResourceData,
-                groupItemData = user.UserInventory.groupItemData,
-                itemData = user.UserInventory.itemData,
-                medalData = user.UserInventory.medalData,
-                partData = user.UserInventory.partData,
-
-                resetRemain = user.ResetDateTime, // should be set?
-
-                equipItem = user.UserInventory.equipItem,
-
-                donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,
-                completeRewardGroupIdx = user.CompleteRewardGroupIdx,
-                guildInfo = guild,
-                sweepClearData = user.BattleData.SweepClearData,
-                preDeck = user.PreDeck,
-                weaponList = user.UserInventory.weaponList,
-                __commanderInfo = JObject.FromObject(user.CommanderData),
-            };
+            DatabaseManager.GameProfile.UpdateUserData(session, user);
+			UserInformationResponse userInformationResponse = GetUserInformationResponse(user);
 
             ResponsePacket response = new()
             {
