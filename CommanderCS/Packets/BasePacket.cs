@@ -172,6 +172,7 @@ namespace CommanderCS.Host
                 sweepClearData = user.BattleData.SweepClearData,
                 preDeck = user.PreDeck,
                 weaponList = user.UserInventory.weaponList,
+                __commanderInfo = JObject.FromObject(user.CommanderData),
 
             };
 
@@ -209,6 +210,7 @@ namespace CommanderCS.Host
                 sweepClearData = user.BattleData.SweepClearData,
                 preDeck = user.PreDeck,
                 weaponList = user.UserInventory.weaponList,
+                __commanderInfo = JObject.FromObject(user.CommanderData),
 
             };
 

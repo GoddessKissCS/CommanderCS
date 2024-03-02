@@ -186,12 +186,40 @@ namespace CommanderCS.MongoDB.Handlers
                     RaidRankingData = new()
                     {
 
-                    },              
+                    },
                 },
                 WeaponInformation = new()
                 {
                     WeaponProgressList = []
+                },
+                DailyBuyables = new()
+                {
+                    RaidKeys = 20,
+                },
+                ShopData = new()
+                {
+                    BuyVipShop = new()
+                    {
+
+                    },
+                    ChallengeShop = new()
+                    {
+
+                    },
+                    DailyShop = new()
+                    {
+
+                    },
+                    RaidShop = new()
+                    {
+
+                    },
+                    WaveDuelShop = new()
+                    {
+
+                    },
                 }
+                
             };
 
             DatabaseCollection.InsertOne(user);
@@ -882,5 +910,14 @@ namespace CommanderCS.MongoDB.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
+        public void UpdateDailyBuyableRaidKeys(string session, int Keys)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.DailyBuyables.RaidKeys, Keys);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
     }
 }

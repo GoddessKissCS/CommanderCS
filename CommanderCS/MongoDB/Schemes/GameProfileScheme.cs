@@ -37,6 +37,9 @@ namespace CommanderCS.MongoDB.Schemes
         public DefenderDeck DefenderDeck { get; set; }
         public List<ExplorationData> ExplorationData { get; set; }
         public WeaponInformation WeaponInformation { get; set; }
+        public ShopData ShopData { get; set; }
+        public DailyBuyables DailyBuyables { get; set; }
+
     }
 
     public class UserDevice
@@ -197,6 +200,20 @@ namespace CommanderCS.MongoDB.Schemes
     public class WeaponInformation
     {
         public List<WeaponProgressSlotData> WeaponProgressList { get; set; }
+    }
+
+    public class ShopData
+    {
+        public SecretShop DailyShop { get; set; }
+        public SecretShop RaidShop { get; set; }
+        public SecretShop WaveDuelShop { get; set; }
+        public SecretShop ChallengeShop { get; set; }
+        public BuyVipShop BuyVipShop { get; set; }
+    }
+
+    public class DailyBuyables
+    {
+        public int RaidKeys { get; set; } = 5;
     }
 
 }

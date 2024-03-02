@@ -1,7 +1,9 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using MongoDB.Driver;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.KeepAlives
 {
@@ -13,33 +15,59 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
 			var user = GetUserGameProfile();
 			var session = GetSession();
 
-			var result = 0;
 
-			switch (@params.vidx)
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = null,
+            };
+
+            switch (@params.vidx)
 			{
 				case 106:
 
 					//BUY PRICE STARTS AT 15 diamonds and then + 100% everytime you buy a new ticket
 					var raidKeys = user.VipRechargeData.Find(x => x.idx == @params.vidx);
+				
+					var ticketPrice = CalculateBuyPrice(user.DailyBuyables.RaidKeys);
 
                     var count = raidKeys.count++;
+                    user.DailyBuyables.RaidKeys--;
 
-					DatabaseManager.GameProfile.UpdateVipRechargeCount(session, @params.vidx, count);
+					DatabaseManager.GameProfile.UpdateCash(session, ticketPrice, false);
+                    DatabaseManager.GameProfile.UpdateVipRechargeCount(session, @params.vidx, count);
+					DatabaseManager.GameProfile.UpdateDailyBuyableRaidKeys(session, user.DailyBuyables.RaidKeys);
 
 					var userInfo = GetDatabaseUserInformationResponse(user);
 
-                    break;
+                    response.Result = JObject.FromObject(userInfo);
+                    return response;
 			}
 
 
-			ResponsePacket response = new() 
-			{ 
-				Id = BasePacket.Id,
-				Result = result,
-			};
-
 			return response;
 
+        }
+
+        public int CalculateBuyPrice(int ticketsLeft, GameProfileScheme user)
+        {
+            const int startingPrice = 15; // Starting price in diamonds
+            const int maxTickets = 5; // Maximum number of tickets
+            const double increasePercentage = 1.0; // Percentage increase for each ticket (100%)
+
+            if (ticketsLeft < 0)
+            {
+                throw new ArgumentException("Number of tickets left cannot be negative.");
+            }
+            else if (ticketsLeft > maxTickets)
+            {
+                throw new ArgumentException("Number of tickets left exceeds maximum limit.");
+            }
+
+            // Calculate the current buy price based on the remaining tickets
+            double totalPrice = startingPrice * Math.Pow(2, maxTickets - ticketsLeft) - startingPrice;
+
+            return (int)totalPrice;
         }
     }
 
@@ -54,6 +82,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
         [JsonProperty("vcnt")]
         public int vcnt { get; set; }
     }
+
 
 }
 
