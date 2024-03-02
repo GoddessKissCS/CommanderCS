@@ -1,7 +1,7 @@
 ﻿// Token: 0x02000F75 RID: 3957
 namespace CommanderCSLibrary.Shared.Enum
 {
-    public enum EVipRechargeType
+    public enum EVipRechargeType : int
     {
         None,
         Bullet = 101,

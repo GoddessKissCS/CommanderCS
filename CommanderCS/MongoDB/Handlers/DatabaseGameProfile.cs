@@ -132,7 +132,10 @@ namespace CommanderCS.MongoDB.Handlers
                     ercnt = 0,
                     iftw = 0,
                 },
-                VipRechargeData = [new() { count = 0, idx = 601, mid = 0 }],
+                VipRechargeData = [
+                    new() { count = 0, idx = 601, mid = 0 },
+                    new() { count = 5, idx = 106, mid = 0 }
+                    ],
                 BlockedUsers = [],
                 BoughtCashShopItems = [],
                 Session = string.Empty,

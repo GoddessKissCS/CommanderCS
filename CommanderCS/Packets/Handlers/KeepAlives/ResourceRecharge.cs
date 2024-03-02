@@ -1,8 +1,60 @@
+using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using MongoDB.Driver;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.KeepAlives
 {
-    public class ResourceRecharge
+	[Packet(Id = CommanderCSLibrary.Shared.Enum.Method.ResourceRecharge)]
+    public class ResourceRecharge : BaseMethodHandler<ResourceRechargeRequest>
     {
+        public override object Handle(ResourceRechargeRequest @params)
+        {
+			var user = GetUserGameProfile();
+			var session = GetSession();
+
+			var result = 0;
+
+			switch (@params.vidx)
+			{
+				case 106:
+
+					//BUY PRICE STARTS AT 15 diamonds and then + 100% everytime you buy a new ticket
+					var raidKeys = user.VipRechargeData.Find(x => x.idx == @params.vidx);
+
+                    var count = raidKeys.count++;
+
+					DatabaseManager.GameProfile.UpdateVipRechargeCount(session, @params.vidx, count);
+
+					var userInfo = GetDatabaseUserInformationResponse(user);
+
+                    break;
+			}
+
+
+			ResponsePacket response = new() 
+			{ 
+				Id = BasePacket.Id,
+				Result = result,
+			};
+
+			return response;
+
+        }
     }
+
+    public class ResourceRechargeRequest
+    {
+        [JsonProperty("vidx")]
+        public int vidx { get; set; }
+
+        [JsonProperty("mid")]
+        public int mid { get; set; }
+
+        [JsonProperty("vcnt")]
+        public int vcnt { get; set; }
+    }
+
 }
 
 /*	// Token: 0x06005FE0 RID: 24544 RVA: 0x000120F8 File Offset: 0x000102F8

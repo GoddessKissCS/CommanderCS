@@ -68,7 +68,7 @@ namespace CommanderCS.Packets.Handlers.Raid
                 { "2", 86400 },
             };
 
-            //pvPRankingList.bossData.Add(bossData);
+            raidRankingList.bossData.Add(bossData);
             //pvPRankingList.bossData.Add(bossData2);
             //pvPRankingList.bossData.Add(bossData3);
 
