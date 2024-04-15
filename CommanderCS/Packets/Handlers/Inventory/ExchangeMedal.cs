@@ -1,24 +1,39 @@
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Inventory
 {
-    //[Packet(Id = Method.ExchangeMedal)]
+    [Packet(Id = Method.ExchangeMedal)]
     public class ExchangeMedal : BaseMethodHandler<ExchangeMedalRequest>
     {
         public override object Handle(ExchangeMedalRequest @params)
         {
             var user = GetUserGameProfile();
+            var session = GetSession();
 
-            user.CommanderData.TryGetValue("" + @params.cid, out var commanderData);
-            user.UserInventory.medalData.TryGetValue("" + @params.cid, out int medal);
+            string cid = @params.cid.ToString();
+            int medalExchangeAmount = @params.amnt;
 
-            commanderData.medl += @params.amnt;
-            medal += @params.amnt;
+            // need to implement a check that fails if user doesnt have enough , aswell in the expshare gift things etc
 
-            // AND THEN WE NEED TO SUBSTRACT THE EXCHANGEMEDALS FROM THE USER
+            user.CommanderData[cid].medl += medalExchangeAmount;
+            user.UserInventory.medalData[cid] += medalExchangeAmount;
 
-            return "";
+            user.UserInventory.itemData["202"] -= medalExchangeAmount;
+
+            DatabaseManager.GameProfile.UpdateProfile(session, user);
+
+            var userInformationResponse = GetUserInformationResponse(user);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = userInformationResponse
+            };
+
+            return response;
         }
     }
 

@@ -2,12 +2,12 @@ using CommanderCS.Host;
 
 namespace CommanderCS.Packets.Handlers.WorldDuel
 {
-	[Packet(Id = CommanderCSLibrary.Shared.Enum.Method.WorldDuelEnemyInfo)]
+    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.WorldDuelEnemyInfo)]
     public class WorldDuelEnemyInfo : BaseMethodHandler<WorldDuelEnemyInfoRequest>
     {
         public override object Handle(WorldDuelEnemyInfoRequest @params)
         {
-			CommanderCSLibrary.Shared.Protocols.PvPDuelList.PvPDuelData pDuelData = new() { };
+            CommanderCSLibrary.Shared.Protocols.PvPDuelList.PvPDuelData pDuelData = new() { };
 
             ResponsePacket response = new()
             {

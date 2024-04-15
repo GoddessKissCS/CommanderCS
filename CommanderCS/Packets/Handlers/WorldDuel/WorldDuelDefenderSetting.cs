@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.WorldDuel
 {
-	[Packet(Id = Method.WorldDuelDefenderSetting)]
+    [Packet(Id = Method.WorldDuelDefenderSetting)]
     public class WorldDuelDefenderSetting : BaseMethodHandler<WorldDuelDefenderSettingRequest>
     {
         public override object Handle(WorldDuelDefenderSettingRequest @params)

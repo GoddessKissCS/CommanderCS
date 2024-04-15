@@ -3,66 +3,133 @@ using Newtonsoft.Json;
 
 namespace StellarGK.MongoDB.Schemes
 {
+    /// <summary>
+    /// Represents a PvP rank list scheme.
+    /// </summary>
     public class PvpRankListScheme
     {
+        /// <summary>
+        /// Gets or sets the unique identifier.
+        /// </summary>
         public ObjectId Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the unique number.
+        /// </summary>
         public int Uno { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ranking.
+        /// </summary>
         [JsonProperty("rank")]
-        public int ranking { get; set; }
+        public int Ranking { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ranking rate.
+        /// </summary>
         [JsonProperty("prct")]
-        public float rankingRate { get; set; }
+        public float RankingRate { get; set; }
 
+        /// <summary>
+        /// Gets or sets the score.
+        /// </summary>
         [JsonProperty("score")]
-        public int score { get; set; }
+        public int Score { get; set; }
 
+        /// <summary>
+        /// Gets or sets the next score.
+        /// </summary>
         [JsonProperty("nScore")]
-        public int nextScore { get; set; }
+        public int NextScore { get; set; }
 
+        /// <summary>
+        /// Gets or sets the winning streak.
+        /// </summary>
         [JsonProperty("wst")]
-        public int winningStreak { get; set; }
+        public int WinningStreak { get; set; }
 
+        /// <summary>
+        /// Gets or sets the losing streak.
+        /// </summary>
         [JsonProperty("lst")]
-        public int losingStreak { get; set; }
+        public int LosingStreak { get; set; }
 
+        /// <summary>
+        /// Gets or sets the win count.
+        /// </summary>
         [JsonProperty("win")]
-        public int winCnt { get; set; }
+        public int WinCount { get; set; }
 
+        /// <summary>
+        /// Gets or sets the lose count.
+        /// </summary>
         [JsonProperty("lose")]
-        public int loseCnt { get; set; }
+        public int LoseCount { get; set; }
 
+        /// <summary>
+        /// Gets or sets the raid count.
+        /// </summary>
         [JsonProperty("rcnt")]
-        public int raidCnt { get; set; }
+        public int RaidCount { get; set; }
 
+        /// <summary>
+        /// Gets or sets the best score.
+        /// </summary>
         [JsonProperty("nscr")]
-        public int bestScore { get; set; }
+        public int BestScore { get; set; }
 
+        /// <summary>
+        /// Gets or sets the average score.
+        /// </summary>
         [JsonProperty("avrg")]
-        public int averageScore { get; set; }
+        public int AverageScore { get; set; }
 
+        /// <summary>
+        /// Gets or sets the reward ID.
+        /// </summary>
         [JsonProperty("ridx")]
-        public int rewardId { get; set; }
+        public int RewardId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the duel point.
+        /// </summary>
         [JsonProperty("dpnt")]
-        public int duelPoint { get; set; }
+        public int DuelPoint { get; set; }
 
+        /// <summary>
+        /// Gets or sets the reward duel point.
+        /// </summary>
         [JsonProperty("didx")]
-        public int rewardDuelPoint { get; set; }
+        public int RewardDuelPoint { get; set; }
 
+        /// <summary>
+        /// Gets or sets the win rank.
+        /// </summary>
         [JsonProperty("wrank")]
-        public int winRank { get; set; }
+        public int WinRank { get; set; }
 
+        /// <summary>
+        /// Gets or sets the win rank index.
+        /// </summary>
         [JsonProperty("wridx")]
-        public int winRankIdx { get; set; }
+        public int WinRankIdx { get; set; }
 
+        /// <summary>
+        /// Gets or sets the raid rank.
+        /// </summary>
         [JsonProperty("drank")]
-        public int raidRank { get; set; }
+        public int RaidRank { get; set; }
 
+        /// <summary>
+        /// Gets or sets the raid reward point.
+        /// </summary>
         [JsonProperty("dridx")]
-        public int raidRewardPoint { get; set; }
+        public int RaidRewardPoint { get; set; }
 
+        /// <summary>
+        /// Gets or sets the deck.
+        /// </summary>
         [JsonProperty("deck")]
-        public Dictionary<string, string> deck { get; set; }
+        public Dictionary<string, string> Deck { get; set; }
     }
 }

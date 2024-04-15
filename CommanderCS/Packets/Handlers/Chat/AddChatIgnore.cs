@@ -15,9 +15,9 @@ namespace CommanderCS.Packets.Handlers.Chat
 
             BlockUser blockUser = new()
             {
-                channel = @params.ch,
-                nickName = @params.nick,
-                thumbnail = @params.thumb,
+                channel = @params.channel,
+                nickName = @params.nickname,
+                thumbnail = @params.thumbnail,
                 uno = @params.uno,
             };
 
@@ -36,15 +36,15 @@ namespace CommanderCS.Packets.Handlers.Chat
     public class AddChatIgnoreRequest
     {
         [JsonProperty("ch")]
-        public int ch { get; set; }
+        public int channel { get; set; }
 
         [JsonProperty("uno")]
         public string uno { get; set; }
 
         [JsonProperty("nick")]
-        public string nick { get; set; }
+        public string nickname { get; set; }
 
         [JsonProperty("thumb")]
-        public string thumb { get; set; }
+        public string thumbnail { get; set; }
     }
 }

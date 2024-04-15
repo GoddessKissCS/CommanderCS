@@ -1,6 +1,19 @@
+using CommanderCS.Host;
+
 namespace CommanderCS.Packets.Handlers.Bank
 {
-    public class GetBankReward
+    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.GetBankReward)]
+    public class GetBankReward : BaseMethodHandler<GetBankRewardRequest>
+    {
+        public override object Handle(GetBankRewardRequest @params)
+        {
+            ResponsePacket response = new() { Id = BasePacket.Id, Result = "{}" };
+
+            return response;
+        }
+    }
+
+    public class GetBankRewardRequest
     {
     }
 }

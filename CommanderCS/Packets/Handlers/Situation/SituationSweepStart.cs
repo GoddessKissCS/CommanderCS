@@ -5,23 +5,23 @@ using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Situation
 {
-	[Packet(Id = CommanderCSLibrary.Shared.Enum.Method.SituationSweepStart)]
+    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.SituationSweepStart)]
     public class SituationSweepStart : BaseMethodHandler<SituationSweepStartRequest>
     {
         public override object Handle(SituationSweepStartRequest @params)
         {
-			SituationSweepStartResponse situationSweepStartResponse = new()
-			{
-				reward = [],
-			};	
+            SituationSweepStartResponse situationSweepStartResponse = new()
+            {
+                reward = [],
+            };
 
-			ResponsePacket response = new() 
-			{ 
-				Id = BasePacket.Id,
-				Result = situationSweepStartResponse,
-			};
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = situationSweepStartResponse,
+            };
 
-			return response;
+            return response;
         }
     }
 
@@ -29,10 +29,13 @@ namespace CommanderCS.Packets.Handlers.Situation
     {
         [JsonProperty("type")]
         public int type { get; set; }
+
         [JsonProperty("stype")]
         public int stype { get; set; }
+
         [JsonProperty("lv")]
         public int idx { get; set; }
+
         [JsonProperty("deck")]
         public JObject deck { get; set; }
     }
@@ -42,7 +45,6 @@ namespace CommanderCS.Packets.Handlers.Situation
         [JsonProperty("reward")]
         public List<RewardInfo.RewardData> reward { get; set; }
     }
-
 }
 
 /*	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "3735", true, true)]

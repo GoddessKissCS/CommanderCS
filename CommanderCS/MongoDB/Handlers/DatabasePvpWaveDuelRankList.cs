@@ -1,43 +1,52 @@
-﻿using CommanderCS.MongoDB.Schemes;
-using CommanderCS.MongoDB;
+﻿using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Protocols;
 using StellarGK.MongoDB.Schemes;
 
 namespace StellarGK.MongoDB.Handlers
 {
+    /// <summary>
+    /// Represents a database table for storing PvP wave duel rank list data.
+    /// </summary>
     public class DatabasePvpWaveDuelRankList : DatabaseTable<PvpWaveDuelRankListScheme>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DatabasePvpWaveDuelRankList"/> class with the specified table name.
+        /// </summary>
         public DatabasePvpWaveDuelRankList() : base("PvpWaveDuelRankList")
         {
         }
+
+        /// <summary>
+        /// Inserts a new PvP wave duel rank list entry into the database.
+        /// </summary>
+        /// <param name="uno">The unique identifier of the player.</param>
+        /// <param name="rankingData">The ranking data of the player.</param>
+        /// <param name="decks">The player's decks.</param>
         public void Insert(int uno, RankingUserData rankingData, Dictionary<string, Dictionary<string, string>> decks)
         {
-
-            //TODO: NEEDS TO BE ADJUSTED FOR RANKING AND ETC
             PvpWaveDuelRankListScheme waveduel = new()
             {
                 Uno = uno,
-                score = rankingData.score,
-                averageScore = rankingData.averageScore,
-                bestScore = rankingData.bestScore,
-                losingStreak = rankingData.losingStreak,
-                nextScore = rankingData.nextScore,
-                winningStreak = rankingData.winningStreak,
-                duelPoint = rankingData.duelPoint,
-                loseCnt = rankingData.loseCnt,
-                raidCnt = rankingData.raidCnt,
-                raidRank = rankingData.raidRank,
-                raidRewardPoint = rankingData.raidRewardPoint,
-                rankingRate = rankingData.rankingRate,
-                ranking = rankingData.ranking,
-                rewardDuelPoint = rankingData.rewardDuelPoint,
-                rewardId = rankingData.rewardId,
-                winCnt = rankingData.winCnt,
-                winRank = rankingData.winRank,
-                winRankIdx = rankingData.winRankIdx,
-                decks = decks      
+                Score = rankingData.score,
+                AverageScore = rankingData.averageScore,
+                BestScore = rankingData.bestScore,
+                LosingStreak = rankingData.losingStreak,
+                NextScore = rankingData.nextScore,
+                WinningStreak = rankingData.winningStreak,
+                DuelPoint = rankingData.duelPoint,
+                LoseCount = rankingData.loseCnt,
+                RaidCount = rankingData.raidCnt,
+                RaidRank = rankingData.raidRank,
+                RaidRewardPoint = rankingData.raidRewardPoint,
+                RankingRate = rankingData.rankingRate,
+                Ranking = rankingData.ranking,
+                RewardDuelPoint = rankingData.rewardDuelPoint,
+                RewardId = rankingData.rewardId,
+                WinCount = rankingData.winCnt,
+                WinRank = rankingData.winRank,
+                WinRankIdx = rankingData.winRankIdx,
+                Decks = decks
             };
-
 
             DatabaseCollection.InsertOne(waveduel);
         }

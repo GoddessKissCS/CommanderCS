@@ -1,9 +1,7 @@
 ﻿using CommanderCS.Host;
 using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Commander
 {
@@ -39,19 +37,27 @@ namespace CommanderCS.Packets.Handlers.Commander
             switch (skillIndex)
             {
                 case 1:
-                    user.CommanderData[cid].__skv1 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv1)).ToString();
+                    int skill = int.Parse(user.CommanderData[cid].__skv1);
+                    string _skill = (upgradeLevel + skill).ToString();
+                    user.CommanderData[cid].__skv1 = _skill;
                     break;
 
                 case 2:
-                    user.CommanderData[cid].__skv2 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv2)).ToString();
+                    int skill2 = int.Parse(user.CommanderData[cid].__skv2);
+                    string _skill2 = (upgradeLevel + skill2).ToString();
+                    user.CommanderData[cid].__skv2 = _skill2;
                     break;
 
                 case 3:
-                    user.CommanderData[cid].__skv3 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv3)).ToString();
+                    int skill3 = int.Parse(user.CommanderData[cid].__skv3);
+                    string _skill3 = (upgradeLevel + skill3).ToString();
+                    user.CommanderData[cid].__skv3 = _skill3;
                     break;
 
                 case 4:
-                    user.CommanderData[cid].__skv4 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv4)).ToString();
+                    int skill4 = int.Parse(user.CommanderData[cid].__skv4);
+                    string _skill4 = (upgradeLevel + skill4).ToString();
+                    user.CommanderData[cid].__skv4 = _skill4;
                     break;
             }
 
@@ -60,37 +66,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             DatabaseManager.GameProfile.UpdateGold(session, totalCost, false);
             DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
 
-            var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
-            var battlestats = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(user.UserStatistics);
-            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
-
-            UserInformationResponse userInformationResponse = new()
-            {
-                goodsInfo = goods,
-                battleStatisticsInfo = battlestats,
-                uno = user.Uno.ToString(),
-                stage = user.LastStage,
-                notification = user.Notifaction,
-
-                foodData = user.UserInventory.foodData,
-                eventResourceData = user.UserInventory.eventResourceData,
-                groupItemData = user.UserInventory.groupItemData,
-                itemData = user.UserInventory.itemData,
-                medalData = user.UserInventory.medalData,
-                partData = user.UserInventory.partData,
-
-                resetRemain = user.ResetDateTime, // should be set?
-
-                equipItem = user.UserInventory.equipItem,
-
-                donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,
-                completeRewardGroupIdx = user.CompleteRewardGroupIdx,
-                guildInfo = guild,
-                sweepClearData = user.BattleData.SweepClearData,
-                preDeck = user.PreDeck,
-                weaponList = user.UserInventory.weaponList,
-                __commanderInfo = JObject.FromObject(user.CommanderData),
-            };
+            var userInformationResponse = GetUserInformationResponse(user);
 
             ResponsePacket response = new()
             {

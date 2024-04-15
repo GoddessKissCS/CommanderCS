@@ -16,7 +16,7 @@ namespace CommanderCS.Host.Handlers.Commander
             var user = GetUserGameProfile();
             var rg = GetRegulation();
 
-            string cid = @params.cid.ToString();
+            string cid = @params.commanderId.ToString();
 
             if (user.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
             {
@@ -191,6 +191,6 @@ namespace CommanderCS.Host.Handlers.Commander
     public class CommanderRankUpRequest
     {
         [JsonProperty("cid")]
-        public int cid { get; set; }
+        public int commanderId { get; set; }
     }
 }

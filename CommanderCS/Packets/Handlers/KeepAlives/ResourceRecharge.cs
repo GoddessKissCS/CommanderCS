@@ -1,20 +1,20 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using MongoDB.Driver;
+using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.KeepAlives
 {
-	[Packet(Id = CommanderCSLibrary.Shared.Enum.Method.ResourceRecharge)]
+    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.ResourceRecharge)]
     public class ResourceRecharge : BaseMethodHandler<ResourceRechargeRequest>
     {
         public override object Handle(ResourceRechargeRequest @params)
         {
-			var user = GetUserGameProfile();
-			var session = GetSession();
-
+            var user = GetUserGameProfile();
+            var session = GetSession();
+            var rg = GetRegulation();
 
             ResponsePacket response = new()
             {
@@ -23,41 +23,43 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
             };
 
             switch (@params.vidx)
-			{
-				case 106:
+            {
+                case 106:
 
-					//BUY PRICE STARTS AT 15 diamonds and then + 100% everytime you buy a new ticket
-					var raidKeys = user.VipRechargeData.Find(x => x.idx == @params.vidx);
-				
-					var ticketPrice = CalculateBuyPrice(user.DailyBuyables.RaidKeys);
+                    //BUY PRICE STARTS AT 15 diamonds and then + 100% everytime you buy a new ticket
+                    var raidKeys = user.VipRechargeData.Find(x => x.idx == @params.vidx);
+
+                    var ticketPrice = CalculateRaidTicketBuyPrice(user.DailyBuyables.RaidKeys, user, rg);
 
                     var count = raidKeys.count++;
                     user.DailyBuyables.RaidKeys--;
 
-					DatabaseManager.GameProfile.UpdateCash(session, ticketPrice, false);
+                    DatabaseManager.GameProfile.UpdateCash(session, ticketPrice, false);
                     DatabaseManager.GameProfile.UpdateVipRechargeCount(session, @params.vidx, count);
-					DatabaseManager.GameProfile.UpdateDailyBuyableRaidKeys(session, user.DailyBuyables.RaidKeys);
+                    DatabaseManager.GameProfile.UpdateDailyBuyableRaidKeys(session, user.DailyBuyables.RaidKeys);
 
-					var userInfo = GetDatabaseUserInformationResponse(user);
+                    var userInfo = GetDatabaseUserInformationResponse(user);
 
                     response.Result = JObject.FromObject(userInfo);
                     return response;
-			}
+            }
 
-
-			return response;
-
+            return response;
         }
 
-        public int CalculateBuyPrice(int ticketsLeft, GameProfileScheme user)
+#warning not finished
+
+        public int CalculateRaidTicketBuyPrice(int ticketsLeft, GameProfileScheme user, Regulation rg)
         {
             const int startingPrice = 15; // Starting price in diamonds
             const int maxTickets = 5; // Maximum number of tickets
             const double increasePercentage = 1.0; // Percentage increase for each ticket (100%)
 
-            if (ticketsLeft < 0)
+            var vipData = rg.VipBenefitsDtbl.Find(x => x.vipLevel == user.UserResources.vipLevel);
+
+            if (user.DailyBuyables.RaidKeys > vipData.dailyRaidTicketRefill)
             {
-                throw new ArgumentException("Number of tickets left cannot be negative.");
+                throw new ArgumentException();
             }
             else if (ticketsLeft > maxTickets)
             {
@@ -82,8 +84,6 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
         [JsonProperty("vcnt")]
         public int vcnt { get; set; }
     }
-
-
 }
 
 /*	// Token: 0x06005FE0 RID: 24544 RVA: 0x000120F8 File Offset: 0x000102F8

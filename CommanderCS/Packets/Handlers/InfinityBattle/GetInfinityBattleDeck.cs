@@ -1,7 +1,48 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.InfinityBattle
 {
-    public class GetInfinityBattleDeck
+    [Packet(Id = Method.GetInfinityBattleDeck)]
+    public class GetInfinityBattleDeck : BaseMethodHandler<GetInfinityBattleDeckRequest>
     {
+        public override object Handle(GetInfinityBattleDeckRequest @params)
+        {
+            var user = GetUserGameProfile();
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = null,
+            };
+
+            GetInfinityBattleDeckResponse battleDeckResponse = new()
+            {
+            };
+
+            if (user.DefenderDeck.InfinityBattleDeck != null)
+            {
+                battleDeckResponse.deck = user.DefenderDeck.InfinityBattleDeck;
+
+                response.Result = battleDeckResponse;
+
+                return response;
+            }
+
+            return response;
+        }
+    }
+
+    public class GetInfinityBattleDeckRequest
+    {
+    }
+
+    public class GetInfinityBattleDeckResponse
+    {
+        [JsonProperty("deck")]
+        public JObject deck { get; set; }
     }
 }
 

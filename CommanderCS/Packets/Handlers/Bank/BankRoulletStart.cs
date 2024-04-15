@@ -11,6 +11,7 @@ namespace CommanderCS.Host.Handlers.Bank
     {
         public override object Handle(BankRoulletStartRequest @params)
         {
+            // THIS NEEDS A REWORK
             string session = GetSession();
 
             var vip_spins = DatabaseManager.GameProfile.GetVipRechargeCount(session, 601);

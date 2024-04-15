@@ -9,27 +9,23 @@ namespace CommanderCS.Host.Handlers.Vip
     {
         public override object Handle(GetVipBuyCountRequest @params)
         {
-			//gets send EVipRechargeType enum + ["rchg"]
+            //gets send EVipRechargeType enum + ["rchg"]
 
 #warning TODO: MIGHT NEED A BE CHECKED IF ITS CORRECT
-			var user = GetUserGameProfile();
+            var user = GetUserGameProfile();
 
-			GetVIPBuyCountResponse getVIPBuyCount = new();
+            GetVIPBuyCountResponse getVIPBuyCount = new();
 
             switch (@params.renewType)
-			{
-				case EVipRechargeType.None:
-					getVIPBuyCount.rchg = user.VipRechargeData;
-					break;
-				case EVipRechargeType.Key:
-
+            {
+                case EVipRechargeType.None:
                     getVIPBuyCount.rchg = user.VipRechargeData;
-					break;
+                    break;
 
+                case EVipRechargeType.Key:
+                    getVIPBuyCount.rchg = user.VipRechargeData;
+                    break;
             }
-
-
-
 
             ResponsePacket response = new()
             {

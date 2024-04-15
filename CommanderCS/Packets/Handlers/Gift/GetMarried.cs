@@ -3,7 +3,6 @@ using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Gift
 {
@@ -21,7 +20,7 @@ namespace CommanderCS.Packets.Handlers.Gift
             user.UserResources.ring -= 1;
 
             DatabaseManager.GameProfile.UpdateUserData(session, user);
-			UserInformationResponse userInformationResponse = GetUserInformationResponse(user);
+            UserInformationResponse userInformationResponse = GetUserInformationResponse(user);
 
             ResponsePacket response = new()
             {

@@ -1,10 +1,7 @@
 ﻿using CommanderCS.Host;
 using CommanderCS.MongoDB;
-using CommanderCS.MongoDB.Schemes;
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Commander
 {
@@ -17,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             var rg = GetRegulation();
             var session = GetSession();
 
-            string cid = @params.cid.ToString();
+            string cid = @params.commanderId.ToString();
 
             user.CommanderData.TryGetValue(cid, out var commander);
 
@@ -232,59 +229,22 @@ namespace CommanderCS.Packets.Handlers.Commander
             DatabaseManager.GameProfile.UpdateGold(session, commanderClassUpInfo.UPGRADE_COST, false);
             DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
 
-            var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
-            var battlestats = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(user.UserStatistics);
-            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
-
-            var UserInformationResponse = CreateUserInformationResponse(user, goods, battlestats, guild);
+            var userInformationResponse = GetUserInformationResponse(user);
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = UserInformationResponse
+                Result = userInformationResponse
             };
 
             return response;
-        }
-
-        private UserInformationResponse CreateUserInformationResponse(GameProfileScheme user, UserInformationResponse.Resource goods, UserInformationResponse.BattleStatistics battleStatistics, UserInformationResponse.UserGuild guild)
-        {
-            UserInformationResponse userInformationResponse = new()
-            {
-                goodsInfo = goods,
-                battleStatisticsInfo = battleStatistics,
-                uno = user.Uno.ToString(),
-                stage = user.LastStage,
-                notification = user.Notifaction,
-
-                foodData = user.UserInventory.foodData,
-                eventResourceData = user.UserInventory.eventResourceData,
-                groupItemData = user.UserInventory.groupItemData,
-                itemData = user.UserInventory.itemData,
-                medalData = user.UserInventory.medalData,
-                partData = user.UserInventory.partData,
-
-                resetRemain = user.ResetDateTime,
-
-                equipItem = user.UserInventory.equipItem,
-
-                donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,
-                completeRewardGroupIdx = user.CompleteRewardGroupIdx,
-                guildInfo = guild,
-                sweepClearData = user.BattleData.SweepClearData,
-                preDeck = user.PreDeck,
-                weaponList = user.UserInventory.weaponList,
-                __commanderInfo = JObject.FromObject(user.CommanderData),
-            };
-
-            return userInformationResponse;
         }
     }
 
     public class CommanderClassUpRequest
     {
         [JsonProperty("cid")]
-        public int cid { get; set; }
+        public int commanderId { get; set; }
     }
 }
 

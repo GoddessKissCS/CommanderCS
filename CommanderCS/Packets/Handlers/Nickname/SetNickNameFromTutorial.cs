@@ -24,53 +24,31 @@ namespace CommanderCS.Host.Handlers.Nickname
                 return error;
             }
 
-            //var user = getusergameprofile();
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+            };
 
-            //var goods = databasemanager.gameprofile.userresources2resource(user.userresources);
-            //var battlestats = databasemanager.gameprofile.userstatisticsfromsession(session);
-            //var guild = databasemanager.guild.requestguild(user.guildid, user.uno);
+            var user = GetUserGameProfile();
 
-            //userinformationresponse userinformationresponse = new()
+            //if (user.TutorialData.skip)
             //{
-            //    goodsinfo = goods,
-            //    battlestatisticsinfo = battlestats,
-            //    uno = user.uno.tostring(),
-            //    stage = user.laststage,
-            //    notification = user.notifaction,
+            //    var information = GetUserInformationResponse(user);
 
-            //    fooddata = user.userinventory.fooddata,
-            //    eventresourcedata = user.userinventory.eventresourcedata,
-            //    groupitemdata = user.userinventory.groupitemdata,
-            //    itemdata = user.userinventory.itemdata,
-            //    medaldata = user.userinventory.medaldata,
-            //    partdata = user.userinventory.partdata,
+            //    string result = JsonConvert.SerializeObject(information);
 
-            //    resetremain = user.resetdatetime, // should be set?
-            //    / pronabably set it globally ?
+            //    response.Result = result;
+            //    response.Step = @params.Step;
 
-            //    equipitem = user.userinventory.equipitem,
-
-            //    donhavecommcostumedata = user.userinventory.donhavecommcostumedata,
-            //    completerewardgroupidx = user.completerewardgroupidx,
-            //    guildinfo = guild,
-            //    sweepcleardata = user.battledata.sweepcleardata,
-            //    predeck = user.predeck,
-            //    weaponlist = user.userinventory.weaponlist,
-            //    __commanderinfo = jobject.fromobject(user.commanderdata),
-            //};
-
-            //string result = JsonConvert.SerializeObject(userInformationResponse);
+            //    return response;
+            //}
 
             SetNickNameResponse SetNickNameF1 = new()
             {
                 step = @params.Step,
             };
 
-            ResponsePacket response = new()
-            {
-                Id = BasePacket.Id,
-                Result = SetNickNameF1,
-            };
+            response.Result = SetNickNameF1;
 
             return response;
         }

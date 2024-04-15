@@ -3,12 +3,11 @@ using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
-using MongoDB.Driver;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Dispatch
 {
-	[Packet(Id = Method.RecallDispatch)]
+    [Packet(Id = Method.RecallDispatch)]
     public class RecallDispatch : BaseMethodHandler<RecallDispatchRequest>
     {
         public override object Handle(RecallDispatchRequest @params)
@@ -43,7 +42,6 @@ namespace CommanderCS.Packets.Handlers.Dispatch
                     {
                         engageGold = engageCount * (int)(GetdispatchFloatGold(commander.__level, commander.__cls, commander.__rank) * 10f);
                     }
-
                 }
 
                 RecallCommander.runtime = dispatchTime;
@@ -57,7 +55,6 @@ namespace CommanderCS.Packets.Handlers.Dispatch
                 user.DispatchedCommanders.Remove(slot);
 
                 DatabaseManager.GameProfile.UpdateDispatchedCommander(session, user.DispatchedCommanders);
-
             }
 
             var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
@@ -68,11 +65,11 @@ namespace CommanderCS.Packets.Handlers.Dispatch
             {
                 Id = BasePacket.Id,
                 Result = RecallCommander,
-			};
+            };
 
-			return response;
-
+            return response;
         }
+
         public int GetDispatchGold(string level, string cls, string rank) => GetDispatchGold(int.Parse(level), int.Parse(cls), int.Parse(rank));
 
         public int GetDispatchGold(int level, int cls, int rank)
@@ -93,7 +90,6 @@ namespace CommanderCS.Packets.Handlers.Dispatch
         [JsonProperty("slot")]
         public int slot { get; set; }
     }
-
 }
 
 /*	// Token: 0x060060BB RID: 24763 RVA: 0x000120F8 File Offset: 0x000102F8

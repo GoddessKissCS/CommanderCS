@@ -9,23 +9,22 @@ namespace CommanderCS.Host.Handlers.VersionCheck
     {
         public override object Handle(GameVersionInfoRequest @params)
         {
-            var info = DatabaseManager.GameVersionInfo.Get(@params.ch);
-
-            double policy = Convert.ToDouble(info.showPolicy);
-            int fileCheckingEnabled = Convert.ToInt32(info.fileCheck);
-            int googleLoginEnabled = Convert.ToInt32(info.enableGoogleLogin);
-            int isVersionOutdated = Convert.ToInt32(info.Version_State);
+            var gameVer = DatabaseManager.GameVersionInfo.Get(@params.ch);
+            double policy = Convert.ToDouble(gameVer.showPolicy);
+            int fileCheckingEnabled = Convert.ToInt32(gameVer.fileCheck);
+            int googleLoginEnabled = Convert.ToInt32(gameVer.enableGoogleLogin);
+            int isVersionOutdated = Convert.ToInt32(gameVer.Version_State);
 
             GameVersionInfoResponse gameversion = new()
             {
                 policy = policy,
-                chat = info.Chat_Url,
-                cdn = info.Cdn_Url,
-                game = info.Game_Url,
+                chat = gameVer.Chat_Url,
+                cdn = gameVer.Cdn_Url,
+                game = gameVer.Game_Url,
                 fc = fileCheckingEnabled,
                 gglogin = googleLoginEnabled,
-                ver = info.Version,
-                word = info.Word,
+                ver = gameVer.Version,
+                word = gameVer.Word,
                 stat = isVersionOutdated
             };
 

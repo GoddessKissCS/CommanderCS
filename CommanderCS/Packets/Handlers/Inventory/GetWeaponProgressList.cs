@@ -3,7 +3,7 @@ using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.Inventory
 {
-	[Packet(Id = Method.GetWeaponProgressList)]
+    [Packet(Id = Method.GetWeaponProgressList)]
     public class GetWeaponProgressList : BaseMethodHandler<GetWeaponProgressListRequest>
     {
         public override object Handle(GetWeaponProgressListRequest @params)
@@ -11,19 +11,18 @@ namespace CommanderCS.Packets.Handlers.Inventory
             var user = GetUserGameProfile();
 
             ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = user.WeaponInformation.WeaponProgressList,
+            {
+                Id = BasePacket.Id,
+                Result = user.WeaponInformation.WeaponProgressList,
             };
 
-			return response;
+            return response;
         }
     }
 
     public class GetWeaponProgressListRequest
     {
     }
-
 }
 
 /*	// Token: 0x06006160 RID: 24928 RVA: 0x000120F8 File Offset: 0x000102F8

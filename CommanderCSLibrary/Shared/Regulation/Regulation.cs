@@ -1019,9 +1019,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         public Dictionary<string, List<WorldMapInformationResponse>> GetAllWorldMapStages()
         {
             Dictionary<string, List<WorldMapInformationResponse>> stages = [];
-
-            
-
+           
             foreach (var stage in worldMapStageDtbl)
             {
                 stages = worldMapStageDtbl
@@ -1062,7 +1060,7 @@ namespace CommanderCSLibrary.Shared.Regulation
                 favr = 0,
                 fvrd = 0,
                 haveCostume = [item.ctid],
-                id = "" + commanderID,
+                id = commanderID.ToString(),
                 marry = 0,
                 medl = 0,
                 role = role.commanderRole,

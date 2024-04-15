@@ -13,7 +13,7 @@ namespace CommanderCS.Host.Handlers.VersionCheck
 
             DatabaseVersionCheckResponse res = new()
             {
-                ver = gametable.Version,
+                version = gametable.Version,
             };
 
             ResponsePacket response = new()
@@ -28,7 +28,7 @@ namespace CommanderCS.Host.Handlers.VersionCheck
         private class DatabaseVersionCheckResponse
         {
             [JsonProperty("ver")]
-            public double ver { get; set; }
+            public double version { get; set; }
         }
     }
 

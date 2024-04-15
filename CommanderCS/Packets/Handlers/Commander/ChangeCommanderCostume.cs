@@ -14,24 +14,24 @@ namespace CommanderCS.Packets.Handlers.Commander
             var session = GetSession();
             var rg = GetRegulation();
 
-            string cid = @params.cid.ToString();
+            string cid = @params.commanderId.ToString();
 
-            user.CommanderData[cid].currentCostume = @params.cos;
+            user.CommanderData[cid].currentCostume = @params.costumeId;
 
-            var costumeRow = rg.commanderCostumeDtbl.Find(x => x.ctid == @params.cos);
+            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+
+            var costumeRow = rg.commanderCostumeDtbl.Find(x => x.ctid == @params.costumeId);
             var thumbnailRow = rg.commanderCostumeDtbl.Find(x => x.ctid == user.UserResources.thumbnailId);
 
             if (costumeRow.cid == thumbnailRow.cid)
             {
-                DatabaseManager.GameProfile.ChangeThumbnailId(session, @params.cos);
+                DatabaseManager.GameProfile.ChangeThumbnailId(session, @params.costumeId);
 
                 if (user.GuildId != null)
                 {
-                    DatabaseManager.Guild.UpdateSpecificMemberThumbnail(user.GuildId, user.Uno, @params.cos);
+                    DatabaseManager.Guild.UpdateSpecificMemberThumbnail(user.GuildId, user.Uno, @params.costumeId);
                 }
             }
-
-            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
 
             ResponsePacket response = new()
             {
@@ -46,10 +46,10 @@ namespace CommanderCS.Packets.Handlers.Commander
     public class ChangeCommanderCostumeRequest
     {
         [JsonProperty("cid")]
-        public int cid { get; set; }
+        public int commanderId { get; set; }
 
         [JsonProperty("cos")]
-        public int cos { get; set; }
+        public int costumeId { get; set; }
     }
 }
 

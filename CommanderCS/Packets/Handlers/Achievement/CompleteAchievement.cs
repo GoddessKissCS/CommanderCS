@@ -1,5 +1,6 @@
 using CommanderCS.Host;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Packets.Handlers.Achievement
 {
@@ -11,7 +12,7 @@ namespace CommanderCS.Packets.Handlers.Achievement
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = Array.Empty<CommanderCSLibrary.Shared.Protocols.CompleteAchievementInfo>(),
+                Result = Array.Empty<CompleteAchievementInfo>(),
             };
 
             return response;

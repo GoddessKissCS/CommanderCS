@@ -1,5 +1,4 @@
 ﻿using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Host.Handlers.Gacha
 {
@@ -8,31 +7,13 @@ namespace CommanderCS.Host.Handlers.Gacha
     {
         public override object Handle(GachaInformationRequest @params)
         {
-            ResponsePacket response = new();
+            var user = GetUserGameProfile();
 
-            Dictionary<string, GachaInformationResponse> test = [];
-
-            GachaInformationResponse w = new()
+            ResponsePacket response = new()
             {
-                freeOpenRemainTime = 0,
-                freeOpenRemainCount = 1,
-                pilotRate = 1,
-                type = "1"
+                Id = BasePacket.Id,
+                Result = user.GachaInformation,
             };
-
-            GachaInformationResponse ws = new()
-            {
-                freeOpenRemainTime = 0,
-                freeOpenRemainCount = 1,
-                pilotRate = 0,
-                type = "2"
-            };
-
-            test.Add("1", w);
-            test.Add("2", ws);
-
-            response.Id = BasePacket.Id;
-            response.Result = test;
 
             return response;
         }

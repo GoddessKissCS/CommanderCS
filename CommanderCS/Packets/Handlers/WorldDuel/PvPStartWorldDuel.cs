@@ -4,12 +4,12 @@ using Newtonsoft.Json.Linq;
 
 namespace StellarGK.Packets.Handlers.WorldDuel
 {
-	[Packet(Id = CommanderCSLibrary.Shared.Enum.Method.PvPStartWorldDuel)]
+    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.PvPStartWorldDuel)]
     public class PvPStartWorldDuel : BaseMethodHandler<PvPStartWorldDuelRequest>
     {
         public override object Handle(PvPStartWorldDuelRequest @params)
         {
-			CommanderCSLibrary.Shared.Protocols.UserInformationResponse.BattleResult battleResult = new() { };
+            CommanderCSLibrary.Shared.Protocols.UserInformationResponse.BattleResult battleResult = new() { };
 
             ResponsePacket response = new()
             {
@@ -21,11 +21,10 @@ namespace StellarGK.Packets.Handlers.WorldDuel
         }
     }
 
-
-	public class PvPStartWorldDuelRequest
-	{
-		[JsonProperty("type")]
-		public int type { get; set; }
+    public class PvPStartWorldDuelRequest
+    {
+        [JsonProperty("type")]
+        public int type { get; set; }
 
         [JsonProperty("retry")]
         public int retry { get; set; }

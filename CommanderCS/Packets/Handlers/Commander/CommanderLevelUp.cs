@@ -1,10 +1,10 @@
 ﻿using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using CommanderCSLibrary.Shared.Enum;
 
 using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Host.Handlers.Commander
 {
@@ -50,7 +50,7 @@ namespace CommanderCS.Host.Handlers.Commander
 
                 commander.__exp = commanderXP.ToString();
 
-                commander = CheckCommanderLevel(commander, rg);
+                commander = CheckCommanderLevelRecursive(commander, rg, user);
             }
 
             if (int.Parse(commander.__level) > user.UserResources.level)
@@ -67,37 +67,7 @@ namespace CommanderCS.Host.Handlers.Commander
             DatabaseManager.GameProfile.UpdateItemData(session, user.UserInventory.itemData);
             DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
 
-            var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
-            var battlestats = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(user.UserStatistics);
-            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
-
-            UserInformationResponse userInformationResponse = new()
-            {
-                goodsInfo = goods,
-                battleStatisticsInfo = battlestats,
-                uno = user.Uno.ToString(),
-                stage = user.LastStage,
-                notification = user.Notifaction,
-
-                foodData = user.UserInventory.foodData,
-                eventResourceData = user.UserInventory.eventResourceData,
-                groupItemData = user.UserInventory.groupItemData,
-                itemData = user.UserInventory.itemData,
-                medalData = user.UserInventory.medalData,
-                partData = user.UserInventory.partData,
-
-                resetRemain = user.ResetDateTime, // should be set?
-
-                equipItem = user.UserInventory.equipItem,
-
-                donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,
-                completeRewardGroupIdx = user.CompleteRewardGroupIdx,
-                guildInfo = guild,
-                sweepClearData = user.BattleData.SweepClearData,
-                preDeck = user.PreDeck,
-                weaponList = user.UserInventory.weaponList,
-                __commanderInfo = JObject.FromObject(user.CommanderData),
-            };
+            var userInformationResponse = GetUserInformationResponse(user);
 
             ResponsePacket response = new()
             {
@@ -117,12 +87,7 @@ namespace CommanderCS.Host.Handlers.Commander
             { "19" , 10000 }
         };
 
-        private static UserInformationResponse.Commander CheckCommanderLevel(UserInformationResponse.Commander commander, Regulation rg)
-        {
-            return CheckCommanderLevelRecursive(commander, rg);
-        }
-
-        private static UserInformationResponse.Commander CheckCommanderLevelRecursive(UserInformationResponse.Commander commander, Regulation rg)
+        private static UserInformationResponse.Commander CheckCommanderLevelRecursive(UserInformationResponse.Commander commander, Regulation rg, GameProfileScheme user)
         {
             int commanderLevel = int.Parse(commander.__level);
 
@@ -135,7 +100,7 @@ namespace CommanderCS.Host.Handlers.Commander
                 commander.__level = (commanderLevel + 1).ToString();
                 commander.__exp = (commanderXp -= row.exp).ToString();
 
-                return CheckCommanderLevelRecursive(commander, rg);
+                return CheckCommanderLevelRecursive(commander, rg, user);
             }
 
             return commander;

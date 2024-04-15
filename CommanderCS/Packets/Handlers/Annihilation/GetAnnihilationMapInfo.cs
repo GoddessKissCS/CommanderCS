@@ -8,41 +8,40 @@ namespace CommanderCS.Packets.Handlers.Annihilation
     [Packet(Id = Method.GetAnnihilationMapInfo)]
     public class GetAnnihilationMapInfo : BaseMethodHandler<GetAnnihilationMapInfoRequest>
     {
-		public override object Handle(GetAnnihilationMapInfoRequest @params)
-		{
-			var user = GetUserGameProfile();
+        public override object Handle(GetAnnihilationMapInfoRequest @params)
+        {
+            var user = GetUserGameProfile();
 
+            switch (@params.goReady)
+            {
+                case 0:
+                    break;
+            }
 
-			switch (@params.goReady)
-			{
-				case 0:
-					break;
-			}
+            // still needs work
 
-			// still needs work
+            AnnihilationMode mode = AnnihilationMode.NONE;
 
-			AnnihilationMode mode = AnnihilationMode.NONE;
-
-			var annimap = new AnnihilationMapInfo()
-			{
-				stage = 0,
-				remainTime = 0,
-				commanderStatusList = [],
-				dieCommanderList = [],
-				clear = 0,
-				enemyList = [],
-				isPlayAdvanceParty = 0,
-				mode = mode,
-				__advancePartyReward = 0,		
-			};
+            var annimap = new AnnihilationMapInfo()
+            {
+                stage = 0,
+                remainTime = 0,
+                commanderStatusList = [],
+                dieCommanderList = [],
+                clear = 0,
+                enemyList = [],
+                isPlayAdvanceParty = 0,
+                mode = mode,
+                __advancePartyReward = 0,
+            };
 
             ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = annimap
-			};
+            {
+                Id = BasePacket.Id,
+                Result = annimap
+            };
 
-			return response;
+            return response;
         }
     }
 

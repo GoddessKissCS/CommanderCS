@@ -5,14 +5,14 @@ using static StellarGK.Packets.Handlers.WaveDuel.PvPWaveDuelList;
 
 namespace StellarGK.Packets.Handlers.WaveDuel
 {
-	[Packet(Id = Method.PvPWaveDuelList)]
+    [Packet(Id = Method.PvPWaveDuelList)]
     public class PvPWaveDuelList : BaseMethodHandler<PvPWaveDuelListRequest>
     {
         public override object Handle(PvPWaveDuelListRequest @params)
         {
             var user = GetUserGameProfile();
-// TODO FINISH
-// need to check score and the get duelist between the range
+            // TODO FINISH
+            // need to check score and the get duelist between the range
 
             CommanderCSLibrary.Shared.Protocols.PvPDuelList pvPDuel = new()
             {

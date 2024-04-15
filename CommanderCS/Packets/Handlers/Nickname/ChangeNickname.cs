@@ -12,7 +12,7 @@ namespace CommanderCS.Host.Handlers.Nickname
         {
             var session = GetSession();
 
-            ErrorCode code = DatabaseManager.GameProfile.RequestNickNameChange(@params.nickname, session);
+            ErrorCode code = DatabaseManager.GameProfile.RequestNickNameChange(@params.nickname, BasePacket.SessionId);
 
             if (code != ErrorCode.Success)
             {

@@ -3,18 +3,18 @@ using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Troop
 {
-	[Packet(Id = CommanderCSLibrary.Shared.Enum.Method.UpdateTroopRole)]
+    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.UpdateTroopRole)]
     public class UpdateTroopRole : BaseMethodHandler<UpdateTroopRoleRequest>
     {
         public override object Handle(UpdateTroopRoleRequest @params)
-        {       
-			ResponsePacket response = new()
-			{ 
-				Id = BasePacket.Id,
-				Result = true,
-			};
+        {
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = true,
+            };
 
-			return response;
+            return response;
         }
     }
 

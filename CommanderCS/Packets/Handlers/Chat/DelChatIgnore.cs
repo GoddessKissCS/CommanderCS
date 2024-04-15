@@ -12,7 +12,7 @@ namespace CommanderCS.Packets.Handlers.Chat
         {
             var session = GetSession();
 
-            bool isRemoved = DatabaseManager.GameProfile.DelBlockedUser(session, @params.ch, @params.uno);
+            bool isRemoved = DatabaseManager.GameProfile.DelBlockedUser(session, @params.channel, @params.uno);
 
             ResponsePacket response = new()
             {
@@ -27,7 +27,7 @@ namespace CommanderCS.Packets.Handlers.Chat
     public class DelChatIgnoreRequest
     {
         [JsonProperty("ch")]
-        public int ch { get; set; }
+        public int channel { get; set; }
 
         [JsonProperty("uno")]
         public string uno { get; set; }

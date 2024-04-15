@@ -11,14 +11,28 @@ namespace CommanderCS.Packets.Handlers.Defender
     {
         public override object Handle(DefenderSettingRequest @params)
         {
-			var session = GetSession();
-            var user = GetUserGameProfile();
+            var session = GetSession();
 
             Dictionary<string, string> deck = @params.deck.ToObject<Dictionary<string, string>>();
 
-			DatabaseManager.GameProfile.UpdatePvPDefenderDeck(session, deck);
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "",
+            };
 
-            return "{}";
+            if (DatabaseManager.GameProfile.UpdatePvPDefenderDeck(session, deck))
+            {
+                response.Result = "True";
+
+                return response;
+            }
+            else
+            {
+                response.Result = "False";
+
+                return response;
+            }
         }
     }
 

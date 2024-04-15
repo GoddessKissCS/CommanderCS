@@ -16,7 +16,7 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             var session = GetSession();
 
 #warning TODO: REVAMP THIS FUNCTION
-            string commanderId = GetCommanderIdForWorld(@params.world);
+            string commanderId = GetCommanderIdForWorldMapReward(@params.world);
 
             var worldmap = UserWorldReward(commanderId, user, session);
 
@@ -31,7 +31,7 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             return response;
         }
 
-        private static string GetCommanderIdForWorld(int world)
+        private static string GetCommanderIdForWorldMapReward(int world)
         {
             return world switch
             {
@@ -66,20 +66,20 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 
             user.CommanderData.TryGetValue(commanderId, out var commander);
 
-            if (commander != null)
-            {
-                user.UserInventory.medalData[commanderId] += medals;
-                user.CommanderData[commanderId].medl += medals;
-
-                WorldMapReward.commanderData = user.CommanderData;
-            }
-            else
+            if (commander == null)
             {
                 int cid = int.Parse(commanderId);
 
                 var commanderdata = Constants.regulation.AddSpecificCommander(user.CommanderData, cid);
 
                 WorldMapReward.commanderData = commanderdata;
+            }
+            else
+            {
+                user.UserInventory.medalData[commanderId] += medals;
+                user.CommanderData[commanderId].medl += medals;
+
+                WorldMapReward.commanderData = user.CommanderData;
             }
 
             WorldMapReward.medalData = user.UserInventory.medalData;

@@ -28,7 +28,7 @@ namespace CommanderCS.Host.Handlers.KeepAlives
                 },
                 skillData = new()
                 {
-                    remain = 0,
+                    remain = 0, // NO IDEA ABOUT THOSE TWOS
                     cnt = 0,
                 },
                 chip = new()

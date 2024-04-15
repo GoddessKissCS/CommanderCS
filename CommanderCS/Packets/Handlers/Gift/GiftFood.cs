@@ -4,7 +4,6 @@ using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Gift
 {
@@ -18,7 +17,6 @@ namespace CommanderCS.Packets.Handlers.Gift
             var session = GetSession();
 
             string cid = @params.cid.ToString();
-
             string cgid = @params.cgid.ToString();
 
             user.CommanderData.TryGetValue(cid, out var commander);
@@ -81,6 +79,7 @@ namespace CommanderCS.Packets.Handlers.Gift
             { 63, 6000 },
             { 64, 9000 }
         };
+
         private static UserInformationResponse.Commander CheckCommanderFavour(UserInformationResponse.Commander commander, Regulation rg)
         {
             FavorStepDataRow row = new();

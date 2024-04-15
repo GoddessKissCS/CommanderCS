@@ -4,25 +4,25 @@ using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Shop
 {
-	[Packet(Id = Method.BuySecretShopItem)]
+    [Packet(Id = Method.BuySecretShopItem)]
     public class BuySecretShopItem : BaseMethodHandler<BuySecretShopItemRequest>
     {
         public override object Handle(BuySecretShopItemRequest @params)
         {
-//TODO: SAVE THE SHOP TO THE DATABASE OF THE SPECIFIC USER AND THE IF YOU BUY IT MARK IT AS SOLD
+            //TODO: SAVE THE SHOP TO THE DATABASE OF THE SPECIFIC USER AND THE IF YOU BUY IT MARK IT AS SOLD
 
-			return "{}";
+            return "{}";
         }
     }
 
-	public class BuySecretShopItemRequest
-	{
-		[JsonProperty("styp")]
-		public int styp { get; set; }
+    public class BuySecretShopItemRequest
+    {
+        [JsonProperty("styp")]
+        public int styp { get; set; }
 
         [JsonProperty("id")]
         public int id { get; set; }
-	}
+    }
 }
 
 /*	// Token: 0x06006015 RID: 24597 RVA: 0x000120F8 File Offset: 0x000102F8

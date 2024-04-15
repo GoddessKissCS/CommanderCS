@@ -14,9 +14,9 @@ namespace CommanderCS.Packets.Handlers.Guild
             var user = GetUserGameProfile();
             var guild = GetUserGuild();
 
-            var target = guild.MemberData.FirstOrDefault(member => member.uno == @params.tuno);
+            var target = guild.MemberData.FirstOrDefault(member => member.Uno == @params.tuno);
 
-            var difference = TimeManager.GetTimeDifferenceInDays(target.joinDate);
+            var difference = TimeManager.GetTimeDifferenceInDays(target.JoinDate);
 
             bool kicked5peopleToday = false;
 

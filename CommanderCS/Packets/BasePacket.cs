@@ -15,12 +15,6 @@ namespace CommanderCS.Host
         public Method Id { get; set; }
     }
 
-    public class ParamsPacket : BasePacket
-    {
-        [JsonProperty("params")]
-        public JToken Params { get; set; }
-    }
-
     public class BasePacket
     {
         [JsonProperty("id")]
@@ -30,7 +24,13 @@ namespace CommanderCS.Host
         public int Method { get; set; }
 
         [JsonProperty("sess")]
-        public string Session { get; set; }
+        public string SessionId { get; set; }
+    }
+
+    public class ParamsPacket : BasePacket
+    {
+        [JsonProperty("params")]
+        public JToken Params { get; set; }
     }
 
     public abstract class BaseMethodHandler<TParams>
@@ -41,27 +41,27 @@ namespace CommanderCS.Host
 
         public string GetSession()
         {
-            return BasePacket.Session;
+            return BasePacket.SessionId;
         }
 
         public AccountScheme? GetUserAccount()
         {
-            return DatabaseManager.Account.FindBySession(BasePacket.Session);
+            return DatabaseManager.Account.FindBySession(BasePacket.SessionId);
         }
 
         public GameProfileScheme? GetUserGameProfile()
         {
-            return DatabaseManager.GameProfile.FindBySession(BasePacket.Session);
+            return DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
         }
 
         public DormitoryScheme? GetUserDormitory()
         {
-            return DatabaseManager.Dormitory.FindBySession(BasePacket.Session);
+            return DatabaseManager.Dormitory.FindBySession(BasePacket.SessionId);
         }
 
         public GuildScheme GetUserGuild()
         {
-            return DatabaseManager.Guild.FindBySession(BasePacket.Session);
+            return DatabaseManager.Guild.FindBySession(BasePacket.SessionId);
         }
 
         public Regulation GetRegulation()
@@ -113,6 +113,7 @@ namespace CommanderCS.Host
                 __worldDuelTicket = Convert.ToString(user.UserResources.worldDuelTicket),
                 __worldDuelUpgradeCoin = Convert.ToString(user.UserResources.worldDuelUpgradeCoin),
             };
+
             UserInformationResponse.BattleStatistics BattleStatisticstis = new()
             {
                 navyCommanderDestroyCount = user.UserStatistics.NavyCommanderDestroyCount,
@@ -122,14 +123,14 @@ namespace CommanderCS.Host
                 raidHighScore = user.UserStatistics.RaidHighScore,
                 vipShop = user.UserStatistics.VipShop,
                 vipShopResetTime = user.UserStatistics.VipShopResetTime,
-                weaponMakeSlotCount = user.UserStatistics.weaponMakeSlotCount,
+                weaponMakeSlotCount = user.UserStatistics.WeaponMakeSlotCount,
                 winMostStreak = user.UserStatistics.WinMostStreak,
                 winStreak = user.UserStatistics.WinStreak,
                 arenaHighRank = user.UserStatistics.ArenaHighRank,
                 armyCommanderDestroyCount = user.UserStatistics.ArmyCommanderDestroyCount,
                 armyUnitDestroyCount = user.UserStatistics.ArmyUnitDestroyCount,
                 commanderDestroyCount = user.UserStatistics.CommanderDestroyCount,
-                firstPayment = user.UserStatistics.firstPayment,
+                firstPayment = user.UserStatistics.FirstPayment,
                 navyUnitDestroyCount = user.UserStatistics.NavyUnitDestroyCount,
                 normalGachaCount = user.UserStatistics.NormalGachaCount,
                 predeckCount = user.UserStatistics.PredeckCount,
@@ -141,7 +142,7 @@ namespace CommanderCS.Host
                 raidHighRank = user.UserStatistics.RaidHighRank,
                 totalGold = user.UserStatistics.TotalGold,
                 totalPlunderGold = user.UserStatistics.TotalPlunderGold,
-                weaponInventoryCount = user.UserStatistics.weaponInventoryCount,
+                weaponInventoryCount = user.UserStatistics.WeaponInventoryCount,
                 unitDestroyCount = user.UserStatistics.UnitDestroyCount,
             };
 
@@ -162,7 +163,7 @@ namespace CommanderCS.Host
                 medalData = user.UserInventory.medalData,
                 partData = user.UserInventory.partData,
 
-                resetRemain = user.ResetDateTime, // should be set?
+                resetRemain = user.ResetDateTime, // should it be set?
 
                 equipItem = user.UserInventory.equipItem,
 
@@ -173,7 +174,6 @@ namespace CommanderCS.Host
                 preDeck = user.PreDeck,
                 weaponList = user.UserInventory.weaponList,
                 __commanderInfo = JObject.FromObject(user.CommanderData),
-
             };
 
             return userInformationResponse;
@@ -181,8 +181,8 @@ namespace CommanderCS.Host
 
         public UserInformationResponse GetDatabaseUserInformationResponse(GameProfileScheme user)
         {
-            var goods = DatabaseManager.GameProfile.UserResourcesFromSession(BasePacket.Session);
-            var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(BasePacket.Session);
+            var goods = DatabaseManager.GameProfile.UserResourcesFromSession(BasePacket.SessionId);
+            var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(BasePacket.SessionId);
             var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
 
             UserInformationResponse userInformationResponse = new()
@@ -211,7 +211,6 @@ namespace CommanderCS.Host
                 preDeck = user.PreDeck,
                 weaponList = user.UserInventory.weaponList,
                 __commanderInfo = JObject.FromObject(user.CommanderData),
-
             };
 
             return userInformationResponse;

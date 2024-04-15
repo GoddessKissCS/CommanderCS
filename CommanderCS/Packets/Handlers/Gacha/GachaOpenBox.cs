@@ -1,9 +1,7 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
-using CommanderCS.MongoDB.Handlers;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
-using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Gacha
@@ -13,9 +11,9 @@ namespace CommanderCS.Packets.Handlers.Gacha
     {
         public override object Handle(GachaOpenBoxRequest @params)
         {
-			var user = GetUserGameProfile();
-			var session = GetSession();
-			var rg = GetRegulation();
+            var user = GetUserGameProfile();
+            var session = GetSession();
+            var rg = GetRegulation();
 
             List<GachaOpenBoxResponse.Reward> rewards = [];
 
@@ -32,19 +30,19 @@ namespace CommanderCS.Packets.Handlers.Gacha
             // PUT THE GachaInformationResponse INTO GAMEPROFILESCHEME TO SEE IF USER X KEEPS ETC SHIT AND DO A
 
             switch (@params.gbIdx)
-			{
-				case 1:
-					rewards.Add(new() { count = 5, id = "8", type = ERewardType.Goods });
+            {
+                case 1:
+                    rewards.Add(new() { count = 5, id = "8", type = ERewardType.Goods });
                     user.UserInventory.itemData.Add("8", 5);
                     DatabaseManager.GameProfile.UpdateItemData(session, user.UserInventory.itemData);
                     break;
-				case 2:
+
+                case 2:
                     rewards.Add(new() { count = 1, id = "2", type = ERewardType.Commander });
                     user.CommanderData = rg.AddSpecificCommander(user.CommanderData, 2);
                     DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
                     break;
-			}
-
+            }
 
             var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
 
@@ -63,14 +61,13 @@ namespace CommanderCS.Packets.Handlers.Gacha
                 equipItem = user.UserInventory.equipItem
             };
 
-
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = gachaOpen,
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = gachaOpen,
             };
 
-			return response;
+            return response;
         }
     }
 

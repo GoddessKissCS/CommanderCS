@@ -35,8 +35,6 @@ namespace CommanderCS.Host.Handlers.Sign
 
         private static ErrorCode RequestSignIn(string AccountName, string password, out SignInP signInP)
         {
-            var password_hash = Crypto.ComputeSha256Hash(password);
-
             signInP = new();
             if (!DatabaseManager.Account.AccountExists(AccountName))
             {
@@ -44,6 +42,9 @@ namespace CommanderCS.Host.Handlers.Sign
             }
 
             AccountScheme user = DatabaseManager.Account.FindByName(AccountName);
+
+            var password_hash = Crypto.ComputeSha256Hash(password);
+
             if (user.Password_Hash == password_hash)
             {
                 DatabaseManager.Account.UpdateLoginTime(user.MemberId);

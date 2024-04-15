@@ -12,7 +12,7 @@ namespace CommanderCS.Host.Handlers.Vip
 
 #warning TODO: I FORGOT WHAT THIS IS EVEN FOR
 
-			return "{}";
+            return "{}";
         }
     }
 

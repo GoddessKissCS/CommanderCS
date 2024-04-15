@@ -2,10 +2,8 @@ using CommanderCS.Host;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
 using MongoDB.Driver;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Commander
 {
@@ -22,11 +20,11 @@ namespace CommanderCS.Packets.Handlers.Commander
             // seems overrated but you never know ig?
             // client says no if you cant buy, but ig you could in theory send a request and buy it anyways
 
-            string cid = @params.cid.ToString();
+            string cid = @params.commanderId.ToString();
 
-            var costumeData = rg.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == @params.cos);
+            var costumeData = rg.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == @params.costumeId);
 
-            user = AddCostumeData(cid, @params.cos, user);
+            user = AddCostumeData(cid, @params.costumeId, user);
 
             // TODO CHECK WHEN WE CREATE A CHARACTER TO SEE IF WE OWN ANY COSTUMES AND THEN TRANSFER THEM TO THE haveCostume and delete them from donHaveCommCostume
 
@@ -36,37 +34,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
             DatabaseManager.GameProfile.UpdateDontHaveCommanderCostumeData(session, user.UserInventory.donHaveCommCostumeData);
 
-            var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
-            var battlestats = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(user.UserStatistics);
-            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
-
-            UserInformationResponse userInformationResponse = new()
-            {
-                goodsInfo = goods,
-                battleStatisticsInfo = battlestats,
-                uno = user.Uno.ToString(),
-                stage = user.LastStage,
-                notification = user.Notifaction,
-
-                foodData = user.UserInventory.foodData,
-                eventResourceData = user.UserInventory.eventResourceData,
-                groupItemData = user.UserInventory.groupItemData,
-                itemData = user.UserInventory.itemData,
-                medalData = user.UserInventory.medalData,
-                partData = user.UserInventory.partData,
-
-                resetRemain = user.ResetDateTime,
-
-                equipItem = user.UserInventory.equipItem,
-
-                donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,
-                completeRewardGroupIdx = user.CompleteRewardGroupIdx,
-                guildInfo = guild,
-                sweepClearData = user.BattleData.SweepClearData,
-                preDeck = user.PreDeck,
-                weaponList = user.UserInventory.weaponList,
-                __commanderInfo = JObject.FromObject(user.CommanderData),
-            };
+            var userInformationResponse = GetUserInformationResponse(user);
 
             ResponsePacket response = new()
             {
@@ -79,30 +47,29 @@ namespace CommanderCS.Packets.Handlers.Commander
 
         public GameProfileScheme AddCostumeData(string cid, int costumeId, GameProfileScheme user)
         {
-            if (!user.CommanderData.ContainsKey(cid))
-            {
-                if (!user.UserInventory.donHaveCommCostumeData.ContainsKey(cid))
-                {
-                    user.UserInventory.donHaveCommCostumeData.Add(cid, [costumeId]);
-                }
-            }
-            else
+            if (user.CommanderData.ContainsKey(cid))
             {
                 user.CommanderData[cid].haveCostume.Add(costumeId);
+
+                return user;
             }
+
+            if (!user.UserInventory.donHaveCommCostumeData.ContainsKey(cid))
+            {
+                user.UserInventory.donHaveCommCostumeData.Add(cid, [costumeId]);
+            }
+
             return user;
         }
-
-
     }
 
     public class BuyCommanderCostumeRequest
     {
         [JsonProperty("cid")]
-        public int cid { get; set; }
+        public int commanderId { get; set; }
 
         [JsonProperty("cos")]
-        public int cos { get; set; }
+        public int costumeId { get; set; }
     }
 }
 

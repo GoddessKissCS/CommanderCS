@@ -14,18 +14,22 @@ namespace CommanderCS.Packets.Handlers.Dispatch
         {
             var session = GetSession();
 
+            var time = TimeManager.GetCurrentTime();
+
             DispatchedCommanderInfo commanderInfo = new()
             {
                 cid = @params.cid,
                 engageCnt = 0,
                 getGold = 0,
                 runtime = 0,
-                DispatchTime = TimeManager.GetCurrentTime(),
+                DispatchTime = time,
             };
+
+            var slot = @params.slot.ToString();
 
             Dictionary<string, DispatchedCommanderInfo> dispatchedcommanders = new()
             {
-                { @params.slot.ToString(), commanderInfo }
+                { slot, commanderInfo }
             };
 
             DatabaseManager.GameProfile.UpdateDispatchedCommander(session, dispatchedcommanders);

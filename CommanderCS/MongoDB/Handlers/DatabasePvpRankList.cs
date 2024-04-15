@@ -3,40 +3,49 @@ using StellarGK.MongoDB.Schemes;
 
 namespace CommanderCS.MongoDB.Handlers
 {
+    /// <summary>
+    /// Represents a database table for storing PvP rank list data.
+    /// </summary>
     public class DatabasePvpRankList : DatabaseTable<PvpRankListScheme>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DatabasePvpRankList"/> class with the specified table name.
+        /// </summary>
         public DatabasePvpRankList() : base("PvpRankList")
         {
         }
 
+        /// <summary>
+        /// Inserts a new PvP rank list entry into the database.
+        /// </summary>
+        /// <param name="uno">The unique identifier of the player.</param>
+        /// <param name="rankingData">The ranking data of the player.</param>
+        /// <param name="deck">The player's deck.</param>
         public void Insert(int uno, RankingUserData rankingData, Dictionary<string, string> deck)
         {
-
-            //TODO: NEEDS TO BE ADJUSTED FOR RANKING AND ETC
             PvpRankListScheme rankList = new()
             {
                 Uno = uno,
-                score = rankingData.score,
-                averageScore = rankingData.averageScore,
-                bestScore = rankingData.bestScore,
-                losingStreak = rankingData.losingStreak,
-                nextScore = rankingData.nextScore,
-                winningStreak = rankingData.winningStreak,
-                duelPoint = rankingData.duelPoint,
-                loseCnt = rankingData.loseCnt,
-                raidCnt = rankingData.raidCnt,
-                raidRank = rankingData.raidRank,
-                raidRewardPoint = rankingData.raidRewardPoint,
-                rankingRate = rankingData.rankingRate,
-                ranking = rankingData.ranking,
-                rewardDuelPoint = rankingData.rewardDuelPoint,
-                rewardId = rankingData.rewardId,
-                winCnt = rankingData.winCnt,
-                winRank = rankingData.winRank,
-                winRankIdx = rankingData.winRankIdx,
-                deck = deck
+                Score = rankingData.score,
+                AverageScore = rankingData.averageScore,
+                BestScore = rankingData.bestScore,
+                LosingStreak = rankingData.losingStreak,
+                NextScore = rankingData.nextScore,
+                WinningStreak = rankingData.winningStreak,
+                DuelPoint = rankingData.duelPoint,
+                LoseCount = rankingData.loseCnt,
+                RaidCount = rankingData.raidCnt,
+                RaidRank = rankingData.raidRank,
+                RaidRewardPoint = rankingData.raidRewardPoint,
+                RankingRate = rankingData.rankingRate,
+                Ranking = rankingData.ranking,
+                RewardDuelPoint = rankingData.rewardDuelPoint,
+                RewardId = rankingData.rewardId,
+                WinCount = rankingData.winCnt,
+                WinRank = rankingData.winRank,
+                WinRankIdx = rankingData.winRankIdx,
+                Deck = deck
             };
-
 
             DatabaseCollection.InsertOne(rankList);
         }

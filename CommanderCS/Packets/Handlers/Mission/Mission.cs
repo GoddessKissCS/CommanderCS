@@ -12,6 +12,7 @@ namespace CommanderCS.Packets.Handlers.Mission
             switch (@params.type)
             {
             }
+
             CommanderCSLibrary.Shared.Protocols.AchievementInfo achievement = new()
             {
                 AchievementList = [],

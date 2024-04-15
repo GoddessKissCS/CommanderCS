@@ -2,7 +2,6 @@
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Host.Handlers.Login
 {
@@ -12,6 +11,7 @@ namespace CommanderCS.Host.Handlers.Login
         public override object Handle(LoginRequest @params)
         {
             string session = GenerateUniqueSessionToken();
+
             var rg = GetRegulation();
 
             var user = DatabaseManager.GameProfile.GetOrCreate(@params.memberId, @params.world);
@@ -29,46 +29,14 @@ namespace CommanderCS.Host.Handlers.Login
                 return error;
             }
 
-            //var items = rg.goodsDtbl;
+            var userInformationResponse = GetUserInformationResponse(user);
 
-            //foreach (var item in items)
-            //{
-            //    user.UserInventory.itemData.Add(item.type, int.Parse(item.type));
-            //}
+            var items = rg.goodsDtbl;
 
-            DatabaseManager.GameProfile.UpdateMedalData(session, user.UserInventory.medalData);
-
-            var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
-            var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(session);
-            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
-
-            UserInformationResponse userInformationResponse = new()
+            foreach (var item in items)
             {
-                goodsInfo = goods,
-                battleStatisticsInfo = battlestats,
-                uno = user.Uno.ToString(),
-                stage = user.LastStage,
-                notification = user.Notifaction,
-
-                foodData = user.UserInventory.foodData,
-                eventResourceData = user.UserInventory.eventResourceData,
-                groupItemData = user.UserInventory.groupItemData,
-                itemData = user.UserInventory.itemData,
-                medalData = user.UserInventory.medalData,
-                partData = user.UserInventory.partData,
-
-                resetRemain = user.ResetDateTime, // should be set?
-                /// pronabably set it globally?
-                equipItem = user.UserInventory.equipItem,
-
-                donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,
-                completeRewardGroupIdx = user.CompleteRewardGroupIdx,
-                guildInfo = guild,
-                sweepClearData = user.BattleData.SweepClearData,
-                preDeck = user.PreDeck,
-                weaponList = user.UserInventory.weaponList,
-                __commanderInfo = JObject.FromObject(user.CommanderData),
-            };
+                userInformationResponse.itemData.TryAdd(item.type, int.Parse(item.type));
+            }
 
             LoginResponse loginResponse = new()
             {
@@ -85,7 +53,7 @@ namespace CommanderCS.Host.Handlers.Login
             return response;
         }
 
-        public string GenerateUniqueSessionToken()
+        private static string GenerateUniqueSessionToken()
         {
             string session;
 

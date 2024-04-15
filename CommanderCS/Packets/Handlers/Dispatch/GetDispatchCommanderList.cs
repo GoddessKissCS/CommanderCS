@@ -13,7 +13,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
             var user = GetUserGameProfile();
             var guild = GetUserGuild();
 
-            if(guild.LastEdit != null)
+            if (guild.LastEdit != null)
             {
                 var difference = TimeManager.GetTimeDifference((double)guild.LastEdit);
 
@@ -41,15 +41,16 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 
                     int engageCount = item.Value.engageCnt;
 
-                    user.CommanderData.TryGetValue(item.Value.cid.ToString(), out var commander);
+                    string stringedItem = item.Value.cid.ToString();
+
+                    user.CommanderData.TryGetValue(stringedItem, out var commander);
 
                     if (runtime >= 1)
                     {
                         gold = runtime * GetDispatchGold(commander.__level, commander.__cls, commander.__rank);
-
                     }
 
-                    DiapatchCommanderInfo diapatchCommander = new()
+                    DiapatchCommanderInfo dispatchedCommanders = new()
                     {
                         cid = item.Value.cid,
                         engageCnt = engageCount,
@@ -57,7 +58,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
                         getGold = gold
                     };
 
-                    dispatchedcommanders.Add(item.Key, diapatchCommander);
+                    dispatchedcommanders.Add(item.Key, dispatchedCommanders);
                 }
             }
             else
@@ -87,7 +88,6 @@ namespace CommanderCS.Packets.Handlers.Dispatch
         {
             return (level + cls) * rank / 11f * 60f;
         }
-
     }
 
     public class GetDispatchCommanderListRequest

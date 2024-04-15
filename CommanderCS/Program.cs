@@ -39,23 +39,7 @@ namespace CommanderCS
                 options.WriteIndented = true;
             });
 
-            //builder.WebHost.ConfigureKestrel(options =>
-            //{
-            //    options.AllowSynchronousIO = true;
-            //});
-
             builder.Services.AddHttpClient();
-
-            //            // To be replaced with mongodb
-            //            builder.Services.AddSqlite<DatabaseContext>(iConfigurationRoot.GetConnectionString(nameof(DatabaseContext)));
-            //            builder.Services.AddDbContext<DatabaseContext>((dbContextOptionsBuilder) =>
-            //            {
-            //#if DEBUG
-            //                dbContextOptionsBuilder.EnableDetailedErrors();
-            //                dbContextOptionsBuilder.EnableSensitiveDataLogging();
-            //                dbContextOptionsBuilder.UseLoggerFactory(iLoggerFactory);
-            //#endif
-            //            });
 
             var app = builder.Build();
 
@@ -65,31 +49,33 @@ namespace CommanderCS
                 CommandsLoaded = PacketHandler.CommandsMapped,
             };
 
-            var statusString = JsonSerializer.Serialize(status, new JsonSerializerOptions()
+            JsonSerializerOptions stausStringOptions = new()
             {
                 WriteIndented = true,
-            });
+            };
+
+            var statusString = JsonSerializer.Serialize(status, stausStringOptions);
 
             app.MapGet("/", () => statusString);
 
-            app.MapPost("/checkData.php", (HttpContext context, IServiceProvider provider) =>
+            app.MapPost("/checkData.php", async (HttpContext context, IServiceProvider provider) =>
             {
-                return PacketHandler.ProcessRequest(context, provider);
+                //Check if the request contains the user agent BestHTTP
+                if (!context.Request.Headers.UserAgent.Contains("BestHTTP"))
+                {
+                    return;
+                }
+
+                // The Response
+                string responseData = await PacketHandler.ProcessRequest(context, provider);
+
+                // Set the Response Contenttype and length
+                context.Response.ContentType = "application/json";
+                context.Response.ContentLength = responseData.Length;
+
+                // Write response to the response body stream
+                await context.Response.WriteAsync(responseData);
             });
-
-            //app.MapControllers();
-
-            //var wsOptions = new WebSocketOptions()
-            //{
-            //    KeepAliveInterval = TimeSpan.FromMilliseconds(1000),
-            //};
-
-            //app.UseWebSockets(wsOptions);
-
-            //app.MapGet("/chat.php", async (HttpContext context) =>
-            //{
-            //    await PacketHandler.ProcessChatRequest(context);
-            //});
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -99,6 +85,8 @@ namespace CommanderCS
             }
 
             //app.UseMiddleware<CustomExceptionHandlerMiddleware>();
+
+            //PROBABLY SHOULD BE MOVED TO A CDN SERVER
 
             #region StaticFileServer
 

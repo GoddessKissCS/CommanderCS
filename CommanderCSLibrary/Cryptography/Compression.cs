@@ -21,9 +21,5 @@ namespace CommanderCSLibrary.Cryptography
             return memoryStream.ToArray();
         }
 
-        public static string ByteArray2String(byte[] Input)
-        {
-            return Encoding.UTF8.GetString(Input);
-        }
     }
 }

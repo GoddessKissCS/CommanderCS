@@ -13,7 +13,7 @@ namespace StellarGK.Packets.Handlers.WaveDuel
         {
             var user = GetUserGameProfile();
 
-//TODO: add fake duelist + need to check score and the get duelist between the range
+            //TODO: add fake duelist + need to check score and the get duelist between the range
 
             var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
 

@@ -24,14 +24,16 @@ namespace CommanderCS.Host.Handlers.Dispatch
 
                     int engageCount = item.Value.engageCnt;
 
-                    user.CommanderData.TryGetValue(item.Value.cid.ToString(), out var commander);
+                    string stringedItem = item.Value.cid.ToString();
+
+                    user.CommanderData.TryGetValue(stringedItem, out var commander);
 
                     if (runtime >= 1)
                     {
                         gold = runtime * GetDispatchGold(commander.__level, commander.__cls, commander.__rank);
                     }
 
-                    DiapatchCommanderInfo diapatchCommander = new()
+                    DiapatchCommanderInfo dispatchedCommanders = new()
                     {
                         cid = item.Value.cid,
                         engageCnt = engageCount,
@@ -39,7 +41,7 @@ namespace CommanderCS.Host.Handlers.Dispatch
                         getGold = gold
                     };
 
-                    dispatchedcommanders.Add(item.Key, diapatchCommander);
+                    dispatchedcommanders.Add(item.Key, dispatchedCommanders);
                 }
             }
             else
@@ -62,6 +64,7 @@ namespace CommanderCS.Host.Handlers.Dispatch
         {
             return (int)((level + cls) * rank / 11f * 60f);
         }
+
         public float GetdispatchFloatGold(string level, string cls, string rank) => GetDispatchGold(int.Parse(level), int.Parse(cls), int.Parse(rank));
 
         public float GetdispatchFloatGold(int level, int cls, int rank)

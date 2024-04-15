@@ -10,7 +10,7 @@ namespace CommanderCS.Host.Handlers.Commander
         {
             ResponsePacket response = new();
 
-            Dictionary<string, Dictionary<string, CommanderScenario>> result = new Dictionary<string, Dictionary<string, CommanderScenario>>();
+            Dictionary<string, Dictionary<string, CommanderScenario>> result = new();
 
             response.Result = result;
             response.Id = BasePacket.Id;
