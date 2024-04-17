@@ -212,13 +212,13 @@ namespace CommanderCSLibrary.Shared.Regulation
             {
                 int num2 = 0;
                 int num3 = tsdcCount;
-                for (int i = 0; i < Constants.regulation.transcendenceStepUpgradeDtbl.length; i++)
+                for (int i = 0; i < RemoteObjectManager.instance.regulation.transcendenceStepUpgradeDtbl.length; i++)
                 {
                     if (num3 <= 0)
                     {
                         break;
                     }
-                    TranscendenceStepUpgradeDataRow transcendenceStepUpgradeDataRow = Constants.regulation.transcendenceStepUpgradeDtbl[i];
+                    TranscendenceStepUpgradeDataRow transcendenceStepUpgradeDataRow = RemoteObjectManager.instance.regulation.transcendenceStepUpgradeDtbl[i];
                     int num4 = transcendenceStepUpgradeDataRow.stepPoint - num2;
                     int num5 = (num3 >= num4) ? num4 : num3;
                     int num6 = num5 / transcendenceStepUpgradeDataRow.statAddMeasure * transcendenceStepUpgradeDataRow.statAddVolume;
@@ -232,13 +232,13 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         private int CurrentTranscendenceStep(int tsdcCount)
         {
-            List<TranscendenceStepUpgradeDataRow> list = Constants.regulation.FindTranscendenceStepUpgradeListPoint(tsdcCount);
+            List<TranscendenceStepUpgradeDataRow> list = RemoteObjectManager.instance.regulation.FindTranscendenceStepUpgradeListPoint(tsdcCount);
             return list.Count;
         }
 
         //public void InvokeLevel(int rank, int level, int cls, int costume, string commanderId, int favorRewardStep, int marry, List<int> transcendence, EBattleType battleType = EBattleType.Undefined, Dictionary<int, RoItem> EquipItem = null, bool isSetItem = false, Dictionary<int, RoWeapon> weaponItem = null, bool isWeaponSet = true)
         //{
-        //	Regulation regulation = Constants.regulation;
+        //	Regulation regulation = RemoteObjectManager.instance.regulation;
         //	string text = $"{((marry != 1) ? levelPattern : afterLevelPattern)}_{rank}";
         //	int num = regulation.levelPatternDtbl.FindIndex(text);
         //	if (num == -1)
@@ -695,7 +695,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         //			foreach (int group2 in localUser3.completeRewardGroupList)
         //			{
         //				bool flag = false;
-        //				GroupInfoDataRow groupInfoDataRow = Constants.regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => data.groupIdx == group2.ToString() && data.rewardType >= ERewardType.GroupEff_1 && data.rewardType <= ERewardType.GroupEff_8);
+        //				GroupInfoDataRow groupInfoDataRow = RemoteObjectManager.instance.regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => data.groupIdx == group2.ToString() && data.rewardType >= ERewardType.GroupEff_1 && data.rewardType <= ERewardType.GroupEff_8);
         //				if (groupInfoDataRow == null)
         //				{
         //					continue;
@@ -723,7 +723,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         //				}
         //				else if (groupInfoDataRow.rewardIdx == 1004)
         //				{
-        //					GroupMemberDataRow groupMemberDataRow = Constants.regulation.groupMemberDtbl.Find((GroupMemberDataRow row) => row.gidx == group2.ToString() && row.memberType == 1 && row.memberIdx == commanderId);
+        //					GroupMemberDataRow groupMemberDataRow = RemoteObjectManager.instance.regulation.groupMemberDtbl.Find((GroupMemberDataRow row) => row.gidx == group2.ToString() && row.memberType == 1 && row.memberIdx == commanderId);
         //					if (groupMemberDataRow != null)
         //					{
         //						flag = true;
@@ -832,7 +832,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         //	foreach (int group in roUser2.completeRewardGroupList)
         //	{
         //		bool flag2 = false;
-        //		GroupInfoDataRow groupInfoDataRow2 = Constants.regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => data.groupIdx == group.ToString() && data.rewardType >= ERewardType.GroupEff_1 && data.rewardType <= ERewardType.GroupEff_8);
+        //		GroupInfoDataRow groupInfoDataRow2 = RemoteObjectManager.instance.regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => data.groupIdx == group.ToString() && data.rewardType >= ERewardType.GroupEff_1 && data.rewardType <= ERewardType.GroupEff_8);
         //		if (groupInfoDataRow2 == null)
         //		{
         //			continue;
@@ -860,7 +860,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         //		}
         //		else if (groupInfoDataRow2.rewardIdx == 1004)
         //		{
-        //			GroupMemberDataRow groupMemberDataRow2 = Constants.regulation.groupMemberDtbl.Find((GroupMemberDataRow row) => row.gidx == group.ToString() && row.memberType == 1 && row.memberIdx == commanderId);
+        //			GroupMemberDataRow groupMemberDataRow2 = RemoteObjectManager.instance.regulation.groupMemberDtbl.Find((GroupMemberDataRow row) => row.gidx == group.ToString() && row.memberType == 1 && row.memberIdx == commanderId);
         //			if (groupMemberDataRow2 != null)
         //			{
         //				flag2 = true;

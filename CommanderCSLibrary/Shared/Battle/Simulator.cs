@@ -344,7 +344,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 enableRhsFireAction = Option.Default.enableRhsFireAction,
                 enableFatalCut = Option.Default.enableFatalCut,
                 delayTurnChangeTime = Option.Default.delayTurnChangeTime,
-                enableEffect = Option.Default.enableEffect,
+                enableEffect = Option.Default.enableEffect,               
             };
 
             switch (simulator.initState.battleType)
@@ -363,12 +363,12 @@ namespace CommanderCSLibrary.Shared.Battle
                 case EBattleType.WorldDuel:
                 case EBattleType.Conquest:
                     simulator.record._option.timeLimit = -1;
-                    simulator.record._option.turnLimit = Constants.DefineDataTable.ARENA_END_TURN;
+                    simulator.record._option.turnLimit = RemoteObjectManager.DefineDataTable.ARENA_END_TURN;
                     break;
 
                 case EBattleType.WaveDuel:
                     simulator.record._option.timeLimit = -1;
-                    simulator.record._option.turnLimit = Constants.DefineDataTable.ARENA_3WAVE_END_TURN;
+                    simulator.record._option.turnLimit = RemoteObjectManager.DefineDataTable.ARENA_3WAVE_END_TURN;
                     break;
 
                 case EBattleType.Guerrilla:
@@ -1612,7 +1612,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         private Frame _CreateInitFrame()
         {
-            Random random = new Random(initState.randomSeed);
+            Random random = new(initState.randomSeed);
             Frame frame = new()
             {
                 _units = _CreateInitStateUnits(),
@@ -1833,7 +1833,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         private string _MakeChecksum(Record record)
         {
-            StringBuilder stringBuilder = new StringBuilder();
+            StringBuilder stringBuilder = new();
             stringBuilder.Append(record.length + ",");
             Frame frame = record.frames[0];
             stringBuilder.Append(frame.randomSeed + ",");
@@ -1968,16 +1968,18 @@ namespace CommanderCSLibrary.Shared.Battle
                         {
                             slot.damagedHealth = 0;
                         }
-                        slot.skills = new List<Troop.Slot.Skill>();
+                        slot.skills = [];
                         for (int n = 1; n < 4; n++)
                         {
                             Skill skill4 = unit.skills[n];
                             if (skill4 != null)
                             {
-                                Troop.Slot.Skill skill5 = new Troop.Slot.Skill();
-                                skill5.id = unitDataRow.skillDrks[n];
-                                skill5.lv = skill4.level;
-                                skill5.sp = skill4.sp;
+                                Troop.Slot.Skill skill5 = new()
+                                {
+                                    id = unitDataRow.skillDrks[n],
+                                    lv = skill4.level,
+                                    sp = skill4.sp
+                                };
                                 slot.skills.Add(skill5);
                             }
                         }
@@ -1995,7 +1997,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 }
                 list.Add(troop);
             }
-            List<Troop> list2 = new List<Troop>();
+            List<Troop> list2 = [];
             for (int num3 = 0; num3 < rhsTroops.Count; num3++)
             {
                 int rhsTroopStartIndex = GetRhsTroopStartIndex(num3);
@@ -2086,16 +2088,18 @@ namespace CommanderCSLibrary.Shared.Battle
                         }
                         if (initState.battleType == EBattleType.Conquest)
                         {
-                            slot2.skills = new List<Troop.Slot.Skill>();
+                            slot2.skills = [];
                             for (int num10 = 1; num10 < 4; num10++)
                             {
                                 Skill skill9 = unit2.skills[num10];
                                 if (skill9 != null)
                                 {
-                                    Troop.Slot.Skill skill10 = new Troop.Slot.Skill();
-                                    skill10.id = unitDataRow2.skillDrks[num10];
-                                    skill10.lv = skill9.level;
-                                    skill10.sp = skill9.sp;
+                                    Troop.Slot.Skill skill10 = new()
+                                    {
+                                        id = unitDataRow2.skillDrks[num10],
+                                        lv = skill9.level,
+                                        sp = skill9.sp
+                                    };
                                     slot2.skills.Add(skill10);
                                 }
                             }

@@ -194,7 +194,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public string stationedStageId { get; set; }
 
-        private static Regulation.Regulation _reg => Constants.regulation;
+        private static Regulation.Regulation _reg => RemoteObjectManager.instance.regulation;
 
         public string id { get; private set; }
 
@@ -260,7 +260,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public static List<RoTroop> CreateEventBoss(EventRaidData data)
         {
-            Regulation.Regulation regulation = Constants.regulation;
+            Regulation.Regulation regulation = RemoteObjectManager.instance.regulation;
             EnemyUnitDataRow enemyUnitDataRow = _reg.enemyUnitDtbl.Find((EnemyUnitDataRow row) => row.id == data.enemy);
             List<RoTroop> list = [];
             RoTroop roTroop = Create("Enemy-" + data.enemy);
@@ -582,7 +582,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public int GetOperatingCost()
         {
             int num = 0;
-            DataTable<UnitDataRow> unitDtbl = Constants.regulation.unitDtbl;
+            DataTable<UnitDataRow> unitDtbl = RemoteObjectManager.instance.regulation.unitDtbl;
             Slot[] array = slots;
             foreach (Slot slot in array)
             {
@@ -616,9 +616,9 @@ namespace CommanderCSLibrary.Shared.Ro
             return num;
         }
 
-        public void UpdateScrambleTroop(Dictionary<string, CommanderCSLibrary.Shared.Protocols.UserInformationResponse.Unit> deck)
+        public void UpdateScrambleTroop(Dictionary<string, UserInformationResponse.Unit> deck)
         {
-            foreach (KeyValuePair<string, CommanderCSLibrary.Shared.Protocols.UserInformationResponse.Unit> item in deck)
+            foreach (KeyValuePair<string, UserInformationResponse.Unit> item in deck)
             {
                 Slot slotByPosition = GetSlotByPosition(int.Parse(item.Key) - 1);
                 if (slotByPosition == null)
@@ -630,8 +630,10 @@ namespace CommanderCSLibrary.Shared.Ro
                 RoUnit roUnit = RoUnit.Create(slotByPosition.unitId, slotByPosition.unitLevel, 1, slotByPosition.unitCls, slotByPosition.unitCostume, slotByPosition.commanderId, slotByPosition.favorRewardStep, slotByPosition.marry, slotByPosition.transcendence);
                 for (int i = 0; i < roUnit.currLevelReg.skillDrks.Count; i++)
                 {
-                    Troop.Slot.Skill skill = new Troop.Slot.Skill();
-                    skill.id = roUnit.currLevelReg.skillDrks[i];
+                    Troop.Slot.Skill skill = new()
+                    {
+                        id = roUnit.currLevelReg.skillDrks[i]
+                    };
                     skill.sp = ((i != 0 && !skill.id.Equals("0")) ? item.Value.spList[i - 1] : 0);
                     if (!skill.id.Equals("0"))
                     {

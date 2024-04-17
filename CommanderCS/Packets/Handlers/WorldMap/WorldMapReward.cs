@@ -70,7 +70,7 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             {
                 int cid = int.Parse(commanderId);
 
-                var commanderdata = Constants.regulation.AddSpecificCommander(user.CommanderData, cid);
+                var commanderdata = RemoteObjectManager.instance.regulation.AddSpecificCommander(user.CommanderData, cid);
 
                 WorldMapReward.commanderData = commanderdata;
             }

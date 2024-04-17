@@ -133,7 +133,7 @@ namespace CommanderCS
 
             DatabaseManager.Init();
 
-            Constants.regulation = Regulation.Create();
+            RemoteObjectManager.instance.regulation = Regulation.Create();
 
             app.Run();
         }

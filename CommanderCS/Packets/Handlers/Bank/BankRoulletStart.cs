@@ -46,7 +46,7 @@ namespace CommanderCS.Host.Handlers.Bank
 
             var userLevel = DatabaseManager.GameProfile.FindBySession(sessionId).UserResources.level;
 
-            int bankGold = Constants.regulation.userLevelDtbl.FirstOrDefault(x => x.level == userLevel).bankGold;
+            int bankGold = RemoteObjectManager.instance.regulation.userLevelDtbl.FirstOrDefault(x => x.level == userLevel).bankGold;
 
             int updatedGold = roulettLuck.Sum() * bankGold;
 

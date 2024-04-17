@@ -33,7 +33,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public static RoItem Create(string id, int lv, int itemCnt, string commanderId)
         {
-            EquipItemDataRow equipItemDataRow = Constants.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key == id);
+            EquipItemDataRow equipItemDataRow = RemoteObjectManager.instance.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key == id);
             RoItem roItem = new()
             {
                 id = id,
@@ -61,7 +61,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public void SetItemLevel(string id, int curLevel)
         {
-            EquipItemDataRow equipItemDataRow = Constants.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key == id);
+            EquipItemDataRow equipItemDataRow = RemoteObjectManager.instance.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key == id);
             if (equipItemDataRow != null)
             {
                 level = curLevel;

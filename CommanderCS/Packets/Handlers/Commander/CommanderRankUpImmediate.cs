@@ -155,7 +155,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
         private static UserInformationResponse.Commander CreateCommander(string commanderid, int costumeid, int commanderMedals, int grade)
         {
-            var commanderRole = Constants.regulation.commanderRoleDtbl.Find(x => x.commanderId == int.Parse(commanderid)).commanderRole;
+            var commanderRole = RemoteObjectManager.instance.regulation.commanderRoleDtbl.Find(x => x.commanderId == int.Parse(commanderid)).commanderRole;
 
             UserInformationResponse.Commander __commander = new()
             {

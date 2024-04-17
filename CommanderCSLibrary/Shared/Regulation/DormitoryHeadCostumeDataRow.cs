@@ -39,7 +39,7 @@ namespace CommanderCSLibrary.Shared.Regulation
             {
                 if (_goodsDr == null)
                 {
-                    _goodsDr = Constants.regulation.goodsDtbl[priceType];
+                    _goodsDr = RemoteObjectManager.instance.regulation.goodsDtbl[priceType];
                 }
                 return _goodsDr;
             }

@@ -41,7 +41,7 @@ namespace CommanderCSLibrary.Shared.Regulation
                         }
                         else
                         {
-                            _goods.Add(Constants.regulation.goodsDtbl[goodsIdxs[i]]);
+                            _goods.Add(RemoteObjectManager.instance.regulation.goodsDtbl[goodsIdxs[i]]);
                         }
                     }
                 }

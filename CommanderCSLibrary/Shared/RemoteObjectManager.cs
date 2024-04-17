@@ -1,21 +1,32 @@
-﻿
-
-namespace CommanderCSLibrary.Shared
+﻿namespace CommanderCSLibrary.Shared
 {
-    public static partial class Constants
+    public class RemoteObjectManager
     {
+        public static RemoteObjectManager instance
+        {
+            get
+            {
+                RemoteObjectManager remoteObjectManager = new()
+                {
+
+                };
+
+                return remoteObjectManager;
+            }
+        }
+
+        public Regulation.Regulation regulation;
+
         public static class CommandIdsForChatting
         {
             public const string CheckChattingMsg = "checkMsg";
             public const string SendChatMsgChatting = "sendMsg";
             public const string SendGuildMsgChatting = "sendGuildMsg";
-            public const string SendwaitChannelMsg = "waitChannel";
+            public const string SendWaitChannelMsg = "waitChannel";
             public const string SendWaitChatMsg = "waitChat";
-            public const string SendwaitGuildMsg = "waitGuild";
+            public const string SendWaitGuildMsg = "waitGuild";
             public const string SendWhisperMsgChatting = "sendWhisperMsg";
         }
-
-        public static Regulation.Regulation regulation;
 
         public static class DefineDataTable
         {

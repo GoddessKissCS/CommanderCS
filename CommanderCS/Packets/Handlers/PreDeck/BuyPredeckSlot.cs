@@ -1,7 +1,7 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
-using static CommanderCSLibrary.Shared.Constants;
 
 namespace CommanderCS.Packets.Handlers.PreDeck
 {
@@ -24,7 +24,7 @@ namespace CommanderCS.Packets.Handlers.PreDeck
                 return errorPacket;
             }
 
-            int cashCost = DefineDataTable.DECK_PLUS_CASH + DefineDataTable.DECK_PLUS_CASH_VALUE * (user.UserStatistics.PredeckCount - DefineDataTable.BASE_DECK_COUNT);
+            int cashCost = RemoteObjectManager.DefineDataTable.DECK_PLUS_CASH + RemoteObjectManager.DefineDataTable.DECK_PLUS_CASH_VALUE * (user.UserStatistics.PredeckCount - RemoteObjectManager.DefineDataTable.BASE_DECK_COUNT);
 
             if (user.UserResources.cash > cashCost)
             {

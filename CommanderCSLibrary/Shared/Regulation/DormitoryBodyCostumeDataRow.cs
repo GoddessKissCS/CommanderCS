@@ -34,7 +34,7 @@ namespace CommanderCSLibrary.Shared.Regulation
             {
                 if (_itemExchangeDr == null)
                 {
-                    _itemExchangeDr = Constants.regulation.itemExchangeDtbl.Find((ItemExchangeDataRow item) => item.typeidx == id && item.type == EStorageType.DormitoryCostume);
+                    _itemExchangeDr = RemoteObjectManager.instance.regulation.itemExchangeDtbl.Find((ItemExchangeDataRow item) => item.typeidx == id && item.type == EStorageType.DormitoryCostume);
                 }
                 return _itemExchangeDr;
             }

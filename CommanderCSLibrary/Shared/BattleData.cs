@@ -1,5 +1,6 @@
 using CommanderCSLibrary.Shared.Battle;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Ro;
 
 namespace CommanderCSLibrary.Shared
@@ -8,9 +9,9 @@ namespace CommanderCSLibrary.Shared
     {
         private static BattleData _instance;
 
-        public List<Protocols.RewardInfo.RewardData> rewardItems;
+        public List<RewardInfo.RewardData> rewardItems;
 
-        public Protocols.UserInformationResponse.BattleResult dualResult;
+        public UserInformationResponse.BattleResult dualResult;
 
         public bool isWin { get; set; }
 

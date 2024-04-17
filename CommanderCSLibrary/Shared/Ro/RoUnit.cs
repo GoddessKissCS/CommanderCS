@@ -175,7 +175,7 @@ namespace CommanderCSLibrary.Shared.Ro
                     {
                         return null;
                     }
-                    DataTable<UnitDataRow> unitDtbl = Constants.regulation.unitDtbl;
+                    DataTable<UnitDataRow> unitDtbl = RemoteObjectManager.instance.regulation.unitDtbl;
                     if (!unitDtbl.ContainsKey(id))
                     {
                         return null;

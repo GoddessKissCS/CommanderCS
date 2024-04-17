@@ -436,7 +436,7 @@ namespace CommanderCSLibrary.Shared.Ro
             {
                 return unRankedSpriteName;
             }
-            RankingDataRow rankingDataRow = Constants.regulation.rankingDtbl[raidGradeIdx.ToString()];
+            RankingDataRow rankingDataRow = RemoteObjectManager.instance.regulation.rankingDtbl[raidGradeIdx.ToString()];
             return rankingDataRow.icon;
         }
 
@@ -446,7 +446,7 @@ namespace CommanderCSLibrary.Shared.Ro
             {
                 return unRankedSpriteName;
             }
-            RankingDataRow rankingDataRow = Constants.regulation.rankingDtbl[duelGradeIdx.ToString()];
+            RankingDataRow rankingDataRow = RemoteObjectManager.instance.regulation.rankingDtbl[duelGradeIdx.ToString()];
             return rankingDataRow.icon;
         }
 
@@ -456,14 +456,14 @@ namespace CommanderCSLibrary.Shared.Ro
             {
                 return unRankedSpriteName;
             }
-            RankingDataRow rankingDataRow = Constants.regulation.rankingDtbl[idx.ToString()];
+            RankingDataRow rankingDataRow = RemoteObjectManager.instance.regulation.rankingDtbl[idx.ToString()];
             return rankingDataRow.icon;
         }
 
         public int GetDuelRankGrade()
         {
             int result = 3;
-            List<RankingDataRow> list = Constants.regulation.FindDuelRankingList(ERankingContentsType.Challenge);
+            List<RankingDataRow> list = RemoteObjectManager.instance.regulation.FindDuelRankingList(ERankingContentsType.Challenge);
             for (int i = 0; i < list.Count; i++)
             {
                 RankingDataRow rankingDataRow = list[i];
@@ -485,7 +485,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public int GetWorldDuelRankGrade()
         {
             int result = 827;
-            List<RankingDataRow> list = Constants.regulation.FindDuelRankingList(ERankingContentsType.WorldDuel);
+            List<RankingDataRow> list = RemoteObjectManager.instance.regulation.FindDuelRankingList(ERankingContentsType.WorldDuel);
             for (int i = 0; i < list.Count; i++)
             {
                 RankingDataRow rankingDataRow = list[i];
@@ -507,7 +507,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public int GetWaveDuelRankGrade()
         {
             int result = 3;
-            List<RankingDataRow> list = Constants.regulation.FindDuelRankingList(ERankingContentsType.WaveDuel);
+            List<RankingDataRow> list = RemoteObjectManager.instance.regulation.FindDuelRankingList(ERankingContentsType.WaveDuel);
             for (int i = 0; i < list.Count; i++)
             {
                 RankingDataRow rankingDataRow = list[i];
@@ -522,7 +522,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public int GetRaidRankGrade()
         {
             int result = 105;
-            List<RankingDataRow> list = Constants.regulation.FindDuelRankingList(ERankingContentsType.Raid);
+            List<RankingDataRow> list = RemoteObjectManager.instance.regulation.FindDuelRankingList(ERankingContentsType.Raid);
             for (int i = 0; i < list.Count; i++)
             {
                 RankingDataRow rankingDataRow = list[i];
@@ -541,14 +541,14 @@ namespace CommanderCSLibrary.Shared.Ro
                 return;
             }
             completeRewardGroupList = list;
-            Regulation.Regulation regulation = Constants.regulation;
+            Regulation.Regulation regulation = RemoteObjectManager.instance.regulation;
             completeRewardGroupList.Sort((int a, int b) => regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => int.Parse(data.groupIdx) == b).typeIndex.CompareTo(regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => int.Parse(data.groupIdx) == a).typeIndex));
         }
 
         public List<string> GetBuffIdxList()
         {
             List<string> list = [];
-            Regulation.Regulation regulation = Constants.regulation;
+            Regulation.Regulation regulation = RemoteObjectManager.instance.regulation;
             foreach (KeyValuePair<EWorldDuelBuff, EWorldDuelBuffEffect> data in activeBuff)
             {
                 string key = $"{data.Key.ToString()}{data.Value.ToString()}";

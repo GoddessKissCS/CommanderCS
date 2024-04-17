@@ -14,11 +14,11 @@ namespace CommanderCS.Packets.Handlers.Commander
             var session = GetSession();
             var user = GetUserGameProfile();
 
-            user.UserResources.cash -= Constants.DefineDataTable.WEAPON_INVENTORY_ADDCASH;
+            user.UserResources.cash -= RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH;
 
-            user.UserStatistics.WeaponInventoryCount += Constants.DefineDataTable.WEAPON_INVENTORY_ADD;
+            user.UserStatistics.WeaponInventoryCount += RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADD;
 
-            DatabaseManager.GameProfile.UpdateCash(session, Constants.DefineDataTable.WEAPON_INVENTORY_ADDCASH, false);
+            DatabaseManager.GameProfile.UpdateCash(session, RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH, false);
             DatabaseManager.GameProfile.UpdateWeaponInventoryCount(session, user.UserStatistics.WeaponInventoryCount);
 
             var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);

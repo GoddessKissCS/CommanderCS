@@ -144,7 +144,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                Regulation.Regulation regulation = Constants.regulation;
+                Regulation.Regulation regulation = RemoteObjectManager.instance.regulation;
                 CommanderLevelDataRow commanderLevelDataRow = null;
                 commanderLevelDataRow = regulation.GetCommanderLevelDataRow(level);
                 return (int)aExp - commanderLevelDataRow.aexp;
@@ -160,8 +160,7 @@ namespace CommanderCSLibrary.Shared.Ro
             set
             {
                 _aExp = value;
-                Regulation.Regulation regulation = Constants.regulation;
-                level = regulation.FindLevel(_aExp);
+                level = RemoteObjectManager.instance.regulation.FindLevel(_aExp);
             }
         }
 
@@ -169,11 +168,8 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                Regulation.Regulation regulation = Constants.regulation;
-                CommanderLevelDataRow commanderLevelDataRow = null;
-                CommanderLevelDataRow commanderLevelDataRow2 = null;
-                commanderLevelDataRow = regulation.GetCommanderLevelDataRow(level);
-                commanderLevelDataRow2 = regulation.GetCommanderLevelDataRow(level + 1);
+                CommanderLevelDataRow commanderLevelDataRow = RemoteObjectManager.instance.regulation.GetCommanderLevelDataRow(level);
+                CommanderLevelDataRow commanderLevelDataRow2 = RemoteObjectManager.instance.regulation.GetCommanderLevelDataRow(level + 1);
                 return commanderLevelDataRow2.aexp - commanderLevelDataRow.aexp;
             }
         }
@@ -210,9 +206,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                Regulation.Regulation regulation = Constants.regulation;
-                int num = int.Parse(regulation.defineDtbl["ANNIHILATE_PILOT_CLASS_LIMIT"].value);
-                return cls >= num;
+                return cls >= RemoteObjectManager.DefineDataTable.ANNIHILATE_PILOT_CLASS_LIMIT;
             }
         }
 
@@ -220,8 +214,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                Regulation.Regulation regulation = Constants.regulation;
-                SkillDataRow skillDataRow = regulation.skillDtbl[unitReg.skillDrks[1]];
+                SkillDataRow skillDataRow = RemoteObjectManager.instance.regulation.skillDtbl[unitReg.skillDrks[1]];
                 return skillDataRow.maxSp;
             }
         }
@@ -258,7 +251,7 @@ namespace CommanderCSLibrary.Shared.Ro
                     {
                         return null;
                     }
-                    DataTable<UnitDataRow> unitDtbl = Constants.regulation.unitDtbl;
+                    DataTable<UnitDataRow> unitDtbl = RemoteObjectManager.instance.regulation.unitDtbl;
                     if (!unitDtbl.ContainsKey(unitId))
                     {
                         return null;
@@ -277,7 +270,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                DataTable<CommanderDataRow> commanderDtbl = Constants.regulation.commanderDtbl;
+                DataTable<CommanderDataRow> commanderDtbl = RemoteObjectManager.instance.regulation.commanderDtbl;
                 if (!commanderDtbl.ContainsKey(id))
                 {
                     return null;
@@ -301,7 +294,7 @@ namespace CommanderCSLibrary.Shared.Ro
                 int num = 0;
                 for (int i = 1; i < level; i++)
                 {
-                    CommanderLevelDataRow commanderLevelDataRow = Constants.regulation.commanderLevelDtbl[i];
+                    CommanderLevelDataRow commanderLevelDataRow = RemoteObjectManager.instance.regulation.commanderLevelDtbl[i];
                     num += commanderLevelDataRow.AddLeadership;
                 }
                 return reg.leadership + num;
@@ -339,7 +332,7 @@ namespace CommanderCSLibrary.Shared.Ro
             get
             {
                 //RoLocalUser localUser = RemoteObjectManager.instance.localUser;
-                Regulation.Regulation regulation = Constants.regulation;
+                Regulation.Regulation regulation = RemoteObjectManager.instance.regulation;
                 if (state != ECommanderState.Nomal)
                 {
                     return aMedal;
@@ -354,7 +347,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                Regulation.Regulation regulation = Constants.regulation;
+                Regulation.Regulation regulation = RemoteObjectManager.instance.regulation;
                 CommanderRankDataRow commanderRankDataRow = regulation.GetCommanderRankDataRow(rank);
                 if (state != ECommanderState.Nomal)
                 {
@@ -745,7 +738,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //{
         //	if (!PlayerPrefs.HasKey(id))
         //	{
-        //		CommanderCostumeDataRow commanderCostumeDataRow = Constants.regulation.FindCostumeData(int.Parse(ctid));
+        //		CommanderCostumeDataRow commanderCostumeDataRow = RemoteObjectManager.instance.regulation.FindCostumeData(int.Parse(ctid));
         //		if (commanderCostumeDataRow != null)
         //		{
         //			PlayerPrefs.SetString(id, commanderCostumeDataRow.skinName);
@@ -831,7 +824,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         //public bool TrainingEnable(ETrainingTicketType ticket)
         //{
-        //	Regulation regulation = Constants.regulation;
+        //	Regulation regulation = RemoteObjectManager.instance.regulation;
         //	RoLocalUser localUser = RemoteObjectManager.instance.localUser;
         //	DataTable<CommanderTrainingTicketDataRow> commanderTrainingTicketDtbl = regulation.commanderTrainingTicketDtbl;
         //	CommanderTrainingTicketDataRow commanderTrainingTicketDataRow = commanderTrainingTicketDtbl[ticket.ToString()];
@@ -847,7 +840,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         //public int GetTrainingMaximumCount(ETrainingTicketType ticket)
         //{
-        //	Regulation regulation = Constants.regulation;
+        //	Regulation regulation = RemoteObjectManager.instance.regulation;
         //	RoLocalUser localUser = RemoteObjectManager.instance.localUser;
         //	DataTable<CommanderTrainingTicketDataRow> commanderTrainingTicketDtbl = regulation.commanderTrainingTicketDtbl;
         //	CommanderTrainingTicketDataRow commanderTrainingTicketDataRow = commanderTrainingTicketDtbl[ticket.ToString()];
@@ -862,7 +855,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         //public CommanderTrainingResult Training(ETrainingTicketType ticket, int count = 1)
         //{
-        //	Regulation regulation = Constants.regulation;
+        //	Regulation regulation = RemoteObjectManager.instance.regulation;
         //	RoLocalUser localUser = RemoteObjectManager.instance.localUser;
         //	DataTable<CommanderTrainingTicketDataRow> commanderTrainingTicketDtbl = regulation.commanderTrainingTicketDtbl;
         //	CommanderTrainingTicketDataRow commanderTrainingTicketDataRow = commanderTrainingTicketDtbl[ticket.ToString()];
@@ -892,7 +885,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //public bool UpgradeLevel()
         //{
         //	int num = (int)level + 1;
-        //	Regulation regulation = Constants.regulation;
+        //	Regulation regulation = RemoteObjectManager.instance.regulation;
         //	RoLocalUser localUser = RemoteObjectManager.instance.localUser;
         //	CommanderLevelDataRow commanderLevelDataRow = null;
         //	int num2 = aExp;
@@ -920,8 +913,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public void StartRankUp()
         {
-            Regulation.Regulation regulation = Constants.regulation;
-            CommanderRankDataRow commanderRankDataRow = regulation.GetCommanderRankDataRow(rank + 1);
+            CommanderRankDataRow commanderRankDataRow = RemoteObjectManager.instance.regulation.GetCommanderRankDataRow(rank + 1);
             if (commanderRankDataRow != null)
             {
                 rankUpTime.SetByDuration(commanderRankDataRow.time);
@@ -1025,7 +1017,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //public int ImPossibleClassUp(bool isGoldCheck = true)
         //{
         //	RoLocalUser localUser = RemoteObjectManager.instance.localUser;
-        //	CommanderClassDataRow commanderClassDataRow = Constants.regulation.commanderClassDtbl.Find((CommanderClassDataRow list) => list.index == int.Parse(id) && list.cls == (int)cls);
+        //	CommanderClassDataRow commanderClassDataRow = RemoteObjectManager.instance.regulation.commanderClassDtbl.Find((CommanderClassDataRow list) => list.index == int.Parse(id) && list.cls == (int)cls);
         //	if (commanderClassDataRow == null)
         //	{
         //		return 1;
@@ -1053,7 +1045,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public Dictionary<int, int[]> GetClassUpMaterial()
         {
             materialDiction.Clear();
-            CommanderClassDataRow commanderClassDataRow = Constants.regulation.commanderClassDtbl.Find((CommanderClassDataRow list) => list.index == int.Parse(id) && list.cls == cls);
+            CommanderClassDataRow commanderClassDataRow = RemoteObjectManager.instance.regulation.commanderClassDtbl.Find((CommanderClassDataRow list) => list.index == int.Parse(id) && list.cls == cls);
             if (commanderClassDataRow != null)
             {
                 for (int i = 1; i <= commanderClassDataRow.pidx.Count; i++)
@@ -1088,12 +1080,12 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public List<FavorDataRow> GetFavorList()
         {
-            return Constants.regulation.FindFavorData(int.Parse(id));
+            return RemoteObjectManager.instance.regulation.FindFavorData(int.Parse(id));
         }
 
         public FavorDataRow GetFavorData(int step)
         {
-            List<FavorDataRow> list = Constants.regulation.FindFavorData(int.Parse(id));
+            List<FavorDataRow> list = RemoteObjectManager.instance.regulation.FindFavorData(int.Parse(id));
             return list.Find((FavorDataRow row) => row.step == step);
         }
 
@@ -1110,7 +1102,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public int GetMaxTranscendenceCount()
         {
             int result = 0;
-            TranscendenceStepUpgradeDataRow transcendenceStepUpgradeDataRow = Constants.regulation.FindTranscendenceStepUpgrade(CurrentTranscendenceStep() + 1);
+            TranscendenceStepUpgradeDataRow transcendenceStepUpgradeDataRow = RemoteObjectManager.instance.regulation.FindTranscendenceStepUpgrade(CurrentTranscendenceStep() + 1);
             if (transcendenceStepUpgradeDataRow != null)
             {
                 result = transcendenceStepUpgradeDataRow.stepPoint;
@@ -1120,13 +1112,13 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public int CurrentTranscendenceStep()
         {
-            List<TranscendenceStepUpgradeDataRow> list = Constants.regulation.FindTranscendenceStepUpgradeListPoint(GetTranscendenceCount());
+            List<TranscendenceStepUpgradeDataRow> list = RemoteObjectManager.instance.regulation.FindTranscendenceStepUpgradeListPoint(GetTranscendenceCount());
             return list.Count;
         }
 
         public bool IsTranscendenceSkillUp()
         {
-            int num = ((reg.vip != 1) ? int.Parse(Constants.regulation.defineDtbl["TRANSCRNDENCE_MEDALS_VALUE"].value) : int.Parse(Constants.regulation.defineDtbl["TRANSCRNDENCE_MEDALS_VALUE_VIP"].value));
+            int num = ((reg.vip != 1) ? int.Parse(RemoteObjectManager.instance.regulation.defineDtbl["TRANSCRNDENCE_MEDALS_VALUE"].value) : int.Parse(RemoteObjectManager.instance.regulation.defineDtbl["TRANSCRNDENCE_MEDALS_VALUE_VIP"].value));
             if (medal >= num)
             {
                 return true;
@@ -1136,7 +1128,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public RoTroop.Slot ToSlot(int position)
         {
-            Regulation.Regulation regulation = Constants.regulation;
+            Regulation.Regulation regulation = RemoteObjectManager.instance.regulation;
             RoTroop.Slot slot = new()
             {
                 unitId = unitId,

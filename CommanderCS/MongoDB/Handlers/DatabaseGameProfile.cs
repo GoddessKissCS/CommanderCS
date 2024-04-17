@@ -3,6 +3,7 @@ using CommanderCS.Host.Handlers.Login;
 using CommanderCS.MongoDB.Schemes;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Protocols;
+using Microsoft.VisualBasic;
 using MongoDB.Driver;
 using Newtonsoft.Json.Linq;
 
@@ -39,7 +40,7 @@ namespace CommanderCS.MongoDB.Handlers
 
             int uno = DatabaseManager.AutoIncrements.GetNextNumber("UNO");
 
-            var WorldMapStages = Constants.regulation.GetAllWorldMapStages();
+            var WorldMapStages = RemoteObjectManager.instance.regulation.GetAllWorldMapStages();
 
             var currTime = TimeManager.CurrentEpoch;
 

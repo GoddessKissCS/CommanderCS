@@ -66,7 +66,7 @@ namespace CommanderCS.Host
 
         public Regulation GetRegulation()
         {
-            return Constants.regulation;
+            return RemoteObjectManager.instance.regulation;
         }
 
         public UserInformationResponse GetUserInformationResponse(GameProfileScheme user)

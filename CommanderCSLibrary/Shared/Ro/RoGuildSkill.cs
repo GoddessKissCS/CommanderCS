@@ -92,7 +92,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         private GuildSkillDataRow _GetReguilation(int level)
         {
-            Regulation.Regulation regulation = Constants.regulation;
+            Regulation.Regulation regulation = RemoteObjectManager.instance.regulation;
             string key = $"{idx}_{level}";
             int num = regulation.guildSkillDtbl.FindIndex(key);
             if (num < 0)
