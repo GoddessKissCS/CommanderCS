@@ -34,30 +34,23 @@ namespace CommanderCS.Packets.Handlers.Commander
                 i++;
             }
 
+
             switch (skillIndex)
             {
                 case 1:
-                    int skill = int.Parse(user.CommanderData[cid].__skv1);
-                    string _skill = (upgradeLevel + skill).ToString();
-                    user.CommanderData[cid].__skv1 = _skill;
+                    user.CommanderData[cid].__skv1 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv1)).ToString();
                     break;
 
                 case 2:
-                    int skill2 = int.Parse(user.CommanderData[cid].__skv2);
-                    string _skill2 = (upgradeLevel + skill2).ToString();
-                    user.CommanderData[cid].__skv2 = _skill2;
+                    user.CommanderData[cid].__skv2 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv2)).ToString();
                     break;
 
                 case 3:
-                    int skill3 = int.Parse(user.CommanderData[cid].__skv3);
-                    string _skill3 = (upgradeLevel + skill3).ToString();
-                    user.CommanderData[cid].__skv3 = _skill3;
+                    user.CommanderData[cid].__skv3 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv3)).ToString();
                     break;
 
                 case 4:
-                    int skill4 = int.Parse(user.CommanderData[cid].__skv4);
-                    string _skill4 = (upgradeLevel + skill4).ToString();
-                    user.CommanderData[cid].__skv4 = _skill4;
+                    user.CommanderData[cid].__skv4 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv4)).ToString();
                     break;
             }
 
@@ -66,12 +59,10 @@ namespace CommanderCS.Packets.Handlers.Commander
             DatabaseManager.GameProfile.UpdateGold(session, totalCost, false);
             DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
 
-            var userInformationResponse = GetUserInformationResponse(user);
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = userInformationResponse,
+                Result = GetUserInformationResponse(user),
             };
 
             return response;

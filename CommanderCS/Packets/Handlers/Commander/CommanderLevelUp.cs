@@ -67,12 +67,10 @@ namespace CommanderCS.Host.Handlers.Commander
             DatabaseManager.GameProfile.UpdateItemData(session, user.UserInventory.itemData);
             DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
 
-            var userInformationResponse = GetUserInformationResponse(user);
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = userInformationResponse,
+                Result = GetUserInformationResponse(user),
             };
 
             return response;

@@ -229,12 +229,11 @@ namespace CommanderCS.Packets.Handlers.Commander
             DatabaseManager.GameProfile.UpdateGold(session, commanderClassUpInfo.UPGRADE_COST, false);
             DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
 
-            var userInformationResponse = GetUserInformationResponse(user);
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = userInformationResponse
+                Result = GetUserInformationResponse(user),
             };
 
             return response;

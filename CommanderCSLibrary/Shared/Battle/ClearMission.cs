@@ -7,7 +7,7 @@ namespace CommanderCSLibrary.Shared.Battle
     {
         private Simulator _simulator;
 
-        private List<ClearMissionItem> _missions = new List<ClearMissionItem>();
+        public List<ClearMissionItem> _missions = new List<ClearMissionItem>();
 
         private Action<ClearMissionItem>[] _updater;
 
@@ -68,31 +68,31 @@ namespace CommanderCSLibrary.Shared.Battle
             _simulator = simulator;
             _clearCount = 0;
             _missions.Clear();
-            Regulation.Regulation regulation = _simulator.regulation;
+            RemoteObjectManager.instance.regulation = _simulator.regulation;
             if (_simulator.initState.battleType == EBattleType.Plunder)
             {
-                WorldMapStageDataRow worldMapStageDataRow = regulation.worldMapStageDtbl[_simulator.initState.stageID];
+                WorldMapStageDataRow worldMapStageDataRow = RemoteObjectManager.instance.regulation.worldMapStageDtbl[_simulator.initState.stageID];
                 Add(new ClearMissionItem(EBattleClearCondition.ClearStage, 1));
                 Add(new ClearMissionItem(EBattleClearCondition.LimitedTurn, 2, worldMapStageDataRow.turn1.ToString()));
                 Add(new ClearMissionItem(EBattleClearCondition.LimitedTurn, 4, worldMapStageDataRow.turn2.ToString()));
             }
             else if (_simulator.initState.battleType == EBattleType.ScenarioBattle)
             {
-                ScenarioBattleDataRow scenarioBattleDataRow = regulation.scenarioBattleDtbl[_simulator.initState.stageID];
+                ScenarioBattleDataRow scenarioBattleDataRow = RemoteObjectManager.instance.regulation.scenarioBattleDtbl[_simulator.initState.stageID];
                 Add(new ClearMissionItem(EBattleClearCondition.ClearStage, 1));
                 Add(new ClearMissionItem(EBattleClearCondition.LimitedTurn, 2, scenarioBattleDataRow.turn1.ToString()));
                 Add(new ClearMissionItem(EBattleClearCondition.LimitedTurn, 4, scenarioBattleDataRow.turn2.ToString()));
             }
             else if (_simulator.initState.battleType == EBattleType.EventBattle)
             {
-                EventBattleFieldDataRow eventBattleFieldDataRow = regulation.eventBattleFieldDtbl[simulator.initState.stageID];
+                EventBattleFieldDataRow eventBattleFieldDataRow = RemoteObjectManager.instance.regulation.eventBattleFieldDtbl[simulator.initState.stageID];
                 Add(new ClearMissionItem(EBattleClearCondition.ClearStage, 1));
                 Add(new ClearMissionItem(eventBattleFieldDataRow.clearCondition1, 2, eventBattleFieldDataRow.clearCondition1_Value));
                 Add(new ClearMissionItem(eventBattleFieldDataRow.clearCondition2, 4, eventBattleFieldDataRow.clearCondition2_Value));
             }
             else if (_simulator.initState.battleType == EBattleType.InfinityBattle)
             {
-                InfinityFieldDataRow infinityFieldDataRow = regulation.infinityFieldDtbl[simulator.initState.stageID];
+                InfinityFieldDataRow infinityFieldDataRow = RemoteObjectManager.instance.regulation.infinityFieldDtbl[simulator.initState.stageID];
                 Add(new ClearMissionItem(EBattleClearCondition.ClearStage, 1));
                 Add(new ClearMissionItem(infinityFieldDataRow.clearMission01, 2, infinityFieldDataRow.clearMission01Count));
                 Add(new ClearMissionItem(infinityFieldDataRow.clearMission02, 4, infinityFieldDataRow.clearMission02Count));

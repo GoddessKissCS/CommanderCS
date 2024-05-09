@@ -2633,7 +2633,7 @@ namespace CommanderCSLibrary.Shared.Battle
             return simulator.record;
         }
 
-        public static Record Simulation(Regulation.Regulation rg, string record, bool replay = false)
+        public static Simulator Simulation(Regulation.Regulation rg, string record, bool replay = false)
         {
             Record record2 = (Record)JsonConvert.DeserializeObject<JToken>(record);
             if (!replay)
@@ -2665,7 +2665,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 }
                 simulator.Step(lhsInput, null);
             }
-            return simulator.record;
+            return simulator;
         }
 
         //public static Record Simulation(Shared.Regulation.Regulation rg, BattleData bd, bool enableEffect = true)

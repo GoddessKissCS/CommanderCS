@@ -71,6 +71,12 @@ namespace CommanderCS.MongoDB.Handlers
             return DatabaseCollection.AsQueryable().Where(d => d.Uno == Uno).Where(d => d.GuildId == guildId).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Checks if a guild application exists from the given user's session and guild index.
+        /// </summary>
+        /// <param name="session">The session of the user.</param>
+        /// <param name="guildIdx">The unique identifier of the guild.</param>
+        /// <returns>'req' if the user has applied to join the guild, otherwise an empty string.</returns>
         public string GuildApplicationFromGuildId(string session, int guildIdx)
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
@@ -86,18 +92,17 @@ namespace CommanderCS.MongoDB.Handlers
 
             return string.Empty;
         }
-
         /// <summary>
         /// Checks if a guild application exists from the given user's session and guild index.
         /// </summary>
+        /// <param name="guild">The Guild.</param>
         /// <param name="session">The session of the user.</param>
-        /// <param name="guildIdx">The unique identifier of the guild.</param>
         /// <returns>'req' if the user has applied to join the guild, otherwise an empty string.</returns>
         public RoGuild Guild2RoGuild(GuildScheme guild, string session)
         {
             string isApplyingForGuild = GuildApplicationFromGuildId(session, guild.GuildId);
 
-            RoGuild Roguild = new()
+            RoGuild RoGuild = new()
             {
                 apnt = guild.AlliancePoint,
                 cnt = guild.Count,
@@ -112,7 +117,7 @@ namespace CommanderCS.MongoDB.Handlers
                 world = guild.World,
             };
 
-            return Roguild;
+            return RoGuild;
         }
 
         /// <summary>
@@ -266,10 +271,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>True if the data has changed; otherwise, false.</returns>
         private bool CheckIfRequestMemberDataChanged(GuildApplicationScheme guildApplication, GameProfileScheme user)
         {
-            return guildApplication.JoinMemberData.thumnail != user.UserResources.thumbnailId ||
-                   guildApplication.JoinMemberData.level != user.UserResources.level ||
-                   guildApplication.JoinMemberData.name != user.UserResources.nickname ||
-                   user.GuildId != null;
+            return guildApplication.JoinMemberData.thumnail != user.UserResources.thumbnailId ||  guildApplication.JoinMemberData.level != user.UserResources.level || guildApplication.JoinMemberData.name != user.UserResources.nickname || user.GuildId != null;
         }
     }
 }

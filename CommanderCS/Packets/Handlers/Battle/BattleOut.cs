@@ -16,6 +16,12 @@ namespace CommanderCS.Host.Handlers.Battle
             var rg = GetRegulation();
             var session = GetSession();
 
+			ErrorPacket error = new()
+			{
+				Id = BasePacket.Id,
+				Error = new() { code = ErrorCode.Success }
+			};
+
             string serializedJson = JsonConvert.SerializeObject(@params.info, Formatting.Indented);
 
             Record record = (Record)@params.info;
@@ -25,15 +31,26 @@ namespace CommanderCS.Host.Handlers.Battle
 
             var record1 = JsonConvert.SerializeObject(record, Formatting.Indented);
             var result1 = JsonConvert.SerializeObject(result, Formatting.Indented);
-            var simRec = JsonConvert.SerializeObject(sim, Formatting.Indented);
-            var simRes = JsonConvert.SerializeObject(sim.result, Formatting.Indented);
+            var simRec = JsonConvert.SerializeObject(sim.record, Formatting.Indented);
+            var simRes = JsonConvert.SerializeObject(sim.record.result, Formatting.Indented);
+
+            
 
             if (result.winSide == sim.result.winSide)
             {
-                if (result.totalAttackDamage == sim.result.totalAttackDamage)
+                double maxDifference = sim.result.totalAttackDamage * 0.05;
+
+                // Calculate the lower and upper bounds within which the values should fall
+                double lowerBound = sim.result.totalAttackDamage - maxDifference;
+                double upperBound = sim.result.totalAttackDamage + maxDifference;
+
+                // Check if result.totalAttackDamage falls within the range of sim.result.totalAttackDamage
+                if (result.totalAttackDamage >= lowerBound && result.totalAttackDamage <= upperBound)
                 {
+                    // Your code here if the condition is met
                 }
             }
+
 
             File.WriteAllText("record.json", record1);
             File.WriteAllText("result1.json", result1);

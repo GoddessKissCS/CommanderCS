@@ -8,7 +8,7 @@
             {
                 RemoteObjectManager remoteObjectManager = new()
                 {
-
+                    regulation = Regulation.Regulation.Create(),
                 };
 
                 return remoteObjectManager;

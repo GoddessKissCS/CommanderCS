@@ -1,8 +1,10 @@
 using CommanderCS.Host;
+using CommanderCS.Middlewares;
 using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Regulation;
 using Microsoft.Extensions.FileProviders;
+using StellarGK.Middlewares;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -38,10 +40,13 @@ namespace CommanderCS
                 options.UnknownTypeHandling = JsonUnknownTypeHandling.JsonElement;
                 options.WriteIndented = true;
             });
+            
+            //builder.Services.AddRazorPages();
 
             builder.Services.AddHttpClient();
 
             var app = builder.Build();
+
 
             var status = new Status()
             {
@@ -88,39 +93,39 @@ namespace CommanderCS
 
             //PROBABLY SHOULD BE MOVED TO A CDN SERVER
 
-            #region StaticFileServer
+            //#region StaticFileServer
 
-            const string StaticFilesPath = "FileCDN";
-            const string SlashStaticFilesPath = $"/{StaticFilesPath}";
+            //const string StaticFilesPath = "FileCDN";
+            //const string SlashStaticFilesPath = $"/{StaticFilesPath}";
 
-            //// Working Directory path
-            // var BasePath = builder.Environment.ContentRootPath;
-            // Executable file path
-            var BasePath = AppDomain.CurrentDomain.BaseDirectory;
-            var staticFilesProviderPath = Path.Combine(BasePath, StaticFilesPath);
-            var fileProvider = new PhysicalFileProvider(staticFilesProviderPath);
+            ////// Working Directory path
+            //// var BasePath = builder.Environment.ContentRootPath;
+            //// Executable file path
+            //var BasePath = AppDomain.CurrentDomain.BaseDirectory;
+            //var staticFilesProviderPath = Path.Combine(BasePath, StaticFilesPath);
+            //var fileProvider = new PhysicalFileProvider(staticFilesProviderPath);
 
-            app.UseDirectoryBrowser(new DirectoryBrowserOptions()
-            {
-                FileProvider = fileProvider,
-                RedirectToAppendTrailingSlash = true,
-                RequestPath = SlashStaticFilesPath,
-            });
-
-            // https://stackoverflow.com/questions/50381490/what-is-the-difference-between-usestaticfiles-and-usefileserver-in-asp-net-c
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = fileProvider,
-                RequestPath = SlashStaticFilesPath,
-                HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
-                ServeUnknownFileTypes = true
-            });
-
-            // app.UseWebSockets(new WebSocketOptions() {
-            //     KeepAliveInterval = TimeSpan.FromSeconds(60),
+            //app.UseDirectoryBrowser(new DirectoryBrowserOptions()
+            //{
+            //    FileProvider = fileProvider,
+            //    RedirectToAppendTrailingSlash = true,
+            //    RequestPath = SlashStaticFilesPath,
             //});
 
-            #endregion StaticFileServer
+            //// https://stackoverflow.com/questions/50381490/what-is-the-difference-between-usestaticfiles-and-usefileserver-in-asp-net-c
+            //app.UseStaticFiles(new StaticFileOptions()
+            //{
+            //    FileProvider = fileProvider,
+            //    RequestPath = SlashStaticFilesPath,
+            //    HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
+            //    ServeUnknownFileTypes = true
+            //});
+
+            //// app.UseWebSockets(new WebSocketOptions() {
+            ////     KeepAliveInterval = TimeSpan.FromSeconds(60),
+            ////});
+
+            //#endregion StaticFileServer
 
             //app.UseCors((policyBuilder) =>
             //{
