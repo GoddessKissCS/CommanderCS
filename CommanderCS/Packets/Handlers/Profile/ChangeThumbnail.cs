@@ -9,23 +9,19 @@ namespace CommanderCS.Host.Handlers.Profile
     {
         public override object Handle(ChangeThumbnailRequest @params)
         {
-            string session = GetSession();
-
-            var user = GetUserGameProfile();
-
             bool success = false;
 
             string idx = @params.idx.ToString();
 
-            if (user.CommanderData[idx] != null)
+            if (User.CommanderData[idx] != null)
             {
-                int costumeId = user.CommanderData[idx].currentCostume;
+                int costumeId = User.CommanderData[idx].currentCostume;
 
-                success = DatabaseManager.GameProfile.ChangeThumbnailId(session, costumeId);
+                success = DatabaseManager.GameProfile.ChangeThumbnailId(Session, costumeId);
 
-                if (user.GuildId != null)
+                if (User.GuildId != null)
                 {
-                    DatabaseManager.Guild.UpdateSpecificMemberThumbnail(user.GuildId, user.Uno, costumeId);
+                    DatabaseManager.Guild.UpdateSpecificMemberThumbnail(User.GuildId, User.Uno, costumeId);
                 }
             }
 

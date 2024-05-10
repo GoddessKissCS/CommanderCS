@@ -10,22 +10,19 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(TranscendenceSkillUpRequest @params)
         {
-            var user = GetUserGameProfile();
-            var session = GetSession();
-
             string cid = @params.cid.ToString();
 
             int transcendenceSlot = @params.slot - 1;
 
-            user.CommanderData[cid].transcendence[transcendenceSlot] += 1;
-            user.CommanderData[cid].medl -= 10;
+            User.CommanderData[cid].transcendence[transcendenceSlot] += 1;
+            User.CommanderData[cid].medl -= 10;
 
-            user.UserInventory.medalData[cid] -= 10;
+            User.UserInventory.medalData[cid] -= 10;
 
-            DatabaseManager.GameProfile.UpdateMedalData(session, user.UserInventory.medalData);
-            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+            DatabaseManager.GameProfile.UpdateMedalData(Session, User.UserInventory.medalData);
+            DatabaseManager.GameProfile.UpdateCommanderData(Session, User.CommanderData);
 
-            var userInformationResponse = GetUserInformationResponse(user);
+            var userInformationResponse = GetUserInformationResponse(User);
 
             ResponsePacket response = new()
             {

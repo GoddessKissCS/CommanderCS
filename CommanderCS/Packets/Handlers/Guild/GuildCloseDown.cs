@@ -11,12 +11,10 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(GuildCloseDownRequest @params)
         {
-            var user = GetUserGameProfile();
-
             var closeTime = TimeManager.CurrentEpoch;
 
-            DatabaseManager.Guild.CloseDownGuild(user.GuildId, closeTime);
-            DatabaseManager.Guild.ResetMemberGrades(user.GuildId);
+            DatabaseManager.Guild.CloseDownGuild(User.GuildId, closeTime);
+            DatabaseManager.Guild.ResetMemberGrades(User.GuildId);
 
             var res = new GuildCloseDownResponse()
             {

@@ -12,9 +12,6 @@ namespace CommanderCS.Host.Handlers.Battle
     {
         public override object Handle(BattleOutRequest @params)
         {
-            var user = GetUserGameProfile();
-            var rg = GetRegulation();
-            var session = GetSession();
 
 			ErrorPacket error = new()
 			{
@@ -27,7 +24,7 @@ namespace CommanderCS.Host.Handlers.Battle
             Record record = (Record)@params.info;
             Result result = (Result)@params.result;
 
-            var sim = Simulator.Simulation(rg, serializedJson, false);
+            var sim = Simulator.Simulation(Regulation, serializedJson, false);
 
             var record1 = JsonConvert.SerializeObject(record, Formatting.Indented);
             var result1 = JsonConvert.SerializeObject(result, Formatting.Indented);
@@ -57,7 +54,7 @@ namespace CommanderCS.Host.Handlers.Battle
             File.WriteAllText("simRec.json", simRec);
             File.WriteAllText("simRes.json", simRes);
 
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(Session);
 
             int __exp = int.Parse(rsoc.__exp);
             int __level = int.Parse(rsoc.__level);
@@ -72,15 +69,15 @@ namespace CommanderCS.Host.Handlers.Battle
                 save = false,
                 VipShopOpen = 0,
                 VipShopResetTime = 0,
-                commanderData = user.CommanderData,
+                commanderData = User.CommanderData,
                 commanderFavor = [],
-                eventResourceData = user.UserInventory.eventResourceData,
-                foodData = user.UserInventory.foodData,
-                groupItemData = user.UserInventory.groupItemData,
+                eventResourceData = User.UserInventory.eventResourceData,
+                foodData = User.UserInventory.foodData,
+                groupItemData = User.UserInventory.groupItemData,
                 infinityData = new(),
-                itemData = user.UserInventory.itemData,
-                medalData = user.UserInventory.medalData,
-                partData = user.UserInventory.partData,
+                itemData = User.UserInventory.itemData,
+                medalData = User.UserInventory.medalData,
+                partData = User.UserInventory.partData,
                 rewardList = [],
                 user = new(),
                 __resource = rsoc,

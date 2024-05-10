@@ -11,8 +11,6 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
 
         public override object Handle(GetRewardAllRequest @params)
         {
-            var user = GetUserGameProfile();
-
             RewardInfo rewardInfo = new()
             {
             };

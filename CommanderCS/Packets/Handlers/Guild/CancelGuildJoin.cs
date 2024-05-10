@@ -10,9 +10,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(CancelGuildJoinRequest @params)
         {
-            var user = GetUserGameProfile();
-
-            bool result = DatabaseManager.GuildApplication.DeleteGuildApplication(user.Uno, @params.gidx);
+            bool result = DatabaseManager.GuildApplication.DeleteGuildApplication(User.Uno, @params.gidx);
 
             ResponsePacket response = new()
             {

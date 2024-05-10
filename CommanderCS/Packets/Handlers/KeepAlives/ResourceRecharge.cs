@@ -12,9 +12,6 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
     {
         public override object Handle(ResourceRechargeRequest @params)
         {
-            var user = GetUserGameProfile();
-            var session = GetSession();
-            var rg = GetRegulation();
 
             ResponsePacket response = new()
             {
@@ -27,18 +24,18 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
                 case 106:
 
                     //BUY PRICE STARTS AT 15 diamonds and then + 100% everytime you buy a new ticket
-                    var raidKeys = user.VipRechargeData.Find(x => x.idx == @params.vidx);
+                    var raidKeys = User.VipRechargeData.Find(x => x.idx == @params.vidx);
 
-                    var ticketPrice = CalculateRaidTicketBuyPrice(user.DailyBuyables.RaidKeys, user, rg);
+                    var ticketPrice = CalculateRaidTicketBuyPrice(User.DailyBuyables.RaidKeys, User, Regulation);
 
                     var count = raidKeys.count++;
-                    user.DailyBuyables.RaidKeys--;
+                    User.DailyBuyables.RaidKeys--;
 
-                    DatabaseManager.GameProfile.UpdateCash(session, ticketPrice, false);
-                    DatabaseManager.GameProfile.UpdateVipRechargeCount(session, @params.vidx, count);
-                    DatabaseManager.GameProfile.UpdateDailyBuyableRaidKeys(session, user.DailyBuyables.RaidKeys);
+                    DatabaseManager.GameProfile.UpdateCash(Session, ticketPrice, false);
+                    DatabaseManager.GameProfile.UpdateVipRechargeCount(Session, @params.vidx, count);
+                    DatabaseManager.GameProfile.UpdateDailyBuyableRaidKeys(Session, User.DailyBuyables.RaidKeys);
 
-                    var userInfo = GetDatabaseUserInformationResponse(user);
+                    var userInfo = GetDatabaseUserInformationResponse(User);
 
                     response.Result = JObject.FromObject(userInfo);
                     return response;

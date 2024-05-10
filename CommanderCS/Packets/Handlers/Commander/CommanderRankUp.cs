@@ -12,17 +12,13 @@ namespace CommanderCS.Host.Handlers.Commander
     {
         public override object Handle(CommanderRankUpRequest @params)
         {
-            string session = GetSession();
-            var user = GetUserGameProfile();
-            var rg = GetRegulation();
-
             string cid = @params.commanderId.ToString();
 
-            if (user.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
+            if (User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
             {
-                var commanderRankData = rg.commanderRankDtbl.FirstOrDefault(x => x.rank == int.Parse(commander.__rank));
+                var commanderRankData = Regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == int.Parse(commander.__rank));
 
-                user.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
+                User.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
 
                 if (!TryRankUpCommander(commanderRankData.rank, ref commanderMedals))
                 {
@@ -40,20 +36,20 @@ namespace CommanderCS.Host.Handlers.Commander
                 commander.__rank = upgradedRank.ToString();
                 commander.state = "N";
 
-                commanderRankData = rg.commanderRankDtbl.FirstOrDefault(x => x.rank == upgradedRank);
+                commanderRankData = Regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == upgradedRank);
 
-                user.UserInventory.medalData[cid] = commanderMedals;
-                user.CommanderData[cid] = commander;
+                User.UserInventory.medalData[cid] = commanderMedals;
+                User.CommanderData[cid] = commander;
 
-                DatabaseManager.GameProfile.UpdateGold(session, commanderRankData.gold, false);
+                DatabaseManager.GameProfile.UpdateGold(Session, commanderRankData.gold, false);
             }
             else
             {
-                user.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
+                User.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
 
-                var CostumeData = rg.commanderCostumeDtbl.FirstOrDefault(x => x.cid == int.Parse(cid));
+                var CostumeData = Regulation.commanderCostumeDtbl.FirstOrDefault(x => x.cid == int.Parse(cid));
 
-                var commanderData = rg.commanderDtbl.FirstOrDefault(x => x.id == cid);
+                var commanderData = Regulation.commanderDtbl.FirstOrDefault(x => x.id == cid);
 
                 if (!TryRecruitCommander(commanderData.grade, ref commanderMedals))
                 {
@@ -66,20 +62,20 @@ namespace CommanderCS.Host.Handlers.Commander
                     return error;
                 }
 
-                user.UserInventory.medalData[cid] = commanderMedals;
+                User.UserInventory.medalData[cid] = commanderMedals;
 
                 var newestCommander = CreateCommander(cid, CostumeData.ctid, commanderMedals, commanderData.grade);
 
-                user.CommanderData.Add(cid, newestCommander);
-                DatabaseManager.GameProfile.UpdateGold(session, commanderData.recruitGold, false);
+                User.CommanderData.Add(cid, newestCommander);
+                DatabaseManager.GameProfile.UpdateGold(Session, commanderData.recruitGold, false);
             }
 
-            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
-            DatabaseManager.GameProfile.UpdateMedalData(session, user.UserInventory.medalData);
+            DatabaseManager.GameProfile.UpdateCommanderData(Session, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateMedalData(Session, User.UserInventory.medalData);
 
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(Session);
 
-            user.CommanderData.TryGetValue(cid, out var commander1);
+            User.CommanderData.TryGetValue(cid, out var commander1);
 
             Dictionary<string, UserInformationResponse.Commander> uprankedCommander = new()
             {
@@ -89,7 +85,7 @@ namespace CommanderCS.Host.Handlers.Commander
             CommanderRankUpResponse cmrup = new()
             {
                 rsoc = rsoc,
-                medl = user.UserInventory.medalData,
+                medl = User.UserInventory.medalData,
                 comm = uprankedCommander,
             };
 

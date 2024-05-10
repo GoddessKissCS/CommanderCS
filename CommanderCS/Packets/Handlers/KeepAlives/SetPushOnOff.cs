@@ -10,9 +10,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
     {
         public override object Handle(SetPushOnOffRequest @params)
         {
-            var session = GetSession();
-
-            var result = DatabaseManager.GameProfile.UpdateNotifaction(session, @params.onoff);
+            var result = DatabaseManager.GameProfile.UpdateNotifaction(Session, @params.onoff);
 
             ResponsePacket response = new()
             {

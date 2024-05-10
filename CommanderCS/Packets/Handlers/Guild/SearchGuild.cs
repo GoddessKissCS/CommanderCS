@@ -11,11 +11,10 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(SearchGuildRequest @params)
         {
-            var session = GetSession();
             ResponsePacket response = new() { Id = BasePacket.Id };
 
             var guild = DatabaseManager.Guild.FindByName(@params.gnm);
-            var roGuild = guild != null ? DatabaseManager.GuildApplication.Guild2RoGuild(guild, session) : new RoGuild();
+            var roGuild = guild != null ? DatabaseManager.GuildApplication.Guild2RoGuild(guild, Session) : new RoGuild();
 
             response.Result = roGuild;
 

@@ -12,8 +12,6 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(CreateGuildRequest @params)
         {
-            string session = GetSession();
-
             if (Misc.NameCheck(@params.gnm))
             {
                 ErrorPacket error = new()
@@ -38,7 +36,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            GuildInfo createGuild = DatabaseManager.Guild.CreateGuild(session, @params.gnm, @params.emb, @params.gtyp, @params.lvlm);
+            GuildInfo createGuild = DatabaseManager.Guild.CreateGuild(Session, @params.gnm, @params.emb, @params.gtyp, @params.lvlm);
 
             ResponsePacket response = new()
             {

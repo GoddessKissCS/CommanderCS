@@ -10,11 +10,10 @@ namespace CommanderCS.Host.Handlers.Tutorial
     {
         public override object Handle(LoginTutorialSkipRequest @params)
         {
-            var session = GetSession();
 
             UserInformationResponse.TutorialData tutorialData = new() { skip = Convert.ToBoolean(@params.skip), step = 12 };
 
-            DatabaseManager.GameProfile.UpdateTutorialData(session, tutorialData);
+            DatabaseManager.GameProfile.UpdateTutorialData(Session, tutorialData);
 
             TutorialStep lts = new()
             {

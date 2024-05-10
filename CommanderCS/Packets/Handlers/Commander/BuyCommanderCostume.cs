@@ -12,27 +12,23 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(BuyCommanderCostumeRequest @params)
         {
-            var user = GetUserGameProfile();
-            var session = GetSession();
-            var rg = GetRegulation();
-
             // ig implement a check to check if you actually have enough cash ?
             // seems overrated but you never know ig?
             // client says no if you cant buy, but ig you could in theory send a request and buy it anyways
 
             string cid = @params.commanderId.ToString();
 
-            var costumeData = rg.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == @params.costumeId);
+            var costumeData = Regulation.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == @params.costumeId);
 
-            user = AddCostumeData(cid, @params.costumeId, user);
+            var user = AddCostumeData(cid, @params.costumeId, User);
 
             // TODO CHECK WHEN WE CREATE A CHARACTER TO SEE IF WE OWN ANY COSTUMES AND THEN TRANSFER THEM TO THE haveCostume and delete them from donHaveCommCostume
 
-            user.UserResources.cash -= costumeData.sellPrice;
+            User.UserResources.cash -= costumeData.sellPrice;
 
-            DatabaseManager.GameProfile.UpdateCash(session, costumeData.sellPrice, false);
-            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
-            DatabaseManager.GameProfile.UpdateDontHaveCommanderCostumeData(session, user.UserInventory.donHaveCommCostumeData);
+            DatabaseManager.GameProfile.UpdateCash(Session, costumeData.sellPrice, false);
+            DatabaseManager.GameProfile.UpdateCommanderData(Session, user.CommanderData);
+            DatabaseManager.GameProfile.UpdateDontHaveCommanderCostumeData(Session, user.UserInventory.donHaveCommCostumeData);
 
             var userInformationResponse = GetUserInformationResponse(user);
 

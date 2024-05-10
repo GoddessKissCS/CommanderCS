@@ -10,8 +10,6 @@ namespace CommanderCS.Packets.Handlers.InfinityBattle
     {
         public override object Handle(GetInfinityBattleDeckRequest @params)
         {
-            var user = GetUserGameProfile();
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
@@ -22,9 +20,9 @@ namespace CommanderCS.Packets.Handlers.InfinityBattle
             {
             };
 
-            if (user.DefenderDeck.InfinityBattleDeck != null)
+            if (User.DefenderDeck.InfinityBattleDeck != null)
             {
-                battleDeckResponse.deck = user.DefenderDeck.InfinityBattleDeck;
+                battleDeckResponse.deck = User.DefenderDeck.InfinityBattleDeck;
 
                 response.Result = battleDeckResponse;
 

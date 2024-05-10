@@ -12,8 +12,6 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(GuildBoardWriteRequest @params)
         {
-            var user = GetUserGameProfile();
-
             if (Misc.NameCheck(@params.msg))
             {
                 ErrorPacket error = new()
@@ -23,7 +21,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 };
             }
 
-            var boarddatalist = DatabaseManager.Guild.GetGuildBoard(user.GuildId, out ErrorCode code);
+            var boarddatalist = DatabaseManager.Guild.GetGuildBoard(User.GuildId, out ErrorCode code);
 
             int nextIdx = boarddatalist.Count != 0 ? boarddatalist.Max(item => item.idx) + 1 : 0;
 
@@ -33,12 +31,12 @@ namespace CommanderCS.Packets.Handlers.Guild
                 idx = nextIdx,
                 msg = @params.msg,
                 regdt = TimeManager.CurrentEpochMilliseconds,
-                thumb = user.UserResources.thumbnailId.ToString(),
-                unm = user.UserResources.nickname,
-                uno = user.Uno,
+                thumb = User.UserResources.thumbnailId.ToString(),
+                unm = User.UserResources.nickname,
+                uno = User.Uno,
             };
 
-            DatabaseManager.Guild.AddGuildBoardEntry(user.GuildId, newEntry);
+            DatabaseManager.Guild.AddGuildBoardEntry(User.GuildId, newEntry);
 
             ResponsePacket response = new()
             {

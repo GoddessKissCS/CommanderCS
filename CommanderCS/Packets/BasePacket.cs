@@ -39,6 +39,13 @@ namespace CommanderCS.Host
 
         public abstract object Handle(TParams @params);
 
+        public string Session => BasePacket.SessionId;
+        public GameProfileScheme User => DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+        public AccountScheme Account => DatabaseManager.Account.FindBySession(BasePacket.SessionId);
+        public DormitoryScheme Dormitory => DatabaseManager.Dormitory.FindBySession(BasePacket.SessionId);
+        public GuildScheme Guild => DatabaseManager.Guild.FindBySession(BasePacket.SessionId);
+        public Regulation Regulation => RemoteObjectManager.instance.regulation;
+
         public string GetSession()
         {
             return BasePacket.SessionId;

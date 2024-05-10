@@ -10,9 +10,7 @@ namespace CommanderCS.Packets.Handlers.InfinityBattle
     {
         public override object Handle(SaveInfinityBattleDeckRequest @params)
         {
-            var session = GetSession();
-
-            DatabaseManager.GameProfile.UpdateInfinityBattleDeck(session, @params.deck);
+            DatabaseManager.GameProfile.UpdateInfinityBattleDeck(Session, @params.deck);
 
             ResponsePacket response = new()
             {

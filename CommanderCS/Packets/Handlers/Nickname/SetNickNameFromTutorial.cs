@@ -9,9 +9,8 @@ namespace CommanderCS.Host.Handlers.Nickname
     {
         public override object Handle(SetNickNameFromTutorialRequest @params)
         {
-            var session = GetSession();
 
-            ErrorCode code = DatabaseManager.GameProfile.RequestNicknameAfterTutorial(session, @params.Unm);
+            ErrorCode code = DatabaseManager.GameProfile.RequestNicknameAfterTutorial(Session, @params.Unm);
 
             if (code != ErrorCode.Success)
             {

@@ -12,8 +12,6 @@ namespace CommanderCS.Host.Handlers.Login
         {
             string session = GenerateUniqueSessionToken();
 
-            var rg = GetRegulation();
-
             var user = DatabaseManager.GameProfile.GetOrCreate(@params.memberId, @params.world);
 
             ErrorCode code = DatabaseManager.Account.RequestLogin(@params, session);
@@ -31,9 +29,7 @@ namespace CommanderCS.Host.Handlers.Login
 
             var userInformationResponse = GetUserInformationResponse(user);
 
-            var items = rg.goodsDtbl;
-
-            foreach (var item in items)
+            foreach (var item in Regulation.goodsDtbl)
             {
                 userInformationResponse.itemData.TryAdd(item.type, int.Parse(item.type));
             }

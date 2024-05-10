@@ -7,11 +7,9 @@ namespace CommanderCS.Host.Handlers.Chat
     {
         public override object Handle(GetChatIgnoreListRequest @params)
         {
-            var user = GetUserGameProfile();
-
             ResponsePacket response = new()
             {
-                Result = user.BlockedUsers,
+                Result = User.BlockedUsers,
                 Id = BasePacket.Id
             };
 

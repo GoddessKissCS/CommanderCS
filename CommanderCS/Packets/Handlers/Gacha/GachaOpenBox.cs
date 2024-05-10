@@ -11,10 +11,6 @@ namespace CommanderCS.Packets.Handlers.Gacha
     {
         public override object Handle(GachaOpenBoxRequest @params)
         {
-            var user = GetUserGameProfile();
-            var session = GetSession();
-            var rg = GetRegulation();
-
             List<GachaOpenBoxResponse.Reward> rewards = [];
 
             GachaInformationResponse ws = new()
@@ -33,32 +29,32 @@ namespace CommanderCS.Packets.Handlers.Gacha
             {
                 case 1:
                     rewards.Add(new() { count = 5, id = "8", type = ERewardType.Goods });
-                    user.UserInventory.itemData.Add("8", 5);
-                    DatabaseManager.GameProfile.UpdateItemData(session, user.UserInventory.itemData);
+                    User.UserInventory.itemData.Add("8", 5);
+                    DatabaseManager.GameProfile.UpdateItemData(Session, User.UserInventory.itemData);
                     break;
 
                 case 2:
                     rewards.Add(new() { count = 1, id = "2", type = ERewardType.Commander });
-                    user.CommanderData = rg.AddSpecificCommander(user.CommanderData, 2);
-                    DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+                    User.CommanderData = Regulation.AddSpecificCommander(User.CommanderData, 2);
+                    DatabaseManager.GameProfile.UpdateCommanderData(Session, User.CommanderData);
                     break;
             }
 
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(Session);
 
             GachaOpenBoxResponse gachaOpen = new()
             {
                 changedGachaInformation = ws,
                 rewardList = rewards,
                 goodsResult = rsoc,
-                costumeData = user.UserInventory.costumeData,
-                foodData = user.UserInventory.foodData,
-                partData = user.UserInventory.partData,
-                itemData = user.UserInventory.itemData,
-                medalData = user.UserInventory.medalData,
-                commanderIdDict = user.CommanderData,
-                eventResourceData = user.UserInventory.eventResourceData,
-                equipItem = user.UserInventory.equipItem
+                costumeData = User.UserInventory.costumeData,
+                foodData = User.UserInventory.foodData,
+                partData = User.UserInventory.partData,
+                itemData = User.UserInventory.itemData,
+                medalData = User.UserInventory.medalData,
+                commanderIdDict = User.CommanderData,
+                eventResourceData = User.UserInventory.eventResourceData,
+                equipItem = User.UserInventory.equipItem
             };
 
             ResponsePacket response = new()

@@ -10,26 +10,22 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(ChangeCommanderCostumeRequest @params)
         {
-            var user = GetUserGameProfile();
-            var session = GetSession();
-            var rg = GetRegulation();
-
             string cid = @params.commanderId.ToString();
 
-            user.CommanderData[cid].currentCostume = @params.costumeId;
+            User.CommanderData[cid].currentCostume = @params.costumeId;
 
-            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+            DatabaseManager.GameProfile.UpdateCommanderData(Session, User.CommanderData);
 
-            var costumeRow = rg.commanderCostumeDtbl.Find(x => x.ctid == @params.costumeId);
-            var thumbnailRow = rg.commanderCostumeDtbl.Find(x => x.ctid == user.UserResources.thumbnailId);
+            var costumeRow = Regulation.commanderCostumeDtbl.Find(x => x.ctid == @params.costumeId);
+            var thumbnailRow = Regulation.commanderCostumeDtbl.Find(x => x.ctid == User.UserResources.thumbnailId);
 
             if (costumeRow.cid == thumbnailRow.cid)
             {
-                DatabaseManager.GameProfile.ChangeThumbnailId(session, @params.costumeId);
+                DatabaseManager.GameProfile.ChangeThumbnailId(Session, @params.costumeId);
 
-                if (user.GuildId != null)
+                if (User.GuildId != null)
                 {
-                    DatabaseManager.Guild.UpdateSpecificMemberThumbnail(user.GuildId, user.Uno, @params.costumeId);
+                    DatabaseManager.Guild.UpdateSpecificMemberThumbnail(User.GuildId, User.Uno, @params.costumeId);
                 }
             }
 

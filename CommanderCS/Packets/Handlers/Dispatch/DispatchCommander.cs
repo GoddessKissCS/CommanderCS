@@ -12,8 +12,6 @@ namespace CommanderCS.Packets.Handlers.Dispatch
     {
         public override object Handle(DispatchCommanderRequest @params)
         {
-            var session = GetSession();
-
             var time = TimeManager.GetCurrentTime();
 
             DispatchedCommanderInfo commanderInfo = new()
@@ -32,7 +30,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
                 { slot, commanderInfo }
             };
 
-            DatabaseManager.GameProfile.UpdateDispatchedCommander(session, dispatchedcommanders);
+            DatabaseManager.GameProfile.UpdateDispatchedCommander(Session, dispatchedcommanders);
 
             ResponsePacket response = new()
             {

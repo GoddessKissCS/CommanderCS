@@ -11,18 +11,15 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(UpgradeWeaponInventoryRequest @params)
         {
-            var session = GetSession();
-            var user = GetUserGameProfile();
+            User.UserResources.cash -= RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH;
 
-            user.UserResources.cash -= RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH;
+            User.UserStatistics.WeaponInventoryCount += RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADD;
 
-            user.UserStatistics.WeaponInventoryCount += RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADD;
+            DatabaseManager.GameProfile.UpdateCash(Session, RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH, false);
+            DatabaseManager.GameProfile.UpdateWeaponInventoryCount(Session, User.UserStatistics.WeaponInventoryCount);
 
-            DatabaseManager.GameProfile.UpdateCash(session, RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH, false);
-            DatabaseManager.GameProfile.UpdateWeaponInventoryCount(session, user.UserStatistics.WeaponInventoryCount);
-
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
-            var uifo = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(user.UserStatistics);
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.UserResources);
+            var uifo = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(User.UserStatistics);
 
             UpgradeWeaponInventoryResponse weaponInventoryResponse = new()
             {

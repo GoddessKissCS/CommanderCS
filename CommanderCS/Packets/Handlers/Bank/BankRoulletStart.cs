@@ -12,17 +12,15 @@ namespace CommanderCS.Host.Handlers.Bank
         public override object Handle(BankRoulletStartRequest @params)
         {
             // THIS NEEDS A REWORK
-            string session = GetSession();
-
-            var vip_spins = DatabaseManager.GameProfile.GetVipRechargeCount(session, 601);
+            var vip_spins = DatabaseManager.GameProfile.GetVipRechargeCount(Session, 601);
 
             var remainingSpins = vip_spins + @params.count;
 
-            DatabaseManager.GameProfile.UpdateVipRechargeCount(session, 601, remainingSpins);
+            DatabaseManager.GameProfile.UpdateVipRechargeCount(Session, 601, remainingSpins);
 
-            var luck = SpinBankRouletteAndProcessResults(session, @params.count);
+            var luck = SpinBankRouletteAndProcessResults(Session, @params.count);
 
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(Session);
 
             BankRoullet bankRoullet = new()
             {
@@ -42,20 +40,20 @@ namespace CommanderCS.Host.Handlers.Bank
 
         private static List<int> SpinBankRouletteAndProcessResults(string sessionId, int spins)
         {
-            var roulettLuck = RandomGenerator.BankRoulletLuck(spins);
+            var rouletteLuck = RandomGenerator.BankRoulletLuck(spins);
 
             var userLevel = DatabaseManager.GameProfile.FindBySession(sessionId).UserResources.level;
 
             int bankGold = RemoteObjectManager.instance.regulation.userLevelDtbl.FirstOrDefault(x => x.level == userLevel).bankGold;
 
-            int updatedGold = roulettLuck.Sum() * bankGold;
+            int updatedGold = rouletteLuck.Sum() * bankGold;
 
             int cashDeduction = (spins == 10) ? 100 : 10;
 
             DatabaseManager.GameProfile.UpdateGold(sessionId, updatedGold, true);
             DatabaseManager.GameProfile.UpdateCash(sessionId, cashDeduction, false);
 
-            return roulettLuck;
+            return rouletteLuck;
         }
 
         public class BankRoullet

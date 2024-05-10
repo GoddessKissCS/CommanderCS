@@ -11,8 +11,6 @@ namespace CommanderCS.Packets.Handlers.Chat
     {
         public override object Handle(AddChatIgnoreRequest @params)
         {
-            var session = GetSession();
-
             BlockUser blockUser = new()
             {
                 channel = @params.channel,
@@ -21,7 +19,7 @@ namespace CommanderCS.Packets.Handlers.Chat
                 uno = @params.uno,
             };
 
-            DatabaseManager.GameProfile.AddBlockedUser(session, blockUser);
+            DatabaseManager.GameProfile.AddBlockedUser(Session, blockUser);
 
             ResponsePacket response = new()
             {

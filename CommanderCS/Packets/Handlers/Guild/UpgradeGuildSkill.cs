@@ -11,14 +11,11 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(UpgradeGuildSkillRequest @params)
         {
-            var user = GetUserGameProfile();
-            var rg = GetRegulation();
-
-            var guild = DatabaseManager.Guild.FindByUid(user.GuildId);
+            var guild = DatabaseManager.Guild.FindByUid(User.GuildId);
 
             var guildSkill = guild.SkillDada.Where(d => d.idx == @params.gsid).FirstOrDefault();
 
-            var upgradeSkill = rg.guildSkillDtbl.FirstOrDefault(x => x.level == guildSkill.level + 1);
+            var upgradeSkill = Regulation.guildSkillDtbl.FirstOrDefault(x => x.level == guildSkill.level + 1);
 
             if (upgradeSkill.level < guild.Level)
             {
@@ -52,9 +49,9 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             guild.Point -= upgradeSkill.cost;
 
-            DatabaseManager.Guild.UpdateGuildSkill(user.GuildId, guild.SkillDada, guild.Point);
+            DatabaseManager.Guild.UpdateGuildSkill(User.GuildId, guild.SkillDada, guild.Point);
 
-            var guildInfo = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+            var guildInfo = DatabaseManager.Guild.RequestGuild(User.GuildId, User.Uno);
 
             CommanderCSLibrary.Shared.Protocols.GuildInfo guildList = new()
             {

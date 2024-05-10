@@ -11,11 +11,10 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
     {
         public override object Handle(WorldDuelDefenderSettingRequest @params)
         {
-            var session = GetSession();
 
             Dictionary<string, string> decks = @params.Deck.ToObject<Dictionary<string, string>>();
 
-            DatabaseManager.GameProfile.UpdateWorldDefenderDeck(session, decks);
+            DatabaseManager.GameProfile.UpdateWorldDefenderDeck(Session, decks);
 
 #warning TODO CHECK IF FAILS
 

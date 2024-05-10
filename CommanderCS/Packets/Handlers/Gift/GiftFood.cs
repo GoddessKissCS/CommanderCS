@@ -12,22 +12,18 @@ namespace CommanderCS.Packets.Handlers.Gift
     {
         public override object Handle(GiftFoodRequest @params)
         {
-            var user = GetUserGameProfile();
-            var rg = GetRegulation();
-            var session = GetSession();
-
             string cid = @params.cid.ToString();
             string cgid = @params.cgid.ToString();
 
-            user.CommanderData.TryGetValue(cid, out var commander);
+            User.CommanderData.TryGetValue(cid, out var commander);
 
             int favorPoint = commander.favorPoint;
 
             for (var i = 1; i <= @params.amnt;)
             {
-                if (user.UserInventory.foodData[cgid] > 0)
+                if (User.UserInventory.foodData[cgid] > 0)
                 {
-                    user.UserInventory.foodData[cgid] -= 1;
+                    User.UserInventory.foodData[cgid] -= 1;
                 }
 
                 TryAddingFavour(@params.cgid, ref favorPoint);
@@ -38,10 +34,10 @@ namespace CommanderCS.Packets.Handlers.Gift
             commander.favr += favorPoint;
             commander.favorPoint = favorPoint;
 
-            user.CommanderData[cid] = CheckCommanderFavour(commander, rg);
+            User.CommanderData[cid] = CheckCommanderFavour(commander, Regulation);
 
-            DatabaseManager.GameProfile.UpdateUserData(session, user);
-            UserInformationResponse informationResponse = GetUserInformationResponse(user);
+            DatabaseManager.GameProfile.UpdateUserData(Session, User);
+            UserInformationResponse informationResponse = GetUserInformationResponse(User);
 
             ResponsePacket response = new()
             {

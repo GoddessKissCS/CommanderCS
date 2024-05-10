@@ -8,9 +8,7 @@ namespace CommanderCS.Host.Handlers.UserTerm
     {
         public override object Handle(GetChangeDeviceCodeRequest @params)
         {
-            var userAccount = GetUserAccount();
-
-            var deviceCode = DatabaseManager.DeviceCode.RequestForChangeDeviceCode(userAccount);
+            var deviceCode = DatabaseManager.DeviceCode.RequestForChangeDeviceCode(Account);
 
             ResponsePacket response = new()
             {

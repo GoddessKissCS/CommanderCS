@@ -9,13 +9,11 @@ namespace CommanderCS.Host.Handlers.Dispatch
     {
         public override object Handle(GetDispatchCommanderListFromLoginRequest @params)
         {
-            var user = GetUserGameProfile();
-
             Dictionary<string, DiapatchCommanderInfo> dispatchedcommanders = [];
 
-            if (user.DispatchedCommanders != null)
+            if (User.DispatchedCommanders != null)
             {
-                foreach (var item in user.DispatchedCommanders)
+                foreach (var item in User.DispatchedCommanders)
                 {
                     int runtime = (int)TimeManager.GetTimeDifferenceInHours(item.Value.DispatchTime);
                     int dispatchTime = (int)TimeManager.GetTimeDifference(item.Value.DispatchTime);
@@ -26,7 +24,7 @@ namespace CommanderCS.Host.Handlers.Dispatch
 
                     string stringedItem = item.Value.cid.ToString();
 
-                    user.CommanderData.TryGetValue(stringedItem, out var commander);
+                    User.CommanderData.TryGetValue(stringedItem, out var commander);
 
                     if (runtime >= 1)
                     {

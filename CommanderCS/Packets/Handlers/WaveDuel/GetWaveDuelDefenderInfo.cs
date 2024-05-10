@@ -8,9 +8,7 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
     {
         public override object Handle(GetWaveDuelDefenderInfoRequest @params)
         {
-            var user = GetUserGameProfile();
-
-            GetWaveDuelDefenderInfoResponse defenderInfoResponse = new() { decks = user.DefenderDeck.WaveDuelDefenderDecks };
+            GetWaveDuelDefenderInfoResponse defenderInfoResponse = new() { decks = User.DefenderDeck.WaveDuelDefenderDecks };
 
             ResponsePacket response = new()
             {

@@ -11,7 +11,6 @@ namespace CommanderCS.Host.Handlers.WorldMap
     {
         public override object Handle(WorldMapStageStartRequest @params)
         {
-            var session = GetSession();
             WorldMapStageStartResponse wmssr = new();
 
             //TODO: look at the stage and then the rewards it can gen
@@ -20,7 +19,7 @@ namespace CommanderCS.Host.Handlers.WorldMap
             //TODO: find out how to add exp
             wmssr.reward = test;
 
-            wmssr.rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+            wmssr.rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(Session);
 
             ResponsePacket response = new()
             {

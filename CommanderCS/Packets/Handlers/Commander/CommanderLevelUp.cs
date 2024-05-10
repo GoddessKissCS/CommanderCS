@@ -13,13 +13,9 @@ namespace CommanderCS.Host.Handlers.Commander
     {
         public override object Handle(CommanderLevelUpRequest @params)
         {
-            var session = GetSession();
-            var user = GetUserGameProfile();
-            var rg = GetRegulation();
+            string sid = Regulation.goodsDtbl.FirstOrDefault(x => x.serverFieldName == @params.commanderTrainingTicket).type;
 
-            string sid = rg.goodsDtbl.FirstOrDefault(x => x.serverFieldName == @params.commanderTrainingTicket).type;
-
-            if (@params.count > user.UserInventory.itemData[sid])
+            if (@params.count > User.UserInventory.itemData[sid])
             {
                 ErrorPacket error = new()
                 {
@@ -32,15 +28,15 @@ namespace CommanderCS.Host.Handlers.Commander
 
             string cid = @params.commanderId.ToString();
 
-            if (user.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
+            if (User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
             {
                 int commanderXP = Convert.ToInt32(commander.__exp);
 
                 for (int i = 1; i < @params.count;)
                 {
-                    if (user.UserInventory.itemData[sid] > 0)
+                    if (User.UserInventory.itemData[sid] > 0)
                     {
-                        user.UserInventory.itemData[sid] -= 1;
+                        User.UserInventory.itemData[sid] -= 1;
                     }
 
                     TryLevelingUp(sid, ref commanderXP);
@@ -50,10 +46,10 @@ namespace CommanderCS.Host.Handlers.Commander
 
                 commander.__exp = commanderXP.ToString();
 
-                commander = CheckCommanderLevelRecursive(commander, rg, user);
+                commander = CheckCommanderLevelRecursive(commander, Regulation, User);
             }
 
-            if (int.Parse(commander.__level) > user.UserResources.level)
+            if (int.Parse(commander.__level) > User.UserResources.level)
             {
                 ErrorPacket error = new()
                 {
@@ -64,13 +60,13 @@ namespace CommanderCS.Host.Handlers.Commander
                 return error;
             }
 
-            DatabaseManager.GameProfile.UpdateItemData(session, user.UserInventory.itemData);
-            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+            DatabaseManager.GameProfile.UpdateItemData(Session, User.UserInventory.itemData);
+            DatabaseManager.GameProfile.UpdateCommanderData(Session, User.CommanderData);
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = GetUserInformationResponse(user),
+                Result = GetUserInformationResponse(User),
             };
 
             return response;

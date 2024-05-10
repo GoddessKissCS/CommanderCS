@@ -10,10 +10,6 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CommanderSkillLevelUpRequest @params)
         {
-            var user = GetUserGameProfile();
-            var session = GetSession();
-            var rg = GetRegulation();
-
             string cid = @params.cid.ToString();
 
             int totalCost = 0;
@@ -23,7 +19,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             for (var i = 1; i <= upgradeLevel;)
             {
-                var skillcostdtbl = rg.skillCostDtbl.Find(x => x.level == i);
+                var skillcostdtbl = Regulation.skillCostDtbl.Find(x => x.level == i);
 
                 if (skillcostdtbl != null && skillIndex < skillcostdtbl.typeCost.Count)
                 {
@@ -38,31 +34,31 @@ namespace CommanderCS.Packets.Handlers.Commander
             switch (skillIndex)
             {
                 case 1:
-                    user.CommanderData[cid].__skv1 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv1)).ToString();
+                    User.CommanderData[cid].__skv1 = (upgradeLevel + int.Parse(User.CommanderData[cid].__skv1)).ToString();
                     break;
 
                 case 2:
-                    user.CommanderData[cid].__skv2 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv2)).ToString();
+                    User.CommanderData[cid].__skv2 = (upgradeLevel + int.Parse(User.CommanderData[cid].__skv2)).ToString();
                     break;
 
                 case 3:
-                    user.CommanderData[cid].__skv3 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv3)).ToString();
+                    User.CommanderData[cid].__skv3 = (upgradeLevel + int.Parse(User.CommanderData[cid].__skv3)).ToString();
                     break;
 
                 case 4:
-                    user.CommanderData[cid].__skv4 = (upgradeLevel + int.Parse(user.CommanderData[cid].__skv4)).ToString();
+                    User.CommanderData[cid].__skv4 = (upgradeLevel + int.Parse(User.CommanderData[cid].__skv4)).ToString();
                     break;
             }
 
-            user.UserResources.gold -= totalCost;
+            User.UserResources.gold -= totalCost;
 
-            DatabaseManager.GameProfile.UpdateGold(session, totalCost, false);
-            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+            DatabaseManager.GameProfile.UpdateGold(Session, totalCost, false);
+            DatabaseManager.GameProfile.UpdateCommanderData(Session, User.CommanderData);
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = GetUserInformationResponse(user),
+                Result = GetUserInformationResponse(User),
             };
 
             return response;

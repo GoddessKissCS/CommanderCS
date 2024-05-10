@@ -12,18 +12,15 @@ namespace CommanderCS.Packets.Handlers.Dispatch
     {
         public override object Handle(RecallDispatchRequest @params)
         {
-            var user = GetUserGameProfile();
-            var session = GetSession();
-
             // TODO: add errorhandling
 
             var RecallCommander = new RecallCommander();
 
-            if (user.DispatchedCommanders != null)
+            if (User.DispatchedCommanders != null)
             {
                 string slot = @params.slot.ToString();
 
-                user.DispatchedCommanders.TryGetValue(slot, out var dispatchedCommanderInfo);
+                User.DispatchedCommanders.TryGetValue(slot, out var dispatchedCommanderInfo);
 
                 int runtime = (int)TimeManager.GetTimeDifferenceInHours(dispatchedCommanderInfo.DispatchTime);
                 int dispatchTime = (int)TimeManager.GetTimeDifference(dispatchedCommanderInfo.DispatchTime);
@@ -32,7 +29,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
                 int engageGold = 0;
                 int engageCount = dispatchedCommanderInfo.engageCnt;
 
-                user.CommanderData.TryGetValue(dispatchedCommanderInfo.cid.ToString(), out var commander);
+                User.CommanderData.TryGetValue(dispatchedCommanderInfo.cid.ToString(), out var commander);
 
                 if (runtime >= 1)
                 {
@@ -50,14 +47,14 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 
                 int updateGold = engageGold + runetimeGold;
 
-                DatabaseManager.GameProfile.UpdateGold(session, updateGold, true);
+                DatabaseManager.GameProfile.UpdateGold(Session, updateGold, true);
 
-                user.DispatchedCommanders.Remove(slot);
+                User.DispatchedCommanders.Remove(slot);
 
-                DatabaseManager.GameProfile.UpdateDispatchedCommander(session, user.DispatchedCommanders);
+                DatabaseManager.GameProfile.UpdateDispatchedCommander(Session, User.DispatchedCommanders);
             }
 
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(Session);
 
             RecallCommander.resource = rsoc;
 

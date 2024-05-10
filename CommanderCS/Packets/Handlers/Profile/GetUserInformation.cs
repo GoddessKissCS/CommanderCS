@@ -9,9 +9,7 @@ namespace CommanderCS.Packets.Handlers.Profile
     {
         public override object Handle(GetUserInformationRequest @params)
         {
-            var user = GetUserGameProfile();
-
-            var userInformationResponse = GetUserInformationResponse(user);
+            var userInformationResponse = GetUserInformationResponse(User);
 
             ResponsePacket response = new()
             {

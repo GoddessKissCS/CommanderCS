@@ -11,15 +11,11 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(FreeJoinGuildRequest @params)
         {
-            var user = GetUserGameProfile();
+            DatabaseManager.Guild.AddFreeJoinGuildMember(User.Uno, @params.gidx);
 
-            var session = GetSession();
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(Session);
 
-            DatabaseManager.Guild.AddFreeJoinGuildMember(user.Uno, @params.gidx);
-
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
-
-            var userGuild = DatabaseManager.Guild.RequestGuild(@params.gidx, user.Uno);
+            var userGuild = DatabaseManager.Guild.RequestGuild(@params.gidx, User.Uno);
 
             var members = DatabaseManager.Guild.RequestGuildMembers(@params.gidx);
 

@@ -10,22 +10,19 @@ namespace CommanderCS.Packets.Handlers.Inventory
     {
         public override object Handle(ExchangeMedalRequest @params)
         {
-            var user = GetUserGameProfile();
-            var session = GetSession();
-
             string cid = @params.cid.ToString();
             int medalExchangeAmount = @params.amnt;
 
             // need to implement a check that fails if user doesnt have enough , aswell in the expshare gift things etc
 
-            user.CommanderData[cid].medl += medalExchangeAmount;
-            user.UserInventory.medalData[cid] += medalExchangeAmount;
+            User.CommanderData[cid].medl += medalExchangeAmount;
+            User.UserInventory.medalData[cid] += medalExchangeAmount;
 
-            user.UserInventory.itemData["202"] -= medalExchangeAmount;
+            User.UserInventory.itemData["202"] -= medalExchangeAmount;
 
-            DatabaseManager.GameProfile.UpdateProfile(session, user);
+            DatabaseManager.GameProfile.UpdateProfile(Session, User);
 
-            var userInformationResponse = GetUserInformationResponse(user);
+            var userInformationResponse = GetUserInformationResponse(User);
 
             ResponsePacket response = new()
             {

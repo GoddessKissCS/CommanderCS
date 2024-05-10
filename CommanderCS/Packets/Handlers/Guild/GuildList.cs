@@ -22,13 +22,11 @@ namespace CommanderCS.Host.Handlers.Guild
                 Result = guildList,
             };
 
-            var user = GetUserGameProfile();
-
-            var userGuild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+            var userGuild = DatabaseManager.Guild.RequestGuild(User.GuildId, User.Uno);
 
             if (userGuild != null)
             {
-                var memberData = DatabaseManager.Guild.RequestGuildMembers(user.GuildId);
+                var memberData = DatabaseManager.Guild.RequestGuildMembers(User.GuildId);
 
                 guildList.memberData = memberData;
                 guildList.guildInfo = userGuild;

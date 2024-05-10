@@ -10,9 +10,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(FireSubMasterRequest @params)
         {
-            var user = GetUserGameProfile();
-
-            bool isInGuild = DatabaseManager.Guild.IsUnoInMemberData(user.GuildId, user.Uno);
+            bool isInGuild = DatabaseManager.Guild.IsUnoInMemberData(User.GuildId, User.Uno);
 
             if (!isInGuild)
             {
@@ -25,7 +23,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            DatabaseManager.Guild.UpdateSpecificMemberGrade(user.GuildId, @params.tuno, 0);
+            DatabaseManager.Guild.UpdateSpecificMemberGrade(User.GuildId, @params.tuno, 0);
 
             ResponsePacket response = new()
             {

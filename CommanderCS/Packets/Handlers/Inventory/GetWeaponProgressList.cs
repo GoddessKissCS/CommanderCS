@@ -8,12 +8,10 @@ namespace CommanderCS.Packets.Handlers.Inventory
     {
         public override object Handle(GetWeaponProgressListRequest @params)
         {
-            var user = GetUserGameProfile();
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = user.WeaponInformation.WeaponProgressList,
+                Result = User.WeaponInformation.WeaponProgressList,
             };
 
             return response;

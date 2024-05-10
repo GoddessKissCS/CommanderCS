@@ -12,15 +12,12 @@ namespace CommanderCS.Packets.Handlers.WorldMap
     {
         public override object Handle(WorldMapRewardRequest @params)
         {
-            var user = GetUserGameProfile();
-            var session = GetSession();
-
 #warning TODO: REVAMP THIS FUNCTION
             string commanderId = GetCommanderIdForWorldMapReward(@params.world);
 
-            var worldmap = UserWorldReward(commanderId, user, session);
+            var worldmap = UserWorldReward(commanderId, User, Session);
 
-            DatabaseManager.GameProfile.UpdateWorldMapReward(session, @params.world, user.BattleData.WorldMapStageReward);
+            DatabaseManager.GameProfile.UpdateWorldMapReward(Session, @params.world, User.BattleData.WorldMapStageReward);
 
             ResponsePacket response = new()
             {

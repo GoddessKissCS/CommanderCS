@@ -10,10 +10,7 @@ namespace CommanderCS.Packets.Handlers.PreDeck
     {
         public override object Handle(BuyPredeckSlotRequest @params)
         {
-            var session = GetSession();
-            var user = GetUserGameProfile();
-
-            if (user.UserStatistics.PredeckCount >= 20)
+            if (User.UserStatistics.PredeckCount >= 20)
             {
                 ErrorPacket errorPacket = new()
                 {
@@ -24,9 +21,9 @@ namespace CommanderCS.Packets.Handlers.PreDeck
                 return errorPacket;
             }
 
-            int cashCost = RemoteObjectManager.DefineDataTable.DECK_PLUS_CASH + RemoteObjectManager.DefineDataTable.DECK_PLUS_CASH_VALUE * (user.UserStatistics.PredeckCount - RemoteObjectManager.DefineDataTable.BASE_DECK_COUNT);
+            int cashCost = RemoteObjectManager.DefineDataTable.DECK_PLUS_CASH + RemoteObjectManager.DefineDataTable.DECK_PLUS_CASH_VALUE * (User.UserStatistics.PredeckCount - RemoteObjectManager.DefineDataTable.BASE_DECK_COUNT);
 
-            if (user.UserResources.cash > cashCost)
+            if (User.UserResources.cash > cashCost)
             {
                 ErrorPacket errorPacket = new()
                 {
@@ -37,11 +34,11 @@ namespace CommanderCS.Packets.Handlers.PreDeck
                 return errorPacket;
             }
 
-            user = DatabaseManager.GameProfile.UpdateCash(session, cashCost, false);
+            User = DatabaseManager.GameProfile.UpdateCash(Session, cashCost, false);
 
-            DatabaseManager.GameProfile.AddEmptyPreDeckSlot(session, user.UserStatistics.PredeckCount);
+            DatabaseManager.GameProfile.AddEmptyPreDeckSlot(Session, User.UserStatistics.PredeckCount);
 
-            var userInformationResponse = GetUserInformationResponse(user);
+            var userInformationResponse = GetUserInformationResponse(User);
 
             ResponsePacket response = new()
             {

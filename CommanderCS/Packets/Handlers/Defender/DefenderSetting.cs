@@ -11,8 +11,6 @@ namespace CommanderCS.Packets.Handlers.Defender
     {
         public override object Handle(DefenderSettingRequest @params)
         {
-            var session = GetSession();
-
             Dictionary<string, string> deck = @params.deck.ToObject<Dictionary<string, string>>();
 
             ResponsePacket response = new()
@@ -21,7 +19,7 @@ namespace CommanderCS.Packets.Handlers.Defender
                 Result = "",
             };
 
-            if (DatabaseManager.GameProfile.UpdatePvPDefenderDeck(session, deck))
+            if (DatabaseManager.GameProfile.UpdatePvPDefenderDeck(Session, deck))
             {
                 response.Result = "True";
 

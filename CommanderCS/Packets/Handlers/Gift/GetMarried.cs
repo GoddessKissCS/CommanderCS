@@ -11,16 +11,13 @@ namespace CommanderCS.Packets.Handlers.Gift
     {
         public override object Handle(GetMarriedRequest @params)
         {
-            var user = GetUserGameProfile();
-            var session = GetSession();
-
             string cid = @params.cid.ToString();
 
-            user.CommanderData[cid].marry = 1;
-            user.UserResources.ring -= 1;
+            User.CommanderData[cid].marry = 1;
+            User.UserResources.ring -= 1;
 
-            DatabaseManager.GameProfile.UpdateUserData(session, user);
-            UserInformationResponse userInformationResponse = GetUserInformationResponse(user);
+            DatabaseManager.GameProfile.UpdateUserData(Session, User);
+            UserInformationResponse userInformationResponse = GetUserInformationResponse(User);
 
             ResponsePacket response = new()
             {

@@ -10,11 +10,9 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
     {
         public override object Handle(WorldDuelBuffUpgradeRequest @params)
         {
-            var user = GetUserGameProfile();
-
-            WorldDuelBuffUpgradeResponse worldDuelBuffUpgradeResponse = new WorldDuelBuffUpgradeResponse()
+            WorldDuelBuffUpgradeResponse worldDuelBuffUpgradeResponse = new()
             {
-                rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources),
+                rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.UserResources),
                 buff = [],
             };
 

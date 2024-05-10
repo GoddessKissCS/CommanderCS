@@ -12,11 +12,9 @@ namespace CommanderCS.Packets.Handlers.PreDeck
     {
         public override object Handle(PreDeckSettingRequest @params)
         {
-            var session = GetSession();
-
             var preDeckList = @params.list.ToObject<List<UserInformationResponse.PreDeck>>();
 
-            DatabaseManager.GameProfile.UpdatePreDeck(session, preDeckList);
+            DatabaseManager.GameProfile.UpdatePreDeck(Session, preDeckList);
 
             ResponsePacket response = new()
             {

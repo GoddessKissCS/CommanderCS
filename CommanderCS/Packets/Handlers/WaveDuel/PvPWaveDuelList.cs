@@ -10,7 +10,6 @@ namespace StellarGK.Packets.Handlers.WaveDuel
     {
         public override object Handle(PvPWaveDuelListRequest @params)
         {
-            var user = GetUserGameProfile();
             // TODO FINISH
             // need to check score and the get duelist between the range
 
@@ -20,7 +19,7 @@ namespace StellarGK.Packets.Handlers.WaveDuel
                 openRemain = 86400,
                 remain = 86400,
                 time = (int)TimeManager.CurrentEpoch,
-                user = user.RankingData.PvPDuelRankingData
+                user = User.RankingData.PvPDuelRankingData
             };
 
             ResponsePacket response = new()

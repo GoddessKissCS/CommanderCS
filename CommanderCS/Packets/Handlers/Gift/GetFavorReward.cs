@@ -11,21 +11,18 @@ namespace CommanderCS.Packets.Handlers.Gift
     {
         public override object Handle(GetFavorRewardRequest @params)
         {
-            var user = GetUserGameProfile();
-            var session = GetSession();
-
             string cid = @params.cid.ToString();
 
-            user.CommanderData[cid].favorStep = @params.step;
-            user.CommanderData[cid].favorRewardStep = @params.step;
+            User.CommanderData[cid].favorStep = @params.step;
+            User.CommanderData[cid].favorRewardStep = @params.step;
 
-            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+            DatabaseManager.GameProfile.UpdateCommanderData(Session, User.CommanderData);
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.UserResources);
 
             RewardInfo rewardInfo = new()
             {
-                commander = user.CommanderData,
+                commander = User.CommanderData,
                 resource = rsoc,
             };
 

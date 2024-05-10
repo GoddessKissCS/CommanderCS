@@ -7,12 +7,10 @@ namespace CommanderCS.Host.Handlers.Gacha
     {
         public override object Handle(GachaInformationRequest @params)
         {
-            var user = GetUserGameProfile();
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = user.GachaInformation,
+                Result = User.GachaInformation,
             };
 
             return response;

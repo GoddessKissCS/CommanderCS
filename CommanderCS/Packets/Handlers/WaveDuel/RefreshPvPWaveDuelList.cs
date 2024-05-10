@@ -11,11 +11,9 @@ namespace StellarGK.Packets.Handlers.WaveDuel
     {
         public override object Handle(RefreshPvPWaveDuelListRequest @params)
         {
-            var user = GetUserGameProfile();
-
             //TODO: add fake duelist + need to check score and the get duelist between the range
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.UserResources);
 
             RefreshPvPDuel refreshDuel = new()
             {

@@ -11,11 +11,9 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
     {
         public override object Handle(WaveDuelDefenderSettingRequest @params)
         {
-            var session = GetSession();
-
             Dictionary<string, Dictionary<string, string>> decks = @params.decks.ToObject<Dictionary<string, Dictionary<string, string>>>();
 
-            DatabaseManager.GameProfile.UpdateWaveDefenderDecks(session, decks);
+            DatabaseManager.GameProfile.UpdateWaveDefenderDecks(Session, decks);
 #warning TODO CHECK IF FAILS
             ResponsePacket response = new()
             {

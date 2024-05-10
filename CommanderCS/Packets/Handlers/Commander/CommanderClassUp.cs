@@ -10,15 +10,11 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CommanderClassUpRequest @params)
         {
-            var user = GetUserGameProfile();
-            var rg = GetRegulation();
-            var session = GetSession();
-
             string cid = @params.commanderId.ToString();
 
-            user.CommanderData.TryGetValue(cid, out var commander);
+            User.CommanderData.TryGetValue(cid, out var commander);
 
-            var commanderClassUpInfo = rg.commanderClassUpDtbl.Find(x => x.ROLE == commander.role && x.GRADE == commander.__cls);
+            var commanderClassUpInfo = Regulation.commanderClassUpDtbl.Find(x => x.ROLE == commander.role && x.GRADE == commander.__cls);
 
             switch (commanderClassUpInfo.GRADE)
             {
@@ -223,17 +219,17 @@ namespace CommanderCS.Packets.Handlers.Commander
                     break;
             }
 
-            user.UserResources.gold -= commanderClassUpInfo.UPGRADE_COST;
+            User.UserResources.gold -= commanderClassUpInfo.UPGRADE_COST;
 
-            DatabaseManager.GameProfile.UpdatePartData(session, user.UserInventory.partData);
-            DatabaseManager.GameProfile.UpdateGold(session, commanderClassUpInfo.UPGRADE_COST, false);
-            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+            DatabaseManager.GameProfile.UpdatePartData(Session, User.UserInventory.partData);
+            DatabaseManager.GameProfile.UpdateGold(Session, commanderClassUpInfo.UPGRADE_COST, false);
+            DatabaseManager.GameProfile.UpdateCommanderData(Session, User.CommanderData);
 
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = GetUserInformationResponse(user),
+                Result = GetUserInformationResponse(User),
             };
 
             return response;

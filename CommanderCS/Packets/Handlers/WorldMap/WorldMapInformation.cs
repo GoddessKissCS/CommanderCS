@@ -9,12 +9,10 @@ namespace CommanderCS.Host.Handlers.WorldMap
     {
         public override object Handle(WorldMapInformationRequest @params)
         {
-            var user = GetUserGameProfile();
-
             string worldId = @params.world.ToString();
 
-            user.BattleData.WorldMapStages.TryGetValue(worldId, out List<WorldMapInformationResponse> stages);
-            user.BattleData.WorldMapStageReward.TryGetValue(worldId, out int isRewardCollected);
+            User.BattleData.WorldMapStages.TryGetValue(worldId, out List<WorldMapInformationResponse> stages);
+            User.BattleData.WorldMapStageReward.TryGetValue(worldId, out int isRewardCollected);
 
             WorldMapResponse worldmap = new()
             {

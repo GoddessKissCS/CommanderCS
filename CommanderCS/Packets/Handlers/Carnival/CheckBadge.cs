@@ -8,9 +8,7 @@ namespace CommanderCS.Host.Handlers.Carnival
     {
         public override object Handle(CheckBadgeRequest @params)
         {
-            var user = GetUserGameProfile();
-
-            var badges = user.UserBadges;
+            var badges = User.UserBadges;
 
 #warning TODO ADJUST THIS SHIT
             CheckBadgeMaster checkBadgeMaster = new()

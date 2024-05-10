@@ -11,11 +11,9 @@ namespace CommanderCS.Packets.Handlers.PvP
     {
         public override object Handle(RefreshPvPDuelListRequest @params)
         {
-            var user = GetUserGameProfile();
-
             // need to check score and the get duelist between the range
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.UserResources);
 
             RefreshPvPDuel refreshDuel = new()
             {
