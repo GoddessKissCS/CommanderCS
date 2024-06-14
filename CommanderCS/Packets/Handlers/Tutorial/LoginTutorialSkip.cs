@@ -13,7 +13,7 @@ namespace CommanderCS.Host.Handlers.Tutorial
 
             UserInformationResponse.TutorialData tutorialData = new() { skip = Convert.ToBoolean(@params.skip), step = 12 };
 
-            DatabaseManager.GameProfile.UpdateTutorialData(Session, tutorialData);
+            DatabaseManager.GameProfile.UpdateTutorialData(SessionId, tutorialData);
 
             TutorialStep lts = new()
             {

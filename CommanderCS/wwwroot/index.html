@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=omkqRugM">
+    <link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ">
+    <!-- IF YOU SEE THIS, YES THIS SITE WAS TAKEN FROM ARCHIVE.ORG -->
+    <title>GKServer</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    </style>
+</head>
+<body>
+    <style type="text/css">
+        body {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+            /*min-width:800px !important;*/
+        }
+    </style>
+    <h1>Welcome to GKServer!</h1>
+    <p>Quick Notice: This Website is simply a copy from "http://gkserver.info.gf"</p>
+    <p>With some small edits and fixes, credit goes to u/Quest_for_Boobs</p>
+    <p><img src="pic.png"></p>
+    <h2>How do I get in?</h2>
+    <p>Quick version: if you have version 1.033.12 of the game and a rooted Android device or emulator, open a Terminal and enter these commands:</p>
+    <div class="console">
+        u0_a40@android:/ $ <mark>su</mark><br>
+        root@android:/ # <mark>mount -o rw,remount /system</mark><br>
+        root@android:/ # <mark>echo 5.152.179.136 gk.flerogames.com&gt;/etc/hosts</mark><br>
+        root@android:/ # <mark>cat /etc/hosts</mark><br>
+        5.152.179.136 gk.flerogames.com<br>
+        root@android:/ #
+    </div>
+    <p>If the <mark>cat</mark> command returns that line, you have correctly modified the hosts file; you can start the game and log in. If your commander is level 89, you're in.</p>
+    <p>If all that went over your head, read the rest of the page for detailed instructions.</p>
+    <h2>How do I get out?</h2>
+    <p>Same as above, but use the command <mark>echo 127.0.0.1 localhost&gt;/etc/hosts</mark> instead. That removes the server redirection. Make sure you exit the game completely first!</p>
+    <h2>Why do I need a rooted device or emulator?</h2>
+    <p>In order to use the original game client without any modifications, you need to fool it into connecting to GKServer instead of the official server. To do that, you have to modify the "hosts" file, which tells your device or emulator what the IP address of a server is. Modifying this file requires root access.</p>
+    <p>If you don't have a rooted device, use an Android emulator. Several of them have options to enable rooting; <a href="https://www.bignox.com/" target="_blank">Nox App Player</a> has options to enable root access by changing "Root Startup" to "Enable" in their settings.</p>
+    <p>To install the game in the emulator, just go to the included Google Play store, log in, and download the game as usual. You can also install it from a different App Store or sideload the 1.033.12 version of the file if you don't want to use the Google Play store; as long as it's the original, unmodified game install, it will work.</p>
+    <h2>What is a Terminal and how do I use it?</h2>
+    <p>A terminal is an app that lets you give commands to the device or emulator in text-mode. It's mainly used by advanced users to do things that are not possible with apps; like modifying the hosts file. Any Terminal app will do; again, search the App Store and you'll see dozens. Try to find one that doesn't contain ads, but you're only going to use it for five minutes and you can remove it later, so it doesn't really matter.</p>
+    <p>After installing the Terminal, open it. You'll be greeted by a text-only window with a line that ends in "$". Type <mark>su</mark>, followed by the Enter key, to enable root mode. The device or emulator will ask you to confirm this; allow it. If the Terminal says that the command is invalid, your device is not rooted. <b>You need a rooted device to do this.</b></p>
+    <p>If your terminal now shows a line that ends with "#", you are in root mode. Type the command <mark>mount -o rw,remount /system</mark>, followed by the Enter key, to enable writing to the hosts file; then type <mark>echo 5.152.179.136 gk.flerogames.com&gt;/etc/hosts</mark>, followed by the Enter key, to redirect the game server to the GKServer IP. If you get no errors up to this point, you're done; but just to confirm that it worked, type the command <mark>cat /etc/hosts</mark>, followed by the Enter key. It should display the line you just typed, like in the sample at the top of the page.</p>
+    <p>If, at any point, the keyboard stops working in your Terminal app, you probably have one that is stuck in soft keyboard mode. Click the three dots and the top right and select "Toggle Soft Keyboard" to fix it.</p>
+    <h2>What game version do I need?</h2>
+    <p>GKServer supports version 1.033.12 of the game, the latest at the time of this writing. It shows up in the bottom-left corner of the game's title screen, and in the bottom-right when you click on your portrait in-game and go to "Game Info".</p>
+    <p>If the version that your app store installed is newer than that, you'll need to download 1.033.12 from somewhere else, like <a href="https://apkplz.com/android-apps/flero-games-co-ltd-goddess-kiss/goddess-kiss-1-033-12" target="_blank">apkplz.com</a>, always making sure it's the unmodified version of the game. <b>You do not need a "mod" APK, just the original.</b></p>
+    <p>After installing the APK in your device or emulator, make sure to copy the .obb file that comes with it into /sdcard/Android/obb/com.flerogames.GK or the game will not start. Both the folder and the .obb filenames <b>must</b> be all lowercase except "GK" in uppercase, or the game will not start.</p>
+    <p><b>The game assumes you're playing in the Global server.</b> If you use the Korean server, it will still work, but the three Korean pilots will be locked.</p>
+    <h2>What Works</h2>
+    <p><b>Portrait.</b> If you click your portrait at the top left of the screen, you can rename your character and select the girl you want to show up in the map screen. Turning off the sound, music and skill animations also works fine, because that doesn't talk to the server.</p>
+    <p><b>Headquarters.</b> From here you can see your pilots, change their costumes, and set up their Ooparts. All the girls are Level 89, Gold+4 and have maximum Skills and Affection; support for setting your own levels is coming very soon.</p>
+    <p><b>Mail.</b> If you tap the green box in the top right of the game's screen, you will have one email containing 99 Oopart boxes. Claim it if you want to slot Ooparts.</p>
+    <p><b>Storage.</b> Here you should see your 99 Ooparts boxes. Opening them gives you 50 of each Oopart; even if you open just one box. The amount of boxes you open at once determines what level of Ooparts you get; if you want level 10 Ooparts, open 10 boxes. If you want level 99 Ooparts, open all 99 boxes.</p>
+    <p><b>Federation.</b> Not much to see here other than see the Federation stats; it's max level with all the skills maxed out; support for setting your own Federation levels is coming soon.</p>
+    <p><b>Treasurse.</b> This is a proper simulator, using the same drop rates as the game. It does not currently keep track of how many fails until a guaranteed pilot; coming soon.</p>
+    <p><b>Bank.</b> This is a proper simulator, using the same drop rates as the game.</p>
+    <p><b>Boss Raid.</b> You get a random boss every time you enter this screen. You can go ahead and fight, but the final screen does not report your final score; you have to keep track of it during the fight, or use the "Battle Results" button and add up the "Enemy Damage" totals.</p>
+    <p><b>Daily Battle.</b> All three verions are available and you can fight any of them. The final ones will even challenge your OP units.</p>
+    <p><b>Death Match.</b> You will be at stage 21, and face Jung by default. If you enter the Shop, you can "buy" the boss you want to fight. After buying the boss, you need to leave and enter the Death Match screen for it to update. All the commanders are available and have maxed SP.</p>
+    <p><b>Shootout Arena.</b> The bullet shootout is always available here. It doesn't keep track of rewards, but you can try various formations to see how far you get.</p>
+    <p><b>Arena.</b> Both 1v1 and 3v3 modes has three fights randomly picked from Global server, so you can test OP formations. They have all been buffed to the same level as you.</p>
+    <p><b>World Map.</b> All stages are unlocked; pick one and fight.</p>
+    <p><b>This is a work in progress.</b> If you try to access things that aren't listed in here, the game will give an error code and exit. It won't hurt anything, but you will need to log in again, and no amount of retrying will make those things work until they are listed above.</p>
+    <h2>Why are you doing this?</h2>
+    <p>I'm not a whale and I want to see what all the VIP12 girls do. It works great as a combat simulator; I can try different formations in any fight to see what will work, before trying them in the real server. Also, people on Discord keeps saying the game is unprofitable and going to die, and I want to make sure there's always a way to play it. But mainly, I'm not a whale. Enjoy!</p>
+</body>
+</html>

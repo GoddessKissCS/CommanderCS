@@ -10,7 +10,7 @@ namespace CommanderCS.Host.Handlers.Nickname
         public override object Handle(SetNickNameFromTutorialRequest @params)
         {
 
-            ErrorCode code = DatabaseManager.GameProfile.RequestNicknameAfterTutorial(Session, @params.Unm);
+            ErrorCode code = DatabaseManager.GameProfile.RequestNicknameAfterTutorial(SessionId, @params.Unm);
 
             if (code != ErrorCode.Success)
             {
@@ -28,19 +28,17 @@ namespace CommanderCS.Host.Handlers.Nickname
                 Id = BasePacket.Id,
             };
 
-            var user = GetUserGameProfile();
+            if (User.TutorialData.skip)
+            {
+                var information = GetUserInformationResponse(User);
 
-            //if (user.TutorialData.skip)
-            //{
-            //    var information = GetUserInformationResponse(user);
+                string result = JsonConvert.SerializeObject(information);
 
-            //    string result = JsonConvert.SerializeObject(information);
+                //return response;
 
-            //    response.Result = result;
-            //    response.Step = @params.Step;
+            } else {
 
-            //    return response;
-            //}
+            }
 
             SetNickNameResponse SetNickNameF1 = new()
             {

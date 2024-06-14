@@ -15,8 +15,8 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             User.UserStatistics.WeaponInventoryCount += RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADD;
 
-            DatabaseManager.GameProfile.UpdateCash(Session, RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH, false);
-            DatabaseManager.GameProfile.UpdateWeaponInventoryCount(Session, User.UserStatistics.WeaponInventoryCount);
+            DatabaseManager.GameProfile.UpdateCash(SessionId, RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH, false);
+            DatabaseManager.GameProfile.UpdateWeaponInventoryCount(SessionId, User.UserStatistics.WeaponInventoryCount);
 
             var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.UserResources);
             var uifo = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(User.UserStatistics);

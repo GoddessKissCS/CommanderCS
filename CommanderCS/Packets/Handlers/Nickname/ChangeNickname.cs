@@ -10,7 +10,7 @@ namespace CommanderCS.Host.Handlers.Nickname
     {
         public override object Handle(ChangeNicknameRequest @params)
         {
-            ErrorCode code = DatabaseManager.GameProfile.RequestNickNameChange(@params.nickname, Session);
+            ErrorCode code = DatabaseManager.GameProfile.RequestNickNameChange(@params.nickname, SessionId);
 
             if (code != ErrorCode.Success)
             {
@@ -23,7 +23,7 @@ namespace CommanderCS.Host.Handlers.Nickname
                 return error;
             }
 
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(Session);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
             ChangeNicknameResponse data = new()
             {

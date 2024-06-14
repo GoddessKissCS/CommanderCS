@@ -126,7 +126,6 @@ namespace CommanderCS.MongoDB.Handlers
                     arena = 0,
                     dlms = 0,
                     achv = 0,
-                    rwd = 0,
                     shop = new Dictionary<string, int>()
                     {
                         { "raid", 0 },

@@ -34,11 +34,11 @@ namespace CommanderCS.Packets.Handlers.PreDeck
                 return errorPacket;
             }
 
-            User = DatabaseManager.GameProfile.UpdateCash(Session, cashCost, false);
+            var user = DatabaseManager.GameProfile.UpdateCash(SessionId, cashCost, false);
 
-            DatabaseManager.GameProfile.AddEmptyPreDeckSlot(Session, User.UserStatistics.PredeckCount);
+            DatabaseManager.GameProfile.AddEmptyPreDeckSlot(SessionId, user.UserStatistics.PredeckCount);
 
-            var userInformationResponse = GetUserInformationResponse(User);
+            var userInformationResponse = GetUserInformationResponse(user);
 
             ResponsePacket response = new()
             {

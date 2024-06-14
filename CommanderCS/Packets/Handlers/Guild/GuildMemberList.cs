@@ -14,15 +14,14 @@ namespace CommanderCS.Host.Handlers.Guild
                 Id = BasePacket.Id,
             };
 
-            var user = GetUserGameProfile();
 
-            if (user.GuildId == null)
+            if (User.GuildId == null)
             {
                 response.Result = null;
                 return response;
             }
 
-            var memberData = DatabaseManager.Guild.RequestGuildMembers(user.GuildId);
+            var memberData = DatabaseManager.Guild.RequestGuildMembers(User.GuildId);
 
             GuildMember guild = new()
             {

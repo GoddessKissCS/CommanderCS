@@ -34,7 +34,7 @@ namespace CommanderCS.Host.Handlers.Guild
                 return response;
             }
 
-            guildList.guildList = DatabaseManager.Guild.GetAllGuilds(GetSession());
+            guildList.guildList = DatabaseManager.Guild.GetAllGuilds(SessionId);
 
             return response;
         }

@@ -30,17 +30,17 @@ namespace CommanderCS.Packets.Handlers.Gacha
                 case 1:
                     rewards.Add(new() { count = 5, id = "8", type = ERewardType.Goods });
                     User.UserInventory.itemData.Add("8", 5);
-                    DatabaseManager.GameProfile.UpdateItemData(Session, User.UserInventory.itemData);
+                    DatabaseManager.GameProfile.UpdateItemData(SessionId, User.UserInventory.itemData);
                     break;
 
                 case 2:
                     rewards.Add(new() { count = 1, id = "2", type = ERewardType.Commander });
                     User.CommanderData = Regulation.AddSpecificCommander(User.CommanderData, 2);
-                    DatabaseManager.GameProfile.UpdateCommanderData(Session, User.CommanderData);
+                    DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
                     break;
             }
 
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(Session);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
             GachaOpenBoxResponse gachaOpen = new()
             {

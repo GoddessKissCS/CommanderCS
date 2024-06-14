@@ -13,7 +13,7 @@ namespace CommanderCS.Packets.Handlers.Guild
         {
             DatabaseManager.Guild.AddFreeJoinGuildMember(User.Uno, @params.gidx);
 
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(Session);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
             var userGuild = DatabaseManager.Guild.RequestGuild(@params.gidx, User.Uno);
 

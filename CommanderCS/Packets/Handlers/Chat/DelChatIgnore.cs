@@ -10,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.Chat
     {
         public override object Handle(DelChatIgnoreRequest @params)
         {
-            bool isRemoved = DatabaseManager.GameProfile.DelBlockedUser(Session, @params.channel, @params.uno);
+            bool isRemoved = DatabaseManager.GameProfile.DelBlockedUser(SessionId, @params.channel, @params.uno);
 
             ResponsePacket response = new()
             {

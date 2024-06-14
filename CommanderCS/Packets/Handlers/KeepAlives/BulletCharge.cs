@@ -54,7 +54,7 @@ namespace CommanderCS.Host.Handlers.KeepAlives
                     remain = User.UserResources.weaponMaterial4,
                 },
                 worldState = User.WorldState,
-                gacha = []
+                gacha = User.GachaInformation
             };
 
             ResponsePacket response = new()

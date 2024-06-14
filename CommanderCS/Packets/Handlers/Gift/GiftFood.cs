@@ -36,7 +36,7 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             User.CommanderData[cid] = CheckCommanderFavour(commander, Regulation);
 
-            DatabaseManager.GameProfile.UpdateUserData(Session, User);
+            DatabaseManager.GameProfile.UpdateUserData(SessionId, User);
             UserInformationResponse informationResponse = GetUserInformationResponse(User);
 
             ResponsePacket response = new()

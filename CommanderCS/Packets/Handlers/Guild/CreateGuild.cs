@@ -36,7 +36,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            GuildInfo createGuild = DatabaseManager.Guild.CreateGuild(Session, @params.gnm, @params.emb, @params.gtyp, @params.lvlm);
+            GuildInfo createGuild = DatabaseManager.Guild.CreateGuild(SessionId, @params.gnm, @params.emb, @params.gtyp, @params.lvlm);
 
             ResponsePacket response = new()
             {

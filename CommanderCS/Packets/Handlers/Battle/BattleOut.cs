@@ -26,35 +26,38 @@ namespace CommanderCS.Host.Handlers.Battle
 
             var sim = Simulator.Simulation(Regulation, serializedJson, false);
 
+#if DEBUG
+
             var record1 = JsonConvert.SerializeObject(record, Formatting.Indented);
             var result1 = JsonConvert.SerializeObject(result, Formatting.Indented);
             var simRec = JsonConvert.SerializeObject(sim.record, Formatting.Indented);
             var simRes = JsonConvert.SerializeObject(sim.record.result, Formatting.Indented);
-
-            
-
-            if (result.winSide == sim.result.winSide)
-            {
-                double maxDifference = sim.result.totalAttackDamage * 0.05;
-
-                // Calculate the lower and upper bounds within which the values should fall
-                double lowerBound = sim.result.totalAttackDamage - maxDifference;
-                double upperBound = sim.result.totalAttackDamage + maxDifference;
-
-                // Check if result.totalAttackDamage falls within the range of sim.result.totalAttackDamage
-                if (result.totalAttackDamage >= lowerBound && result.totalAttackDamage <= upperBound)
-                {
-                    // Your code here if the condition is met
-                }
-            }
-
 
             File.WriteAllText("record.json", record1);
             File.WriteAllText("result1.json", result1);
             File.WriteAllText("simRec.json", simRec);
             File.WriteAllText("simRes.json", simRes);
 
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(Session);
+#endif
+
+
+            if (result.winSide == sim.result.winSide)
+            {
+                double maxDifference = sim.result.totalAttackDamage * 0.05;
+
+                double lowerBound = sim.result.totalAttackDamage - maxDifference;
+                double upperBound = sim.result.totalAttackDamage + maxDifference;
+
+                if (result.totalAttackDamage >= lowerBound && result.totalAttackDamage <= upperBound)
+                {
+
+                }
+            }
+
+
+			// REWORK THIS
+
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
             int __exp = int.Parse(rsoc.__exp);
             int __level = int.Parse(rsoc.__level);

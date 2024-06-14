@@ -39,7 +39,7 @@ namespace CommanderCS.Packets.Handlers.Commander
                 User.UserInventory.medalData[cid] = commanderMedals;
                 User.CommanderData[cid] = commander;
 
-                DatabaseManager.GameProfile.UpdateGold(Session, commanderRankData.gold, false);
+                DatabaseManager.GameProfile.UpdateGold(SessionId, commanderRankData.gold, false);
             }
             else
             {
@@ -73,11 +73,11 @@ namespace CommanderCS.Packets.Handlers.Commander
 
                 User.CommanderData.Add(newcommanderId.ToString(), newestCommander);
 
-                DatabaseManager.GameProfile.UpdateGold(Session, commanderData.recruitGold, false);
+                DatabaseManager.GameProfile.UpdateGold(SessionId, commanderData.recruitGold, false);
             }
 
-            DatabaseManager.GameProfile.UpdateCommanderData(Session, User.CommanderData);
-            DatabaseManager.GameProfile.UpdateMedalData(Session, User.UserInventory.medalData);
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.UserInventory.medalData);
 
             var newResources = GetUserGameProfile();
 

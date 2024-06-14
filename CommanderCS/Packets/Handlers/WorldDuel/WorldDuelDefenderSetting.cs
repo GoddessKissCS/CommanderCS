@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
 
             Dictionary<string, string> decks = @params.Deck.ToObject<Dictionary<string, string>>();
 
-            DatabaseManager.GameProfile.UpdateWorldDefenderDeck(Session, decks);
+            DatabaseManager.GameProfile.UpdateWorldDefenderDeck(SessionId, decks);
 
 #warning TODO CHECK IF FAILS
 

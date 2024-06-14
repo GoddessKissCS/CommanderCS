@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.PreDeck
         {
             var preDeckList = @params.list.ToObject<List<UserInformationResponse.PreDeck>>();
 
-            DatabaseManager.GameProfile.UpdatePreDeck(Session, preDeckList);
+            DatabaseManager.GameProfile.UpdatePreDeck(SessionId, preDeckList);
 
             ResponsePacket response = new()
             {

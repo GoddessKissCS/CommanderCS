@@ -12,15 +12,15 @@ namespace CommanderCS.Host.Handlers.Bank
         public override object Handle(BankRoulletStartRequest @params)
         {
             // THIS NEEDS A REWORK
-            var vip_spins = DatabaseManager.GameProfile.GetVipRechargeCount(Session, 601);
+            var vip_spins = DatabaseManager.GameProfile.GetVipRechargeCount(SessionId, 601);
 
             var remainingSpins = vip_spins + @params.count;
 
-            DatabaseManager.GameProfile.UpdateVipRechargeCount(Session, 601, remainingSpins);
+            DatabaseManager.GameProfile.UpdateVipRechargeCount(SessionId, 601, remainingSpins);
 
-            var luck = SpinBankRouletteAndProcessResults(Session, @params.count);
+            var luck = SpinBankRouletteAndProcessResults(SessionId, @params.count);
 
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(Session);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
             BankRoullet bankRoullet = new()
             {

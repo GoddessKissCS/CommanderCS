@@ -1,4 +1,5 @@
 using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Regulation;
 
 namespace CommanderCS.Packets.Handlers.Bank
 {
@@ -7,7 +8,13 @@ namespace CommanderCS.Packets.Handlers.Bank
     {
         public override object Handle(GetBankRewardRequest @params)
         {
-            ResponsePacket response = new() { Id = BasePacket.Id, Result = "{}" };
+
+            GetBankRewardResponse getBankRewardResponse = new()
+            {
+                gold = User.UserResources.gold
+            };
+
+            ResponsePacket response = new() { Id = BasePacket.Id, Result = getBankRewardResponse };
 
             return response;
         }
@@ -15,6 +22,11 @@ namespace CommanderCS.Packets.Handlers.Bank
 
     public class GetBankRewardRequest
     {
+    }
+
+    public class GetBankRewardResponse
+    {
+        public long gold {  get; set; }
     }
 }
 

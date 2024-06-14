@@ -10,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(UpdateGuildInfoRequest @params)
         {
-            ErrorCode code = DatabaseManager.Guild.UpdateGuildInfo(Session, @params.act, @params.val);
+            ErrorCode code = DatabaseManager.Guild.UpdateGuildInfo(SessionId, @params.act, @params.val);
 
             if (code != ErrorCode.Success)
             {
@@ -22,7 +22,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(Session);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
             var guild = DatabaseManager.Guild.RequestGuild(User.GuildId, User.Uno);
 
             CommanderCSLibrary.Shared.Protocols.GuildInfo guildInfo = new()

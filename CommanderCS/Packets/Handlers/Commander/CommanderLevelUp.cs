@@ -60,8 +60,8 @@ namespace CommanderCS.Host.Handlers.Commander
                 return error;
             }
 
-            DatabaseManager.GameProfile.UpdateItemData(Session, User.UserInventory.itemData);
-            DatabaseManager.GameProfile.UpdateCommanderData(Session, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateItemData(SessionId, User.UserInventory.itemData);
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
 
             ResponsePacket response = new()
             {

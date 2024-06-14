@@ -24,11 +24,14 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             // TODO CHECK WHEN WE CREATE A CHARACTER TO SEE IF WE OWN ANY COSTUMES AND THEN TRANSFER THEM TO THE haveCostume and delete them from donHaveCommCostume
 
+
+
+            //REWORK
             User.UserResources.cash -= costumeData.sellPrice;
 
-            DatabaseManager.GameProfile.UpdateCash(Session, costumeData.sellPrice, false);
-            DatabaseManager.GameProfile.UpdateCommanderData(Session, user.CommanderData);
-            DatabaseManager.GameProfile.UpdateDontHaveCommanderCostumeData(Session, user.UserInventory.donHaveCommCostumeData);
+            DatabaseManager.GameProfile.UpdateCash(SessionId, costumeData.sellPrice, false);
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, user.CommanderData);
+            DatabaseManager.GameProfile.UpdateDontHaveCommanderCostumeData(SessionId, user.UserInventory.donHaveCommCostumeData);
 
             var userInformationResponse = GetUserInformationResponse(user);
 

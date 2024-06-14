@@ -10,8 +10,6 @@ namespace CommanderCS.Packets.Handlers.Annihilation
     {
         public override object Handle(GetAnnihilationMapInfoRequest @params)
         {
-            var user = GetUserGameProfile();
-
             switch (@params.goReady)
             {
                 case 0:

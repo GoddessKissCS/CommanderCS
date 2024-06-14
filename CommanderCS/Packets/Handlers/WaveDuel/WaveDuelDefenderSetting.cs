@@ -13,7 +13,7 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
         {
             Dictionary<string, Dictionary<string, string>> decks = @params.decks.ToObject<Dictionary<string, Dictionary<string, string>>>();
 
-            DatabaseManager.GameProfile.UpdateWaveDefenderDecks(Session, decks);
+            DatabaseManager.GameProfile.UpdateWaveDefenderDecks(SessionId, decks);
 #warning TODO CHECK IF FAILS
             ResponsePacket response = new()
             {

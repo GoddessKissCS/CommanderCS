@@ -14,7 +14,6 @@ namespace CommanderCS.Host
     {
         public Method Id { get; set; }
     }
-
     public class BasePacket
     {
         [JsonProperty("id")]
@@ -36,20 +35,13 @@ namespace CommanderCS.Host
     public abstract class BaseMethodHandler<TParams>
     {
         public BasePacket BasePacket { get; set; }
-
         public abstract object Handle(TParams @params);
-
-        public string Session => BasePacket.SessionId;
+        public string SessionId => BasePacket.SessionId;
         public GameProfileScheme User => DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
         public AccountScheme Account => DatabaseManager.Account.FindBySession(BasePacket.SessionId);
         public DormitoryScheme Dormitory => DatabaseManager.Dormitory.FindBySession(BasePacket.SessionId);
         public GuildScheme Guild => DatabaseManager.Guild.FindBySession(BasePacket.SessionId);
         public Regulation Regulation => RemoteObjectManager.instance.regulation;
-
-        public string GetSession()
-        {
-            return BasePacket.SessionId;
-        }
 
         public AccountScheme? GetUserAccount()
         {
@@ -69,11 +61,6 @@ namespace CommanderCS.Host
         public GuildScheme GetUserGuild()
         {
             return DatabaseManager.Guild.FindBySession(BasePacket.SessionId);
-        }
-
-        public Regulation GetRegulation()
-        {
-            return RemoteObjectManager.instance.regulation;
         }
 
         public UserInformationResponse GetUserInformationResponse(GameProfileScheme user)

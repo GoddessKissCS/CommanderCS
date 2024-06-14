@@ -19,7 +19,7 @@ namespace CommanderCS.Host.Handlers.WorldMap
             //TODO: find out how to add exp
             wmssr.reward = test;
 
-            wmssr.rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(Session);
+            wmssr.rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
             ResponsePacket response = new()
             {

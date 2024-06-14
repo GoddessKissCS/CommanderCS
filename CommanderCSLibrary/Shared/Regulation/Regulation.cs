@@ -237,7 +237,11 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public string LoadJson(string filename)
         {
-            return File.ReadAllText($"\\Resources\\ExcelOutputAsset\\{filename}");
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            string fileContent = File.ReadAllText($"{path}//Resources//ExcelOutputAsset//{filename}");
+
+            return fileContent;
         }
 
 #pragma warning disable CS8601 // Possible null reference assignment.

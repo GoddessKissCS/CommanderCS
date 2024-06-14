@@ -34,26 +34,26 @@ namespace CommanderCS.Packets.Handlers.Commander
             switch (skillIndex)
             {
                 case 1:
-                    User.CommanderData[cid].__skv1 = (upgradeLevel + int.Parse(User.CommanderData[cid].__skv1)).ToString();
+                    User.CommanderData[cid].__skv1 = (int.Parse(User.CommanderData[cid].__skv1) + upgradeLevel).ToString();
                     break;
 
                 case 2:
-                    User.CommanderData[cid].__skv2 = (upgradeLevel + int.Parse(User.CommanderData[cid].__skv2)).ToString();
+                    User.CommanderData[cid].__skv2 = (int.Parse(User.CommanderData[cid].__skv2 + upgradeLevel).ToString());
                     break;
 
                 case 3:
-                    User.CommanderData[cid].__skv3 = (upgradeLevel + int.Parse(User.CommanderData[cid].__skv3)).ToString();
+                    User.CommanderData[cid].__skv3 = (int.Parse(User.CommanderData[cid].__skv3) + upgradeLevel).ToString();
                     break;
 
                 case 4:
-                    User.CommanderData[cid].__skv4 = (upgradeLevel + int.Parse(User.CommanderData[cid].__skv4)).ToString();
+                    User.CommanderData[cid].__skv4 = (int.Parse(User.CommanderData[cid].__skv4) + upgradeLevel).ToString();
                     break;
             }
 
             User.UserResources.gold -= totalCost;
 
-            DatabaseManager.GameProfile.UpdateGold(Session, totalCost, false);
-            DatabaseManager.GameProfile.UpdateCommanderData(Session, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateGold(SessionId, totalCost, false);
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
 
             ResponsePacket response = new()
             {

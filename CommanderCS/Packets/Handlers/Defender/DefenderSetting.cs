@@ -19,7 +19,7 @@ namespace CommanderCS.Packets.Handlers.Defender
                 Result = "",
             };
 
-            if (DatabaseManager.GameProfile.UpdatePvPDefenderDeck(Session, deck))
+            if (DatabaseManager.GameProfile.UpdatePvPDefenderDeck(SessionId, deck))
             {
                 response.Result = "True";
 

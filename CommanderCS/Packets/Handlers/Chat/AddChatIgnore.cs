@@ -19,7 +19,7 @@ namespace CommanderCS.Packets.Handlers.Chat
                 uno = @params.uno,
             };
 
-            DatabaseManager.GameProfile.AddBlockedUser(Session, blockUser);
+            DatabaseManager.GameProfile.AddBlockedUser(SessionId, blockUser);
 
             ResponsePacket response = new()
             {

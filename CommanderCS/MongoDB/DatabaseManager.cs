@@ -63,13 +63,19 @@ namespace CommanderCS.MongoDB
         public static void Init()
         {
             // Check if the game table version matches the current version
-            if (GameTableVersion.Get().Version == 20220312000000)
+
+            var gametables = GameTableVersion.Get();
+
+            if (gametables != null)
             {
-                return;
+                if(gametables.Version == 20220312000000)
+                {
+                    return;
+                }
             }
 
             // Initialize game version information
-            GameVersionInfo.Insert(1, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L0ZpbGVDRE4v", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQucGhw", false, false, false, false);
+            GameVersionInfo.Insert(1, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjgwOjUwMDAvRmlsZUNETi8=", "aHR0cDovLzE5Mi4xNjguMTc4LjgwOjUwMDAvY2hlY2tEYXRhLnBocA==", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQucGhw", false, false, false, false);
             GameVersionInfo.Insert(2, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L0ZpbGVDRE4v", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQucGhw", false, false, false, false);
 
             // Initialize game table version

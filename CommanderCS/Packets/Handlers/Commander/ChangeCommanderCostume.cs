@@ -14,14 +14,14 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             User.CommanderData[cid].currentCostume = @params.costumeId;
 
-            DatabaseManager.GameProfile.UpdateCommanderData(Session, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
 
             var costumeRow = Regulation.commanderCostumeDtbl.Find(x => x.ctid == @params.costumeId);
             var thumbnailRow = Regulation.commanderCostumeDtbl.Find(x => x.ctid == User.UserResources.thumbnailId);
 
             if (costumeRow.cid == thumbnailRow.cid)
             {
-                DatabaseManager.GameProfile.ChangeThumbnailId(Session, @params.costumeId);
+                DatabaseManager.GameProfile.ChangeThumbnailId(SessionId, @params.costumeId);
 
                 if (User.GuildId != null)
                 {

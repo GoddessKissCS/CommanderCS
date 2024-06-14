@@ -47,14 +47,14 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 
                 int updateGold = engageGold + runetimeGold;
 
-                DatabaseManager.GameProfile.UpdateGold(Session, updateGold, true);
+                DatabaseManager.GameProfile.UpdateGold(SessionId, updateGold, true);
 
                 User.DispatchedCommanders.Remove(slot);
 
-                DatabaseManager.GameProfile.UpdateDispatchedCommander(Session, User.DispatchedCommanders);
+                DatabaseManager.GameProfile.UpdateDispatchedCommander(SessionId, User.DispatchedCommanders);
             }
 
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(Session);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
             RecallCommander.resource = rsoc;
 

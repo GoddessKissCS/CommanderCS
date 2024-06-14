@@ -14,7 +14,7 @@ namespace CommanderCS.Host
         /// Gets or sets the identifier of the SystemPacket, set to "system".
         /// </summary>
         [JsonProperty("id")]
-        public string Id { get; set; } = "system";
+        public string Id { get; } = "system";
 
         /// <summary>
         /// Gets or sets the SystemMessage object contained in the SystemPacket result.

@@ -16,7 +16,7 @@ namespace CommanderCS.Packets.Handlers.Gift
             User.CommanderData[cid].favorStep = @params.step;
             User.CommanderData[cid].favorRewardStep = @params.step;
 
-            DatabaseManager.GameProfile.UpdateCommanderData(Session, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
 
             var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.UserResources);
 

@@ -114,6 +114,7 @@
     <None Remove="Resources\ExcelOutputAsset\UnitDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\UnitMotionDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\UserLevelDataTable.json" />
+    <None Remove="Resources\ExcelOutputAsset\VipBenefitsDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\VipExpDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\VipRechargeDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\WaveBattleDataTable.json" />
@@ -413,6 +414,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\UserLevelDataTable.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ExcelOutputAsset\VipBenefitsDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\VipExpDataTable.json">

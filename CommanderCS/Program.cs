@@ -72,12 +72,17 @@ namespace CommanderCS
                 }
 
                 // The Response
-                string responseData = await PacketHandler.ProcessRequest(context, provider);
+                (string responseData, string session) = await PacketHandler.ProcessRequest(context, provider);
 
                 // Set the Response Contenttype and length
                 context.Response.ContentType = "application/json";
                 context.Response.ContentLength = responseData.Length;
 
+                if(session != "" || session != null)
+                {
+                    context.Response.Headers.TryAdd("SET-COOKIE", session);
+                }
+               
                 // Write response to the response body stream
                 await context.Response.WriteAsync(responseData);
             });
@@ -95,35 +100,35 @@ namespace CommanderCS
 
             //#region StaticFileServer
 
-            //const string StaticFilesPath = "FileCDN";
-            //const string SlashStaticFilesPath = $"/{StaticFilesPath}";
+            const string StaticFilesPath = "FileCDN";
+            const string SlashStaticFilesPath = $"/{StaticFilesPath}";
 
-            ////// Working Directory path
-            //// var BasePath = builder.Environment.ContentRootPath;
-            //// Executable file path
-            //var BasePath = AppDomain.CurrentDomain.BaseDirectory;
-            //var staticFilesProviderPath = Path.Combine(BasePath, StaticFilesPath);
-            //var fileProvider = new PhysicalFileProvider(staticFilesProviderPath);
+            // Working Directory path
+            // var BasePath = builder.Environment.ContentRootPath;
+            // Executable file path
+            var BasePath = AppDomain.CurrentDomain.BaseDirectory;
+            var staticFilesProviderPath = Path.Combine(BasePath, StaticFilesPath);
+            var fileProvider = new PhysicalFileProvider(staticFilesProviderPath);
 
-            //app.UseDirectoryBrowser(new DirectoryBrowserOptions()
-            //{
-            //    FileProvider = fileProvider,
-            //    RedirectToAppendTrailingSlash = true,
-            //    RequestPath = SlashStaticFilesPath,
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions()
+            {
+                FileProvider = fileProvider,
+                RedirectToAppendTrailingSlash = true,
+                RequestPath = SlashStaticFilesPath,
+            });
+
+            // https://stackoverflow.com/questions/50381490/what-is-the-difference-between-usestaticfiles-and-usefileserver-in-asp-net-c
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = fileProvider,
+                RequestPath = SlashStaticFilesPath,
+                HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
+                ServeUnknownFileTypes = true
+            });
+
+            // app.UseWebSockets(new WebSocketOptions() {
+            //     KeepAliveInterval = TimeSpan.FromSeconds(60),
             //});
-
-            //// https://stackoverflow.com/questions/50381490/what-is-the-difference-between-usestaticfiles-and-usefileserver-in-asp-net-c
-            //app.UseStaticFiles(new StaticFileOptions()
-            //{
-            //    FileProvider = fileProvider,
-            //    RequestPath = SlashStaticFilesPath,
-            //    HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
-            //    ServeUnknownFileTypes = true
-            //});
-
-            //// app.UseWebSockets(new WebSocketOptions() {
-            ////     KeepAliveInterval = TimeSpan.FromSeconds(60),
-            ////});
 
             //#endregion StaticFileServer
 

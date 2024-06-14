@@ -10,14 +10,17 @@ namespace CommanderCS.Host.Handlers.Carnival
         {
             var badges = User.UserBadges;
 
-#warning TODO ADJUST THIS SHIT
+            var rwd = User.MailDataList.Where(x => x.__receive == "0").Count();
+
+            //TODO Check on thing if anything new exists.
+
             CheckBadgeMaster checkBadgeMaster = new()
             {
                 id = BasePacket.Id,
                 arena = badges.arena,
                 dlms = badges.dlms,
                 achv = badges.achv,
-                rwd = badges.rwd,
+                rwd = rwd,
                 shop = badges.shop,
                 cnvl = badges.cnvl,
                 ccnv = badges.ccnv,

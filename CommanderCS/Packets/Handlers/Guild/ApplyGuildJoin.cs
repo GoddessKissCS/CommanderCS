@@ -10,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(ApplyGuildJoinRequest @params)
         {
-            ErrorCode code = DatabaseManager.GuildApplication.CreateGuildApplication(Session, @params.gidx);
+            ErrorCode code = DatabaseManager.GuildApplication.CreateGuildApplication(SessionId, @params.gidx);
 
 #warning TODO NEED TO ADD ALL ERRORCODES
 

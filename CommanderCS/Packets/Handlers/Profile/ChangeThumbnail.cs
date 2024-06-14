@@ -17,7 +17,7 @@ namespace CommanderCS.Host.Handlers.Profile
             {
                 int costumeId = User.CommanderData[idx].currentCostume;
 
-                success = DatabaseManager.GameProfile.ChangeThumbnailId(Session, costumeId);
+                success = DatabaseManager.GameProfile.ChangeThumbnailId(SessionId, costumeId);
 
                 if (User.GuildId != null)
                 {

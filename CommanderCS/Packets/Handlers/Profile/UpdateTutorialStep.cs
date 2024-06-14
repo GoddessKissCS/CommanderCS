@@ -9,7 +9,7 @@ namespace CommanderCS.Host.Handlers.Profile
     {
         public override object Handle(UpdateTutorialStepRequest @params)
         {
-            DatabaseManager.GameProfile.UpdateTutorialStep(Session, @params.step);
+            DatabaseManager.GameProfile.UpdateTutorialStep(SessionId, @params.step);
 
             UpdateTutorialStepInfo utsi = new()
             {

@@ -671,11 +671,6 @@ namespace CommanderCS.MongoDB.Schemes
         public int achv { get; set; }
 
         /// <summary>
-        /// Gets or sets the rwd badge count.
-        /// </summary>
-        public int rwd { get; set; }
-
-        /// <summary>
         /// Gets or sets the dictionary of shop badges.
         /// </summary>
         public Dictionary<string, int> shop { get; set; }

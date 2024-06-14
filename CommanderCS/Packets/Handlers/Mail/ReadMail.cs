@@ -10,9 +10,7 @@ namespace CommanderCS.Packets.Handlers.Mail
     {
         public override object Handle(ReadMailRequest @params)
         {
-#warning TODO: ADDING THE REWARD TO THE ACCOUNT
-
-            bool result = DatabaseManager.GameProfile.ReadMail(Session, @params.Idx);
+            bool result = DatabaseManager.GameProfile.ReadMail(SessionId, @params.Idx);
 
             ResponsePacket response = new()
             {

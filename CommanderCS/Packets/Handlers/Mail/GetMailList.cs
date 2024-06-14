@@ -11,8 +11,11 @@ namespace CommanderCS.Packets.Handlers.Mail
         {
             MailInfo mailInfo = new()
             {
-                mailList = User.MailDataList
             };
+
+            var MailDataNotReceived = User.MailDataList.Where(x => x.__receive == "0").ToList();
+
+            mailInfo.mailList = MailDataNotReceived;
 
             ResponsePacket response = new()
             {

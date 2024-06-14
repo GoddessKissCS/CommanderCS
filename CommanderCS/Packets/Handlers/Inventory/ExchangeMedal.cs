@@ -20,7 +20,7 @@ namespace CommanderCS.Packets.Handlers.Inventory
 
             User.UserInventory.itemData["202"] -= medalExchangeAmount;
 
-            DatabaseManager.GameProfile.UpdateProfile(Session, User);
+            DatabaseManager.GameProfile.UpdateProfile(SessionId, User);
 
             var userInformationResponse = GetUserInformationResponse(User);
 

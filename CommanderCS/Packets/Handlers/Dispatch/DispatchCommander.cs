@@ -30,7 +30,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
                 { slot, commanderInfo }
             };
 
-            DatabaseManager.GameProfile.UpdateDispatchedCommander(Session, dispatchedcommanders);
+            DatabaseManager.GameProfile.UpdateDispatchedCommander(SessionId, dispatchedcommanders);
 
             ResponsePacket response = new()
             {

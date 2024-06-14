@@ -19,8 +19,8 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             User.UserInventory.medalData[cid] -= 10;
 
-            DatabaseManager.GameProfile.UpdateMedalData(Session, User.UserInventory.medalData);
-            DatabaseManager.GameProfile.UpdateCommanderData(Session, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.UserInventory.medalData);
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
 
             var userInformationResponse = GetUserInformationResponse(User);
 
