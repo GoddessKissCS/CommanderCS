@@ -13,10 +13,9 @@ namespace CommanderCS.Packets.Handlers.Gift
         {
             string cid = @params.cid.ToString();
 
-            User.CommanderData[cid].favorStep = @params.step;
             User.CommanderData[cid].favorRewardStep = @params.step;
 
-            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
 
             var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.UserResources);
 

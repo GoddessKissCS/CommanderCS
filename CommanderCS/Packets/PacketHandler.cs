@@ -14,7 +14,7 @@ namespace CommanderCS.Host
         /// <param name="context">The HTTP context containing the request information.</param>
         /// <param name="serviceProvider">The service provider used for dependency injection.</param>
         /// <returns>An encrypted string representing the processed response.</returns>
-        public static async Task<(string, string)> ProcessRequest(HttpContext context, IServiceProvider serviceProvider)
+        public static async Task<string> ProcessRequest(HttpContext context, IServiceProvider serviceProvider)
         {
             var rawRequest = await Compression.Stream2ByteArray(context.Request.Body);
 
@@ -26,17 +26,10 @@ namespace CommanderCS.Host
 
             if (node is null)
             {
-                return ("{}", "{}");
+                return null;
             }
 
             object response;
-
-            string sessValue = "";
-
-            if (node.Contains("sess"))
-            {
-                sessValue = node["sess"].ToString();
-            }
 
             if (node is JArray array)
             {
@@ -63,14 +56,14 @@ namespace CommanderCS.Host
 
             if (response == "{}")
             {
-                return (Crypto.Encrypt("{}", keyIndex), sessValue);
+                return Crypto.Encrypt("{}", keyIndex);
             }
 
             var serialized = JsonConvert.SerializeObject(response);
 
             var encrypted = Crypto.Encrypt(serialized, keyIndex);
 
-            return (encrypted, sessValue);
+            return encrypted;
         }
 
         /// <summary>

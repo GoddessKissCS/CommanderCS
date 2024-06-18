@@ -61,7 +61,7 @@ namespace CommanderCS
 
             var statusString = JsonSerializer.Serialize(status, stausStringOptions);
 
-            app.MapGet("/", () => statusString);
+            app.MapGet("/commandStrings.html", () => statusString);
 
             app.MapPost("/checkData.php", async (HttpContext context, IServiceProvider provider) =>
             {
@@ -71,17 +71,18 @@ namespace CommanderCS
                     return;
                 }
 
+
                 // The Response
-                (string responseData, string session) = await PacketHandler.ProcessRequest(context, provider);
+                string responseData = await PacketHandler.ProcessRequest(context, provider);
 
                 // Set the Response Contenttype and length
                 context.Response.ContentType = "application/json";
                 context.Response.ContentLength = responseData.Length;
 
-                if(session != "" || session != null)
-                {
-                    context.Response.Headers.TryAdd("SET-COOKIE", session);
-                }
+                //if(session != "" || session != null)
+                //{
+                //    context.Response.Headers.TryAdd("SET-COOKIE", session);
+                //}
                
                 // Write response to the response body stream
                 await context.Response.WriteAsync(responseData);
@@ -94,37 +95,40 @@ namespace CommanderCS
                 app.UseDeveloperExceptionPage();
             }
 
+            #region FILECDN
+
             //app.UseMiddleware<CustomExceptionHandlerMiddleware>();
 
             //PROBABLY SHOULD BE MOVED TO A CDN SERVER
 
             //#region StaticFileServer
 
-            const string StaticFilesPath = "FileCDN";
-            const string SlashStaticFilesPath = $"/{StaticFilesPath}";
+            //const string StaticFilesPath = "FileCDN";
+            //const string SlashStaticFilesPath = $"/{StaticFilesPath}";
 
-            // Working Directory path
-            // var BasePath = builder.Environment.ContentRootPath;
-            // Executable file path
-            var BasePath = AppDomain.CurrentDomain.BaseDirectory;
-            var staticFilesProviderPath = Path.Combine(BasePath, StaticFilesPath);
-            var fileProvider = new PhysicalFileProvider(staticFilesProviderPath);
+            //// Working Directory path
+            //// var BasePath = builder.Environment.ContentRootPath;
+            //// Executable file path
 
-            app.UseDirectoryBrowser(new DirectoryBrowserOptions()
-            {
-                FileProvider = fileProvider,
-                RedirectToAppendTrailingSlash = true,
-                RequestPath = SlashStaticFilesPath,
-            });
+            //var BasePath = AppDomain.CurrentDomain.BaseDirectory;
+            //var staticFilesProviderPath = Path.Combine(BasePath, StaticFilesPath);
+            //var fileProvider = new PhysicalFileProvider(staticFilesProviderPath);
 
-            // https://stackoverflow.com/questions/50381490/what-is-the-difference-between-usestaticfiles-and-usefileserver-in-asp-net-c
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = fileProvider,
-                RequestPath = SlashStaticFilesPath,
-                HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
-                ServeUnknownFileTypes = true
-            });
+            //app.UseDirectoryBrowser(new DirectoryBrowserOptions()
+            //{
+            //    FileProvider = fileProvider,
+            //    RedirectToAppendTrailingSlash = true,
+            //    RequestPath = SlashStaticFilesPath,
+            //});
+
+            //// https://stackoverflow.com/questions/50381490/what-is-the-difference-between-usestaticfiles-and-usefileserver-in-asp-net-c
+            //app.UseStaticFiles(new StaticFileOptions()
+            //{
+            //    FileProvider = fileProvider,
+            //    RequestPath = SlashStaticFilesPath,
+            //    HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
+            //    ServeUnknownFileTypes = true
+            //});
 
             // app.UseWebSockets(new WebSocketOptions() {
             //     KeepAliveInterval = TimeSpan.FromSeconds(60),
@@ -140,6 +144,8 @@ namespace CommanderCS
             //});
 
             //app.UseAuthorization();
+
+            #endregion
 
             DatabaseManager.Init();
 

@@ -9,7 +9,6 @@ namespace CommanderCS.Host.Handlers.Nickname
     {
         public override object Handle(SetNickNameFromTutorialRequest @params)
         {
-
             ErrorCode code = DatabaseManager.GameProfile.RequestNicknameAfterTutorial(SessionId, @params.Unm);
 
             if (code != ErrorCode.Success)
@@ -30,9 +29,13 @@ namespace CommanderCS.Host.Handlers.Nickname
 
             if (User.TutorialData.skip)
             {
-                var information = GetUserInformationResponse(User);
+                //var information = GetUserInformationResponse(User);
 
-                string result = JsonConvert.SerializeObject(information);
+                //string result = JsonConvert.SerializeObject(information);
+
+                //string xx = File.ReadAllText("C:\\Users\\Zen\\Desktop\\test.txt");
+
+                //response.Result = xx;
 
                 //return response;
 

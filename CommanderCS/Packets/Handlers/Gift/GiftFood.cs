@@ -1,5 +1,6 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Regulation;
@@ -12,31 +13,38 @@ namespace CommanderCS.Packets.Handlers.Gift
     {
         public override object Handle(GiftFoodRequest @params)
         {
-            string cid = @params.cid.ToString();
-            string cgid = @params.cgid.ToString();
+            string commanderId = @params.cid.ToString();
+            string favourGiftId = @params.cgid.ToString();
+            int favourGiftAmount = @params.amnt;
 
-            User.CommanderData.TryGetValue(cid, out var commander);
+            User.CommanderData.TryGetValue(commanderId, out var commander);
 
-            int favorPoint = commander.favorPoint;
+            int commanderfavorPoint = commander.favorPoint;
+            
+            //might need to add the thing to remove the entry upon reaching 0 of the gifted item
 
-            for (var i = 1; i <= @params.amnt;)
+            for (var i = 1; i <= favourGiftAmount;)
             {
-                if (User.UserInventory.foodData[cgid] > 0)
+                if (User.UserInventory.foodData[favourGiftId] > 0)
                 {
-                    User.UserInventory.foodData[cgid] -= 1;
+                    User.UserInventory.foodData[favourGiftId] -= 1;
                 }
 
-                TryAddingFavour(@params.cgid, ref favorPoint);
+                TryAddingFavour(@params.cgid, ref commanderfavorPoint);
 
                 i++;
             }
 
-            commander.favr += favorPoint;
-            commander.favorPoint = favorPoint;
+            // adding to favr might not be needed needs to be rechecked in the future
+            commander.favr += commanderfavorPoint;
+            commander.favorPoint = commanderfavorPoint;
 
-            User.CommanderData[cid] = CheckCommanderFavour(commander, Regulation);
+            var commanderCID = CheckCommanderFavour(commander, Regulation);
 
-            DatabaseManager.GameProfile.UpdateUserData(SessionId, User);
+
+            User.CommanderData[commanderId] = commanderCID;
+
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, commanderCID);
             UserInformationResponse informationResponse = GetUserInformationResponse(User);
 
             ResponsePacket response = new()
@@ -76,23 +84,61 @@ namespace CommanderCS.Packets.Handlers.Gift
             { 64, 9000 }
         };
 
+
+
         private static UserInformationResponse.Commander CheckCommanderFavour(UserInformationResponse.Commander commander, Regulation rg)
         {
             FavorStepDataRow row = new();
 
-            if (commander.favorStep == 0)
+            switch (commander.favorStep)
             {
-                row = rg.favorStepDtbl.Find(x => x.step == 1);
-            }
-            else
-            {
-                row = rg.favorStepDtbl.Find(x => x.step == commander.favorStep + 1);
-            }
+                case 0:
+                    row = rg.favorStepDtbl.Find(x => x.step == 1);
+                    break;
+                case 1:
+                    row = rg.favorStepDtbl.Find(x => x.step == 2);
+                    break;
+                case 2:
+                    row = rg.favorStepDtbl.Find(x => x.step == 3);
+                    break;
+                case 3:
+                    row = rg.favorStepDtbl.Find(x => x.step == 4);
+                    break;
+                case 4:
+                    row = rg.favorStepDtbl.Find(x => x.step == 5);
+                    break;
+                case 5:
+                    row = rg.favorStepDtbl.Find(x => x.step == 6);
+                    break;
+                case 6:
+                    row = rg.favorStepDtbl.Find(x => x.step == 7);
+                    break;
+                case 7:
+                    row = rg.favorStepDtbl.Find(x => x.step == 8);
+                    break;
+                case 8:
+                    row = rg.favorStepDtbl.Find(x => x.step == 9);
+                    break;
+                case 9:
+                    row = rg.favorStepDtbl.Find(x => x.step == 10);
+                    break;
+                case 10:
+                    row = rg.favorStepDtbl.Find(x => x.step == 11);
+                    break;
+                case 11:
+                    row = rg.favorStepDtbl.Find(x => x.step == 12);
+                    break;
+                case 12:
+                    row = rg.favorStepDtbl.Find(x => x.step == 13);
+                    break;
+                case 13:
+                    row = rg.favorStepDtbl.Find(x => x.step == 14);
+                    break;
+                case 14:
+                    row = rg.favorStepDtbl.Find(x => x.step == 15);
+                    break;
+            };
 
-            if (row == null)
-            {
-                row = rg.favorStepDtbl.Find(x => x.step == 15);
-            }
 
             if (commander.favorPoint > row.favor)
             {

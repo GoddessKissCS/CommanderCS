@@ -5,7 +5,9 @@ using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Protocols;
 using Microsoft.VisualBasic;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using Newtonsoft.Json.Linq;
+using static CommanderCSLibrary.Shared.Protocols.ConquestStageUser;
 
 namespace CommanderCS.MongoDB.Handlers
 {
@@ -716,6 +718,24 @@ namespace CommanderCS.MongoDB.Handlers
         }
 
         /// <summary>
+        /// Updates the commander data for a user in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="commander">The updated commander to be stored.</param>
+        public void UpdateSpecificCommander(string session, UserInformationResponse.Commander commander)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.And(
+                Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
+                Builders<GameProfileScheme>.Filter.Eq("CommanderData.Key", commander.id)
+            );
+
+            var update = Builders<GameProfileScheme>.Update.Set("CommanderData.$", commander);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+
+        /// <summary>
         /// Updates the food data for a user in the database.
         /// </summary>
         /// <param name="session">The session associated with the user.</param>
@@ -1235,5 +1255,29 @@ namespace CommanderCS.MongoDB.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
+        /// <summary>
+        /// Updates the user data in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="user">The updated user profile.</param>
+        public void UpdateCommanderMarriage(string session, GameProfileScheme user, UserInformationResponse.Commander commander)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.And(
+            Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
+            Builders<GameProfileScheme>.Filter.Eq("CommanderData.Key", commander.id)
+            );
+
+            var update = Builders<GameProfileScheme>.Update.Set("CommanderData.$", commander);
+
+            DatabaseCollection.UpdateOne(filter, update);
+
+
+            var filter2 = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update2 = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.ring, user.UserResources.ring);
+
+            DatabaseCollection.UpdateOne(filter2, update2);
+        }
+
     }
 }

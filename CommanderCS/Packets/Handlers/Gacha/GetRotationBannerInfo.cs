@@ -10,21 +10,35 @@ namespace CommanderCS.Host.Handlers.Gacha
         {
             RotationBanner.BannerList banner = new()
             {
-                ImgUrl = "http://192.168.178.29:8080/events/event1.png",
+                ImgUrl = "http://192.168.178.29:8080/FileCDN/Event/TitleBanner/Notice_Icon.png",
+                linkType = BannerListType.DiaShop,
+                linkIdx = 0,
+                eventIdx = 0,
+                startDate = "1718721052",
+                endDate = "1719757852",
+               
+            };
+
+            RotationBanner.BannerList banner2 = new()
+            {
+                ImgUrl = "http://192.168.178.29:8080/FileCDN/Event/TitleBanner/Event_Icon.png",
                 linkType = BannerListType.DiaShop,
                 linkIdx = 1,
                 eventIdx = 1,
-                startDate = "1643673600",
-                endDate = "1656626399",
+                startDate = "1718721052",
+                endDate = "1719757852",
             };
+
+            // needs further investigation.
+
             List<RotationBanner.BannerList> bannerlist = new(new List<RotationBanner.BannerList>()
             {
-                //{ banner }
+                //{ banner }, { banner2 }
             });
 
             RotationBanner rotationBanner = new()
             {
-                roataionTime = 1643673600,
+                roataionTime = 1719757852,
                 bannerList = bannerlist,
             };
 
