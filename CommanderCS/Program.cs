@@ -151,6 +151,8 @@ namespace CommanderCS
 
             RemoteObjectManager.instance.regulation = Regulation.Create();
 
+            //Misc.BannedWords = Misc.GetBadWords();
+
             app.Run();
         }
     }

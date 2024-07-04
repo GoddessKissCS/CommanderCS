@@ -18,6 +18,30 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\BadWordList\ar.txt" />
+    <None Remove="Resources\BadWordList\cs.txt" />
+    <None Remove="Resources\BadWordList\da.txt" />
+    <None Remove="Resources\BadWordList\de.txt" />
+    <None Remove="Resources\BadWordList\de_ch.txt" />
+    <None Remove="Resources\BadWordList\en.txt" />
+    <None Remove="Resources\BadWordList\es.txt" />
+    <None Remove="Resources\BadWordList\fa.txt" />
+    <None Remove="Resources\BadWordList\fi.txt" />
+    <None Remove="Resources\BadWordList\fr.txt" />
+    <None Remove="Resources\BadWordList\hi.txt" />
+    <None Remove="Resources\BadWordList\hu.txt" />
+    <None Remove="Resources\BadWordList\it.txt" />
+    <None Remove="Resources\BadWordList\ja.txt" />
+    <None Remove="Resources\BadWordList\ko.txt" />
+    <None Remove="Resources\BadWordList\nl.txt" />
+    <None Remove="Resources\BadWordList\no.txt" />
+    <None Remove="Resources\BadWordList\pl.txt" />
+    <None Remove="Resources\BadWordList\pt.txt" />
+    <None Remove="Resources\BadWordList\ru.txt" />
+    <None Remove="Resources\BadWordList\sv.txt" />
+    <None Remove="Resources\BadWordList\th.txt" />
+    <None Remove="Resources\BadWordList\tr.txt" />
+    <None Remove="Resources\BadWordList\zh.txt" />
     <None Remove="Resources\ExcelOutputAsset\AchievementTable.json" />
     <None Remove="Resources\ExcelOutputAsset\AnnihilateBattleDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\BattleFieldSearchDataTable.json" />
@@ -128,6 +152,78 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\BadWordList\ar.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\cs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\da.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\de.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\de_ch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\en.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\es.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\fa.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\fi.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\fr.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\hi.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\hu.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\it.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\ja.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\ko.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\nl.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\no.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\pl.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\pt.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\ru.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\sv.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\th.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\tr.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BadWordList\zh.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\ExcelOutputAsset\AchievementTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

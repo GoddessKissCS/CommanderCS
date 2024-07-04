@@ -10,22 +10,18 @@ namespace CommanderCS.Host.Handlers.VersionCheck
         public override object Handle(GameVersionInfoRequest @params)
         {
             var gameVer = DatabaseManager.GameVersionInfo.Get(@params.ch);
-            double policy = Convert.ToDouble(gameVer.showPolicy);
-            int fileCheckingEnabled = Convert.ToInt32(gameVer.fileCheck);
-            int googleLoginEnabled = Convert.ToInt32(gameVer.enableGoogleLogin);
-            int isVersionOutdated = Convert.ToInt32(gameVer.Version_State);
 
             GameVersionInfoResponse gameversion = new()
             {
-                policy = policy,
+                policy = Convert.ToDouble(gameVer.showPolicy),
                 chat = gameVer.Chat_Url,
                 cdn = gameVer.Cdn_Url,
                 game = gameVer.Game_Url,
-                fc = fileCheckingEnabled,
-                gglogin = googleLoginEnabled,
+                fc = Convert.ToInt32(gameVer.fileCheck),
+                gglogin = Convert.ToInt32(gameVer.enableGoogleLogin),
                 ver = gameVer.Version,
                 word = gameVer.Word,
-                stat = isVersionOutdated
+                stat = Convert.ToInt32(gameVer.Version_State)
             };
 
             ResponsePacket ResponsePacket = new()

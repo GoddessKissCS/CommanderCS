@@ -23,36 +23,6 @@ namespace CommanderCSLibrary.Cryptography
 
         public static int Decrypt(string input, out string value) => Decrypt(Convert.FromBase64String(input), out value);
 
-
-
-        public static string PacketDecryption(string packet)
-        {
-
-            byte[] input = Convert.FromBase64String(packet);
-
-            var engine = new RijndaelEngine(256);
-            var padding = new ZeroBytePadding();
-            var parameters = new KeyParameter(_keys[0]);
-
-            var cipher = new PaddedBufferedBlockCipher(engine, padding);
-            cipher.Init(false, parameters);
-
-
-            var outputSize = cipher.GetOutputSize(input.Length);
-
-            var output = new byte[outputSize];
-
-            var length = cipher.ProcessBytes(input, output, 0);
-
-            var final = cipher.DoFinal(output, length);
-
-            var totalLength = length + final;
-
-            var decodedBytes = output[0..totalLength];
-
-            return _encoding.GetString(decodedBytes);
-        }
-
         public static int Decrypt(byte[] input, out string value)
         {
             for (int i = 0; i < _keys.Length; i++)

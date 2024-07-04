@@ -57,6 +57,10 @@ namespace CommanderCS.MongoDB
         /// </summary>
         public static DatabaseGameProfile GameProfile { get; } = new();
 
+        public static DatabaseCommonNotice CommonNotice { get; } = new();
+
+        public static DatabaseEventNotice EventNotice { get; } = new();
+
         /// <summary>
         /// Initializes the database manager.
         /// </summary>

@@ -64,10 +64,6 @@ namespace CommanderCS.Host.Handlers.Server
                 ServerData.ServerInfo SIFO = new()
                 {
                     status = (int)StatusEnum.Medium,
-                    // 1 = Medium
-                    // 2 = Busy
-                    // 3 = Full
-                    // 4 = Unable to join
                     idx = i,
                     lastLoginTime = profile.LastLoginTime,
                     level = profile.UserResources.level,
