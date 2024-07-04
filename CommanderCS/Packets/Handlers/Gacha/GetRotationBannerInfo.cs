@@ -1,4 +1,5 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Host.Handlers.Gacha
@@ -8,40 +9,20 @@ namespace CommanderCS.Host.Handlers.Gacha
     {
         public override object Handle(GetRotationBannerInfoRequest @params)
         {
-            RotationBanner.BannerList banner = new()
-            {
-                ImgUrl = "http://192.168.178.29:8080/FileCDN/Event/TitleBanner/Notice_Icon.png",
-                linkType = BannerListType.None,
-                linkIdx = 0,
-                eventIdx = 0,
-                startDate = "1720097316",
-                endDate = "1722170916",
-               
-            };
-
-            RotationBanner.BannerList banner2 = new()
-            {
-                ImgUrl = "http://192.168.178.29:8080/FileCDN/Event/TitleBanner/Event_Icon.png",
-                linkType = BannerListType.None,
-                linkIdx = 1,
-                eventIdx = 1,
-                startDate = "1720097316",
-                endDate = "1722170916",
-            };
-
             // https://unixtime.org/
 
             // needs further investigation.
 
-            List<RotationBanner.BannerList> bannerlist = new(new List<RotationBanner.BannerList>()
-            {
-                { banner }, { banner2 }
-            });
+            List<RotationBanner.BannerList> bannerListFromDatabase = DatabaseManager.RotationBanner.GetAllCurrentBannersList();
+
 
             RotationBanner rotationBanner = new()
             {
-                roataionTime = 1719757852,
-                bannerList = bannerlist,
+                //max banner rotation
+                //probably useless but who cares
+                roataionTime = 1719757852, 
+
+                bannerList = bannerListFromDatabase,
             };
 
             ResponsePacket response = new()

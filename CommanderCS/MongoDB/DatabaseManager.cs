@@ -57,9 +57,20 @@ namespace CommanderCS.MongoDB
         /// </summary>
         public static DatabaseGameProfile GameProfile { get; } = new();
 
+        /// <summary>
+        /// Gets the database manager for common notices.
+        /// </summary>
         public static DatabaseCommonNotice CommonNotice { get; } = new();
 
+        /// <summary>
+        /// Gets the database manager for event notices.
+        /// </summary>
         public static DatabaseEventNotice EventNotice { get; } = new();
+
+        /// <summary>
+        /// Gets the database manager for banner rotation.
+        /// </summary>
+        public static DatabaseRotationBanner RotationBanner { get; } = new();
 
         /// <summary>
         /// Initializes the database manager.
@@ -69,6 +80,7 @@ namespace CommanderCS.MongoDB
             // Check if the game table version matches the current version
 
             var gametables = GameTableVersion.Get();
+
 
             if (gametables != null)
             {
@@ -88,6 +100,13 @@ namespace CommanderCS.MongoDB
             // Initialize servers
             Server.Insert(1, "Korea", 140, "18-20", 1643673600, 0, 0);
             Server.Insert(2, "Global", 140, "18-20", 1643673600, 0, 0);
+
+
+            // initalize some banners
+            RotationBanner.Insert("1720097316", "1722170916", 0, 0, "http://192.168.178.29:8080/FileCDN/Event/TitleBanner/Notice_Icon.png", "", CommanderCSLibrary.Shared.Enum.BannerListType.None);
+            RotationBanner.Insert("1720097316", "1722170916", 1, 1, "http://192.168.178.29:8080/FileCDN/Event/TitleBanner/Event_Icon.png", "", CommanderCSLibrary.Shared.Enum.BannerListType.None);
+
+
         }
     }
 }
