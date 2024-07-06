@@ -39,7 +39,9 @@ namespace CommanderCS.Host.Handlers.Nickname
 
                 //return response;
 
-            } else {
+            }
+            else
+            {
 
             }
 

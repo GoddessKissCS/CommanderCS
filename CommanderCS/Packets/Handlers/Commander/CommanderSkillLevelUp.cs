@@ -10,20 +10,17 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CommanderSkillLevelUpRequest @params)
         {
-            string cid = @params.cid.ToString();
+            string cid = @params.CommanderId.ToString();
 
             int totalCost = 0;
 
-            int skillIndex = @params.sidx;
-            int upgradeLevel = @params.cnt;
-
-            for (var i = 1; i <= upgradeLevel;)
+            for (var i = 1; i <= @params.Count;)
             {
                 var skillcostdtbl = Regulation.skillCostDtbl.Find(x => x.level == i);
 
-                if (skillcostdtbl != null && skillIndex < skillcostdtbl.typeCost.Count)
+                if (skillcostdtbl != null && @params.skillIndex < skillcostdtbl.typeCost.Count)
                 {
-                    var cost = skillcostdtbl.typeCost[skillIndex - 1];
+                    var cost = skillcostdtbl.typeCost[@params.skillIndex - 1];
                     totalCost += cost;
                 }
 
@@ -31,22 +28,22 @@ namespace CommanderCS.Packets.Handlers.Commander
             }
 
 
-            switch (skillIndex)
+            switch (@params.skillIndex)
             {
                 case 1:
-                    User.CommanderData[cid].__skv1 = (int.Parse(User.CommanderData[cid].__skv1) + upgradeLevel).ToString();
+                    User.CommanderData[cid].__skv1 = (int.Parse(User.CommanderData[cid].__skv1) + @params.Count).ToString();
                     break;
 
                 case 2:
-                    User.CommanderData[cid].__skv2 = (int.Parse(User.CommanderData[cid].__skv2 + upgradeLevel).ToString());
+                    User.CommanderData[cid].__skv2 = (int.Parse(User.CommanderData[cid].__skv2 + @params.Count).ToString());
                     break;
 
                 case 3:
-                    User.CommanderData[cid].__skv3 = (int.Parse(User.CommanderData[cid].__skv3) + upgradeLevel).ToString();
+                    User.CommanderData[cid].__skv3 = (int.Parse(User.CommanderData[cid].__skv3) + @params.Count).ToString();
                     break;
 
                 case 4:
-                    User.CommanderData[cid].__skv4 = (int.Parse(User.CommanderData[cid].__skv4) + upgradeLevel).ToString();
+                    User.CommanderData[cid].__skv4 = (int.Parse(User.CommanderData[cid].__skv4) + @params.Count).ToString();
                     break;
             }
 
@@ -68,13 +65,13 @@ namespace CommanderCS.Packets.Handlers.Commander
     public class CommanderSkillLevelUpRequest
     {
         [JsonProperty("cid")]
-        public int cid { get; set; }
+        public int CommanderId { get; set; }
 
         [JsonProperty("sidx")]
-        public int sidx { get; set; }
+        public int skillIndex { get; set; }
 
         [JsonProperty("cnt")]
-        public int cnt { get; set; }
+        public int Count { get; set; }
     }
 }
 

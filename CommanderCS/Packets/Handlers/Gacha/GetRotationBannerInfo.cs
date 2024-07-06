@@ -20,7 +20,7 @@ namespace CommanderCS.Host.Handlers.Gacha
             {
                 //max banner rotation
                 //probably useless but who cares
-                roataionTime = 1719757852, 
+                roataionTime = 1719757852,
 
                 bannerList = bannerListFromDatabase,
             };

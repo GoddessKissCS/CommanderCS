@@ -1,10 +1,7 @@
 using CommanderCS.Host;
-using CommanderCS.Middlewares;
 using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Regulation;
-using Microsoft.Extensions.FileProviders;
-using StellarGK.Middlewares;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -40,7 +37,7 @@ namespace CommanderCS
                 options.UnknownTypeHandling = JsonUnknownTypeHandling.JsonElement;
                 options.WriteIndented = true;
             });
-            
+
             //builder.Services.AddRazorPages();
 
             builder.Services.AddHttpClient();
@@ -83,7 +80,7 @@ namespace CommanderCS
                 //{
                 //    context.Response.Headers.TryAdd("SET-COOKIE", session);
                 //}
-               
+
                 // Write response to the response body stream
                 await context.Response.WriteAsync(responseData);
             });

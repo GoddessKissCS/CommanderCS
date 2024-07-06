@@ -5,7 +5,7 @@ namespace CommanderCS.MongoDB.Schemes
     /// <summary>
     /// Represents a server scheme.
     /// </summary>
-    public class ServerScheme
+    public class RegionScheme
     {
         /// <summary>
         /// Gets or sets the unique identifier.

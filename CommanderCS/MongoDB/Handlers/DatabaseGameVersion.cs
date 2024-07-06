@@ -42,9 +42,9 @@ namespace CommanderCS.MongoDB.Handlers
                 Version_State = stat,
                 // probably should add more "word lists"
                 Word = new Dictionary<string, double>
-            {
-                { "en", 1 }
-            }
+                {
+                    { "en", 0.1 }
+                }
             };
 
             DatabaseCollection.InsertOne(versionInfo);

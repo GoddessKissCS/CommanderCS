@@ -15,7 +15,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// <summary>
         /// Initializes a new instance of the <see cref="DatabaseGuildApplication"/> class with the specified table name.
         /// </summary>
-        public DatabaseGuildApplication() : base("GuildApplications")
+        public DatabaseGuildApplication() : base("GuildApplication")
         {
         }
 
@@ -271,7 +271,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>True if the data has changed; otherwise, false.</returns>
         private bool CheckIfRequestMemberDataChanged(GuildApplicationScheme guildApplication, GameProfileScheme user)
         {
-            return guildApplication.JoinMemberData.thumnail != user.UserResources.thumbnailId ||  guildApplication.JoinMemberData.level != user.UserResources.level || guildApplication.JoinMemberData.name != user.UserResources.nickname || user.GuildId != null;
+            return guildApplication.JoinMemberData.thumnail != user.UserResources.thumbnailId || guildApplication.JoinMemberData.level != user.UserResources.level || guildApplication.JoinMemberData.name != user.UserResources.nickname || user.GuildId != null;
         }
     }
 }

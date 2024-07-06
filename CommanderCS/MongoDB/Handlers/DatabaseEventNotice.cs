@@ -15,20 +15,19 @@ namespace CommanderCS.MongoDB.Handlers
         public DatabaseEventNotice() : base("EventNotice")
         {
         }
-
         public NoticeDataScheme Insert(double startdate, double eventstartdate, double enddate, double eventenddate, int idx, string img, string link, string notice, int notifixed)
         {
             NoticeDataScheme dataInfo = new()
             {
-                startDate = startdate,
-                eventStartDate = eventstartdate,
-                endDate = enddate,
-                eventEndDate = eventenddate,
-                idx = idx,
-                img = img,
-                link = link,
-                notice = notice,
-                notiFixed = notifixed
+                StartDateTime = startdate,
+                EventStartDate = eventstartdate,
+                EndDateTime = enddate,
+                EventEndDate = eventenddate,
+                Idx = idx,
+                ImageUrl = img,
+                Link = link,
+                Notice = notice,
+                NotifiactionFixed = notifixed
             };
 
             DatabaseCollection.InsertOne(dataInfo);
@@ -51,15 +50,15 @@ namespace CommanderCS.MongoDB.Handlers
             {
                 NoticeData noticeData = new()
                 {
-                    startDate = notice.startDate,
-                    eventStartDate = notice.eventStartDate,
-                    endDate = notice.endDate,
-                    eventEndDate = notice.eventEndDate,
-                    idx = notice.idx,
-                    img = notice.img,
-                    link = notice.link,
-                    notice = notice.notice,
-                    notiFixed = notice.notiFixed,
+                    startDate = notice.StartDateTime,
+                    eventStartDate = notice.EventStartDate,
+                    endDate = notice.EndDateTime,
+                    eventEndDate = notice.EventEndDate,
+                    idx = notice.Idx,
+                    img = notice.ImageUrl,
+                    link = notice.Link,
+                    notice = notice.Notice,
+                    notiFixed = notice.NotifiactionFixed,
                 };
 
                 notices.Add(noticeData);

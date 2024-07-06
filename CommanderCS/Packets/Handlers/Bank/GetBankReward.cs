@@ -1,5 +1,4 @@
 using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Regulation;
 
 namespace CommanderCS.Packets.Handlers.Bank
 {
@@ -26,7 +25,7 @@ namespace CommanderCS.Packets.Handlers.Bank
 
     public class GetBankRewardResponse
     {
-        public long gold {  get; set; }
+        public long gold { get; set; }
     }
 }
 

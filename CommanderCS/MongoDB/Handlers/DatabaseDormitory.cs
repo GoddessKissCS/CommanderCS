@@ -11,7 +11,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// <summary>
         /// Initializes a new instance of the <see cref="DatabaseDormitory"/> class.
         /// </summary>
-        public DatabaseDormitory() : base("Dormitory")
+        public DatabaseDormitory() : base(collectionName: "Dormitory")
         {
         }
 

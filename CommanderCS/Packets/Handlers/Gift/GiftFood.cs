@@ -1,6 +1,5 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
-using CommanderCS.MongoDB.Schemes;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Regulation;
@@ -20,7 +19,7 @@ namespace CommanderCS.Packets.Handlers.Gift
             User.CommanderData.TryGetValue(commanderId, out var commander);
 
             int commanderfavorPoint = commander.favorPoint;
-            
+
             //might need to add the thing to remove the entry upon reaching 0 of the gifted item
 
             for (var i = 1; i <= favourGiftAmount;)

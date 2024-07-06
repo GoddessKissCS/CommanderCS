@@ -6,11 +6,11 @@ namespace CommanderCS.MongoDB.Schemes
     public class RotationBannerScheme
     {
         public ObjectId Id { get; set; }
-        public string ImgUrl { get; set; }
-        public BannerListType linkType { get; set; }
-        public int linkIdx { get; set; }
-        public int eventIdx { get; set; }
-        public string startDate { get; set; }
-        public string endDate { get; set; }
+        public string ImageUrl { get; set; }
+        public BannerListType BannerListType { get; set; }
+        public int LinkIdx { get; set; }
+        public int EventIdx { get; set; }
+        public string StartDateTime { get; set; }
+        public string EndDateTime { get; set; }
     }
 }

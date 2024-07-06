@@ -13,11 +13,11 @@ namespace CommanderCS.Host.Handlers.Battle
         public override object Handle(BattleOutRequest @params)
         {
 
-			ErrorPacket error = new()
-			{
-				Id = BasePacket.Id,
-				Error = new() { code = ErrorCode.Success }
-			};
+            ErrorPacket error = new()
+            {
+                Id = BasePacket.Id,
+                Error = new() { code = ErrorCode.Success }
+            };
 
             string serializedJson = JsonConvert.SerializeObject(@params.info, Formatting.Indented);
 
@@ -55,7 +55,7 @@ namespace CommanderCS.Host.Handlers.Battle
             }
 
 
-			// REWORK THIS
+            // REWORK THIS
 
             var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 

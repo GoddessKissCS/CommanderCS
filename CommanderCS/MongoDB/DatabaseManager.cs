@@ -30,7 +30,7 @@ namespace CommanderCS.MongoDB
         /// <summary>
         /// Gets the database manager for servers.
         /// </summary>
-        public static DatabaseServer Server { get; } = new();
+        public static DatabaseRegion Region { get; } = new();
 
         /// <summary>
         /// Gets the database manager for guilds.
@@ -84,7 +84,7 @@ namespace CommanderCS.MongoDB
 
             if (gametables != null)
             {
-                if(gametables.Version == 20220312000000)
+                if (gametables.Version == 20220312000000)
                 {
                     return;
                 }
@@ -97,9 +97,12 @@ namespace CommanderCS.MongoDB
             // Initialize game table version
             GameTableVersion.Insert(20220312000000);
 
-            // Initialize servers
-            Server.Insert(1, "Korea", 140, "18-20", 1643673600, 0, 0);
-            Server.Insert(2, "Global", 140, "18-20", 1643673600, 0, 0);
+            // Initialize Regions
+            Region.Insert(1, "Korea", 140, "18-20", 1643673600, 0, 0);
+            Region.Insert(2, "Global", 140, "18-20", 1643673600, 0, 0);
+
+
+            // Initialize Server
 
 
             // initalize some banners

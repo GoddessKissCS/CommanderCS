@@ -1,8 +1,5 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Host.Handlers.Guild
 {

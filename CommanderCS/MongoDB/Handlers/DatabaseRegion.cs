@@ -6,12 +6,12 @@ namespace CommanderCS.MongoDB.Handlers
     /// <summary>
     /// Represents a database table for storing server information.
     /// </summary>
-    public class DatabaseServer : DatabaseTable<ServerScheme>
+    public class DatabaseRegion : DatabaseTable<RegionScheme>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DatabaseServer"/> class with the specified table name.
+        /// Initializes a new instance of the <see cref="DatabaseRegion"/> class with the specified table name.
         /// </summary>
-        public DatabaseServer() : base("Server")
+        public DatabaseRegion() : base("Region")
         {
         }
 
@@ -27,7 +27,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// <param name="servercount">The total number of servers.</param>
         public void Insert(int id, string region, int maxlevel, string maxstage, double openDt, int playercount, int servercount)
         {
-            ServerScheme versionInfo = new()
+            RegionScheme versionInfo = new()
             {
                 ChannelId = id,
                 ServerRegion = region,
@@ -46,7 +46,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// </summary>
         /// <param name="id">The unique identifier of the server.</param>
         /// <returns>The server information.</returns>
-        public ServerScheme Get(int id)
+        public RegionScheme Get(int id)
         {
             return DatabaseCollection.AsQueryable().Where(d => d.ChannelId == id).FirstOrDefault();
         }

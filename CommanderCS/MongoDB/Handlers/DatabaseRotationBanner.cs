@@ -17,25 +17,22 @@ namespace CommanderCS.MongoDB.Handlers
         public DatabaseRotationBanner() : base("RotationBanner")
         {
         }
-
-
         public RotationBannerScheme Insert(string startdate, string enddate, int eventId, int id, string imgUrl, string link, BannerListType bannerType)
         {
             RotationBannerScheme dataInfo = new()
             {
-                startDate = startdate,
-                endDate = enddate,
-                eventIdx = eventId,
-                ImgUrl = imgUrl,
-                linkIdx = id,
-                linkType = bannerType
+                StartDateTime = startdate,
+                EndDateTime = enddate,
+                EventIdx = eventId,
+                ImageUrl = imgUrl,
+                LinkIdx = id,
+                BannerListType = bannerType
             };
 
             DatabaseCollection.InsertOne(dataInfo);
 
             return dataInfo;
         }
-
 
         public List<RotationBanner.BannerList> GetAllCurrentBannersList()
         {
@@ -52,25 +49,19 @@ namespace CommanderCS.MongoDB.Handlers
             {
                 RotationBanner.BannerList noticeData = new()
                 {
-                    startDate = notice.startDate,
-                    endDate = notice.endDate,
-                    eventIdx = notice.eventIdx,
-                    ImgUrl = notice.ImgUrl,
-                    linkIdx = notice.linkIdx,
-                    linkType = notice.linkType
+                    startDate = notice.StartDateTime,
+                    endDate = notice.EndDateTime,
+                    eventIdx = notice.EventIdx,
+                    ImgUrl = notice.ImageUrl,
+                    linkIdx = notice.LinkIdx,
+                    linkType = notice.BannerListType
                 };
 
-                if (notice.linkIdx == 0) {
-
-                    var time = TimeManager.TomorrowEpochInMilliseconds;
-                    notice.endDate = time.ToString();
-                }
-
-                if (notice.linkIdx == 1)
+                if (notice.LinkIdx == 0 || notice.LinkIdx == 1)
                 {
 
                     var time = TimeManager.TomorrowEpochInMilliseconds;
-                    notice.endDate = time.ToString();
+                    notice.EndDateTime = time.ToString();
                 }
 
 
