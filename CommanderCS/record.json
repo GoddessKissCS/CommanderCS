@@ -1,0 +1,156 @@
+{
+  "smvr": 1000000,
+  "rgvr": 20220312000000.0,
+  "optn": {
+    "efct": true
+  },
+  "init": {
+    "type": 1,
+    "stgn": "1",
+    "rdsd": 29041,
+    "ltrp": [
+      {
+        "slots": [
+          {
+            "id": "5001",
+            "cid": "1",
+            "ctyp": 1,
+            "midx": 0,
+            "pidx": 0,
+            "rnk": 1,
+            "cls": 1,
+            "lv": 1,
+            "cos": 1001,
+            "rsf": 0,
+            "mry": 0,
+            "exp": 0,
+            "pos": 0,
+            "hp": 1435,
+            "dmghp": 0,
+            "dict": 0,
+            "skills": [
+              {
+                "id": "50011",
+                "lv": 1,
+                "sp": 0
+              },
+              {
+                "id": "50012",
+                "lv": 1,
+                "sp": 0
+              },
+              {
+                "id": "50013",
+                "lv": 1,
+                "sp": 0
+              },
+              {
+                "id": "50014",
+                "lv": 1,
+                "sp": 0
+              }
+            ],
+            "itms": {},
+            "wepns": {},
+            "tsdc": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "rtrp": [
+      {
+        "slots": [
+          {
+            "id": "60001",
+            "cid": "",
+            "ctyp": 8,
+            "midx": 0,
+            "pidx": 0,
+            "rnk": 1,
+            "cls": 1,
+            "lv": 1,
+            "cos": 0,
+            "rsf": 0,
+            "mry": 0,
+            "exp": 0,
+            "pos": 0,
+            "hp": 187,
+            "dmghp": 0,
+            "dict": 0,
+            "skills": [],
+            "itms": {},
+            "wepns": {},
+            "tsdc": []
+          },
+          null,
+          null,
+          {
+            "id": "60002",
+            "cid": "",
+            "ctyp": 8,
+            "midx": 0,
+            "pidx": 0,
+            "rnk": 1,
+            "cls": 1,
+            "lv": 1,
+            "cos": 0,
+            "rsf": 0,
+            "mry": 0,
+            "exp": 0,
+            "pos": 0,
+            "hp": 187,
+            "dmghp": 0,
+            "dict": 0,
+            "skills": [],
+            "itms": {},
+            "wepns": {},
+            "tsdc": []
+          },
+          null,
+          null,
+          {
+            "id": "60003",
+            "cid": "",
+            "ctyp": 8,
+            "midx": 0,
+            "pidx": 0,
+            "rnk": 1,
+            "cls": 1,
+            "lv": 1,
+            "cos": 0,
+            "rsf": 0,
+            "mry": 0,
+            "exp": 0,
+            "pos": 0,
+            "hp": 187,
+            "dmghp": 0,
+            "dict": 0,
+            "skills": [],
+            "itms": {},
+            "wepns": {},
+            "tsdc": []
+          },
+          null,
+          null
+        ]
+      }
+    ],
+    "grp": null
+  },
+  "flen": 221,
+  "lipt": {},
+  "ript": {}
+}

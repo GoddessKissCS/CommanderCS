@@ -14,7 +14,70 @@ namespace CommanderCS.Packets.Handlers.WorldMap
         {
 #warning TODO: REVAMP THIS FUNCTION
 
-            string commanderId = GetCommanderIdForWorldMapReward(@params.world);
+            string commanderId = "0";
+            int medalsCommander = 0;
+
+            switch (@params.world)
+            {
+                case 0:
+                    commanderId = "5";
+                    medalsCommander = 10;
+                    break;
+                case 1:
+                    commanderId = "26";
+                    break;
+                case 2:
+                    commanderId = "14";
+                    break;
+                case 3:
+                    commanderId = "19";
+                    break;
+                case 4:
+                    commanderId = "15";
+                    break;
+                case 5:
+                    commanderId = "12";
+                    break;
+                case 6:
+                    commanderId = "27";
+                    break;
+                case 7:
+                    commanderId = "10";
+                    break;
+                case 8:
+                    commanderId = "20";
+                    break;
+                case 9:
+                    commanderId = "30";
+                    break;
+                case 10:
+                    commanderId = "616";
+                    break;
+                case 11:
+                    commanderId = "47";
+                    break;
+                case 12:
+                    commanderId = "50";
+                    break;
+                case 13:
+                    commanderId = "51";
+                    break;
+                case 14:
+                    commanderId = "48";
+                    break;
+                case 15:
+                    commanderId = "62";
+                    break;
+                case 16:
+                    commanderId = "75";
+                    break;
+                case 17:
+                    commanderId = "85";
+                    break;
+                case 18:
+                    commanderId = "92";
+                    break;
+            }
 
             var worldmap = UserWorldReward(commanderId, User, SessionId);
 
@@ -27,33 +90,6 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             };
 
             return response;
-        }
-
-        private static string GetCommanderIdForWorldMapReward(int world)
-        {
-            return world switch
-            {
-                0 => "5",
-                1 => "26",
-                2 => "14",
-                3 => "19",
-                4 => "15",
-                5 => "12",
-                6 => "27",
-                7 => "10",
-                8 => "20",
-                9 => "30",
-                10 => "616",
-                11 => "47",
-                12 => "50",
-                13 => "51",
-                14 => "48",
-                15 => "62",
-                16 => "75",
-                17 => "85",
-                18 => "92",
-                _ => string.Empty,
-            };
         }
 
         private static CommanderCSLibrary.Shared.Protocols.WorldMapReward UserWorldReward(string commanderId, GameProfileScheme user, string session)

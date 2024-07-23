@@ -37,30 +37,20 @@ namespace CommanderCS.Host
         public BasePacket BasePacket { get; set; }
         public abstract object Handle(TParams @params);
         public string SessionId => BasePacket.SessionId;
-        public GameProfileScheme User => DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
-        public AccountScheme Account => DatabaseManager.Account.FindBySession(BasePacket.SessionId);
-        public DormitoryScheme Dormitory => DatabaseManager.Dormitory.FindBySession(BasePacket.SessionId);
-        public GuildScheme Guild => DatabaseManager.Guild.FindBySession(BasePacket.SessionId);
-        public Regulation Regulation => RemoteObjectManager.instance.regulation;
 
-        public AccountScheme? GetUserAccount()
-        {
-            return DatabaseManager.Account.FindBySession(BasePacket.SessionId);
-        }
+        public GameProfileScheme User { get; private set; }
+        public AccountScheme Account { get; private set; }
+        public DormitoryScheme Dormitory { get; private set; }
+        public GuildScheme Guild { get; private set; }
+        public Regulation Regulation { get; private set; }
 
-        public GameProfileScheme? GetUserGameProfile()
+        public void Initialize()
         {
-            return DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
-        }
-
-        public DormitoryScheme? GetUserDormitory()
-        {
-            return DatabaseManager.Dormitory.FindBySession(BasePacket.SessionId);
-        }
-
-        public GuildScheme GetUserGuild()
-        {
-            return DatabaseManager.Guild.FindBySession(BasePacket.SessionId);
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            Account = DatabaseManager.Account.FindBySession(BasePacket.SessionId);
+            Dormitory = DatabaseManager.Dormitory.FindBySession(BasePacket.SessionId);
+            Guild = DatabaseManager.Guild.FindBySession(BasePacket.SessionId);
+            Regulation = RemoteObjectManager.instance.regulation;
         }
 
         public UserInformationResponse GetUserInformationResponse(GameProfileScheme user)

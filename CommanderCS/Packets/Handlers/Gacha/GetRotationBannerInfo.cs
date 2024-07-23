@@ -14,7 +14,7 @@ namespace CommanderCS.Host.Handlers.Gacha
             // needs further investigation.
 
             List<RotationBanner.BannerList> bannerListFromDatabase = DatabaseManager.RotationBanner.GetAllCurrentBannersList();
-
+            
 
             RotationBanner rotationBanner = new()
             {

@@ -18,24 +18,24 @@ namespace CommanderCS.MongoDB.Handlers
         /// <summary>
         /// Inserts server information into the database.
         /// </summary>
-        /// <param name="id">The unique identifier of the server.</param>
-        /// <param name="region">The region of the server.</param>
-        /// <param name="maxlevel">The maximum level of the server.</param>
-        /// <param name="maxstage">The maximum stage of the server.</param>
-        /// <param name="openDt">The opening date of the server.</param>
-        /// <param name="playercount">The number of players on the server.</param>
-        /// <param name="servercount">The total number of servers.</param>
-        public void Insert(int id, string region, int maxlevel, string maxstage, double openDt, int playercount, int servercount)
+        /// <param name="ChannelId">The unique identifier of the server.</param>
+        /// <param name="ServerRegion">The region of the server.</param>
+        /// <param name="MaxLevel">The maximum level of the server.</param>
+        /// <param name="MaxStage">The maximum stage of the server.</param>
+        /// <param name="openDateTime">The opening date of the server.</param>
+        /// <param name="PlayerCount">The number of players on the server.</param>
+        /// <param name="ServerCount">The total number of servers.</param>
+        public void Insert(int ChannelId, string ServerRegion, int MaxLevel, string MaxStage, double openDateTime, int PlayerCount, int ServerCount)
         {
             RegionScheme versionInfo = new()
             {
-                ChannelId = id,
-                ServerRegion = region,
-                MaxLevel = maxlevel,
-                MaxStage = maxstage,
-                OpenDate = openDt,
-                PlayerCount = playercount,
-                ServerCount = servercount,
+                ChannelId = ChannelId,
+                ServerRegion = ServerRegion,
+                MaxLevel = MaxLevel,
+                MaxStage = MaxStage,
+                OpenDate = openDateTime,
+                PlayerCount = PlayerCount,
+                ServerCount = ServerCount,
             };
 
             DatabaseCollection.InsertOne(versionInfo);

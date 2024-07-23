@@ -1,4 +1,5 @@
 ﻿using CommanderCS.MongoDB.Handlers;
+using CommanderCSLibrary.Cryptography;
 
 namespace CommanderCS.MongoDB
 {
@@ -90,9 +91,13 @@ namespace CommanderCS.MongoDB
                 }
             }
 
+            string cdn_url = Crypto.Base64Encode("http://192.168.178.29:8080/FileCDN/");
+            string game_url = Crypto.Base64Encode("http://192.168.178.29:5000/checkData.php");
+            string chat_url = Crypto.Base64Encode("http://192.168.178.29:5000/chat.php");
+
             // Initialize game version information
-            GameVersionInfo.Insert(1, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjgwOjUwMDAvRmlsZUNETi8=", "aHR0cDovLzE5Mi4xNjguMTc4LjgwOjUwMDAvY2hlY2tEYXRhLnBocA==", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQucGhw", false, false, false, false);
-            GameVersionInfo.Insert(2, "1.066.12", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L0ZpbGVDRE4v", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoZWNrRGF0YS5waHA=", "aHR0cDovLzE5Mi4xNjguMTc4LjI5L2NoYXQucGhw", false, false, false, false);
+            GameVersionInfo.Insert(1, "1.066.12", cdn_url, game_url, chat_url, false, false, false, false);
+            GameVersionInfo.Insert(2, "1.066.12", cdn_url, game_url, chat_url, false, false, false, false);
 
             // Initialize game table version
             GameTableVersion.Insert(20220312000000);

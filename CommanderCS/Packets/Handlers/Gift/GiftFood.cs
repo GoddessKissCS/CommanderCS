@@ -4,6 +4,7 @@ using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
+using CommanderCSLibrary.Shared;
 
 namespace CommanderCS.Packets.Handlers.Gift
 {
@@ -57,7 +58,7 @@ namespace CommanderCS.Packets.Handlers.Gift
 
         private static bool TryAddingFavour(int affectionId, ref int favour)
         {
-            if (!AffectionList.TryGetValue(affectionId, out var addingFavour))
+            if (!Constants.AffectionList.TryGetValue(affectionId, out var addingFavour))
             {
                 throw new Exception($"Grade {affectionId} Not Defined");
             }
@@ -66,24 +67,6 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             return true;
         }
-
-        private static Dictionary<int, int> AffectionList = new()
-        {
-            { 50, 10 },
-            { 51, 30 },
-            { 52, 50 },
-            { 53, 150 },
-            { 54, 300 },
-            { 55, 500 },
-            { 59, 1000 },
-            { 60, 2000 },
-            { 61, 3000 },
-            { 62, 4000 },
-            { 63, 6000 },
-            { 64, 9000 }
-        };
-
-
 
         private static UserInformationResponse.Commander CheckCommanderFavour(UserInformationResponse.Commander commander, Regulation rg)
         {

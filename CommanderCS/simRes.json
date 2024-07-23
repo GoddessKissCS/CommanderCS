@@ -1,0 +1,147 @@
+{
+  "cksm": "9044E3A5F8F0CDDFC7A041AFF85BD057",
+  "tmot": false,
+  "wsid": -1,
+  "gld": 0,
+  "rnk": 3,
+  "amkn": 3,
+  "amckn": 0,
+  "nvkn": 0,
+  "nvckn": 0,
+  "tadm": 561,
+  "ltrp": [
+    {
+      "slots": [
+        {
+          "id": "5001",
+          "cid": "1",
+          "ctyp": 1,
+          "midx": 0,
+          "pidx": 0,
+          "rnk": 1,
+          "cls": 1,
+          "lv": 1,
+          "cos": 1001,
+          "rsf": 0,
+          "mry": 0,
+          "exp": 0,
+          "pos": 0,
+          "hp": 259,
+          "dmghp": 1176,
+          "dict": 0,
+          "skills": [
+            {
+              "id": "50012",
+              "lv": 1,
+              "sp": 2500
+            },
+            {
+              "id": "50013",
+              "lv": 1,
+              "sp": 200000
+            },
+            {
+              "id": "50014",
+              "lv": 1,
+              "sp": 200000
+            }
+          ],
+          "itms": {},
+          "wepns": {},
+          "tsdc": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    }
+  ],
+  "rtrp": [
+    {
+      "slots": [
+        {
+          "id": "60001",
+          "cid": "",
+          "ctyp": 8,
+          "midx": 0,
+          "pidx": 0,
+          "rnk": 1,
+          "cls": 1,
+          "lv": 1,
+          "cos": 0,
+          "rsf": 0,
+          "mry": 0,
+          "exp": 0,
+          "pos": 0,
+          "hp": 0,
+          "dmghp": 187,
+          "dict": 0,
+          "skills": [],
+          "itms": {},
+          "wepns": {},
+          "tsdc": []
+        },
+        null,
+        null,
+        {
+          "id": "60002",
+          "cid": "",
+          "ctyp": 8,
+          "midx": 0,
+          "pidx": 0,
+          "rnk": 1,
+          "cls": 1,
+          "lv": 1,
+          "cos": 0,
+          "rsf": 0,
+          "mry": 0,
+          "exp": 0,
+          "pos": 0,
+          "hp": 0,
+          "dmghp": 187,
+          "dict": 0,
+          "skills": [],
+          "itms": {},
+          "wepns": {},
+          "tsdc": []
+        },
+        null,
+        null,
+        {
+          "id": "60003",
+          "cid": "",
+          "ctyp": 8,
+          "midx": 0,
+          "pidx": 0,
+          "rnk": 1,
+          "cls": 1,
+          "lv": 1,
+          "cos": 0,
+          "rsf": 0,
+          "mry": 0,
+          "exp": 0,
+          "pos": 0,
+          "hp": 0,
+          "dmghp": 187,
+          "dict": 0,
+          "skills": [],
+          "itms": {},
+          "wepns": {},
+          "tsdc": []
+        },
+        null,
+        null
+      ]
+    }
+  ]
+}

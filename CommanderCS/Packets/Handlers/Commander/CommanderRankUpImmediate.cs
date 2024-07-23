@@ -79,7 +79,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
             DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.UserInventory.medalData);
 
-            var newResources = GetUserGameProfile();
+            var newResources = User;
 
             var rsoc = DatabaseManager.GameProfile.UserResources2Resource(newResources.UserResources);
 

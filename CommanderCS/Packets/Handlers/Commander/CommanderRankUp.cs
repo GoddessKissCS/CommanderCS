@@ -42,12 +42,14 @@ namespace CommanderCS.Host.Handlers.Commander
                 User.CommanderData[cid] = commander;
 
                 DatabaseManager.GameProfile.UpdateGold(SessionId, commanderRankData.gold, false);
-            }
-            else
-            {
-                User.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
 
-                var CostumeData = Regulation.commanderCostumeDtbl.FirstOrDefault(x => x.cid == int.Parse(cid));
+            } else {
+
+                int recruitCost = (@params.commanderId == 1 || @params.commanderId == 2 || @params.commanderId == 5 ||
+                       @params.commanderId == 14 || @params.commanderId == 17 || @params.commanderId == 18 ||
+                       @params.commanderId == 26) ? 1000 : 50000;
+
+                User.UserInventory.medalData.TryGetValue(cid, out int commanderMedals);
 
                 var commanderData = Regulation.commanderDtbl.FirstOrDefault(x => x.id == cid);
 
@@ -64,10 +66,41 @@ namespace CommanderCS.Host.Handlers.Commander
 
                 User.UserInventory.medalData[cid] = commanderMedals;
 
-                var newestCommander = CreateCommander(cid, CostumeData.ctid, commanderMedals, commanderData.grade);
+                var CostumeData = Regulation.commanderCostumeDtbl.FirstOrDefault(x => x.cid == @params.commanderId);
 
-                User.CommanderData.Add(cid, newestCommander);
-                DatabaseManager.GameProfile.UpdateGold(SessionId, commanderData.recruitGold, false);
+                var newestCommander = CreateCommander(@params.commanderId, CostumeData.ctid, commanderMedals, commanderData.grade);
+
+                int newcommanderId;
+
+                if (User.CommanderData.Count > 0)
+                {
+                    // Get the last key and convert it to an integer safely
+                    var lastKey = User.CommanderData.Keys.Last();
+
+                    if (int.TryParse(lastKey, out int lastKeyInt))
+                    {
+                        newcommanderId = lastKeyInt + 1;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("The last key in CommanderData is not a valid integer.");
+                    }
+                }
+                else
+                {
+                    // If no commanders exist, start with ID 1
+                    newcommanderId = 1;
+                }
+
+                string newCommander = newcommanderId.ToString();
+
+                var user = User;
+
+                var data = user.CommanderData;
+
+                data.TryAdd(newCommander, newestCommander);
+
+                DatabaseManager.GameProfile.UpdateGold(SessionId, recruitCost, false);
             }
 
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
@@ -148,9 +181,14 @@ namespace CommanderCS.Host.Handlers.Commander
             return true;
         }
 
-        public static UserInformationResponse.Commander CreateCommander(string commanderid, int costumeid, int commanderMedals, int grade)
+        public static UserInformationResponse.Commander CreateCommander(int commanderid, int costumeid, int commanderMedals, int grade)
         {
-            var commanderRole = RemoteObjectManager.instance.regulation.commanderRoleDtbl.Find(x => x.commanderId == int.Parse(commanderid)).commanderRole;
+            var commanderRole = RemoteObjectManager.instance.regulation.commanderRoleDtbl.Find(x => x.commanderId == commanderid).commanderRole;
+
+            //need to check if hero starts with other grades or cls
+
+            string commadnderGrade = grade.ToString();
+            string commanderId = commanderid.ToString();
 
             UserInformationResponse.Commander __commander = new()
             {
@@ -162,7 +200,7 @@ namespace CommanderCS.Host.Handlers.Commander
                 __cls = "1",
                 __exp = "0",
                 __level = "1",
-                __rank = grade.ToString(),
+                __rank = commadnderGrade,
                 favorRewardStep = 0,
                 favorStep = 0,
                 currentCostume = costumeid,
@@ -173,7 +211,7 @@ namespace CommanderCS.Host.Handlers.Commander
                 favr = 0,
                 fvrd = 0,
                 haveCostume = [costumeid],
-                id = commanderid,
+                id = commanderId,
                 marry = 0,
                 medl = 0,
                 role = commanderRole,

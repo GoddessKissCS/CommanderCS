@@ -104,6 +104,8 @@ namespace CommanderCS.Host
 
             commandHandler.BasePacket = paramsPacket;
 
+            commandHandler.Initialize();
+
             object handledResponse = commandHandler.Handle(@params);
 
             return handledResponse;
