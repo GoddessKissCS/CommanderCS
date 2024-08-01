@@ -41,7 +41,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         public static DualData Copy(DualData src)
         {
-            if (src == null)
+            if (src is null)
             {
                 return null;
             }
@@ -56,7 +56,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 _enemyGuildName = src._enemyGuildName,
                 _enemyUno = src._enemyUno
             };
-            if (src._enemyGuildSkills != null)
+            if (src._enemyGuildSkills is not null)
             {
                 dualData._enemyGuildSkills = [];
                 for (int i = 0; i < src._enemyGuildSkills.Count; i++)
@@ -64,7 +64,7 @@ namespace CommanderCSLibrary.Shared.Battle
                     dualData._enemyGuildSkills.Add(GuildSkillState.Copy(src._enemyGuildSkills[i]));
                 }
             }
-            if (src._enemyGroupBuffs != null)
+            if (src._enemyGroupBuffs is not null)
             {
                 dualData._enemyGroupBuffs = [];
                 for (int j = 0; j < src._enemyGroupBuffs.Count; j++)
@@ -78,7 +78,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         public static explicit operator JToken(DualData value)
         {
-            if (value == null)
+            if (value is null)
             {
                 return string.Empty;
             }
@@ -90,7 +90,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 value._enemyLevel,
                 value._enemyRank,
             ];
-            if (value._enemyGuildSkills != null)
+            if (value._enemyGuildSkills is not null)
             {
                 JArray jArray2 = [];
                 for (int i = 0; i < value._enemyGuildSkills.Count; i++)
@@ -106,7 +106,7 @@ namespace CommanderCSLibrary.Shared.Battle
             jArray.Add(value._playerGuildName);
             jArray.Add(value._enemyGuildName);
             jArray.Add(value._enemyUno);
-            if (value._enemyGroupBuffs != null)
+            if (value._enemyGroupBuffs is not null)
             {
                 JArray jArray3 = [];
                 for (int j = 0; j < value._enemyGroupBuffs.Count; j++)

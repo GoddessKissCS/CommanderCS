@@ -28,7 +28,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 if (_clearCount != value)
                 {
                     _clearCount = value;
-                    if (OnChangeClearState != null)
+                    if (OnChangeClearState is not null)
                     {
                         OnChangeClearState();
                     }
@@ -108,7 +108,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         public void Update(ClearMissionItem item)
         {
-            if (!item.isFinish && _updater[(int)item.condition] != null)
+            if (!item.isFinish && _updater[(int)item.condition] is not null)
             {
                 _updater[(int)item.condition](item);
             }
@@ -166,7 +166,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         private void ClearStage(ClearMissionItem item)
         {
-            if (_simulator.result != null)
+            if (_simulator.result is not null)
             {
                 item.isSuccess = _simulator.result.IsWin;
                 item.isFinish = true;
@@ -236,7 +236,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 {
                     int lhsUnitIndex = _simulator.GetLhsUnitIndex(i, j);
                     Unit unit = _simulator.frame.units[lhsUnitIndex];
-                    if (unit != null && unit._cdri >= 0)
+                    if (unit is not null && unit._cdri >= 0)
                     {
                         CommanderDataRow commanderDataRow2 = regulation.commanderDtbl[unit._cdri];
                         if (commanderDataRow2.resourceId == commanderDataRow.resourceId)

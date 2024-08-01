@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Carnival
 	// Token: 0x060060C6 RID: 24774 RVA: 0x001B0C24 File Offset: 0x001AEE24
 	private IEnumerator CarnivalSelectItemResult(JsonRpcClient.Request request, string result, Dictionary<string, Dictionary<string, Protocols.CarnivalList.ProcessData>> ctnt)
 	{
-		if (result != null)
+		if (result is not null)
 		{
 			this.localUser.RefreshCarnivalFromNetwork(ctnt);
 			UIManager.instance.RefreshOpenedUI();

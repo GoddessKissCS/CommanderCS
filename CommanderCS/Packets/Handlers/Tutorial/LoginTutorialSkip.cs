@@ -13,6 +13,26 @@ namespace CommanderCS.Host.Handlers.Tutorial
 
             UserInformationResponse.TutorialData tutorialData = new() { skip = Convert.ToBoolean(@params.skip), step = 12 };
 
+            // add missing heros and shit
+
+
+            if (@params.skip == 1)
+            {
+                User.LastStage = 4;
+                User.BattleData.WorldMapStageReward["0"] = 1;
+                User.BattleData.WorldMapStages["0"][0].star = 3;
+                User.BattleData.WorldMapStages["0"][1].star = 3;
+                User.BattleData.WorldMapStages["0"][2].star = 3;
+                User.TutorialData.step = 12;
+                User.TutorialData.skip = Convert.ToBoolean(@params.skip);
+
+                DatabaseManager.GameProfile.UpdateUserData(SessionId, User);
+
+            }
+
+
+
+
             DatabaseManager.GameProfile.UpdateTutorialData(SessionId, tutorialData);
 
             TutorialStep lts = new()

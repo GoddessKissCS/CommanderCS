@@ -40,7 +40,7 @@ namespace CommanderCS.MongoDB.Handlers
         {
             var noticedata = DatabaseCollection.AsQueryable().ToList();
 
-            if (noticedata == null)
+            if (noticedata is null)
             {
                 return null;
             }

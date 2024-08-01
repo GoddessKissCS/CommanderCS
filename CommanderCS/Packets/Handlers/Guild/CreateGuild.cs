@@ -25,7 +25,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             var guild = DatabaseManager.Guild.FindByName(@params.gnm);
 
-            if (guild != null)
+            if (guild is not null)
             {
                 ErrorPacket error = new()
                 {

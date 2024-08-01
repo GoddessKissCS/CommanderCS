@@ -65,11 +65,11 @@ namespace CommanderCS.Packets.Handlers.Situation
 	{
 		if (code = 11011)
 		{
-			if (UIManager.instance.world != null)
+			if (UIManager.instance.world is not null)
 			{
 				NetworkAnimation.Instance.CreateFloatingText(Localization.Get("7044"));
 			}
-			if (UIManager.instance.battle != null && GameSetting.instance.repeatBattle)
+			if (UIManager.instance.battle is not null && GameSetting.instance.repeatBattle)
 			{
 				GameSetting.instance.repeatBattle = false;
 				UISimplePopup uisimplePopup = UISimplePopup.CreateOK(false, Localization.Get("1303"), string.Empty, Localization.Get("18045"), Localization.Get("1001"));
@@ -77,7 +77,7 @@ namespace CommanderCS.Packets.Handlers.Situation
 				{
 					BattleData battleData = BattleData.Get();
 					BattleData.Set(battleData);
-					if (battleData != null)
+					if (battleData is not null)
 					{
 						battleData.move = EBattleResultMove.Situation;
 					}

@@ -23,7 +23,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             {
                 DatabaseManager.GameProfile.ChangeThumbnailId(SessionId, @params.costumeId);
 
-                if (User.GuildId != null)
+                if (User.GuildId is not null)
                 {
                     DatabaseManager.Guild.UpdateSpecificMemberThumbnail(User.GuildId, User.Uno, @params.costumeId);
                 }
@@ -32,7 +32,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = "{}"
+                Result = "{success}"
             };
 
             return response;

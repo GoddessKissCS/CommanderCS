@@ -76,21 +76,21 @@ namespace CommanderCSLibrary.Shared
 
         //public void RefreshAttackerTroop(bool removeMercenary = false)
         //{
-        //	if (attacker == null)
+        //	if (attacker is null)
         //	{
         //		return;
         //	}
         //	RoLocalUser localUser = RemoteObjectManager.instance.localUser;
         //	for (int i = 0; i < attacker.battleTroopList.Count; i++)
         //	{
-        //		if (attacker.battleTroopList[i] == null)
+        //		if (attacker.battleTroopList[i] is null)
         //		{
         //			continue;
         //		}
         //		for (int j = 0; j < attacker.battleTroopList[i].slots.Length; j++)
         //		{
         //			RoTroop.Slot slot = attacker.battleTroopList[i].slots[j];
-        //			if (slot != null && slot.IsValid())
+        //			if (slot is not null && slot.IsValid())
         //			{
         //				if (removeMercenary && (slot.charType == ECharacterType.Mercenary || slot.charType == ECharacterType.SuperMercenary || slot.charType == ECharacterType.NPCMercenary || slot.charType == ECharacterType.SuperNPCMercenary))
         //				{
@@ -112,7 +112,7 @@ namespace CommanderCSLibrary.Shared
 
         public static void Set(BattleData battleData)
         {
-            if (_instance == null)
+            if (_instance is null)
             {
                 _instance = battleData;
             }

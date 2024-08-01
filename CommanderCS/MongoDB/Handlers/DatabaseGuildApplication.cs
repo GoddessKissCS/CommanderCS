@@ -81,14 +81,14 @@ namespace CommanderCS.MongoDB.Handlers
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
-            if (user == null) { return string.Empty; }
+            if (user is null) { return string.Empty; }
 
             var tryGuild = DatabaseCollection.AsQueryable()
                            .Where(d => d.Uno == user.Uno)
                            .Where(d => d.GuildId == guildIdx)
                            .FirstOrDefault();
 
-            if (tryGuild != null) { return "req"; }
+            if (tryGuild is not null) { return "req"; }
 
             return string.Empty;
         }
@@ -146,13 +146,13 @@ namespace CommanderCS.MongoDB.Handlers
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
-            if (user == null) { return string.Empty; }
+            if (user is null) { return string.Empty; }
 
             var tryGuild = DatabaseCollection.AsQueryable()
                            .Where(d => d.Uno == user.Uno)
                            .FirstOrDefault();
 
-            if (tryGuild != null) { return "reg"; }
+            if (tryGuild is not null) { return "reg"; }
 
             return string.Empty;
         }
@@ -271,7 +271,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>True if the data has changed; otherwise, false.</returns>
         private bool CheckIfRequestMemberDataChanged(GuildApplicationScheme guildApplication, GameProfileScheme user)
         {
-            return guildApplication.JoinMemberData.thumnail != user.UserResources.thumbnailId || guildApplication.JoinMemberData.level != user.UserResources.level || guildApplication.JoinMemberData.name != user.UserResources.nickname || user.GuildId != null;
+            return guildApplication.JoinMemberData.thumnail != user.UserResources.thumbnailId || guildApplication.JoinMemberData.level != user.UserResources.level || guildApplication.JoinMemberData.name != user.UserResources.nickname || user.GuildId is not null;
         }
     }
 }

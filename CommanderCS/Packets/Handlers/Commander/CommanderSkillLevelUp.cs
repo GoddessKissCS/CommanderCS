@@ -1,6 +1,8 @@
 ﻿using CommanderCS.Host;
 using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Commander
@@ -16,9 +18,9 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             for (var i = 1; i <= @params.Count;)
             {
-                var skillcostdtbl = Regulation.skillCostDtbl.Find(x => x.level == i);
+                SkillCostDataRow skillcostdtbl = Regulation.skillCostDtbl.Find(x => x.level == i);
 
-                if (skillcostdtbl != null && @params.skillIndex < skillcostdtbl.typeCost.Count)
+                if (skillcostdtbl is not null && @params.skillIndex < skillcostdtbl.typeCost.Count)
                 {
                     var cost = skillcostdtbl.typeCost[@params.skillIndex - 1];
                     totalCost += cost;
@@ -31,19 +33,39 @@ namespace CommanderCS.Packets.Handlers.Commander
             switch (@params.skillIndex)
             {
                 case 1:
-                    User.CommanderData[cid].__skv1 = (int.Parse(User.CommanderData[cid].__skv1) + @params.Count).ToString();
+
+                    int skillLevel = int.Parse(User.CommanderData[cid].__skv1) + @params.Count;
+
+                    string skillLevelStringed = skillLevel.ToString();
+
+                    User.CommanderData[cid].__skv1 = skillLevelStringed;
                     break;
 
                 case 2:
-                    User.CommanderData[cid].__skv2 = (int.Parse(User.CommanderData[cid].__skv2 + @params.Count).ToString());
+
+                    int skillLevel2 = int.Parse(User.CommanderData[cid].__skv2) + @params.Count;
+
+                    string skillLevelStringed2 = skillLevel2.ToString();
+
+                    User.CommanderData[cid].__skv2 = skillLevelStringed2;
                     break;
 
                 case 3:
-                    User.CommanderData[cid].__skv3 = (int.Parse(User.CommanderData[cid].__skv3) + @params.Count).ToString();
+
+                    int skillLevel3 = int.Parse(User.CommanderData[cid].__skv3) + @params.Count;
+
+                    string skillLevelStringed3 = skillLevel3.ToString();
+
+                    User.CommanderData[cid].__skv3 = skillLevelStringed3;
                     break;
 
                 case 4:
-                    User.CommanderData[cid].__skv4 = (int.Parse(User.CommanderData[cid].__skv4) + @params.Count).ToString();
+
+                    int skillLevel4 = int.Parse(User.CommanderData[cid].__skv4) + @params.Count;
+
+                    string skillLevelStringed4 = skillLevel4.ToString();
+
+                    User.CommanderData[cid].__skv4 = skillLevelStringed4;
                     break;
             }
 
@@ -52,10 +74,13 @@ namespace CommanderCS.Packets.Handlers.Commander
             DatabaseManager.GameProfile.UpdateGold(SessionId, totalCost, false);
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
 
+
+            UserInformationResponse user = GetUserInformationResponse(User);
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = GetUserInformationResponse(User),
+                Result = user,
             };
 
             return response;

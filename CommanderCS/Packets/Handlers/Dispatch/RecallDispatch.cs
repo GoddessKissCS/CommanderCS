@@ -16,7 +16,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 
             var RecallCommander = new RecallCommander();
 
-            if (User.DispatchedCommanders != null)
+            if (User.DispatchedCommanders is not null)
             {
                 string slot = @params.slot.ToString();
 
@@ -98,12 +98,12 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 	// Token: 0x060060BC RID: 24764 RVA: 0x001B0B44 File Offset: 0x001AED44
 	private IEnumerator RecallDispatchResult(JsonRpcClient.Request request, Protocols.RecallCommander result)
 	{
-		if (result != null)
+		if (result is not null)
 		{
 			this.localUser.RefreshGoodsFromNetwork(result.resource);
 			this.localUser.ResetDispatchPossible();
 			DispatchRecallResultPopup dispatchRecallResultPopup = UIPopup.Create<DispatchRecallResultPopup>("resultPopup");
-			if (UIManager.instance.world.guild.dispatch != null)
+			if (UIManager.instance.world.guild.dispatch is not null)
 			{
 				dispatchRecallResultPopup.SetPopup(result.runtime, result.getGold_time, result.getGold_engage);
 			}

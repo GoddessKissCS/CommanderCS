@@ -6,6 +6,7 @@ using CommanderCSLibrary.Shared.Protocols;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using Newtonsoft.Json.Linq;
+using static CommanderCSLibrary.Shared.Protocols.ConquestStageUser;
 
 namespace CommanderCS.MongoDB.Handlers
 {
@@ -33,7 +34,7 @@ namespace CommanderCS.MongoDB.Handlers
                 .Where(d => d.Server == server && d.MemberId == memberId)
                 .FirstOrDefault();
 
-            if (existingUser != null)
+            if (existingUser is not null)
             {
                 return existingUser;
             }
@@ -43,6 +44,8 @@ namespace CommanderCS.MongoDB.Handlers
             var WorldMapStages = RemoteObjectManager.instance.regulation.GetAllWorldMapStages();
 
             var currTime = TimeManager.CurrentEpoch;
+
+            string name = Utility.CreateRandomString();
 
             GameProfileScheme user = new()
             {
@@ -115,7 +118,48 @@ namespace CommanderCS.MongoDB.Handlers
                     costumeData = [],
                 },
                 ResetDateTime = 0,
-                UserResources = new() { },
+                UserResources = new()
+                {
+                    sweepTicket = 0,
+                    annCoin = 0,
+                    BlackChallenge = 0,
+                    blueprintArmy = 0,
+                    blueprintNavy = 0,
+                    bullet = 60,
+                    cash = 0,
+                    challenge = 0,
+                    challengeCoin = 0,
+                    chip = 0,
+                    commanderGift = 0,
+                    commanderPromotionPoint = 0,
+                    eventRaidTicket = 0,
+                    exp = 0,
+                    explorationTicket = 0,
+                    gold = 4000,
+                    guildCoin = 0,
+                    honor = 0,
+                    level = 0,
+                    nickname = name,
+                    thumbnailId = 1001,
+                    oil = 0,
+                    opcon = 0,
+                    opener = 0,
+                    raidCoin = 0,
+                    ring = 0,
+                    vipExp = 0,
+                    vipLevel = 0,
+                    waveDuelCoin = 0,
+                    waveDuelTicket = 0,
+                    weaponImmediateTicket = 0,
+                    weaponMakeTicket = 0,
+                    weaponMaterial1 = 0,
+                    weaponMaterial2 = 0,
+                    weaponMaterial3 = 0,
+                    weaponMaterial4 = 0,
+                    worldDuelCoin = 0,
+                    worldDuelTicket = 0,
+                    worldDuelUpgradeCoin = 0,
+                },
                 Uno = uno,
                 WorldState = 0,
                 // result.worldState != -1;
@@ -246,6 +290,7 @@ namespace CommanderCS.MongoDB.Handlers
                         }
                     }
                 }
+
             };
 
             DatabaseCollection.InsertOne(user);
@@ -267,7 +312,7 @@ namespace CommanderCS.MongoDB.Handlers
                           .Where(d => d.Server == server && d.MemberId == memberId)
                           .FirstOrDefault();
 
-            if (tryUser != null)
+            if (tryUser is not null)
             {
                 return tryUser;
             }
@@ -306,7 +351,7 @@ namespace CommanderCS.MongoDB.Handlers
                           .Where(d => d.Session == session)
                           .FirstOrDefault();
 
-            if (tryUser == null)
+            if (tryUser is null)
             {
             }
 
@@ -318,7 +363,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// </summary>
         /// <param name="uno">The UNO associated with the game profile.</param>
         /// <returns>The game profile associated with the UNO, or null if not found.</returns>
-        public GameProfileScheme FindByUno(int uno)
+        public GameProfileScheme? FindByUno(int uno)
         {
             return DatabaseCollection.AsQueryable().Where(d => d.Uno == uno).FirstOrDefault();
         }
@@ -328,7 +373,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// </summary>
         /// <param name="nickname">The nickname associated with the game profile.</param>
         /// <returns>The game profile associated with the nickname, or null if not found.</returns>
-        public GameProfileScheme FindByNick(string nickname)
+        public GameProfileScheme? FindByNick(string nickname)
         {
             return DatabaseCollection.AsQueryable().Where(d => d.UserResources.nickname == nickname).FirstOrDefault();
         }
@@ -1275,6 +1320,15 @@ namespace CommanderCS.MongoDB.Handlers
             var update2 = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.ring, user.UserResources.ring);
 
             DatabaseCollection.UpdateOne(filter2, update2);
+        }
+
+
+        public void UpdateLastStageAndStageInfo(string session, GameProfileScheme user)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.LastStage, user.LastStage).Set(x => x.BattleData.WorldMapStages, user.BattleData.WorldMapStages);
+
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
     }

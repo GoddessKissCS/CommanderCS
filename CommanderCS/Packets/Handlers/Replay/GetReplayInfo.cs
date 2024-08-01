@@ -20,7 +20,7 @@ namespace CommanderCS.Packets.Handlers.Replay
 		}
 		if (result.data = null)
 		{
-			if (this.localUser.playingChatRecord != null)
+			if (this.localUser.playingChatRecord is not null)
 			{
 				this.localUser.playingChatRecord.hasRecord = false;
 				this.localUser.playingChatRecord = null;
@@ -50,7 +50,7 @@ namespace CommanderCS.Packets.Handlers.Replay
 	// Token: 0x06005FE7 RID: 24551 RVA: 0x001AF978 File Offset: 0x001ADB78
 	private IEnumerator GetReplayInfoError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (this.localUser.playingChatRecord != null)
+		if (this.localUser.playingChatRecord is not null)
 		{
 			this.localUser.playingChatRecord.hasRecord = false;
 			this.localUser.playingChatRecord = null;

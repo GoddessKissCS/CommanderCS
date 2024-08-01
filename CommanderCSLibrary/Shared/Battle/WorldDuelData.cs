@@ -69,7 +69,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         public static WorldDuelData Copy(WorldDuelData src)
         {
-            if (src == null)
+            if (src is null)
             {
                 return null;
             }
@@ -77,7 +77,7 @@ namespace CommanderCSLibrary.Shared.Battle
             {
                 _playerWorld = src._playerWorld
             };
-            if (src._playerBuffs != null)
+            if (src._playerBuffs is not null)
             {
                 worldDuelData._playerBuffs = [];
                 for (int i = 0; i < src._playerBuffs.Count; i++)
@@ -86,7 +86,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 }
             }
             worldDuelData._enemyWorld = src._enemyWorld;
-            if (src._enemyBuffs != null)
+            if (src._enemyBuffs is not null)
             {
                 worldDuelData._enemyBuffs = [];
                 for (int j = 0; j < src._enemyBuffs.Count; j++)
@@ -99,12 +99,12 @@ namespace CommanderCSLibrary.Shared.Battle
 
         public static explicit operator JToken(WorldDuelData value)
         {
-            if (value == null)
+            if (value is null)
             {
                 return string.Empty;
             }
             JArray jArray = [value._playerWorld];
-            if (value._playerBuffs != null)
+            if (value._playerBuffs is not null)
             {
                 JArray jArray2 = [];
                 for (int i = 0; i < value._playerBuffs.Count; i++)
@@ -118,7 +118,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 jArray.Add(string.Empty);
             }
             jArray.Add(value._enemyWorld);
-            if (value._enemyBuffs != null)
+            if (value._enemyBuffs is not null)
             {
                 JArray jArray3 = [];
                 for (int j = 0; j < value._enemyBuffs.Count; j++)

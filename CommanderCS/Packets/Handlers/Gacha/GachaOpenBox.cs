@@ -119,7 +119,7 @@ namespace CommanderCS.Packets.Handlers.Gacha
 						roCommander2.state = ECommanderState.Nomal;
 					}
 				}
-				if (gachaRewardDataRow != null)
+				if (gachaRewardDataRow is not null)
 				{
 					if (gachaRewardDataRow.effectType = 1)
 					{
@@ -145,12 +145,12 @@ namespace CommanderCS.Packets.Handlers.Gacha
 					isNew = flag
 				});
 			});
-			if (result.commanderIdDict != null)
+			if (result.commanderIdDict is not null)
 			{
 				foreach (Protocols.UserInformationResponse.Commander commander in result.commanderIdDict.Values)
 				{
 					RoCommander roCommander = this.localUser.FindCommander(commander.id);
-					if (commander.haveCostume != null && commander.haveCostume.Count > 0)
+					if (commander.haveCostume is not null && commander.haveCostume.Count > 0)
 					{
 						roCommander.haveCostumeList = commander.haveCostume;
 					}
@@ -158,7 +158,7 @@ namespace CommanderCS.Packets.Handlers.Gacha
 			}
 			UIManager.instance.world.gacha.OpenBox(list);
 		}
-		if (result.changedGachaInformation != null && result.changedGachaInformation.type = "2" && result.changedGachaInformation.freeOpenRemainTime > 0)
+		if (result.changedGachaInformation is not null && result.changedGachaInformation.type = "2" && result.changedGachaInformation.freeOpenRemainTime > 0)
 		{
 			this.ScheduleLocalPush(ELocalPushType.PremiumGachaFree, result.changedGachaInformation.freeOpenRemainTime);
 		}

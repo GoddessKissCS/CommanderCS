@@ -30,7 +30,7 @@ namespace CommandHandlerMappingsSourceGenerator
         {
             var attr = GetAttribute(classDeclaration, name);
 
-            return attr != null;
+            return attr is not null;
         }
 
         public static AttributeSyntax? GetAttribute(this ClassDeclarationSyntax classDeclaration, string name)

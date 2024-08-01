@@ -2,6 +2,7 @@
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.Design;
 
 namespace CommanderCS.Host
 {
@@ -48,15 +49,15 @@ namespace CommanderCS.Host
                 }
 
                 response = responses;
-            }
-            else
-            {
+            } else {
                 response = ProcessPacket(node, serviceProvider);
             }
 
             if (response == "{}")
             {
-                return Crypto.Encrypt("{}", keyIndex);
+                string res = response.ToString();
+                res = Crypto.Encrypt(res, keyIndex);
+                return res;
             }
 
             var serialized = JsonConvert.SerializeObject(response);
@@ -79,7 +80,9 @@ namespace CommanderCS.Host
 
             if (!CommandsMapper.TryGetValue(paramsPacket.Method, out var endpointMapping))
             {
-                throw new Exception("Unsupported Packet:");
+                var enumText = ((Method)paramsPacket.Method).ToString();
+
+                throw new Exception("Unsupported Packet: " + enumText);
             }
 
             var result = endpointMapping(paramsPacket, serviceProvider);
@@ -103,8 +106,6 @@ namespace CommanderCS.Host
             var commandHandler = ActivatorUtilities.CreateInstance<TEndpoint>(serviceProvider);
 
             commandHandler.BasePacket = paramsPacket;
-
-            commandHandler.Initialize();
 
             object handledResponse = commandHandler.Handle(@params);
 

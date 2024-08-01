@@ -36,13 +36,13 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public string description { get; set; }
 
-        public bool isMaxLevel => nextLevelReg == null;
+        public bool isMaxLevel => nextLevelReg is null;
 
         public GuildSkillDataRow reg
         {
             get
             {
-                if (_reg == null)
+                if (_reg is null)
                 {
                     _reg = _GetReguilation(skillLevel);
                 }
@@ -54,7 +54,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                if (_nextLevelReg == null)
+                if (_nextLevelReg is null)
                 {
                     _nextLevelReg = _GetReguilation(skillLevel + 1);
                 }
@@ -66,7 +66,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                if (_firstLevelReg == null)
+                if (_firstLevelReg is null)
                 {
                     _firstLevelReg = _GetReguilation(0);
                 }

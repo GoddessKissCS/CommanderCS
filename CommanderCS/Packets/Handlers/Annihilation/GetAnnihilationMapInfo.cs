@@ -62,24 +62,24 @@ namespace CommanderCS.Packets.Handlers.Annihilation
 		string text = this._FindRequestProperty(request, "goReady");
 		this.localUser.lastClearAnnihilationStage = result.stage;
 		this.localUser.CommanderStatusReset();
-		if (result.dieCommanderList != null)
+		if (result.dieCommanderList is not null)
 		{
 			for (int i = 0; i < result.dieCommanderList.Count; i++)
 			{
 				RoCommander roCommander = this.localUser.FindCommander(result.dieCommanderList[i]);
-				if (roCommander != null)
+				if (roCommander is not null)
 				{
 					roCommander.Die();
 				}
 			}
 		}
-		if (result.commanderStatusList != null)
+		if (result.commanderStatusList is not null)
 		{
 			for (int j = 0; j < result.commanderStatusList.Count; j++)
 			{
 				Protocols.AnnihilationMapInfo.StatusData statusData = result.commanderStatusList[j];
 				RoCommander roCommander2 = this.localUser.FindCommander(statusData.id);
-				if (roCommander2 != null)
+				if (roCommander2 is not null)
 				{
 					if (!roCommander2.isDie)
 					{

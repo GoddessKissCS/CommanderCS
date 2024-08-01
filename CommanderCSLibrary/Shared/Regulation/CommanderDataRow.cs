@@ -81,7 +81,7 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         //public CommanderVoiceDataRow GetVoiceDataRow(ECommanderVoiceEventType type)
         //{
-        //	if (_voiceEvents == null)
+        //	if (_voiceEvents is null)
         //	{
         //		Regulation regulation = RemoteObjectManager.instance.regulation;
         //		int length = Enum.GetValues(typeof(ECommanderVoiceEventType)).Length;
@@ -106,7 +106,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         //	for (int i = 0; i < length; i++)
         //	{
         //		int num = regulation.commanderVoiceDtbl.FindIndex($"{id}_{i}");
-        //		if (num >= 0 && regulation.commanderVoiceDtbl[num] != null)
+        //		if (num >= 0 && regulation.commanderVoiceDtbl[num] is not null)
         //		{
         //			list.Add(regulation.commanderVoiceDtbl[num]);
         //		}

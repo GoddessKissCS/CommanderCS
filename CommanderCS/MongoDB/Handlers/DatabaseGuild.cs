@@ -195,21 +195,21 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>The information about the guild.</returns>
         public UserInformationResponse.UserGuild RequestGuild(int? guildId, int uno)
         {
-            if (guildId == null)
+            if (guildId is null)
             {
                 return null;
             }
 
             GuildScheme? requestGuild = DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
 
-            if (requestGuild == null)
+            if (requestGuild is null)
             {
                 return null;
             }
 
             var requestMember = requestGuild.MemberData.Where(member => member.Uno == uno).FirstOrDefault();
 
-            if (requestMember == null)
+            if (requestMember is null)
             {
                 return null;
             }
@@ -246,14 +246,14 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>The list of guild members.</returns>
         public List<GuildMember.MemberData> RequestGuildMembers(int? guildId)
         {
-            if (guildId == null)
+            if (guildId is null)
             {
                 return null;
             }
 
             GuildScheme? guild = DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
 
-            if (guild == null)
+            if (guild is null)
             {
                 return null;
             }
@@ -360,7 +360,7 @@ namespace CommanderCS.MongoDB.Handlers
         {
             var allGuilds = DatabaseCollection.AsQueryable().Take(20).ToList();
 
-            if (allGuilds == null)
+            if (allGuilds is null)
             {
                 return null;
             }
@@ -418,9 +418,9 @@ namespace CommanderCS.MongoDB.Handlers
         {
             GuildScheme? guild = DatabaseCollection.AsQueryable().Where(d => d.GuildId == guildId).FirstOrDefault();
 
-            if (guild != null)
+            if (guild is not null)
             {
-                if (guild.BoardListData == null)
+                if (guild.BoardListData is null)
                 {
                     guild.BoardListData = [];
                 }
@@ -470,7 +470,7 @@ namespace CommanderCS.MongoDB.Handlers
 
             if (act == 0)
             {
-                if (FindByName(val) != null)
+                if (FindByName(val) is not null)
                 {
                     return ErrorCode.FederationNameAlreadyExists;
                 }
@@ -480,7 +480,7 @@ namespace CommanderCS.MongoDB.Handlers
 
             var guild = FindByUid(user.GuildId);
 
-            if (guild.LastEdit != null)
+            if (guild.LastEdit is not null)
             {
                 double time = (double)guild.LastEdit;
 
@@ -744,7 +744,7 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
 
             var user = DatabaseManager.GameProfile.FindByUno(uno);
-            if (user != null && user.GuildId == guildId)
+            if (user is not null && user.GuildId == guildId)
             {
                 DatabaseManager.GameProfile.UpdateGuild(uno, null);
             }
@@ -771,7 +771,7 @@ namespace CommanderCS.MongoDB.Handlers
 
             var user = DatabaseManager.GameProfile.FindByUno(uno);
 
-            if (user != null && user.GuildId == guildId)
+            if (user is not null && user.GuildId == guildId)
             {
                 DatabaseManager.GameProfile.UpdateGuild(uno, null);
             }

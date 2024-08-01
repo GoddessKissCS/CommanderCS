@@ -50,14 +50,14 @@ namespace StellarGK.Packets.Handlers.WaveDuel
 		this.localUser.duelTargetRefreshTime.SetByDuration((double)result.remain);
 		this.localUser.currentSeasonDuelTime.SetByDuration((double)result.time);
 		this.localUser.currentSeasonOpenRemainDuelTime.SetByDuration((double)result.openRemain);
-		if (result.duelList != null)
+		if (result.duelList is not null)
 		{
 			for (int i = 1; i <= result.duelList.Count; i++)
 			{
 				this.localUser.duelTargetList.Add(result.duelList[i].idx, RoUser.CreateWaveDuelListUser(result.duelList[i]));
 			}
 		}
-		if (result.user != null)
+		if (result.user is not null)
 		{
 			this.localUser.duelScore = result.user.score;
 			this.localUser.duelNextScore = result.user.nextScore;

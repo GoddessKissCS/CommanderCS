@@ -33,7 +33,7 @@ namespace CommanderCS.MongoDB.Handlers
         {
             AccountScheme existingUser = DatabaseCollection.AsQueryable().Where(d => d.Name == name).FirstOrDefault();
 
-            if (existingUser != null)
+            if (existingUser is not null)
             {
                 return existingUser;
             }
@@ -200,7 +200,7 @@ namespace CommanderCS.MongoDB.Handlers
         {
             var user = FindByUid(@params.memberId);
 
-            if (user.isBanned == true && user.isBanned != null)
+            if (user.isBanned == true && user.isBanned is not null)
             {
                 return ErrorCode.BannedOrSuspended;
             }

@@ -106,7 +106,7 @@ namespace CommanderCSLibrary.Shared.Regulation
             };
             foreach (FireEvent fireEvent in fireEvents)
             {
-                if (fireEvent != null)
+                if (fireEvent is not null)
                 {
                     unitMotionDataRow._fireCounts[fireEvent.firePointTypeIndex]++;
                 }

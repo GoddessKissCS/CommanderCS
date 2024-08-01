@@ -71,7 +71,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 				this.localUser.slotDispatchInfo.Add(slotDispatchInfo);
 			}
 		}
-		if (UIManager.instance.world.guild.dispatch != null)
+		if (UIManager.instance.world.guild.dispatch is not null)
 		{
 			UIManager.instance.world.guild.dispatch.SetDispatchList();
 		}

@@ -97,7 +97,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 			}
 		}
 		UIGuildManagePopup uiguildManagePopup = UnityEngine.Object.FindObjectOfType(typeof(UIGuildManagePopup)) as UIGuildManagePopup;
-		if (uiguildManagePopup != null)
+		if (uiguildManagePopup is not null)
 		{
 			uiguildManagePopup.OnRefresh();
 		}

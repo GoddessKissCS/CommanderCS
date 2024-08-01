@@ -100,11 +100,11 @@ namespace CommanderCSLibrary.Shared.Battle {
         public static InitState Create(EBattleType battleType, List<Troop> lhsTroops, List<Troop> rhsTroops, List<string> battleItemDrks, int randomSeed)
         {
             string text = "must not be empty.";
-            if (lhsTroops == null || lhsTroops.Count == 0)
+            if (lhsTroops is null || lhsTroops.Count == 0)
             {
                 throw new ArgumentException("lhsTroops " + text);
             }
-            if (rhsTroops == null || rhsTroops.Count == 0)
+            if (rhsTroops is null || rhsTroops.Count == 0)
             {
                 throw new ArgumentException("rhsTroops " + text);
             }
@@ -124,7 +124,7 @@ namespace CommanderCSLibrary.Shared.Battle {
 
         public static InitState Copy(InitState src)
         {
-            if (src == null)
+            if (src is null)
             {
                 throw new ArgumentNullException("src");
             }
@@ -142,7 +142,7 @@ namespace CommanderCSLibrary.Shared.Battle {
             {
                 initState._rhsTroops.Add(Troop.Copy(rhsTroop));
             }
-            if (src._battleItemDrks != null)
+            if (src._battleItemDrks is not null)
             {
                 initState._battleItemDrks = [];
                 for (int i = 0; i < src._battleItemDrks.Count; i++)
@@ -150,7 +150,7 @@ namespace CommanderCSLibrary.Shared.Battle {
                     initState._battleItemDrks.Add(src._battleItemDrks[i]);
                 }
             }
-            if (src._guildSkills != null)
+            if (src._guildSkills is not null)
             {
                 initState._guildSkills = [];
                 for (int j = 0; j < src._guildSkills.Count; j++)
@@ -158,7 +158,7 @@ namespace CommanderCSLibrary.Shared.Battle {
                     initState._guildSkills.Add(GuildSkillState.Copy(src._guildSkills[j]));
                 }
             }
-            if (src._groupBuffs != null)
+            if (src._groupBuffs is not null)
             {
                 initState._groupBuffs = [];
                 for (int k = 0; k < src._groupBuffs.Count; k++)
@@ -207,7 +207,7 @@ namespace CommanderCSLibrary.Shared.Battle {
             {
                 jArray.Add(string.Empty);
             }
-            if (value._guildSkills != null)
+            if (value._guildSkills is not null)
             {
                 JArray jArray4 = [];
                 for (int k = 0; k < value._guildSkills.Count; k++)
@@ -220,7 +220,7 @@ namespace CommanderCSLibrary.Shared.Battle {
             {
                 jArray.Add(string.Empty);
             }
-            if (value._groupBuffs != null)
+            if (value._groupBuffs is not null)
             {
                 JArray jArray5 = [];
                 for (int l = 0; l < value._groupBuffs.Count; l++)
@@ -301,7 +301,7 @@ namespace CommanderCSLibrary.Shared.Battle {
             {
                 return true;
             }
-            if (f1 == null || f2 == null)
+            if (f1 is null || f2 is null)
             {
                 return false;
             }

@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 	// Token: 0x0600607F RID: 24703 RVA: 0x001B0688 File Offset: 0x001AE888
 	private IEnumerator GetConquestStageUserInfoResult(JsonRpcClient.Request request, List<Protocols.ConquestStageUser> result)
 	{
-		if (result.Count > 0 && UIManager.instance.world.conquestMap.isActive && UIManager.instance.world.conquestMap.stagePopup != null)
+		if (result.Count > 0 && UIManager.instance.world.conquestMap.isActive && UIManager.instance.world.conquestMap.stagePopup is not null)
 		{
 			UIManager.instance.world.conquestMap.stagePopup.CreateAlieUserDeckPopup(result);
 		}

@@ -135,7 +135,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                if (battleTroopList == null || battleTroopList.Count <= 0)
+                if (battleTroopList is null || battleTroopList.Count <= 0)
                 {
                     return null;
                 }
@@ -163,7 +163,7 @@ namespace CommanderCSLibrary.Shared.Ro
                 battleTroopList = []
             };
             roUser.InitEmpty();
-            if (roUser.activeBuff == null)
+            if (roUser.activeBuff is null)
             {
                 roUser.activeBuff = new Dictionary<EWorldDuelBuff, EWorldDuelBuffEffect>
                 {
@@ -178,11 +178,11 @@ namespace CommanderCSLibrary.Shared.Ro
         public virtual void InitEmpty()
         {
             battleTroopList.Clear();
-            if (guildSkillList == null)
+            if (guildSkillList is null)
             {
                 guildSkillList = [];
             }
-            if (completeRewardGroupList == null)
+            if (completeRewardGroupList is null)
             {
                 completeRewardGroupList = [];
             }
@@ -323,7 +323,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //	}
         //	roUser.guildName = data.guildName;
         //	roUser.uno = data.uno.ToString();
-        //	if (data.guildSkills != null)
+        //	if (data.guildSkills is not null)
         //	{
         //		for (int j = 0; j < data.guildSkills.Count; j++)
         //		{
@@ -366,7 +366,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //		roUser.duelGradeIdx = roUser.GetWorldDuelRankGrade();
         //		break;
         //	}
-        //	if (data.activeBuff != null)
+        //	if (data.activeBuff is not null)
         //	{
         //		for (int i = 0; i < data.activeBuff.Count; i++)
         //		{
@@ -376,7 +376,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //			roUser.activeBuff[key] = eWorldDuelBuffEffect;
         //		}
         //	}
-        //	if (data.guildSkills != null)
+        //	if (data.guildSkills is not null)
         //	{
         //		for (int j = 0; j < data.guildSkills.Count; j++)
         //		{
@@ -536,7 +536,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public void SetGroupCompleteData(List<int> list)
         {
-            if (list == null)
+            if (list is null)
             {
                 return;
             }

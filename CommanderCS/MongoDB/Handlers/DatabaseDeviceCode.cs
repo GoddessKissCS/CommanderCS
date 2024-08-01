@@ -80,7 +80,7 @@ namespace CommanderCS.MongoDB.Handlers
 
             try
             {
-                if (devicechange == null)
+                if (devicechange is null)
                 {
                     var device = DatabaseManager.DeviceCode.Insert(account.MemberId);
 

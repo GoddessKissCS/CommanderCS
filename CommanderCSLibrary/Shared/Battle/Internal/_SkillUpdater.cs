@@ -125,7 +125,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
             for (int i = 0; i < 20; i++)
             {
                 FireEvent fireEvent = unitMotionDr.fireEvents[i];
-                if (fireEvent == null)
+                if (fireEvent is null)
                 {
                     break;
                 }
@@ -228,7 +228,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
 
         public override void OnFirePointAccessEnd()
         {
-            if (_newProjectiles != null && _newProjectiles.Count != 0)
+            if (_newProjectiles is not null && _newProjectiles.Count != 0)
             {
                 firePoint._projectiles.AddRange(_newProjectiles);
             }
@@ -342,7 +342,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                 if (unitIndexByOffset >= 0)
                 {
                     Unit unit = simulator.frame._units[unitIndexByOffset];
-                    if (unit != null && unit.health > 0)
+                    if (unit is not null && unit.health > 0)
                     {
                         list.Add(unitIndexByOffset);
                     }
@@ -384,7 +384,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                 if (unitIndexByOffset >= 0 && projectile.targetIndex != unitIndexByOffset)
                 {
                     Unit unit = simulator.frame._units[unitIndexByOffset];
-                    if (unit != null && unit.health > 0)
+                    if (unit is not null && unit.health > 0)
                     {
                         Projectile projectile2 = _CreateProjectile(projectile.fireEventIndex, unitIndexByOffset);
                         projectile2._isSplash = true;

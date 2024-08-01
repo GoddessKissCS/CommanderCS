@@ -1,10 +1,10 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
-using CommanderCSLibrary.Shared;
 
 namespace CommanderCS.Packets.Handlers.Gift
 {
@@ -161,7 +161,7 @@ namespace CommanderCS.Packets.Handlers.Gift
 	// Token: 0x0600608D RID: 24717 RVA: 0x001B0798 File Offset: 0x001AE998
 	private IEnumerator GiftFoodResult(JsonRpcClient.Request request, Protocols.UserInformationResponse result)
 	{
-		if (result.commanderInfo != null)
+		if (result.commanderInfo is not null)
 		{
 			foreach (KeyValuePair<string, Protocols.UserInformationResponse.Commander> keyValuePair in result.commanderInfo)
 			{

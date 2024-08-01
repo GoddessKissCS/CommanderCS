@@ -1,6 +1,6 @@
 ﻿using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
-using Newtonsoft.Json;
+using CommanderCSLibrary.Packets;
 
 namespace CommanderCS.Host.Handlers.WorldMap
 {
@@ -28,20 +28,5 @@ namespace CommanderCS.Host.Handlers.WorldMap
 
             return response;
         }
-    }
-
-    public class WorldMapInformationRequest
-    {
-        [JsonProperty("world")]
-        public int world { get; set; }
-    }
-
-    public class WorldMapResponse
-    {
-        [JsonProperty("stage")]
-        public List<WorldMapInformationResponse> stage { get; set; }
-
-        [JsonProperty("rwd")]
-        public int rwd { get; set; }
     }
 }

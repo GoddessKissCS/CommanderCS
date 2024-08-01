@@ -38,19 +38,69 @@ namespace CommanderCS.Host
         public abstract object Handle(TParams @params);
         public string SessionId => BasePacket.SessionId;
 
-        public GameProfileScheme User { get; private set; }
-        public AccountScheme Account { get; private set; }
-        public DormitoryScheme Dormitory { get; private set; }
-        public GuildScheme Guild { get; private set; }
-        public Regulation Regulation { get; private set; }
-
-        public void Initialize()
+        private GameProfileScheme _user = null;
+        public GameProfileScheme User
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
-            Account = DatabaseManager.Account.FindBySession(BasePacket.SessionId);
-            Dormitory = DatabaseManager.Dormitory.FindBySession(BasePacket.SessionId);
-            Guild = DatabaseManager.Guild.FindBySession(BasePacket.SessionId);
-            Regulation = RemoteObjectManager.instance.regulation;
+            get
+            {
+                if (_user is null && BasePacket.SessionId is not null)
+                {
+                    _user = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+                }
+                return _user;
+            }
+        }
+
+        private AccountScheme _account = null;
+        public AccountScheme Account
+        {
+            get
+            {
+                if (_account is null && BasePacket.SessionId is not null)
+                {
+                    _account = DatabaseManager.Account.FindBySession(BasePacket.SessionId);
+                }
+                return _account;
+            }
+        }
+
+        private DormitoryScheme _dormitory = null;
+        public DormitoryScheme Dormitory
+        {
+            get
+            {
+                if (_dormitory is null && BasePacket.SessionId is not null)
+                {
+                    _dormitory = DatabaseManager.Dormitory.FindBySession(BasePacket.SessionId);
+                }
+                return _dormitory;
+            }
+        }
+
+        private GuildScheme _guild = null;
+        public GuildScheme Guild
+        {
+            get
+            {
+                if (_guild is null && BasePacket.SessionId is not null)
+                {
+                    _guild = DatabaseManager.Guild.FindBySession(BasePacket.SessionId);
+                }
+                return _guild;
+            }
+        }
+
+        private Regulation _regulation = null;
+        public Regulation Regulation
+        {
+            get
+            {
+                if (_regulation is null)
+                {
+                    _regulation = RemoteObjectManager.instance.regulation;
+                }
+                return _regulation;
+            }
         }
 
         public UserInformationResponse GetUserInformationResponse(GameProfileScheme user)

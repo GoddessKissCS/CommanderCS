@@ -48,12 +48,12 @@ namespace CommanderCS.Packets.Handlers.Achievement
 		{
 			this.localUser.badgeAchievementCount = 0;
 		}
-		if (result.nextAchievementList != null)
+		if (result.nextAchievementList is not null)
 		{
 			foreach (Protocols.RewardInfo.AchievementData achievementData in result.nextAchievementList)
 			{
 				RoMission roMission2 = this.localUser.FindAchievement(achievementData.achievementId.ToString(), achievementData.sort);
-				if (roMission2 != null)
+				if (roMission2 is not null)
 				{
 					roMission2.bListShow = true;
 					roMission2.received = achievementData.receive == 1;

@@ -26,7 +26,7 @@ namespace CommanderCS.Packets.Handlers.Annihilation
 	// Token: 0x06006018 RID: 24600 RVA: 0x001AFDB8 File Offset: 0x001ADFB8
 	private IEnumerator AnnihilationMapInformationResult(JsonRpcClient.Request request, List<Protocols.ScrambleMapInformationResponse> result)
 	{
-		if (result == null)
+		if (result is null)
 		{
 			yield break;
 		}

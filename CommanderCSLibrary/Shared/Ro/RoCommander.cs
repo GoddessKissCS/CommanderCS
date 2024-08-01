@@ -229,7 +229,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                if (_currLevelUnitReg == null)
+                if (_currLevelUnitReg is null)
                 {
                     _currLevelUnitReg = InvokeLevel(unitReg, rank, level, cls, currentCostume, id, favorRewardStep, marry, transcendence, EquipItem, completeSetItemEquip, WeaponItem);
                 }
@@ -245,7 +245,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                if (_unitReg == null)
+                if (_unitReg is null)
                 {
                     if (string.IsNullOrEmpty(unitId))
                     {
@@ -362,7 +362,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                if (EquipItem == null)
+                if (EquipItem is null)
                 {
                     return false;
                 }
@@ -472,7 +472,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public void DeleteCurrLevelUnitReg()
         {
-            if (_currLevelUnitReg != null)
+            if (_currLevelUnitReg is not null)
             {
                 _currLevelUnitReg = null;
             }
@@ -489,7 +489,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public void EquipWeaponItem(RoWeapon weapon)
         {
             int slotType = weapon.data.slotType;
-            if (WeaponItem == null)
+            if (WeaponItem is null)
             {
                 WeaponItem = [];
             }
@@ -499,7 +499,7 @@ namespace CommanderCSLibrary.Shared.Ro
             }
             else
             {
-                if (WeaponItem[slotType] != null)
+                if (WeaponItem[slotType] is not null)
                 {
                     WeaponItem[slotType].DeleteWeapon();
                 }
@@ -512,7 +512,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public void RemoveWeaponItem(int slotType)
         {
-            if (WeaponItem != null || WeaponItem.ContainsKey(slotType))
+            if (WeaponItem is not null || WeaponItem.ContainsKey(slotType))
             {
                 WeaponItem[slotType].DeleteWeapon();
                 WeaponItem[slotType] = null;
@@ -523,7 +523,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public RoWeapon FindWeaponItem(int slotType)
         {
             RoWeapon result = null;
-            if (WeaponItem != null && WeaponItem.ContainsKey(slotType))
+            if (WeaponItem is not null && WeaponItem.ContainsKey(slotType))
             {
                 result = WeaponItem[slotType];
             }
@@ -532,13 +532,13 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public bool isEmptyWeapon()
         {
-            if (WeaponItem == null && WeaponItem.Count == 0)
+            if (WeaponItem is null && WeaponItem.Count == 0)
             {
                 return true;
             }
             foreach (KeyValuePair<int, RoWeapon> item in WeaponItem)
             {
-                if (item.Value != null)
+                if (item.Value is not null)
                 {
                     return false;
                 }
@@ -549,7 +549,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public string GetWeaponSkillId(int slotType)
         {
             string text = string.Empty;
-            if (WeaponItem.ContainsKey(slotType) && WeaponItem[slotType] != null)
+            if (WeaponItem.ContainsKey(slotType) && WeaponItem[slotType] is not null)
             {
                 RoWeapon roWeapon = WeaponItem[slotType];
                 if (roWeapon.data.privateWeapon != 0 || roWeapon.data.skillIdx != "0")
@@ -634,7 +634,7 @@ namespace CommanderCSLibrary.Shared.Ro
             int num = 0;
             foreach (KeyValuePair<int, RoWeapon> item in WeaponItem)
             {
-                if (item.Value != null && item.Value.data.weaponSetType == type)
+                if (item.Value is not null && item.Value.data.weaponSetType == type)
                 {
                     num++;
                 }
@@ -648,7 +648,7 @@ namespace CommanderCSLibrary.Shared.Ro
             string text = string.Empty;
             foreach (RoWeapon value in WeaponItem.Values)
             {
-                if (value != null && value.data.weaponSetType != "0")
+                if (value is not null && value.data.weaponSetType != "0")
                 {
                     if (value.data.weaponSetType != text)
                     {
@@ -666,7 +666,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public void SetEquipItem(int pointType, RoItem item)
         {
-            if (EquipItem == null)
+            if (EquipItem is null)
             {
                 EquipItem = [];
             }
@@ -683,7 +683,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public void ClearEquipItem(int pointType, RoItem item)
         {
-            if (EquipItem != null)
+            if (EquipItem is not null)
             {
                 if (EquipItem.ContainsKey(pointType))
                 {
@@ -697,7 +697,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public RoItem FindEquipItem(int pointType)
         {
-            if (EquipItem == null)
+            if (EquipItem is null)
             {
                 return null;
             }
@@ -710,7 +710,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public bool checkCompleteSetItem(EItemSetType setType)
         {
-            if (EquipItem == null)
+            if (EquipItem is null)
             {
                 return false;
             }
@@ -739,7 +739,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //	if (!PlayerPrefs.HasKey(id))
         //	{
         //		CommanderCostumeDataRow commanderCostumeDataRow = RemoteObjectManager.instance.regulation.FindCostumeData(int.Parse(ctid));
-        //		if (commanderCostumeDataRow != null)
+        //		if (commanderCostumeDataRow is not null)
         //		{
         //			PlayerPrefs.SetString(id, commanderCostumeDataRow.skinName);
         //		}
@@ -892,7 +892,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //	while (true)
         //	{
         //		commanderLevelDataRow = regulation.GetCommanderLevelDataRow(num);
-        //		if (commanderLevelDataRow == null)
+        //		if (commanderLevelDataRow is null)
         //		{
         //			break;
         //		}
@@ -903,7 +903,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //		}
         //		num++;
         //	}
-        //	if (commanderLevelDataRow == null || commanderLevelDataRow.aexp > (int)aExp || commanderLevelDataRow.level > localUser.level)
+        //	if (commanderLevelDataRow is null || commanderLevelDataRow.aexp > (int)aExp || commanderLevelDataRow.level > localUser.level)
         //	{
         //		return false;
         //	}
@@ -914,7 +914,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public void StartRankUp()
         {
             CommanderRankDataRow commanderRankDataRow = RemoteObjectManager.instance.regulation.GetCommanderRankDataRow(rank + 1);
-            if (commanderRankDataRow != null)
+            if (commanderRankDataRow is not null)
             {
                 rankUpTime.SetByDuration(commanderRankDataRow.time);
             }
@@ -985,19 +985,19 @@ namespace CommanderCSLibrary.Shared.Ro
             RoWeapon roWeapon = null;
             string empty = string.Empty;
             roWeapon = FindWeaponItem(3);
-            empty = ((roWeapon == null || roWeapon.data.privateWeapon != 1 || roWeapon.data.skillPoint == EWeaponSkill.None) ? unitReg.skillDrks[0] : roWeapon.data.skillIdx);
+            empty = ((roWeapon is null || roWeapon.data.privateWeapon != 1 || roWeapon.data.skillPoint == EWeaponSkill.None) ? unitReg.skillDrks[0] : roWeapon.data.skillIdx);
             list.Add(empty);
             roWeapon = FindWeaponItem(2);
-            empty = ((roWeapon == null || roWeapon.data.privateWeapon != 1 || roWeapon.data.skillPoint == EWeaponSkill.None) ? unitReg.skillDrks[1] : roWeapon.data.skillIdx);
+            empty = ((roWeapon is null || roWeapon.data.privateWeapon != 1 || roWeapon.data.skillPoint == EWeaponSkill.None) ? unitReg.skillDrks[1] : roWeapon.data.skillIdx);
             list.Add(empty);
             roWeapon = FindWeaponItem(4);
-            empty = ((roWeapon == null || roWeapon.data.privateWeapon != 1 || roWeapon.data.skillPoint == EWeaponSkill.None) ? unitReg.skillDrks[2] : roWeapon.data.skillIdx);
+            empty = ((roWeapon is null || roWeapon.data.privateWeapon != 1 || roWeapon.data.skillPoint == EWeaponSkill.None) ? unitReg.skillDrks[2] : roWeapon.data.skillIdx);
             list.Add(empty);
             roWeapon = FindWeaponItem(5);
-            empty = ((roWeapon == null || roWeapon.data.privateWeapon != 1 || roWeapon.data.skillPoint == EWeaponSkill.None) ? unitReg.skillDrks[3] : roWeapon.data.skillIdx);
+            empty = ((roWeapon is null || roWeapon.data.privateWeapon != 1 || roWeapon.data.skillPoint == EWeaponSkill.None) ? unitReg.skillDrks[3] : roWeapon.data.skillIdx);
             list.Add(empty);
             roWeapon = FindWeaponItem(1);
-            if (roWeapon != null && roWeapon.data.privateWeapon == 1 && roWeapon.data.skillPoint != 0)
+            if (roWeapon is not null && roWeapon.data.privateWeapon == 1 && roWeapon.data.skillPoint != 0)
             {
                 empty = roWeapon.data.skillIdx;
                 list.Add(empty);
@@ -1018,7 +1018,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //{
         //	RoLocalUser localUser = RemoteObjectManager.instance.localUser;
         //	CommanderClassDataRow commanderClassDataRow = RemoteObjectManager.instance.regulation.commanderClassDtbl.Find((CommanderClassDataRow list) => list.index == int.Parse(id) && list.cls == (int)cls);
-        //	if (commanderClassDataRow == null)
+        //	if (commanderClassDataRow is null)
         //	{
         //		return 1;
         //	}
@@ -1046,7 +1046,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             materialDiction.Clear();
             CommanderClassDataRow commanderClassDataRow = RemoteObjectManager.instance.regulation.commanderClassDtbl.Find((CommanderClassDataRow list) => list.index == int.Parse(id) && list.cls == cls);
-            if (commanderClassDataRow != null)
+            if (commanderClassDataRow is not null)
             {
                 for (int i = 1; i <= commanderClassDataRow.pidx.Count; i++)
                 {
@@ -1071,7 +1071,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public void SetCostume(int ctid)
         {
-            if (haveCostumeList == null)
+            if (haveCostumeList is null)
             {
                 haveCostumeList = [ctid];
             }
@@ -1103,7 +1103,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             int result = 0;
             TranscendenceStepUpgradeDataRow transcendenceStepUpgradeDataRow = RemoteObjectManager.instance.regulation.FindTranscendenceStepUpgrade(CurrentTranscendenceStep() + 1);
-            if (transcendenceStepUpgradeDataRow != null)
+            if (transcendenceStepUpgradeDataRow is not null)
             {
                 result = transcendenceStepUpgradeDataRow.stepPoint;
             }

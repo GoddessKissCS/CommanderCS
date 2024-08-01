@@ -15,7 +15,7 @@ namespace CommanderCS.Packets.Handlers.Event
 	private IEnumerator EventRaidSummonResult(JsonRpcClient.Request request, string result, Dictionary<string, int> ersoc, Protocols.EventBattleData.RaidData bInfo, int bossCnt)
 	{
 		int num = int.Parse(this._FindRequestProperty(request, "eidx"));
-		if (result != null)
+		if (result is not null)
 		{
 			this.localUser.RefreshItemFromNetwork(ersoc);
 			UIEventBattle eventBattle = UIManager.instance.world.eventBattle;

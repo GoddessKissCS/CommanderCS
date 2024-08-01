@@ -20,7 +20,7 @@ namespace CommanderCS.Packets.Handlers.InfinityBattle
             {
             };
 
-            if (User.DefenderDeck.InfinityBattleDeck != null)
+            if (User.DefenderDeck.InfinityBattleDeck is not null)
             {
                 battleDeckResponse.deck = User.DefenderDeck.InfinityBattleDeck;
 
@@ -53,7 +53,7 @@ namespace CommanderCS.Packets.Handlers.InfinityBattle
 	// Token: 0x0600618E RID: 24974 RVA: 0x001B1CC4 File Offset: 0x001AFEC4
 	private IEnumerator GetInfinityBattleDeckResult(JsonRpcClient.Request request, string result, JObject deck)
 	{
-		if (deck != null)
+		if (deck is not null)
 		{
 			PlayerPrefs.SetString("InfinityBattleDeck", JObject.FromObject(deck).ToString());
 		}

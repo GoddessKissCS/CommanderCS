@@ -35,7 +35,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                         return false;
                     }
                 }
-                if (!simulator.isEnded && (frame._lhsTimeLine == null || frame._lhsTimeLine.Count == 0) && (frame._rhsTimeLine == null || frame._rhsTimeLine.Count == 0))
+                if (!simulator.isEnded && (frame._lhsTimeLine is null || frame._lhsTimeLine.Count == 0) && (frame._rhsTimeLine is null || frame._rhsTimeLine.Count == 0))
                 {
                     if (frame._lhsTimeLine.Count == 0 && frame._rhsTimeLine.Count == 0)
                     {
@@ -61,7 +61,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                         {
                             int num = frame.lhsTroopStartIndex + i;
                             Unit unit2 = frame.units[num];
-                            if (unit2 != null && !unit2.isDead)
+                            if (unit2 is not null && !unit2.isDead)
                             {
                                 frame._lhsTimeLine.Add(num);
                             }
@@ -72,7 +72,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                             continue;
                         }
                         Unit unit3 = frame.units[num2];
-                        if (unit3 == null)
+                        if (unit3 is null)
                         {
                             continue;
                         }
@@ -130,7 +130,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                     if (frame.IsUnitInBattle(item))
                     {
                         unit4 = frame._units[item];
-                        if (unit4 != null && unit4.health > 0)
+                        if (unit4 is not null && unit4.health > 0)
                         {
                             list.Add(item);
                         }
@@ -143,7 +143,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                     if (frame.IsUnitInBattle(item2))
                     {
                         unit4 = frame._units[item2];
-                        if (unit4 != null && unit4.health > 0)
+                        if (unit4 is not null && unit4.health > 0)
                         {
                             list.Add(item2);
                         }
@@ -175,7 +175,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                         frame._lhsTimeLine.RemoveAt(0);
                         unit5 = frame._units[num4];
                     }
-                    while (unit5 == null || unit5.health <= 0);
+                    while (unit5 is null || unit5.health <= 0);
                     frame._turnUnitIndex = num4;
                 }
                 else
@@ -192,7 +192,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                         frame._rhsTimeLine.RemoveAt(0);
                         unit6 = frame._units[num5];
                     }
-                    while (unit6 == null || unit6.health <= 0);
+                    while (unit6 is null || unit6.health <= 0);
                     frame._turnUnitIndex = num5;
                 }
                 frame._isLhsTimeLineTurn = !frame._isLhsTimeLineTurn;
@@ -203,7 +203,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                 unit4._isTurn = true;
                 unit4._turn++;
                 Skill skill = unit4._skills[0];
-                if (skill != null)
+                if (skill is not null)
                 {
                     SkillDataRow skillDataRow = simulator.regulation.skillDtbl[skill.dri];
                     skill._sp = skillDataRow.maxSp;
@@ -256,7 +256,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                     for (int i = 1; i < unit.skills.Count; i++)
                     {
                         Skill skill = unit.skills[i];
-                        if (skill != null)
+                        if (skill is not null)
                         {
                             skill._sp += skill.SkillDataRow.spOnCriticalHit;
                             if (skill._sp >= skill.SkillDataRow.maxSp)
@@ -277,7 +277,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                     for (int j = 1; j < unit.skills.Count; j++)
                     {
                         Skill skill2 = unit.skills[j];
-                        if (skill2 != null)
+                        if (skill2 is not null)
                         {
                             skill2._sp += skill2.SkillDataRow.spOnHit;
                             if (skill2._sp >= skill2.SkillDataRow.maxSp)
@@ -298,7 +298,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                     for (int k = 1; k < unit.skills.Count; k++)
                     {
                         Skill skill3 = unit.skills[k];
-                        if (skill3 != null)
+                        if (skill3 is not null)
                         {
                             skill3._sp += skill3.SkillDataRow.spOnBeHit;
                             if (skill3._sp >= skill3.SkillDataRow.maxSp)

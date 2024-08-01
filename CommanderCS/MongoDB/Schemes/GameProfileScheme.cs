@@ -401,132 +401,132 @@ namespace CommanderCS.MongoDB.Schemes
         /// <summary>
         /// Gets or sets the nickname of the user.
         /// </summary>
-        public string nickname { get; set; } = "Commander";
+        public string nickname { get; set; }
 
         /// <summary>
         /// Gets or sets the annCoin of the user.
         /// </summary>
-        public int annCoin { get; set; } = 0;
+        public int annCoin { get; set; }
 
         /// <summary>
         /// Gets or sets the BlackChallenge of the user.
         /// </summary>
-        public int BlackChallenge { get; set; } = 0;
+        public int BlackChallenge { get; set; }
 
         /// <summary>
         /// Gets or sets the blueprintArmy of the user.
         /// </summary>
-        public int blueprintArmy { get; set; } = 0;
+        public int blueprintArmy { get; set; }
 
         /// <summary>
         /// Gets or sets the blueprintNavy of the user.
         /// </summary>
-        public int blueprintNavy { get; set; } = 0;
+        public int blueprintNavy { get; set; }
 
         /// <summary>
         /// Gets or sets the bullet of the user.
         /// </summary>
-        public int bullet { get; set; } = 500;
+        public int bullet { get; set; }
 
         /// <summary>
         /// Gets or sets the cash of the user.
         /// </summary>
-        public int cash { get; set; } = 500;
+        public int cash { get; set; }
 
         /// <summary>
         /// Gets or sets the challenge of the user.
         /// </summary>
-        public int challenge { get; set; } = 0;
+        public int challenge { get; set; }
 
         /// <summary>
         /// Gets or sets the challengeCoin of the user.
         /// </summary>
-        public int challengeCoin { get; set; } = 0;
+        public int challengeCoin { get; set; }
 
         /// <summary>
         /// Gets or sets the chip of the user.
         /// </summary>
-        public int chip { get; set; } = 0;
+        public int chip { get; set; }
 
         /// <summary>
         /// Gets or sets the commanderGift of the user.
         /// </summary>
-        public int commanderGift { get; set; } = 0;
+        public int commanderGift { get; set; }
 
         /// <summary>
         /// Gets or sets the commanderPromotionPoint of the user.
         /// </summary>
-        public int commanderPromotionPoint { get; set; } = 0;
+        public int commanderPromotionPoint { get; set; }
 
         /// <summary>
         /// Gets or sets the eventRaidTicket of the user.
         /// </summary>
-        public int eventRaidTicket { get; set; } = 0;
+        public int eventRaidTicket { get; set; }
 
         /// <summary>
         /// Gets or sets the exp of the user.
         /// </summary>
-        public int exp { get; set; } = 0;
+        public int exp { get; set; }
 
         /// <summary>
         /// Gets or sets the explorationTicket of the user.
         /// </summary>
-        public int explorationTicket { get; set; } = 0;
+        public int explorationTicket { get; set; }
 
         /// <summary>
         /// Gets or sets the gold of the user.
         /// </summary>
-        public int gold { get; set; } = 100000;
+        public int gold { get; set; }
 
         /// <summary>
         /// Gets or sets the guildCoin of the user.
         /// </summary>
-        public int guildCoin { get; set; } = 0;
+        public int guildCoin { get; set; }
 
         /// <summary>
         /// Gets or sets the honor of the user.
         /// </summary>
-        public int honor { get; set; } = 0;
+        public int honor { get; set; }
 
         /// <summary>
         /// Gets or sets the level of the user.
         /// </summary>
-        public int level { get; set; } = 1;
+        public int level { get; set; }
 
         /// <summary>
         /// Gets or sets the oil of the user.
         /// </summary>
-        public int oil { get; set; } = 0;
+        public int oil { get; set; }
 
         /// <summary>
         /// Gets or sets the opcon of the user.
         /// </summary>
-        public int opcon { get; set; } = 0;
+        public int opcon { get; set; }
 
         /// <summary>
         /// Gets or sets the opener of the user.
         /// </summary>
-        public int opener { get; set; } = 0;
+        public int opener { get; set; }
 
         /// <summary>
         /// Gets or sets the raidCoin of the user.
         /// </summary>
-        public int raidCoin { get; set; } = 0;
+        public int raidCoin { get; set; }
 
         /// <summary>
         /// Gets or sets the ring of the user.
         /// </summary>
-        public int ring { get; set; } = 0;
+        public int ring { get; set; }
 
         /// <summary>
         /// Gets or sets the sweepTicket of the user.
         /// </summary>
-        public int sweepTicket { get; set; } = 0;
+        public int sweepTicket { get; set; }
 
         /// <summary>
         /// Gets or sets the thumbnailId of the user.
         /// </summary>
-        public int thumbnailId { get; set; } = 1001;
+        public int thumbnailId { get; set; }
 
         /// <summary>
         /// Gets or sets the vipExp of the user.
@@ -536,7 +536,7 @@ namespace CommanderCS.MongoDB.Schemes
         /// <summary>
         /// Gets or sets the vipLevel of the user.
         /// </summary>
-        public int vipLevel { get; set; } = 0;
+        public int vipLevel { get; set; }
 
         /// <summary>
         /// Gets or sets the waveDuelCoin of the user.
@@ -546,52 +546,52 @@ namespace CommanderCS.MongoDB.Schemes
         /// <summary>
         /// Gets or sets the waveDuelTicket of the user.
         /// </summary>
-        public int waveDuelTicket { get; set; } = 0;
+        public int waveDuelTicket { get; set; }
 
         /// <summary>
         /// Gets or sets the amount of immediate weapon tickets.
         /// </summary>
-        public int weaponImmediateTicket { get; set; } = 0;
+        public int weaponImmediateTicket { get; set; }
 
         /// <summary>
         /// Gets or sets the amount of weapon make tickets.
         /// </summary>
-        public int weaponMakeTicket { get; set; } = 0;
+        public int weaponMakeTicket { get; set; }
 
         /// <summary>
         /// Gets or sets the amount of weapon material 1.
         /// </summary>
-        public int weaponMaterial1 { get; set; } = 0;
+        public int weaponMaterial1 { get; set; }
 
         /// <summary>
         /// Gets or sets the amount of weapon material 2.
         /// </summary>
-        public int weaponMaterial2 { get; set; } = 0;
+        public int weaponMaterial2 { get; set; }
 
         /// <summary>
         /// Gets or sets the amount of weapon material 3.
         /// </summary>
-        public int weaponMaterial3 { get; set; } = 0;
+        public int weaponMaterial3 { get; set; }
 
         /// <summary>
         /// Gets or sets the amount of weapon material 4.
         /// </summary>
-        public int weaponMaterial4 { get; set; } = 0;
+        public int weaponMaterial4 { get; set; }
 
         /// <summary>
         /// Gets or sets the amount of world duel coins.
         /// </summary>
-        public int worldDuelCoin { get; set; } = 0;
+        public int worldDuelCoin { get; set; }
 
         /// <summary>
         /// Gets or sets the amount of world duel tickets.
         /// </summary>
-        public int worldDuelTicket { get; set; } = 0;
+        public int worldDuelTicket { get; set; }
 
         /// <summary>
         /// Gets or sets the amount of world duel upgrade coins.
         /// </summary>
-        public int worldDuelUpgradeCoin { get; set; } = 0;
+        public int worldDuelUpgradeCoin { get; set; }
     }
 
     /// <summary>

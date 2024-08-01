@@ -36,7 +36,7 @@ namespace CommanderCS.Packets.Handlers.PvP
 	private IEnumerator PvPRankingListResult(JsonRpcClient.Request request, object result)
 	{
 		this.duelRankingList.Clear();
-		if (result != null)
+		if (result is not null)
 		{
 		}
 		Protocols.PvPRankingList pvPRankingList = this._ConvertJObject<Protocols.PvPRankingList>(result);

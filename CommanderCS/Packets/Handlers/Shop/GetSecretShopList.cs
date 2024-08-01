@@ -60,7 +60,7 @@ namespace CommanderCS.Packets.Handlers.Shop
 	// Token: 0x06006004 RID: 24580 RVA: 0x001AFC04 File Offset: 0x001ADE04
 	private IEnumerator GetSecretShopListResult(JsonRpcClient.Request request, Protocols.SecretShop result)
 	{
-		if (result != null && result.shopList.Count != 0)
+		if (result is not null && result.shopList.Count != 0)
 		{
 			string text = this._FindRequestProperty(request, "styp");
 			if (text = 3.ToString())

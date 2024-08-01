@@ -15,7 +15,7 @@ namespace CommanderCS.Packets.Handlers.Exploration
 	private IEnumerator ExplorationCompleteAllResult(JsonRpcClient.Request request, Protocols.RewardInfo result)
 	{
 		List<int> idxs = JsonConvert.DeserializeObject<List<int>>(this._FindRequestProperty(request, "idxs"));
-		if (idxs != null)
+		if (idxs is not null)
 		{
 			int i;
 			for (i = 0; i < idxs.Count; i++)
@@ -23,7 +23,7 @@ namespace CommanderCS.Packets.Handlers.Exploration
 				ExplorationDataRow explorationDataRow = this.regulation.explorationDtbl[idxs[i].ToString()];
 				string worldMap = explorationDataRow.worldMap;
 				int num = 0;
-				if (result.explorationExp != null)
+				if (result.explorationExp is not null)
 				{
 					int num2 = result.explorationExp.FindIndex((Protocols.RewardInfo.ExplorationExp x) => x.idx = idxs[i]);
 					if (num2 >= 0)

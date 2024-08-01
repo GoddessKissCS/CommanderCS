@@ -44,7 +44,7 @@ namespace CommanderCS.Packets.Handlers.Event
 	// Token: 0x06006149 RID: 24905 RVA: 0x001B16E4 File Offset: 0x001AF8E4
 	private IEnumerator GetEventRemaingTimeResult(JsonRpcClient.Request request, string result, Dictionary<string, int> buff)
 	{
-		if (result != null && buff.Count > 0)
+		if (result is not null && buff.Count > 0)
 		{
 			this.localUser.eventRemaingTime.Clear();
 			List<string> list = new List<string>(buff.Keys);

@@ -224,7 +224,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         public void SetLevelFormal(int skillLv)
         {
-            if (_skillUpgradeDataRow != null)
+            if (_skillUpgradeDataRow is not null)
             {
                 skillLv--;
                 if (skillLv < 0)

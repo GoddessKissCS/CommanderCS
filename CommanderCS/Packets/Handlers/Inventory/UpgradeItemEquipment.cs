@@ -28,18 +28,18 @@ namespace CommanderCS.Packets.Handlers.Inventory
 				this.localUser.SetEquipPossibleItemCount(text, num, keyValuePair2.Value.availableCount);
 			}
 		}
-		if (result.commanderInfo != null)
+		if (result.commanderInfo is not null)
 		{
 			foreach (KeyValuePair<string, Protocols.UserInformationResponse.Commander> keyValuePair3 in result.commanderInfo)
 			{
-				if (keyValuePair3.Value.equipItemInfo != null)
+				if (keyValuePair3.Value.equipItemInfo is not null)
 				{
 					foreach (KeyValuePair<string, int> keyValuePair4 in keyValuePair3.Value.equipItemInfo)
 					{
 						this.localUser.EquipedList_upgradeItem(keyValuePair4.Key, keyValuePair4.Value, keyValuePair3.Key);
 						roItem = this.localUser.EquipedList_FindItem(keyValuePair4.Key, keyValuePair3.Key, keyValuePair4.Value);
 						RoCommander roCommander = this.localUser.FindCommander(keyValuePair3.Key);
-						if (roCommander != null && roItem != null)
+						if (roCommander is not null && roItem is not null)
 						{
 							roCommander.SetEquipItem(roItem.pointType, roItem);
 						}

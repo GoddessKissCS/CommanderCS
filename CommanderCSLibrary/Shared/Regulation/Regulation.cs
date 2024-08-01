@@ -83,7 +83,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
             get
             {
-                if (_skillDamagePattern == null)
+                if (_skillDamagePattern is null)
                 {
                     _skillDamagePattern = new SkillDamagePatternTable();
                     _skillDamagePattern.Init(this);
@@ -152,7 +152,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
             get
             {
-                if (_dormitoryHeadCostumeMap == null)
+                if (_dormitoryHeadCostumeMap is null)
                 {
                     _dormitoryHeadCostumeMap = [];
                     for (int i = 0; i < dormitoryHeadCostumeDtbl.length; i++)
@@ -172,7 +172,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
             get
             {
-                if (_dormitoryThemeMap == null)
+                if (_dormitoryThemeMap is null)
                 {
                     _dormitoryThemeMap = [];
                     for (int i = 0; i < dormitoryThemeDtbl.length; i++)
@@ -195,7 +195,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
             get
             {
-                if (_cooperateBattleStepDtbl == null)
+                if (_cooperateBattleStepDtbl is null)
                 {
                     _cooperateBattleStepDtbl = [];
                     for (int i = 0; i < cooperateBattleDtbl.length; i++)
@@ -349,7 +349,7 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public static void ExtendList<T>(ref List<T> list, int count)
         {
-            if (list == null)
+            if (list is null)
             {
                 list = [];
             }
@@ -361,7 +361,7 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public static void FillList<T>(ref List<T> list, int count)
         {
-            if (list == null)
+            if (list is null)
             {
                 list = new List<T>();
             }
@@ -742,7 +742,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         public string GetCostumeName(int ctid)
         {
             CommanderCostumeDataRow commanderCostumeDataRow = FindCostumeData(ctid);
-            if (commanderCostumeDataRow == null)
+            if (commanderCostumeDataRow is null)
             {
                 return "1";
             }
@@ -752,7 +752,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         public string GetCostumeThumbnailName(int ctid)
         {
             CommanderCostumeDataRow commanderCostumeDataRow = FindCostumeData(ctid);
-            if (commanderCostumeDataRow != null)
+            if (commanderCostumeDataRow is not null)
             {
                 CommanderDataRow commanderDataRow = commanderDtbl[commanderCostumeDataRow.cid.ToString()];
                 return commanderDataRow.resourceId + "_" + commanderCostumeDataRow.skinName;

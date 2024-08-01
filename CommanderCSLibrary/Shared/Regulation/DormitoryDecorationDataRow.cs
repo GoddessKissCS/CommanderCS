@@ -44,7 +44,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
             get
             {
-                if (_itemExchangeDr == null)
+                if (_itemExchangeDr is null)
                 {
                     _itemExchangeDr = RemoteObjectManager.instance.regulation.itemExchangeDtbl.Find((ItemExchangeDataRow item) => item.typeidx == id && item.type == EStorageType.DormitoryFurniture);
                 }

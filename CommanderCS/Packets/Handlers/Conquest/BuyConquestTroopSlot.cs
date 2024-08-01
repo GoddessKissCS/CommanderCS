@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 	// Token: 0x0600606A RID: 24682 RVA: 0x001B049C File Offset: 0x001AE69C
 	private IEnumerator BuyConquestTroopSlotResult(JsonRpcClient.Request request, string result, Protocols.UserInformationResponse.Resource rsoc)
 	{
-		if (result != null)
+		if (result is not null)
 		{
 			string text = this._FindRequestProperty(request, "slot");
 			this.localUser.RefreshGoodsFromNetwork(rsoc);

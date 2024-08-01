@@ -64,7 +64,7 @@ namespace CommanderCSLibrary.Shared.Ro
         [OnDeserialized]
         private void OnDeserialized(StreamingContext context)
         {
-            if (conditionList == null)
+            if (conditionList is null)
             {
                 conditionList = [];
             }
@@ -86,7 +86,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public bool IsExistCondition()
         {
-            if (conditionList == null || conditionList.Count <= 0)
+            if (conditionList is null || conditionList.Count <= 0)
             {
                 return false;
             }

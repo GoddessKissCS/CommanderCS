@@ -22,7 +22,8 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             var user = AddCostumeData(cid, @params.costumeId, User);
 
-            // TODO CHECK WHEN WE CREATE A CHARACTER TO SEE IF WE OWN ANY COSTUMES AND THEN TRANSFER THEM TO THE haveCostume and delete them from donHaveCommCostume
+            // TODO MAYBECHECK WHEN WE CREATE A CHARACTER TO SEE IF WE OWN ANY COSTUMES
+            // AND THEN TRANSFER THEM TO THE haveCostume and delete them from donHaveCommCostume
 
 
 

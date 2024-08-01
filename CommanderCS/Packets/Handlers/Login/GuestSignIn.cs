@@ -25,7 +25,7 @@ namespace CommanderCS.Host.Handlers.Sign
             SignInP Sign = new();
             var user = DatabaseManager.Account.FindByName(uid);
 
-            if (user == null)
+            if (user is null)
             {
                 return Sign;
             }

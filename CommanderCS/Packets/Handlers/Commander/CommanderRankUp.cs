@@ -1,8 +1,8 @@
 ﻿using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
-
 using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Commander
@@ -14,9 +14,14 @@ namespace CommanderCS.Host.Handlers.Commander
         {
             string cid = @params.commanderId.ToString();
 
-            if (User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
+            bool commanderExists = User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander is not null;
+
+            if (commanderExists)
             {
-                var commanderRankData = Regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == int.Parse(commander.__rank));
+
+                int commanderRank = int.Parse(commander.__rank);
+
+                CommanderRankDataRow commanderRankData = Regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == commanderRank);
 
                 User.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
 
@@ -42,8 +47,12 @@ namespace CommanderCS.Host.Handlers.Commander
                 User.CommanderData[cid] = commander;
 
                 DatabaseManager.GameProfile.UpdateGold(SessionId, commanderRankData.gold, false);
+                DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+                DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.UserInventory.medalData);
 
-            } else {
+            }
+            else
+            {
 
                 int recruitCost = (@params.commanderId == 1 || @params.commanderId == 2 || @params.commanderId == 5 ||
                        @params.commanderId == 14 || @params.commanderId == 17 || @params.commanderId == 18 ||
@@ -88,23 +97,17 @@ namespace CommanderCS.Host.Handlers.Commander
                 }
                 else
                 {
-                    // If no commanders exist, start with ID 1
-                    newcommanderId = 1;
+                    newcommanderId = 0;
                 }
 
                 string newCommander = newcommanderId.ToString();
 
-                var user = User;
-
-                var data = user.CommanderData;
-
-                data.TryAdd(newCommander, newestCommander);
+                User.CommanderData.TryAdd(newCommander, newestCommander);
 
                 DatabaseManager.GameProfile.UpdateGold(SessionId, recruitCost, false);
+                DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+                DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.UserInventory.medalData);
             }
-
-            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
-            DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.UserInventory.medalData);
 
             var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
@@ -131,25 +134,9 @@ namespace CommanderCS.Host.Handlers.Commander
             return response;
         }
 
-        private static Dictionary<int, int> GradeCostList { get; set; } = new Dictionary<int, int>()
-        {
-            { 1, 10 },
-            { 2, 30 },
-            { 3, 80 }
-        };
-
-        private static Dictionary<int, int> RankCostList { get; set; } = new Dictionary<int, int>()
-        {
-            { 1, 20 },
-            { 2, 50 },
-            { 3, 100 },
-            { 4, 150 },
-            { 5, 250 }
-        };
-
         private static bool TryRecruitCommander(int grade, ref int medals)
         {
-            if (!GradeCostList.TryGetValue(grade, out var cost))
+            if (!Constants.GradeCostList.TryGetValue(grade, out var cost))
             {
                 throw new Exception($"Grade {grade} Not Defined");
             }
@@ -166,7 +153,7 @@ namespace CommanderCS.Host.Handlers.Commander
 
         private static bool TryRankUpCommander(int grade, ref int medals)
         {
-            if (!RankCostList.TryGetValue(grade, out var cost))
+            if (!Constants.RankCostList.TryGetValue(grade, out var cost))
             {
                 throw new Exception($"Grade {grade} Not Defined");
             }

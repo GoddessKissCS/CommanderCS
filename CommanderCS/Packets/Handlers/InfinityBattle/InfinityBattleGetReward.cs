@@ -13,7 +13,7 @@ namespace CommanderCS.Packets.Handlers.InfinityBattle
 	// Token: 0x06006197 RID: 24983 RVA: 0x001B1D6C File Offset: 0x001AFF6C
 	private IEnumerator InfinityBattleGetRewardResult(JsonRpcClient.Request request, Protocols.InfinityTowerReward result)
 	{
-		if (result != null)
+		if (result is not null)
 		{
 			UIPopup.Create<UIGetItem>("GetItem").Set(result.reward, string.Empty);
 			SoundManager.PlaySFX("SE_ItemGet_001", false, 0f, float.MaxValue, float.MaxValue, default(Vector3), null, SoundDuckingSetting.DoNotDuck, 0f, 1f);

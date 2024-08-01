@@ -33,7 +33,7 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
 	// Token: 0x0600614F RID: 24911 RVA: 0x001B175C File Offset: 0x001AF95C
 	private IEnumerator WorldDuelInformationResult(JsonRpcClient.Request request, Protocols.WorldDuelInformation result)
 	{
-		if (result != null)
+		if (result is not null)
 		{
 			this.localUser.currentSeasonDuelTime.SetByDuration(result.resetTime);
 			this.localUser.RefreshDefenderTroop(result.deck);
@@ -41,7 +41,7 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
 			this.localUser.worldDuelBattleEnable = result.open;
 			this.localUser.worldDuelBuff = result.duelBuff;
 			this.localUser.RefreshWorldDuelActiveBuffFromNetwork(result.activeBuff);
-			if (this.duelRankingList == null)
+			if (this.duelRankingList is null)
 			{
 				this.duelRankingList = new List<RoUser>();
 			}

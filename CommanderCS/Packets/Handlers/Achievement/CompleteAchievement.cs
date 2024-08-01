@@ -36,7 +36,7 @@ namespace CommanderCS.Packets.Handlers.Achievement
 		for (int i = 0; i < result.Length; i++)
 		{
 			RoMission roMission = this.localUser.FindAchievement(result[i].achievementId.ToString(), result[i].sort);
-			if (roMission != null)
+			if (roMission is not null)
 			{
 				roMission.received = true;
 				roMission.completeTime = (double)result[i].time;

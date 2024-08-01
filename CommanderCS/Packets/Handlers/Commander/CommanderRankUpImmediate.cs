@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Commander
         {
             string cid = @params.cid.ToString();
 
-            if (User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
+            if (User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander is not null)
             {
                 var commanderRankData = Regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == int.Parse(commander.__rank));
 

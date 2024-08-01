@@ -28,7 +28,7 @@ namespace CommanderCS.Host.Handlers.Commander
 
             string cid = @params.commanderId.ToString();
 
-            if (User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
+            if (User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander is not null)
             {
                 int commanderXP = Convert.ToInt32(commander.__exp);
 

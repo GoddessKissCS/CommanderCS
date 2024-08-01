@@ -83,7 +83,7 @@ namespace CommanderCS.MongoDB
             var gametables = GameTableVersion.Get();
 
 
-            if (gametables != null)
+            if (gametables is not null)
             {
                 if (gametables.Version == 20220312000000)
                 {

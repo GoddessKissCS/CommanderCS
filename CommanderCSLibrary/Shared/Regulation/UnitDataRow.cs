@@ -276,7 +276,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         //	originSpeed = speed;
         //	originLuck = luck;
         //	originMaxHealth = maxHealth;
-        //	if (EquipItem != null && EquipItem.Count > 0)
+        //	if (EquipItem is not null && EquipItem.Count > 0)
         //	{
         //		foreach (KeyValuePair<int, RoItem> item in EquipItem)
         //		{
@@ -297,13 +297,13 @@ namespace CommanderCSLibrary.Shared.Regulation
         //			}
         //		}
         //	}
-        //	if (transcendence != null)
+        //	if (transcendence is not null)
         //	{
         //		int num8 = 0;
         //		for (int i = 0; i < transcendence.Count; i++)
         //		{
         //			TranscendenceSlotDataRow transcendenceSlotDataRow = regulation.FindTranscendenceSlot(i + 1);
-        //			if (transcendenceSlotDataRow != null)
+        //			if (transcendenceSlotDataRow is not null)
         //			{
         //				switch (transcendenceSlotDataRow.stat)
         //				{
@@ -338,7 +338,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         //		maxHealth += AddTranscendenceHealth(num8);
         //	}
         //	CommanderCostumeDataRow commanderCostumeDataRow = regulation.FindCostumeData(costume);
-        //	if (commanderCostumeDataRow != null)
+        //	if (commanderCostumeDataRow is not null)
         //	{
         //           switch (commanderCostumeDataRow.statType1)
         //           {
@@ -452,11 +452,11 @@ namespace CommanderCSLibrary.Shared.Regulation
         //	}
         //	int num9 = 0;
         //	string weaponSetType = string.Empty;
-        //	if (weaponItem != null && weaponItem.Count > 0)
+        //	if (weaponItem is not null && weaponItem.Count > 0)
         //	{
         //		foreach (RoWeapon value in weaponItem.Values)
         //		{
-        //			if (value == null)
+        //			if (value is null)
         //			{
         //				continue;
         //			}
@@ -522,7 +522,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         //	if (num9 == 5 && isWeaponSet)
         //	{
         //		WeaponSetDataRow weaponSetDataRow = regulation.weaponSetDtbl.Find((WeaponSetDataRow row) => row.type == weaponSetType);
-        //		if (weaponSetDataRow != null)
+        //		if (weaponSetDataRow is not null)
         //		{
         //			switch (weaponSetDataRow.weaponSetStatType)
         //			{
@@ -551,7 +551,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         //	if (!string.IsNullOrEmpty(commanderId))
         //	{
         //		List<FavorDataRow> list = regulation.favorDtbl.FindAll((FavorDataRow row) => row.cid == int.Parse(commanderId) && row.step <= favorRewardStep);
-        //		if (list != null)
+        //		if (list is not null)
         //		{
         //			foreach (FavorDataRow item3 in list)
         //			{
@@ -643,7 +643,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         //		if (RemoteObjectManager.instance.localUser.duelTargetList.ContainsKey(localUser2.duelTargetIdx))
         //		{
         //			RoUser roUser = RemoteObjectManager.instance.localUser.duelTargetList[localUser2.duelTargetIdx];
-        //			if (roUser != null)
+        //			if (roUser is not null)
         //			{
         //				foreach (RoGuildSkill guildSkill2 in roUser.guildSkillList)
         //				{
@@ -690,13 +690,13 @@ namespace CommanderCSLibrary.Shared.Regulation
         //	if (battleType == EBattleType.Undefined)
         //	{
         //		RoLocalUser localUser3 = RemoteObjectManager.instance.localUser;
-        //		if (localUser3.completeRewardGroupList != null)
+        //		if (localUser3.completeRewardGroupList is not null)
         //		{
         //			foreach (int group2 in localUser3.completeRewardGroupList)
         //			{
         //				bool flag = false;
         //				GroupInfoDataRow groupInfoDataRow = RemoteObjectManager.instance.regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => data.groupIdx == group2.ToString() && data.rewardType >= ERewardType.GroupEff_1 && data.rewardType <= ERewardType.GroupEff_8);
-        //				if (groupInfoDataRow == null)
+        //				if (groupInfoDataRow is null)
         //				{
         //					continue;
         //				}
@@ -724,7 +724,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         //				else if (groupInfoDataRow.rewardIdx == 1004)
         //				{
         //					GroupMemberDataRow groupMemberDataRow = RemoteObjectManager.instance.regulation.groupMemberDtbl.Find((GroupMemberDataRow row) => row.gidx == group2.ToString() && row.memberType == 1 && row.memberIdx == commanderId);
-        //					if (groupMemberDataRow != null)
+        //					if (groupMemberDataRow is not null)
         //					{
         //						flag = true;
         //					}
@@ -825,7 +825,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         //		return;
         //	}
         //	RoUser roUser2 = RemoteObjectManager.instance.localUser.duelTargetList[localUser4.duelTargetIdx];
-        //	if (roUser2 == null || roUser2.completeRewardGroupList == null)
+        //	if (roUser2 is null || roUser2.completeRewardGroupList is null)
         //	{
         //		return;
         //	}
@@ -833,7 +833,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         //	{
         //		bool flag2 = false;
         //		GroupInfoDataRow groupInfoDataRow2 = RemoteObjectManager.instance.regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => data.groupIdx == group.ToString() && data.rewardType >= ERewardType.GroupEff_1 && data.rewardType <= ERewardType.GroupEff_8);
-        //		if (groupInfoDataRow2 == null)
+        //		if (groupInfoDataRow2 is null)
         //		{
         //			continue;
         //		}
@@ -861,7 +861,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         //		else if (groupInfoDataRow2.rewardIdx == 1004)
         //		{
         //			GroupMemberDataRow groupMemberDataRow2 = RemoteObjectManager.instance.regulation.groupMemberDtbl.Find((GroupMemberDataRow row) => row.gidx == group.ToString() && row.memberType == 1 && row.memberIdx == commanderId);
-        //			if (groupMemberDataRow2 != null)
+        //			if (groupMemberDataRow2 is not null)
         //			{
         //				flag2 = true;
         //			}

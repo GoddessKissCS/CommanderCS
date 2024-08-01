@@ -30,7 +30,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
             get
             {
-                if (_goods == null)
+                if (_goods is null)
                 {
                     _goods = new List<GoodsDataRow>();
                     for (int i = 0; i < goodsIdxs.Count; i++)

@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 	// Token: 0x06006082 RID: 24706 RVA: 0x001B06C0 File Offset: 0x001AE8C0
 	private IEnumerator GetConquestBattleResult(JsonRpcClient.Request request, Protocols.GetConquestBattle result)
 	{
-		if (result != null && UIManager.instance.world.guild.historyPopup != null)
+		if (result is not null && UIManager.instance.world.guild.historyPopup is not null)
 		{
 			int num = int.Parse(this._FindRequestProperty(request, "skip"));
 			UIManager.instance.world.guild.historyPopup.CreateBattleResultPopup(result, num);

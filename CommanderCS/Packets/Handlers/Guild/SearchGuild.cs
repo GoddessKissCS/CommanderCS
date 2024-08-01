@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             ResponsePacket response = new() { Id = BasePacket.Id };
 
             var guild = DatabaseManager.Guild.FindByName(@params.gnm);
-            var roGuild = guild != null ? DatabaseManager.GuildApplication.Guild2RoGuild(guild, SessionId) : new RoGuild();
+            var roGuild = guild is not null ? DatabaseManager.GuildApplication.Guild2RoGuild(guild, SessionId) : new RoGuild();
 
             response.Result = roGuild;
 

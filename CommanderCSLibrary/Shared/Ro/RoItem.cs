@@ -62,7 +62,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public void SetItemLevel(string id, int curLevel)
         {
             EquipItemDataRow equipItemDataRow = RemoteObjectManager.instance.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key == id);
-            if (equipItemDataRow != null)
+            if (equipItemDataRow is not null)
             {
                 level = curLevel;
                 statPoint = equipItemDataRow.statBasePoint + (curLevel - 1) * equipItemDataRow.statAddPoint;

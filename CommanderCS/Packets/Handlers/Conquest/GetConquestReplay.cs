@@ -16,7 +16,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 	{
 		if (result = null)
 		{
-			if (this.localUser.playingChatRecord != null)
+			if (this.localUser.playingChatRecord is not null)
 			{
 				this.localUser.playingChatRecord.hasRecord = false;
 				this.localUser.playingChatRecord = null;

@@ -15,7 +15,7 @@ namespace CommanderCS.Host.Handlers.Guild
             };
 
 
-            if (User.GuildId == null)
+            if (User.GuildId is null)
             {
                 response.Result = null;
                 return response;
@@ -55,7 +55,7 @@ namespace CommanderCS.Host.Handlers.Guild
 		{
 			yield break;
 		}
-		if (result != null)
+		if (result is not null)
 		{
 			UIManager.instance.world.guild.InitAndOpenGuildInfo(result.memberData);
 			UISetter.SetActive(UIManager.instance.world.guild.guildBoardBadge, result.badge = 1);

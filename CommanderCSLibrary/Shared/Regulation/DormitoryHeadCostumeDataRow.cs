@@ -37,7 +37,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
             get
             {
-                if (_goodsDr == null)
+                if (_goodsDr is null)
                 {
                     _goodsDr = RemoteObjectManager.instance.regulation.goodsDtbl[priceType];
                 }

@@ -34,7 +34,7 @@ namespace CommanderCS.Host.Handlers.Commander
 	private IEnumerator GetCommanderScenarioResult(JsonRpcClient.Request request, Dictionary<string, Dictionary<string, Protocols.CommanderScenario>> result)
 	{
 		this.localUser.sn_resultDictionary = result;
-		if (UIManager.instance.world != null && UIManager.instance.world.existCommanderDetail && UIManager.instance.world.commanderDetail.isActive)
+		if (UIManager.instance.world is not null && UIManager.instance.world.existCommanderDetail && UIManager.instance.world.commanderDetail.isActive)
 		{
 			UIManager.instance.world.commanderDetail.InitScenarioList();
 		}
