@@ -92,7 +92,9 @@ namespace CommanderCSLibrary.Cryptography
 
             cipher.DoFinal(comparisonBytes, length);
 
-            return Convert.ToBase64String(comparisonBytes);
+            var base64string = Convert.ToBase64String(comparisonBytes);
+
+            return base64string;
         }
 
         public static string ComputeSha256Hash(string input) => ComputeSha256Hash(_encoding.GetBytes(input));
@@ -106,19 +108,22 @@ namespace CommanderCSLibrary.Cryptography
             {
                 builder.Append(hash[i].ToString("x2"));
             }
-            return builder.ToString();
+            var computedHash = builder.ToString();  
+            return computedHash;
         }
 
         public static string Base64Encode(string plainText)
         {
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
-            return System.Convert.ToBase64String(plainTextBytes);
+            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            var encodedPlainText = Convert.ToBase64String(plainTextBytes);
+            return encodedPlainText;
         }
 
         public static string Base64Decode(string base64EncodedData)
         {
-            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
-            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+            var base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
+            var decodedPlainText = Encoding.UTF8.GetString(base64EncodedBytes);
+            return decodedPlainText;
         }
 
     }

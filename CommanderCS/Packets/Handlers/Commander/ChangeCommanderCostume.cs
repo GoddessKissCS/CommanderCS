@@ -32,7 +32,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = "{success}"
+                Result = "{}"
             };
 
             return response;

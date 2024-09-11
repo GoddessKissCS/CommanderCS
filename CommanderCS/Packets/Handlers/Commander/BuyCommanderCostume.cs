@@ -20,17 +20,14 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             var costumeData = Regulation.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == @params.costumeId);
 
-            var user = AddCostumeData(cid, @params.costumeId, User);
-
             // TODO MAYBECHECK WHEN WE CREATE A CHARACTER TO SEE IF WE OWN ANY COSTUMES
             // AND THEN TRANSFER THEM TO THE haveCostume and delete them from donHaveCommCostume
-
-
 
             //REWORK
             User.UserResources.cash -= costumeData.sellPrice;
 
             DatabaseManager.GameProfile.UpdateCash(SessionId, costumeData.sellPrice, false);
+            var user = AddCostumeData(cid, @params.costumeId, User);
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, user.CommanderData);
             DatabaseManager.GameProfile.UpdateDontHaveCommanderCostumeData(SessionId, user.UserInventory.donHaveCommCostumeData);
 

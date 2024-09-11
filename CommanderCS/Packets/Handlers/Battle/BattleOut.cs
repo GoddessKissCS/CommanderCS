@@ -20,7 +20,6 @@ namespace CommanderCS.Host.Handlers.Battle
                 Error = new() { code = ErrorCode.Success }
             };
 
-
             string serializedJson = JsonConvert.SerializeObject(@params.info, Formatting.Indented);
 
             Record record = (Record)@params.info;
@@ -31,7 +30,7 @@ namespace CommanderCS.Host.Handlers.Battle
 
             WorldMapStageDataRow worldstagetbl = null;
 
-            switch (@params.type)
+            switch (@params.BattleType)
             {
                 case EBattleType.Plunder:
                     simulatedBattle = Simulator.ReplayPlunderSimulation(Regulation, serializedJson, false);
@@ -63,7 +62,6 @@ namespace CommanderCS.Host.Handlers.Battle
 
 #endif
 
-
             if (result.winSide == simulatedBattle.result.winSide && result.winSide != 1 && simulatedBattle.result.winSide != 1)
             {
                 double maxDifference = simulatedBattle.result.totalAttackDamage * 0.05;
@@ -75,7 +73,7 @@ namespace CommanderCS.Host.Handlers.Battle
                 {
                     bool isRecordGoldHigher = result.gold >= simulatedBattle.result.gold;
 
-                    if (@params.type == EBattleType.Plunder)
+                    if (@params.BattleType == EBattleType.Plunder)
                     {
 						User.LastStage = int.Parse(worldstagetbl.id);
 
@@ -170,7 +168,7 @@ namespace CommanderCS.Host.Handlers.Battle
     public class BattleOutRequest
     {
         [JsonProperty("type")]
-        public EBattleType type { get; set; }
+        public EBattleType BattleType { get; set; }
 
         [JsonProperty("checkSum")]
         public string checkSum { get; set; }

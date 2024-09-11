@@ -13,6 +13,9 @@ namespace StellarGK.Packets.Handlers.WaveDuel
             // TODO FINISH
             // need to check score and the get duelist between the range
 
+
+            //			User.RankingData.PvPDuelRankingData.score;
+
             CommanderCSLibrary.Shared.Protocols.PvPDuelList pvPDuel = new()
             {
                 duelList = [],
