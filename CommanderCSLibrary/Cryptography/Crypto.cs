@@ -108,7 +108,7 @@ namespace CommanderCSLibrary.Cryptography
             {
                 builder.Append(hash[i].ToString("x2"));
             }
-            var computedHash = builder.ToString();  
+            var computedHash = builder.ToString();
             return computedHash;
         }
 

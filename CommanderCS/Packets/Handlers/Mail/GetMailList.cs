@@ -9,9 +9,7 @@ namespace CommanderCS.Packets.Handlers.Mail
     {
         public override object Handle(GetMailListRequest @params)
         {
-            MailInfo mailInfo = new()
-            {
-            };
+            MailInfo mailInfo = new() { };
 
             var MailDataNotReceived = User.MailDataList.Where(x => x.__receive == "0").ToList();
 

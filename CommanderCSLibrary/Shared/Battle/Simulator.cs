@@ -344,7 +344,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 enableRhsFireAction = Option.Default.enableRhsFireAction,
                 enableFatalCut = Option.Default.enableFatalCut,
                 delayTurnChangeTime = Option.Default.delayTurnChangeTime,
-                enableEffect = Option.Default.enableEffect,               
+                enableEffect = Option.Default.enableEffect,
             };
 
             switch (simulator.initState.battleType)

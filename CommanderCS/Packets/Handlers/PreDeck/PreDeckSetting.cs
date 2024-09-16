@@ -19,7 +19,7 @@ namespace CommanderCS.Packets.Handlers.PreDeck
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = "changed"
+                Result = "{}"
             };
 
             return response;

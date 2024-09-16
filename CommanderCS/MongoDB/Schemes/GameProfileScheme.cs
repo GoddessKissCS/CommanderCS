@@ -53,7 +53,7 @@ namespace CommanderCS.MongoDB.Schemes
         /// <summary>
         /// Gets or sets a value indicating whether notifications are enabled.
         /// </summary>
-        public bool Notifaction { get; set; }
+        public bool Notification { get; set; }
 
         /// <summary>
         /// Gets or sets the reset date time.
@@ -68,72 +68,72 @@ namespace CommanderCS.MongoDB.Schemes
         /// <summary>
         /// Gets or sets the user device information.
         /// </summary>
-        public UserDevice UserDevice { get; set; }
+        public UserDevice? UserDeviceInformation { get; set; }
 
         /// <summary>
         /// Gets or sets the user battle statistics.
         /// </summary>
-        public UserBattleStatistics UserStatistics { get; set; }
+        public UserBattleStatistics? UserStatistics { get; set; }
 
         /// <summary>
         /// Gets or sets the user resources.
         /// </summary>
-        public UserResources UserResources { get; set; }
+        public UserResources? UserResources { get; set; }
 
         /// <summary>
         /// Gets or sets the user inventory.
         /// </summary>
-        public UserInventory UserInventory { get; set; }
+        public UserInventory? UserInventory { get; set; }
 
         /// <summary>
         /// Gets or sets the user badges.
         /// </summary>
-        public UserBadges UserBadges { get; set; }
+        public UserBadges? UserBadges { get; set; }
 
         /// <summary>
         /// Gets or sets the battle data.
         /// </summary>
-        public BattleData BattleData { get; set; }
+        public BattleData? BattleData { get; set; }
 
         /// <summary>
         /// Gets or sets the tutorial data.
         /// </summary>
-        public UserInformationResponse.TutorialData TutorialData { get; set; }
+        public UserInformationResponse.TutorialData? TutorialData { get; set; }
 
         /// <summary>
         /// Gets or sets the commander data.
         /// </summary>
-        public Dictionary<string, UserInformationResponse.Commander> CommanderData { get; set; }
+        public Dictionary<string, UserInformationResponse.Commander>? CommanderData { get; set; }
 
         /// <summary>
         /// Gets or sets the pre-deck configurations.
         /// </summary>
-        public List<UserInformationResponse.PreDeck> PreDeck { get; set; }
+        public List<UserInformationResponse.PreDeck>? PreDeck { get; set; }
 
         /// <summary>
         /// Gets or sets the complete reward group indices.
         /// </summary>
-        public List<int> CompleteRewardGroupIdx { get; set; }
+        public List<int>? CompleteRewardGroupIdx { get; set; }
 
         /// <summary>
         /// Gets or sets the dispatched commanders.
         /// </summary>
-        public Dictionary<string, DispatchedCommanderInfo> DispatchedCommanders { get; set; }
+        public Dictionary<string, DispatchedCommanderInfo>? DispatchedCommanders { get; set; }
 
         /// <summary>
         /// Gets or sets the VIP recharge data.
         /// </summary>
-        public List<UserInformationResponse.VipRechargeData> VipRechargeData { get; set; }
+        public List<UserInformationResponse.VipRechargeData>? VipRechargeData { get; set; }
 
         /// <summary>
         /// Gets or sets the bought cash shop items.
         /// </summary>
-        public Dictionary<string, int> BoughtCashShopItems { get; set; }
+        public Dictionary<string, int>? BoughtCashShopItems { get; set; }
 
         /// <summary>
         /// Gets or sets the list of blocked users.
         /// </summary>
-        public List<BlockUser> BlockedUsers { get; set; }
+        public List<BlockUser>? BlockedUsers { get; set; }
 
         /// <summary>
         /// Gets or sets the list of mail data.
@@ -143,42 +143,42 @@ namespace CommanderCS.MongoDB.Schemes
         /// <summary>
         /// Gets or sets the daily bonus check data.
         /// </summary>
-        public List<DailyBonusCheckResponse> DailyBonusCheck { get; set; }
+        public List<DailyBonusCheckResponse>? DailyBonusCheck { get; set; }
 
         /// <summary>
         /// Gets or sets the ranking data.
         /// </summary>
-        public RankingData RankingData { get; set; }
+        public RankingData? RankingData { get; set; }
 
         /// <summary>
         /// Gets or sets the defender deck data.
         /// </summary>
-        public DefenderDeck DefenderDeck { get; set; }
+        public DefenderDeck? DefenderDeck { get; set; }
 
         /// <summary>
         /// Gets or sets the exploration data.
         /// </summary>
-        public List<ExplorationData> ExplorationData { get; set; }
+        public List<ExplorationData>? ExplorationData { get; set; }
 
         /// <summary>
         /// Gets or sets the weapon information.
         /// </summary>
-        public WeaponInformation WeaponInformation { get; set; }
+        public WeaponInformation? WeaponInformation { get; set; }
 
         /// <summary>
         /// Gets or sets the shop data.
         /// </summary>
-        public ShopData ShopData { get; set; }
+        public ShopData? ShopData { get; set; }
 
         /// <summary>
         /// Gets or sets the daily buyables data.
         /// </summary>
-        public DailyBuyables DailyBuyables { get; set; }
+        public DailyBuyables? DailyBuyables { get; set; }
 
         /// <summary>
         /// Gets or sets the dictionary containing gacha information.
         /// </summary>
-        public Dictionary<string, GachaInformationResponse> GachaInformation { get; set; }
+        public Dictionary<string, GachaInformationResponse>? GachaInformation { get; set; }
     }
 
     /// <summary>
@@ -214,12 +214,12 @@ namespace CommanderCS.MongoDB.Schemes
         /// <summary>
         /// Gets or sets the OS version.
         /// </summary>
-        public string Osversion { get; set; }
+        public string OsVersion { get; set; }
 
         /// <summary>
         /// Gets or sets the game version.
         /// </summary>
-        public string Gameversion { get; set; }
+        public string GameVersion { get; set; }
 
         /// <summary>
         /// Gets or sets the APK file name.
@@ -255,7 +255,7 @@ namespace CommanderCS.MongoDB.Schemes
         /// <summary>
         /// Gets or sets the total amount of gold.
         /// </summary>
-        public int TotalGold { get; set; } = 100000;
+        public int TotalGold { get; set; };
 
         /// <summary>
         /// Gets or sets the count of PvE wins.

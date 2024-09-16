@@ -75,22 +75,22 @@ namespace CommanderCS.Host.Handlers.Battle
 
                     if (@params.BattleType == EBattleType.Plunder)
                     {
-						User.LastStage = int.Parse(worldstagetbl.id);
+                        User.LastStage = int.Parse(worldstagetbl.id);
 
                         User.BattleData.WorldMapStages.TryGetValue(worldstagetbl.worldMapId, out var map);
 
-						int index = map.FindIndex(x => x.stageId == worldstagetbl.id);
+                        int index = map.FindIndex(x => x.stageId == worldstagetbl.id);
 
-						User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].clearCount++;
+                        User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].clearCount++;
 
-						int star = User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].star;
+                        int star = User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].star;
 
                         if (star < 3 && result.clearRank > star)
                         {
                             User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].star = result.clearRank;
                         }
 
-						DatabaseManager.GameProfile.UpdateLastStageAndStageInfo(SessionId, User);
+                        DatabaseManager.GameProfile.UpdateLastStageAndStageInfo(SessionId, User);
 
                     }
 

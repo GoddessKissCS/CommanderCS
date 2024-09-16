@@ -1007,7 +1007,7 @@ namespace CommanderCSLibrary.Shared.Regulation
             {
                 case 1:
                     return 4;
-                case 2: 
+                case 2:
                     return 1;
                 case 3:
                     return 0;
@@ -1015,7 +1015,7 @@ namespace CommanderCSLibrary.Shared.Regulation
                     return 2;
                 case 5:
                     return 3;
-                default: 
+                default:
                     return -1;
             }
         }
@@ -1023,7 +1023,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         public Dictionary<string, List<WorldMapInformationResponse>> GetAllWorldMapStages()
         {
             Dictionary<string, List<WorldMapInformationResponse>> stages = [];
-           
+
             foreach (var stage in worldMapStageDtbl)
             {
                 stages = worldMapStageDtbl
@@ -1045,7 +1045,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
             var item = commanderCostumeDtbl.FirstOrDefault(c => c.cid == commanderID);
 
-            var role = commanderRoleDtbl.FirstOrDefault(x => x.commanderId == commanderID);
+            var role = commanderRoleDtbl.FirstOrDefault(x => x.Id == commanderID);
 
             Commander commanderData = new()
             {
@@ -1067,7 +1067,7 @@ namespace CommanderCSLibrary.Shared.Regulation
                 id = commanderID.ToString(),
                 marry = 0,
                 medl = 0,
-                role = role.commanderRole,
+                role = role.Role,
                 transcendence = [0, 0, 0, 0],
                 __cls = "1",
                 __exp = "0",

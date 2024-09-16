@@ -188,7 +188,7 @@ namespace CommanderCS.Host
                 battleStatisticsInfo = BattleStatisticstis,
                 uno = user.Uno.ToString(),
                 stage = user.LastStage,
-                notification = user.Notifaction,
+                notification = user.Notification,
 
                 foodData = user.UserInventory.foodData,
                 eventResourceData = user.UserInventory.eventResourceData,
@@ -225,7 +225,7 @@ namespace CommanderCS.Host
                 battleStatisticsInfo = battlestats,
                 uno = user.Uno.ToString(),
                 stage = user.LastStage,
-                notification = user.Notifaction,
+                notification = user.Notification,
 
                 foodData = user.UserInventory.foodData,
                 eventResourceData = user.UserInventory.eventResourceData,

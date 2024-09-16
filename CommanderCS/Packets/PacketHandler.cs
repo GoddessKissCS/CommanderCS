@@ -2,7 +2,6 @@
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.ComponentModel.Design;
 
 namespace CommanderCS.Host
 {
@@ -49,7 +48,9 @@ namespace CommanderCS.Host
                 }
 
                 response = responses;
-            } else {
+            }
+            else
+            {
                 response = ProcessPacket(node, serviceProvider);
             }
 

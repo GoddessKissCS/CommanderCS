@@ -2,7 +2,8 @@ using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CommanderCSLibrary.Shared.Battle {
+namespace CommanderCSLibrary.Shared.Battle
+{
     [JsonObject(MemberSerialization.OptIn)]
     public class InitState
     {

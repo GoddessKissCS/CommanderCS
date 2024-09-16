@@ -4,43 +4,43 @@ using static CommanderCS.Packets.Handlers.Cooperate.CooperateBattleInfo;
 
 namespace CommanderCS.Packets.Handlers.Cooperate
 {
-	[Packet(Id = Method.CooperateBattleInfo)]
+    [Packet(Id = Method.CooperateBattleInfo)]
     public class CooperateBattleInfo : BaseMethodHandler<CooperateBattleInfoRequest>
     {
         public override object Handle(CooperateBattleInfoRequest @params)
         {
-			ResponsePacket response = new ResponsePacket()
-			{
-				Id = BasePacket.Id,
-			};
+            ResponsePacket response = new ResponsePacket()
+            {
+                Id = BasePacket.Id,
+            };
 
-			CommanderCSLibrary.Shared.Protocols.CooperateBattleData battleData = new()
-			{
-				coop = new()
-				{
-					stage = 1,
-					step = 1,
-					dmg = 1,
-					remain = 5,
-					ticket = 1,
-				},
-				recv = new()
-				{
-					stage = 1,
-					step = 1
-				}
-			};
+            CommanderCSLibrary.Shared.Protocols.CooperateBattleData battleData = new()
+            {
+                coop = new()
+                {
+                    stage = 1,
+                    step = 1,
+                    dmg = 1,
+                    remain = 5,
+                    ticket = 1,
+                },
+                recv = new()
+                {
+                    stage = 1,
+                    step = 1
+                }
+            };
 
-			response.Result = battleData;
+            response.Result = battleData;
 
-			return response;
+            return response;
 
         }
 
-		public class CooperateBattleInfoRequest
-		{
+        public class CooperateBattleInfoRequest
+        {
 
-		}
+        }
     }
 }
 

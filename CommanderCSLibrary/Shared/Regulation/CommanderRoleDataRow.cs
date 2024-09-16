@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
 namespace CommanderCSLibrary.Shared.Regulation
 {
     public class CommanderRoleDataRow : DataRow
     {
-        public int commanderId { get; private set; }
-        public string commanderRole { get; private set; }
+        public int Id { get; private set; }
+        public string Role { get; private set; }
 
         private CommanderRoleDataRow()
         {
         }
         public string GetKey()
         {
-            return commanderId.ToString();
+            return Id.ToString();
         }
 
         [OnDeserialized]

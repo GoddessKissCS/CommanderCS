@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
-using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json.Linq;
 
 namespace CommanderCSLibrary.Packets
 {

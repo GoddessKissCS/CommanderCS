@@ -170,7 +170,7 @@ namespace CommanderCS.Host.Handlers.Commander
 
         public static UserInformationResponse.Commander CreateCommander(int commanderid, int costumeid, int commanderMedals, int grade)
         {
-            var commanderRole = RemoteObjectManager.instance.regulation.commanderRoleDtbl.Find(x => x.commanderId == commanderid).commanderRole;
+            var commanderRole = RemoteObjectManager.instance.regulation.commanderRoleDtbl.Find(x => x.Id == commanderid).Role;
 
             //need to check if hero starts with other grades or cls
 

@@ -1,6 +1,3 @@
-using CommanderCSLibrary.Shared.Enum;
-using System.Text;
-
 namespace CommanderCSLibrary.Shared
 {
     public static class Constants

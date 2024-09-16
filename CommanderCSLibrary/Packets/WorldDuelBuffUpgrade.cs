@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
 
 namespace CommanderCSLibrary.Packets
 {

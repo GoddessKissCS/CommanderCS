@@ -1,8 +1,4 @@
-﻿
-using CommanderCSLibrary.Shared.Protocols;
-using Org.BouncyCastle.Asn1.X509;
-using System.Diagnostics;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace CommanderCSLibrary.Shared
 {
@@ -14,7 +10,7 @@ namespace CommanderCSLibrary.Shared
         };
 
 
-        public static List<string> BannedWords {  get; set; }
+        public static List<string> BannedWords { get; set; }
 
 
         public static bool NameCheck(string username)

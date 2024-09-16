@@ -1,7 +1,7 @@
 ﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Packets;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
-using CommanderCSLibrary.Packets;
 
 namespace CommanderCS.Host.Handlers.WorldMap
 {

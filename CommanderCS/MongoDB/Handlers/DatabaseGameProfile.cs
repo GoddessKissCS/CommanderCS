@@ -6,7 +6,6 @@ using CommanderCSLibrary.Shared.Protocols;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using Newtonsoft.Json.Linq;
-using static CommanderCSLibrary.Shared.Protocols.ConquestStageUser;
 
 namespace CommanderCS.MongoDB.Handlers
 {
@@ -43,7 +42,7 @@ namespace CommanderCS.MongoDB.Handlers
 
             var WorldMapStages = RemoteObjectManager.instance.regulation.GetAllWorldMapStages();
 
-            var currTime = TimeManager.CurrentEpoch;
+            var currentTime = TimeManager.CurrentEpoch;
 
             string name = Utility.CreateRandomString();
 
@@ -62,7 +61,7 @@ namespace CommanderCS.MongoDB.Handlers
                 ExplorationData = [],
                 GuildId = null,
                 MemberId = memberId,
-                Notifaction = false,
+                Notification = false,
                 PreDeck =
                 [
                     new()
@@ -96,13 +95,17 @@ namespace CommanderCS.MongoDB.Handlers
                         deckData = []
                     }
                 ],
-                TutorialData = new() { skip = false, step = 0 },
-                UserDevice = new() { },
+                TutorialData = new()
+                {
+                    skip = false,
+                    step = 0
+                },
+                UserDeviceInformation = new() { },
                 UserInventory = new UserInventory()
                 {
                     medalData = new()
                     {
-                        { "1", 10 }
+                        { "1", 10 } // The First Pilot for free
                     },
                     equipItem = [],
                     itemData = new()
@@ -138,7 +141,7 @@ namespace CommanderCS.MongoDB.Handlers
                     gold = 4000,
                     guildCoin = 0,
                     honor = 0,
-                    level = 0,
+                    level = 1,
                     nickname = name,
                     thumbnailId = 1001,
                     oil = 0,
@@ -164,7 +167,9 @@ namespace CommanderCS.MongoDB.Handlers
                 WorldState = 0,
                 // result.worldState != -1;
                 // if exploration is finished id assume
-                LastLoginTime = currTime,
+                // Still no idea what it does
+                LastLoginTime = currentTime,
+                // No idea what it is related to so yeah
                 UserBadges = new()
                 {
                     arena = 0,
@@ -237,7 +242,7 @@ namespace CommanderCS.MongoDB.Handlers
                     },
                     WaveDuelRankingData = new()
                     {
-                        score = 1000
+                        score = 1000,
                     },
                     RaidRankingData = new()
                     {
@@ -715,11 +720,11 @@ namespace CommanderCS.MongoDB.Handlers
                 Country = @params.countryCode,
                 Device = @params.deviceName,
                 Deviceid = @params.deviceId,
-                Gameversion = @params.gameVersion,
+                GameVersion = @params.gameVersion,
                 Gpid = @params.largoId,
                 Language = @params.languageCode,
                 OsCode = @params.osCode,
-                Osversion = @params.osVersion,
+                OsVersion = @params.osVersion,
                 PatchType = @params.patchType,
                 PlatformId = @params.platform,
                 PushRegistrationId = @params.pushRegistrationId,
@@ -730,7 +735,7 @@ namespace CommanderCS.MongoDB.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, @params.memberId) &
                          Builders<GameProfileScheme>.Filter.Eq(x => x.Server, @params.world);
 
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.Session, session).Set(x => x.UserDevice, userDevice).Set(x => x.LastLoginTime, CurrTimeStamp);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Session, session).Set(x => x.UserDeviceInformation, userDevice).Set(x => x.LastLoginTime, CurrTimeStamp);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -983,7 +988,7 @@ namespace CommanderCS.MongoDB.Handlers
         public bool UpdateNotifaction(string session, int onoff)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.Notifaction, Convert.ToBoolean(onoff));
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Notification, Convert.ToBoolean(onoff));
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
