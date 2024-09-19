@@ -1,5 +1,5 @@
 using CommanderCSLibrary.Shared.Battle;
-using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 
 namespace CommanderCSLibrary.Shared.Ro
 {
