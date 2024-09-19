@@ -32,14 +32,6 @@ namespace CommanderCS.Host.Handlers.Nickname
             {
                 var information = GetUserInformationResponse(User);
 
-                //string result = JsonConvert.SerializeObject(information);
-
-                //string xx = File.ReadAllText("C:\\Users\\Zen\\Desktop\\test.txt");
-
-                //response.Result = xx;
-
-                //return response;
-
                 var tutoresponse = new JObject
                 {
                     ["id"] = BasePacket.Id,
@@ -73,15 +65,13 @@ namespace CommanderCS.Host.Handlers.Nickname
                 return tutoresponse;
             }
 
-            SetNickNameResponse SetNickNameF1 = new()
-            {
-                step = @params.Step,
-            };
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = SetNickNameF1
+                Result = new SetNickNameResponse()
+                {
+                    step = @params.Step,
+                }
             };
 
             return response;

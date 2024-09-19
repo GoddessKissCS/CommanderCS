@@ -26,7 +26,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             //REWORK
             User.UserResources.cash -= costumeData.sellPrice;
 
-            DatabaseManager.GameProfile.UpdateCash(SessionId, costumeData.sellPrice, false);
+            DatabaseManager.GameProfile.UpdateOnlyCash(SessionId, costumeData.sellPrice, false);
             var user = AddCostumeData(cid, @params.costumeId, User);
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, user.CommanderData);
             DatabaseManager.GameProfile.UpdateDontHaveCommanderCostumeData(SessionId, user.UserInventory.donHaveCommCostumeData);

@@ -51,7 +51,7 @@ namespace CommanderCS.Host.Handlers.Bank
             int cashDeduction = (spins == 10) ? 100 : 10;
 
             DatabaseManager.GameProfile.UpdateGold(sessionId, updatedGold, true);
-            DatabaseManager.GameProfile.UpdateCash(sessionId, cashDeduction, false);
+            DatabaseManager.GameProfile.UpdateOnlyCash(sessionId, cashDeduction, false);
 
             return rouletteLuck;
         }

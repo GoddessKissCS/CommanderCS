@@ -31,7 +31,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
                     var count = raidKeys.count++;
                     User.DailyBuyables.RaidKeys--;
 
-                    DatabaseManager.GameProfile.UpdateCash(SessionId, ticketPrice, false);
+                    DatabaseManager.GameProfile.UpdateOnlyCash(SessionId, ticketPrice, false);
                     DatabaseManager.GameProfile.UpdateVipRechargeCount(SessionId, @params.vidx, count);
                     DatabaseManager.GameProfile.UpdateDailyBuyableRaidKeys(SessionId, User.DailyBuyables.RaidKeys);
 

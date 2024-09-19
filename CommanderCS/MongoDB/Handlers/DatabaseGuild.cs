@@ -165,7 +165,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>The guild information after creation.</returns>
         public GuildInfo CreateGuild(string session, string guildName, int emblem, int guildType, int guildLevelLimit)
         {
-            DatabaseManager.GameProfile.UpdateCash(session, RemoteObjectManager.DefineDataTable.GUILD_CREATION_PRICE, false);
+            DatabaseManager.GameProfile.UpdateOnlyCash(session, RemoteObjectManager.DefineDataTable.GUILD_CREATION_PRICE, false);
 
             Create(session, guildName, emblem, guildType, guildLevelLimit);
 
@@ -496,12 +496,12 @@ namespace CommanderCS.MongoDB.Handlers
             {
                 case 0:
                     UpdateGuildName(guild.GuildId, val);
-                    DatabaseManager.GameProfile.UpdateCash(user.Session, RemoteObjectManager.DefineDataTable.GUILD_NAME_CHANGE_PRICE, false);
+                    DatabaseManager.GameProfile.UpdateOnlyCash(user.Session, RemoteObjectManager.DefineDataTable.GUILD_NAME_CHANGE_PRICE, false);
                     break;
 
                 case 1:
                     UpdateGuildEmblem(guild.GuildId, val);
-                    DatabaseManager.GameProfile.UpdateCash(user.Session, RemoteObjectManager.DefineDataTable.GUILD_EMBLEM_CHANGE_PRICE, false);
+                    DatabaseManager.GameProfile.UpdateOnlyCash(user.Session, RemoteObjectManager.DefineDataTable.GUILD_EMBLEM_CHANGE_PRICE, false);
                     break;
 
                 case 2:

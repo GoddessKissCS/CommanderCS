@@ -674,6 +674,27 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+
+        public void UpdateCashAndNickName(string session, string accountName, int cash, bool useAddition)
+        {
+
+            var user = FindBySession(session);
+
+            if (useAddition)
+            {
+                user.UserResources.cash += cash;
+            }
+            else
+            {
+                user.UserResources.cash -= cash;
+            }
+
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.nickname, accountName).Set(x => x.UserResources.cash, user.UserResources.cash);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
         /// <summary>
         /// Updates the cash of the user associated with the given session.
         /// </summary>
@@ -705,6 +726,32 @@ namespace CommanderCS.MongoDB.Handlers
             var updatedUser = DatabaseCollection.FindOneAndUpdate(filter, update, options);
 
             return updatedUser;
+        }
+
+        /// <summary>
+        /// Updates the cash of the user associated with the given session.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="cash">The amount of cash to update.</param>
+        /// <param name="useAddition">A boolean indicating whether to add or subtract the specified amount.</param>
+        /// <returns>The updated game profile scheme of the user.</returns>
+        public void UpdateOnlyCash(string session, int cash, bool useAddition)
+        {
+            var user = FindBySession(session);
+
+            if (useAddition)
+            {
+                user.UserResources.cash += cash;
+            }
+            else
+            {
+                user.UserResources.cash -= cash;
+            }
+
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.cash, user.UserResources.cash);
+
+            DatabaseCollection.UpdateOne(filter, update);
         }
 
         /// <summary>
@@ -1152,25 +1199,43 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>The error code indicating the result of the request.</returns>
         public ErrorCode RequestNicknameAfterTutorial(string sess, string nickname)
         {
+
+            ErrorCode result = ValidateNickname(nickname);
+
+            if (result == ErrorCode.Success)
+            {
+                var userGameProfile = FindBySession(sess);
+
+                if (userGameProfile.TutorialData.skip != true)
+                {
+                    UpdateTutorialStep(sess, 2);
+                }
+
+                UpdateNickName(sess, nickname);
+
+                return ErrorCode.Success;
+            }
+            else
+            {
+                return result;
+            }
+        }
+
+        public ErrorCode ValidateNickname(string nickname)
+        {
+            // Check for inappropriate words first
             if (Misc.NameCheck(nickname))
             {
                 return ErrorCode.InappropriateWords;
             }
 
+            // Check if the nickname is already in use
             if (AccountExists(nickname))
             {
                 return ErrorCode.AlreadyInUse;
             }
 
-            var userGameProfile = FindBySession(sess);
-
-            if (userGameProfile.TutorialData.skip != true)
-            {
-                UpdateTutorialStep(sess, 2);
-            }
-
-            UpdateNickName(sess, nickname);
-
+            // If no issues were found, return success (or some default value)
             return ErrorCode.Success;
         }
 
@@ -1182,20 +1247,23 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>The error code indicating the result of the request.</returns>
         public ErrorCode RequestNickNameChange(string AccountName, string sess)
         {
-            if (Misc.NameCheck(AccountName))
+
+            ErrorCode result = ValidateNickname(AccountName);
+
+            if (result == ErrorCode.Success)
             {
-                return ErrorCode.InappropriateWords;
+
+                DatabaseManager.GameProfile.UpdateNickName(sess, AccountName);
+                DatabaseManager.GameProfile.UpdateOnlyCash(sess, 100, false);
+
+                return ErrorCode.Success;
+            }
+            else
+            {
+                return result;
             }
 
-            if (AccountExists(AccountName))
-            {
-                return ErrorCode.AlreadyInUse;
-            }
 
-            DatabaseManager.GameProfile.UpdateNickName(sess, AccountName);
-            DatabaseManager.GameProfile.UpdateCash(sess, 100, false);
-
-            return ErrorCode.Success;
         }
 
         /// <summary>
