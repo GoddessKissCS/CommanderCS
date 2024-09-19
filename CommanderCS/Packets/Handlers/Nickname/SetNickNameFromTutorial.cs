@@ -1,6 +1,11 @@
 ﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NuGet.Common;
+using static CommanderCSLibrary.Shared.Protocols.AlarmData;
+using static CommanderCSLibrary.Shared.Protocols.UserInformationResponse;
 
 namespace CommanderCS.Host.Handlers.Nickname
 {
@@ -22,14 +27,10 @@ namespace CommanderCS.Host.Handlers.Nickname
                 return error;
             }
 
-            ResponsePacket response = new()
-            {
-                Id = BasePacket.Id,
-            };
 
             if (User.TutorialData.skip)
             {
-                //var information = GetUserInformationResponse(User);
+                var information = GetUserInformationResponse(User);
 
                 //string result = JsonConvert.SerializeObject(information);
 
@@ -39,10 +40,37 @@ namespace CommanderCS.Host.Handlers.Nickname
 
                 //return response;
 
-            }
-            else
-            {
+                var tutoresponse = new JObject
+                {
+                    ["id"] = BasePacket.Id,
+                    ["result"] = new JObject
+                    {
+                        ["step"] = @params.Step,
+                        ["rsoc"] = JObject.FromObject(information.goodsInfo),  // You would replace this with the actual data from goodsInfo
+                        ["uifo"] = JObject.FromObject(information.battleStatisticsInfo),  // Replace with battleStatisticsInfo
+                        ["comm"] = JObject.FromObject(information.__commanderInfo),  // Replace with __commanderInfo
+                        ["uno"] = information.uno,
+                        ["stage"] = information.stage,
+                        ["part"] = JObject.FromObject(information.partData),
+                        ["medl"] = JObject.FromObject(information.medalData),
+                        ["ersoc"] = JObject.FromObject(information.eventResourceData),
+                        ["food"] = JObject.FromObject(information.foodData),
+                        ["item"] = JObject.FromObject(information.itemData),
+                        ["gld"] = null,  // Replace with guildInfo
+                        ["cc"] = JObject.FromObject(information.sweepClearData),
+                        ["deck"] = JArray.FromObject(information.preDeck),
+                        ["nhcc"] = JObject.FromObject(information.donHaveCommCostumeData),
+                        ["grp"] = JArray.FromObject(information.completeRewardGroupIdx),
+                        ["rstm"] = information.resetRemain,
+                        ["onoff"] = information.notification,
+                        ["equip"] = JObject.FromObject(information.equipItem),
+                        ["guit"] = JObject.FromObject(information.groupItemData),
+                        ["weapon"] = JObject.FromObject(information.weaponList)
 
+                    }
+                };
+
+                return tutoresponse;
             }
 
             SetNickNameResponse SetNickNameF1 = new()
@@ -50,13 +78,18 @@ namespace CommanderCS.Host.Handlers.Nickname
                 step = @params.Step,
             };
 
-            response.Result = SetNickNameF1;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = SetNickNameF1
+            };
 
             return response;
         }
 
         internal class SetNickNameResponse
         {
+
             [JsonProperty("step")]
             public int step { get; set; }
         }

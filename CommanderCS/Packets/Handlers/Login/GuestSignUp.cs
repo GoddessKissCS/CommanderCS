@@ -27,7 +27,7 @@ namespace CommanderCS.Host.Handlers.Sign
 
         private static string RequestSignUp(int platformid, int channel)
         {
-            return DatabaseManager.Account.Create("", "", platformid, channel).Name;
+            return DatabaseManager.Account.GetOrCreate("", "", platformid, channel).Name;
         }
 
         public class GuestSignUpPacket

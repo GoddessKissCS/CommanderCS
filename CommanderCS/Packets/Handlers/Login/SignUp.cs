@@ -48,7 +48,7 @@ namespace CommanderCS.Host.Handlers.Sign
 
             if (user is null)
             {
-                DatabaseManager.Account.Create(accountname, password, platformid, channel);
+                DatabaseManager.Account.GetOrCreate(accountname, password, platformid, channel);
 
                 return ErrorCode.Success;
             }

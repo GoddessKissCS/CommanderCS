@@ -255,7 +255,7 @@ namespace CommanderCS.MongoDB.Schemes
         /// <summary>
         /// Gets or sets the total amount of gold.
         /// </summary>
-        public int TotalGold { get; set; };
+        public int TotalGold { get; set; }
 
         /// <summary>
         /// Gets or sets the count of PvE wins.

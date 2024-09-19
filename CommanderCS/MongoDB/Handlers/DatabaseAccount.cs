@@ -29,7 +29,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// <param name="platformid">The platform ID of the account.</param>
         /// <param name="channel">The channel ID of the account.</param>
         /// <returns>The created or existing account.</returns>
-        public AccountScheme Create(string name = "", string password = "", int platformid = 0, int channel = 0)
+        public AccountScheme GetOrCreate(string name = "", string password = "", int platformid = 0, int channel = 0)
         {
             AccountScheme existingUser = DatabaseCollection.AsQueryable().Where(d => d.Name == name).FirstOrDefault();
 
