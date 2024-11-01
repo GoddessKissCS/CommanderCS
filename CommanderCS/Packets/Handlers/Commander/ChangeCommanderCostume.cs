@@ -17,7 +17,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
 
             var costumeRow = Regulation.commanderCostumeDtbl.Find(x => x.ctid == @params.costumeId);
-            var thumbnailRow = Regulation.commanderCostumeDtbl.Find(x => x.ctid == User.UserResources.thumbnailId);
+            var thumbnailRow = Regulation.commanderCostumeDtbl.Find(x => x.ctid == User.Resources.thumbnailId);
 
             if (costumeRow.cid == thumbnailRow.cid)
             {

@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Gift
             string cid = @params.cid.ToString();
 
             User.CommanderData[cid].marry = 1;
-            User.UserResources.ring -= 1;
+            User.Resources.ring -= 1;
 
             DatabaseManager.GameProfile.UpdateCommanderMarriage(SessionId, User, User.CommanderData[cid]);
             UserInformationResponse userInformationResponse = GetUserInformationResponse(User);

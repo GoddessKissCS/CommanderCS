@@ -22,7 +22,7 @@ namespace CommanderCS.Host.Handlers.WorldMap
 
             //var worldReward = Regulation.rewardDtbl.Find(x => x.rewardIdx == 10101);
 
-            User.UserResources.bullet -= worldstagetbl.bullet;
+            User.Resources.bullet -= worldstagetbl.bullet;
 
             switch (@params.Mid)
             {

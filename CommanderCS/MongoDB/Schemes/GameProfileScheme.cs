@@ -68,22 +68,22 @@ namespace CommanderCS.MongoDB.Schemes
         /// <summary>
         /// Gets or sets the user device information.
         /// </summary>
-        public UserDevice? UserDeviceInformation { get; set; }
+        public Device? DeviceInformation { get; set; }
 
         /// <summary>
         /// Gets or sets the user battle statistics.
         /// </summary>
-        public UserBattleStatistics? UserStatistics { get; set; }
+        public UserBattleStatistics? Statistics { get; set; }
 
         /// <summary>
         /// Gets or sets the user resources.
         /// </summary>
-        public UserResources? UserResources { get; set; }
+        public UserResources? Resources { get; set; }
 
         /// <summary>
         /// Gets or sets the user inventory.
         /// </summary>
-        public UserInventory? UserInventory { get; set; }
+        public UserInventory? Inventory { get; set; }
 
         /// <summary>
         /// Gets or sets the user badges.
@@ -184,7 +184,7 @@ namespace CommanderCS.MongoDB.Schemes
     /// <summary>
     /// Represents user device information.
     /// </summary>
-    public class UserDevice
+    public class Device
     {
         /// <summary>
         /// Gets or sets the platform ID.
@@ -194,12 +194,12 @@ namespace CommanderCS.MongoDB.Schemes
         /// <summary>
         /// Gets or sets the device name.
         /// </summary>
-        public string Device { get; set; }
+        public string DeviceName { get; set; }
 
         /// <summary>
         /// Gets or sets the device ID.
         /// </summary>
-        public string Deviceid { get; set; }
+        public string DeviceId { get; set; }
 
         /// <summary>
         /// Gets or sets the patch type.

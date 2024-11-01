@@ -24,7 +24,7 @@ namespace CommanderCS.Host.Handlers.Commander
 
                 CommanderRankDataRow commanderRankData = Regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == commanderRank);
 
-                User.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
+                User.Inventory.medalData.TryGetValue(cid, out var commanderMedals);
 
                 if (!TryRankUpCommander(commanderRankData.rank, ref commanderMedals))
                 {
@@ -44,12 +44,12 @@ namespace CommanderCS.Host.Handlers.Commander
 
                 commanderRankData = Regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == upgradedRank);
 
-                User.UserInventory.medalData[cid] = commanderMedals;
+                User.Inventory.medalData[cid] = commanderMedals;
                 User.CommanderData[cid] = commander;
 
                 DatabaseManager.GameProfile.UpdateGold(SessionId, commanderRankData.gold, false);
                 DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
-                DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.UserInventory.medalData);
+                DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.Inventory.medalData);
 
             }
             else
@@ -59,7 +59,7 @@ namespace CommanderCS.Host.Handlers.Commander
                        @params.commanderId == 14 || @params.commanderId == 17 || @params.commanderId == 18 ||
                        @params.commanderId == 26) ? 1000 : 50000;
 
-                User.UserInventory.medalData.TryGetValue(cid, out int commanderMedals);
+                User.Inventory.medalData.TryGetValue(cid, out int commanderMedals);
 
                 var commanderData = Regulation.commanderDtbl.FirstOrDefault(x => x.id == cid);
 
@@ -74,11 +74,9 @@ namespace CommanderCS.Host.Handlers.Commander
                     return error;
                 }
 
-                User.UserInventory.medalData[cid] = commanderMedals;
+                User.Inventory.medalData[cid] = commanderMedals;
 
-                var CostumeData = Regulation.commanderCostumeDtbl.FirstOrDefault(x => x.cid == @params.commanderId);
-
-                var newestCommander = CreateCommander(@params.commanderId, CostumeData.ctid, commanderMedals, commanderData.grade);
+                var newestCommander = CreateCommander(@params.commanderId, commanderMedals, commanderData.grade);
 
                 int newcommanderId;
 
@@ -107,7 +105,7 @@ namespace CommanderCS.Host.Handlers.Commander
 
                 DatabaseManager.GameProfile.UpdateGold(SessionId, recruitCost, false);
                 DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
-                DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.UserInventory.medalData);
+                DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.Inventory.medalData);
             }
 
             var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
@@ -122,7 +120,7 @@ namespace CommanderCS.Host.Handlers.Commander
             CommanderRankUpResponse cmrup = new()
             {
                 rsoc = rsoc,
-                medl = User.UserInventory.medalData,
+                medl = User.Inventory.medalData,
                 comm = uprankedCommander,
             };
 
@@ -169,9 +167,11 @@ namespace CommanderCS.Host.Handlers.Commander
             return true;
         }
 
-        public static UserInformationResponse.Commander CreateCommander(int commanderid, int costumeid, int commanderMedals, int grade)
+        public static UserInformationResponse.Commander CreateCommander(int commanderid, int commanderMedals, int grade)
         {
             var commanderRole = RemoteObjectManager.instance.regulation.commanderRoleDtbl.Find(x => x.Id == commanderid).Role;
+            var costumeId = RemoteObjectManager.instance.regulation.commanderCostumeDtbl.FirstOrDefault(x => x.cid == commanderid).ctid;
+
 
             //need to check if hero starts with other grades or cls
 
@@ -191,14 +191,14 @@ namespace CommanderCS.Host.Handlers.Commander
                 __rank = commadnderGrade,
                 favorRewardStep = 0,
                 favorStep = 0,
-                currentCostume = costumeid,
+                currentCostume = costumeId,
                 eventCostume = [],
                 equipItemInfo = [],
                 equipWeaponInfo = [],
                 favorPoint = 0,
                 favr = 0,
                 fvrd = 0,
-                haveCostume = [costumeid],
+                haveCostume = [costumeId],
                 id = commanderId,
                 marry = 0,
                 medl = 0,

@@ -9,7 +9,10 @@ namespace CommanderCS.Packets.Handlers.Cooperate
     {
         public override object Handle(CooperateBattleInfoRequest @params)
         {
-            ResponsePacket response = new ResponsePacket()
+
+#warning editdata
+
+			ResponsePacket response = new ResponsePacket()
             {
                 Id = BasePacket.Id,
             };

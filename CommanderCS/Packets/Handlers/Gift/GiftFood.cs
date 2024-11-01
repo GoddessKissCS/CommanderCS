@@ -26,9 +26,9 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             for (var i = 1; i <= favourGiftAmount;)
             {
-                if (User.UserInventory.foodData[favourGiftId] > 0)
+                if (User.Inventory.foodData[favourGiftId] > 0)
                 {
-                    User.UserInventory.foodData[favourGiftId] -= 1;
+                    User.Inventory.foodData[favourGiftId] -= 1;
                 }
 
                 TryAddingFavour(@params.cgid, ref commanderfavorPoint);

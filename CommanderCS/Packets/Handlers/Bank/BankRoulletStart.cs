@@ -42,7 +42,7 @@ namespace CommanderCS.Host.Handlers.Bank
         {
             var rouletteLuck = RandomGenerator.BankRoulletLuck(spins);
 
-            var userLevel = DatabaseManager.GameProfile.FindBySession(sessionId).UserResources.level;
+            var userLevel = DatabaseManager.GameProfile.FindBySession(sessionId).Resources.level;
 
             int bankGold = RemoteObjectManager.instance.regulation.userLevelDtbl.FirstOrDefault(x => x.level == userLevel).bankGold;
 

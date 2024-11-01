@@ -43,11 +43,11 @@ namespace CommanderCS.MongoDB.Handlers
                 JoinMemberData = new()
                 {
                     lastTime = 0,
-                    level = user.UserResources.level,
+                    level = user.Resources.level,
                     memberGrade = 0,
-                    name = user.UserResources.nickname,
+                    name = user.Resources.nickname,
                     paymentBonusPoint = 0,
-                    thumnail = user.UserResources.thumbnailId,
+                    thumnail = user.Resources.thumbnailId,
                     todayPoint = 0,
                     totalPoint = 0,
                     uno = user.Uno,
@@ -57,6 +57,7 @@ namespace CommanderCS.MongoDB.Handlers
             };
 
             DatabaseCollection.InsertOne(guildApplication);
+
             return ErrorCode.Success;
         }
 
@@ -271,7 +272,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>True if the data has changed; otherwise, false.</returns>
         private bool CheckIfRequestMemberDataChanged(GuildApplicationScheme guildApplication, GameProfileScheme user)
         {
-            return guildApplication.JoinMemberData.thumnail != user.UserResources.thumbnailId || guildApplication.JoinMemberData.level != user.UserResources.level || guildApplication.JoinMemberData.name != user.UserResources.nickname || user.GuildId is not null;
+            return guildApplication.JoinMemberData.thumnail != user.Resources.thumbnailId || guildApplication.JoinMemberData.level != user.Resources.level || guildApplication.JoinMemberData.name != user.Resources.nickname || user.GuildId is not null;
         }
     }
 }

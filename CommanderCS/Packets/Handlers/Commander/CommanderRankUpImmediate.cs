@@ -18,7 +18,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             {
                 var commanderRankData = Regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == int.Parse(commander.__rank));
 
-                User.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
+                User.Inventory.medalData.TryGetValue(cid, out var commanderMedals);
 
                 if (!TryRankUpCommander(commanderRankData.rank, ref commanderMedals))
                 {
@@ -36,14 +36,14 @@ namespace CommanderCS.Packets.Handlers.Commander
 
                 commanderRankData = Regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == commanderRankData.rank);
 
-                User.UserInventory.medalData[cid] = commanderMedals;
+                User.Inventory.medalData[cid] = commanderMedals;
                 User.CommanderData[cid] = commander;
 
                 DatabaseManager.GameProfile.UpdateGold(SessionId, commanderRankData.gold, false);
             }
             else
             {
-                User.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
+                User.Inventory.medalData.TryGetValue(cid, out var commanderMedals);
 
                 var CostumeData = Regulation.commanderCostumeDtbl.FirstOrDefault(x => x.cid == int.Parse(cid));
 
@@ -60,7 +60,7 @@ namespace CommanderCS.Packets.Handlers.Commander
                     return error;
                 }
 
-                User.UserInventory.medalData[cid] = commanderMedals;
+                User.Inventory.medalData[cid] = commanderMedals;
 
                 var newestCommander = CreateCommander(cid, CostumeData.ctid, commanderMedals, commanderData.grade);
 
@@ -77,11 +77,11 @@ namespace CommanderCS.Packets.Handlers.Commander
             }
 
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
-            DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.UserInventory.medalData);
+            DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.Inventory.medalData);
 
             var newResources = User;
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(newResources.UserResources);
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(newResources.Resources);
 
             CommanderRankUpImmediateResponse cmrup = new()
             {

@@ -66,8 +66,8 @@ namespace CommanderCS.Host.Handlers.Server
                     status = (int)StatusEnum.Medium,
                     idx = i,
                     lastLoginTime = profile.LastLoginTime,
-                    level = profile.UserResources.level,
-                    thumnail = profile.UserResources.thumbnailId
+                    level = profile.Resources.level,
+                    thumnail = profile.Resources.thumbnailId
                 };
                 i++;
 

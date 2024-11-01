@@ -11,19 +11,19 @@ namespace CommanderCS.Packets.Handlers.PvP
     {
         public override object Handle(GetRankingRewardRequest @params)
         {
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.UserResources);
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
 
             RankingReward reward = new()
             {
                 commanderData = User.CommanderData,
-                equipItem = User.UserInventory.equipItem,
+                equipItem = User.Inventory.equipItem,
                 resource = rsoc,
-                costumeData = User.UserInventory.costumeData,
-                eventResourceData = User.UserInventory.eventResourceData,
-                foodData = User.UserInventory.foodData,
-                itemData = User.UserInventory.itemData,
-                medalData = User.UserInventory.medalData,
-                partData = User.UserInventory.partData,
+                costumeData = User.Inventory.costumeData,
+                eventResourceData = User.Inventory.eventResourceData,
+                foodData = User.Inventory.foodData,
+                itemData = User.Inventory.itemData,
+                medalData = User.Inventory.medalData,
+                partData = User.Inventory.partData,
                 receiveIdx = null,
                 rewardList = null,
             };

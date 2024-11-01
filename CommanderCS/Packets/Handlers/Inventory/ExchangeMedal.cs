@@ -16,9 +16,9 @@ namespace CommanderCS.Packets.Handlers.Inventory
             // need to implement a check that fails if user doesnt have enough , aswell in the expshare gift things etc
 
             User.CommanderData[cid].medl += medalExchangeAmount;
-            User.UserInventory.medalData[cid] += medalExchangeAmount;
+            User.Inventory.medalData[cid] += medalExchangeAmount;
 
-            User.UserInventory.itemData["202"] -= medalExchangeAmount;
+            User.Inventory.itemData["202"] -= medalExchangeAmount;
 
             DatabaseManager.GameProfile.UpdateProfile(SessionId, User);
 

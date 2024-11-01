@@ -24,12 +24,12 @@ namespace CommanderCS.Packets.Handlers.Commander
             // AND THEN TRANSFER THEM TO THE haveCostume and delete them from donHaveCommCostume
 
             //REWORK
-            User.UserResources.cash -= costumeData.sellPrice;
+            User.Resources.cash -= costumeData.sellPrice;
 
             DatabaseManager.GameProfile.UpdateOnlyCash(SessionId, costumeData.sellPrice, false);
             var user = AddCostumeData(cid, @params.costumeId, User);
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, user.CommanderData);
-            DatabaseManager.GameProfile.UpdateDontHaveCommanderCostumeData(SessionId, user.UserInventory.donHaveCommCostumeData);
+            DatabaseManager.GameProfile.UpdateDontHaveCommanderCostumeData(SessionId, user.Inventory.donHaveCommCostumeData);
 
             var userInformationResponse = GetUserInformationResponse(user);
 
@@ -51,9 +51,9 @@ namespace CommanderCS.Packets.Handlers.Commander
                 return user;
             }
 
-            if (!user.UserInventory.donHaveCommCostumeData.ContainsKey(cid))
+            if (!user.Inventory.donHaveCommCostumeData.ContainsKey(cid))
             {
-                user.UserInventory.donHaveCommCostumeData.Add(cid, [costumeId]);
+                user.Inventory.donHaveCommCostumeData.Add(cid, [costumeId]);
             }
 
             return user;

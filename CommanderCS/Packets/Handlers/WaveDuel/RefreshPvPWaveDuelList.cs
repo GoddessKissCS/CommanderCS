@@ -13,7 +13,7 @@ namespace StellarGK.Packets.Handlers.WaveDuel
         {
             //TODO: add fake duelist + need to check score and the get duelist between the range
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.UserResources);
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
 
             RefreshPvPDuel refreshDuel = new()
             {

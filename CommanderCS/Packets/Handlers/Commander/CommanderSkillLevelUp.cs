@@ -70,7 +70,7 @@ namespace CommanderCS.Packets.Handlers.Commander
                     break;
             }
 
-            User.UserResources.gold -= totalCost;
+            User.Resources.gold -= totalCost;
 
             DatabaseManager.GameProfile.UpdateGold(SessionId, totalCost, false);
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);

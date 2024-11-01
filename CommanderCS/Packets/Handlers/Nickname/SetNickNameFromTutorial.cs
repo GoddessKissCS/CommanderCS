@@ -32,15 +32,15 @@ namespace CommanderCS.Host.Handlers.Nickname
             {
                 var information = GetUserInformationResponse(User);
 
-                var tutoresponse = new JObject
+                JObject tutorialResponse = new JObject
                 {
                     ["id"] = BasePacket.Id,
                     ["result"] = new JObject
                     {
                         ["step"] = @params.Step,
-                        ["rsoc"] = JObject.FromObject(information.goodsInfo),  // You would replace this with the actual data from goodsInfo
-                        ["uifo"] = JObject.FromObject(information.battleStatisticsInfo),  // Replace with battleStatisticsInfo
-                        ["comm"] = JObject.FromObject(information.__commanderInfo),  // Replace with __commanderInfo
+                        ["rsoc"] = JObject.FromObject(information.goodsInfo),
+                        ["uifo"] = JObject.FromObject(information.battleStatisticsInfo),
+                        ["comm"] = JObject.FromObject(information.__commanderInfo),
                         ["uno"] = information.uno,
                         ["stage"] = information.stage,
                         ["part"] = JObject.FromObject(information.partData),
@@ -48,7 +48,7 @@ namespace CommanderCS.Host.Handlers.Nickname
                         ["ersoc"] = JObject.FromObject(information.eventResourceData),
                         ["food"] = JObject.FromObject(information.foodData),
                         ["item"] = JObject.FromObject(information.itemData),
-                        ["gld"] = null,  // Replace with guildInfo
+                        ["gld"] = null,
                         ["cc"] = JObject.FromObject(information.sweepClearData),
                         ["deck"] = JArray.FromObject(information.preDeck),
                         ["nhcc"] = JObject.FromObject(information.donHaveCommCostumeData),
@@ -58,23 +58,23 @@ namespace CommanderCS.Host.Handlers.Nickname
                         ["equip"] = JObject.FromObject(information.equipItem),
                         ["guit"] = JObject.FromObject(information.groupItemData),
                         ["weapon"] = JObject.FromObject(information.weaponList)
-
                     }
                 };
 
-                return tutoresponse;
-            }
-
-            ResponsePacket response = new()
+                return tutorialResponse;
+            } else
             {
-                Id = BasePacket.Id,
-                Result = new SetNickNameResponse()
+                ResponsePacket response = new()
                 {
-                    step = @params.Step,
-                }
-            };
+                    Id = BasePacket.Id,
+                    Result = new SetNickNameResponse()
+                    {
+                        step = @params.Step,
+                    }
+                };
 
-            return response;
+                return response;
+            }
         }
 
         internal class SetNickNameResponse

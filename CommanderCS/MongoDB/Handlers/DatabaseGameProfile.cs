@@ -50,7 +50,7 @@ namespace CommanderCS.MongoDB.Handlers
             {
                 Server = server,
                 LastStage = 0,
-                UserStatistics = new()
+                Statistics = new()
                 {
                     WeaponMakeSlotCount = 2,
                     WeaponInventoryCount = 200
@@ -100,8 +100,8 @@ namespace CommanderCS.MongoDB.Handlers
                     skip = false,
                     step = 0
                 },
-                UserDeviceInformation = new() { },
-                UserInventory = new UserInventory()
+                DeviceInformation = new() { },
+                Inventory = new UserInventory()
                 {
                     medalData = new()
                     {
@@ -121,7 +121,7 @@ namespace CommanderCS.MongoDB.Handlers
                     costumeData = [],
                 },
                 ResetDateTime = 0,
-                UserResources = new()
+                Resources = new()
                 {
                     sweepTicket = 0,
                     annCoin = 0,
@@ -332,7 +332,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>True if an account with the specified nickname exists, otherwise false.</returns>
         public bool AccountExists(string nickname)
         {
-            return DatabaseCollection.AsQueryable().Where(d => d.UserResources.nickname == nickname).Any();
+            return DatabaseCollection.AsQueryable().Where(d => d.Resources.nickname == nickname).Any();
         }
 
         /// <summary>
@@ -380,7 +380,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>The game profile associated with the nickname, or null if not found.</returns>
         public GameProfileScheme? FindByNick(string nickname)
         {
-            return DatabaseCollection.AsQueryable().Where(d => d.UserResources.nickname == nickname).FirstOrDefault();
+            return DatabaseCollection.AsQueryable().Where(d => d.Resources.nickname == nickname).FirstOrDefault();
         }
 
         /// <summary>
@@ -415,7 +415,7 @@ namespace CommanderCS.MongoDB.Handlers
         {
             var user = FindBySession(session);
 
-            var statistics = user.UserStatistics;
+            var statistics = user.Statistics;
 
             UserInformationResponse.BattleStatistics BattleStatisticstis = new()
             {
@@ -503,7 +503,7 @@ namespace CommanderCS.MongoDB.Handlers
         {
             var user = FindBySession(session);
 
-            var resources = user.UserResources;
+            var resources = user.Resources;
 
             UserInformationResponse.Resource resource = new()
             {
@@ -612,7 +612,7 @@ namespace CommanderCS.MongoDB.Handlers
         public void UpdateUserResources(string session, UserResources resources)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources, resources);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources, resources);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -630,19 +630,19 @@ namespace CommanderCS.MongoDB.Handlers
 
             if (useAddition)
             {
-                user.UserResources.gold += new_gold;
-                user.UserStatistics.TotalGold += new_gold;
-                user.UserResources.cash += new_cash;
+                user.Resources.gold += new_gold;
+                user.Statistics.TotalGold += new_gold;
+                user.Resources.cash += new_cash;
             }
             else
             {
-                user.UserResources.gold -= new_gold;
-                user.UserStatistics.TotalGold -= new_gold;
-                user.UserResources.cash -= new_cash;
+                user.Resources.gold -= new_gold;
+                user.Statistics.TotalGold -= new_gold;
+                user.Resources.cash -= new_cash;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.gold, user.UserResources.gold).Set(x => x.UserResources.cash, user.UserResources.cash).Set(x => x.UserStatistics.TotalGold, user.UserStatistics.TotalGold);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.gold, user.Resources.gold).Set(x => x.Resources.cash, user.Resources.cash).Set(x => x.Statistics.TotalGold, user.Statistics.TotalGold);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -659,17 +659,17 @@ namespace CommanderCS.MongoDB.Handlers
 
             if (useAddition)
             {
-                user.UserResources.gold += gold;
-                user.UserStatistics.TotalGold += gold;
+                user.Resources.gold += gold;
+                user.Statistics.TotalGold += gold;
             }
             else
             {
-                user.UserResources.gold -= gold;
-                user.UserStatistics.TotalGold -= gold;
+                user.Resources.gold -= gold;
+                user.Statistics.TotalGold -= gold;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.gold, user.UserResources.gold).Set(x => x.UserStatistics.TotalGold, user.UserStatistics.TotalGold);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.gold, user.Resources.gold).Set(x => x.Statistics.TotalGold, user.Statistics.TotalGold);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -682,15 +682,15 @@ namespace CommanderCS.MongoDB.Handlers
 
             if (useAddition)
             {
-                user.UserResources.cash += cash;
+                user.Resources.cash += cash;
             }
             else
             {
-                user.UserResources.cash -= cash;
+                user.Resources.cash -= cash;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.nickname, accountName).Set(x => x.UserResources.cash, user.UserResources.cash);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.nickname, accountName).Set(x => x.Resources.cash, user.Resources.cash);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -708,15 +708,15 @@ namespace CommanderCS.MongoDB.Handlers
 
             if (useAddition)
             {
-                user.UserResources.cash += cash;
+                user.Resources.cash += cash;
             }
             else
             {
-                user.UserResources.cash -= cash;
+                user.Resources.cash -= cash;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.cash, user.UserResources.cash);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.cash, user.Resources.cash);
 
             var options = new FindOneAndUpdateOptions<GameProfileScheme>
             {
@@ -741,15 +741,15 @@ namespace CommanderCS.MongoDB.Handlers
 
             if (useAddition)
             {
-                user.UserResources.cash += cash;
+                user.Resources.cash += cash;
             }
             else
             {
-                user.UserResources.cash -= cash;
+                user.Resources.cash -= cash;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.cash, user.UserResources.cash);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.cash, user.Resources.cash);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -761,12 +761,12 @@ namespace CommanderCS.MongoDB.Handlers
         /// <param name="session">The session associated with the user.</param>
         public void UpdateOnLogin(LoginRequest @params, string session)
         {
-            UserDevice userDevice = new()
+            Device userDevice = new()
             {
                 Apk = @params.apkFileName,
                 Country = @params.countryCode,
-                Device = @params.deviceName,
-                Deviceid = @params.deviceId,
+                DeviceName = @params.deviceName,
+                DeviceId = @params.deviceId,
                 GameVersion = @params.gameVersion,
                 Gpid = @params.largoId,
                 Language = @params.languageCode,
@@ -782,7 +782,7 @@ namespace CommanderCS.MongoDB.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, @params.memberId) &
                          Builders<GameProfileScheme>.Filter.Eq(x => x.Server, @params.world);
 
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.Session, session).Set(x => x.UserDeviceInformation, userDevice).Set(x => x.LastLoginTime, CurrTimeStamp);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Session, session).Set(x => x.DeviceInformation, userDevice).Set(x => x.LastLoginTime, CurrTimeStamp);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -838,7 +838,7 @@ namespace CommanderCS.MongoDB.Handlers
         public void UpdateFoodData(string session, Dictionary<string, int> foodData)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.foodData, foodData);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.foodData, foodData);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -851,7 +851,7 @@ namespace CommanderCS.MongoDB.Handlers
         public void UpdateDontHaveCommanderCostumeData(string session, Dictionary<string, List<int>> donthaveCostumes)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.donHaveCommCostumeData, donthaveCostumes);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.donHaveCommCostumeData, donthaveCostumes);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -865,7 +865,7 @@ namespace CommanderCS.MongoDB.Handlers
         public void UpdateCommanderDataAndMedalData(string session, Dictionary<string, UserInformationResponse.Commander> commanderList, Dictionary<string, int> medalsdata)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.CommanderData, commanderList).Set(x => x.UserInventory.medalData, medalsdata);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.CommanderData, commanderList).Set(x => x.Inventory.medalData, medalsdata);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -878,7 +878,7 @@ namespace CommanderCS.MongoDB.Handlers
         public void UpdateMedalData(string session, Dictionary<string, int> medalsdata)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.medalData, medalsdata);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.medalData, medalsdata);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -891,7 +891,7 @@ namespace CommanderCS.MongoDB.Handlers
         public void UpdateItemData(string session, Dictionary<string, int> items)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.itemData, items);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.itemData, items);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -904,7 +904,7 @@ namespace CommanderCS.MongoDB.Handlers
         public void UpdatePartData(string session, Dictionary<string, int> parts)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.partData, parts);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.partData, parts);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -931,7 +931,7 @@ namespace CommanderCS.MongoDB.Handlers
         public bool ChangeThumbnailId(string session, int costumeId)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.thumbnailId, costumeId);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.thumbnailId, costumeId);
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
@@ -959,7 +959,7 @@ namespace CommanderCS.MongoDB.Handlers
         public void UpdateNickName(string session, string accountName)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.nickname, accountName);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.nickname, accountName);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -1187,7 +1187,7 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
 
             var filter2 = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update2 = Builders<GameProfileScheme>.Update.Set(x => x.UserStatistics.PredeckCount, preDeckCount + 1);
+            var update2 = Builders<GameProfileScheme>.Update.Set(x => x.Statistics.PredeckCount, preDeckCount + 1);
             DatabaseCollection.UpdateOne(filter2, update2);
         }
 
@@ -1287,7 +1287,7 @@ namespace CommanderCS.MongoDB.Handlers
         public void UpdateRings(string session, int ring)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.ring, ring);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.ring, ring);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -1300,7 +1300,7 @@ namespace CommanderCS.MongoDB.Handlers
         public void UpdateWeaponInventoryCount(string session, int weaponInventoryCount)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserStatistics.WeaponInventoryCount, weaponInventoryCount);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Statistics.WeaponInventoryCount, weaponInventoryCount);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -1390,7 +1390,7 @@ namespace CommanderCS.MongoDB.Handlers
 
 
             var filter2 = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update2 = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.ring, user.UserResources.ring);
+            var update2 = Builders<GameProfileScheme>.Update.Set(x => x.Resources.ring, user.Resources.ring);
 
             DatabaseCollection.UpdateOne(filter2, update2);
         }

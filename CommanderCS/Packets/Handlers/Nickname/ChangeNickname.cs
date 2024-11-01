@@ -25,15 +25,13 @@ namespace CommanderCS.Host.Handlers.Nickname
 
             var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
-            ChangeNicknameResponse data = new()
-            {
-                rsoc = rsoc,
-            };
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = data
+                Result = new ChangeNicknameResponse()
+                {
+                    rsoc = rsoc,
+                }
             };
 
             return response;

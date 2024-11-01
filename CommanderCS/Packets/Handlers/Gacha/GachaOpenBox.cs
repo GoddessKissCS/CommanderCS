@@ -29,8 +29,8 @@ namespace CommanderCS.Packets.Handlers.Gacha
             {
                 case 1:
                     rewards.Add(new() { count = 5, id = "8", type = ERewardType.Goods });
-                    User.UserInventory.itemData.Add("8", 5);
-                    DatabaseManager.GameProfile.UpdateItemData(SessionId, User.UserInventory.itemData);
+                    User.Inventory.itemData.Add("8", 5);
+                    DatabaseManager.GameProfile.UpdateItemData(SessionId, User.Inventory.itemData);
                     break;
 
                 case 2:
@@ -47,14 +47,14 @@ namespace CommanderCS.Packets.Handlers.Gacha
                 changedGachaInformation = ws,
                 rewardList = rewards,
                 goodsResult = rsoc,
-                costumeData = User.UserInventory.costumeData,
-                foodData = User.UserInventory.foodData,
-                partData = User.UserInventory.partData,
-                itemData = User.UserInventory.itemData,
-                medalData = User.UserInventory.medalData,
+                costumeData = User.Inventory.costumeData,
+                foodData = User.Inventory.foodData,
+                partData = User.Inventory.partData,
+                itemData = User.Inventory.itemData,
+                medalData = User.Inventory.medalData,
                 commanderIdDict = User.CommanderData,
-                eventResourceData = User.UserInventory.eventResourceData,
-                equipItem = User.UserInventory.equipItem
+                eventResourceData = User.Inventory.eventResourceData,
+                equipItem = User.Inventory.equipItem
             };
 
             ResponsePacket response = new()

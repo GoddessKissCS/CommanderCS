@@ -1,7 +1,47 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
+using static CommanderCS.Packets.Handlers.Cooperate.CooperateBattlePointRank;
+
 namespace CommanderCS.Packets.Handlers.Cooperate
 {
-    public class CooperateBattlePointRank
+    [Packet(Id = Method.CooperateBattlePointRank)]
+    public class CooperateBattlePointRank : BaseMethodHandler<CooperateBattlePointRankRequest>
     {
+        public override object Handle(CooperateBattlePointRankRequest @params)
+        {
+            ResponsePacket response = new ResponsePacket()
+            {
+                Id = BasePacket.Id,
+            };
+
+			switch (@params.step)
+			{
+				case 1:
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+			}
+
+
+            // ADD sometime missing data
+
+            List<CommanderCSLibrary.Shared.Protocols.CooperateBattlePointGuildRankingInfo> cooperateBattlePointGuildRankingInfos = new() { };
+
+
+            response.Result = cooperateBattlePointGuildRankingInfos;
+
+            return response;
+
+        }
+
+        public class CooperateBattlePointRankRequest 
+		{
+            [JsonProperty("step")]
+            public int step { get; set; } 
+		}
     }
 }
 

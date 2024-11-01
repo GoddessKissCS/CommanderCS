@@ -11,15 +11,15 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(UpgradeWeaponInventoryRequest @params)
         {
-            User.UserResources.cash -= RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH;
+            User.Resources.cash -= RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH;
 
-            User.UserStatistics.WeaponInventoryCount += RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADD;
+            User.Statistics.WeaponInventoryCount += RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADD;
 
             DatabaseManager.GameProfile.UpdateOnlyCash(SessionId, RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH, false);
-            DatabaseManager.GameProfile.UpdateWeaponInventoryCount(SessionId, User.UserStatistics.WeaponInventoryCount);
+            DatabaseManager.GameProfile.UpdateWeaponInventoryCount(SessionId, User.Statistics.WeaponInventoryCount);
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.UserResources);
-            var uifo = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(User.UserStatistics);
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
+            var uifo = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(User.Statistics);
 
             UpgradeWeaponInventoryResponse weaponInventoryResponse = new()
             {

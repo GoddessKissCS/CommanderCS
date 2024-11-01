@@ -15,7 +15,7 @@ namespace CommanderCS.Host.Handlers.Commander
         {
             string sid = Regulation.goodsDtbl.FirstOrDefault(x => x.serverFieldName == @params.commanderTrainingTicket).type;
 
-            if (@params.count > User.UserInventory.itemData[sid])
+            if (@params.count > User.Inventory.itemData[sid])
             {
                 ErrorPacket error = new()
                 {
@@ -34,9 +34,9 @@ namespace CommanderCS.Host.Handlers.Commander
 
                 for (int i = 1; i < @params.count;)
                 {
-                    if (User.UserInventory.itemData[sid] > 0)
+                    if (User.Inventory.itemData[sid] > 0)
                     {
-                        User.UserInventory.itemData[sid] -= 1;
+                        User.Inventory.itemData[sid] -= 1;
                     }
 
                     TryLevelingUp(sid, ref commanderXP);
@@ -49,7 +49,7 @@ namespace CommanderCS.Host.Handlers.Commander
                 commander = CheckCommanderLevelRecursive(commander, Regulation, User);
             }
 
-            if (int.Parse(commander.__level) > User.UserResources.level)
+            if (int.Parse(commander.__level) > User.Resources.level)
             {
                 ErrorPacket error = new()
                 {
@@ -60,7 +60,7 @@ namespace CommanderCS.Host.Handlers.Commander
                 return error;
             }
 
-            DatabaseManager.GameProfile.UpdateItemData(SessionId, User.UserInventory.itemData);
+            DatabaseManager.GameProfile.UpdateItemData(SessionId, User.Inventory.itemData);
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
 
             ResponsePacket response = new()

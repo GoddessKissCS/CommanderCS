@@ -9,19 +9,19 @@ namespace CommanderCS.Host.Handlers.KeepAlives
     {
         public override object Handle(BulletChargeResult @params)
         {
-            int bullets = Regulation.userLevelDtbl.Find(x => x.level == User.UserResources.level).maxBullet;
+            int bullets = Regulation.userLevelDtbl.Find(x => x.level == User.Resources.level).maxBullet;
 
             ResourceRecharge resource = new()
             {
                 bulletData = new()
                 {
-                    cnt = User.UserResources.bullet,
+                    cnt = User.Resources.bullet,
                     remain = bullets,
                 },
                 oilData = new()
                 {
-                    cnt = User.UserResources.oil,
-                    remain = User.UserResources.oil,
+                    cnt = User.Resources.oil,
+                    remain = User.Resources.oil,
                 },
                 skillData = new()
                 {
@@ -30,28 +30,28 @@ namespace CommanderCS.Host.Handlers.KeepAlives
                 },
                 chip = new()
                 {
-                    remain = User.UserResources.chip,
-                    cnt = User.UserResources.chip,
+                    remain = User.Resources.chip,
+                    cnt = User.Resources.chip,
                 },
                 weaponMaterialData1 = new()
                 {
-                    cnt = User.UserResources.weaponMaterial1,
-                    remain = User.UserResources.weaponMaterial1,
+                    cnt = User.Resources.weaponMaterial1,
+                    remain = User.Resources.weaponMaterial1,
                 },
                 weaponMaterialData2 = new()
                 {
-                    cnt = User.UserResources.weaponMaterial2,
-                    remain = User.UserResources.weaponMaterial2,
+                    cnt = User.Resources.weaponMaterial2,
+                    remain = User.Resources.weaponMaterial2,
                 },
                 weaponMaterialData3 = new()
                 {
-                    cnt = User.UserResources.weaponMaterial3,
-                    remain = User.UserResources.weaponMaterial3,
+                    cnt = User.Resources.weaponMaterial3,
+                    remain = User.Resources.weaponMaterial3,
                 },
                 weaponMaterialData4 = new()
                 {
-                    cnt = User.UserResources.weaponMaterial4,
-                    remain = User.UserResources.weaponMaterial4,
+                    cnt = User.Resources.weaponMaterial4,
+                    remain = User.Resources.weaponMaterial4,
                 },
                 worldState = User.WorldState,
                 gacha = User.GachaInformation

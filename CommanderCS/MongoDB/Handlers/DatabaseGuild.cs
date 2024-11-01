@@ -51,13 +51,13 @@ namespace CommanderCS.MongoDB.Handlers
                 [
                     new()
                     {
-                        Level = user.UserResources.level,
+                        Level = user.Resources.level,
                         LastTime = time,
                         JoinDate = time,
                         MemberGrade = 1,
-                        Name = user.UserResources.nickname,
+                        Name = user.Resources.nickname,
                         PaymentBonusPoint = 0,
-                        Thumbnail = user.UserResources.thumbnailId,
+                        Thumbnail = user.Resources.thumbnailId,
                         TodayPoint = 0,
                         TotalPoint = 0,
                         Uno = user.Uno,
@@ -171,7 +171,7 @@ namespace CommanderCS.MongoDB.Handlers
 
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.Resources);
 
             var userguild = RequestGuild(user.GuildId, user.Uno);
 
@@ -269,8 +269,8 @@ namespace CommanderCS.MongoDB.Handlers
                 GuildMember.MemberData guildMember = new()
                 {
                     lastTime = lastTime,
-                    level = user.UserResources.level,
-                    name = user.UserResources.nickname,
+                    level = user.Resources.level,
+                    name = user.Resources.nickname,
                     world = member.World,
                     uno = member.Uno,
                     thumnail = member.Thumbnail,
@@ -358,7 +358,10 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>A list of guilds with limited count.</returns>
         public List<RoGuild> GetAllGuilds(string session)
         {
-            var allGuilds = DatabaseCollection.AsQueryable().Take(20).ToList();
+
+            var allGuilds = DatabaseCollection.Aggregate()
+                            .Sample(20)
+                            .ToList();
 
             if (allGuilds is null)
             {
@@ -536,10 +539,10 @@ namespace CommanderCS.MongoDB.Handlers
                 MemberGrade = 0,
                 LastTime = time,
                 JoinDate = time,
-                Level = user.UserResources.level,
-                Name = user.UserResources.nickname,
+                Level = user.Resources.level,
+                Name = user.Resources.nickname,
                 PaymentBonusPoint = 0,
-                Thumbnail = user.UserResources.thumbnailId,
+                Thumbnail = user.Resources.thumbnailId,
                 TodayPoint = 0,
                 TotalPoint = 0,
                 Uno = user.Uno,
@@ -549,7 +552,7 @@ namespace CommanderCS.MongoDB.Handlers
             var guild = FindByUid(guildId);
 
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
-            var update = Builders<GuildScheme>.Update.Push("MemberData", memberData).Set("Count", guild.MemberData.Count + 1);
+            var update = Builders<GuildScheme>.Update.Push("MemberData", memberData).Inc("Count", "1");
 
             DatabaseManager.GameProfile.UpdateGuildId(uno, guildId);
 
@@ -564,19 +567,32 @@ namespace CommanderCS.MongoDB.Handlers
         /// <param name="member">The member data to be added.</param>
         public void AddGuildMember(int uno, int guildId, GuildMember.MemberData member)
         {
+
+            var time = TimeManager.CurrentEpoch;
+
+            var memberData = new MemberData()
+            {
+                MemberGrade = member.memberGrade,
+                LastTime = time,
+                JoinDate = time,
+                Level = member.level,
+                Name = member.name,
+                PaymentBonusPoint = member.paymentBonusPoint,
+                Thumbnail = member.thumnail,
+                TodayPoint = member.todayPoint,
+                TotalPoint = member.totalPoint,
+                Uno = member.uno,
+                World = member.world,
+            };
+
+            var guild = FindByUid(guildId);
+
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
-            var update = Builders<GuildScheme>.Update.Push("MemberData", member);
+            var update = Builders<GuildScheme>.Update.Push("MemberData", memberData).Inc("Count", "1");
 
             DatabaseManager.GameProfile.UpdateGuildId(uno, guildId);
 
             DatabaseCollection.UpdateOne(filter, update);
-
-            var guildCount = FindByUid(guildId).MemberData.Count;
-
-            var filter2 = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
-            var update2 = Builders<GuildScheme>.Update.Set("Count", guildCount);
-
-            DatabaseCollection.UpdateOne(filter2, update2);
         }
 
         /// <summary>
@@ -682,7 +698,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// <param name="uno">The unique identifier of the current guild master.</param>
         /// <param name="tuno">The unique identifier of the member who will become the new guild master.</param>
         public void AppointNewGuildMaster(int? guildId, int uno, int tuno)
-        {
+        { 
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId)
                          & Builders<GuildScheme>.Filter.ElemMatch("MemberData",
                              Builders<MemberData>.Filter.Eq("uno", uno));
@@ -739,8 +755,14 @@ namespace CommanderCS.MongoDB.Handlers
         /// <param name="uno">The unique identifier of the member to remove.</param>
         public void QuitGuild(int? guildId, int uno)
         {
+            var guild = FindByUid(guildId);
+
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId);
-            var update = Builders<GuildScheme>.Update.PullFilter("MemberData", Builders<MemberData>.Filter.Eq("uno", uno));
+
+            var update = Builders<GuildScheme>.Update
+                         .PullFilter("MemberData", Builders<MemberData>.Filter.Eq("uno", uno))
+                         .Inc("Count", "-1");
+
             DatabaseCollection.UpdateOne(filter, update);
 
             var user = DatabaseManager.GameProfile.FindByUno(uno);

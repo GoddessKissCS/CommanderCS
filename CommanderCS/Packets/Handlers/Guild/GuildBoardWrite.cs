@@ -31,8 +31,8 @@ namespace CommanderCS.Packets.Handlers.Guild
                 idx = nextIdx,
                 msg = @params.msg,
                 regdt = TimeManager.CurrentEpochMilliseconds,
-                thumb = User.UserResources.thumbnailId.ToString(),
-                unm = User.UserResources.nickname,
+                thumb = User.Resources.thumbnailId.ToString(),
+                unm = User.Resources.nickname,
                 uno = User.Uno,
             };
 

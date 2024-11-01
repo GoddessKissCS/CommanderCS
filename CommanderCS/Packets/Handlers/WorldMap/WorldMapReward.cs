@@ -110,13 +110,13 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             }
             else
             {
-                user.UserInventory.medalData[commanderId] += medals;
+                user.Inventory.medalData[commanderId] += medals;
                 user.CommanderData[commanderId].medl += medals;
 
                 WorldMapReward.commanderData = user.CommanderData;
             }
 
-            WorldMapReward.medalData = user.UserInventory.medalData;
+            WorldMapReward.medalData = user.Inventory.medalData;
 
             DatabaseManager.GameProfile.UpdateCommanderDataAndMedalData(session, WorldMapReward.commanderData, WorldMapReward.medalData);
 

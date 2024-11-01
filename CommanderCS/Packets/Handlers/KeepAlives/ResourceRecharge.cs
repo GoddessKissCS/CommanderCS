@@ -52,7 +52,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
             const int maxTickets = 5; // Maximum number of tickets
             const double increasePercentage = 1.0; // Percentage increase for each ticket (100%)
 
-            var vipData = rg.VipBenefitsDtbl.Find(x => x.vipLevel == user.UserResources.vipLevel);
+            var vipData = rg.VipBenefitsDtbl.Find(x => x.vipLevel == user.Resources.vipLevel);
 
             if (user.DailyBuyables.RaidKeys > vipData.dailyRaidTicketRefill)
             {
