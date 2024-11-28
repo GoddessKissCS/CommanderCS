@@ -14,8 +14,11 @@ Getting kicked out of a guild while the game still thinks you are in one will ma
 ### How-To-Use
 
 [You need to download mongodb community database for the database](https://www.mongodb.com/try/download/community)
+
 [Modified Client APK (it is the lastest Version GK had, if you have any trust issues with it, you can look at it via tools like dnSpy)](https://www.mediafire.com/file/gp6x6c2gweggndh/com.edited.GK.apk/file)
+
 [Game OBB Data](https://www.mediafire.com/file/8cnyb7btjwk9qk0/com.flerogames.GK.rar/file)
+
 [The ServerSides Files for the game to download via starting up](https://www.mediafire.com/file/v03gsv3tfevkg12/FileCDN.rar/file)
  
 
