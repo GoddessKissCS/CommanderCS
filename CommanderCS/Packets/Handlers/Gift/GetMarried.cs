@@ -1,7 +1,38 @@
+using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Gift
 {
-    public class GetMarried
+    [Packet(Id = Method.GetMarried)]
+    public class GetMarried : BaseMethodHandler<GetMarriedRequest>
     {
+        public override object Handle(GetMarriedRequest @params)
+        {
+            string cid = @params.cid.ToString();
+
+            User.CommanderData[cid].marry = 1;
+            User.Resources.ring -= 1;
+
+            DatabaseManager.GameProfile.UpdateCommanderMarriage(SessionId, User, User.CommanderData[cid]);
+            UserInformationResponse userInformationResponse = GetUserInformationResponse(User);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = userInformationResponse,
+            };
+
+            return response;
+        }
+    }
+
+    public class GetMarriedRequest
+    {
+        [JsonProperty("cid")]
+        public int cid { get; set; }
     }
 }
 
@@ -15,7 +46,7 @@ namespace CommanderCS.Packets.Handlers.Gift
 	private IEnumerator GetMarriedResult(JsonRpcClient.Request request, Protocols.UserInformationResponse result)
 	{
 		string text = this._FindRequestProperty(request, "cid");
-		if (result.commanderInfo != null)
+		if (result.commanderInfo is not null)
 		{
 			foreach (KeyValuePair<string, Protocols.UserInformationResponse.Commander> keyValuePair in result.commanderInfo)
 			{
@@ -27,7 +58,7 @@ namespace CommanderCS.Packets.Handlers.Gift
 		this.localUser.RefreshGoodsFromNetwork(result.goodsInfo);
 		UIManager.instance.RefreshOpenedUI();
 		CommanderScenarioDataRow commanderScenarioDataRow = this.regulation.FindCommanderScenario(text, 0);
-		if (commanderScenarioDataRow != null)
+		if (commanderScenarioDataRow is not null)
 		{
 			this.localUser.currScenario.scenarioId = commanderScenarioDataRow.csid;
 			this.localUser.currScenario.commanderId = int.Parse(text);

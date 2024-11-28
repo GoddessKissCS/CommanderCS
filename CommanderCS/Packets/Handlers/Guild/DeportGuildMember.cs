@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
@@ -11,12 +11,9 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(DeportGuildMemberRequest @params)
         {
-            var user = GetUserGameProfile();
-            var guild = GetUserGuild();
+            var target = Guild.MemberData.FirstOrDefault(member => member.Uno == @params.tuno);
 
-            var target = guild.MemberData.FirstOrDefault(member => member.uno == @params.tuno);
-
-            var difference = TimeManager.GetTimeDifferenceInDays(target.joinDate);
+            var difference = TimeManager.GetTimeDifferenceInDays(target.JoinDate);
 
             bool kicked5peopleToday = false;
 
@@ -31,9 +28,9 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            bool isInGuild = DatabaseManager.Guild.IsUnoInMemberData(user.GuildId, user.Uno);
+            bool isInGuild = DatabaseManager.Guild.IsUnoInMemberData(User.GuildId, User.Uno);
 
-            bool isntRemoved = DatabaseManager.Guild.RemoveMemberDataByUno(user.GuildId, @params.tuno);
+            bool isntRemoved = DatabaseManager.Guild.RemoveMemberDataByUno(User.GuildId, @params.tuno);
 
             if (!isInGuild || !isntRemoved)
             {

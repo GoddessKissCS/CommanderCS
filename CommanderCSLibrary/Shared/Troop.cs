@@ -229,14 +229,14 @@ namespace CommanderCSLibrary.Shared
                     statsDefense = src.statsDefense,
                     statsHealing = src.statsHealing,
                 };
-                if (src.skills != null)
+                if (src.skills is not null)
                 {
                     for (int i = 0; i < src.skills.Count; i++)
                     {
                         slot.skills.Add(Skill.Copy(src.skills[i]));
                     }
                 }
-                if (src.equipItem != null)
+                if (src.equipItem is not null)
                 {
                     Dictionary<int, Item>.Enumerator enumerator = src.equipItem.GetEnumerator();
                     while (enumerator.MoveNext())
@@ -244,7 +244,7 @@ namespace CommanderCSLibrary.Shared
                         slot.equipItem.Add(enumerator.Current.Key, Item.Copy(enumerator.Current.Value));
                     }
                 }
-                if (src.weaponItem != null)
+                if (src.weaponItem is not null)
                 {
                     Dictionary<int, Item>.Enumerator enumerator2 = src.weaponItem.GetEnumerator();
                     while (enumerator2.MoveNext())
@@ -252,7 +252,7 @@ namespace CommanderCSLibrary.Shared
                         slot.weaponItem.Add(enumerator2.Current.Key, Item.Copy(enumerator2.Current.Value));
                     }
                 }
-                if (src.transcendence != null)
+                if (src.transcendence is not null)
                 {
                     slot.transcendence.AddRange(src.transcendence);
                 }
@@ -261,7 +261,7 @@ namespace CommanderCSLibrary.Shared
 
             public static explicit operator JToken(Slot value)
             {
-                if (value == null)
+                if (value is null)
                 {
                     return string.Empty;
                 }
@@ -495,7 +495,7 @@ namespace CommanderCSLibrary.Shared
             for (int i = 0; i < src._slots.Count; i++)
             {
                 Slot slot = src._slots[i];
-                if (slot == null)
+                if (slot is null)
                 {
                     troop._slots.Add(null);
                 }
@@ -539,7 +539,7 @@ namespace CommanderCSLibrary.Shared
             {
                 return true;
             }
-            if (f1 == null || f2 == null)
+            if (f1 is null || f2 is null)
             {
                 return false;
             }

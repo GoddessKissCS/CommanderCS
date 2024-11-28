@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -9,9 +9,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(LeaveGuildRequest @params)
         {
-            var user = GetUserGameProfile();
-
-            DatabaseManager.Guild.QuitGuild(user.GuildId, user.Uno);
+            DatabaseManager.Guild.QuitGuild(User.GuildId, User.Uno);
 
             ResponsePacket response = new()
             {
@@ -48,7 +46,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 			}
 		}
 		UIGuildManagePopup uiguildManagePopup = UnityEngine.Object.FindObjectOfType(typeof(UIGuildManagePopup)) as UIGuildManagePopup;
-		if (uiguildManagePopup != null)
+		if (uiguildManagePopup is not null)
 		{
 			uiguildManagePopup.Close();
 		}

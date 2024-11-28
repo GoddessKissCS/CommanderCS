@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
@@ -11,22 +11,19 @@ namespace CommanderCS.Packets.Handlers.PvP
     {
         public override object Handle(GetRankingRewardRequest @params)
         {
-            var user = GetUserGameProfile();
-            var session = GetSession();
-
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
 
             RankingReward reward = new()
             {
-                commanderData = user.CommanderData,
-                equipItem = user.UserInventory.equipItem,
+                commanderData = User.CommanderData,
+                equipItem = User.Inventory.equipItem,
                 resource = rsoc,
-                costumeData = user.UserInventory.costumeData,
-                eventResourceData = user.UserInventory.eventResourceData,
-                foodData = user.UserInventory.foodData,
-                itemData = user.UserInventory.itemData,
-                medalData = user.UserInventory.medalData,
-                partData = user.UserInventory.partData,
+                costumeData = User.Inventory.costumeData,
+                eventResourceData = User.Inventory.eventResourceData,
+                foodData = User.Inventory.foodData,
+                itemData = User.Inventory.itemData,
+                medalData = User.Inventory.medalData,
+                partData = User.Inventory.partData,
                 receiveIdx = null,
                 rewardList = null,
             };

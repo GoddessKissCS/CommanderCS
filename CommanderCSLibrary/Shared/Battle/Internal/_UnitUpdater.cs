@@ -1,5 +1,5 @@
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 
 namespace CommanderCSLibrary.Shared.Battle.Internal
 {
@@ -318,11 +318,11 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                 if (unit.enemyAttackerUnitIdx >= 0)
                 {
                     Unit unit = frame.units[base.unit.enemyAttackerUnitIdx];
-                    if (unit != null)
+                    if (unit is not null)
                     {
                         for (int i = 0; i < unit.skills.Count; i++)
                         {
-                            if (unit.skills[i] == null)
+                            if (unit.skills[i] is null)
                             {
                                 continue;
                             }
@@ -361,7 +361,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                 }
                 for (int j = 0; j < unit.skills.Count; j++)
                 {
-                    if (unit.skills[j] != null)
+                    if (unit.skills[j] is not null)
                     {
                         unit.skills[j]._remainedMotionTime = 0;
                     }
@@ -499,7 +499,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
             {
                 Input lhsInput = frame.lhsInput;
                 Input rhsInput = frame.rhsInput;
-                if (lhsInput != null && lhsInput.unitIndex == unitIndex)
+                if (lhsInput is not null && lhsInput.unitIndex == unitIndex)
                 {
                     if ((lhsInput.targetIndex == -1 || frame.IsRhsUnitInBattle(lhsInput.targetIndex)) && unit.hasActiveSkill && unit._activeSkillIdx == lhsInput.skillIndex && frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, lhsInput.skillIndex))
                     {
@@ -512,7 +512,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                         }
                     }
                 }
-                else if (rhsInput != null && rhsInput.unitIndex == unitIndex && simulator.CanUnitControl(unit) && (rhsInput.targetIndex == -1 || frame.IsRhsUnitInBattle(rhsInput.targetIndex)) && unit.hasActiveSkill && unit._activeSkillIdx == lhsInput.skillIndex && simulator.CanSkillAction(unit, rhsInput.skillIndex))
+                else if (rhsInput is not null && rhsInput.unitIndex == unitIndex && simulator.CanUnitControl(unit) && (rhsInput.targetIndex == -1 || frame.IsRhsUnitInBattle(rhsInput.targetIndex)) && unit.hasActiveSkill && unit._activeSkillIdx == lhsInput.skillIndex && simulator.CanSkillAction(unit, rhsInput.skillIndex))
                 {
                     _hasInputs = true;
                     _selectedSkillIndex = rhsInput.skillIndex;
@@ -545,7 +545,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
 
         public bool CanSkillAction(Skill skill)
         {
-            if (skill == null)
+            if (skill is null)
             {
                 return false;
             }
@@ -566,16 +566,16 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
 
         public override void OnUnitAccessEnd()
         {
-            if (_activatableSkills == null || _activatableSkills.Count <= 0)
+            if (_activatableSkills is null || _activatableSkills.Count <= 0)
             {
                 unit._eventSkillIndex = -1;
                 return;
             }
-            if (_hasActivatedSkills || (_selectedSkillIndex >= 0 && _activatableSkills[_selectedSkillIndex] == null))
+            if (_hasActivatedSkills || (_selectedSkillIndex >= 0 && _activatableSkills[_selectedSkillIndex] is null))
             {
                 foreach (Skill activatableSkill in _activatableSkills)
                 {
-                    if (activatableSkill != null)
+                    if (activatableSkill is not null)
                     {
                         activatableSkill._remainedMotionTime = 0;
                     }
@@ -589,7 +589,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                 {
                     for (int i = 1; i < _activatableSkills.Count; i++)
                     {
-                        if (_activatableSkills[i] == null || !_activatableSkills[i].isActiveSkill)
+                        if (_activatableSkills[i] is null || !_activatableSkills[i].isActiveSkill)
                         {
                             continue;
                         }
@@ -607,7 +607,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                 }
                 if (_selectedSkillIndex < 0 && _isTurnUnit)
                 {
-                    if (_activatableSkills[0] != null)
+                    if (_activatableSkills[0] is not null)
                     {
                         int num2 = frame.FindSkillTarget(simulator.regulation, unitIndex, 0);
                         if (num2 >= 0)
@@ -621,7 +621,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                     }
                     for (int j = 1; j < _activatableSkills.Count; j++)
                     {
-                        if (_activatableSkills[j] == null || !_activatableSkills[j].HasEventOccurrenceProbability)
+                        if (_activatableSkills[j] is null || !_activatableSkills[j].HasEventOccurrenceProbability)
                         {
                             continue;
                         }
@@ -646,7 +646,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                 {
                     foreach (Skill activatableSkill2 in _activatableSkills)
                     {
-                        if (activatableSkill2 != null)
+                        if (activatableSkill2 is not null)
                         {
                             activatableSkill2._remainedMotionTime = 0;
                         }
@@ -658,12 +658,12 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
             for (int k = 0; k < _activatableSkills.Count; k++)
             {
                 Skill skill = _activatableSkills[k];
-                if (skill == null)
+                if (skill is null)
                 {
                     continue;
                 }
                 SkillDataRow skillDataRow = simulator.regulation.skillDtbl[skill.dri];
-                if (skillDataRow == null)
+                if (skillDataRow is null)
                 {
                     continue;
                 }
@@ -693,11 +693,11 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                 }
                 if (_hasInputs)
                 {
-                    if (frame.lhsInput != null && frame.lhsInput.unitIndex == unitIndex && _selectedSkillIndex == frame.lhsInput.skillIndex)
+                    if (frame.lhsInput is not null && frame.lhsInput.unitIndex == unitIndex && _selectedSkillIndex == frame.lhsInput.skillIndex)
                     {
                         frame.lhsInput._result = true;
                     }
-                    if (frame.rhsInput != null && frame.rhsInput.unitIndex == unitIndex && _selectedSkillIndex == frame.rhsInput.skillIndex)
+                    if (frame.rhsInput is not null && frame.rhsInput.unitIndex == unitIndex && _selectedSkillIndex == frame.rhsInput.skillIndex)
                     {
                         frame.rhsInput._result = true;
                     }
@@ -722,11 +722,11 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
                     FireEvent fireEvent = simulator.regulation.unitMotionDtbl[skill.unitMotionDri].fireEvents[0];
                     if (simulator.option.canInterfereSkill)
                     {
-                        if (skill.FireActionDr == null)
+                        if (skill.FireActionDr is null)
                         {
                         }
                     }
-                    else if (skill.FireActionDr != null)
+                    else if (skill.FireActionDr is not null)
                     {
                         FireActionDataRow.TimeSet timeSet = skill.FireActionDr.GetTimeSet(simulator.CanEnableFireAction(unit));
                         if (timeSet.timeSleepDuringFire)
@@ -883,11 +883,11 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
             {
                 return false;
             }
-            if (unitMotionDr.fireEvents[0] == null)
+            if (unitMotionDr.fireEvents[0] is null)
             {
                 return false;
             }
-            if (_activatableSkills == null)
+            if (_activatableSkills is null)
             {
                 Shared.Regulation.Regulation.ExtendList(ref _activatableSkills, 5);
             }

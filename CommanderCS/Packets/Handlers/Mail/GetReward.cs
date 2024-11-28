@@ -1,7 +1,32 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Mail
 {
-    public class GetReward
+    [Packet(Id = Method.GetReward)]
+    public class GetReward : BaseMethodHandler<GetRewardRequest>
     {
+        public override object Handle(GetRewardRequest @params)
+        {
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = null,
+            };
+
+            return response;
+        }
+    }
+
+    public class GetRewardRequest
+    {
+        [JsonProperty("idx")]
+        public int idx { get; set; }
+
+        [JsonProperty("type")]
+        public int type { get; set; }
     }
 }
 

@@ -1,9 +1,7 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
-using Newtonsoft.Json.Linq;
-using static CommanderCSLibrary.Shared.Constants;
 
 namespace CommanderCS.Packets.Handlers.PreDeck
 {
@@ -12,10 +10,7 @@ namespace CommanderCS.Packets.Handlers.PreDeck
     {
         public override object Handle(BuyPredeckSlotRequest @params)
         {
-            var session = GetSession();
-            var user = GetUserGameProfile();
-
-            if (user.UserStatistics.PredeckCount >= 20)
+            if (User.Statistics.PredeckCount >= 20)
             {
                 ErrorPacket errorPacket = new()
                 {
@@ -26,9 +21,9 @@ namespace CommanderCS.Packets.Handlers.PreDeck
                 return errorPacket;
             }
 
-            int cashCost = DefineDataTable.DECK_PLUS_CASH + DefineDataTable.DECK_PLUS_CASH_VALUE * (user.UserStatistics.PredeckCount - DefineDataTable.BASE_DECK_COUNT);
+            int cashCost = RemoteObjectManager.DefineDataTable.DECK_PLUS_CASH + RemoteObjectManager.DefineDataTable.DECK_PLUS_CASH_VALUE * (User.Statistics.PredeckCount - RemoteObjectManager.DefineDataTable.BASE_DECK_COUNT);
 
-            if (user.UserResources.cash > cashCost)
+            if (User.Resources.cash > cashCost)
             {
                 ErrorPacket errorPacket = new()
                 {
@@ -39,41 +34,11 @@ namespace CommanderCS.Packets.Handlers.PreDeck
                 return errorPacket;
             }
 
-            user = DatabaseManager.GameProfile.UpdateCash(session, cashCost, false);
+            var user = DatabaseManager.GameProfile.UpdateCash(SessionId, cashCost, false);
 
-            DatabaseManager.GameProfile.AddEmptyPreDeckSlot(session, user.UserStatistics.PredeckCount);
+            DatabaseManager.GameProfile.AddEmptyPreDeckSlot(SessionId, user.Statistics.PredeckCount);
 
-            var goods = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
-            var battlestats = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(user.UserStatistics);
-            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
-
-            UserInformationResponse userInformationResponse = new()
-            {
-                goodsInfo = goods,
-                battleStatisticsInfo = battlestats,
-                uno = user.Uno.ToString(),
-                stage = user.LastStage,
-                notification = user.Notifaction,
-
-                foodData = user.UserInventory.foodData,
-                eventResourceData = user.UserInventory.eventResourceData,
-                groupItemData = user.UserInventory.groupItemData,
-                itemData = user.UserInventory.itemData,
-                medalData = user.UserInventory.medalData,
-                partData = user.UserInventory.partData,
-
-                resetRemain = user.ResetDateTime, // should be set?
-                /// probably set it globally?
-                equipItem = user.UserInventory.equipItem,
-
-                donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,
-                completeRewardGroupIdx = user.CompleteRewardGroupIdx,
-                guildInfo = guild,
-                sweepClearData = user.BattleData.SweepClearData,
-                preDeck = user.PreDeck,
-                weaponList = user.UserInventory.weaponList,
-                __commanderInfo = JObject.FromObject(user.CommanderData),
-            };
+            var userInformationResponse = GetUserInformationResponse(user);
 
             ResponsePacket response = new()
             {

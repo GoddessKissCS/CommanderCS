@@ -1,10 +1,31 @@
+using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.WorldDuel
 {
-    public class WorldDuelDefenderSetting
+    [Packet(Id = Method.WorldDuelDefenderSetting)]
+    public class WorldDuelDefenderSetting : BaseMethodHandler<WorldDuelDefenderSettingRequest>
     {
+        public override object Handle(WorldDuelDefenderSettingRequest @params)
+        {
+
+            Dictionary<string, string> decks = @params.Deck.ToObject<Dictionary<string, string>>();
+
+            DatabaseManager.GameProfile.UpdateWorldDefenderDeck(SessionId, decks);
+
+#warning TODO CHECK IF FAILS
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "false",
+            };
+
+            return response;
+        }
     }
 
     public class WorldDuelDefenderSettingRequest

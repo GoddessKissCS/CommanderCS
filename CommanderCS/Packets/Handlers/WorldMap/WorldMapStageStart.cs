@@ -1,8 +1,7 @@
 ﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Packets;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Host.Handlers.WorldMap
 {
@@ -11,14 +10,42 @@ namespace CommanderCS.Host.Handlers.WorldMap
     {
         public override object Handle(WorldMapStageStartRequest @params)
         {
-            var session = GetSession();
             WorldMapStageStartResponse wmssr = new();
 
+            //TODO: look at the stage and then the rewards it can gen
             List<RewardInfo.RewardData> test = [];
 
+
+            string worldMapId = @params.Mid.ToString();
+
+            var worldstagetbl = Regulation.worldMapStageDtbl.Find(x => x.id == worldMapId);
+
+            //var worldReward = Regulation.rewardDtbl.Find(x => x.rewardIdx == 10101);
+
+            User.Resources.bullet -= worldstagetbl.bullet;
+
+            switch (@params.Mid)
+            {
+                case 1:
+
+                    //ADD to the database a thing that says how many drops there will be that will be wiped here or if a new battle starts in battle
+
+                    test.Add(new()
+                    {
+                        effect = 0,
+                        rewardCnt = 5,
+                        rewardId = "10101",
+                        rewardType = ERewardType.UnitMaterial,
+                    });
+
+                    break;
+
+            }
+
+            //TODO: find out how to add exp
             wmssr.reward = test;
 
-            wmssr.rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+            wmssr.rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
             ResponsePacket response = new()
             {
@@ -28,36 +55,6 @@ namespace CommanderCS.Host.Handlers.WorldMap
 
             return response;
         }
-
-        internal class WorldMapStageStartResponse
-        {
-            [JsonProperty("rsoc")]
-            public UserInformationResponse.Resource rsoc { get; set; }
-
-            [JsonProperty("reward")]
-            public List<RewardInfo.RewardData> reward { get; set; }
-        }
-    }
-
-    public class WorldMapStageStartRequest
-    {
-        [JsonProperty("type")]
-        public int Type { get; set; }
-
-        [JsonProperty("deck")]
-        public JObject Deck { get; set; }
-
-        [JsonProperty("gdp")]
-        public JObject Gdp { get; set; }
-
-        [JsonProperty("ucash")]
-        public int Ucash { get; set; }
-
-        [JsonProperty("mid")]
-        public int Mid { get; set; }
-
-        [JsonProperty("np")]
-        public int Np { get; set; }
     }
 }
 
@@ -83,7 +80,7 @@ namespace CommanderCS.Host.Handlers.WorldMap
 	// Token: 0x06005F58 RID: 24408 RVA: 0x001AEE1C File Offset: 0x001AD01C
 	private IEnumerator WorldMapStageStartError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (UIManager.instance.battle != null)
+		if (UIManager.instance.battle is not null)
 		{
 			if (code == 21006 || code == 21007)
 			{

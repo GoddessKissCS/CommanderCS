@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
@@ -11,11 +11,9 @@ namespace StellarGK.Packets.Handlers.WaveDuel
     {
         public override object Handle(RefreshPvPWaveDuelListRequest @params)
         {
-            var user = GetUserGameProfile();
+            //TODO: add fake duelist + need to check score and the get duelist between the range
 
-            // need to check score and the get duelist between the range
-
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
 
             RefreshPvPDuel refreshDuel = new()
             {
@@ -55,7 +53,7 @@ namespace StellarGK.Packets.Handlers.WaveDuel
 		this.localUser.duelTargetRefreshTime.SetByDuration((double)result.remain);
 		this.localUser.currentSeasonDuelTime.SetByDuration((double)result.time);
 		this.localUser.currentSeasonOpenRemainDuelTime.SetByDuration((double)result.openRemain);
-		if (result.duelList != null)
+		if (result.duelList is not null)
 		{
 			for (int i = 1; i <= result.duelList.Count; i++)
 			{

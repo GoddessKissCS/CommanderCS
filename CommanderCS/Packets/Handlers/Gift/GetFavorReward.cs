@@ -1,7 +1,47 @@
+using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Gift
 {
-    public class GetFavorReward
+    [Packet(Id = Method.GetFavorReward)]
+    public class GetFavorReward : BaseMethodHandler<GetFavorRewardRequest>
     {
+        public override object Handle(GetFavorRewardRequest @params)
+        {
+            string cid = @params.cid.ToString();
+
+            User.CommanderData[cid].favorRewardStep = @params.step;
+
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
+
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
+
+            RewardInfo rewardInfo = new()
+            {
+                commander = User.CommanderData,
+                resource = rsoc,
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = rewardInfo,
+            };
+
+            return response;
+        }
+    }
+
+    public class GetFavorRewardRequest
+    {
+        [JsonProperty("cid")]
+        public int cid { get; set; }
+
+        [JsonProperty("step")]
+        public int step { get; set; }
     }
 }
 

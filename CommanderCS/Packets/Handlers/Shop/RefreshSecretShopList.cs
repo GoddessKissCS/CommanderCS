@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Shop
 	// Token: 0x06006006 RID: 24582 RVA: 0x001AFC30 File Offset: 0x001ADE30
 	private IEnumerator RefreshSecretShopListResult(JsonRpcClient.Request request, Protocols.SecretShop result)
 	{
-		if (result != null && result.shopList.Count != 0)
+		if (result is not null && result.shopList.Count != 0)
 		{
 			this.localUser.shopList = result.shopList;
 			this.localUser.RefreshGoodsFromNetwork(result.resource);

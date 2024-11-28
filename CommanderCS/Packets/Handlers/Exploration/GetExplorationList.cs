@@ -8,11 +8,9 @@ namespace CommanderCS.Packets.Handlers.Exploration
     {
         public override object Handle(GetExplorationListRequest @params)
         {
-            var user = GetUserGameProfile();
-
             ResponsePacket response = new()
             {
-                Result = user.ExplorationData,
+                Result = User.ExplorationData,
                 Id = BasePacket.Id
             };
 

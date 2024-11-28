@@ -10,7 +10,7 @@ namespace CommanderCS.Host.Handlers.Vip
         {
             VipGacha result = new();
 
-            //Protocols.VipGacha
+#warning TODO: I FORGOT WHAT THIS IS EVEN FOR
 
             return "{}";
         }
@@ -38,7 +38,7 @@ namespace CommanderCS.Host.Handlers.Vip
 		this.localUser.vipGachaCount = result.gachaCount;
 		this.localUser.vipGachaRefreshTime.SetByDuration((double)result.refreshTime);
 		UIVipGachaContents vipGachaContents = UIManager.instance.world.vipGacha.vipGachaContents;
-		if (vipGachaContents != null)
+		if (vipGachaContents is not null)
 		{
 			vipGachaContents.Init(this.localUser.gachaInfoList);
 			vipGachaContents.RegisterEndPopup();

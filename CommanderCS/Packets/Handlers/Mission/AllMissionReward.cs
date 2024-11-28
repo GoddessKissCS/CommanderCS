@@ -18,12 +18,12 @@ namespace CommanderCS.Packets.Handlers.Mission
 		SoundManager.PlaySFX("SE_DailyMission_001", false, 0f, float.MaxValue, float.MaxValue, default(Vector3), null, SoundDuckingSetting.DoNotDuck, 0f, 1f);
 		this.localUser.RefreshRewardFromNetwork(result);
 		UIManager.instance.RefreshOpenedUI();
-		if (result.receiveMissinIdx != null)
+		if (result.receiveMissinIdx is not null)
 		{
 			foreach (int num in result.receiveMissinIdx)
 			{
 				RoMission roMission = this.localUser.FindMission(num.ToString());
-				if (roMission != null)
+				if (roMission is not null)
 				{
 					roMission.received = true;
 				}

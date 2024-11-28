@@ -1,7 +1,49 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Protocols;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.Situation
 {
-    public class SituationSweepStart
+    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.SituationSweepStart)]
+    public class SituationSweepStart : BaseMethodHandler<SituationSweepStartRequest>
     {
+        public override object Handle(SituationSweepStartRequest @params)
+        {
+            SituationSweepStartResponse situationSweepStartResponse = new()
+            {
+                reward = [],
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = situationSweepStartResponse,
+            };
+
+            return response;
+        }
+    }
+
+    public class SituationSweepStartRequest
+    {
+        [JsonProperty("type")]
+        public int type { get; set; }
+
+        [JsonProperty("stype")]
+        public int stype { get; set; }
+
+        [JsonProperty("lv")]
+        public int idx { get; set; }
+
+        [JsonProperty("deck")]
+        public JObject deck { get; set; }
+    }
+
+    public class SituationSweepStartResponse
+    {
+        [JsonProperty("reward")]
+        public List<RewardInfo.RewardData> reward { get; set; }
     }
 }
 
@@ -23,11 +65,11 @@ namespace CommanderCS.Packets.Handlers.Situation
 	{
 		if (code = 11011)
 		{
-			if (UIManager.instance.world != null)
+			if (UIManager.instance.world is not null)
 			{
 				NetworkAnimation.Instance.CreateFloatingText(Localization.Get("7044"));
 			}
-			if (UIManager.instance.battle != null && GameSetting.instance.repeatBattle)
+			if (UIManager.instance.battle is not null && GameSetting.instance.repeatBattle)
 			{
 				GameSetting.instance.repeatBattle = false;
 				UISimplePopup uisimplePopup = UISimplePopup.CreateOK(false, Localization.Get("1303"), string.Empty, Localization.Get("18045"), Localization.Get("1001"));
@@ -35,7 +77,7 @@ namespace CommanderCS.Packets.Handlers.Situation
 				{
 					BattleData battleData = BattleData.Get();
 					BattleData.Set(battleData);
-					if (battleData != null)
+					if (battleData is not null)
 					{
 						battleData.move = EBattleResultMove.Situation;
 					}

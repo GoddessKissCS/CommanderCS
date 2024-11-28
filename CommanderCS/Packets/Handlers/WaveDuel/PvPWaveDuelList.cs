@@ -1,7 +1,42 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Enum;
+using static StellarGK.Packets.Handlers.WaveDuel.PvPWaveDuelList;
+
 namespace StellarGK.Packets.Handlers.WaveDuel
 {
-    public class PvPWaveDuelList
+    [Packet(Id = Method.PvPWaveDuelList)]
+    public class PvPWaveDuelList : BaseMethodHandler<PvPWaveDuelListRequest>
     {
+        public override object Handle(PvPWaveDuelListRequest @params)
+        {
+            // TODO FINISH
+            // need to check score and the get duelist between the range
+
+
+            //			User.RankingData.PvPDuelRankingData.score;
+
+            CommanderCSLibrary.Shared.Protocols.PvPDuelList pvPDuel = new()
+            {
+                duelList = [],
+                openRemain = 86400,
+                remain = 86400,
+                time = (int)TimeManager.CurrentEpoch,
+                user = User.RankingData.PvPDuelRankingData
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = pvPDuel,
+            };
+
+            return response;
+        }
+
+        public class PvPWaveDuelListRequest
+        {
+        }
     }
 }
 
@@ -18,14 +53,14 @@ namespace StellarGK.Packets.Handlers.WaveDuel
 		this.localUser.duelTargetRefreshTime.SetByDuration((double)result.remain);
 		this.localUser.currentSeasonDuelTime.SetByDuration((double)result.time);
 		this.localUser.currentSeasonOpenRemainDuelTime.SetByDuration((double)result.openRemain);
-		if (result.duelList != null)
+		if (result.duelList is not null)
 		{
 			for (int i = 1; i <= result.duelList.Count; i++)
 			{
 				this.localUser.duelTargetList.Add(result.duelList[i].idx, RoUser.CreateWaveDuelListUser(result.duelList[i]));
 			}
 		}
-		if (result.user != null)
+		if (result.user is not null)
 		{
 			this.localUser.duelScore = result.user.score;
 			this.localUser.duelNextScore = result.user.nextScore;

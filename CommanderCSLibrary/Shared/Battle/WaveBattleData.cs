@@ -35,7 +35,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 _lhsWaitingInput = false,
                 _lhsTurnUnitIndex = -1
             };
-            if (waveBattleData._lhsTurnLine == null)
+            if (waveBattleData._lhsTurnLine is null)
             {
                 waveBattleData._lhsTurnLine = [];
             }
@@ -44,7 +44,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         public static WaveBattleData Copy(WaveBattleData src)
         {
-            if (src == null)
+            if (src is null)
             {
                 return null;
             }
@@ -62,12 +62,12 @@ namespace CommanderCSLibrary.Shared.Battle
 
         public static explicit operator JToken(WaveBattleData value)
         {
-            if (value == null)
+            if (value is null)
             {
                 return string.Empty;
             }
             JArray jArray = [value._id, value._wave, value._waveTurn];
-            if (value._lhsTurnLine != null)
+            if (value._lhsTurnLine is not null)
             {
                 JArray jArray2 = [];
                 for (int i = 0; i < value._lhsTurnLine.Count; i++)

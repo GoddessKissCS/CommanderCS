@@ -1,5 +1,4 @@
-﻿using CommanderCS.MongoDB.Schemes;
-using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCSLibrary.Shared.Enum;
 
 using CommanderCSLibrary.Shared.Protocols;
 
@@ -10,55 +9,52 @@ namespace CommanderCS.Host.Handlers.KeepAlives
     {
         public override object Handle(BulletChargeResult @params)
         {
-            var user = GetUserGameProfile();
-            var rg = GetRegulation();
-
-            int bullets = rg.userLevelDtbl.Find(x => x.level == user.UserResources.level).maxBullet;
+            int bullets = Regulation.userLevelDtbl.Find(x => x.level == User.Resources.level).maxBullet;
 
             ResourceRecharge resource = new()
             {
                 bulletData = new()
                 {
-                    cnt = user.UserResources.bullet,
+                    cnt = User.Resources.bullet,
                     remain = bullets,
                 },
                 oilData = new()
                 {
-                    cnt = user.UserResources.oil,
-                    remain = user.UserResources.oil,
+                    cnt = User.Resources.oil,
+                    remain = User.Resources.oil,
                 },
                 skillData = new()
                 {
-                    remain = 0,
+                    remain = 0, // NO IDEA ABOUT THOSE TWOS
                     cnt = 0,
                 },
                 chip = new()
                 {
-                    remain = user.UserResources.chip,
-                    cnt = user.UserResources.chip,
+                    remain = User.Resources.chip,
+                    cnt = User.Resources.chip,
                 },
                 weaponMaterialData1 = new()
                 {
-                    cnt = user.UserResources.weaponMaterial1,
-                    remain = user.UserResources.weaponMaterial1,
+                    cnt = User.Resources.weaponMaterial1,
+                    remain = User.Resources.weaponMaterial1,
                 },
                 weaponMaterialData2 = new()
                 {
-                    cnt = user.UserResources.weaponMaterial2,
-                    remain = user.UserResources.weaponMaterial2,
+                    cnt = User.Resources.weaponMaterial2,
+                    remain = User.Resources.weaponMaterial2,
                 },
                 weaponMaterialData3 = new()
                 {
-                    cnt = user.UserResources.weaponMaterial3,
-                    remain = user.UserResources.weaponMaterial3,
+                    cnt = User.Resources.weaponMaterial3,
+                    remain = User.Resources.weaponMaterial3,
                 },
                 weaponMaterialData4 = new()
                 {
-                    cnt = user.UserResources.weaponMaterial4,
-                    remain = user.UserResources.weaponMaterial4,
+                    cnt = User.Resources.weaponMaterial4,
+                    remain = User.Resources.weaponMaterial4,
                 },
-                worldState = user.WorldState,
-                gacha = []
+                worldState = User.WorldState,
+                gacha = User.GachaInformation
             };
 
             ResponsePacket response = new()

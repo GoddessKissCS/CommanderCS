@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
@@ -10,9 +10,7 @@ namespace CommanderCS.Packets.Handlers.Chat
     {
         public override object Handle(DelChatIgnoreRequest @params)
         {
-            var session = GetSession();
-
-            bool isRemoved = DatabaseManager.GameProfile.DelBlockedUser(session, @params.ch, @params.uno);
+            bool isRemoved = DatabaseManager.GameProfile.DelBlockedUser(SessionId, @params.channel, @params.uno);
 
             ResponsePacket response = new()
             {
@@ -27,7 +25,7 @@ namespace CommanderCS.Packets.Handlers.Chat
     public class DelChatIgnoreRequest
     {
         [JsonProperty("ch")]
-        public int ch { get; set; }
+        public int channel { get; set; }
 
         [JsonProperty("uno")]
         public string uno { get; set; }

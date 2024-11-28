@@ -1,5 +1,5 @@
 using CommanderCSLibrary.Shared.Battle;
-using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 
 namespace CommanderCSLibrary.Shared.Ro
 {
@@ -36,13 +36,13 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public string description { get; set; }
 
-        public bool isMaxLevel => nextLevelReg == null;
+        public bool isMaxLevel => nextLevelReg is null;
 
         public GuildSkillDataRow reg
         {
             get
             {
-                if (_reg == null)
+                if (_reg is null)
                 {
                     _reg = _GetReguilation(skillLevel);
                 }
@@ -54,7 +54,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                if (_nextLevelReg == null)
+                if (_nextLevelReg is null)
                 {
                     _nextLevelReg = _GetReguilation(skillLevel + 1);
                 }
@@ -66,7 +66,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                if (_firstLevelReg == null)
+                if (_firstLevelReg is null)
                 {
                     _firstLevelReg = _GetReguilation(0);
                 }
@@ -92,7 +92,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         private GuildSkillDataRow _GetReguilation(int level)
         {
-            Regulation.Regulation regulation = Constants.regulation;
+            Regulation.Regulation regulation = RemoteObjectManager.instance.regulation;
             string key = $"{idx}_{level}";
             int num = regulation.guildSkillDtbl.FindIndex(key);
             if (num < 0)

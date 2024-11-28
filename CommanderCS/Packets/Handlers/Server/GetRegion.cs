@@ -16,9 +16,11 @@ namespace CommanderCS.Host.Handlers.Server
 
             // we dont really need more than 1 server and global tbh
 
-            var server = DatabaseManager.Server.Get(1);
+            var server = DatabaseManager.Region.Get(1);
 
             var playerCount = DatabaseManager.GameProfile.GetGameProfileSchemeCount();
+
+            //TODO: MAKE IT BETTER LOOKING
 
             ServerInfo korea = new()
             {

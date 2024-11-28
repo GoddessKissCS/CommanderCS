@@ -1,9 +1,9 @@
+using CommanderCS.Host;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCS.Host;
+using CommanderCSLibrary.Packets;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
-using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.WorldMap
 {
@@ -12,14 +12,76 @@ namespace CommanderCS.Packets.Handlers.WorldMap
     {
         public override object Handle(WorldMapRewardRequest @params)
         {
-            var user = GetUserGameProfile();
-            var session = GetSession();
+#warning TODO: REVAMP THIS FUNCTION
 
-            string commanderId = GetCommanderIdForWorld(@params.world);
+            string commanderId = "0";
+            int medalsCommander = 0;
 
-            var worldmap = UserWorldReward(commanderId, user, session);
+            switch (@params.world)
+            {
+                case 0:
+                    commanderId = "5";
+                    medalsCommander = 10;
+                    break;
+                case 1:
+                    commanderId = "26";
+                    break;
+                case 2:
+                    commanderId = "14";
+                    break;
+                case 3:
+                    commanderId = "19";
+                    break;
+                case 4:
+                    commanderId = "15";
+                    break;
+                case 5:
+                    commanderId = "12";
+                    break;
+                case 6:
+                    commanderId = "27";
+                    break;
+                case 7:
+                    commanderId = "10";
+                    break;
+                case 8:
+                    commanderId = "20";
+                    break;
+                case 9:
+                    commanderId = "30";
+                    break;
+                case 10:
+                    commanderId = "616";
+                    break;
+                case 11:
+                    commanderId = "47";
+                    break;
+                case 12:
+                    commanderId = "50";
+                    break;
+                case 13:
+                    commanderId = "51";
+                    break;
+                case 14:
+                    commanderId = "48";
+                    break;
+                case 15:
+                    commanderId = "62";
+                    break;
+                case 16:
+                    commanderId = "75";
+                    break;
+                case 17:
+                    commanderId = "85";
+                    break;
+                case 18:
+                    commanderId = "92";
+                    break;
+            }
 
-            DatabaseManager.GameProfile.UpdateWorldMapReward(session, @params.world, user.BattleData.WorldMapStageReward);
+            var worldmap = UserWorldReward(commanderId, User, SessionId);
+
+            DatabaseManager.GameProfile.UpdateWorldMapReward(SessionId, @params.world, User.BattleData.WorldMapStageReward);
 
             ResponsePacket response = new()
             {
@@ -30,52 +92,6 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             return response;
         }
 
-        private static string GetCommanderIdForWorld(int world)
-        {
-            switch (world)
-            {
-                case 0:
-                    return "5";
-                case 1:
-                    return "26";
-                case 2:
-                    return "14";
-                case 3:
-                    return "19";
-                case 4:
-                    return "15";
-                case 5:
-                    return "12";
-                case 6:
-                    return "27";
-                case 7:
-                    return "10";
-                case 8:
-                    return "20";
-                case 9:
-                    return "30";
-                case 10:
-                    return "616";
-                case 11:
-                    return "47";
-                case 12:
-                    return "50";
-                case 13:
-                    return "51";
-                case 14:
-                    return "48";
-                case 15:
-                    return "62";
-                case 16:
-                    return "75";
-                case 17:
-                    return "85";
-                case 18:
-                    return "92";
-                default:
-                    return string.Empty;
-            }
-        }
         private static CommanderCSLibrary.Shared.Protocols.WorldMapReward UserWorldReward(string commanderId, GameProfileScheme user, string session)
         {
             int medals = 20;
@@ -84,34 +100,28 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 
             user.CommanderData.TryGetValue(commanderId, out var commander);
 
-            if (commander != null)
+            if (commander is null)
             {
-                user.UserInventory.medalData[commanderId] += medals;
+                int cid = int.Parse(commanderId);
+
+                var commanderdata = RemoteObjectManager.instance.regulation.AddSpecificCommander(user.CommanderData, cid);
+
+                WorldMapReward.commanderData = commanderdata;
+            }
+            else
+            {
+                user.Inventory.medalData[commanderId] += medals;
                 user.CommanderData[commanderId].medl += medals;
 
                 WorldMapReward.commanderData = user.CommanderData;
             }
-            else
-            {
-                int cid = int.Parse(commanderId);
 
-                var commanderdata = Constants.regulation.AddSpecificCommander(user.CommanderData, cid);
-
-                WorldMapReward.commanderData = commanderdata;
-            }
-
-            WorldMapReward.medalData = user.UserInventory.medalData;
+            WorldMapReward.medalData = user.Inventory.medalData;
 
             DatabaseManager.GameProfile.UpdateCommanderDataAndMedalData(session, WorldMapReward.commanderData, WorldMapReward.medalData);
 
             return WorldMapReward;
         }
-    }
-
-    public class WorldMapRewardRequest
-    {
-        [JsonProperty("world")]
-        public int world { get; set; }
     }
 }
 
@@ -123,7 +133,7 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 	// Token: 0x06005F55 RID: 24405 RVA: 0x001AEDCC File Offset: 0x001ACFCC
 	private IEnumerator WorldMapRewardResult(JsonRpcClient.Request request, Protocols.WorldMapReward result)
 	{
-		if (result.commanderData != null)
+		if (result.commanderData is not null)
 		{
 			foreach (KeyValuePair<string, Protocols.UserInformationResponse.Commander> keyValuePair in result.commanderData)
 			{
@@ -132,14 +142,14 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 				roCommander.state = ECommanderState.Nomal;
 				UICommanderComplete uicommanderComplete = UIPopup.Create<UICommanderComplete>("CommanderComplete");
 				uicommanderComplete.Init(commanderCompleteType, roCommander.id);
-				if (keyValuePair.Value.haveCostume != null && keyValuePair.Value.haveCostume.Count > 0)
+				if (keyValuePair.Value.haveCostume is not null && keyValuePair.Value.haveCostume.Count > 0)
 				{
 					roCommander.haveCostumeList = keyValuePair.Value.haveCostume;
 				}
 			}
 			UIManager.instance.world.worldMap.currentWorldMap.rwd = true;
 		}
-		if (result.medalData != null)
+		if (result.medalData is not null)
 		{
 			foreach (KeyValuePair<string, int> keyValuePair2 in result.medalData)
 			{

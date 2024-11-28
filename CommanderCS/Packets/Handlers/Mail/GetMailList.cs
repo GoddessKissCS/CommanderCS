@@ -9,12 +9,11 @@ namespace CommanderCS.Packets.Handlers.Mail
     {
         public override object Handle(GetMailListRequest @params)
         {
-            var user = GetUserGameProfile();
+            MailInfo mailInfo = new() { };
 
-            MailInfo mailInfo = new()
-            {
-                mailList = user.MailDataList
-            };
+            var MailDataNotReceived = User.MailDataList.Where(x => x.__receive == "0").ToList();
+
+            mailInfo.mailList = MailDataNotReceived;
 
             ResponsePacket response = new()
             {

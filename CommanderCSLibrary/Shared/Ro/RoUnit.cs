@@ -1,5 +1,6 @@
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 
 namespace CommanderCSLibrary.Shared.Ro
@@ -137,7 +138,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                if (_currLevelReg == null)
+                if (_currLevelReg is null)
                 {
                     _currLevelReg = InvokeLevel(unitReg, rank, level, cls, costume, commanderId, favorRewardStep, marry, transcendence, battleType, equipItem, isItemSet, weaponItem);
                 }
@@ -153,7 +154,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                if (_currLevelReg == null)
+                if (_currLevelReg is null)
                 {
                     _prevLevelReg = InvokeLevel(unitReg, rank, (int)level - 1, cls, costume, commanderId, favorRewardStep, marry, transcendence, EBattleType.Undefined, equipItem, isItemSet, weaponItem);
                 }
@@ -169,13 +170,13 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                if (_unitReg == null)
+                if (_unitReg is null)
                 {
                     if (string.IsNullOrEmpty(id))
                     {
                         return null;
                     }
-                    DataTable<UnitDataRow> unitDtbl = Constants.regulation.unitDtbl;
+                    DataTable<UnitDataRow> unitDtbl = RemoteObjectManager.instance.regulation.unitDtbl;
                     if (!unitDtbl.ContainsKey(id))
                     {
                         return null;
@@ -194,7 +195,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                if (_currClsReg == null)
+                if (_currClsReg is null)
                 {
                     _currClsReg = InvokeLevel(unitReg, rank, level, cls, costume, commanderId, favorRewardStep, marry, transcendence, EBattleType.Undefined, equipItem, isItemSet, weaponItem);
                 }
@@ -210,7 +211,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                if (_currClsReg == null)
+                if (_currClsReg is null)
                 {
                     _prevClsReg = InvokeLevel(unitReg, rank, level, (int)cls - 1, costume, commanderId, favorRewardStep, marry, transcendence, EBattleType.Undefined, equipItem, isItemSet, weaponItem);
                 }
@@ -228,7 +229,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //{
         //	get
         //	{
-        //		if (unitReg == null)
+        //		if (unitReg is null)
         //		{
         //			return false;
         //		}
@@ -260,7 +261,7 @@ namespace CommanderCSLibrary.Shared.Ro
                 equipItem = equipItem,
                 weaponItem = weaponItem
             };
-            if (equipItem != null && equipItem.Count == 4)
+            if (equipItem is not null && equipItem.Count == 4)
             {
                 roUnit.isItemSet = equipItem[1].setType == equipItem[2].setType && equipItem[2].setType == equipItem[3].setType && equipItem[3].setType == equipItem[4].setType;
             }

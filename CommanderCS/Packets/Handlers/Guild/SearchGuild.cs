@@ -1,6 +1,5 @@
-using CommanderCS.MongoDB;
-using CommanderCS.MongoDB.Schemes;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Ro;
 using Newtonsoft.Json;
@@ -12,48 +11,14 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(SearchGuildRequest @params)
         {
-            var session = GetSession();
-
-            ResponsePacket response = new()
-            {
-                Id = BasePacket.Id,
-            };
-
-            RoGuild roGuild = new() { };
+            ResponsePacket response = new() { Id = BasePacket.Id };
 
             var guild = DatabaseManager.Guild.FindByName(@params.gnm);
+            var roGuild = guild is not null ? DatabaseManager.GuildApplication.Guild2RoGuild(guild, SessionId) : new RoGuild();
 
-            if (guild != null)
-            {
-                roGuild = Guild2RoGuild(guild, session);
-                response.Result = roGuild;
-            } else {
-                response.Result = roGuild;
-            }
+            response.Result = roGuild;
 
             return response;
-        }
-
-        public static RoGuild Guild2RoGuild(GuildScheme guild, string session)
-        {
-            string isApplyingForGuild = DatabaseManager.GuildApplication.GuildApplicationFromGuildId(session, guild.GuildId);
-
-            RoGuild Roguild = new()
-            {
-                apnt = guild.aPoint,
-                cnt = guild.Count,
-                emb = guild.Emblem,
-                gidx = guild.GuildId,
-                gnm = guild.Name,
-                gtyp = guild.GuildType,
-                lev = guild.Level,
-                list = isApplyingForGuild,
-                mxCnt = guild.MaxCount,
-                ntc = guild.Notice,
-                world = guild.World,
-            };
-
-            return Roguild;
         }
     }
 

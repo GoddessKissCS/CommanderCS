@@ -1,5 +1,5 @@
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 
 namespace CommanderCSLibrary.Shared.Ro
@@ -33,7 +33,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public static RoItem Create(string id, int lv, int itemCnt, string commanderId)
         {
-            EquipItemDataRow equipItemDataRow = Constants.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key == id);
+            EquipItemDataRow equipItemDataRow = RemoteObjectManager.instance.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key == id);
             RoItem roItem = new()
             {
                 id = id,
@@ -61,8 +61,8 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public void SetItemLevel(string id, int curLevel)
         {
-            EquipItemDataRow equipItemDataRow = Constants.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key == id);
-            if (equipItemDataRow != null)
+            EquipItemDataRow equipItemDataRow = RemoteObjectManager.instance.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key == id);
+            if (equipItemDataRow is not null)
             {
                 level = curLevel;
                 statPoint = equipItemDataRow.statBasePoint + (curLevel - 1) * equipItemDataRow.statAddPoint;

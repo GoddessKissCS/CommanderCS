@@ -49,7 +49,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 		else if (code = 71509)
 		{
 			UISimplePopup uisimplePopup = UISimplePopup.CreateOK(false, Localization.Get("1303"), Localization.Format("110367", new object[] { code }), null, "1001");
-			if (uisimplePopup != null)
+			if (uisimplePopup is not null)
 			{
 				uisimplePopup.onClose = delegate
 				{

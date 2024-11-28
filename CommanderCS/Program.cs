@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Regulation;
 using Microsoft.Extensions.FileProviders;
@@ -39,25 +39,12 @@ namespace CommanderCS
                 options.WriteIndented = true;
             });
 
-            //builder.WebHost.ConfigureKestrel(options =>
-            //{
-            //    options.AllowSynchronousIO = true;
-            //});
+            //builder.Services.AddRazorPages();
 
             builder.Services.AddHttpClient();
 
-            //            // To be replaced with mongodb
-            //            builder.Services.AddSqlite<DatabaseContext>(iConfigurationRoot.GetConnectionString(nameof(DatabaseContext)));
-            //            builder.Services.AddDbContext<DatabaseContext>((dbContextOptionsBuilder) =>
-            //            {
-            //#if DEBUG
-            //                dbContextOptionsBuilder.EnableDetailedErrors();
-            //                dbContextOptionsBuilder.EnableSensitiveDataLogging();
-            //                dbContextOptionsBuilder.UseLoggerFactory(iLoggerFactory);
-            //#endif
-            //            });
-
             var app = builder.Build();
+
 
             var status = new Status()
             {
@@ -65,32 +52,54 @@ namespace CommanderCS
                 CommandsLoaded = PacketHandler.CommandsMapped,
             };
 
-            var statusString = JsonSerializer.Serialize(status, new JsonSerializerOptions()
+            JsonSerializerOptions stausStringOptions = new()
             {
                 WriteIndented = true,
-            });
+            };
 
-            app.MapGet("/", () => statusString);
+            var statusString = JsonSerializer.Serialize(status, stausStringOptions);
 
-            app.MapPost("/checkData.php", (HttpContext context, IServiceProvider provider) =>
+            app.MapGet("/commandStrings.html", () => statusString);
+
+            app.MapPost("/checkData.php", async (HttpContext context, IServiceProvider provider) =>
             {
-                return PacketHandler.ProcessRequest(context, provider);
+                //Check if the request contains the user agent BestHTTP
+                if (!context.Request.Headers.UserAgent.Contains("BestHTTP"))
+                {
+                    return;
+                }
+
+
+                // The Response
+                string responseData = await PacketHandler.ProcessRequest(context, provider);
+
+                // Set the Response Contenttype and length
+                context.Response.ContentType = "application/json";
+                context.Response.ContentLength = responseData.Length;
+
+                //if(session != "" || session is not null)
+                //{
+                //    context.Response.Headers.TryAdd("SET-COOKIE", session);
+                //}
+
+                // Write response to the response body stream
+                await context.Response.WriteAsync(responseData);
             });
 
+            app.MapGet("/chat.php", async (HttpContext context, IServiceProvider provider) =>
+            {
+                if (context.WebSockets.IsWebSocketRequest)
+                {
+                    // ADD Chat shit here sometime
+                }
+                else
+                {
+                    context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                }
 
-            //app.MapControllers();
 
-            //var wsOptions = new WebSocketOptions()
-            //{
-            //    KeepAliveInterval = TimeSpan.FromMilliseconds(1000),
-            //};
 
-            //app.UseWebSockets(wsOptions);
-
-            //app.MapGet("/chat.php", async (HttpContext context) =>
-            //{
-            //    await PacketHandler.ProcessChatRequest(context);
-            //});
+            });
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -101,17 +110,20 @@ namespace CommanderCS
 
             //app.UseMiddleware<CustomExceptionHandlerMiddleware>();
 
+            //PROBABLY SHOULD BE MOVED TO A CDN SERVER
+
             #region StaticFileServer
 
             const string StaticFilesPath = "FileCDN";
-            const string SlashStaticFilesPath = $"/{StaticFilesPath}";
+            const string SlashStaticFilesPath = $":80/{StaticFilesPath}";
 
-            //// Working Directory path
+            // Working Directory path
             // var BasePath = builder.Environment.ContentRootPath;
             // Executable file path
+
             var BasePath = AppDomain.CurrentDomain.BaseDirectory;
             var staticFilesProviderPath = Path.Combine(BasePath, StaticFilesPath);
-            var fileProvider = new PhysicalFileProvider(staticFilesProviderPath);
+            IFileProvider fileProvider = new PhysicalFileProvider(staticFilesProviderPath);
 
             app.UseDirectoryBrowser(new DirectoryBrowserOptions()
             {
@@ -129,9 +141,9 @@ namespace CommanderCS
                 ServeUnknownFileTypes = true
             });
 
-           // app.UseWebSockets(new WebSocketOptions() { 
-           //     KeepAliveInterval = TimeSpan.FromSeconds(60),
-           //});
+            // app.UseWebSockets(new WebSocketOptions() {
+            //     KeepAliveInterval = TimeSpan.FromSeconds(60),
+            //});
 
             #endregion StaticFileServer
 
@@ -144,18 +156,19 @@ namespace CommanderCS
 
             //app.UseAuthorization();
 
+
             DatabaseManager.Init();
 
-            Constants.regulation = Regulation.Create();
+            RemoteObjectManager.instance.regulation = Regulation.Create();
 
             app.Run();
         }
+
     }
 
     internal class Status
     {
         public string Message { get; set; }
         public List<string> CommandsLoaded { get; set; }
-
     }
 }

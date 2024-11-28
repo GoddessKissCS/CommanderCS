@@ -14,7 +14,7 @@ namespace StellarGK.Packets.Handlers.WaveDuel
 	private IEnumerator PvPWaveDuelRankingListResult(JsonRpcClient.Request request, object result)
 	{
 		this.duelRankingList.Clear();
-		if (result != null)
+		if (result is not null)
 		{
 		}
 		Protocols.PvPRankingList pvPRankingList = this._ConvertJObject<Protocols.PvPRankingList>(result);

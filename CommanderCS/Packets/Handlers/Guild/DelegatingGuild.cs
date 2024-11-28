@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
@@ -10,9 +10,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(DelegatingGuildRequest @params)
         {
-            var user = GetUserGameProfile();
-
-            bool isInGuild = DatabaseManager.Guild.IsUnoInMemberData(user.GuildId, user.Uno);
+            bool isInGuild = DatabaseManager.Guild.IsUnoInMemberData(User.GuildId, User.Uno);
 
             if (!isInGuild)
             {
@@ -25,7 +23,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            DatabaseManager.Guild.AppointNewGuildMaster(user.GuildId, user.Uno, @params.tuno);
+            DatabaseManager.Guild.AppointNewGuildMaster(User.GuildId, User.Uno, @params.tuno);
 
             ResponsePacket response = new()
             {

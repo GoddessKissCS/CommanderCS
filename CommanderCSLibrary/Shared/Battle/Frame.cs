@@ -1,5 +1,5 @@
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 
 namespace CommanderCSLibrary.Shared.Battle
@@ -306,7 +306,7 @@ namespace CommanderCSLibrary.Shared.Battle
         {
             Unit unit = _units[unitIndex];
             Skill skill = unit?.skills[skillIndex];
-            if (skill == null)
+            if (skill is null)
             {
                 return -1;
             }
@@ -398,11 +398,11 @@ namespace CommanderCSLibrary.Shared.Battle
                         continue;
                     }
                     unit4 = _units[num3];
-                    if (unit4 == null || unit4.health <= 0)
+                    if (unit4 is null || unit4.health <= 0)
                     {
                         continue;
                     }
-                    if (unit2 == null)
+                    if (unit2 is null)
                     {
                         unit2 = unit4;
                     }
@@ -422,7 +422,7 @@ namespace CommanderCSLibrary.Shared.Battle
                     if (skillDataRow.targetJobConditions[subIndex] != 0)
                     {
                         flag2 = false;
-                        if (unit3 != null)
+                        if (unit3 is not null)
                         {
                             int num4 = JobCondition(rg, skillDataRow.targetJobConditions[subIndex], unit3, unit4);
                             if (num4 > 0)
@@ -456,7 +456,7 @@ namespace CommanderCSLibrary.Shared.Battle
                     if (flag4 && skillDataRow.targetStatisticConditions[subIndex] != 0)
                     {
                         flag2 = false;
-                        if (unit3 != null)
+                        if (unit3 is not null)
                         {
                             flag3 = false;
                             if (StatisticCondition(rg, skillDataRow.targetStatisticConditions[subIndex], unit3, unit4))
@@ -477,11 +477,11 @@ namespace CommanderCSLibrary.Shared.Battle
                 }
             }
             Unit unit5 = null;
-            if (unit3 != null)
+            if (unit3 is not null)
             {
                 unit5 = unit3;
             }
-            else if (skillDataRow.conditionTypes[subIndex] == ESkillConditionType.None && unit2 != null)
+            else if (skillDataRow.conditionTypes[subIndex] == ESkillConditionType.None && unit2 is not null)
             {
                 unit5 = unit2;
             }
@@ -795,7 +795,7 @@ namespace CommanderCSLibrary.Shared.Battle
         public List<int> FindSkillTargetCandidates(Shared.Regulation.Regulation rg, int unitIndex, int skillIndex)
         {
             Skill skill = _units[unitIndex]?._skills[skillIndex];
-            if (skill == null)
+            if (skill is null)
             {
                 return new List<int>();
             }
@@ -876,7 +876,7 @@ namespace CommanderCSLibrary.Shared.Battle
                         continue;
                     }
                     Unit unit = _units[num3];
-                    if (unit != null && unit.health > 0)
+                    if (unit is not null && unit.health > 0)
                     {
                         list.Add(num3);
                         if (!shouldIgnoreBlocking)
@@ -892,14 +892,14 @@ namespace CommanderCSLibrary.Shared.Battle
         public int FindActivatableEventSkill(Shared.Regulation.Regulation rg, EventSkillType type, int unitIndex)
         {
             Unit unit = _units[unitIndex];
-            if (unit == null)
+            if (unit is null)
             {
                 return -1;
             }
             for (int i = 0; i < unit._skills.Count; i++)
             {
                 Skill skill = unit._skills[i];
-                if (skill != null && skill.remainedMotionTime <= 0)
+                if (skill is not null && skill.remainedMotionTime <= 0)
                 {
                     SkillDataRow skillDataRow = rg.skillDtbl[skill.dri];
                     if (IsEnableEventSkillType(type, skillDataRow) && skill.sp >= skillDataRow.maxSp)

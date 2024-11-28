@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
@@ -10,14 +10,24 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(ChangeCommanderCostumeRequest @params)
         {
-            var user = GetUserGameProfile();
-            var session = GetSession();
+            string cid = @params.commanderId.ToString();
 
-            // maybe check if you own the costume first?
+            User.CommanderData[cid].currentCostume = @params.costumeId;
 
-            user.CommanderData["" + @params.cid].currentCostume = @params.cos;
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
 
-            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
+            var costumeRow = Regulation.commanderCostumeDtbl.Find(x => x.ctid == @params.costumeId);
+            var thumbnailRow = Regulation.commanderCostumeDtbl.Find(x => x.ctid == User.Resources.thumbnailId);
+
+            if (costumeRow.cid == thumbnailRow.cid)
+            {
+                DatabaseManager.GameProfile.ChangeThumbnailId(SessionId, @params.costumeId);
+
+                if (User.GuildId is not null)
+                {
+                    DatabaseManager.Guild.UpdateSpecificMemberThumbnail(User.GuildId, User.Uno, @params.costumeId);
+                }
+            }
 
             ResponsePacket response = new()
             {
@@ -32,10 +42,10 @@ namespace CommanderCS.Packets.Handlers.Commander
     public class ChangeCommanderCostumeRequest
     {
         [JsonProperty("cid")]
-        public int cid { get; set; }
+        public int commanderId { get; set; }
 
-        [JsonProperty("tokn")]
-        public int cos { get; set; }
+        [JsonProperty("cos")]
+        public int costumeId { get; set; }
     }
 }
 

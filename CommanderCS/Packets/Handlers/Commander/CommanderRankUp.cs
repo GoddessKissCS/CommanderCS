@@ -1,7 +1,9 @@
 ﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
-
 using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Commander
@@ -11,17 +13,18 @@ namespace CommanderCS.Host.Handlers.Commander
     {
         public override object Handle(CommanderRankUpRequest @params)
         {
-            string session = GetSession();
-            var user = GetUserGameProfile();
-            var rg = GetRegulation();
+            string cid = @params.commanderId.ToString();
 
-            string cid = @params.cid.ToString();
+            bool commanderExists = User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander is not null;
 
-            if (user.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
+            if (commanderExists)
             {
-                var commanderRankData = rg.commanderRankDtbl.FirstOrDefault(x => x.rank == int.Parse(commander.__rank));
 
-                user.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
+                int commanderRank = int.Parse(commander.__rank);
+
+                CommanderRankDataRow commanderRankData = Regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == commanderRank);
+
+                User.Inventory.medalData.TryGetValue(cid, out var commanderMedals);
 
                 if (!TryRankUpCommander(commanderRankData.rank, ref commanderMedals))
                 {
@@ -34,23 +37,31 @@ namespace CommanderCS.Host.Handlers.Commander
                     return error;
                 }
 
-                commander.__rank = (Convert.ToInt32(commander.__rank) + 1).ToString();
-                commander.medl = commanderMedals;
+                int upgradedRank = Convert.ToInt32(commander.__rank) + 1;
 
-                commanderRankData = rg.commanderRankDtbl.FirstOrDefault(x => x.rank == commanderRankData.rank);
+                commander.__rank = upgradedRank.ToString();
+                commander.state = "N";
 
-                user.UserInventory.medalData[cid] = commanderMedals;
-                user.CommanderData[cid] = commander;
+                commanderRankData = Regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == upgradedRank);
 
-                DatabaseManager.GameProfile.UpdateGold(session, commanderRankData.gold, false);
+                User.Inventory.medalData[cid] = commanderMedals;
+                User.CommanderData[cid] = commander;
+
+                DatabaseManager.GameProfile.UpdateGold(SessionId, commanderRankData.gold, false);
+                DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+                DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.Inventory.medalData);
+
             }
             else
             {
-                user.UserInventory.medalData.TryGetValue(cid, out var commanderMedals);
 
-                var CostumeData = rg.commanderCostumeDtbl.FirstOrDefault(x => x.cid == int.Parse(cid));
+                int recruitCost = (@params.commanderId == 1 || @params.commanderId == 2 || @params.commanderId == 5 ||
+                       @params.commanderId == 14 || @params.commanderId == 17 || @params.commanderId == 18 ||
+                       @params.commanderId == 26) ? 1000 : 50000;
 
-                var commanderData = rg.commanderDtbl.FirstOrDefault(x => x.id == cid);
+                User.Inventory.medalData.TryGetValue(cid, out int commanderMedals);
+
+                var commanderData = Regulation.commanderDtbl.FirstOrDefault(x => x.id == cid);
 
                 if (!TryRecruitCommander(commanderData.grade, ref commanderMedals))
                 {
@@ -63,34 +74,54 @@ namespace CommanderCS.Host.Handlers.Commander
                     return error;
                 }
 
-                user.UserInventory.medalData[cid] = commanderMedals;
+                User.Inventory.medalData[cid] = commanderMedals;
 
-                var newestCommander = CreateCommander(cid, CostumeData.ctid, commanderMedals, commanderData.grade);
+                var newestCommander = CreateCommander(@params.commanderId, commanderMedals, commanderData.grade);
 
-                int newcommanderId = 1;
+                int newcommanderId;
 
-                if (user.CommanderData.Count > 0)
+                if (User.CommanderData.Count > 0)
                 {
-                    newcommanderId = Convert.ToInt32(user.CommanderData.Last().Key) + 1;
+                    // Get the last key and convert it to an integer safely
+                    var lastKey = User.CommanderData.Keys.Last();
+
+                    if (int.TryParse(lastKey, out int lastKeyInt))
+                    {
+                        newcommanderId = lastKeyInt + 1;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("The last key in CommanderData is not a valid integer.");
+                    }
+                }
+                else
+                {
+                    newcommanderId = 0;
                 }
 
-                user.CommanderData.Add(newcommanderId.ToString(), newestCommander);
+                string newCommander = newcommanderId.ToString();
 
-                DatabaseManager.GameProfile.UpdateGold(session, commanderData.recruitGold, false);
+                User.CommanderData.TryAdd(newCommander, newestCommander);
+
+                DatabaseManager.GameProfile.UpdateGold(SessionId, recruitCost, false);
+                DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+                DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.Inventory.medalData);
             }
 
-            DatabaseManager.GameProfile.UpdateCommanderData(session, user.CommanderData);
-            DatabaseManager.GameProfile.UpdateMedalData(session, user.UserInventory.medalData);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
-            var newResources = GetUserGameProfile();
+            User.CommanderData.TryGetValue(cid, out var commander1);
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(newResources.UserResources);
+            Dictionary<string, UserInformationResponse.Commander> uprankedCommander = new()
+            {
+                { cid, commander1 }
+            };
 
             CommanderRankUpResponse cmrup = new()
             {
                 rsoc = rsoc,
-                medl = newResources.UserInventory.medalData,
-                comm = newResources.CommanderData,
+                medl = User.Inventory.medalData,
+                comm = uprankedCommander,
             };
 
             ResponsePacket response = new()
@@ -102,25 +133,9 @@ namespace CommanderCS.Host.Handlers.Commander
             return response;
         }
 
-        private static Dictionary<int, int> GradeCostList { get; set; } = new Dictionary<int, int>()
-        {
-            { 1, 10 },
-            { 2, 30 },
-            { 3, 80 }
-        };
-
-        private static Dictionary<int, int> RankCostList { get; set; } = new Dictionary<int, int>()
-        {
-            { 1, 20 },
-            { 2, 50 },
-            { 3, 100 },
-            { 4, 150 },
-            { 5, 250 }
-        };
-
         private static bool TryRecruitCommander(int grade, ref int medals)
         {
-            if (!GradeCostList.TryGetValue(grade, out var cost))
+            if (!Constants.GradeCostList.TryGetValue(grade, out var cost))
             {
                 throw new Exception($"Grade {grade} Not Defined");
             }
@@ -137,7 +152,7 @@ namespace CommanderCS.Host.Handlers.Commander
 
         private static bool TryRankUpCommander(int grade, ref int medals)
         {
-            if (!RankCostList.TryGetValue(grade, out var cost))
+            if (!Constants.RankCostList.TryGetValue(grade, out var cost))
             {
                 throw new Exception($"Grade {grade} Not Defined");
             }
@@ -152,34 +167,42 @@ namespace CommanderCS.Host.Handlers.Commander
             return true;
         }
 
-        public static UserInformationResponse.Commander CreateCommander(string commanderid, int costumeid, int commanderMedals, int grade)
+        public static UserInformationResponse.Commander CreateCommander(int commanderid, int commanderMedals, int grade)
         {
+            var commanderRole = RemoteObjectManager.instance.regulation.commanderRoleDtbl.Find(x => x.Id == commanderid).Role;
+            var costumeId = RemoteObjectManager.instance.regulation.commanderCostumeDtbl.FirstOrDefault(x => x.cid == commanderid).ctid;
+
+
+            //need to check if hero starts with other grades or cls
+
+            string commadnderGrade = grade.ToString();
+            string commanderId = commanderid.ToString();
+
             UserInformationResponse.Commander __commander = new()
             {
                 state = "N",
                 __skv1 = "1",
                 __skv2 = "1",
-                __skv3 = "1",
-                __skv4 = "1",
-                __cls = "0",
+                __skv3 = "0",
+                __skv4 = "0",
+                __cls = "1",
                 __exp = "0",
                 __level = "1",
-                __rank = grade.ToString(),
+                __rank = commadnderGrade,
                 favorRewardStep = 0,
                 favorStep = 0,
-                currentCostume = costumeid,
+                currentCostume = costumeId,
                 eventCostume = [],
                 equipItemInfo = [],
                 equipWeaponInfo = [],
                 favorPoint = 0,
                 favr = 0,
                 fvrd = 0,
-                haveCostume = [costumeid],
-                id = commanderid,
+                haveCostume = [costumeId],
+                id = commanderId,
                 marry = 0,
-                medl = commanderMedals,
-#warning TODO CREATE A ROLE TABLE
-                role = "A",
+                medl = 0,
+                role = commanderRole,
                 transcendence = [0, 0, 0, 0],
             };
 
@@ -190,6 +213,6 @@ namespace CommanderCS.Host.Handlers.Commander
     public class CommanderRankUpRequest
     {
         [JsonProperty("cid")]
-        public int cid { get; set; }
+        public int commanderId { get; set; }
     }
 }

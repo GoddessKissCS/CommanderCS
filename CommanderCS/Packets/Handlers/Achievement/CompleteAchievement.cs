@@ -1,5 +1,6 @@
 using CommanderCS.Host;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Packets.Handlers.Achievement
 {
@@ -11,7 +12,7 @@ namespace CommanderCS.Packets.Handlers.Achievement
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = Array.Empty<CommanderCSLibrary.Shared.Protocols.CompleteAchievementInfo>(),
+                Result = Array.Empty<CompleteAchievementInfo>(),
             };
 
             return response;
@@ -35,7 +36,7 @@ namespace CommanderCS.Packets.Handlers.Achievement
 		for (int i = 0; i < result.Length; i++)
 		{
 			RoMission roMission = this.localUser.FindAchievement(result[i].achievementId.ToString(), result[i].sort);
-			if (roMission != null)
+			if (roMission is not null)
 			{
 				roMission.received = true;
 				roMission.completeTime = (double)result[i].time;

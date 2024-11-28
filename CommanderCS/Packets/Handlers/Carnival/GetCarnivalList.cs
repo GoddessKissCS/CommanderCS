@@ -40,7 +40,7 @@ namespace CommanderCS.Host.Handlers.Carnival
 	// Token: 0x060060BF RID: 24767 RVA: 0x001B0B84 File Offset: 0x001AED84
 	private IEnumerator GetCarnivalListResult(JsonRpcClient.Request request, Protocols.CarnivalList result)
 	{
-		if (result != null)
+		if (result is not null)
 		{
 			this.localUser.connectTime = result.connectTime;
 			int num = int.Parse(this._FindRequestProperty(request, "eidx"));

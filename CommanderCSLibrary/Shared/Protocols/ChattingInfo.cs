@@ -58,7 +58,7 @@ namespace CommanderCSLibrary.Shared.Protocols
             {
                 get
                 {
-                    if (_chatMsgData == null)
+                    if (_chatMsgData is null)
                     {
                         _chatMsgData = JsonConvert.DeserializeObject<ChattingMsgData>(message, new JsonSerializerSettings
                         {
@@ -72,7 +72,7 @@ namespace CommanderCSLibrary.Shared.Protocols
 #pragma warning restore CS0618
                             }
                         });
-                        if (_chatMsgData.record != null)
+                        if (_chatMsgData.record is not null)
                         {
                             _chatMsgData.record.hasRecord = true;
                         }

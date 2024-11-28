@@ -1,6 +1,46 @@
+using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+
 namespace CommanderCS.Packets.Handlers.Commander
 {
-    public class UpgradeWeaponInventory
+    [Packet(Id = Method.UpgradeWeaponInventory)]
+    public class UpgradeWeaponInventory : BaseMethodHandler<UpgradeWeaponInventoryRequest>
+    {
+        public override object Handle(UpgradeWeaponInventoryRequest @params)
+        {
+            User.Resources.cash -= RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH;
+
+            User.Statistics.WeaponInventoryCount += RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADD;
+
+            DatabaseManager.GameProfile.UpdateOnlyCash(SessionId, RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH, false);
+            DatabaseManager.GameProfile.UpdateWeaponInventoryCount(SessionId, User.Statistics.WeaponInventoryCount);
+
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
+            var uifo = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(User.Statistics);
+
+            UpgradeWeaponInventoryResponse weaponInventoryResponse = new()
+            {
+                uifo = uifo,
+                rsoc = rsoc,
+            };
+
+            ResponsePacket response = new() { Id = BasePacket.Id, Result = weaponInventoryResponse };
+
+            return response;
+        }
+
+        public class UpgradeWeaponInventoryResponse
+        {
+            public UserInformationResponse.BattleStatistics uifo { get; set; }
+
+            public UserInformationResponse.Resource rsoc { get; set; }
+        }
+    }
+
+    public class UpgradeWeaponInventoryRequest
     {
     }
 }

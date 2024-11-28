@@ -11,12 +11,19 @@ namespace CommanderCS.Host.Handlers.Vip
         {
             //gets send EVipRechargeType enum + ["rchg"]
 
-            var user = GetUserGameProfile();
+#warning TODO: MIGHT NEED A BE CHECKED IF ITS CORRECT
+            GetVIPBuyCountResponse getVIPBuyCount = new();
 
-            GetVIPBuyCountResponse getVIPBuyCount = new()
+            switch (@params.renewType)
             {
-                rchg = user.VipRechargeData
-            };
+                case EVipRechargeType.None:
+                    getVIPBuyCount.rchg = User.VipRechargeData;
+                    break;
+
+                case EVipRechargeType.Key:
+                    getVIPBuyCount.rchg = User.VipRechargeData;
+                    break;
+            }
 
             ResponsePacket response = new()
             {
@@ -40,7 +47,7 @@ namespace CommanderCS.Host.Handlers.Vip
         public List<string> type { get; set; }
 
         [JsonProperty("renewType")]
-        public int renewType { get; set; }
+        public EVipRechargeType renewType { get; set; }
     }
 }
 

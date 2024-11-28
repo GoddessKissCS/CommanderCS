@@ -14,10 +14,10 @@ namespace CommanderCS.Packets.Handlers.Commander
 	// Token: 0x060060E3 RID: 24803 RVA: 0x001B0E70 File Offset: 0x001AF070
 	private IEnumerator RecieveCommanderScenarioRewardResult(JsonRpcClient.Request request, Protocols.RecieveScenarioReward result)
 	{
-		if (result != null)
+		if (result is not null)
 		{
 			ScenarioResultPopup scenarioResultPopup = UIPopup.Create<ScenarioResultPopup>("ScenarioResultPopup");
-			if (scenarioResultPopup != null)
+			if (scenarioResultPopup is not null)
 			{
 				scenarioResultPopup.Init(result.reward, false);
 			}

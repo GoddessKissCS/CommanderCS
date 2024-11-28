@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 	// Token: 0x0600607C RID: 24700 RVA: 0x001B0650 File Offset: 0x001AE850
 	private IEnumerator GetConquestRadarResult(JsonRpcClient.Request request, Protocols.GetRadarData result)
 	{
-		if (result != null)
+		if (result is not null)
 		{
 			UIConquestMap conquestMap = UIManager.instance.world.conquestMap;
 			if (conquestMap.isActive)

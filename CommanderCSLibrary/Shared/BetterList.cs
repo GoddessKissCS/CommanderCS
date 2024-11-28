@@ -24,7 +24,7 @@ public class BetterList<T>
     [DebuggerStepThrough]
     public IEnumerator<T> GetEnumerator()
     {
-        if (buffer != null)
+        if (buffer is not null)
         {
             for (int i = 0; i < size; i++)
             {
@@ -35,8 +35,8 @@ public class BetterList<T>
 
     private void AllocateMore()
     {
-        T[] array = ((buffer == null) ? new T[32] : new T[(int)MathF.Max(buffer.Length << 1, 32)]);
-        if (buffer != null && size > 0)
+        T[] array = ((buffer is null) ? new T[32] : new T[(int)MathF.Max(buffer.Length << 1, 32)]);
+        if (buffer is not null && size > 0)
         {
             buffer.CopyTo(array, 0);
         }
@@ -76,7 +76,7 @@ public class BetterList<T>
 
     public void Add(T item)
     {
-        if (buffer == null || size == buffer.Length)
+        if (buffer is null || size == buffer.Length)
         {
             AllocateMore();
         }
@@ -85,7 +85,7 @@ public class BetterList<T>
 
     public void Insert(int index, T item)
     {
-        if (buffer == null || size == buffer.Length)
+        if (buffer is null || size == buffer.Length)
         {
             AllocateMore();
         }
@@ -106,7 +106,7 @@ public class BetterList<T>
 
     public bool Contains(T item)
     {
-        if (buffer == null)
+        if (buffer is null)
         {
             return false;
         }
@@ -122,7 +122,7 @@ public class BetterList<T>
 
     public int IndexOf(T item)
     {
-        if (buffer == null)
+        if (buffer is null)
         {
             return -1;
         }
@@ -138,7 +138,7 @@ public class BetterList<T>
 
     public bool Remove(T item)
     {
-        if (buffer != null)
+        if (buffer is not null)
         {
             EqualityComparer<T> @default = EqualityComparer<T>.Default;
             for (int i = 0; i < size; i++)
@@ -161,7 +161,7 @@ public class BetterList<T>
 
     public void RemoveAt(int index)
     {
-        if (buffer != null && index > -1 && index < size)
+        if (buffer is not null && index > -1 && index < size)
         {
             size--;
             buffer[index] = default(T);
@@ -175,7 +175,7 @@ public class BetterList<T>
 
     public T Pop()
     {
-        if (buffer != null && size != 0)
+        if (buffer is not null && size != 0)
         {
             T result = buffer[--size];
             buffer[size] = default(T);

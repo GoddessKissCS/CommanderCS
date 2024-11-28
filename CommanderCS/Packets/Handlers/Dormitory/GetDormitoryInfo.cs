@@ -8,17 +8,15 @@ namespace CommanderCS.Host.Handlers.Dormitory
     {
         public override object Handle(GetDormitoryInfoRequest @params)
         {
-            var dormitoryInfo = GetUserDormitory();
-
             CommanderCSLibrary.Shared.Protocols.Dormitory.Info DormitoryInfo = new()
             {
-                costumeBody = dormitoryInfo.CostumeBody,
-                itemNormal = dormitoryInfo.ItemNormal,
-                itemAdvanced = dormitoryInfo.ItemAdvanced,
-                itemWallpaper = dormitoryInfo.ItemWallpaper,
-                costumeHead = dormitoryInfo.CostumeHead,
-                resource = dormitoryInfo.DormitoryResource,
-                info = dormitoryInfo.DormitoryInfo
+                costumeBody = Dormitory.CostumeBody,
+                itemNormal = Dormitory.ItemNormal,
+                itemAdvanced = Dormitory.ItemAdvanced,
+                itemWallpaper = Dormitory.ItemWallpaper,
+                costumeHead = Dormitory.CostumeHead,
+                resource = Dormitory.DormitoryResource,
+                info = Dormitory.DormitoryInfo
             };
 
             ResponsePacket response = new()

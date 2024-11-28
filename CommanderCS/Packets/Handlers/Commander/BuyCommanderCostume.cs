@@ -1,9 +1,9 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+using MongoDB.Driver;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Commander
 {
@@ -12,72 +12,26 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(BuyCommanderCostumeRequest @params)
         {
-            var user = GetUserGameProfile();
-            var session = GetSession();
-            var rg = GetRegulation();
-
-            var costumeData = rg.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == @params.cos);
-
             // ig implement a check to check if you actually have enough cash ?
             // seems overrated but you never know ig?
+            // client says no if you cant buy, but ig you could in theory send a request and buy it anyways
 
-            if (user.UserResources.cash > 1200)
-            {
-                //user.UserResources.cash = 0;
-            }
+            string cid = @params.commanderId.ToString();
 
-            string cid = "" + @params.cid;
+            var costumeData = Regulation.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == @params.costumeId);
 
-            if (user.CommanderData.ContainsKey(cid) && user.UserInventory.donHaveCommCostumeData.ContainsKey(cid))
-            {
-                user.CommanderData[cid].haveCostume.Add(@params.cos);
-                user.UserInventory.donHaveCommCostumeData[cid].Add(@params.cos);
-                user.UserResources.cash -= costumeData.sellPrice;
-            }
-            else if (!user.UserInventory.donHaveCommCostumeData.ContainsKey(cid))
-            {
-                user.UserInventory.donHaveCommCostumeData.Add(cid, [@params.cos]);
-                user.UserResources.cash -= costumeData.sellPrice;
-            }
-            else
-            {
-                user.UserInventory.donHaveCommCostumeData[cid].Add(@params.cos);
-                user.UserResources.cash -= costumeData.sellPrice;
-            }
+            // TODO MAYBECHECK WHEN WE CREATE A CHARACTER TO SEE IF WE OWN ANY COSTUMES
+            // AND THEN TRANSFER THEM TO THE haveCostume and delete them from donHaveCommCostume
 
-            DatabaseManager.GameProfile.UpdateProfile(session, user);
+            //REWORK
+            User.Resources.cash -= costumeData.sellPrice;
 
-            var goods = DatabaseManager.GameProfile.UserResourcesFromSession(session);
-            var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(session);
-            var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+            DatabaseManager.GameProfile.UpdateOnlyCash(SessionId, costumeData.sellPrice, false);
+            var user = AddCostumeData(cid, @params.costumeId, User);
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, user.CommanderData);
+            DatabaseManager.GameProfile.UpdateDontHaveCommanderCostumeData(SessionId, user.Inventory.donHaveCommCostumeData);
 
-            UserInformationResponse userInformationResponse = new()
-            {
-                goodsInfo = goods,
-                battleStatisticsInfo = battlestats,
-                uno = user.Uno.ToString(),
-                stage = user.LastStage,
-                notification = user.Notifaction,
-
-                foodData = user.UserInventory.foodData,
-                eventResourceData = user.UserInventory.eventResourceData,
-                groupItemData = user.UserInventory.groupItemData,
-                itemData = user.UserInventory.itemData,
-                medalData = user.UserInventory.medalData,
-                partData = user.UserInventory.partData,
-
-                resetRemain = user.ResetDateTime,
-
-                equipItem = user.UserInventory.equipItem,
-
-                donHaveCommCostumeData = user.UserInventory.donHaveCommCostumeData,
-                completeRewardGroupIdx = user.CompleteRewardGroupIdx,
-                guildInfo = guild,
-                sweepClearData = user.BattleData.SweepClearData,
-                preDeck = user.PreDeck,
-                weaponList = user.UserInventory.weaponList,
-                __commanderInfo = JObject.FromObject(user.CommanderData),
-            };
+            var userInformationResponse = GetUserInformationResponse(user);
 
             ResponsePacket response = new()
             {
@@ -87,15 +41,32 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             return response;
         }
+
+        public GameProfileScheme AddCostumeData(string cid, int costumeId, GameProfileScheme user)
+        {
+            if (user.CommanderData.ContainsKey(cid))
+            {
+                user.CommanderData[cid].haveCostume.Add(costumeId);
+
+                return user;
+            }
+
+            if (!user.Inventory.donHaveCommCostumeData.ContainsKey(cid))
+            {
+                user.Inventory.donHaveCommCostumeData.Add(cid, [costumeId]);
+            }
+
+            return user;
+        }
     }
 
     public class BuyCommanderCostumeRequest
     {
         [JsonProperty("cid")]
-        public int cid { get; set; }
+        public int commanderId { get; set; }
 
         [JsonProperty("cos")]
-        public int cos { get; set; }
+        public int costumeId { get; set; }
     }
 }
 

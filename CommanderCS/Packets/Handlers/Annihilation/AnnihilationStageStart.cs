@@ -42,7 +42,7 @@ namespace CommanderCS.Packets.Handlers.Annihilation
 	// Token: 0x060060AC RID: 24748 RVA: 0x001B0A18 File Offset: 0x001AEC18
 	private IEnumerator AnnihilationStageStartResult(JsonRpcClient.Request request, Protocols.UserInformationResponse result)
 	{
-		if (result != null)
+		if (result is not null)
 		{
 			this.localUser.RefreshGoodsFromNetwork(result.goodsInfo);
 		}

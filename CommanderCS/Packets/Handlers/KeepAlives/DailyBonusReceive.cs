@@ -13,7 +13,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
 	// Token: 0x06005F5D RID: 24413 RVA: 0x001AEE94 File Offset: 0x001AD094
 	private IEnumerator DailyBonusReceiveResult(JsonRpcClient.Request request, Protocols.RewardInfo reward)
 	{
-		if (reward.commander != null)
+		if (reward.commander is not null)
 		{
 			foreach (KeyValuePair<string, Protocols.UserInformationResponse.Commander> keyValuePair in reward.commander)
 			{

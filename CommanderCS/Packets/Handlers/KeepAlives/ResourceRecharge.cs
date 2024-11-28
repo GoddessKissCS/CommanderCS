@@ -1,7 +1,85 @@
+using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
+using CommanderCSLibrary.Shared.Regulation;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.KeepAlives
 {
-    public class ResourceRecharge
+    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.ResourceRecharge)]
+    public class ResourceRecharge : BaseMethodHandler<ResourceRechargeRequest>
     {
+        public override object Handle(ResourceRechargeRequest @params)
+        {
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "{}",
+            };
+
+            switch (@params.vidx)
+            {
+                case 106:
+
+                    //BUY PRICE STARTS AT 15 diamonds and then + 100% everytime you buy a new ticket
+                    var raidKeys = User.VipRechargeData.Find(x => x.idx == @params.vidx);
+
+                    var ticketPrice = CalculateRaidTicketBuyPrice(User.DailyBuyables.RaidKeys, User, Regulation);
+
+                    var count = raidKeys.count++;
+                    User.DailyBuyables.RaidKeys--;
+
+                    DatabaseManager.GameProfile.UpdateOnlyCash(SessionId, ticketPrice, false);
+                    DatabaseManager.GameProfile.UpdateVipRechargeCount(SessionId, @params.vidx, count);
+                    DatabaseManager.GameProfile.UpdateDailyBuyableRaidKeys(SessionId, User.DailyBuyables.RaidKeys);
+
+                    var userInfo = GetDatabaseUserInformationResponse(User);
+
+                    response.Result = JObject.FromObject(userInfo);
+                    return response;
+            }
+
+            return response;
+        }
+
+#warning not finished
+
+        public int CalculateRaidTicketBuyPrice(int ticketsLeft, GameProfileScheme user, Regulation rg)
+        {
+            const int startingPrice = 15; // Starting price in diamonds
+            const int maxTickets = 5; // Maximum number of tickets
+            const double increasePercentage = 1.0; // Percentage increase for each ticket (100%)
+
+            var vipData = rg.VipBenefitsDtbl.Find(x => x.vipLevel == user.Resources.vipLevel);
+
+            if (user.DailyBuyables.RaidKeys > vipData.dailyRaidTicketRefill)
+            {
+                throw new ArgumentException();
+            }
+            else if (ticketsLeft > maxTickets)
+            {
+                throw new ArgumentException("Number of tickets left exceeds maximum limit.");
+            }
+
+            // Calculate the current buy price based on the remaining tickets
+            double totalPrice = startingPrice * Math.Pow(2, maxTickets - ticketsLeft) - startingPrice;
+
+            return (int)totalPrice;
+        }
+    }
+
+    public class ResourceRechargeRequest
+    {
+        [JsonProperty("vidx")]
+        public int vidx { get; set; }
+
+        [JsonProperty("mid")]
+        public int mid { get; set; }
+
+        [JsonProperty("vcnt")]
+        public int vcnt { get; set; }
     }
 }
 
@@ -77,7 +155,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
 			this._RefreshRecruitList(recruitCommanderListResponse);
 			this.localUser.RefreshGoodsFromNetwork(recruitCommanderListResponse.resource);
 		}
-		if (UIManager.instance.world != null && UIManager.instance.world.existCarnival && UIManager.instance.world.carnival.isActive)
+		if (UIManager.instance.world is not null && UIManager.instance.world.existCarnival && UIManager.instance.world.carnival.isActive)
 		{
 			this.RequestGetCarnivalList(UIManager.instance.world.carnival.categoryType, 0);
 		}

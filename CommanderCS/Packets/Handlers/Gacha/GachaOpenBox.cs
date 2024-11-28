@@ -1,5 +1,7 @@
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Gacha
@@ -9,7 +11,59 @@ namespace CommanderCS.Packets.Handlers.Gacha
     {
         public override object Handle(GachaOpenBoxRequest @params)
         {
-            throw new NotImplementedException();
+            List<GachaOpenBoxResponse.Reward> rewards = [];
+
+            GachaInformationResponse ws = new()
+            {
+                freeOpenRemainTime = 259200,
+                freeOpenRemainCount = 0,
+                pilotRate = 0,
+                type = "2"
+            };
+
+            // TODO : ADD RANDOM RNG GENERATOR FOR LOOT AND IF ITS COMMANDER ADD IT TO THE USER IF NOT ADD MEDALS AND ETC
+
+            // PUT THE GachaInformationResponse INTO GAMEPROFILESCHEME TO SEE IF USER X KEEPS ETC SHIT AND DO A
+
+            switch (@params.gbIdx)
+            {
+                case 1:
+                    rewards.Add(new() { count = 5, id = "8", type = ERewardType.Goods });
+                    User.Inventory.itemData.Add("8", 5);
+                    DatabaseManager.GameProfile.UpdateItemData(SessionId, User.Inventory.itemData);
+                    break;
+
+                case 2:
+                    rewards.Add(new() { count = 1, id = "2", type = ERewardType.Commander });
+                    User.CommanderData = Regulation.AddSpecificCommander(User.CommanderData, 2);
+                    DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+                    break;
+            }
+
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
+
+            GachaOpenBoxResponse gachaOpen = new()
+            {
+                changedGachaInformation = ws,
+                rewardList = rewards,
+                goodsResult = rsoc,
+                costumeData = User.Inventory.costumeData,
+                foodData = User.Inventory.foodData,
+                partData = User.Inventory.partData,
+                itemData = User.Inventory.itemData,
+                medalData = User.Inventory.medalData,
+                commanderIdDict = User.CommanderData,
+                eventResourceData = User.Inventory.eventResourceData,
+                equipItem = User.Inventory.equipItem
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = gachaOpen,
+            };
+
+            return response;
         }
     }
 
@@ -65,7 +119,7 @@ namespace CommanderCS.Packets.Handlers.Gacha
 						roCommander2.state = ECommanderState.Nomal;
 					}
 				}
-				if (gachaRewardDataRow != null)
+				if (gachaRewardDataRow is not null)
 				{
 					if (gachaRewardDataRow.effectType = 1)
 					{
@@ -91,12 +145,12 @@ namespace CommanderCS.Packets.Handlers.Gacha
 					isNew = flag
 				});
 			});
-			if (result.commanderIdDict != null)
+			if (result.commanderIdDict is not null)
 			{
 				foreach (Protocols.UserInformationResponse.Commander commander in result.commanderIdDict.Values)
 				{
 					RoCommander roCommander = this.localUser.FindCommander(commander.id);
-					if (commander.haveCostume != null && commander.haveCostume.Count > 0)
+					if (commander.haveCostume is not null && commander.haveCostume.Count > 0)
 					{
 						roCommander.haveCostumeList = commander.haveCostume;
 					}
@@ -104,7 +158,7 @@ namespace CommanderCS.Packets.Handlers.Gacha
 			}
 			UIManager.instance.world.gacha.OpenBox(list);
 		}
-		if (result.changedGachaInformation != null && result.changedGachaInformation.type = "2" && result.changedGachaInformation.freeOpenRemainTime > 0)
+		if (result.changedGachaInformation is not null && result.changedGachaInformation.type = "2" && result.changedGachaInformation.freeOpenRemainTime > 0)
 		{
 			this.ScheduleLocalPush(ELocalPushType.PremiumGachaFree, result.changedGachaInformation.freeOpenRemainTime);
 		}

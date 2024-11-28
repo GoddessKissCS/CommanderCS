@@ -35,7 +35,7 @@ namespace CommanderCS.Packets.Handlers.Annihilation
 	// Token: 0x0600601C RID: 24604 RVA: 0x001AFE00 File Offset: 0x001AE000
 	private IEnumerator StartAnnihilationResult(JsonRpcClient.Request request, string result)
 	{
-		if (result == null)
+		if (result is null)
 		{
 			yield break;
 		}

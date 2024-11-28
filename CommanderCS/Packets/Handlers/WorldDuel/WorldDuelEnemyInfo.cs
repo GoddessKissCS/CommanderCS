@@ -1,7 +1,22 @@
+using CommanderCS.Host;
+
 namespace CommanderCS.Packets.Handlers.WorldDuel
 {
-    public class WorldDuelEnemyInfo
+    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.WorldDuelEnemyInfo)]
+    public class WorldDuelEnemyInfo : BaseMethodHandler<WorldDuelEnemyInfoRequest>
     {
+        public override object Handle(WorldDuelEnemyInfoRequest @params)
+        {
+            CommanderCSLibrary.Shared.Protocols.PvPDuelList.PvPDuelData pDuelData = new() { };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = pDuelData,
+            };
+
+            return response;
+        }
     }
 
     public class WorldDuelEnemyInfoRequest
@@ -18,7 +33,7 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
 	// Token: 0x0600615B RID: 24923 RVA: 0x001B185C File Offset: 0x001AFA5C
 	private IEnumerator WorldDuelEnemyInfoResult(JsonRpcClient.Request request, Protocols.PvPDuelList.PvPDuelData result)
 	{
-		if (result != null)
+		if (result is not null)
 		{
 			this.localUser.worldDuelTarget = RoUser.CreateDuelListUser(EBattleType.WorldDuel, result);
 			UIManager.instance.world.rankingBattle.OpenWorldDuelReadyBattle();

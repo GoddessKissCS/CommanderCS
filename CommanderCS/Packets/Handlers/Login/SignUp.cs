@@ -46,9 +46,9 @@ namespace CommanderCS.Host.Handlers.Sign
 
             var user = DatabaseManager.Account.FindByName(accountname);
 
-            if (user == null)
+            if (user is null)
             {
-                DatabaseManager.Account.Create(accountname, password, platformid, channel);
+                DatabaseManager.Account.GetOrCreate(accountname, password, platformid, channel);
 
                 return ErrorCode.Success;
             }

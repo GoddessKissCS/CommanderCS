@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
@@ -11,17 +11,15 @@ namespace CommanderCS.Packets.Handlers.Chat
     {
         public override object Handle(AddChatIgnoreRequest @params)
         {
-            var session = GetSession();
-
             BlockUser blockUser = new()
             {
-                channel = @params.ch,
-                nickName = @params.nick,
-                thumbnail = @params.thumb,
+                channel = @params.channel,
+                nickName = @params.nickname,
+                thumbnail = @params.thumbnail,
                 uno = @params.uno,
             };
 
-            DatabaseManager.GameProfile.AddBlockedUser(session, blockUser);
+            DatabaseManager.GameProfile.AddBlockedUser(SessionId, blockUser);
 
             ResponsePacket response = new()
             {
@@ -36,15 +34,15 @@ namespace CommanderCS.Packets.Handlers.Chat
     public class AddChatIgnoreRequest
     {
         [JsonProperty("ch")]
-        public int ch { get; set; }
+        public int channel { get; set; }
 
         [JsonProperty("uno")]
         public string uno { get; set; }
 
         [JsonProperty("nick")]
-        public string nick { get; set; }
+        public string nickname { get; set; }
 
         [JsonProperty("thumb")]
-        public string thumb { get; set; }
+        public string thumbnail { get; set; }
     }
 }

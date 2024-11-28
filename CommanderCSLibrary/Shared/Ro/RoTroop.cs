@@ -1,6 +1,7 @@
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
@@ -194,7 +195,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public string stationedStageId { get; set; }
 
-        private static Regulation.Regulation _reg => Constants.regulation;
+        private static Regulation.Regulation _reg => RemoteObjectManager.instance.regulation;
 
         public string id { get; private set; }
 
@@ -260,7 +261,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public static List<RoTroop> CreateEventBoss(EventRaidData data)
         {
-            Regulation.Regulation regulation = Constants.regulation;
+            Regulation.Regulation regulation = RemoteObjectManager.instance.regulation;
             EnemyUnitDataRow enemyUnitDataRow = _reg.enemyUnitDtbl.Find((EnemyUnitDataRow row) => row.id == data.enemy);
             List<RoTroop> list = [];
             RoTroop roTroop = Create("Enemy-" + data.enemy);
@@ -274,7 +275,7 @@ namespace CommanderCSLibrary.Shared.Ro
             slot.position = enemyUnitDataRow.unitPosition - 1;
             slot.scale = enemyUnitDataRow.unitScale / 100f;
             UnitDataRow unitDataRow = regulation.unitDtbl[enemyUnitDataRow.unitId];
-            if (unitDataRow != null)
+            if (unitDataRow is not null)
             {
                 for (int i = 0; i < unitDataRow.skillDrks.Count; i++)
                 {
@@ -345,14 +346,14 @@ namespace CommanderCSLibrary.Shared.Ro
                     favorRewardStep = slot.favorRewardStep,
                     marry = slot.marry
                 };
-                if (slot.transcendence != null)
+                if (slot.transcendence is not null)
                 {
                     slot2.transcendence = slot.transcendence;
                 }
                 slot2.scale = slot.scale;
                 slot2.skills = slot.skills;
                 slot2.charType = (int)slot.charType;
-                if (slot.equipItem != null)
+                if (slot.equipItem is not null)
                 {
                     Dictionary<int, RoItem>.Enumerator enumerator = slot.equipItem.GetEnumerator();
                     while (enumerator.MoveNext())
@@ -361,12 +362,12 @@ namespace CommanderCSLibrary.Shared.Ro
                     }
                 }
                 slot2.weaponItem = [];
-                if (slot.weaponItem != null)
+                if (slot.weaponItem is not null)
                 {
                     foreach (KeyValuePair<int, RoWeapon> item2 in slot.weaponItem)
                     {
                         RoWeapon value = item2.Value;
-                        if (value != null)
+                        if (value is not null)
                         {
                             int num = Regulation.Regulation.ParseWeaponSkillIndex(value.data);
                             if (num >= 0)
@@ -400,7 +401,7 @@ namespace CommanderCSLibrary.Shared.Ro
                     continue;
                 }
                 Troop.Slot slot2 = troop.slots[slot.position];
-                if (slot2 == null || slot2.isEmpty)
+                if (slot2 is null || slot2.isEmpty)
                 {
                     slot.health = 0;
                     continue;
@@ -474,7 +475,7 @@ namespace CommanderCSLibrary.Shared.Ro
         [OnDeserialized]
         private void OnDeserialized(StreamingContext context)
         {
-            if (slots == null || slots.Length != 9)
+            if (slots is null || slots.Length != 9)
             {
                 slots = CreateEmptySlots();
             }
@@ -582,7 +583,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public int GetOperatingCost()
         {
             int num = 0;
-            DataTable<UnitDataRow> unitDtbl = Constants.regulation.unitDtbl;
+            DataTable<UnitDataRow> unitDtbl = RemoteObjectManager.instance.regulation.unitDtbl;
             Slot[] array = slots;
             foreach (Slot slot in array)
             {
@@ -607,7 +608,7 @@ namespace CommanderCSLibrary.Shared.Ro
             for (int i = 0; i < slots.Length; i++)
             {
                 Slot slot = slots[i];
-                if (slot != null && slot.IsValidId())
+                if (slot is not null && slot.IsValidId())
                 {
                     UnitDataRow unitDataRow = unitDtbl[slot.unitId];
                     num += unitDataRow.leadership;
@@ -616,12 +617,12 @@ namespace CommanderCSLibrary.Shared.Ro
             return num;
         }
 
-        public void UpdateScrambleTroop(Dictionary<string, CommanderCSLibrary.Shared.Protocols.UserInformationResponse.Unit> deck)
+        public void UpdateScrambleTroop(Dictionary<string, UserInformationResponse.Unit> deck)
         {
-            foreach (KeyValuePair<string, CommanderCSLibrary.Shared.Protocols.UserInformationResponse.Unit> item in deck)
+            foreach (KeyValuePair<string, UserInformationResponse.Unit> item in deck)
             {
                 Slot slotByPosition = GetSlotByPosition(int.Parse(item.Key) - 1);
-                if (slotByPosition == null)
+                if (slotByPosition is null)
                 {
                     break;
                 }
@@ -630,8 +631,10 @@ namespace CommanderCSLibrary.Shared.Ro
                 RoUnit roUnit = RoUnit.Create(slotByPosition.unitId, slotByPosition.unitLevel, 1, slotByPosition.unitCls, slotByPosition.unitCostume, slotByPosition.commanderId, slotByPosition.favorRewardStep, slotByPosition.marry, slotByPosition.transcendence);
                 for (int i = 0; i < roUnit.currLevelReg.skillDrks.Count; i++)
                 {
-                    Troop.Slot.Skill skill = new Troop.Slot.Skill();
-                    skill.id = roUnit.currLevelReg.skillDrks[i];
+                    Troop.Slot.Skill skill = new()
+                    {
+                        id = roUnit.currLevelReg.skillDrks[i]
+                    };
                     skill.sp = ((i != 0 && !skill.id.Equals("0")) ? item.Value.spList[i - 1] : 0);
                     if (!skill.id.Equals("0"))
                     {
@@ -645,7 +648,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             for (int i = 0; i < slots.Length; i++)
             {
-                if (slots[i] != null && !string.IsNullOrEmpty(slots[i].unitId))
+                if (slots[i] is not null && !string.IsNullOrEmpty(slots[i].unitId))
                 {
                     RoUnit roUnit = RoUnit.Create(slots[i].unitId, slots[i].unitLevel, 1, slots[i].unitCls, slots[i].unitCostume, slots[i].commanderId, slots[i].favorRewardStep, slots[i].marry, slots[i].transcendence);
                     slots[i].health = roUnit.currLevelReg.maxHealth;
@@ -657,7 +660,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             for (int i = 0; i < slots.Length; i++)
             {
-                if (slots[i] != null)
+                if (slots[i] is not null)
                 {
                     slots[i].ResetSlot();
                 }
@@ -690,7 +693,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             for (int i = 0; i < slots.Length; i++)
             {
-                if (slots[i] != null && slots[i].unitId == id)
+                if (slots[i] is not null && slots[i].unitId == id)
                 {
                     return slots[i];
                 }
@@ -702,7 +705,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             for (int i = 0; i < slots.Length; i++)
             {
-                if (slots[i] != null && slots[i].commanderId == id)
+                if (slots[i] is not null && slots[i].commanderId == id)
                 {
                     return slots[i];
                 }
@@ -714,7 +717,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             for (int i = 0; i < slots.Length; i++)
             {
-                if (slots[i] != null && slots[i].commanderId == id && slots[i].charType == charType)
+                if (slots[i] is not null && slots[i].commanderId == id && slots[i].charType == charType)
                 {
                     return slots[i];
                 }
@@ -726,7 +729,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             for (int i = 0; i < slots.Length; i++)
             {
-                if (slots[i] != null && slots[i].commanderId == id)
+                if (slots[i] is not null && slots[i].commanderId == id)
                 {
                     return slots[i].charType;
                 }
@@ -912,26 +915,26 @@ namespace CommanderCSLibrary.Shared.Ro
         //				slot.skills.Add(skill);
         //			}
         //			slot.position = pvPDuelDeck.position - 1;
-        //			if (data[i].equipItem != null && data[i].equipItem.Count > 0)
+        //			if (data[i].equipItem is not null && data[i].equipItem.Count > 0)
         //			{
         //				foreach (KeyValuePair<string, int> pair in data[i].equipItem)
         //				{
         //					EquipItemDataRow equipItemDataRow = regulation.equipItemDtbl.Find((EquipItemDataRow item) => item.key == pair.Key);
-        //					if (equipItemDataRow != null)
+        //					if (equipItemDataRow is not null)
         //					{
         //						slot.equipItem.Add(equipItemDataRow.pointType, RoItem.Create(pair.Key, pair.Value, 1, commanderDataRow.id));
         //					}
         //				}
         //			}
         //			slot.weaponItem = new Dictionary<int, RoWeapon>();
-        //			if (pvPDuelDeck.weaponItem == null || pvPDuelDeck.weaponItem.Count <= 0)
+        //			if (pvPDuelDeck.weaponItem is null || pvPDuelDeck.weaponItem.Count <= 0)
         //			{
         //				continue;
         //			}
         //			foreach (KeyValuePair<string, Protocols.WeaponData> item in pvPDuelDeck.weaponItem)
         //			{
         //				Protocols.WeaponData value = item.Value;
-        //				if (value != null)
+        //				if (value is not null)
         //				{
         //					RoWeapon roWeapon = RoWeapon.Create("0", value.id, value.level);
         //					slot.weaponItem.Add(roWeapon.data.slotType, roWeapon);
@@ -971,7 +974,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //{
         //	RoTroop roTroop = Create(null);
         //	int num = 0;
-        //	if (data.troopSlots != null)
+        //	if (data.troopSlots is not null)
         //	{
         //		roTroop.nickname = data.troopName;
         //		foreach (KeyValuePair<int, Protocols.ScrambleMapHistory.Slot> _slot in data.troopSlots)
@@ -1041,7 +1044,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //		slot.scale = (float)annihilateBattleDataRow.scale / 100f;
         //		slot.position = commander.Key - 1;
         //		UnitDataRow unitDataRow = regulation.unitDtbl[commander.Value.id];
-        //		if (unitDataRow != null)
+        //		if (unitDataRow is not null)
         //		{
         //			for (int j = 0; j < unitDataRow.skillDrks.Count; j++)
         //			{
@@ -1077,7 +1080,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //			slot.commanderId = _reg.GetCommanderByUnitId(scenarioBattleInfo[i]._unitId).id;
         //		}
         //		UnitDataRow unitDataRow = _reg.unitDtbl[scenarioBattleInfo[i]._unitId];
-        //		if (unitDataRow != null)
+        //		if (unitDataRow is not null)
         //		{
         //			int count = scenarioBattleInfo[i]._skillLevel.Count;
         //			for (int j = 0; j < count; j++)
@@ -1107,7 +1110,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //		slot.unitCls = enemyList[i].unitClass;
         //		slot.position = enemyList[i].unitPosition;
         //		slot.health = roCommander.currLevelUnitReg.maxHealth;
-        //		if (unitDataRow != null)
+        //		if (unitDataRow is not null)
         //		{
         //			int count = enemyList[i].skillLevel.Count;
         //			for (int j = 0; j < count; j++)
@@ -1137,7 +1140,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //		slot.unitCls = enemyList[i].unitClass;
         //		slot.position = enemyList[i].unitPosition;
         //		slot.health = roCommander.currLevelUnitReg.maxHealth;
-        //		if (unitDataRow != null)
+        //		if (unitDataRow is not null)
         //		{
         //			int count = enemyList[i].skillLevel.Count;
         //			for (int j = 0; j < count; j++)
@@ -1154,14 +1157,14 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public static int GetTroopIndexContainCommander(List<RoTroop> troops, string commanderId)
         {
-            if (troops == null)
+            if (troops is null)
             {
                 return -1;
             }
             for (int i = 0; i < troops.Count; i++)
             {
                 RoTroop roTroop = troops[i];
-                if (roTroop != null && roTroop.GetSlotByCommanderId(commanderId) != null)
+                if (roTroop is not null && roTroop.GetSlotByCommanderId(commanderId) is not null)
                 {
                     return i;
                 }

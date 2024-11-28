@@ -11,8 +11,6 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
 
         public override object Handle(GetRewardAllRequest @params)
         {
-            var gameProfile = GetUserGameProfile();
-
             RewardInfo rewardInfo = new()
             {
             };
@@ -49,7 +47,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
 			List<RoReward> list = new List<RoReward>();
 			for (int i = this.localUser.rewardList.Count - 1; i >= 0; i--)
 			{
-				if (this.localUser.rewardList[i].type = EReward.Mail && (!string.IsNullOrEmpty(this.localUser.rewardList[i].rewardId) || this.localUser.rewardList[i].rewardItem != null))
+				if (this.localUser.rewardList[i].type = EReward.Mail && (!string.IsNullOrEmpty(this.localUser.rewardList[i].rewardId) || this.localUser.rewardList[i].rewardItem is not null))
 				{
 					RoReward roReward = this.localUser.rewardList[i];
 					list.Add(roReward);

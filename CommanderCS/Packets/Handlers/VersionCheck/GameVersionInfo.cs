@@ -9,19 +9,19 @@ namespace CommanderCS.Host.Handlers.VersionCheck
     {
         public override object Handle(GameVersionInfoRequest @params)
         {
-            var info = DatabaseManager.GameVersionInfo.Get(@params.ch);
+            var gameVer = DatabaseManager.GameVersionInfo.Get(@params.ch);
 
             GameVersionInfoResponse gameversion = new()
             {
-                policy = Convert.ToDouble(info.showPolicy),
-                chat = info.Chat_Url,
-                cdn = info.Cdn_Url,
-                game = info.Game_Url,
-                fc = Convert.ToInt32(info.fileCheck),
-                gglogin = Convert.ToInt32(info.enableGoogleLogin),
-                ver = info.Version,
-                word = info.Word,
-                stat = Convert.ToInt32(info.Version_State)
+                policy = Convert.ToDouble(gameVer.showPolicy),
+                chat = gameVer.Chat_Url,
+                cdn = gameVer.Cdn_Url,
+                game = gameVer.Game_Url,
+                fc = Convert.ToInt32(gameVer.fileCheck),
+                gglogin = Convert.ToInt32(gameVer.enableGoogleLogin),
+                ver = gameVer.Version,
+                word = gameVer.Word,
+                stat = Convert.ToInt32(gameVer.Version_State)
             };
 
             ResponsePacket ResponsePacket = new()

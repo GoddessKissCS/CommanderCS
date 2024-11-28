@@ -1,4 +1,5 @@
 ﻿using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
@@ -9,11 +10,11 @@ namespace CommanderCS.Host.Handlers.VersionCheck
     {
         public override object Handle(DatabaseVersionCheckRequest @params)
         {
-            var gametable = DatabaseManager.GameTableVersion.Get();
+            DatabaseVersionScheme gametable = DatabaseManager.GameTableVersion.Get();
 
             DatabaseVersionCheckResponse res = new()
             {
-                ver = gametable.Version,
+                version = gametable.Version,
             };
 
             ResponsePacket response = new()
@@ -28,7 +29,7 @@ namespace CommanderCS.Host.Handlers.VersionCheck
         private class DatabaseVersionCheckResponse
         {
             [JsonProperty("ver")]
-            public double ver { get; set; }
+            public double version { get; set; }
         }
     }
 

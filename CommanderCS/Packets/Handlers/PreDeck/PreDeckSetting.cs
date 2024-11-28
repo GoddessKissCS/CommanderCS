@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
@@ -12,16 +12,14 @@ namespace CommanderCS.Packets.Handlers.PreDeck
     {
         public override object Handle(PreDeckSettingRequest @params)
         {
-            var session = GetSession();
-
             var preDeckList = @params.list.ToObject<List<UserInformationResponse.PreDeck>>();
 
-            DatabaseManager.GameProfile.UpdatePreDeck(session, preDeckList);
+            DatabaseManager.GameProfile.UpdatePreDeck(SessionId, preDeckList);
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = "changed"
+                Result = "{}"
             };
 
             return response;

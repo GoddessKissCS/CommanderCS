@@ -26,7 +26,7 @@ namespace CommanderCS.Host.Handlers.Server
                 ServerData.ServerInfo nullServer = new()
                 {
                     idx = nextIdx,
-                    status = 1,
+                    status = (int)StatusEnum.Medium,
                     lastLoginTime = 0,
                     level = 0,
                     thumnail = 0,
@@ -63,15 +63,11 @@ namespace CommanderCS.Host.Handlers.Server
             {
                 ServerData.ServerInfo SIFO = new()
                 {
-                    status = 1,
-                    // 1 = Medium
-                    // 2 = Busy
-                    // 3 = Full
-                    // 4 = Unable to join
+                    status = (int)StatusEnum.Medium,
                     idx = i,
                     lastLoginTime = profile.LastLoginTime,
-                    level = profile.UserResources.level,
-                    thumnail = profile.UserResources.thumbnailId
+                    level = profile.Resources.level,
+                    thumnail = profile.Resources.thumbnailId
                 };
                 i++;
 
@@ -80,6 +76,14 @@ namespace CommanderCS.Host.Handlers.Server
 
             return serverInfo;
         }
+    }
+
+    public enum StatusEnum : int
+    {
+        Medium = 1,
+        Busy,
+        Full,
+        UnableToJoin
     }
 
     public class ServerStatusRequest

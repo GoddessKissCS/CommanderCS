@@ -38,7 +38,7 @@ namespace CommanderCSLibrary.Shared
 
         public static RaidData Copy(RaidData src)
         {
-            if (src == null)
+            if (src is null)
             {
                 return null;
             }
@@ -54,7 +54,7 @@ namespace CommanderCSLibrary.Shared
 
         public static explicit operator JToken(RaidData value)
         {
-            if (value == null)
+            if (value is null)
             {
                 return string.Empty;
             }

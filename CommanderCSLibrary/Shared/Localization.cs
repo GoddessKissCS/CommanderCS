@@ -72,15 +72,15 @@ namespace CommanderCSLibrary.Shared
             byte[] bytes3 = null;
             if (!localizationHasBeenSet)
             {
-                if (loadFunction == null)
+                if (loadFunction is null)
                 {
                     string Local = File.ReadAllText($"Resources\\ExcelOutputAsset\\Localization.txt");
                     array = Encoding.UTF8.GetBytes(Local);
                     string Local2 = File.ReadAllText($"Resources\\ExcelOutputAsset\\ScenarioLocalization.txt");
                     bytes = Encoding.UTF8.GetBytes(Local2);
-                    string Local3 = File.ReadAllText($"Resources\\ExcelOutputAsset\\EventLocalization.txt");
+                    string Local3 = File.ReadAllText($"Resources\\ExcelOutputAsset\\EventScenarioLocalization.txt");
                     bytes2 = Encoding.UTF8.GetBytes(Local3);
-                    string Local4 = File.ReadAllText($"Resources\\ExcelOutputAsset\\InfinityLocalization.txt");
+                    string Local4 = File.ReadAllText($"Resources\\ExcelOutputAsset\\InfinityScenarioLocalization.txt");
                     bytes3 = Encoding.UTF8.GetBytes(Local4);
                 }
                 localizationHasBeenSet = true;
@@ -101,7 +101,7 @@ namespace CommanderCSLibrary.Shared
                 return false;
             }
             array = loadFunction(value);
-            if (array != null)
+            if (array is not null)
             {
                 Set(value, array);
                 return true;
@@ -157,7 +157,7 @@ namespace CommanderCSLibrary.Shared
 
         private static bool LoadCSV(byte[] bytes, string asset, bool merge = false, LocalizationType type = LocalizationType.None)
         {
-            if (bytes == null)
+            if (bytes is null)
             {
                 return false;
             }
@@ -173,7 +173,7 @@ namespace CommanderCSLibrary.Shared
             {
                 localizationHasBeenSet = false;
             }
-            if (!localizationHasBeenSet || (!merge && !mMerging) || mLanguages == null || mLanguages.Length == 0)
+            if (!localizationHasBeenSet || (!merge && !mMerging) || mLanguages is null || mLanguages.Length == 0)
             {
                 mDictionary.Clear();
                 mLanguages = new string[betterList.size];
@@ -226,7 +226,7 @@ namespace CommanderCSLibrary.Shared
             while (true)
             {
                 BetterList<string> betterList2 = byteReader.ReadCSV();
-                if (betterList2 == null || betterList2.size == 0)
+                if (betterList2 is null || betterList2.size == 0)
                 {
                     break;
                 }
@@ -252,7 +252,7 @@ namespace CommanderCSLibrary.Shared
                     }
                 }
             }
-            if (!mMerging && onLocalize != null)
+            if (!mMerging && onLocalize is not null)
             {
                 mMerging = true;
                 OnLocalizeNotification onLocalizeNotification = onLocalize;
@@ -279,7 +279,7 @@ namespace CommanderCSLibrary.Shared
             if (mDictionary.ContainsKey(text))
             {
                 mDictionary[text] = value;
-                if (newLanguages != null)
+                if (newLanguages is not null)
                 {
                 }
                 return;
@@ -287,7 +287,7 @@ namespace CommanderCSLibrary.Shared
             if (mTutorialDictionary.ContainsKey(text))
             {
                 mTutorialDictionary[text] = value;
-                if (newLanguages != null)
+                if (newLanguages is not null)
                 {
                 }
                 return;
@@ -295,7 +295,7 @@ namespace CommanderCSLibrary.Shared
             if (mTalkDictionary.ContainsKey(text))
             {
                 mTalkDictionary[text] = value;
-                if (newLanguages != null)
+                if (newLanguages is not null)
                 {
                 }
                 return;
@@ -347,7 +347,7 @@ namespace CommanderCSLibrary.Shared
             if (mScenarioDictionary.ContainsKey(text))
             {
                 mScenarioDictionary[text] = value;
-                if (newLanguages != null)
+                if (newLanguages is not null)
                 {
                 }
                 return;
@@ -376,7 +376,7 @@ namespace CommanderCSLibrary.Shared
             if (mEventDictionary.ContainsKey(text))
             {
                 mEventDictionary[text] = value;
-                if (newLanguages != null)
+                if (newLanguages is not null)
                 {
                 }
                 return;
@@ -405,7 +405,7 @@ namespace CommanderCSLibrary.Shared
             if (mInfinityDictionary.ContainsKey(text))
             {
                 mInfinityDictionary[text] = value;
-                if (newLanguages != null)
+                if (newLanguages is not null)
                 {
                 }
                 return;
@@ -421,7 +421,7 @@ namespace CommanderCSLibrary.Shared
 
         private static string[] ExtractStrings(BetterList<string> added, string[] newLanguages, Dictionary<string, int> languageIndices)
         {
-            if (newLanguages == null)
+            if (newLanguages is null)
             {
                 string[] array = new string[mLanguages.Length];
                 int i = 1;
@@ -461,7 +461,7 @@ namespace CommanderCSLibrary.Shared
                     mOldDictionary.Clear();
                     mLanguageIndex = i;
                     mLanguage = language;
-                    if (onLocalize != null)
+                    if (onLocalize is not null)
                     {
                         onLocalize();
                     }
@@ -477,8 +477,8 @@ namespace CommanderCSLibrary.Shared
             mOldDictionary = dictionary;
             localizationHasBeenSet = true;
             mLanguageIndex = -1;
-            mLanguages = new string[1] { languageName };
-            if (onLocalize != null)
+            mLanguages = [languageName];
+            if (onLocalize is not null)
             {
                 onLocalize();
             }
@@ -507,7 +507,7 @@ namespace CommanderCSLibrary.Shared
             {
                 LoadDictionary("S_En");
             }
-            if (mLanguages == null)
+            if (mLanguages is null)
             {
                 return null;
             }

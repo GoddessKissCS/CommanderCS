@@ -10,7 +10,7 @@ public class ByteReader
 
     private static BetterList<string> mTemp = new BetterList<string>();
 
-    public bool canRead => mBuffer != null && mOffset < mBuffer.Length;
+    public bool canRead => mBuffer is not null && mOffset < mBuffer.Length;
 
     public ByteReader(byte[] bytes)
     {
@@ -20,7 +20,7 @@ public class ByteReader
     public static ByteReader Open(string path)
     {
         FileStream fileStream = File.OpenRead(path);
-        if (fileStream != null)
+        if (fileStream is not null)
         {
             fileStream.Seek(0L, SeekOrigin.End);
             byte[] array = new byte[fileStream.Position];
@@ -82,7 +82,7 @@ public class ByteReader
         while (canRead)
         {
             string text = ReadLine();
-            if (text == null)
+            if (text is null)
             {
                 break;
             }
@@ -111,7 +111,7 @@ public class ByteReader
             if (flag)
             {
                 string text2 = ReadLine(skipEmptyLines: false);
-                if (text2 == null)
+                if (text2 is null)
                 {
                     return null;
                 }
@@ -121,7 +121,7 @@ public class ByteReader
             else
             {
                 text = ReadLine(skipEmptyLines: true);
-                if (text == null)
+                if (text is null)
                 {
                     return null;
                 }

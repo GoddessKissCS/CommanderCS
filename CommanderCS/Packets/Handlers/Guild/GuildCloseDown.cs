@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
@@ -11,12 +11,10 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(GuildCloseDownRequest @params)
         {
-            var user = GetUserGameProfile();
-
             var closeTime = TimeManager.CurrentEpoch;
 
-            DatabaseManager.Guild.CloseDownGuild(user.GuildId, closeTime);
-            DatabaseManager.Guild.ResetMemberGrades(user.GuildId);
+            DatabaseManager.Guild.CloseDownGuild(User.GuildId, closeTime);
+            DatabaseManager.Guild.ResetMemberGrades(User.GuildId);
 
             var res = new GuildCloseDownResponse()
             {
@@ -57,7 +55,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 		this.localUser.guildInfo.state = 1;
 		this.localUser.guildInfo.memberGrade = 0;
 		UIGuildManagePopup uiguildManagePopup = UnityEngine.Object.FindObjectOfType(typeof(UIGuildManagePopup)) as UIGuildManagePopup;
-		if (uiguildManagePopup != null)
+		if (uiguildManagePopup is not null)
 		{
 			uiguildManagePopup.Close();
 		}

@@ -1,6 +1,24 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+
 namespace CommanderCS.Packets.Handlers.Inventory
 {
-    public class GetWeaponProgressList
+    [Packet(Id = Method.GetWeaponProgressList)]
+    public class GetWeaponProgressList : BaseMethodHandler<GetWeaponProgressListRequest>
+    {
+        public override object Handle(GetWeaponProgressListRequest @params)
+        {
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = User.WeaponInformation.WeaponProgressList,
+            };
+
+            return response;
+        }
+    }
+
+    public class GetWeaponProgressListRequest
     {
     }
 }

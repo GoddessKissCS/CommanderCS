@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
@@ -11,11 +11,9 @@ namespace CommanderCS.Packets.Handlers.PvP
     {
         public override object Handle(RefreshPvPDuelListRequest @params)
         {
-            var user = GetUserGameProfile();
-
             // need to check score and the get duelist between the range
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.UserResources);
+            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
 
             RefreshPvPDuel refreshDuel = new()
             {
@@ -54,7 +52,7 @@ namespace CommanderCS.Packets.Handlers.PvP
 		this.localUser.RefreshGoodsFromNetwork(result.rsoc);
 		this.localUser.duelTargetRefreshTime.SetByDuration((double)result.remain);
 		this.localUser.currentSeasonDuelTime.SetByDuration((double)result.time);
-		if (result.duelList != null)
+		if (result.duelList is not null)
 		{
 			for (int i = 1; i <= result.duelList.Count; i++)
 			{

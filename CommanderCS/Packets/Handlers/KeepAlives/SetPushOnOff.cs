@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
@@ -10,9 +10,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
     {
         public override object Handle(SetPushOnOffRequest @params)
         {
-            var session = GetSession();
-
-            var result = DatabaseManager.GameProfile.UpdateNotifaction(session, @params.onoff);
+            var result = DatabaseManager.GameProfile.UpdateNotifaction(SessionId, @params.onoff);
 
             ResponsePacket response = new()
             {

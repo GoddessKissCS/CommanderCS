@@ -1,4 +1,5 @@
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -10,16 +11,14 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
     {
         public override object Handle(WaveDuelDefenderSettingRequest @params)
         {
-            //Dictionary<string, Dictionary<string, string>> dictionary = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(@params.Decks.ToString());
+            Dictionary<string, Dictionary<string, string>> decks = @params.decks.ToObject<Dictionary<string, Dictionary<string, string>>>();
 
-            bool bol = true;
-
-            string boolean = bol.ToString();
-
+            DatabaseManager.GameProfile.UpdateWaveDefenderDecks(SessionId, decks);
+#warning TODO CHECK IF FAILS
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = boolean,
+                Result = "false",
             };
 
             return response;
@@ -29,7 +28,7 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
     public class WaveDuelDefenderSettingRequest
     {
         [JsonProperty("decks")]
-        public JObject Decks { get; set; }
+        public JObject decks { get; set; }
     }
 }
 

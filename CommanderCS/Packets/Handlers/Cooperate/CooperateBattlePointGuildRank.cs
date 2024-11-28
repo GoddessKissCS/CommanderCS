@@ -1,8 +1,37 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+
 namespace CommanderCS.Packets.Handlers.Cooperate
 {
-    public class CooperateBattlePointGuildRank
-    {
+
+    [Packet(Id = Method.CooperateBattlePointGuildRank)]
+    public class CooperateBattlePointGuildRank : BaseMethodHandler<CooperateBattlePointGuildRankRequest> 
+	{
+
+        public override object Handle(CooperateBattlePointGuildRankRequest @params)
+        {
+            ResponsePacket response = new ResponsePacket()
+            {
+                Id = BasePacket.Id,
+            };
+
+
+			// ADD sometime missing data
+
+			List<CooperateBattlePointGuildRankingInfo> cooperateBattlePointGuildRankingInfos = new() { };
+
+
+            response.Result = cooperateBattlePointGuildRankingInfos;
+
+            return response;
+
+        }
+
+
     }
+
+    public class CooperateBattlePointGuildRankRequest { }
 }
 
 /*	// Token: 0x06006105 RID: 24837 RVA: 0x000120F8 File Offset: 0x000102F8

@@ -1,8 +1,6 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
-using CommanderCSLibrary.Shared;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
-
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -11,12 +9,10 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(UpgradeGuildLevelRequest @params)
         {
-            var user = GetUserGameProfile();
-            var rg = GetRegulation();
 
-            var guild = DatabaseManager.Guild.FindByUid(user.GuildId);
+            var guild = DatabaseManager.Guild.FindByUid(User.GuildId);
 
-            var guildUpgradeData = rg.guildLevelInfoDtbl.FirstOrDefault(x => x.level == guild.Level + 1);
+            var guildUpgradeData = Regulation.guildLevelInfoDtbl.FirstOrDefault(x => x.level == guild.Level + 1);
 
             guild.Point -= guildUpgradeData.cost;
 
@@ -24,9 +20,9 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             guild.MaxCount = guildUpgradeData.maxcount;
 
-            DatabaseManager.Guild.UpdateGuildPointLevelMaxCount(user.GuildId, guild);
+            DatabaseManager.Guild.UpdateGuildPointLevelMaxCount(User.GuildId, guild);
 
-            var guildInfo = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+            var guildInfo = DatabaseManager.Guild.RequestGuild(User.GuildId, User.Uno);
 
             CommanderCSLibrary.Shared.Protocols.GuildInfo guildList = new()
             {
@@ -64,7 +60,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 		this.localUser.guildInfo.level = result.guildInfo.level;
 		this.localUser.guildInfo.maxCount = result.guildInfo.maxCount;
 		UIGuildManagePopup uiguildManagePopup = UnityEngine.Object.FindObjectOfType(typeof(UIGuildManagePopup)) as UIGuildManagePopup;
-		if (uiguildManagePopup != null)
+		if (uiguildManagePopup is not null)
 		{
 			uiguildManagePopup.OnRefresh();
 		}

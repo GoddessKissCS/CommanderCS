@@ -29,7 +29,7 @@ namespace CommanderCS.Packets.Handlers.Annihilation
 	// Token: 0x0600601A RID: 24602 RVA: 0x001AFDD4 File Offset: 0x001ADFD4
 	private IEnumerator AnnihilationEnemyInformationResult(JsonRpcClient.Request request, Protocols.ScrambleStageInfo result)
 	{
-		if (result == null)
+		if (result is null)
 		{
 			yield break;
 		}
@@ -43,7 +43,7 @@ namespace CommanderCS.Packets.Handlers.Annihilation
 		battleData.attacker = roUser2;
 		battleData.stageId = text;
 		UIManager.instance.world.readyBattle.InitAndOpenReadyBattle(battleData);
-		if (result.user != null)
+		if (result.user is not null)
 		{
 			UIManager.instance.world.readyBattle.duel.SetProgressingBattle(result.user);
 		}

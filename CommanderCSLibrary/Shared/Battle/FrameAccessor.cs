@@ -1,4 +1,5 @@
 using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 
 namespace CommanderCSLibrary.Shared.Battle
 {
@@ -88,7 +89,7 @@ namespace CommanderCSLibrary.Shared.Battle
             skillDr = regulation.skillDtbl[skill.dri];
             unitMotionDr = regulation.unitMotionDtbl[skill.unitMotionDri];
             projectileHitDelayTime = 0;
-            if (skill.FireActionDr != null)
+            if (skill.FireActionDr is not null)
             {
                 FireActionDataRow.TimeSet timeSet = skill.FireActionDr.GetTimeSet(simulator.CanEnableFireAction(unit));
                 projectileHitDelayTime = timeSet.hitDelayTime;

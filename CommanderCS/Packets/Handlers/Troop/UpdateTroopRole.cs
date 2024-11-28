@@ -1,7 +1,30 @@
+using CommanderCS.Host;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Troop
 {
-    public class UpdateTroopRole
+    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.UpdateTroopRole)]
+    public class UpdateTroopRole : BaseMethodHandler<UpdateTroopRoleRequest>
     {
+        public override object Handle(UpdateTroopRoleRequest @params)
+        {
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = true,
+            };
+
+            return response;
+        }
+    }
+
+    public class UpdateTroopRoleRequest
+    {
+        [JsonProperty("cid")]
+        public int cid { get; set; }
+
+        [JsonProperty("role")]
+        public string role { get; set; }
     }
 }
 

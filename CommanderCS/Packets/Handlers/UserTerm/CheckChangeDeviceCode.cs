@@ -11,7 +11,7 @@ namespace CommanderCS.Host.Handlers.UserTerm
         {
             var result = DatabaseManager.DeviceCode.FindByDeviceCode(@params.dac);
 
-            if (result == null)
+            if (result is null)
             {
                 ErrorPacket error = new()
                 {

@@ -1,5 +1,5 @@
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 
 namespace CommanderCSLibrary.Shared.Battle
@@ -489,7 +489,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 return false;
             }
             Skill skill = skills[skillIdx];
-            if (skill == null)
+            if (skill is null)
             {
                 return false;
             }
@@ -738,7 +738,7 @@ namespace CommanderCSLibrary.Shared.Battle
             for (int i = 0; i < src._skills.Count; i++)
             {
                 Skill skill = src._skills[i];
-                if (skill == null)
+                if (skill is null)
                 {
                     unit._skills.Add(null);
                 }

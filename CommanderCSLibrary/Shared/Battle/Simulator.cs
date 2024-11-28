@@ -1,6 +1,6 @@
 using CommanderCSLibrary.Shared.Battle.Internal;
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Security.Cryptography;
@@ -82,7 +82,7 @@ namespace CommanderCSLibrary.Shared.Battle
         {
             get
             {
-                if (result == null)
+                if (result is null)
                 {
                     return false;
                 }
@@ -130,7 +130,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         //public static Simulator Create(Shared.Regulation.Regulation rg, BattleData bd)
         //{
-        //	if (bd == null)
+        //	if (bd is null)
         //	{
         //		throw new ArgumentNullException("BattleData");
         //	}
@@ -151,11 +151,11 @@ namespace CommanderCSLibrary.Shared.Battle
         //	{
         //		list3.Add(bd.defender.battleTroopList[j].ToBattleTroop());
         //	}
-        //	if (bd.rewardItems != null)
+        //	if (bd.rewardItems is not null)
         //	{
         //		bd.rewardItems.RemoveAll((Protocols.RewardInfo.RewardData row) => row.rewardType == ERewardType.Favor);
         //		Protocols.RewardInfo.RewardData rewardData = bd.rewardItems.Find((Protocols.RewardInfo.RewardData row) => row.rewardType == ERewardType.Goods && row.rewardId == "4");
-        //		if (rewardData != null)
+        //		if (rewardData is not null)
         //		{
         //			bd.rewardItems.Remove(rewardData);
         //		}
@@ -186,7 +186,7 @@ namespace CommanderCSLibrary.Shared.Battle
         //				if (num3 > 0)
         //				{
         //					num2 += num3;
-        //					List<Troop.Slot> list4 = troop._slots.FindAll((Troop.Slot x) => x != null && !string.IsNullOrEmpty(x.id));
+        //					List<Troop.Slot> list4 = troop._slots.FindAll((Troop.Slot x) => x is not null && !string.IsNullOrEmpty(x.id));
         //					for (int m = 0; m < num3; m++)
         //					{
         //						int index = UnityEngine.Random.Range(0, list4.Count);
@@ -201,13 +201,13 @@ namespace CommanderCSLibrary.Shared.Battle
         //	initState._stageId = bd.stageId;
         //	List<GuildSkillState> list5 = null;
         //	RoLocalUser localUser = RemoteObjectManager.instance.localUser;
-        //	if (localUser.IsExistGuild() && localUser.guildInfo.idx != 0 && localUser.guildSkillList != null)
+        //	if (localUser.IsExistGuild() && localUser.guildInfo.idx != 0 && localUser.guildSkillList is not null)
         //	{
         //		list5 = new List<GuildSkillState>();
         //		for (int n = 0; n < localUser.guildSkillList.Count; n++)
         //		{
         //			GuildSkillState guildSkillState = localUser.guildSkillList[n].ToBattleGuildSkillData();
-        //			if (guildSkillState != null && guildSkillState._skillLevel > 0)
+        //			if (guildSkillState is not null && guildSkillState._skillLevel > 0)
         //			{
         //				list5.Add(guildSkillState);
         //			}
@@ -215,7 +215,7 @@ namespace CommanderCSLibrary.Shared.Battle
         //	}
         //	initState._guildSkills = list5;
         //	List<string> list6 = null;
-        //	if (localUser.completeRewardGroupList != null)
+        //	if (localUser.completeRewardGroupList is not null)
         //	{
         //		list6 = new List<string>();
         //		for (int num6 = 0; num6 < localUser.completeRewardGroupList.Count; num6++)
@@ -251,7 +251,7 @@ namespace CommanderCSLibrary.Shared.Battle
         //		initState._dualData._enemyRank = bd.defender.duelRanking;
         //		initState._dualData._enemyGuildName = bd.defender.guildName;
         //		initState._dualData._enemyUno = bd.defender.uno;
-        //		if (bd.defender.guildSkillList != null)
+        //		if (bd.defender.guildSkillList is not null)
         //		{
         //			List<GuildSkillState> list7 = new List<GuildSkillState>();
         //			for (int num7 = 0; num7 < bd.defender.guildSkillList.Count; num7++)
@@ -264,7 +264,7 @@ namespace CommanderCSLibrary.Shared.Battle
         //			initState._dualData._enemyGuildSkills = list7;
         //		}
         //		List<string> list8 = null;
-        //		if (bd.defender.completeRewardGroupList != null)
+        //		if (bd.defender.completeRewardGroupList is not null)
         //		{
         //			list8 = new List<string>();
         //			for (int num8 = 0; num8 < bd.defender.completeRewardGroupList.Count; num8++)
@@ -287,7 +287,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         //public static Simulator Create(Shared.Regulation.Regulation rg, InitState initState)
         //{
-        //	if (initState == null)
+        //	if (initState is null)
         //	{
         //		throw new ArgumentNullException("initState");
         //	}
@@ -303,11 +303,11 @@ namespace CommanderCSLibrary.Shared.Battle
 
         public static Simulator Create(Regulation.Regulation rg, Record record)
         {
-            if (rg == null)
+            if (rg is null)
             {
                 throw new ArgumentNullException("rg");
             }
-            if (record == null)
+            if (record is null)
             {
                 throw new ArgumentNullException("record");
             }
@@ -363,12 +363,12 @@ namespace CommanderCSLibrary.Shared.Battle
                 case EBattleType.WorldDuel:
                 case EBattleType.Conquest:
                     simulator.record._option.timeLimit = -1;
-                    simulator.record._option.turnLimit = Constants.DefineDataTable.ARENA_END_TURN;
+                    simulator.record._option.turnLimit = RemoteObjectManager.DefineDataTable.ARENA_END_TURN;
                     break;
 
                 case EBattleType.WaveDuel:
                     simulator.record._option.timeLimit = -1;
-                    simulator.record._option.turnLimit = Constants.DefineDataTable.ARENA_3WAVE_END_TURN;
+                    simulator.record._option.turnLimit = RemoteObjectManager.DefineDataTable.ARENA_3WAVE_END_TURN;
                     break;
 
                 case EBattleType.Guerrilla:
@@ -455,6 +455,7 @@ namespace CommanderCSLibrary.Shared.Battle
             {
                 simulator.isReplayMode = true;
             }
+
             simulator.frameNum = 0;
             simulator.isLhsAnnihilated = false;
             simulator.isRhsAnnihilated = false;
@@ -481,7 +482,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 for (int i = 0; i < troop.slots.Count; i++)
                 {
                     Troop.Slot slot = troop.slots[i];
-                    if (slot == null || slot.isEmpty)
+                    if (slot is null || slot.isEmpty)
                     {
                         list.Add(null);
                         continue;
@@ -543,7 +544,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 for (int k = 0; k < troop2.slots.Count; k++)
                 {
                     Troop.Slot slot2 = troop2.slots[k];
-                    if (slot2 == null || slot2.isEmpty)
+                    if (slot2 is null || slot2.isEmpty)
                     {
                         list.Add(null);
                         continue;
@@ -779,7 +780,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         private void _InitUnitOpartsData(Unit unit, Troop.Slot slot)
         {
-            if (slot.equipItem == null)
+            if (slot.equipItem is null)
             {
                 return;
             }
@@ -870,7 +871,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 return;
             }
             CommanderCostumeDataRow commanderCostumeDataRow = regulation.commanderCostumeDtbl[unit._ctdri];
-            if (commanderCostumeDataRow != null)
+            if (commanderCostumeDataRow is not null)
             {
                 switch (commanderCostumeDataRow.statType1)
                 {
@@ -987,7 +988,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 return;
             }
             List<FavorDataRow> list = regulation.favorDtbl.FindAll((FavorDataRow row) => row.cid == int.Parse(unit._cid) && row.step <= unit.favorRewardStep);
-            if (list == null)
+            if (list is null)
             {
                 return;
             }
@@ -1042,7 +1043,7 @@ namespace CommanderCSLibrary.Shared.Battle
             {
                 list = initState.dualData._enemyGuildSkills;
             }
-            if (list == null)
+            if (list is null)
             {
                 return;
             }
@@ -1113,7 +1114,7 @@ namespace CommanderCSLibrary.Shared.Battle
             {
                 groupBuffs = initState.dualData._enemyGroupBuffs;
             }
-            if (groupBuffs == null)
+            if (groupBuffs is null)
             {
                 return;
             }
@@ -1121,7 +1122,7 @@ namespace CommanderCSLibrary.Shared.Battle
             {
                 bool flag = false;
                 GroupInfoDataRow groupInfoDataRow = regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => data.groupIdx == groupBuffs[gi] && data.rewardType >= ERewardType.GroupEff_1 && data.rewardType <= ERewardType.GroupEff_8);
-                if (groupInfoDataRow == null)
+                if (groupInfoDataRow is null)
                 {
                     continue;
                 }
@@ -1149,7 +1150,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 else if (groupInfoDataRow.rewardIdx == 1004)
                 {
                     GroupMemberDataRow groupMemberDataRow = regulation.groupMemberDtbl.Find((GroupMemberDataRow row) => row.gidx == groupBuffs[gi] && row.memberType == 1 && row.memberIdx == unit.cid);
-                    if (groupMemberDataRow != null)
+                    if (groupMemberDataRow is not null)
                     {
                         flag = true;
                     }
@@ -1305,7 +1306,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         private void _InitUnitWeaponData(Unit unit, Troop.Slot slot)
         {
-            if (slot.weaponItem == null || slot.weaponItem.Count <= 0)
+            if (slot.weaponItem is null || slot.weaponItem.Count <= 0)
             {
                 return;
             }
@@ -1365,7 +1366,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 return;
             }
             WeaponSetDataRow weaponSetDataRow = regulation.weaponSetDtbl[text];
-            if (weaponSetDataRow != null)
+            if (weaponSetDataRow is not null)
             {
                 switch (weaponSetDataRow.weaponSetStatType)
                 {
@@ -1398,7 +1399,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         private void _InitWeaponSkillData(Unit unit, Skill skill, Troop.Slot slot)
         {
-            if (skill == null || slot.weaponItem == null)
+            if (skill is null || slot.weaponItem is null)
             {
                 return;
             }
@@ -1454,7 +1455,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         private void _AddUnitSkill(Unit unit, Skill skill)
         {
-            if (skill == null)
+            if (skill is null)
             {
                 unit._skills.Add(null);
                 return;
@@ -1501,12 +1502,12 @@ namespace CommanderCSLibrary.Shared.Battle
 
         private void _InitSkillData(Unit unit, Skill skill, Troop.Slot.Skill slot = null)
         {
-            if (skill == null)
+            if (skill is null)
             {
                 return;
             }
             skill._sp = skill.SkillDataRow.initSp;
-            if (slot != null)
+            if (slot is not null)
             {
                 int num = 0;
                 if (initState.battleType == EBattleType.WaveBattle && initState.waveBattleData._wave > 1)
@@ -1558,7 +1559,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 }
                 Troop.Slot.Skill slot2 = slot.skills.Find((Troop.Slot.Skill x) => x.id == skillDrk);
                 int count = unit.skills.Count;
-                if (slot.weaponItem != null && slot.weaponItem.ContainsKey(count))
+                if (slot.weaponItem is not null && slot.weaponItem.ContainsKey(count))
                 {
                     WeaponDataRow weaponDataRow = regulation.weaponDtbl[slot.weaponItem[count].id];
                     if (!_CheckWeaponData(weaponDataRow, Shared.Regulation.Regulation.ParseWeaponSkillType(count)))
@@ -1581,7 +1582,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 _AddUnitSkill(unit, skill);
             }
             string text = string.Empty;
-            if (slot.weaponItem != null && slot.weaponItem.ContainsKey(4))
+            if (slot.weaponItem is not null && slot.weaponItem.ContainsKey(4))
             {
                 WeaponDataRow weaponDataRow2 = regulation.weaponDtbl[slot.weaponItem[4].id];
                 if (!_CheckWeaponData(weaponDataRow2, Shared.Regulation.Regulation.ParseWeaponSkillType(4)))
@@ -1612,7 +1613,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         private Frame _CreateInitFrame()
         {
-            Random random = new Random(initState.randomSeed);
+            Random random = new(initState.randomSeed);
             Frame frame = new()
             {
                 _units = _CreateInitStateUnits(),
@@ -1649,10 +1650,10 @@ namespace CommanderCSLibrary.Shared.Battle
                     frame._isWaitingNextTurn = false;
                     frame._isWaitingInput = true;
                     Unit unit = frame.units[frame._turnUnitIndex];
-                    if (unit != null)
+                    if (unit is not null)
                     {
                         Skill skill = unit._skills[0];
-                        if (skill != null)
+                        if (skill is not null)
                         {
                             SkillDataRow skillDataRow = regulation.skillDtbl[skill.dri];
                             skill._sp = skillDataRow.maxSp;
@@ -1681,13 +1682,13 @@ namespace CommanderCSLibrary.Shared.Battle
             Random random = new(curr.randomSeed);
             Frame frame = new()
             {
-                _lhsInput = ((lhsInput != null) ? Input.Copy(lhsInput) : null),
-                _rhsInput = ((rhsInput != null) ? Input.Copy(rhsInput) : null),
+                _lhsInput = ((lhsInput is not null) ? Input.Copy(lhsInput) : null),
+                _rhsInput = ((rhsInput is not null) ? Input.Copy(rhsInput) : null),
                 _units = []
             };
             for (int i = 0; i < curr._units.Count; i++)
             {
-                if (curr._units[i] == null)
+                if (curr._units[i] is null)
                 {
                     frame._units.Add(null);
                 }
@@ -1729,7 +1730,7 @@ namespace CommanderCSLibrary.Shared.Battle
                     for (int j = lhsTroopStartIndex; j < num; j++)
                     {
                         Unit unit = frame._units[j];
-                        if (unit != null)
+                        if (unit is not null)
                         {
                             unit._isEnteredNow = true;
                         }
@@ -1742,7 +1743,7 @@ namespace CommanderCSLibrary.Shared.Battle
                     for (int k = rhsTroopStartIndex; k < num2; k++)
                     {
                         Unit unit2 = frame._units[k];
-                        if (unit2 != null)
+                        if (unit2 is not null)
                         {
                             unit2._isEnteredNow = true;
                         }
@@ -1766,7 +1767,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 for (int l = 0; l < 9; l++)
                 {
                     Unit unit3 = frame._units[l + frame.lhsTroopStartIndex];
-                    if (unit3 != null && !unit3.isDead)
+                    if (unit3 is not null && !unit3.isDead)
                     {
                         isLhsAnnihilated = false;
                         break;
@@ -1781,7 +1782,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 for (int m = 0; m < 9; m++)
                 {
                     Unit unit4 = frame._units[m + frame.rhsTroopStartIndex];
-                    if (unit4 != null && !unit4.isDead)
+                    if (unit4 is not null && !unit4.isDead)
                     {
                         isRhsAnnihilated = false;
                         break;
@@ -1820,11 +1821,11 @@ namespace CommanderCSLibrary.Shared.Battle
             }
             random.Next();
             frame._randomSeed = random.seed;
-            if (lhsInput != null)
+            if (lhsInput is not null)
             {
                 lhsInput._result = frame._lhsInput.result;
             }
-            if (rhsInput != null)
+            if (rhsInput is not null)
             {
                 rhsInput._result = frame._rhsInput.result;
             }
@@ -1833,7 +1834,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         private string _MakeChecksum(Record record)
         {
-            StringBuilder stringBuilder = new StringBuilder();
+            StringBuilder stringBuilder = new();
             stringBuilder.Append(record.length + ",");
             Frame frame = record.frames[0];
             stringBuilder.Append(frame.randomSeed + ",");
@@ -1842,7 +1843,7 @@ namespace CommanderCSLibrary.Shared.Battle
             for (int i = 0; i < frame2.units.Count; i++)
             {
                 Unit unit = frame2.units[i];
-                if (unit != null)
+                if (unit is not null)
                 {
                     stringBuilder.Append(unit.health + ",");
                     if (unit.hasActiveSkill)
@@ -1851,7 +1852,7 @@ namespace CommanderCSLibrary.Shared.Battle
                     }
                 }
             }
-            if (record.result != null)
+            if (record.result is not null)
             {
                 stringBuilder.Append(record.result.winSide + ",");
                 stringBuilder.Append(record.result.isTimeOut + ",");
@@ -1888,7 +1889,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 for (int j = lhsTroopStartIndex; j < num; j++)
                 {
                     Troop.Slot slot = troop._slots[j - lhsTroopStartIndex];
-                    if (frame._units[j] == null)
+                    if (frame._units[j] is null)
                     {
                         slot = null;
                     }
@@ -1917,7 +1918,7 @@ namespace CommanderCSLibrary.Shared.Battle
                                 for (int k = 1; k < unit.skills.Count; k++)
                                 {
                                     Skill skill = unit.skills[k];
-                                    if (skill != null)
+                                    if (skill is not null)
                                     {
                                         skill._sp += skill.SkillDataRow.spOnCriticalHit;
                                         if (skill._sp >= skill.SkillDataRow.maxSp)
@@ -1934,7 +1935,7 @@ namespace CommanderCSLibrary.Shared.Battle
                                 for (int l = 1; l < unit.skills.Count; l++)
                                 {
                                     Skill skill2 = unit.skills[l];
-                                    if (skill2 != null)
+                                    if (skill2 is not null)
                                     {
                                         skill2._sp += skill2.SkillDataRow.spOnHit;
                                         if (skill2._sp >= skill2.SkillDataRow.maxSp)
@@ -1951,7 +1952,7 @@ namespace CommanderCSLibrary.Shared.Battle
                                 for (int m = 1; m < unit.skills.Count; m++)
                                 {
                                     Skill skill3 = unit.skills[m];
-                                    if (skill3 != null)
+                                    if (skill3 is not null)
                                     {
                                         skill3._sp += skill3.SkillDataRow.spOnBeHit;
                                         if (skill3._sp >= skill3.SkillDataRow.maxSp)
@@ -1968,16 +1969,18 @@ namespace CommanderCSLibrary.Shared.Battle
                         {
                             slot.damagedHealth = 0;
                         }
-                        slot.skills = new List<Troop.Slot.Skill>();
+                        slot.skills = [];
                         for (int n = 1; n < 4; n++)
                         {
                             Skill skill4 = unit.skills[n];
-                            if (skill4 != null)
+                            if (skill4 is not null)
                             {
-                                Troop.Slot.Skill skill5 = new Troop.Slot.Skill();
-                                skill5.id = unitDataRow.skillDrks[n];
-                                skill5.lv = skill4.level;
-                                skill5.sp = skill4.sp;
+                                Troop.Slot.Skill skill5 = new()
+                                {
+                                    id = unitDataRow.skillDrks[n],
+                                    lv = skill4.level,
+                                    sp = skill4.sp
+                                };
                                 slot.skills.Add(skill5);
                             }
                         }
@@ -1986,7 +1989,7 @@ namespace CommanderCSLibrary.Shared.Battle
                         slot.statsDefense = unit.statsDefense;
                     }
                     troop._slots[j - lhsTroopStartIndex] = slot;
-                    if (slot != null)
+                    if (slot is not null)
                     {
                         troop._statsAttack += slot.statsAttack;
                         troop._statsHealing += slot.statsHealing;
@@ -1995,7 +1998,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 }
                 list.Add(troop);
             }
-            List<Troop> list2 = new List<Troop>();
+            List<Troop> list2 = [];
             for (int num3 = 0; num3 < rhsTroops.Count; num3++)
             {
                 int rhsTroopStartIndex = GetRhsTroopStartIndex(num3);
@@ -2004,7 +2007,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 for (int num5 = rhsTroopStartIndex; num5 < num4; num5++)
                 {
                     Troop.Slot slot2 = troop2._slots[num5 - rhsTroopStartIndex];
-                    if (frame._units[num5] == null)
+                    if (frame._units[num5] is null)
                     {
                         slot2 = null;
                     }
@@ -2033,7 +2036,7 @@ namespace CommanderCSLibrary.Shared.Battle
                                 for (int num7 = 1; num7 < unit2.skills.Count; num7++)
                                 {
                                     Skill skill6 = unit2.skills[num7];
-                                    if (skill6 != null)
+                                    if (skill6 is not null)
                                     {
                                         skill6._sp += skill6.SkillDataRow.spOnCriticalHit;
                                         if (skill6._sp >= skill6.SkillDataRow.maxSp)
@@ -2050,7 +2053,7 @@ namespace CommanderCSLibrary.Shared.Battle
                                 for (int num8 = 1; num8 < unit2.skills.Count; num8++)
                                 {
                                     Skill skill7 = unit2.skills[num8];
-                                    if (skill7 != null)
+                                    if (skill7 is not null)
                                     {
                                         skill7._sp += skill7.SkillDataRow.spOnHit;
                                         if (skill7._sp >= skill7.SkillDataRow.maxSp)
@@ -2067,7 +2070,7 @@ namespace CommanderCSLibrary.Shared.Battle
                                 for (int num9 = 1; num9 < unit2.skills.Count; num9++)
                                 {
                                     Skill skill8 = unit2.skills[num9];
-                                    if (skill8 != null)
+                                    if (skill8 is not null)
                                     {
                                         skill8._sp += skill8.SkillDataRow.spOnBeHit;
                                         if (skill8._sp >= skill8.SkillDataRow.maxSp)
@@ -2086,16 +2089,18 @@ namespace CommanderCSLibrary.Shared.Battle
                         }
                         if (initState.battleType == EBattleType.Conquest)
                         {
-                            slot2.skills = new List<Troop.Slot.Skill>();
+                            slot2.skills = [];
                             for (int num10 = 1; num10 < 4; num10++)
                             {
                                 Skill skill9 = unit2.skills[num10];
-                                if (skill9 != null)
+                                if (skill9 is not null)
                                 {
-                                    Troop.Slot.Skill skill10 = new Troop.Slot.Skill();
-                                    skill10.id = unitDataRow2.skillDrks[num10];
-                                    skill10.lv = skill9.level;
-                                    skill10.sp = skill9.sp;
+                                    Troop.Slot.Skill skill10 = new()
+                                    {
+                                        id = unitDataRow2.skillDrks[num10],
+                                        lv = skill9.level,
+                                        sp = skill9.sp
+                                    };
                                     slot2.skills.Add(skill10);
                                 }
                             }
@@ -2105,7 +2110,7 @@ namespace CommanderCSLibrary.Shared.Battle
                         slot2.statsDefense = unit2.statsDefense;
                     }
                     troop2._slots[num5 - rhsTroopStartIndex] = slot2;
-                    if (slot2 != null)
+                    if (slot2 is not null)
                     {
                         troop2._statsAttack += slot2.statsAttack;
                         troop2._statsHealing += slot2.statsHealing;
@@ -2181,7 +2186,7 @@ namespace CommanderCSLibrary.Shared.Battle
             }
             if (isReplayMode)
             {
-                if (lhsInput != null || rhsInput != null)
+                if (lhsInput is not null || rhsInput is not null)
                 {
                     throw new ArgumentException("Input Error");
                 }
@@ -2197,11 +2202,11 @@ namespace CommanderCSLibrary.Shared.Battle
             frameNum++;
             if (!isReplayMode)
             {
-                if (frame.lhsInput != null && frame.lhsInput.result)
+                if (frame.lhsInput is not null && frame.lhsInput.result)
                 {
                     record._lhsInputMap.Add(frameNum - 1, Input.Copy(frame.lhsInput));
                 }
-                if (frame.rhsInput != null && frame.rhsInput.result)
+                if (frame.rhsInput is not null && frame.rhsInput.result)
                 {
                     record._rhsInputMap.Add(frameNum - 1, Input.Copy(frame.rhsInput));
                 }
@@ -2217,7 +2222,7 @@ namespace CommanderCSLibrary.Shared.Battle
                     for (int i = lhsTroopStartIndex; i < num; i++)
                     {
                         Unit unit = frame._units[i];
-                        if (unit != null)
+                        if (unit is not null)
                         {
                             unit._isEnteredNow = true;
                         }
@@ -2231,7 +2236,7 @@ namespace CommanderCSLibrary.Shared.Battle
                         for (int j = lhsTroopStartIndex; j < num; j++)
                         {
                             Unit unit2 = frame._units[j];
-                            if (unit2 != null)
+                            if (unit2 is not null)
                             {
                                 unit2._isEnteredNow = true;
                             }
@@ -2249,7 +2254,7 @@ namespace CommanderCSLibrary.Shared.Battle
                     for (int k = rhsTroopStartIndex; k < num2; k++)
                     {
                         Unit unit3 = frame._units[k];
-                        if (unit3 != null)
+                        if (unit3 is not null)
                         {
                             unit3._isEnteredNow = true;
                         }
@@ -2263,7 +2268,7 @@ namespace CommanderCSLibrary.Shared.Battle
                         for (int l = rhsTroopStartIndex; l < num2; l++)
                         {
                             Unit unit4 = frame._units[l];
-                            if (unit4 != null)
+                            if (unit4 is not null)
                             {
                                 unit4._isEnteredNow = true;
                             }
@@ -2361,7 +2366,7 @@ namespace CommanderCSLibrary.Shared.Battle
 
         private void _AccessFrame(FrameAccessor accessor, Frame frame)
         {
-            if (accessor == null)
+            if (accessor is null)
             {
                 throw new ArgumentNullException("accessor");
             }
@@ -2370,7 +2375,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 for (int i = 0; i < frame._units.Count; i++)
                 {
                     Unit unit = frame._units[i];
-                    if (unit != null)
+                    if (unit is not null)
                     {
                         _AccessUnit(accessor, i, unit);
                     }
@@ -2386,7 +2391,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 for (int i = 0; i < unit._skills.Count; i++)
                 {
                     Skill skill = unit._skills[i];
-                    if (skill != null)
+                    if (skill is not null)
                     {
                         _AccessSkill(accessor, i, skill);
                     }
@@ -2403,7 +2408,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 for (int i = 0; i < skill._firePoints.Count; i++)
                 {
                     FirePoint firePoint = skill._firePoints[i];
-                    if (firePoint != null)
+                    if (firePoint is not null)
                     {
                         index2 = i;
                         _AccessFirePoint(accessor, i, firePoint);
@@ -2412,7 +2417,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 for (int j = 0; j < skill._fireSubPoints.Count; j++)
                 {
                     FirePoint firePoint2 = skill._fireSubPoints[j];
-                    if (firePoint2 != null)
+                    if (firePoint2 is not null)
                     {
                         _AccessFirePoint(accessor, index2, firePoint2);
                     }
@@ -2428,7 +2433,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 for (int i = 0; i < firePoint._projectiles.Count; i++)
                 {
                     Projectile projectile = firePoint._projectiles[i];
-                    if (projectile != null)
+                    if (projectile is not null)
                     {
                         accessor._AccessProjectile(i, projectile);
                         accessor.OnProjectileAccessEnd();
@@ -2488,7 +2493,7 @@ namespace CommanderCSLibrary.Shared.Battle
         public bool CanUnitInput(int unitIdx)
         {
             Unit unit = frame.units[unitIdx];
-            if (unit == null)
+            if (unit is null)
             {
                 return false;
             }
@@ -2531,7 +2536,7 @@ namespace CommanderCSLibrary.Shared.Battle
                     for (int i = 0; i < 9; i++)
                     {
                         Unit unit = simulator.frame.units[lhsTroopStartIndex + i];
-                        if (unit != null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
+                        if (unit is not null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
                         {
                             int num = simulator.frame.FindSkillTarget(simulator.regulation, unit._unitIdx, unit._activeSkillIdx);
                             if (num >= 0)
@@ -2566,7 +2571,7 @@ namespace CommanderCSLibrary.Shared.Battle
                     for (int i = 0; i < 9; i++)
                     {
                         Unit unit = simulator.frame.units[lhsTroopStartIndex + i];
-                        if (unit != null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
+                        if (unit is not null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
                         {
                             int num = simulator.frame.FindSkillTarget(simulator.regulation, unit._unitIdx, unit._activeSkillIdx);
                             if (num >= 0)
@@ -2580,7 +2585,7 @@ namespace CommanderCSLibrary.Shared.Battle
                     for (int i = 0; i < 9; i++)
                     {
                         Unit unit = simulator.frame.units[rhsTroopStartIndex + i];
-                        if (unit != null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
+                        if (unit is not null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
                         {
                             int num = simulator.frame.FindSkillTarget(simulator.regulation, unit._unitIdx, unit._activeSkillIdx);
                             if (num >= 0)
@@ -2614,7 +2619,7 @@ namespace CommanderCSLibrary.Shared.Battle
                     for (int i = 0; i < 9; i++)
                     {
                         Unit unit = simulator.frame.units[lhsTroopStartIndex + i];
-                        if (unit != null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
+                        if (unit is not null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
                         {
                             int num = simulator.frame.FindSkillTarget(simulator.regulation, unit._unitIdx, unit._activeSkillIdx);
                             if (num >= 0)
@@ -2629,7 +2634,7 @@ namespace CommanderCSLibrary.Shared.Battle
             return simulator.record;
         }
 
-        public static Record Simulation(Regulation.Regulation rg, string record, bool replay = false)
+        public static Simulator Simulation(Regulation.Regulation rg, string record, bool replay = false)
         {
             Record record2 = (Record)JsonConvert.DeserializeObject<JToken>(record);
             if (!replay)
@@ -2649,7 +2654,7 @@ namespace CommanderCSLibrary.Shared.Battle
                     for (int i = 0; i < 9; i++)
                     {
                         Unit unit = simulator.frame.units[lhsTroopStartIndex + i];
-                        if (unit != null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
+                        if (unit is not null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
                         {
                             int num = simulator.frame.FindSkillTarget(simulator.regulation, unit._unitIdx, unit._activeSkillIdx);
                             if (num >= 0)
@@ -2661,13 +2666,65 @@ namespace CommanderCSLibrary.Shared.Battle
                 }
                 simulator.Step(lhsInput, null);
             }
-            return simulator.record;
+            return simulator;
         }
+
+        public static Simulator ReplayPlunderSimulation(Regulation.Regulation rg, string record, bool replay = false)
+        {
+            Record record2 = (Record)JsonConvert.DeserializeObject<JToken>(record);
+            if (!replay)
+            {
+                record2._lhsInputMap.Clear();
+                record2._rhsInputMap.Clear();
+                record2._length = 0;
+            }
+            Simulator simulator = Create(rg, record2);
+            Input lhsInput = null;
+            Input rhsInput = null;
+            while (!simulator.isEnded)
+            {
+                if (!simulator.isReplayMode)
+                {
+                    lhsInput = null;
+                    int lhsTroopStartIndex = simulator.frame.lhsTroopStartIndex;
+                    for (int i = 0; i < 9; i++)
+                    {
+                        Unit unit = simulator.frame.units[lhsTroopStartIndex + i];
+                        if (unit is not null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
+                        {
+                            int num = simulator.frame.FindSkillTarget(simulator.regulation, unit._unitIdx, unit._activeSkillIdx);
+                            if (num >= 0)
+                            {
+                                lhsInput = new Input(unit._unitIdx, unit._activeSkillIdx, -1);
+                            }
+                        }
+                    }
+                    rhsInput = null;
+                    int rhsTroopStartIndex = simulator.frame.rhsTroopStartIndex;
+                    for (int i = 0; i < 9; i++)
+                    {
+                        Unit unit = simulator.frame.units[rhsTroopStartIndex + i];
+                        if (unit is not null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
+                        {
+                            int num = simulator.frame.FindSkillTarget(simulator.regulation, unit._unitIdx, unit._activeSkillIdx);
+                            if (num >= 0)
+                            {
+                                lhsInput = new Input(unit._unitIdx, unit._activeSkillIdx, -1);
+                            }
+                        }
+                    }
+                }
+                simulator.Step(lhsInput, rhsInput);
+            }
+            return simulator;
+        }
+
+
 
         //public static Record Simulation(Shared.Regulation.Regulation rg, BattleData bd, bool enableEffect = true)
         //{
         //	Simulator simulator = Create(rg, bd);
-        //	if (simulator == null)
+        //	if (simulator is null)
         //	{
         //		return null;
         //	}
@@ -2680,7 +2737,7 @@ namespace CommanderCSLibrary.Shared.Battle
         //		for (int i = 0; i < 9; i++)
         //		{
         //			Unit unit = simulator.frame.units[lhsTroopStartIndex + i];
-        //			if (unit != null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
+        //			if (unit is not null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
         //			{
         //				int num = simulator.frame.FindSkillTarget(simulator.regulation, unit._unitIdx, unit._activeSkillIdx);
         //				if (num >= 0)
@@ -2703,7 +2760,7 @@ namespace CommanderCSLibrary.Shared.Battle
                 for (int j = 0; j < 9; j++)
                 {
                     Unit unit = frame.units[j + lhsTroopStartIndex];
-                    if (unit != null && unit._cdri >= 0 && regulation.commanderDtbl[unit._cdri].resourceId == resourceId)
+                    if (unit is not null && unit._cdri >= 0 && regulation.commanderDtbl[unit._cdri].resourceId == resourceId)
                     {
                         return unit;
                     }

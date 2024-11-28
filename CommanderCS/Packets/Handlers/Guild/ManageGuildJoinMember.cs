@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -9,9 +9,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(ManageGuildJoinMemberRequest @params)
         {
-            var user = GetUserGameProfile();
-
-            var application = DatabaseManager.GuildApplication.GetGuildApplications(user.GuildId);
+            var application = DatabaseManager.GuildApplication.GetGuildApplications(User.GuildId);
 
             ResponsePacket response = new()
             {

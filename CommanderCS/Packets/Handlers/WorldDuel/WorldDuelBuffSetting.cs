@@ -1,9 +1,23 @@
+using CommanderCS.Host;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.WorldDuel
 {
-    public class WorldDuelBuffSetting
+    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.WorldDuelBuffSetting)]
+    public class WorldDuelBuffSetting : BaseMethodHandler<WorldDuelBuffSettingRequest>
     {
+        public override object Handle(WorldDuelBuffSettingRequest @params)
+        {
+            //IDK THIS?
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "true",
+            };
+
+            return response;
+        }
     }
 
     public class WorldDuelBuffSettingRequest

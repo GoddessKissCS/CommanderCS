@@ -1,6 +1,7 @@
 using CommanderCS.Host;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Packets.Handlers.Dispatch
 {
@@ -9,28 +10,80 @@ namespace CommanderCS.Packets.Handlers.Dispatch
     {
         public override object Handle(GetDispatchCommanderListRequest @params)
         {
-            var user = GetUserGameProfile();
-            var guild = GetUserGuild();
-
-            var difference = TimeManager.GetTimeDifference(guild.LastEdit);
-
-            if (difference < 30)
+            if (Guild.LastEdit is not null)
             {
-                ErrorPacket error = new()
+                var difference = TimeManager.GetTimeDifference((double)Guild.LastEdit);
+
+                if (difference < 30)
                 {
-                    Error = new() { code = ErrorCode.FederationSettingsChangedWhileGettingGuildBoard },
-                    Id = BasePacket.Id,
-                };
-                return error;
+                    ErrorPacket error = new()
+                    {
+                        Error = new() { code = ErrorCode.FederationSettingsChangedWhileGettingGuildBoard },
+                        Id = BasePacket.Id,
+                    };
+                    return error;
+                }
+            }
+
+            Dictionary<string, DiapatchCommanderInfo> dispatchedcommanders = [];
+
+            if (User.DispatchedCommanders is not null)
+            {
+                foreach (var item in User.DispatchedCommanders)
+                {
+                    int runtime = (int)TimeManager.GetTimeDifferenceInHours(item.Value.DispatchTime);
+                    int dispatchTime = (int)TimeManager.GetTimeDifference(item.Value.DispatchTime);
+
+                    int gold = 0;
+
+                    int engageCount = item.Value.engageCnt;
+
+                    string stringedItem = item.Value.cid.ToString();
+
+                    User.CommanderData.TryGetValue(stringedItem, out var commander);
+
+                    if (runtime >= 1)
+                    {
+                        gold = runtime * GetDispatchGold(commander.__level, commander.__cls, commander.__rank);
+                    }
+
+                    DiapatchCommanderInfo dispatchedCommanders = new()
+                    {
+                        cid = item.Value.cid,
+                        engageCnt = engageCount,
+                        runtime = dispatchTime,
+                        getGold = gold
+                    };
+
+                    dispatchedcommanders.Add(item.Key, dispatchedCommanders);
+                }
+            }
+            else
+            {
+                dispatchedcommanders = null;
             }
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = user.DispatchedCommanders,
+                Result = dispatchedcommanders,
             };
 
             return response;
+        }
+
+        public int GetDispatchGold(string level, string cls, string rank) => GetDispatchGold(int.Parse(level), int.Parse(cls), int.Parse(rank));
+
+        public int GetDispatchGold(int level, int cls, int rank)
+        {
+            return (int)((level + cls) * rank / 11f * 60f);
+        }
+
+        public float GetdispatchFloatGold(string level, string cls, string rank) => GetDispatchGold(int.Parse(level), int.Parse(cls), int.Parse(rank));
+
+        public float GetdispatchFloatGold(int level, int cls, int rank)
+        {
+            return (level + cls) * rank / 11f * 60f;
         }
     }
 
@@ -48,7 +101,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 	// Token: 0x060060B9 RID: 24761 RVA: 0x001B0B04 File Offset: 0x001AED04
 	private IEnumerator GetDispatchCommanderListResult(JsonRpcClient.Request request, Dictionary<string, Protocols.DiapatchCommanderInfo> result)
 	{
-		if (result != null)
+		if (result is not null)
 		{
 			this.localUser.slotDispatchInfo.Clear();
 			foreach (KeyValuePair<string, Protocols.DiapatchCommanderInfo> keyValuePair in result)
@@ -58,7 +111,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 				slotDispatchInfo.dispatchCommanderInfo = keyValuePair.Value;
 				this.localUser.slotDispatchInfo.Add(slotDispatchInfo);
 			}
-			if (UIManager.instance.world.guild.dispatch != null)
+			if (UIManager.instance.world.guild.dispatch is not null)
 			{
 				UIManager.instance.world.guild.dispatch.SetDispatchList();
 			}

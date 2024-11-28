@@ -13,7 +13,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 	// Token: 0x06006067 RID: 24679 RVA: 0x001B045C File Offset: 0x001AE65C
 	private IEnumerator GetConquestTroopResult(JsonRpcClient.Request request, Protocols.ConquestTroopInfo result)
 	{
-		if (result != null && UIManager.instance.world.guild.isActive)
+		if (result is not null && UIManager.instance.world.guild.isActive)
 		{
 			this.localUser.ResetConquestSlot();
 			UIManager.instance.world.conquestMap.InitAndOpenConquestMap();

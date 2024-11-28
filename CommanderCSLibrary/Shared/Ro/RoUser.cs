@@ -1,5 +1,5 @@
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 
 namespace CommanderCSLibrary.Shared.Ro
@@ -135,7 +135,7 @@ namespace CommanderCSLibrary.Shared.Ro
         {
             get
             {
-                if (battleTroopList == null || battleTroopList.Count <= 0)
+                if (battleTroopList is null || battleTroopList.Count <= 0)
                 {
                     return null;
                 }
@@ -163,7 +163,7 @@ namespace CommanderCSLibrary.Shared.Ro
                 battleTroopList = []
             };
             roUser.InitEmpty();
-            if (roUser.activeBuff == null)
+            if (roUser.activeBuff is null)
             {
                 roUser.activeBuff = new Dictionary<EWorldDuelBuff, EWorldDuelBuffEffect>
                 {
@@ -178,11 +178,11 @@ namespace CommanderCSLibrary.Shared.Ro
         public virtual void InitEmpty()
         {
             battleTroopList.Clear();
-            if (guildSkillList == null)
+            if (guildSkillList is null)
             {
                 guildSkillList = [];
             }
-            if (completeRewardGroupList == null)
+            if (completeRewardGroupList is null)
             {
                 completeRewardGroupList = [];
             }
@@ -323,7 +323,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //	}
         //	roUser.guildName = data.guildName;
         //	roUser.uno = data.uno.ToString();
-        //	if (data.guildSkills != null)
+        //	if (data.guildSkills is not null)
         //	{
         //		for (int j = 0; j < data.guildSkills.Count; j++)
         //		{
@@ -366,7 +366,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //		roUser.duelGradeIdx = roUser.GetWorldDuelRankGrade();
         //		break;
         //	}
-        //	if (data.activeBuff != null)
+        //	if (data.activeBuff is not null)
         //	{
         //		for (int i = 0; i < data.activeBuff.Count; i++)
         //		{
@@ -376,7 +376,7 @@ namespace CommanderCSLibrary.Shared.Ro
         //			roUser.activeBuff[key] = eWorldDuelBuffEffect;
         //		}
         //	}
-        //	if (data.guildSkills != null)
+        //	if (data.guildSkills is not null)
         //	{
         //		for (int j = 0; j < data.guildSkills.Count; j++)
         //		{
@@ -436,7 +436,7 @@ namespace CommanderCSLibrary.Shared.Ro
             {
                 return unRankedSpriteName;
             }
-            RankingDataRow rankingDataRow = Constants.regulation.rankingDtbl[raidGradeIdx.ToString()];
+            RankingDataRow rankingDataRow = RemoteObjectManager.instance.regulation.rankingDtbl[raidGradeIdx.ToString()];
             return rankingDataRow.icon;
         }
 
@@ -446,7 +446,7 @@ namespace CommanderCSLibrary.Shared.Ro
             {
                 return unRankedSpriteName;
             }
-            RankingDataRow rankingDataRow = Constants.regulation.rankingDtbl[duelGradeIdx.ToString()];
+            RankingDataRow rankingDataRow = RemoteObjectManager.instance.regulation.rankingDtbl[duelGradeIdx.ToString()];
             return rankingDataRow.icon;
         }
 
@@ -456,14 +456,14 @@ namespace CommanderCSLibrary.Shared.Ro
             {
                 return unRankedSpriteName;
             }
-            RankingDataRow rankingDataRow = Constants.regulation.rankingDtbl[idx.ToString()];
+            RankingDataRow rankingDataRow = RemoteObjectManager.instance.regulation.rankingDtbl[idx.ToString()];
             return rankingDataRow.icon;
         }
 
         public int GetDuelRankGrade()
         {
             int result = 3;
-            List<RankingDataRow> list = Constants.regulation.FindDuelRankingList(ERankingContentsType.Challenge);
+            List<RankingDataRow> list = RemoteObjectManager.instance.regulation.FindDuelRankingList(ERankingContentsType.Challenge);
             for (int i = 0; i < list.Count; i++)
             {
                 RankingDataRow rankingDataRow = list[i];
@@ -485,7 +485,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public int GetWorldDuelRankGrade()
         {
             int result = 827;
-            List<RankingDataRow> list = Constants.regulation.FindDuelRankingList(ERankingContentsType.WorldDuel);
+            List<RankingDataRow> list = RemoteObjectManager.instance.regulation.FindDuelRankingList(ERankingContentsType.WorldDuel);
             for (int i = 0; i < list.Count; i++)
             {
                 RankingDataRow rankingDataRow = list[i];
@@ -507,7 +507,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public int GetWaveDuelRankGrade()
         {
             int result = 3;
-            List<RankingDataRow> list = Constants.regulation.FindDuelRankingList(ERankingContentsType.WaveDuel);
+            List<RankingDataRow> list = RemoteObjectManager.instance.regulation.FindDuelRankingList(ERankingContentsType.WaveDuel);
             for (int i = 0; i < list.Count; i++)
             {
                 RankingDataRow rankingDataRow = list[i];
@@ -522,7 +522,7 @@ namespace CommanderCSLibrary.Shared.Ro
         public int GetRaidRankGrade()
         {
             int result = 105;
-            List<RankingDataRow> list = Constants.regulation.FindDuelRankingList(ERankingContentsType.Raid);
+            List<RankingDataRow> list = RemoteObjectManager.instance.regulation.FindDuelRankingList(ERankingContentsType.Raid);
             for (int i = 0; i < list.Count; i++)
             {
                 RankingDataRow rankingDataRow = list[i];
@@ -536,19 +536,19 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public void SetGroupCompleteData(List<int> list)
         {
-            if (list == null)
+            if (list is null)
             {
                 return;
             }
             completeRewardGroupList = list;
-            Regulation.Regulation regulation = Constants.regulation;
+            Regulation.Regulation regulation = RemoteObjectManager.instance.regulation;
             completeRewardGroupList.Sort((int a, int b) => regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => int.Parse(data.groupIdx) == b).typeIndex.CompareTo(regulation.groupInfoDtbl.Find((GroupInfoDataRow data) => int.Parse(data.groupIdx) == a).typeIndex));
         }
 
         public List<string> GetBuffIdxList()
         {
             List<string> list = [];
-            Regulation.Regulation regulation = Constants.regulation;
+            Regulation.Regulation regulation = RemoteObjectManager.instance.regulation;
             foreach (KeyValuePair<EWorldDuelBuff, EWorldDuelBuffEffect> data in activeBuff)
             {
                 string key = $"{data.Key.ToString()}{data.Value.ToString()}";

@@ -1,7 +1,27 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Shop
 {
-    public class BuySecretShopItem
+    [Packet(Id = Method.BuySecretShopItem)]
+    public class BuySecretShopItem : BaseMethodHandler<BuySecretShopItemRequest>
     {
+        public override object Handle(BuySecretShopItemRequest @params)
+        {
+            //TODO: SAVE THE SHOP TO THE DATABASE OF THE SPECIFIC USER AND THE IF YOU BUY IT MARK IT AS SOLD
+
+            return "{}";
+        }
+    }
+
+    public class BuySecretShopItemRequest
+    {
+        [JsonProperty("styp")]
+        public int styp { get; set; }
+
+        [JsonProperty("id")]
+        public int id { get; set; }
     }
 }
 
@@ -14,7 +34,7 @@ namespace CommanderCS.Packets.Handlers.Shop
 	// Token: 0x06006016 RID: 24598 RVA: 0x001AFD94 File Offset: 0x001ADF94
 	private IEnumerator BuySecretShopItemResult(JsonRpcClient.Request request, Protocols.ShopReward result)
 	{
-		if (result != null)
+		if (result is not null)
 		{
 			List<Protocols.RewardInfo.RewardData> list = new List<Protocols.RewardInfo.RewardData>();
 			for (int i = 0; i < this.localUser.shopList.Count; i++)

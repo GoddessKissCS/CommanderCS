@@ -1,7 +1,31 @@
+using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.InfinityBattle
 {
-    public class SaveInfinityBattleDeck
+    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.SaveInfinityBattleDeck)]
+    public class SaveInfinityBattleDeck : BaseMethodHandler<SaveInfinityBattleDeckRequest>
     {
+        public override object Handle(SaveInfinityBattleDeckRequest @params)
+        {
+            DatabaseManager.GameProfile.UpdateInfinityBattleDeck(SessionId, @params.deck);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "success"
+            };
+
+            return response;
+        }
+    }
+
+    public class SaveInfinityBattleDeckRequest
+    {
+        [JsonProperty("deck")]
+        public JObject deck { get; set; }
     }
 }
 

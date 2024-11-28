@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 	// Token: 0x06006070 RID: 24688 RVA: 0x001B0520 File Offset: 0x001AE720
 	private IEnumerator GetConquestMovePathResult(JsonRpcClient.Request request, string result, List<int> path, int distance)
 	{
-		if (!string.IsNullOrEmpty(result) && UIManager.instance.world.conquestMap.isActive && UIManager.instance.world.conquestMap.stagePopup != null)
+		if (!string.IsNullOrEmpty(result) && UIManager.instance.world.conquestMap.isActive && UIManager.instance.world.conquestMap.stagePopup is not null)
 		{
 			string text = this._FindRequestProperty(request, "dest");
 			string text2 = this._FindRequestProperty(request, "slot");

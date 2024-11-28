@@ -1,5 +1,4 @@
-﻿using System.Text;
-using Tival.GZipCompressor;
+﻿using Tival.GZipCompressor;
 
 namespace CommanderCSLibrary.Cryptography
 {
@@ -21,9 +20,5 @@ namespace CommanderCSLibrary.Cryptography
             return memoryStream.ToArray();
         }
 
-        public static string ByteArray2String(byte[] Input)
-        {
-            return Encoding.UTF8.GetString(Input);
-        }
     }
 }

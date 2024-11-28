@@ -8,18 +8,19 @@ namespace CommanderCS.Host.Handlers.Carnival
     {
         public override object Handle(CheckBadgeRequest @params)
         {
-            var user = GetUserGameProfile();
+            var badges = User.UserBadges;
 
-            var badges = user.UserBadges;
+            var rwd = User.MailDataList.Where(x => x.__receive == "0").Count();
 
-#warning TODO ADJUST THIS SHIT
+            //TODO Check on thing if anything new exists.
+
             CheckBadgeMaster checkBadgeMaster = new()
             {
                 id = BasePacket.Id,
                 arena = badges.arena,
                 dlms = badges.dlms,
                 achv = badges.achv,
-                rwd = badges.rwd,
+                rwd = rwd,
                 shop = badges.shop,
                 cnvl = badges.cnvl,
                 ccnv = badges.ccnv,

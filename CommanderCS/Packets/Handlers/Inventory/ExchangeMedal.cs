@@ -1,24 +1,36 @@
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Inventory
 {
-    //[Packet(Id = Method.ExchangeMedal)]
+    [Packet(Id = Method.ExchangeMedal)]
     public class ExchangeMedal : BaseMethodHandler<ExchangeMedalRequest>
     {
         public override object Handle(ExchangeMedalRequest @params)
         {
-            var user = GetUserGameProfile();
+            string cid = @params.cid.ToString();
+            int medalExchangeAmount = @params.amnt;
 
-            user.CommanderData.TryGetValue("" + @params.cid, out var commanderData);
-            user.UserInventory.medalData.TryGetValue("" + @params.cid, out int medal);
+            // need to implement a check that fails if user doesnt have enough , aswell in the expshare gift things etc
 
-            commanderData.medl += @params.amnt;
-            medal += @params.amnt;
+            User.CommanderData[cid].medl += medalExchangeAmount;
+            User.Inventory.medalData[cid] += medalExchangeAmount;
 
-            // AND THEN WE NEED TO SUBSTRACT THE EXCHANGEMEDALS FROM THE USER
+            User.Inventory.itemData["202"] -= medalExchangeAmount;
 
-            return "";
+            DatabaseManager.GameProfile.UpdateProfile(SessionId, User);
+
+            var userInformationResponse = GetUserInformationResponse(User);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = userInformationResponse
+            };
+
+            return response;
         }
     }
 
@@ -44,7 +56,7 @@ namespace CommanderCS.Packets.Handlers.Inventory
 		this.localUser.FromNetwork(result);
 		UIManager.instance.RefreshOpenedUI();
 		UITranscendencePopup uitranscendencePopup = UnityEngine.Object.FindObjectOfType(typeof(UITranscendencePopup)) as UITranscendencePopup;
-		if (uitranscendencePopup != null)
+		if (uitranscendencePopup is not null)
 		{
 			uitranscendencePopup.Set(0);
 		}

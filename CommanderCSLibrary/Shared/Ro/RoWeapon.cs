@@ -1,5 +1,5 @@
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 
 namespace CommanderCSLibrary.Shared.Ro
@@ -38,7 +38,7 @@ namespace CommanderCSLibrary.Shared.Ro
 
         public static RoWeapon Create(string idx, string wIdx, int lv, int commanderId = 0)
         {
-            WeaponDataRow weaponDataRow = Constants.regulation.weaponDtbl.Find((WeaponDataRow row) => row.idx == wIdx);
+            WeaponDataRow weaponDataRow = RemoteObjectManager.instance.regulation.weaponDtbl.Find((WeaponDataRow row) => row.idx == wIdx);
             RoWeapon roWeapon = new()
             {
                 data = weaponDataRow,

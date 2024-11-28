@@ -1,7 +1,155 @@
+using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Gift
 {
-    public class GiftFood
+    [Packet(Id = Method.GiftFood)]
+    public class GiftFood : BaseMethodHandler<GiftFoodRequest>
     {
+        public override object Handle(GiftFoodRequest @params)
+        {
+            string commanderId = @params.cid.ToString();
+            string favourGiftId = @params.cgid.ToString();
+            int favourGiftAmount = @params.amnt;
+
+            User.CommanderData.TryGetValue(commanderId, out var commander);
+
+            int commanderfavorPoint = commander.favorPoint;
+
+            //might need to add the thing to remove the entry upon reaching 0 of the gifted item
+
+            for (var i = 1; i <= favourGiftAmount;)
+            {
+                if (User.Inventory.foodData[favourGiftId] > 0)
+                {
+                    User.Inventory.foodData[favourGiftId] -= 1;
+                }
+
+                TryAddingFavour(@params.cgid, ref commanderfavorPoint);
+
+                i++;
+            }
+
+            // adding to favr might not be needed needs to be rechecked in the future
+            commander.favr += commanderfavorPoint;
+            commander.favorPoint = commanderfavorPoint;
+
+            var commanderCID = CheckCommanderFavour(commander, Regulation);
+
+
+            User.CommanderData[commanderId] = commanderCID;
+
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, commanderCID);
+            UserInformationResponse informationResponse = GetUserInformationResponse(User);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = informationResponse,
+            };
+
+            return response;
+        }
+
+        private static bool TryAddingFavour(int affectionId, ref int favour)
+        {
+            if (!Constants.AffectionList.TryGetValue(affectionId, out var addingFavour))
+            {
+                throw new Exception($"Grade {affectionId} Not Defined");
+            }
+
+            favour += addingFavour;
+
+            return true;
+        }
+
+        private static UserInformationResponse.Commander CheckCommanderFavour(UserInformationResponse.Commander commander, Regulation rg)
+        {
+            FavorStepDataRow row = new();
+
+            switch (commander.favorStep)
+            {
+                case 0:
+                    row = rg.favorStepDtbl.Find(x => x.step == 1);
+                    break;
+                case 1:
+                    row = rg.favorStepDtbl.Find(x => x.step == 2);
+                    break;
+                case 2:
+                    row = rg.favorStepDtbl.Find(x => x.step == 3);
+                    break;
+                case 3:
+                    row = rg.favorStepDtbl.Find(x => x.step == 4);
+                    break;
+                case 4:
+                    row = rg.favorStepDtbl.Find(x => x.step == 5);
+                    break;
+                case 5:
+                    row = rg.favorStepDtbl.Find(x => x.step == 6);
+                    break;
+                case 6:
+                    row = rg.favorStepDtbl.Find(x => x.step == 7);
+                    break;
+                case 7:
+                    row = rg.favorStepDtbl.Find(x => x.step == 8);
+                    break;
+                case 8:
+                    row = rg.favorStepDtbl.Find(x => x.step == 9);
+                    break;
+                case 9:
+                    row = rg.favorStepDtbl.Find(x => x.step == 10);
+                    break;
+                case 10:
+                    row = rg.favorStepDtbl.Find(x => x.step == 11);
+                    break;
+                case 11:
+                    row = rg.favorStepDtbl.Find(x => x.step == 12);
+                    break;
+                case 12:
+                    row = rg.favorStepDtbl.Find(x => x.step == 13);
+                    break;
+                case 13:
+                    row = rg.favorStepDtbl.Find(x => x.step == 14);
+                    break;
+                case 14:
+                    row = rg.favorStepDtbl.Find(x => x.step == 15);
+                    break;
+            };
+
+
+            if (commander.favorPoint > row.favor)
+            {
+                commander.favorStep += 1;
+                commander.favorPoint -= row.favor;
+
+                if (commander.favorStep == 15 && commander.favorPoint >= 1000000)
+                {
+                    commander.favorPoint = 1000000;
+                }
+
+                return CheckCommanderFavour(commander, rg);
+            }
+
+            return commander;
+        }
+    }
+
+    public class GiftFoodRequest
+    {
+        [JsonProperty("cid")]
+        public int cid { get; set; }
+
+        [JsonProperty("cgid")]
+        public int cgid { get; set; }
+
+        [JsonProperty("amnt")]
+        public int amnt { get; set; }
     }
 }
 
@@ -14,7 +162,7 @@ namespace CommanderCS.Packets.Handlers.Gift
 	// Token: 0x0600608D RID: 24717 RVA: 0x001B0798 File Offset: 0x001AE998
 	private IEnumerator GiftFoodResult(JsonRpcClient.Request request, Protocols.UserInformationResponse result)
 	{
-		if (result.commanderInfo != null)
+		if (result.commanderInfo is not null)
 		{
 			foreach (KeyValuePair<string, Protocols.UserInformationResponse.Commander> keyValuePair in result.commanderInfo)
 			{

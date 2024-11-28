@@ -1,47 +1,67 @@
-﻿using CommanderCS.MongoDB.Schemes;
-using CommanderCS.Host;
+﻿using CommanderCS.Host;
 using CommanderCS.Host.Handlers.Login;
+using CommanderCS.MongoDB.Schemes;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Protocols;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.MongoDB.Handlers
 {
+    /// <summary>
+    /// Represents a database table for game profiles.
+    /// </summary>
     public class DatabaseGameProfile : DatabaseTable<GameProfileScheme>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DatabaseGameProfile"/> class.
+        /// </summary>
         public DatabaseGameProfile() : base("GameProfile")
         {
         }
 
+        /// <summary>
+        /// Gets or creates a game profile for the specified member ID and server.
+        /// </summary>
+        /// <param name="memberId">The member ID associated with the game profile.</param>
+        /// <param name="server">The server ID associated with the game profile.</param>
+        /// <returns>The existing or newly created game profile.</returns>
         public GameProfileScheme? GetOrCreate(int memberId, int server)
         {
             var existingUser = DatabaseCollection.AsQueryable()
                 .Where(d => d.Server == server && d.MemberId == memberId)
                 .FirstOrDefault();
 
-            if (existingUser != null)
+            if (existingUser is not null)
             {
                 return existingUser;
             }
 
             int uno = DatabaseManager.AutoIncrements.GetNextNumber("UNO");
 
-            var WorldMapStages = Constants.regulation.GetAllWorldMapStages();
+            var WorldMapStages = RemoteObjectManager.instance.regulation.GetAllWorldMapStages();
 
-            var currTime = TimeManager.CurrentEpoch;
+            var currentTime = TimeManager.CurrentEpoch;
+
+            string name = Utility.CreateRandomString();
 
             GameProfileScheme user = new()
             {
                 Server = server,
                 LastStage = 0,
-                UserStatistics = new() { },
+                Statistics = new()
+                {
+                    WeaponMakeSlotCount = 2,
+                    WeaponInventoryCount = 200
+                },
                 CommanderData = [],
                 CompleteRewardGroupIdx = [],
                 DispatchedCommanders = null,
                 ExplorationData = [],
                 GuildId = null,
                 MemberId = memberId,
-                Notifaction = false,
+                Notification = false,
                 PreDeck =
                 [
                     new()
@@ -75,16 +95,23 @@ namespace CommanderCS.MongoDB.Handlers
                         deckData = []
                     }
                 ],
-                TutorialData = new() { skip = false, step = 0 },
-                UserDevice = new() { },
-                UserInventory = new UserInventory()
+                TutorialData = new()
+                {
+                    skip = false,
+                    step = 0
+                },
+                DeviceInformation = new() { },
+                Inventory = new UserInventory()
                 {
                     medalData = new()
                     {
-                        { "1", 10 }
+                        { "1", 10 } // The First Pilot for free
                     },
                     equipItem = [],
-                    itemData = [],
+                    itemData = new()
+                    {
+                        { "10", 5 } // BOSS Tickets
+                    },
                     foodData = [],
                     groupItemData = [],
                     partData = [],
@@ -94,18 +121,60 @@ namespace CommanderCS.MongoDB.Handlers
                     costumeData = [],
                 },
                 ResetDateTime = 0,
-                UserResources = new() { },
+                Resources = new()
+                {
+                    sweepTicket = 0,
+                    annCoin = 0,
+                    BlackChallenge = 0,
+                    blueprintArmy = 0,
+                    blueprintNavy = 0,
+                    bullet = 60,
+                    cash = 0,
+                    challenge = 0,
+                    challengeCoin = 0,
+                    chip = 0,
+                    commanderGift = 0,
+                    commanderPromotionPoint = 0,
+                    eventRaidTicket = 0,
+                    exp = 0,
+                    explorationTicket = 0,
+                    gold = 4000,
+                    guildCoin = 0,
+                    honor = 0,
+                    level = 1,
+                    nickname = name,
+                    thumbnailId = 1001,
+                    oil = 0,
+                    opcon = 0,
+                    opener = 0,
+                    raidCoin = 0,
+                    ring = 0,
+                    vipExp = 0,
+                    vipLevel = 0,
+                    waveDuelCoin = 0,
+                    waveDuelTicket = 0,
+                    weaponImmediateTicket = 0,
+                    weaponMakeTicket = 0,
+                    weaponMaterial1 = 0,
+                    weaponMaterial2 = 0,
+                    weaponMaterial3 = 0,
+                    weaponMaterial4 = 0,
+                    worldDuelCoin = 0,
+                    worldDuelTicket = 0,
+                    worldDuelUpgradeCoin = 0,
+                },
                 Uno = uno,
                 WorldState = 0,
                 // result.worldState != -1;
                 // if exploration is finished id assume
-                LastLoginTime = currTime,
+                // Still no idea what it does
+                LastLoginTime = currentTime,
+                // No idea what it is related to so yeah
                 UserBadges = new()
                 {
                     arena = 0,
                     dlms = 0,
                     achv = 0,
-                    rwd = 0,
                     shop = new Dictionary<string, int>()
                     {
                         { "raid", 0 },
@@ -124,7 +193,10 @@ namespace CommanderCS.MongoDB.Handlers
                     ercnt = 0,
                     iftw = 0,
                 },
-                VipRechargeData = [new() { count = 0, idx = 601, mid = 0 }],
+                VipRechargeData = [
+                    new() { count = 0, idx = 601, mid = 0 },
+                    new() { count = 5, idx = 106, mid = 0 }
+                    ],
                 BlockedUsers = [],
                 BoughtCashShopItems = [],
                 Session = string.Empty,
@@ -169,7 +241,61 @@ namespace CommanderCS.MongoDB.Handlers
                         score = 1000
                     },
                     WaveDuelRankingData = new()
+                    {
+                        score = 1000,
+                    },
+                    RaidRankingData = new()
+                    {
+                    },
                 },
+                WeaponInformation = new()
+                {
+                    WeaponProgressList = []
+                },
+                DailyBuyables = new()
+                {
+                    RaidKeys = 20,
+                },
+                ShopData = new()
+                {
+                    BuyVipShop = new()
+                    {
+                    },
+                    ChallengeShop = new()
+                    {
+                    },
+                    DailyShop = new()
+                    {
+                    },
+                    RaidShop = new()
+                    {
+                    },
+                    WaveDuelShop = new()
+                    {
+                    },
+                },
+                GachaInformation = new()
+                {
+                    { "1",
+                        new()
+                        {
+                            freeOpenRemainCount = 0,
+                            freeOpenRemainTime = 0,
+                            pilotRate = 1,
+                            type = "1",
+                        }
+                    },
+                    {
+                        "2", new()
+                        {
+                            freeOpenRemainCount = 1,
+                            freeOpenRemainTime = 0,
+                            pilotRate = 0,
+                            type = "2",
+                        }
+                    }
+                }
+
             };
 
             DatabaseCollection.InsertOne(user);
@@ -179,13 +305,19 @@ namespace CommanderCS.MongoDB.Handlers
             return user;
         }
 
+        /// <summary>
+        /// Retrieves the game profile associated with the specified member ID and server, creating it if it does not exist.
+        /// </summary>
+        /// <param name="memberId">The member ID associated with the game profile.</param>
+        /// <param name="server">The server ID associated with the game profile.</param>
+        /// <returns>The game profile associated with the member ID and server.</returns>
         public GameProfileScheme? FromUidAndServer(int memberId, int server)
         {
             var tryUser = DatabaseCollection.AsQueryable()
                           .Where(d => d.Server == server && d.MemberId == memberId)
                           .FirstOrDefault();
 
-            if (tryUser != null)
+            if (tryUser is not null)
             {
                 return tryUser;
             }
@@ -193,44 +325,78 @@ namespace CommanderCS.MongoDB.Handlers
             return GetOrCreate(memberId, server);
         }
 
+        /// <summary>
+        /// Checks if an account with the specified nickname exists.
+        /// </summary>
+        /// <param name="nickname">The nickname of the account to check.</param>
+        /// <returns>True if an account with the specified nickname exists, otherwise false.</returns>
         public bool AccountExists(string nickname)
         {
-            return DatabaseCollection.AsQueryable().Where(d => d.UserResources.nickname == nickname).Any();
+            return DatabaseCollection.AsQueryable().Where(d => d.Resources.nickname == nickname).Any();
         }
 
+        /// <summary>
+        /// Checks if a session token exists in the database.
+        /// </summary>
+        /// <param name="session">The session token to check.</param>
+        /// <returns>True if the session token exists, otherwise false.</returns>
         public bool SessionTokenExists(string session)
         {
             return DatabaseCollection.AsQueryable().Where(d => d.Session == session).Any();
         }
 
+        /// <summary>
+        /// Finds a game profile associated with the specified session token.
+        /// </summary>
+        /// <param name="session">The session token associated with the game profile.</param>
+        /// <returns>The game profile associated with the session token, or null if not found.</returns>
         public GameProfileScheme? FindBySession(string session)
         {
             var tryUser = DatabaseCollection.AsQueryable()
                           .Where(d => d.Session == session)
                           .FirstOrDefault();
 
-            if (tryUser == null)
+            if (tryUser is null)
             {
             }
 
             return tryUser;
         }
 
-        public GameProfileScheme FindByUno(int uno)
+        /// <summary>
+        /// Finds a game profile associated with the specified UNO.
+        /// </summary>
+        /// <param name="uno">The UNO associated with the game profile.</param>
+        /// <returns>The game profile associated with the UNO, or null if not found.</returns>
+        public GameProfileScheme? FindByUno(int uno)
         {
             return DatabaseCollection.AsQueryable().Where(d => d.Uno == uno).FirstOrDefault();
         }
 
-        public GameProfileScheme FindByNick(string nickname)
+        /// <summary>
+        /// Finds a game profile associated with the specified nickname.
+        /// </summary>
+        /// <param name="nickname">The nickname associated with the game profile.</param>
+        /// <returns>The game profile associated with the nickname, or null if not found.</returns>
+        public GameProfileScheme? FindByNick(string nickname)
         {
-            return DatabaseCollection.AsQueryable().Where(d => d.UserResources.nickname == nickname).FirstOrDefault();
+            return DatabaseCollection.AsQueryable().Where(d => d.Resources.nickname == nickname).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Finds game profiles associated with the specified member ID.
+        /// </summary>
+        /// <param name="memberId">The member ID associated with the game profiles.</param>
+        /// <returns>A list of game profiles associated with the member ID.</returns>
         public List<GameProfileScheme> FindByMemberIdList(string memberId)
         {
             return DatabaseCollection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).ToList();
         }
 
+        /// <summary>
+        /// Retrieves the count of game profile schemes.
+        /// </summary>
+        /// <returns>The count of game profile schemes as a string.</returns>
         public string GetGameProfileSchemeCount()
         {
             var filter = Builders<GameProfileScheme>.Filter.Empty;
@@ -240,9 +406,16 @@ namespace CommanderCS.MongoDB.Handlers
             return count.ToString();
         }
 
+        /// <summary>
+        /// Retrieves battle statistics from the game profile associated with the specified session.
+        /// </summary>
+        /// <param name="session">The session associated with the game profile.</param>
+        /// <returns>Battle statistics from the game profile.</returns>
         public UserInformationResponse.BattleStatistics UserStatisticsFromSession(string session)
         {
-            var statistics = FindBySession(session).UserStatistics;
+            var user = FindBySession(session);
+
+            var statistics = user.Statistics;
 
             UserInformationResponse.BattleStatistics BattleStatisticstis = new()
             {
@@ -253,14 +426,14 @@ namespace CommanderCS.MongoDB.Handlers
                 raidHighScore = statistics.RaidHighScore,
                 vipShop = statistics.VipShop,
                 vipShopResetTime = statistics.VipShopResetTime,
-                weaponMakeSlotCount = statistics.weaponMakeSlotCount,
+                weaponMakeSlotCount = statistics.WeaponMakeSlotCount,
                 winMostStreak = statistics.WinMostStreak,
                 winStreak = statistics.WinStreak,
                 arenaHighRank = statistics.ArenaHighRank,
                 armyCommanderDestroyCount = statistics.ArmyCommanderDestroyCount,
                 armyUnitDestroyCount = statistics.ArmyUnitDestroyCount,
                 commanderDestroyCount = statistics.CommanderDestroyCount,
-                firstPayment = statistics.firstPayment,
+                firstPayment = statistics.FirstPayment,
                 navyUnitDestroyCount = statistics.NavyUnitDestroyCount,
                 normalGachaCount = statistics.NormalGachaCount,
                 predeckCount = statistics.PredeckCount,
@@ -272,13 +445,18 @@ namespace CommanderCS.MongoDB.Handlers
                 raidHighRank = statistics.RaidHighRank,
                 totalGold = statistics.TotalGold,
                 totalPlunderGold = statistics.TotalPlunderGold,
-                weaponInventoryCount = statistics.weaponInventoryCount,
+                weaponInventoryCount = statistics.WeaponInventoryCount,
                 unitDestroyCount = statistics.UnitDestroyCount,
             };
 
             return BattleStatisticstis;
         }
 
+        /// <summary>
+        /// Converts user battle statistics to battle statistics for response.
+        /// </summary>
+        /// <param name="statistics">The user battle statistics to convert.</param>
+        /// <returns>Battle statistics suitable for response.</returns>
         public UserInformationResponse.BattleStatistics UserStatistics2BattleStatistics(UserBattleStatistics statistics)
         {
             UserInformationResponse.BattleStatistics BattleStatisticstis = new()
@@ -290,14 +468,14 @@ namespace CommanderCS.MongoDB.Handlers
                 raidHighScore = statistics.RaidHighScore,
                 vipShop = statistics.VipShop,
                 vipShopResetTime = statistics.VipShopResetTime,
-                weaponMakeSlotCount = statistics.weaponMakeSlotCount,
+                weaponMakeSlotCount = statistics.WeaponMakeSlotCount,
                 winMostStreak = statistics.WinMostStreak,
                 winStreak = statistics.WinStreak,
                 arenaHighRank = statistics.ArenaHighRank,
                 armyCommanderDestroyCount = statistics.ArmyCommanderDestroyCount,
                 armyUnitDestroyCount = statistics.ArmyUnitDestroyCount,
                 commanderDestroyCount = statistics.CommanderDestroyCount,
-                firstPayment = statistics.firstPayment,
+                firstPayment = statistics.FirstPayment,
                 navyUnitDestroyCount = statistics.NavyUnitDestroyCount,
                 normalGachaCount = statistics.NormalGachaCount,
                 predeckCount = statistics.PredeckCount,
@@ -309,16 +487,23 @@ namespace CommanderCS.MongoDB.Handlers
                 raidHighRank = statistics.RaidHighRank,
                 totalGold = statistics.TotalGold,
                 totalPlunderGold = statistics.TotalPlunderGold,
-                weaponInventoryCount = statistics.weaponInventoryCount,
+                weaponInventoryCount = statistics.WeaponInventoryCount,
                 unitDestroyCount = statistics.UnitDestroyCount,
             };
 
             return BattleStatisticstis;
         }
 
+        /// <summary>
+        /// Retrieves user resources from the game profile associated with the specified session.
+        /// </summary>
+        /// <param name="session">The session associated with the game profile.</param>
+        /// <returns>User resources from the game profile.</returns>
         public UserInformationResponse.Resource? UserResourcesFromSession(string session)
         {
-            var resources = FindBySession(session).UserResources;
+            var user = FindBySession(session);
+
+            var resources = user.Resources;
 
             UserInformationResponse.Resource resource = new()
             {
@@ -366,6 +551,11 @@ namespace CommanderCS.MongoDB.Handlers
             return resource;
         }
 
+        /// <summary>
+        /// Converts user resources to the response format.
+        /// </summary>
+        /// <param name="resources">User resources to convert.</param>
+        /// <returns>User resources in the response format.</returns>
         public UserInformationResponse.Resource? UserResources2Resource(UserResources resources)
         {
             UserInformationResponse.Resource resource = new()
@@ -414,73 +604,119 @@ namespace CommanderCS.MongoDB.Handlers
             return resource;
         }
 
+        /// <summary>
+        /// Updates the user resources associated with the given session.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="resources">The updated user resources.</param>
         public void UpdateUserResources(string session, UserResources resources)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources, resources);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources, resources);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        /// <summary>
+        /// Updates the gold and cash of the user associated with the given session.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="new_gold">The new amount of gold.</param>
+        /// <param name="new_cash">The new amount of cash.</param>
+        /// <param name="useAddition">A boolean indicating whether to add or subtract the specified amounts.</param>
         public void UpdateGoldAndCash(string session, int new_gold, int new_cash, bool useAddition)
         {
             var user = FindBySession(session);
 
             if (useAddition)
             {
-                user.UserResources.gold += new_gold;
-                user.UserStatistics.TotalGold += new_gold;
-                user.UserResources.cash += new_cash;
+                user.Resources.gold += new_gold;
+                user.Statistics.TotalGold += new_gold;
+                user.Resources.cash += new_cash;
             }
             else
             {
-                user.UserResources.gold -= new_gold;
-                user.UserStatistics.TotalGold -= new_gold;
-                user.UserResources.cash -= new_cash;
+                user.Resources.gold -= new_gold;
+                user.Statistics.TotalGold -= new_gold;
+                user.Resources.cash -= new_cash;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.gold, user.UserResources.gold).Set(x => x.UserResources.cash, user.UserResources.cash).Set(x => x.UserStatistics.TotalGold, user.UserStatistics.TotalGold);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.gold, user.Resources.gold).Set(x => x.Resources.cash, user.Resources.cash).Set(x => x.Statistics.TotalGold, user.Statistics.TotalGold);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        /// <summary>
+        /// Updates the gold of the user associated with the given session.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="gold">The amount of gold to update.</param>
+        /// <param name="useAddition">A boolean indicating whether to add or subtract the specified amount.</param>
         public void UpdateGold(string session, int gold, bool useAddition)
         {
             var user = FindBySession(session);
 
             if (useAddition)
             {
-                user.UserResources.gold += gold;
-                user.UserStatistics.TotalGold += gold;
+                user.Resources.gold += gold;
+                user.Statistics.TotalGold += gold;
             }
             else
             {
-                user.UserResources.gold -= gold;
-                user.UserStatistics.TotalGold -= gold;
+                user.Resources.gold -= gold;
+                user.Statistics.TotalGold -= gold;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.gold, user.UserResources.gold).Set(x => x.UserStatistics.TotalGold, user.UserStatistics.TotalGold);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.gold, user.Resources.gold).Set(x => x.Statistics.TotalGold, user.Statistics.TotalGold);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+
+        public void UpdateCashAndNickName(string session, string accountName, int cash, bool useAddition)
+        {
+
+            var user = FindBySession(session);
+
+            if (useAddition)
+            {
+                user.Resources.cash += cash;
+            }
+            else
+            {
+                user.Resources.cash -= cash;
+            }
+
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.nickname, accountName).Set(x => x.Resources.cash, user.Resources.cash);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the cash of the user associated with the given session.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="cash">The amount of cash to update.</param>
+        /// <param name="useAddition">A boolean indicating whether to add or subtract the specified amount.</param>
+        /// <returns>The updated game profile scheme of the user.</returns>
         public GameProfileScheme UpdateCash(string session, int cash, bool useAddition)
         {
             var user = FindBySession(session);
 
             if (useAddition)
             {
-                user.UserResources.cash += cash;
+                user.Resources.cash += cash;
             }
             else
             {
-                user.UserResources.cash -= cash;
+                user.Resources.cash -= cash;
             }
 
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.cash, user.UserResources.cash);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.cash, user.Resources.cash);
 
             var options = new FindOneAndUpdateOptions<GameProfileScheme>
             {
@@ -492,19 +728,50 @@ namespace CommanderCS.MongoDB.Handlers
             return updatedUser;
         }
 
+        /// <summary>
+        /// Updates the cash of the user associated with the given session.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="cash">The amount of cash to update.</param>
+        /// <param name="useAddition">A boolean indicating whether to add or subtract the specified amount.</param>
+        /// <returns>The updated game profile scheme of the user.</returns>
+        public void UpdateOnlyCash(string session, int cash, bool useAddition)
+        {
+            var user = FindBySession(session);
+
+            if (useAddition)
+            {
+                user.Resources.cash += cash;
+            }
+            else
+            {
+                user.Resources.cash -= cash;
+            }
+
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.cash, user.Resources.cash);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the user's information upon login.
+        /// </summary>
+        /// <param name="params">The login request parameters.</param>
+        /// <param name="session">The session associated with the user.</param>
         public void UpdateOnLogin(LoginRequest @params, string session)
         {
-            UserDevice userDevice = new()
+            Device userDevice = new()
             {
                 Apk = @params.apkFileName,
                 Country = @params.countryCode,
-                Device = @params.deviceName,
-                Deviceid = @params.deviceId,
-                Gameversion = @params.gameVersion,
+                DeviceName = @params.deviceName,
+                DeviceId = @params.deviceId,
+                GameVersion = @params.gameVersion,
                 Gpid = @params.largoId,
                 Language = @params.languageCode,
                 OsCode = @params.osCode,
-                Osversion = @params.osVersion,
+                OsVersion = @params.osVersion,
                 PatchType = @params.patchType,
                 PlatformId = @params.platform,
                 PushRegistrationId = @params.pushRegistrationId,
@@ -515,13 +782,28 @@ namespace CommanderCS.MongoDB.Handlers
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, @params.memberId) &
                          Builders<GameProfileScheme>.Filter.Eq(x => x.Server, @params.world);
 
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.Session, session).Set(x => x.UserDevice, userDevice).Set(x => x.LastLoginTime, CurrTimeStamp);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Session, session).Set(x => x.DeviceInformation, userDevice).Set(x => x.LastLoginTime, CurrTimeStamp);
 
             DatabaseCollection.UpdateOne(filter, update);
-
-            DatabaseManager.Account.UpdateLastServerLoggedIn(@params.world, @params.memberId);
         }
 
+        /// <summary>
+        /// Updates the user data in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="user">The updated user profile.</param>
+        public void UpdateUserData(string session, GameProfileScheme user)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+
+            DatabaseCollection.ReplaceOne(filter, user);
+        }
+
+        /// <summary>
+        /// Updates the commander data for a user in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="commanderList">The updated commander data to be stored.</param>
         public void UpdateCommanderData(string session, Dictionary<string, UserInformationResponse.Commander> commanderList)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
@@ -530,30 +812,108 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        /// <summary>
+        /// Updates the commander data for a user in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="commander">The updated commander to be stored.</param>
+        public void UpdateSpecificCommander(string session, UserInformationResponse.Commander commander)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.And(
+                Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
+                Builders<GameProfileScheme>.Filter.Eq("CommanderData.Key", commander.id)
+            );
+
+            var update = Builders<GameProfileScheme>.Update.Set("CommanderData.$", commander);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+
+        /// <summary>
+        /// Updates the food data for a user in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="foodData">The updated food data to be stored.</param>
+        public void UpdateFoodData(string session, Dictionary<string, int> foodData)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.foodData, foodData);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the list of commander costumes that the user does not have in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="donthaveCostumes">The updated dictionary containing the commander costume data.</param>
+        public void UpdateDontHaveCommanderCostumeData(string session, Dictionary<string, List<int>> donthaveCostumes)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.donHaveCommCostumeData, donthaveCostumes);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the commander data and medal data associated with the user in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="commanderList">The updated dictionary containing the commander data.</param>
+        /// <param name="medalsdata">The updated dictionary containing the medal data.</param>
         public void UpdateCommanderDataAndMedalData(string session, Dictionary<string, UserInformationResponse.Commander> commanderList, Dictionary<string, int> medalsdata)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.CommanderData, commanderList).Set(x => x.UserInventory.medalData, medalsdata);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.CommanderData, commanderList).Set(x => x.Inventory.medalData, medalsdata);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        /// <summary>
+        /// Updates the medal data associated with the user in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="medalsdata">The updated dictionary containing the medal data.</param>
         public void UpdateMedalData(string session, Dictionary<string, int> medalsdata)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.medalData, medalsdata);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.medalData, medalsdata);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
 
-        public void UpdateItemData(string session, Dictionary<string, int> goods)
+        /// <summary>
+        /// Updates the item data associated with the user in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="items">The updated dictionary containing the item data.</param>
+        public void UpdateItemData(string session, Dictionary<string, int> items)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserInventory.itemData, goods);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.itemData, items);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        /// <summary>
+        /// Updates the part data associated with the user in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="parts">The updated dictionary containing the part data.</param>
+        public void UpdatePartData(string session, Dictionary<string, int> parts)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.partData, parts);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the tutorial data associated with the user in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="tutorialData">The updated tutorial data.</param>
         public void UpdateTutorialData(string session, UserInformationResponse.TutorialData tutorialData)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
@@ -562,18 +922,27 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
-        public bool ChangeThumbnailId(string session, int idx)
+        /// <summary>
+        /// Changes the thumbnail ID associated with the user in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="costumeId">The new thumbnail ID to set for the user.</param>
+        /// <returns>True if the thumbnail ID was successfully changed; otherwise, false.</returns>
+        public bool ChangeThumbnailId(string session, int costumeId)
         {
-            int id = Constants.regulation.commanderCostumeDtbl.FirstOrDefault(x => x.cid == idx).ctid;
-
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.thumbnailId, id);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.thumbnailId, costumeId);
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
             return updateResult.ModifiedCount > 0;
         }
 
+        /// <summary>
+        /// Updates the tutorial step for the user in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="tutorialStep">The new tutorial step to set for the user.</param>
         public void UpdateTutorialStep(string session, int tutorialStep)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
@@ -582,14 +951,25 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        /// <summary>
+        /// Updates the nickname of the user in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="accountName">The new nickname to set for the user.</param>
         public void UpdateNickName(string session, string accountName)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.UserResources.nickname, accountName);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.nickname, accountName);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        /// <summary>
+        /// Adds a blocked user to the user's profile.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="blockUser">The user to be blocked.</param>
+        /// <returns>True if the user was successfully added to the blocked list, false otherwise.</returns>
         public bool AddBlockedUser(string session, BlockUser blockUser)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
@@ -600,6 +980,13 @@ namespace CommanderCS.MongoDB.Handlers
             return updateResult.ModifiedCount > 0;
         }
 
+        /// <summary>
+        /// Removes a blocked user from the user's profile.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="channel">The channel of the blocked user.</param>
+        /// <param name="uno">The unique identifier of the blocked user.</param>
+        /// <returns>True if the user was successfully removed from the blocked list, false otherwise.</returns>
         public bool DelBlockedUser(string session, int channel, string uno)
         {
             var filter = Builders<GameProfileScheme>.Filter.And(
@@ -617,6 +1004,12 @@ namespace CommanderCS.MongoDB.Handlers
             return deleteResult.DeletedCount > 0;
         }
 
+        /// <summary>
+        /// Marks a specific mail as read for the user.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="MailIdx">The index of the mail to be marked as read.</param>
+        /// <returns>True if the mail was successfully marked as read, false otherwise.</returns>
         public bool ReadMail(string session, int MailIdx)
         {
             var user = DatabaseManager.GameProfile.FindBySession(session);
@@ -633,16 +1026,29 @@ namespace CommanderCS.MongoDB.Handlers
             return updateResult.ModifiedCount > 0;
         }
 
+        /// <summary>
+        /// Updates the notification setting for the user.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="onoff">The new notification setting (1 for on, 0 for off).</param>
+        /// <returns>True if the notification setting was successfully updated, false otherwise.</returns>
         public bool UpdateNotifaction(string session, int onoff)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.Notifaction, Convert.ToBoolean(onoff));
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Notification, Convert.ToBoolean(onoff));
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
             return updateResult.ModifiedCount > 0;
         }
 
+        /// <summary>
+        /// Updates the reward status for a specific world map stage for the user.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="worldMapId">The ID of the world map.</param>
+        /// <param name="StageReward">The dictionary containing the reward status for each world map stage.</param>
+        /// <returns>True if the reward status was successfully updated, false otherwise.</returns>
         public bool UpdateWorldMapReward(string session, int worldMapId, Dictionary<string, int> StageReward)
         {
             string worldMapid = worldMapId.ToString();
@@ -657,6 +1063,11 @@ namespace CommanderCS.MongoDB.Handlers
             return updateResult.ModifiedCount > 0;
         }
 
+        /// <summary>
+        /// Updates the VIP recharge data for the user.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="vipRechargedata">The list containing the VIP recharge data.</param>
         public void UpdateVipRechargeData(string session, List<UserInformationResponse.VipRechargeData> vipRechargedata)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
@@ -665,6 +1076,12 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        /// <summary>
+        /// Updates the count of a specific VIP recharge data entry for the user.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="idx">The index of the VIP recharge data entry.</param>
+        /// <param name="newCount">The new count to set for the specified entry.</param>
         public void UpdateVipRechargeCount(string session, int idx, int newCount)
         {
             var filter = Builders<GameProfileScheme>.Filter.And(
@@ -680,6 +1097,12 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        /// <summary>
+        /// Retrieves the count of a specific VIP recharge data entry for the user.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="idx">The index of the VIP recharge data entry.</param>
+        /// <returns>The count of the specified VIP recharge data entry.</returns>
         public int GetVipRechargeCount(string session, int idx)
         {
             var filter = Builders<GameProfileScheme>.Filter.And(
@@ -694,6 +1117,11 @@ namespace CommanderCS.MongoDB.Handlers
             return result;
         }
 
+        /// <summary>
+        /// Updates the user profile in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="user">The updated user profile.</param>
         public void UpdateProfile(string session, GameProfileScheme user)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
@@ -701,6 +1129,11 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.ReplaceOne(filter, user);
         }
 
+        /// <summary>
+        /// Updates the guild ID associated with a user.
+        /// </summary>
+        /// <param name="uno">The unique identifier of the user.</param>
+        /// <param name="guildId">The new guild ID to be associated with the user.</param>
         public void UpdateGuild(int uno, object? guildId)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Uno, uno);
@@ -709,6 +1142,11 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        /// <summary>
+        /// Updates the guild ID associated with a user.
+        /// </summary>
+        /// <param name="uno">The unique identifier of the user.</param>
+        /// <param name="guildId">The new guild ID to be associated with the user.</param>
         public void UpdateGuildId(int uno, int guildId)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Uno, uno);
@@ -717,6 +1155,11 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        /// <summary>
+        /// Updates the pre-deck information for a user.
+        /// </summary>
+        /// <param name="session">The session ID of the user.</param>
+        /// <param name="preDecks">The new list of pre-deck configurations.</param>
         public void UpdatePreDeck(string session, List<UserInformationResponse.PreDeck> preDecks)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
@@ -725,6 +1168,11 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        /// <summary>
+        /// Adds an empty pre-deck slot to the user's profile.
+        /// </summary>
+        /// <param name="session">The session ID of the user.</param>
+        /// <param name="preDeckCount">The total number of pre-deck slots.</param>
         public void AddEmptyPreDeckSlot(string session, int preDeckCount)
         {
             UserInformationResponse.PreDeck emptyPreDeck = new()
@@ -739,50 +1187,222 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
 
             var filter2 = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update2 = Builders<GameProfileScheme>.Update.Set(x => x.UserStatistics.PredeckCount, preDeckCount + 1);
+            var update2 = Builders<GameProfileScheme>.Update.Set(x => x.Statistics.PredeckCount, preDeckCount + 1);
             DatabaseCollection.UpdateOne(filter2, update2);
         }
 
+        /// <summary>
+        /// Requests to set a nickname for the user after completing the tutorial.
+        /// </summary>
+        /// <param name="sess">The session ID of the user.</param>
+        /// <param name="nickname">The desired nickname to set.</param>
+        /// <returns>The error code indicating the result of the request.</returns>
         public ErrorCode RequestNicknameAfterTutorial(string sess, string nickname)
         {
+
+            ErrorCode result = ValidateNickname(nickname);
+
+            if (result == ErrorCode.Success)
+            {
+                var userGameProfile = FindBySession(sess);
+
+                if (userGameProfile.TutorialData.skip != true)
+                {
+                    UpdateTutorialStep(sess, 2);
+                }
+
+                UpdateNickName(sess, nickname);
+
+                return ErrorCode.Success;
+            }
+            else
+            {
+                return result;
+            }
+        }
+
+        public ErrorCode ValidateNickname(string nickname)
+        {
+            // Check for inappropriate words first
             if (Misc.NameCheck(nickname))
             {
                 return ErrorCode.InappropriateWords;
             }
 
+            // Check if the nickname is already in use
             if (AccountExists(nickname))
             {
                 return ErrorCode.AlreadyInUse;
             }
 
-            var userGameProfile = FindBySession(sess);
-
-            if (userGameProfile.TutorialData.skip != true)
-            {
-                UpdateTutorialStep(sess, 2);
-            }
-
-            DatabaseManager.GameProfile.UpdateNickName(sess, nickname);
-
+            // If no issues were found, return success (or some default value)
             return ErrorCode.Success;
         }
 
+        /// <summary>
+        /// Requests to change the nickname for the user.
+        /// </summary>
+        /// <param name="AccountName">The new nickname to set.</param>
+        /// <param name="sess">The session ID of the user.</param>
+        /// <returns>The error code indicating the result of the request.</returns>
         public ErrorCode RequestNickNameChange(string AccountName, string sess)
         {
-            if (Misc.NameCheck(AccountName))
+
+            ErrorCode result = ValidateNickname(AccountName);
+
+            if (result == ErrorCode.Success)
             {
-                return ErrorCode.InappropriateWords;
+
+                DatabaseManager.GameProfile.UpdateNickName(sess, AccountName);
+                DatabaseManager.GameProfile.UpdateOnlyCash(sess, 100, false);
+
+                return ErrorCode.Success;
+            }
+            else
+            {
+                return result;
             }
 
-            if (AccountExists(AccountName))
-            {
-                return ErrorCode.AlreadyInUse;
-            }
 
-            DatabaseManager.GameProfile.UpdateNickName(sess, AccountName);
-            DatabaseManager.GameProfile.UpdateCash(sess, 100, false);
-
-            return ErrorCode.Success;
         }
+
+        /// <summary>
+        /// Updates the dispatched commanders for the user.
+        /// </summary>
+        /// <param name="session">The session ID of the user.</param>
+        /// <param name="dispatchedCommanderList">The dictionary containing dispatched commander information.</param>
+        public void UpdateDispatchedCommander(string session, Dictionary<string, DispatchedCommanderInfo> dispatchedCommanderList)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.DispatchedCommanders, dispatchedCommanderList);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the number of rings for the user.
+        /// </summary>
+        /// <param name="session">The session ID of the user.</param>
+        /// <param name="ring">The new number of rings for the user.</param>
+        public void UpdateRings(string session, int ring)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.ring, ring);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the weapon inventory count for the user.
+        /// </summary>
+        /// <param name="session">The session ID of the user.</param>
+        /// <param name="weaponInventoryCount">The new weapon inventory count for the user.</param>
+        public void UpdateWeaponInventoryCount(string session, int weaponInventoryCount)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Statistics.WeaponInventoryCount, weaponInventoryCount);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the PvP defender deck for the user.
+        /// </summary>
+        /// <param name="session">The session ID of the user.</param>
+        /// <param name="deck">The new PvP defender deck configuration.</param>
+        public bool UpdatePvPDefenderDeck(string session, Dictionary<string, string> deck)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.DefenderDeck.PvPDefenderDeck, deck);
+
+            var updateResult = DatabaseCollection.UpdateOne(filter, update);
+
+            return updateResult.ModifiedCount > 0;
+        }
+
+        /// <summary>
+        /// Updates the wave defender decks for the user.
+        /// </summary>
+        /// <param name="session">The session ID of the user.</param>
+        /// <param name="decks">The new wave defender deck configurations.</param>
+        public void UpdateWaveDefenderDecks(string session, Dictionary<string, Dictionary<string, string>> decks)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.DefenderDeck.WaveDuelDefenderDecks, decks);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the world defender decks for the user.
+        /// </summary>
+        /// <param name="session">The session ID of the user.</param>
+        /// <param name="decks">The new world defender deck configurations.</param>
+        public void UpdateWorldDefenderDeck(string session, Dictionary<string, string> decks)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.DefenderDeck.WorldDuelDefenderDeck, decks);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the number of daily buyable raid keys for the user.
+        /// </summary>
+        /// <param name="session">The session ID of the user.</param>
+        /// <param name="Keys">The new number of daily buyable raid keys.</param>
+        public void UpdateDailyBuyableRaidKeys(string session, int Keys)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.DailyBuyables.RaidKeys, Keys);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the infinity battle deck configuration for the user.
+        /// </summary>
+        /// <param name="session">The session ID of the user.</param>
+        /// <param name="deck">The new infinity battle deck configuration.</param>
+        public void UpdateInfinityBattleDeck(string session, JObject deck)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.DefenderDeck.InfinityBattleDeck, deck);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the user data in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="user">The updated user profile.</param>
+        public void UpdateCommanderMarriage(string session, GameProfileScheme user, UserInformationResponse.Commander commander)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.And(
+            Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
+            Builders<GameProfileScheme>.Filter.Eq("CommanderData.Key", commander.id)
+            );
+
+            var update = Builders<GameProfileScheme>.Update.Set("CommanderData.$", commander);
+
+            DatabaseCollection.UpdateOne(filter, update);
+
+
+            var filter2 = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update2 = Builders<GameProfileScheme>.Update.Set(x => x.Resources.ring, user.Resources.ring);
+
+            DatabaseCollection.UpdateOne(filter2, update2);
+        }
+
+
+        public void UpdateLastStageAndStageInfo(string session, GameProfileScheme user)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.LastStage, user.LastStage).Set(x => x.BattleData.WorldMapStages, user.BattleData.WorldMapStages);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
     }
 }

@@ -9,8 +9,6 @@ namespace CommanderCS.Packets.Handlers.PvP
     {
         public override object Handle(PvPDuelListRequest @params)
         {
-            var user = GetUserGameProfile();
-
             // need to check score and the get duelist between the range
 
             CommanderCSLibrary.Shared.Protocols.PvPDuelList pvPDuel = new()
@@ -19,7 +17,7 @@ namespace CommanderCS.Packets.Handlers.PvP
                 openRemain = 86400,
                 remain = 86400,
                 time = (int)TimeManager.CurrentEpoch,
-                user = user.RankingData.PvPDuelRankingData
+                user = User.RankingData.PvPDuelRankingData
             };
 
             ResponsePacket response = new()
@@ -48,14 +46,14 @@ namespace CommanderCS.Packets.Handlers.PvP
 		this.localUser.duelTargetList.Clear();
 		this.localUser.duelTargetRefreshTime.SetByDuration((double)result.remain);
 		this.localUser.currentSeasonDuelTime.SetByDuration((double)result.time);
-		if (result.duelList != null)
+		if (result.duelList is not null)
 		{
 			for (int i = 1; i <= result.duelList.Count; i++)
 			{
 				this.localUser.duelTargetList.Add(result.duelList[i].idx, RoUser.CreateDuelListUser(EBattleType.Duel, result.duelList[i]));
 			}
 		}
-		if (result.user != null)
+		if (result.user is not null)
 		{
 			this.localUser.duelScore = result.user.score;
 			this.localUser.duelNextScore = result.user.nextScore;

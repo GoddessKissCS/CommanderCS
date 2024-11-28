@@ -1,5 +1,6 @@
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Reflection;
@@ -83,7 +84,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
             get
             {
-                if (_skillDamagePattern == null)
+                if (_skillDamagePattern is null)
                 {
                     _skillDamagePattern = new SkillDamagePatternTable();
                     _skillDamagePattern.Init(this);
@@ -152,7 +153,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
             get
             {
-                if (_dormitoryHeadCostumeMap == null)
+                if (_dormitoryHeadCostumeMap is null)
                 {
                     _dormitoryHeadCostumeMap = [];
                     for (int i = 0; i < dormitoryHeadCostumeDtbl.length; i++)
@@ -172,7 +173,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
             get
             {
-                if (_dormitoryThemeMap == null)
+                if (_dormitoryThemeMap is null)
                 {
                     _dormitoryThemeMap = [];
                     for (int i = 0; i < dormitoryThemeDtbl.length; i++)
@@ -195,7 +196,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         {
             get
             {
-                if (_cooperateBattleStepDtbl == null)
+                if (_cooperateBattleStepDtbl is null)
                 {
                     _cooperateBattleStepDtbl = [];
                     for (int i = 0; i < cooperateBattleDtbl.length; i++)
@@ -222,6 +223,8 @@ namespace CommanderCSLibrary.Shared.Regulation
         public DataTable<BattleTimeDataRow> battletimeDtbl { get; private set; }
         public DataTable<CommanderRoleDataRow> commanderRoleDtbl { get; private set; }
         public DataTable<MissionDataRow> missionDtbl { get; private set; }
+        public DataTable<CommanderClassUpDataRow> commanderClassUpDtbl { get; private set; }
+        public DataTable<VipBenefitsDataRow> VipBenefitsDtbl { get; private set; }
         private Regulation()
         {
         }
@@ -235,11 +238,14 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public string LoadJson(string filename)
         {
-            return File.ReadAllText($"Resources\\ExcelOutputAsset\\{filename}");
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            string fileContent = File.ReadAllText($"{path}//Resources//ExcelOutputAsset//{filename}");
+
+            return fileContent;
         }
 
 #pragma warning disable CS8601 // Possible null reference assignment.
-
         public void Init()
         {
             rewardDtbl = JsonConvert.DeserializeObject<DataTable<RewardDataRow>>(LoadJson("RewardDataTable.json"), SerializerSettings);
@@ -334,12 +340,17 @@ namespace CommanderCSLibrary.Shared.Regulation
             commanderRoleDtbl = JsonConvert.DeserializeObject<DataTable<CommanderRoleDataRow>>(LoadJson("CommanderRoleDataTable.json"), SerializerSettings);
             battletimeDtbl = JsonConvert.DeserializeObject<DataTable<BattleTimeDataRow>>(LoadJson("BattleTimeDataTable.json"), SerializerSettings);
 
+            commanderClassUpDtbl = JsonConvert.DeserializeObject<DataTable<CommanderClassUpDataRow>>(LoadJson("CommanderClassUpDataTable.json"), SerializerSettings);
+
+            VipBenefitsDtbl = JsonConvert.DeserializeObject<DataTable<VipBenefitsDataRow>>(LoadJson("VipBenefitsDataTable.json"), SerializerSettings);
+
+
 #pragma warning restore CS8601 // Possible null reference assignment.
         }
 
         public static void ExtendList<T>(ref List<T> list, int count)
         {
-            if (list == null)
+            if (list is null)
             {
                 list = [];
             }
@@ -351,7 +362,7 @@ namespace CommanderCSLibrary.Shared.Regulation
 
         public static void FillList<T>(ref List<T> list, int count)
         {
-            if (list == null)
+            if (list is null)
             {
                 list = new List<T>();
             }
@@ -732,7 +743,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         public string GetCostumeName(int ctid)
         {
             CommanderCostumeDataRow commanderCostumeDataRow = FindCostumeData(ctid);
-            if (commanderCostumeDataRow == null)
+            if (commanderCostumeDataRow is null)
             {
                 return "1";
             }
@@ -742,7 +753,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         public string GetCostumeThumbnailName(int ctid)
         {
             CommanderCostumeDataRow commanderCostumeDataRow = FindCostumeData(ctid);
-            if (commanderCostumeDataRow != null)
+            if (commanderCostumeDataRow is not null)
             {
                 CommanderDataRow commanderDataRow = commanderDtbl[commanderCostumeDataRow.cid.ToString()];
                 return commanderDataRow.resourceId + "_" + commanderCostumeDataRow.skinName;
@@ -997,7 +1008,7 @@ namespace CommanderCSLibrary.Shared.Regulation
             {
                 case 1:
                     return 4;
-                case 2: 
+                case 2:
                     return 1;
                 case 3:
                     return 0;
@@ -1005,7 +1016,7 @@ namespace CommanderCSLibrary.Shared.Regulation
                     return 2;
                 case 5:
                     return 3;
-                default: 
+                default:
                     return -1;
             }
         }
@@ -1013,8 +1024,6 @@ namespace CommanderCSLibrary.Shared.Regulation
         public Dictionary<string, List<WorldMapInformationResponse>> GetAllWorldMapStages()
         {
             Dictionary<string, List<WorldMapInformationResponse>> stages = [];
-
-            
 
             foreach (var stage in worldMapStageDtbl)
             {
@@ -1033,14 +1042,13 @@ namespace CommanderCSLibrary.Shared.Regulation
         }
 
 
-        public Dictionary<string, UserInformationResponse.Commander> AddSpecificCommander(Dictionary<string, UserInformationResponse.Commander> commanderDict, int commanderID)
+        public Dictionary<string, Commander> AddSpecificCommander(Dictionary<string, Commander> commanderDict, int commanderID)
         {
             var item = commanderCostumeDtbl.FirstOrDefault(c => c.cid == commanderID);
 
-            var role = commanderRoleDtbl.FirstOrDefault(x => x.commanderId == commanderID);
+            var role = commanderRoleDtbl.FirstOrDefault(x => x.Id == commanderID);
 
-
-            UserInformationResponse.Commander commanderData = new()
+            Commander commanderData = new()
             {
                 state = "N",
                 __skv1 = "1",
@@ -1057,10 +1065,10 @@ namespace CommanderCSLibrary.Shared.Regulation
                 favr = 0,
                 fvrd = 0,
                 haveCostume = [item.ctid],
-                id = "" + commanderID,
+                id = commanderID.ToString(),
                 marry = 0,
                 medl = 0,
-                role = role.commanderRole,
+                role = role.Role,
                 transcendence = [0, 0, 0, 0],
                 __cls = "1",
                 __exp = "0",

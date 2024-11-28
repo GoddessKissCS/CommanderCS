@@ -63,6 +63,15 @@
             }
         }
 
+        public static long TomorrowEpochInMilliseconds
+        {
+            get
+            {
+                return Today.Add(new TimeSpan(days: 1, hours: 0, minutes: 0, seconds: 0, milliseconds: 0)).ToUnixTimeMilliseconds();
+            }
+        }
+
+
         public static long TenDayEpoch
         {
             get

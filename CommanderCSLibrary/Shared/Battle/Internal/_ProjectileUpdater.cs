@@ -1,5 +1,5 @@
 using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 
 namespace CommanderCSLibrary.Shared.Battle.Internal
 {
@@ -218,11 +218,11 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
             if (projectileDr.damagePattern > 0)
             {
                 SkillDamagePattern skillDamagePattern = _rg.skillDamagePattern.Get(projectileDr.damagePattern);
-                if (skillDamagePattern != null)
+                if (skillDamagePattern is not null)
                 {
                     int hpRate = (int)((long)unit._health * 100L / unit._maxHealth);
                     SkillDamagePatternDataRow skillDamagePatternDataRow = skillDamagePattern.Get(hpRate);
-                    if (skillDamagePatternDataRow != null)
+                    if (skillDamagePatternDataRow is not null)
                     {
                         attackDamage = attackDamage * skillDamagePatternDataRow.damageScale / 100;
                     }
@@ -341,11 +341,11 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
             if (projectileDr.damagePattern > 0)
             {
                 SkillDamagePattern skillDamagePattern = _rg.skillDamagePattern.Get(projectileDr.damagePattern);
-                if (skillDamagePattern != null)
+                if (skillDamagePattern is not null)
                 {
                     int hpRate = (int)((long)unit._health * 100L / unit._maxHealth);
                     SkillDamagePatternDataRow skillDamagePatternDataRow = skillDamagePattern.Get(hpRate);
-                    if (skillDamagePatternDataRow != null)
+                    if (skillDamagePatternDataRow is not null)
                     {
                         num = num * skillDamagePatternDataRow.damageScale / 100;
                     }
@@ -440,7 +440,7 @@ namespace CommanderCSLibrary.Shared.Battle.Internal
             {
                 for (int i = 1; i < target.skills.Count; i++)
                 {
-                    if (target.skills[i] == null)
+                    if (target.skills[i] is null)
                     {
                         continue;
                     }

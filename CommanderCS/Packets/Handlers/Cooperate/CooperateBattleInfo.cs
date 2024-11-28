@@ -1,7 +1,49 @@
+using CommanderCS.Host;
+using CommanderCSLibrary.Shared.Enum;
+using static CommanderCS.Packets.Handlers.Cooperate.CooperateBattleInfo;
+
 namespace CommanderCS.Packets.Handlers.Cooperate
 {
-    public class CooperateBattleInfo
+    [Packet(Id = Method.CooperateBattleInfo)]
+    public class CooperateBattleInfo : BaseMethodHandler<CooperateBattleInfoRequest>
     {
+        public override object Handle(CooperateBattleInfoRequest @params)
+        {
+
+#warning editdata
+
+			ResponsePacket response = new ResponsePacket()
+            {
+                Id = BasePacket.Id,
+            };
+
+            CommanderCSLibrary.Shared.Protocols.CooperateBattleData battleData = new()
+            {
+                coop = new()
+                {
+                    stage = 1,
+                    step = 1,
+                    dmg = 1,
+                    remain = 5,
+                    ticket = 1,
+                },
+                recv = new()
+                {
+                    stage = 1,
+                    step = 1
+                }
+            };
+
+            response.Result = battleData;
+
+            return response;
+
+        }
+
+        public class CooperateBattleInfoRequest
+        {
+
+        }
     }
 }
 

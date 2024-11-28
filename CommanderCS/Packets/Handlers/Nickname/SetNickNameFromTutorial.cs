@@ -1,6 +1,11 @@
 ﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NuGet.Common;
+using static CommanderCSLibrary.Shared.Protocols.AlarmData;
+using static CommanderCSLibrary.Shared.Protocols.UserInformationResponse;
 
 namespace CommanderCS.Host.Handlers.Nickname
 {
@@ -9,9 +14,7 @@ namespace CommanderCS.Host.Handlers.Nickname
     {
         public override object Handle(SetNickNameFromTutorialRequest @params)
         {
-            var session = GetSession();
-
-            ErrorCode code = DatabaseManager.GameProfile.RequestNicknameAfterTutorial(session, @params.Unm);
+            ErrorCode code = DatabaseManager.GameProfile.RequestNicknameAfterTutorial(SessionId, @params.Unm);
 
             if (code != ErrorCode.Success)
             {
@@ -24,59 +27,59 @@ namespace CommanderCS.Host.Handlers.Nickname
                 return error;
             }
 
-            //var user = getusergameprofile();
 
-            //var goods = databasemanager.gameprofile.userresources2resource(user.userresources);
-            //var battlestats = databasemanager.gameprofile.userstatisticsfromsession(session);
-            //var guild = databasemanager.guild.requestguild(user.guildid, user.uno);
-
-            //userinformationresponse userinformationresponse = new()
-            //{
-            //    goodsinfo = goods,
-            //    battlestatisticsinfo = battlestats,
-            //    uno = user.uno.tostring(),
-            //    stage = user.laststage,
-            //    notification = user.notifaction,
-
-            //    fooddata = user.userinventory.fooddata,
-            //    eventresourcedata = user.userinventory.eventresourcedata,
-            //    groupitemdata = user.userinventory.groupitemdata,
-            //    itemdata = user.userinventory.itemdata,
-            //    medaldata = user.userinventory.medaldata,
-            //    partdata = user.userinventory.partdata,
-
-            //    resetremain = user.resetdatetime, // should be set?
-            //    / pronabably set it globally ?
-
-            //    equipitem = user.userinventory.equipitem,
-
-            //    donhavecommcostumedata = user.userinventory.donhavecommcostumedata,
-            //    completerewardgroupidx = user.completerewardgroupidx,
-            //    guildinfo = guild,
-            //    sweepcleardata = user.battledata.sweepcleardata,
-            //    predeck = user.predeck,
-            //    weaponlist = user.userinventory.weaponlist,
-            //    __commanderinfo = jobject.fromobject(user.commanderdata),
-            //};
-
-            //string result = JsonConvert.SerializeObject(userInformationResponse);
-
-            SetNickNameResponse SetNickNameF1 = new()
+            if (User.TutorialData.skip)
             {
-                step = @params.Step,
-            };
+                var information = GetUserInformationResponse(User);
 
-            ResponsePacket response = new()
+                JObject tutorialResponse = new JObject
+                {
+                    ["id"] = BasePacket.Id,
+                    ["result"] = new JObject
+                    {
+                        ["step"] = @params.Step,
+                        ["rsoc"] = JObject.FromObject(information.goodsInfo),
+                        ["uifo"] = JObject.FromObject(information.battleStatisticsInfo),
+                        ["comm"] = JObject.FromObject(information.__commanderInfo),
+                        ["uno"] = information.uno,
+                        ["stage"] = information.stage,
+                        ["part"] = JObject.FromObject(information.partData),
+                        ["medl"] = JObject.FromObject(information.medalData),
+                        ["ersoc"] = JObject.FromObject(information.eventResourceData),
+                        ["food"] = JObject.FromObject(information.foodData),
+                        ["item"] = JObject.FromObject(information.itemData),
+                        ["gld"] = null,
+                        ["cc"] = JObject.FromObject(information.sweepClearData),
+                        ["deck"] = JArray.FromObject(information.preDeck),
+                        ["nhcc"] = JObject.FromObject(information.donHaveCommCostumeData),
+                        ["grp"] = JArray.FromObject(information.completeRewardGroupIdx),
+                        ["rstm"] = information.resetRemain,
+                        ["onoff"] = information.notification,
+                        ["equip"] = JObject.FromObject(information.equipItem),
+                        ["guit"] = JObject.FromObject(information.groupItemData),
+                        ["weapon"] = JObject.FromObject(information.weaponList)
+                    }
+                };
+
+                return tutorialResponse;
+            } else
             {
-                Id = BasePacket.Id,
-                Result = SetNickNameF1,
-            };
+                ResponsePacket response = new()
+                {
+                    Id = BasePacket.Id,
+                    Result = new SetNickNameResponse()
+                    {
+                        step = @params.Step,
+                    }
+                };
 
-            return response;
+                return response;
+            }
         }
 
         internal class SetNickNameResponse
         {
+
             [JsonProperty("step")]
             public int step { get; set; }
         }

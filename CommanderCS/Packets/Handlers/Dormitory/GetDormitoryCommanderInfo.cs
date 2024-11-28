@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Dormitory
 	private IEnumerator GetDormitoryCommanderInfoResult(JsonRpcClient.Request request, Protocols.Dormitory.GetDormitoryCommanderInfoResponse result)
 	{
 		this.localUser.dormitory.Set(result.commanderData);
-		if (result.headData != null)
+		if (result.headData is not null)
 		{
 			this.localUser.dormitory.UpdateHeadData(result.headData);
 		}

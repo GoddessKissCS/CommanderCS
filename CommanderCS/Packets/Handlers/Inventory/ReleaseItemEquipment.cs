@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Inventory
 	// Token: 0x060060EE RID: 24814 RVA: 0x001B0F40 File Offset: 0x001AF140
 	private IEnumerator ReleaseItemEquipmentResult(JsonRpcClient.Request request, Protocols.UserInformationResponse result)
 	{
-		if (result.equipItem != null && result.commanderInfo != null)
+		if (result.equipItem is not null && result.commanderInfo is not null)
 		{
 			string releaseItemIdx = string.Empty;
 			int num = 0;
@@ -31,11 +31,11 @@ namespace CommanderCS.Packets.Handlers.Inventory
 			{
 				string key = keyValuePair3.Key;
 				RoCommander roCommander = this.localUser.FindCommander(key);
-				if (roCommander != null)
+				if (roCommander is not null)
 				{
 					EquipItemDataRow equipItemDataRow = this.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key = releaseItemIdx);
 					RoItem roItem = this.localUser.EquipedList_FindItem(releaseItemIdx, key, num);
-					if (roItem != null)
+					if (roItem is not null)
 					{
 						this.localUser.EquipedeList_RemoveItem(roItem);
 						roCommander.ClearEquipItem(equipItemDataRow.pointType, roItem);

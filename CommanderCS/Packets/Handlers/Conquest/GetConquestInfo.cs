@@ -14,6 +14,30 @@ namespace CommanderCS.Packets.Handlers.Conquest
                 Result = null,
             };
 
+
+			CommanderCSLibrary.Shared.Protocols.ConquestInfo test = new()
+			{
+				join = 0,
+				side = "",
+				sign = 0,
+				state = EConquestState.Match,
+				prev = new()
+				{
+					standbyList = [],
+					exdt = 0,
+					isWin = 0,
+					pointData = new()
+					{
+						lose = [],
+						win = []
+					},
+					userList = []
+				},
+				remain = 86400,
+			};
+
+			response.Result = test;
+
             return response;
         }
     }
@@ -36,7 +60,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 		{
 			yield break;
 		}
-		if (result != null)
+		if (result is not null)
 		{
 			UIManager.instance.world.guild.SetConquestState(result);
 		}

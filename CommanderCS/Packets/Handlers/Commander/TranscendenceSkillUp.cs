@@ -1,7 +1,46 @@
+using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Commander
 {
-    public class TranscendenceSkillUp
+    [Packet(Id = Method.TranscendenceSkillUp)]
+    public class TranscendenceSkillUp : BaseMethodHandler<TranscendenceSkillUpRequest>
     {
+        public override object Handle(TranscendenceSkillUpRequest @params)
+        {
+            string cid = @params.cid.ToString();
+
+            int transcendenceSlot = @params.slot - 1;
+
+            User.CommanderData[cid].transcendence[transcendenceSlot] += 1;
+            User.CommanderData[cid].medl -= 10;
+
+            User.Inventory.medalData[cid] -= 10;
+
+            DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.Inventory.medalData);
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+
+            var userInformationResponse = GetUserInformationResponse(User);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = userInformationResponse,
+            };
+
+            return response;
+        }
+    }
+
+    public class TranscendenceSkillUpRequest
+    {
+        [JsonProperty("cid")]
+        public int cid { get; set; }
+
+        [JsonProperty("slot")]
+        public int slot { get; set; }
     }
 }
 
@@ -19,7 +58,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 		yield return null;
 		int slot = int.Parse(this._FindRequestProperty(request, "slot"));
 		UITranscendencePopup obj = UnityEngine.Object.FindObjectOfType(typeof(UITranscendencePopup)) as UITranscendencePopup;
-		if (obj != null)
+		if (obj is not null)
 		{
 			obj.Set(slot);
 		}

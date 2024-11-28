@@ -1,4 +1,4 @@
-using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 
 namespace CommanderCSLibrary.Shared.Ro
@@ -26,7 +26,7 @@ namespace CommanderCSLibrary.Shared.Ro
                 raidEndTime = endTime,
                 raidCurTime = curTime
             };
-            RaidChallengeDataRow raidChallengeDataRow = Constants.regulation.raidChallengeDtbl[raidId.ToString()];
+            RaidChallengeDataRow raidChallengeDataRow = RemoteObjectManager.instance.regulation.raidChallengeDtbl[raidId.ToString()];
             roRaid.commander = RoCommander.Create(raidChallengeDataRow.commanderId, 1, 1, 1, 0, 0, 0, []);
             return roRaid;
         }

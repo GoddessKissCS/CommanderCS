@@ -1,7 +1,54 @@
+using CommanderCS.Host;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
+using CommanderCSLibrary.Shared;
+using CommanderCSLibrary.Shared.Enum;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Dispatch
 {
-    public class DispatchCommander
+    [Packet(Id = Method.DispatchCommander)]
+    public class DispatchCommander : BaseMethodHandler<DispatchCommanderRequest>
     {
+        public override object Handle(DispatchCommanderRequest @params)
+        {
+            var time = TimeManager.GetCurrentTime();
+
+            DispatchedCommanderInfo commanderInfo = new()
+            {
+                cid = @params.cid,
+                engageCnt = 0,
+                getGold = 0,
+                runtime = 0,
+                DispatchTime = time,
+            };
+
+            var slot = @params.slot.ToString();
+
+            Dictionary<string, DispatchedCommanderInfo> dispatchedcommanders = new()
+            {
+                { slot, commanderInfo }
+            };
+
+            DatabaseManager.GameProfile.UpdateDispatchedCommander(SessionId, dispatchedcommanders);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = dispatchedcommanders,
+            };
+
+            return response;
+        }
+    }
+
+    public class DispatchCommanderRequest
+    {
+        [JsonProperty("cid")]
+        public int cid { get; set; }
+
+        [JsonProperty("slot")]
+        public int slot { get; set; }
     }
 }
 
@@ -24,7 +71,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 				this.localUser.slotDispatchInfo.Add(slotDispatchInfo);
 			}
 		}
-		if (UIManager.instance.world.guild.dispatch != null)
+		if (UIManager.instance.world.guild.dispatch is not null)
 		{
 			UIManager.instance.world.guild.dispatch.SetDispatchList();
 		}

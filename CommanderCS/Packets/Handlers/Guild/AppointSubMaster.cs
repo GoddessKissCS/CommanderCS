@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
@@ -10,9 +10,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(AppointSubMasterRequest @params)
         {
-            var user = GetUserGameProfile();
-
-            int submaster = DatabaseManager.Guild.GetTotalSubMasters(user.GuildId);
+            int submaster = DatabaseManager.Guild.GetTotalSubMasters(User.GuildId);
 
             if (submaster > 2)
             {
@@ -25,7 +23,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            bool succeed = DatabaseManager.Guild.AppointSubMaster(@params.tuno, user.GuildId);
+            bool succeed = DatabaseManager.Guild.AppointSubMaster(@params.tuno, User.GuildId);
 
             if (!succeed)
             {

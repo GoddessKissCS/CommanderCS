@@ -11,12 +11,12 @@ namespace CommanderCS.Packets.Handlers.Payment
 		UIManager.World world = UIManager.instance.world;
 		bool flag = this.localUser.vipLevel != result.resource.vipLevel;
 		float inAppPrice = result.inAppPrice;
-		if (result.reward != null && result.reward.Count > 0)
+		if (result.reward is not null && result.reward.Count > 0)
 		{
 			UIPopup.Create<UIGetItem>("GetItem").Set(result.reward, string.Empty);
 			SoundManager.PlaySFX("SE_ItemGet_001", false, 0f, float.MaxValue, float.MaxValue, default(Vector3), null, SoundDuckingSetting.DoNotDuck, 0f, 1f);
 		}
-		if (result.userInfo != null)
+		if (result.userInfo is not null)
 		{
 			this.localUser.statistics.firstPayment = result.userInfo.firstPayment;
 		}
@@ -433,21 +433,21 @@ namespace CommanderCS.Packets.Handlers.Payment
 			AdjustManager.Instance.RevenueEvent("y641b9", (double)inAppPrice);
 			break;
 		}
-		if (world != null)
+		if (world is not null)
 		{
 			RoBuilding roBuilding = this.localUser.FindBuilding(EBuilding.VipShop);
-			if (roBuilding != null && this.localUser.vipLevel = roBuilding.reg.vipLevel && !roBuilding.GetUIBuilding().gameObject.activeSelf)
+			if (roBuilding is not null && this.localUser.vipLevel = roBuilding.reg.vipLevel && !roBuilding.GetUIBuilding().gameObject.activeSelf)
 			{
 				NetworkAnimation.Instance.CreateFloatingText_OnlyUIToast(Localization.Get("22006"), roBuilding.reg.resourceId);
 			}
 			RoBuilding roBuilding2 = this.localUser.FindBuilding(EBuilding.VipGacha);
-			if (roBuilding2 != null && this.localUser.vipLevel = roBuilding2.reg.vipLevel && !roBuilding2.GetUIBuilding().gameObject.activeSelf)
+			if (roBuilding2 is not null && this.localUser.vipLevel = roBuilding2.reg.vipLevel && !roBuilding2.GetUIBuilding().gameObject.activeSelf)
 			{
 				string text3 = "Loot_carrier";
 				NetworkAnimation.Instance.CreateFloatingText_OnlyUIToast(Localization.Get("7167"), text3);
 			}
 		}
-		if (world != null && world.existCarnival && world.carnival.isActive)
+		if (world is not null && world.existCarnival && world.carnival.isActive)
 		{
 			this.RequestGetCarnivalList(UIManager.instance.world.carnival.categoryType, 0);
 		}
@@ -457,21 +457,21 @@ namespace CommanderCS.Packets.Handlers.Payment
 		}
 		int num2 = int.Parse(this.regulation.defineDtbl["VIPGRADE_GACHA_DELAY_FREE"].value);
 		int num3 = int.Parse(this.regulation.defineDtbl["VIPGRADE_GACHA_FREE_PREMIUM"].value);
-		if (world != null && world.existGacha && world.gacha.isActive && (this.localUser.vipLevel >= num2 || this.localUser.vipLevel >= num3) && flag)
+		if (world is not null && world.existGacha && world.gacha.isActive && (this.localUser.vipLevel >= num2 || this.localUser.vipLevel >= num3) && flag)
 		{
 			this.RequestGachaInformation();
 		}
 		int num4 = int.Parse(this.regulation.defineDtbl["VIPGRADE_BATTLESHOP_REFRESH"].value);
-		if (world != null && world.existSecretShop && world.secretShop.isActive && this.localUser.vipLevel >= num4 && flag)
+		if (world is not null && world.existSecretShop && world.secretShop.isActive && this.localUser.vipLevel >= num4 && flag)
 		{
 			UIManager.instance.RefreshOpenedUI();
 		}
-		if (world != null && world.existWaveBattle && world.waveBattle.isActive && flag)
+		if (world is not null && world.existWaveBattle && world.waveBattle.isActive && flag)
 		{
 			this.RequestWaveBattleList();
 		}
 		int num5 = int.Parse(this.regulation.defineDtbl["DAILYMISSION_MIN_VIP"].value);
-		if (world != null && world.existWarHome && world.warHome.isActive && this.localUser.vipLevel >= num5 && flag)
+		if (world is not null && world.existWarHome && world.warHome.isActive && this.localUser.vipLevel >= num5 && flag)
 		{
 			world.warHome.Close();
 		}

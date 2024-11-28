@@ -32,6 +32,31 @@ namespace CommanderCSLibrary.Shared
             return name;
         }
 
+
+        public static string CreateRandomString()
+        {
+            const string characters = "abcd0123456789";
+            const int nameLength = 16;
+
+            StringBuilder nameBuilder = new(nameLength);
+
+            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+            {
+                byte[] data = new byte[nameLength];
+                rng.GetBytes(data);
+
+                for (int i = 0; i < data.Length; i++)
+                {
+                    byte value = data[i];
+                    char character = characters[value % characters.Length];
+                    nameBuilder.Append(character);
+                }
+            }
+
+            string name = nameBuilder.ToString();
+            return name;
+        }
+
         public static string ChangeDeviceCode()
         {
             const string characters = "aAbBcCdDeEfFgGhHjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ123456789";

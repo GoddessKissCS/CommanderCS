@@ -11,17 +11,16 @@ namespace CommanderCS.Host.Handlers.Bank
     {
         public override object Handle(BankRoulletStartRequest @params)
         {
-            string session = GetSession();
-
-            var vip_spins = DatabaseManager.GameProfile.GetVipRechargeCount(session, 601);
+            // THIS NEEDS A REWORK
+            var vip_spins = DatabaseManager.GameProfile.GetVipRechargeCount(SessionId, 601);
 
             var remainingSpins = vip_spins + @params.count;
 
-            DatabaseManager.GameProfile.UpdateVipRechargeCount(session, 601, remainingSpins);
+            DatabaseManager.GameProfile.UpdateVipRechargeCount(SessionId, 601, remainingSpins);
 
-            var luck = SpinBankRouletteAndProcessResults(session, @params.count);
+            var luck = SpinBankRouletteAndProcessResults(SessionId, @params.count);
 
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(session);
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
             BankRoullet bankRoullet = new()
             {
@@ -41,20 +40,20 @@ namespace CommanderCS.Host.Handlers.Bank
 
         private static List<int> SpinBankRouletteAndProcessResults(string sessionId, int spins)
         {
-            var roulettLuck = RandomGenerator.BankRoulletLuck(spins);
+            var rouletteLuck = RandomGenerator.BankRoulletLuck(spins);
 
-            var userLevel = DatabaseManager.GameProfile.FindBySession(sessionId).UserResources.level;           
+            var userLevel = DatabaseManager.GameProfile.FindBySession(sessionId).Resources.level;
 
-            int bankGold = Constants.regulation.userLevelDtbl.FirstOrDefault(x => x.level == userLevel).bankGold;
+            int bankGold = RemoteObjectManager.instance.regulation.userLevelDtbl.FirstOrDefault(x => x.level == userLevel).bankGold;
 
-            int updatedGold = roulettLuck.Sum() * bankGold;
+            int updatedGold = rouletteLuck.Sum() * bankGold;
 
             int cashDeduction = (spins == 10) ? 100 : 10;
 
             DatabaseManager.GameProfile.UpdateGold(sessionId, updatedGold, true);
-            DatabaseManager.GameProfile.UpdateCash(sessionId, cashDeduction, false);
+            DatabaseManager.GameProfile.UpdateOnlyCash(sessionId, cashDeduction, false);
 
-            return roulettLuck;
+            return rouletteLuck;
         }
 
         public class BankRoullet

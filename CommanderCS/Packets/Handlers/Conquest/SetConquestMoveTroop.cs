@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 	// Token: 0x06006073 RID: 24691 RVA: 0x001B0570 File Offset: 0x001AE770
 	private IEnumerator SetConquestMoveTroopResult(JsonRpcClient.Request request, Protocols.MoveConquestTroop result)
 	{
-		if (result != null)
+		if (result is not null)
 		{
 			string text = this._FindRequestProperty(request, "slot");
 			Protocols.ConquestTroopInfo.Troop troop = this.localUser.conquestDeck[int.Parse(text)];
@@ -29,7 +29,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 				troop.remainData = new TimeData();
 			}
 			troop.remainData.SetByDuration((double)troop.remain);
-			if (result.rsoc != null)
+			if (result.rsoc is not null)
 			{
 				this.localUser.RefreshGoodsFromNetwork(result.rsoc);
 			}

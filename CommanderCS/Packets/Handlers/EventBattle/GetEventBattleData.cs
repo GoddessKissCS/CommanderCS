@@ -16,9 +16,9 @@ namespace CommanderCS.Packets.Handlers.Event
 	{
 		int num = int.Parse(this._FindRequestProperty(request, "eidx"));
 		int num2 = int.Parse(this._FindRequestProperty(request, "level"));
-		if (result != null)
+		if (result is not null)
 		{
-			if (UIManager.instance.world != null)
+			if (UIManager.instance.world is not null)
 			{
 				UIEventBattle uieventBattle;
 				if (!UIManager.instance.world.existEventBattle)

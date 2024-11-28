@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
@@ -10,9 +10,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(ApplyGuildJoinRequest @params)
         {
-            var session = GetSession();
-
-            ErrorCode code = DatabaseManager.GuildApplication.CreateGuildApplication(session, @params.gidx);
+            ErrorCode code = DatabaseManager.GuildApplication.CreateGuildApplication(SessionId, @params.gidx);
 
 #warning TODO NEED TO ADD ALL ERRORCODES
 

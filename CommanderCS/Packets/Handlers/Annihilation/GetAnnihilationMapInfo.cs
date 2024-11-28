@@ -1,5 +1,6 @@
 using CommanderCS.Host;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Annihilation
@@ -9,7 +10,36 @@ namespace CommanderCS.Packets.Handlers.Annihilation
     {
         public override object Handle(GetAnnihilationMapInfoRequest @params)
         {
-            return "{}";
+            switch (@params.goReady)
+            {
+                case 0:
+                    break;
+            }
+
+            // still needs work
+
+            AnnihilationMode mode = AnnihilationMode.NONE;
+
+            var annimap = new AnnihilationMapInfo()
+            {
+                stage = 0,
+                remainTime = 0,
+                commanderStatusList = [],
+                dieCommanderList = [],
+                clear = 0,
+                enemyList = [],
+                isPlayAdvanceParty = 0,
+                mode = mode,
+                __advancePartyReward = 0,
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = annimap
+            };
+
+            return response;
         }
     }
 
@@ -32,24 +62,24 @@ namespace CommanderCS.Packets.Handlers.Annihilation
 		string text = this._FindRequestProperty(request, "goReady");
 		this.localUser.lastClearAnnihilationStage = result.stage;
 		this.localUser.CommanderStatusReset();
-		if (result.dieCommanderList != null)
+		if (result.dieCommanderList is not null)
 		{
 			for (int i = 0; i < result.dieCommanderList.Count; i++)
 			{
 				RoCommander roCommander = this.localUser.FindCommander(result.dieCommanderList[i]);
-				if (roCommander != null)
+				if (roCommander is not null)
 				{
 					roCommander.Die();
 				}
 			}
 		}
-		if (result.commanderStatusList != null)
+		if (result.commanderStatusList is not null)
 		{
 			for (int j = 0; j < result.commanderStatusList.Count; j++)
 			{
 				Protocols.AnnihilationMapInfo.StatusData statusData = result.commanderStatusList[j];
 				RoCommander roCommander2 = this.localUser.FindCommander(statusData.id);
-				if (roCommander2 != null)
+				if (roCommander2 is not null)
 				{
 					if (!roCommander2.isDie)
 					{

@@ -9,11 +9,9 @@ namespace CommanderCS.Host.Handlers.Tutorial
     {
         public override object Handle(GetTutorialStepRequest @params)
         {
-            var user = GetUserGameProfile();
-
             TutorialStep tutorialStep = new()
             {
-                ttrl = user.TutorialData,
+                ttrl = User.TutorialData,
             };
 
             ResponsePacket response = new()

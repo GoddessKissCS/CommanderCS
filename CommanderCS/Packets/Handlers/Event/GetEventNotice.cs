@@ -1,4 +1,5 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Host.Handlers.Event
@@ -8,11 +9,11 @@ namespace CommanderCS.Host.Handlers.Event
     {
         public override object Handle(GetEventNoticeRequest @params)
         {
-            List<NoticeData> EventNotice1 = [];
+            List<NoticeData> EventNotice = DatabaseManager.EventNotice.GetAllEventNotice();
 
             ResponsePacket response = new()
             {
-                Result = EventNotice1,
+                Result = EventNotice,
                 Id = BasePacket.Id
             };
 

@@ -1,5 +1,5 @@
-using CommanderCS.MongoDB;
 using CommanderCS.Host;
+using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
@@ -11,9 +11,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(GetGuildBoardRequest @params)
         {
-            var user = GetUserGameProfile();
-
-            var list = DatabaseManager.Guild.GetGuildBoard(user.GuildId, out ErrorCode code);
+            var list = DatabaseManager.Guild.GetGuildBoard(User.GuildId, out ErrorCode code);
 
             if (code != ErrorCode.Success)
             {
@@ -24,7 +22,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 };
             }
 
-            var memberGrade = DatabaseManager.Guild.GetMemberGrade(user.GuildId, user.Uno);
+            var memberGrade = DatabaseManager.Guild.GetMemberGrade(User.GuildId, User.Uno);
 
             if (memberGrade == 1)
             {
@@ -41,7 +39,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             {
                 list.ForEach(boardData =>
                 {
-                    var boardMemberId = DatabaseManager.Guild.GetMemberGrade(user.GuildId, boardData.uno);
+                    var boardMemberId = DatabaseManager.Guild.GetMemberGrade(User.GuildId, boardData.uno);
 
                     if (boardData.dauth == 0 && boardMemberId != 1)
                     {

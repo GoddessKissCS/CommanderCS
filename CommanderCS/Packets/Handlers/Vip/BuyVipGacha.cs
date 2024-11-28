@@ -35,10 +35,10 @@ namespace CommanderCS.Packets.Handlers.Vip
 		if (erewardType = ERewardType.Commander)
 		{
 			RoCommander roCommander = RemoteObjectManager.instance.localUser.FindCommander(num.ToString());
-			if (roCommander != null)
+			if (roCommander is not null)
 			{
 				UICommanderComplete uicommanderComplete = UIPopup.Create<UICommanderComplete>("CommanderComplete");
-				if (uicommanderComplete != null)
+				if (uicommanderComplete is not null)
 				{
 					if (roCommander.state != ECommanderState.Nomal)
 					{
@@ -50,14 +50,14 @@ namespace CommanderCS.Packets.Handlers.Vip
 					}
 				}
 				UIVipGachaContents vipGachaContents = UIManager.instance.world.vipGacha.vipGachaContents;
-				if (vipGachaContents != null)
+				if (vipGachaContents is not null)
 				{
 					vipGachaContents.UnRegisterEndPopup();
 				}
 				RemoteObjectManager.instance.RequestVipGachaInfo();
 			}
 		}
-		else if (list != null)
+		else if (list is not null)
 		{
 			UIPopup.Create<UIGetItem>("GetItem").Set(list, string.Empty);
 			SoundManager.PlaySFX("SE_ItemGet_001", false, 0f, float.MaxValue, float.MaxValue, default(Vector3), null, SoundDuckingSetting.DoNotDuck, 0f, 1f);
@@ -76,16 +76,16 @@ namespace CommanderCS.Packets.Handlers.Vip
 		}
 		this.localUser.vipGachaCount = result.gachaCount;
 		UIVipGachaContents vipGachaContents2 = UIManager.instance.world.vipGacha.vipGachaContents;
-		if (vipGachaContents2 != null)
+		if (vipGachaContents2 is not null)
 		{
 			UIManager.instance.world.vipGacha.vipGachaContents.Init(this.localUser.gachaInfoList);
 		}
-		if (result.commanderData != null)
+		if (result.commanderData is not null)
 		{
 			foreach (Protocols.UserInformationResponse.Commander commander in result.commanderData.Values)
 			{
 				RoCommander roCommander2 = this.localUser.FindCommander(commander.id);
-				if (commander.haveCostume != null && commander.haveCostume.Count > 0)
+				if (commander.haveCostume is not null && commander.haveCostume.Count > 0)
 				{
 					roCommander2.haveCostumeList = commander.haveCostume;
 				}

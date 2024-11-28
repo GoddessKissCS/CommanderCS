@@ -14,15 +14,14 @@ namespace CommanderCS.Host.Handlers.Guild
                 Id = BasePacket.Id,
             };
 
-            var user = GetUserGameProfile();
 
-            if (user.GuildId == null)
+            if (User.GuildId is null)
             {
                 response.Result = null;
                 return response;
             }
 
-            var memberData = DatabaseManager.Guild.RequestGuildMembers(user.GuildId);
+            var memberData = DatabaseManager.Guild.RequestGuildMembers(User.GuildId);
 
             GuildMember guild = new()
             {
@@ -56,7 +55,7 @@ namespace CommanderCS.Host.Handlers.Guild
 		{
 			yield break;
 		}
-		if (result != null)
+		if (result is not null)
 		{
 			UIManager.instance.world.guild.InitAndOpenGuildInfo(result.memberData);
 			UISetter.SetActive(UIManager.instance.world.guild.guildBoardBadge, result.badge = 1);

@@ -14,25 +14,25 @@ namespace CommanderCS.Packets.Handlers.SocketChatting
 	// Token: 0x06005FBA RID: 24506 RVA: 0x001AF608 File Offset: 0x001AD808
 	private IEnumerator SendWaitChatMsgResult(JsonRpcClient.Request request, Protocols.ChattingInfo result)
 	{
-		if (result.whisperList != null)
+		if (result.whisperList is not null)
 		{
 			for (int i = 0; i < result.whisperList.Count; i++)
 			{
 				this.localUser.chattingWhisperList.Add(result.whisperList[i]);
 			}
 		}
-		if (result.guildList != null)
+		if (result.guildList is not null)
 		{
 			for (int j = 0; j < result.guildList.Count; j++)
 			{
 				this.localUser.chattingGuildList.Add(result.guildList[j]);
 			}
 		}
-		if (result.channelList != null)
+		if (result.channelList is not null)
 		{
 			for (int k = 0; k < result.channelList.Count; k++)
 			{
-				if (result.channelList[k].chatMsgData.record != null)
+				if (result.channelList[k].chatMsgData.record is not null)
 				{
 					Protocols.ChattingInfo.ChattingData chattingData = new Protocols.ChattingInfo.ChattingData();
 					chattingData.message = result.channelList[k].message;

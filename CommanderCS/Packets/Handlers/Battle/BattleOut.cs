@@ -1,6 +1,9 @@
-﻿using CommanderCSLibrary.Shared;
+﻿using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Battle;
 using CommanderCSLibrary.Shared.Enum;
+using CommanderCSLibrary.Shared.Protocols;
+using CommanderCSLibrary.Shared.Regulation;
+using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -11,40 +14,162 @@ namespace CommanderCS.Host.Handlers.Battle
     {
         public override object Handle(BattleOutRequest @params)
         {
-			var rg = GetRegulation();
+
+            ErrorPacket error = new()
+            {
+                Id = BasePacket.Id,
+                Error = new() { code = ErrorCode.Success }
+            };
 
             string serializedJson = JsonConvert.SerializeObject(@params.info, Formatting.Indented);
 
             Record record = (Record)@params.info;
             Result result = (Result)@params.result;
 
-            var sim = Simulator.Simulation(rg, serializedJson, false);
+            Simulator simulatedBattle = null;
+            int commanderXP = 0;
+
+            WorldMapStageDataRow worldstagetbl = null;
+
+            switch (@params.BattleType)
+            {
+                case EBattleType.Plunder:
+                    simulatedBattle = Simulator.ReplayPlunderSimulation(Regulation, serializedJson, false);
+
+                    worldstagetbl = Regulation.worldMapStageDtbl.Find(x => x.id == record.initState.stageID);
+
+
+                    break;
+
+            }
+
+
+            if (simulatedBattle is not null)
+            {
+
+            }
+
+#if DEBUG
 
             var record1 = JsonConvert.SerializeObject(record, Formatting.Indented);
             var result1 = JsonConvert.SerializeObject(result, Formatting.Indented);
-            var simRec = JsonConvert.SerializeObject(sim, Formatting.Indented);
-            var simRes = JsonConvert.SerializeObject(sim.result, Formatting.Indented);
+            var simRec = JsonConvert.SerializeObject(simulatedBattle.record, Formatting.Indented);
+            var simRes = JsonConvert.SerializeObject(simulatedBattle.record.result, Formatting.Indented);
 
-            if (result.winSide == sim.result.winSide)
+            File.WriteAllText("Record.json", record1);
+            File.WriteAllText("Result.json", result1);
+            File.WriteAllText("simulatedRecord.json", simRec);
+            File.WriteAllText("simulatedResult.json", simRes);
+
+#endif
+
+            if (result.winSide == simulatedBattle.result.winSide && result.winSide != 1 && simulatedBattle.result.winSide != 1)
             {
-                if (result.totalAttackDamage == sim.result.totalAttackDamage)
+                double maxDifference = simulatedBattle.result.totalAttackDamage * 0.05;
+
+                double lowerBound = simulatedBattle.result.totalAttackDamage - maxDifference;
+                double upperBound = simulatedBattle.result.totalAttackDamage + maxDifference;
+
+                if (result.totalAttackDamage >= lowerBound && result.totalAttackDamage <= upperBound)
                 {
+                    bool isRecordGoldHigher = result.gold >= simulatedBattle.result.gold;
+
+                    if (@params.BattleType == EBattleType.Plunder)
+                    {
+                        User.LastStage = int.Parse(worldstagetbl.id);
+
+                        User.BattleData.WorldMapStages.TryGetValue(worldstagetbl.worldMapId, out var map);
+
+                        int index = map.FindIndex(x => x.stageId == worldstagetbl.id);
+
+                        User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].clearCount++;
+
+                        int star = User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].star;
+
+                        if (star < 3 && result.clearRank > star)
+                        {
+                            User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].star = result.clearRank;
+                        }
+
+                        DatabaseManager.GameProfile.UpdateLastStageAndStageInfo(SessionId, User);
+
+                    }
+
+                    if (!isRecordGoldHigher)
+                    {
+
+                    }
                 }
             }
 
-            File.WriteAllText("record.json", record1);
-            File.WriteAllText("result1.json", result1);
-            File.WriteAllText("simRec.json", simRec);
-            File.WriteAllText("simRes.json", simRes);
 
-            return "{}";
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
+
+
+
+            UserInformationResponse.BattleResult battleResult = new()
+            {
+                save = false,
+                VipShopOpen = 0,
+                VipShopResetTime = 0,
+                commanderData = User.CommanderData,
+                commanderFavor = [],
+                eventResourceData = User.Inventory.eventResourceData,
+                foodData = User.Inventory.foodData,
+                groupItemData = User.Inventory.groupItemData,
+                infinityData = new(),
+                itemData = User.Inventory.itemData,
+                medalData = User.Inventory.medalData,
+                partData = User.Inventory.partData,
+                rewardList = [],
+                user = new(),
+                __resource = rsoc,
+            };
+
+            var res = JObject.FromObject(battleResult);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = res,
+            };
+
+            return response;
+        }
+
+        public static UserInformationResponse.Resource CheckIfLevelUp(int bullet, UserInformationResponse.Resource user, Regulation rg)
+        {
+
+            int user_xp = int.Parse(user.__exp);
+
+            user_xp += bullet;
+
+            user.__exp = user_xp.ToString();
+
+            var row = rg.userLevelDtbl.Find(x => x.level == int.Parse(user.__level));
+
+            int userXP = int.Parse(user.__exp);
+
+            int userLevel = int.Parse(user.__level);
+
+            if (userXP > row.exp)
+            {
+                user.__level = (userXP + 1).ToString();
+                user.__exp = (userXP -= row.exp).ToString();
+
+                return CheckIfLevelUp(0, user, rg);
+            }
+
+
+            return user;
+
         }
     }
 
     public class BattleOutRequest
     {
         [JsonProperty("type")]
-        public int type { get; set; }
+        public EBattleType BattleType { get; set; }
 
         [JsonProperty("checkSum")]
         public string checkSum { get; set; }
@@ -71,11 +196,11 @@ namespace CommanderCS.Host.Handlers.Battle
 		BattleData.Set(battleData);
 		Protocols.UserInformationResponse.BattleResult battleResult = null;
 		UIManager.instance.battle.Main.SendMessage("OnBattleOutResult", SendMessageOptions.DontRequireReceiver);
-		if (battleData == null)
+		if (battleData is null)
 		{
 			yield break;
 		}
-		if (battleData.type != EBattleType.GuildScramble && result == null)
+		if (battleData.type != EBattleType.GuildScramble && result is null)
 		{
 			yield break;
 		}
@@ -208,11 +333,11 @@ namespace CommanderCS.Host.Handlers.Battle
 			if (isWin)
 			{
 				battleResult2.plunderResult.SetBattleTime((float)UIManager.instance.battle.Simulator.frame.time / 1000f);
-				if (battleResult.resource != null)
+				if (battleResult.resource is not null)
 				{
 					battleResult2.plunderResult.SetGetExp(0);
 				}
-				if (battleResult.rewardList != null)
+				if (battleResult.rewardList is not null)
 				{
 					battleResult2.plunderResult.SetRewardDataAndOpen(battleResult.rewardList);
 				}
@@ -272,7 +397,7 @@ namespace CommanderCS.Host.Handlers.Battle
 		{
 			battleResult2.Open();
 		}
-		if (battleResult != null)
+		if (battleResult is not null)
 		{
 			this.localUser.RefreshGoodsFromNetwork(battleResult.resource);
 			this.localUser.RefreshPartFromNetwork(battleResult.partData);
@@ -293,7 +418,7 @@ namespace CommanderCS.Host.Handlers.Battle
 		if (code == 70009)
 		{
 			UISimplePopup uisimplePopup = UISimplePopup.CreateOK(false, Localization.Get("1303"), string.Empty, Localization.Get("7044"), Localization.Get("1004"));
-			if (uisimplePopup != null)
+			if (uisimplePopup is not null)
 			{
 				uisimplePopup.onClose = delegate
 				{
@@ -312,7 +437,7 @@ namespace CommanderCS.Host.Handlers.Battle
 				code,
 				")"
 			}), Localization.Get("5133"));
-			if (uisimplePopup2 != null)
+			if (uisimplePopup2 is not null)
 			{
 				uisimplePopup2.onClose = delegate
 				{

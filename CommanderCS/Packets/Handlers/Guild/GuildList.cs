@@ -22,13 +22,11 @@ namespace CommanderCS.Host.Handlers.Guild
                 Result = guildList,
             };
 
-            var user = GetUserGameProfile();
+            var userGuild = DatabaseManager.Guild.RequestGuild(User.GuildId, User.Uno);
 
-            var userGuild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
-
-            if (userGuild != null)
+            if (userGuild is not null)
             {
-                var memberData = DatabaseManager.Guild.RequestGuildMembers(user.GuildId);
+                var memberData = DatabaseManager.Guild.RequestGuildMembers(User.GuildId);
 
                 guildList.memberData = memberData;
                 guildList.guildInfo = userGuild;
@@ -36,7 +34,7 @@ namespace CommanderCS.Host.Handlers.Guild
                 return response;
             }
 
-            guildList.guildList = DatabaseManager.Guild.GetAllGuilds(GetSession());
+            guildList.guildList = DatabaseManager.Guild.GetAllGuilds(SessionId);
 
             return response;
         }
