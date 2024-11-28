@@ -41,7 +41,7 @@ Download all these files above (may change in the future), install the mongodb c
 
 Download this Project from releases or build it yourself (needs net8.0).
 
-Put the FileCDN content into the FileCDN folder in Resources.
+Put the FileCDN content into the FileCDN folder.
 
 When you run the game for the first time it will not directly connect your server since it doesnt know the ip of it, however thats very easy to change as it should create a file called config.json in your Pictures folder on your device, locate the pre-input ip and replace it with your ip wherever your server is running.
 
