@@ -1,4 +1,4 @@
-# StellarGK
+# CommanderCS
 some gacha game emu
 
 
