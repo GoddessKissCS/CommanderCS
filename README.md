@@ -10,6 +10,11 @@ some gacha game emu
 Getting kicked out of a guild while the game still thinks you are in one will make unable to continue playing (needs to restart the game) (client-sided issue)
 
 
+### IMPORTANT
+
+This is just a POC and its in WIP while it works somewhat it does has very limited usage and not everything works to 100% like its intend.
+
+
 
 ### How-To-Use
 
