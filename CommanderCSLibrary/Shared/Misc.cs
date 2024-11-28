@@ -50,18 +50,15 @@ namespace CommanderCSLibrary.Shared
 
         }
 
-
         public static string GetLocalIPAddress()
         {
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
+            string localIP = string.Empty;
+            using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
             {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    return ip.ToString();
-                }
+                socket.Connect("8.8.8.8", 65530);
+                IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+                return localIP = endPoint.Address.ToString();
             }
-            throw new Exception("No network adapters with an IPv4 address in the system!");
         }
     }
 }
