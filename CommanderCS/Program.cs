@@ -111,19 +111,17 @@ namespace CommanderCS
             //app.UseMiddleware<CustomExceptionHandlerMiddleware>();
 
             //PROBABLY SHOULD BE MOVED TO A CDN SERVER
-
             #region StaticFileServer
 
             const string StaticFilesPath = "FileCDN";
-            const string SlashStaticFilesPath = $":80/{StaticFilesPath}";
+            const string SlashStaticFilesPath = $"/{StaticFilesPath}";
 
-            // Working Directory path
+            //// Working Directory path
             // var BasePath = builder.Environment.ContentRootPath;
             // Executable file path
-
             var BasePath = AppDomain.CurrentDomain.BaseDirectory;
             var staticFilesProviderPath = Path.Combine(BasePath, StaticFilesPath);
-            IFileProvider fileProvider = new PhysicalFileProvider(staticFilesProviderPath);
+            var fileProvider = new PhysicalFileProvider(staticFilesProviderPath);
 
             app.UseDirectoryBrowser(new DirectoryBrowserOptions()
             {
@@ -140,10 +138,6 @@ namespace CommanderCS
                 HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
                 ServeUnknownFileTypes = true
             });
-
-            // app.UseWebSockets(new WebSocketOptions() {
-            //     KeepAliveInterval = TimeSpan.FromSeconds(60),
-            //});
 
             #endregion StaticFileServer
 

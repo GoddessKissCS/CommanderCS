@@ -149,6 +149,7 @@
     <None Remove="Resources\ExcelOutputAsset\WorldMapStageDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\WorldMapStageDataTable_2.json" />
     <None Remove="Resources\ExcelOutputAsset\WorldMapStageTypeDataTable.json" />
+    <None Remove="Resources\FileCDN\copyfileshere" />
   </ItemGroup>
 
   <ItemGroup>
@@ -544,6 +545,9 @@
     </Content>
     <Content Include="Resources\ExcelOutputAsset\WorldMapStageTypeDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\FileCDN\copyfileshere">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 

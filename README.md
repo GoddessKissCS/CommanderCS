@@ -35,6 +35,12 @@ This is just the games obb data works with any obb data for the lastest version.
 These are just all server sides files you have to download so the game can be used.
  
 
+### Setup
+
+Download all these files above (may change in the future), install the mongodb community database, install the apk to your device or emulator (whatever you prefer), put the OBB file after unpacking it to its path, should be straightforward.
+
+When you run the game for the first time it will not directly connect your server since it doesnt know the ip of it, however thats very easy to change as it should create a file called config.json in your Pictures folder on your device, locate the pre-input ip and replace it with your ip wherever your server is running.
+
 ### Progress
 
 TLDR 

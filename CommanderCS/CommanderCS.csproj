@@ -12,18 +12,21 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="FileCDN\**" />
 	  <Compile Remove="Resources\**" />
-	  <Content Remove="FileCDN\**" />
 	  <Content Remove="Resources\**" />
-	  <EmbeddedResource Remove="FileCDN\**" />
 	  <EmbeddedResource Remove="Resources\**" />
-	  <None Remove="FileCDN\**" />
 	  <None Remove="Resources\**" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="FileCDN\copyfileshere" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Content Include="crying.ico" />
+	  <Content Include="FileCDN\copyfileshere">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 
 	<ItemGroup>

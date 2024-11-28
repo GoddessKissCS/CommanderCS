@@ -114,8 +114,8 @@ namespace CommanderCS.MongoDB
 
 
             // initalize some banners
-            RotationBanner.Insert("1720097316", "1722170916", 0, 0, "http://" + ip + ":8080/FileCDN/Event/TitleBanner/Notice_Icon.png", "", CommanderCSLibrary.Shared.Enum.BannerListType.None);
-            RotationBanner.Insert("1720097316", "1722170916", 1, 1, "http://" + ip + ":8080/FileCDN/Event/TitleBanner/Event_Icon.png", "", CommanderCSLibrary.Shared.Enum.BannerListType.None);
+            RotationBanner.Insert("1720097316", "1722170916", 0, 0, "http://" + ip + ":5000/FileCDN/Event/TitleBanner/Notice_Icon.png", "", CommanderCSLibrary.Shared.Enum.BannerListType.None);
+            RotationBanner.Insert("1720097316", "1722170916", 1, 1, "http://" + ip + ":5000/FileCDN/Event/TitleBanner/Event_Icon.png", "", CommanderCSLibrary.Shared.Enum.BannerListType.None);
 
 
         }
