@@ -16,7 +16,6 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             var commanderClassUpInfo = Regulation.commanderClassUpDtbl.Find(x => x.ROLE == commander.role && x.GRADE == commander.__cls);
 
-
             switch (commanderClassUpInfo.GRADE)
             {
                 case "1":

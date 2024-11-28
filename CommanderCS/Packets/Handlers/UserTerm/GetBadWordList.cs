@@ -35,7 +35,7 @@ namespace CommanderCS.Host.Handlers.UserTerm
 
         public static List<string> ReadBadWordsFromFile(string fileName)
         {
-            string path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             string fileContent = $"{path}//Resources//BadWordList//{fileName}.txt";
 

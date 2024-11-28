@@ -1,5 +1,6 @@
 ﻿using CommanderCS.MongoDB.Handlers;
 using CommanderCSLibrary.Cryptography;
+using CommanderCSLibrary.Shared;
 
 namespace CommanderCS.MongoDB
 {
@@ -91,9 +92,11 @@ namespace CommanderCS.MongoDB
                 }
             }
 
-            string cdn_url = Crypto.Base64Encode("http://192.168.178.29:8080/FileCDN/");
-            string game_url = Crypto.Base64Encode("http://192.168.178.29:5000/checkData.php");
-            string chat_url = Crypto.Base64Encode("http://192.168.178.29:5000/chat.php");
+            string ip = Misc.GetLocalIPAddress();
+
+            string cdn_url = Crypto.Base64Encode("http://" + ip + ":5000/FileCDN/");
+            string game_url = Crypto.Base64Encode("http://" + ip + ":5000/checkData.php");
+            string chat_url = Crypto.Base64Encode("http://" + ip + ":5000/chat.php");
 
             // Initialize game version information
             GameVersionInfo.Insert(1, "1.066.12", cdn_url, game_url, chat_url, false, false, false, false);
@@ -111,8 +114,8 @@ namespace CommanderCS.MongoDB
 
 
             // initalize some banners
-            RotationBanner.Insert("1720097316", "1722170916", 0, 0, "http://192.168.178.29:8080/FileCDN/Event/TitleBanner/Notice_Icon.png", "", CommanderCSLibrary.Shared.Enum.BannerListType.None);
-            RotationBanner.Insert("1720097316", "1722170916", 1, 1, "http://192.168.178.29:8080/FileCDN/Event/TitleBanner/Event_Icon.png", "", CommanderCSLibrary.Shared.Enum.BannerListType.None);
+            RotationBanner.Insert("1720097316", "1722170916", 0, 0, "http://" + ip + ":8080/FileCDN/Event/TitleBanner/Notice_Icon.png", "", CommanderCSLibrary.Shared.Enum.BannerListType.None);
+            RotationBanner.Insert("1720097316", "1722170916", 1, 1, "http://" + ip + ":8080/FileCDN/Event/TitleBanner/Event_Icon.png", "", CommanderCSLibrary.Shared.Enum.BannerListType.None);
 
 
         }

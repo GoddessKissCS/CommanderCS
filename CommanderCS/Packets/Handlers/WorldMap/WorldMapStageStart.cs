@@ -28,6 +28,8 @@ namespace CommanderCS.Host.Handlers.WorldMap
             {
                 case 1:
 
+                    //ADD to the database a thing that says how many drops there will be that will be wiped here or if a new battle starts in battle
+
                     test.Add(new()
                     {
                         effect = 0,

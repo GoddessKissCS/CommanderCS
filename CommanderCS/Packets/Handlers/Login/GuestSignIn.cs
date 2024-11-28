@@ -9,21 +9,9 @@ namespace CommanderCS.Host.Handlers.Sign
     {
         public override object Handle(GuestSignInRequest @params)
         {
-            SignInP SignInP = RequestSignIn(@params.uid);
+            var user = DatabaseManager.Account.FindByName(@params.uid);
 
-            ResponsePacket response = new()
-            {
-                Id = BasePacket.Id,
-                Result = SignInP
-            };
-
-            return response;
-        }
-
-        private static SignInP RequestSignIn(string uid)
-        {
             SignInP Sign = new();
-            var user = DatabaseManager.Account.FindByName(uid);
 
             if (user is null)
             {
@@ -36,7 +24,13 @@ namespace CommanderCS.Host.Handlers.Sign
             Sign.srv = user.LastServerLoggedIn;
             Sign.mIdx = user.MemberId;
 
-            return Sign;
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = Sign
+            };
+
+            return response;
         }
 
         private class SignInP

@@ -2,7 +2,7 @@ using CommanderCS.Host;
 using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Regulation;
-using System.Net.WebSockets;
+using Microsoft.Extensions.FileProviders;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -90,8 +90,7 @@ namespace CommanderCS
             {
                 if (context.WebSockets.IsWebSocketRequest)
                 {
-                    using var webSocket = await context.WebSockets.AcceptWebSocketAsync();
-                    Echo(webSocket);
+                    // ADD Chat shit here sometime
                 }
                 else
                 {
@@ -109,46 +108,44 @@ namespace CommanderCS
                 app.UseDeveloperExceptionPage();
             }
 
-            #region FILECDN
-
             //app.UseMiddleware<CustomExceptionHandlerMiddleware>();
 
             //PROBABLY SHOULD BE MOVED TO A CDN SERVER
 
-            //#region StaticFileServer
+            #region StaticFileServer
 
-            //const string StaticFilesPath = "FileCDN";
-            //const string SlashStaticFilesPath = $"/{StaticFilesPath}";
+            const string StaticFilesPath = "FileCDN";
+            const string SlashStaticFilesPath = $":80/{StaticFilesPath}";
 
-            //// Working Directory path
-            //// var BasePath = builder.Environment.ContentRootPath;
-            //// Executable file path
+            // Working Directory path
+            // var BasePath = builder.Environment.ContentRootPath;
+            // Executable file path
 
-            //var BasePath = AppDomain.CurrentDomain.BaseDirectory;
-            //var staticFilesProviderPath = Path.Combine(BasePath, StaticFilesPath);
-            //var fileProvider = new PhysicalFileProvider(staticFilesProviderPath);
+            var BasePath = AppDomain.CurrentDomain.BaseDirectory;
+            var staticFilesProviderPath = Path.Combine(BasePath, StaticFilesPath);
+            IFileProvider fileProvider = new PhysicalFileProvider(staticFilesProviderPath);
 
-            //app.UseDirectoryBrowser(new DirectoryBrowserOptions()
-            //{
-            //    FileProvider = fileProvider,
-            //    RedirectToAppendTrailingSlash = true,
-            //    RequestPath = SlashStaticFilesPath,
-            //});
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions()
+            {
+                FileProvider = fileProvider,
+                RedirectToAppendTrailingSlash = true,
+                RequestPath = SlashStaticFilesPath,
+            });
 
-            //// https://stackoverflow.com/questions/50381490/what-is-the-difference-between-usestaticfiles-and-usefileserver-in-asp-net-c
-            //app.UseStaticFiles(new StaticFileOptions()
-            //{
-            //    FileProvider = fileProvider,
-            //    RequestPath = SlashStaticFilesPath,
-            //    HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
-            //    ServeUnknownFileTypes = true
-            //});
+            // https://stackoverflow.com/questions/50381490/what-is-the-difference-between-usestaticfiles-and-usefileserver-in-asp-net-c
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = fileProvider,
+                RequestPath = SlashStaticFilesPath,
+                HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
+                ServeUnknownFileTypes = true
+            });
 
             // app.UseWebSockets(new WebSocketOptions() {
             //     KeepAliveInterval = TimeSpan.FromSeconds(60),
             //});
 
-            //#endregion StaticFileServer
+            #endregion StaticFileServer
 
             //app.UseCors((policyBuilder) =>
             //{
@@ -159,39 +156,12 @@ namespace CommanderCS
 
             //app.UseAuthorization();
 
-            #endregion
 
             DatabaseManager.Init();
 
             RemoteObjectManager.instance.regulation = Regulation.Create();
 
-            //Misc.BannedWords = Misc.GetBadWords();
-
             app.Run();
-        }
-
-        private static async Task Echo(WebSocket webSocket)
-        {
-            var buffer = new byte[1024 * 4];
-            var receiveResult = await webSocket.ReceiveAsync(
-                new ArraySegment<byte>(buffer), CancellationToken.None);
-
-            while (!receiveResult.CloseStatus.HasValue)
-            {
-                await webSocket.SendAsync(
-                    new ArraySegment<byte>(buffer, 0, receiveResult.Count),
-                    receiveResult.MessageType,
-                    receiveResult.EndOfMessage,
-                    CancellationToken.None);
-
-                receiveResult = await webSocket.ReceiveAsync(
-                    new ArraySegment<byte>(buffer), CancellationToken.None);
-            }
-
-            await webSocket.CloseAsync(
-                receiveResult.CloseStatus.Value,
-                receiveResult.CloseStatusDescription,
-                CancellationToken.None);
         }
 
     }

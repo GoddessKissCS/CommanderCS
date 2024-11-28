@@ -21,7 +21,7 @@ namespace CommanderCS.Packets.Handlers.Troop
     public class GetTroopInformationRequest
     {
         [JsonProperty("cid")]
-        public int TroopcidInformation { get; set; }
+        public int cid { get; set; }
     }
 }
 
