@@ -151,6 +151,8 @@ namespace CommanderCS
             //app.UseAuthorization();
 
 
+            File.WriteAllText(BasePath + "ipconfig.txt", Misc.GetLocalIPAddress());
+
             DatabaseManager.Init();
 
             RemoteObjectManager.instance.regulation = Regulation.Create();

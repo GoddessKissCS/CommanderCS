@@ -6,6 +6,7 @@ using CommanderCSLibrary.Cryptography;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using MongoDB.Driver;
+using System.Threading.Channels;
 
 namespace CommanderCS.MongoDB.Handlers
 {
@@ -66,6 +67,31 @@ namespace CommanderCS.MongoDB.Handlers
                 user.Clearance = Clearance.Player;
             }
 
+            DatabaseCollection.InsertOne(user);
+
+            return user;
+        }
+
+        public AccountScheme CreateGuestAccount(int platformid, int Channel)
+        {
+            int memberId = DatabaseManager.AutoIncrements.GetNextNumber("MemberId");
+
+            var CurrTimeStamp = TimeManager.CurrentEpoch;
+
+            AccountScheme user = new()
+            {
+                MemberId = memberId,
+                Token = Guid.NewGuid().ToString(),
+                Channel = Channel,
+                CreationTime = CurrTimeStamp,
+                LastLoginTime = CurrTimeStamp,
+                isBanned = false,
+                LastServerLoggedIn = 1,
+                Platform = (Platform)platformid,
+                Clearance = Clearance.Guest,
+                Name = Utility.CreateGuestName()
+            };
+           
             DatabaseCollection.InsertOne(user);
 
             return user;
