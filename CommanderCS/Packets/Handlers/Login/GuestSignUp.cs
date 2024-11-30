@@ -1,6 +1,8 @@
 ﻿using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
+using System.Threading.Channels;
+using System;
 
 namespace CommanderCS.Host.Handlers.Sign
 {
@@ -9,7 +11,7 @@ namespace CommanderCS.Host.Handlers.Sign
     {
         public override object Handle(GuestSignUpRequest @params)
         {
-            var name = RequestSignUp(@params.plfm, @params.ch);
+            var name = DatabaseManager.Account.CreateGuestAccount(@params.plfm, @params.ch).Name;
 
             GuestSignUpPacket SignUp = new()
             {
@@ -23,11 +25,6 @@ namespace CommanderCS.Host.Handlers.Sign
             };
 
             return response;
-        }
-
-        private static string RequestSignUp(int platformid, int channel)
-        {
-            return DatabaseManager.Account.GetOrCreate("", "", platformid, channel).Name;
         }
 
         public class GuestSignUpPacket
