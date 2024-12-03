@@ -33,7 +33,5 @@ namespace CommanderCSLibrary.Shared
             { 63, 6000 },
             { 64, 9000 }
         };
-
     }
-
 }

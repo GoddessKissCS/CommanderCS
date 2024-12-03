@@ -80,6 +80,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         public DataTable<ProjectileDataRow> projectileDtbl { get; private set; }
         public DataTable<StatusEffectDataRow> statusEffectDtbl { get; private set; }
         public DataTable<SkillDamagePatternDataRow> skillDamagePatternDtbl { get; private set; }
+
         public SkillDamagePatternTable skillDamagePattern
         {
             get
@@ -92,6 +93,7 @@ namespace CommanderCSLibrary.Shared.Regulation
                 return _skillDamagePattern;
             }
         }
+
         public DataTable<UnitMotionDataRow> unitMotionDtbl { get; private set; }
         public DataTable<ProjectileMotionPhaseDataRow> projectileMotionPhaseDtbl { get; private set; }
         public DataTable<DailyBonusDataRow> dailyBonusDtbl { get; private set; }
@@ -149,6 +151,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         public DataTable<DormitoryWallpaperDataRow> dormitoryWallPaperDtbl { get; private set; }
         public DataTable<DormitoryShopDataRow> dormitoryShopDtbl { get; private set; }
         public DataTable<DormitoryThemeDataRow> dormitoryThemeDtbl { get; private set; }
+
         public Dictionary<string, List<DormitoryHeadCostumeDataRow>> dormitoryHeadCostumeMap
         {
             get
@@ -169,6 +172,7 @@ namespace CommanderCSLibrary.Shared.Regulation
                 return _dormitoryHeadCostumeMap;
             }
         }
+
         public Dictionary<string, List<DormitoryThemeDataRow>> dormitoryThemeMap
         {
             get
@@ -189,9 +193,11 @@ namespace CommanderCSLibrary.Shared.Regulation
                 return _dormitoryThemeMap;
             }
         }
+
         public DataTable<CooperateBattleDataRow> cooperateBattleDtbl { get; private set; }
         public DataTable<NPCMercenaryDataRow> npcMercenaryDtbl { get; private set; }
         public DataTable<InfinityFieldDataRow> infinityFieldDtbl { get; private set; }
+
         public Dictionary<int, List<CooperateBattleDataRow>> cooperateBattleStepDtbl
         {
             get
@@ -212,6 +218,7 @@ namespace CommanderCSLibrary.Shared.Regulation
                 return _cooperateBattleStepDtbl;
             }
         }
+
         public DataTable<StrongestBuffBattleDataRow> strongestBuffBattleDtbl { get; private set; }
         public DataTable<WeaponDataRow> weaponDtbl { get; private set; }
         public DataTable<WeaponUpgradeDataRow> weaponUpgradeDtbl { get; private set; }
@@ -225,6 +232,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         public DataTable<MissionDataRow> missionDtbl { get; private set; }
         public DataTable<CommanderClassUpDataRow> commanderClassUpDtbl { get; private set; }
         public DataTable<VipBenefitsDataRow> VipBenefitsDtbl { get; private set; }
+
         private Regulation()
         {
         }
@@ -246,6 +254,7 @@ namespace CommanderCSLibrary.Shared.Regulation
         }
 
 #pragma warning disable CS8601 // Possible null reference assignment.
+
         public void Init()
         {
             rewardDtbl = JsonConvert.DeserializeObject<DataTable<RewardDataRow>>(LoadJson("RewardDataTable.json"), SerializerSettings);
@@ -343,7 +352,6 @@ namespace CommanderCSLibrary.Shared.Regulation
             commanderClassUpDtbl = JsonConvert.DeserializeObject<DataTable<CommanderClassUpDataRow>>(LoadJson("CommanderClassUpDataTable.json"), SerializerSettings);
 
             VipBenefitsDtbl = JsonConvert.DeserializeObject<DataTable<VipBenefitsDataRow>>(LoadJson("VipBenefitsDataTable.json"), SerializerSettings);
-
 
 #pragma warning restore CS8601 // Possible null reference assignment.
         }
@@ -1008,14 +1016,19 @@ namespace CommanderCSLibrary.Shared.Regulation
             {
                 case 1:
                     return 4;
+
                 case 2:
                     return 1;
+
                 case 3:
                     return 0;
+
                 case 4:
                     return 2;
+
                 case 5:
                     return 3;
+
                 default:
                     return -1;
             }
@@ -1040,7 +1053,6 @@ namespace CommanderCSLibrary.Shared.Regulation
             }
             return stages;
         }
-
 
         public Dictionary<string, Commander> AddSpecificCommander(Dictionary<string, Commander> commanderDict, int commanderID)
         {
@@ -1080,7 +1092,5 @@ namespace CommanderCSLibrary.Shared.Regulation
 
             return commanderDict;
         }
-
-
     }
 }

@@ -1,12 +1,9 @@
 using CommanderCS.Host;
-using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
-
     [Packet(Id = Method.GetGuildRanking)]
     public class GetGuildRanking : BaseMethodHandler<GetGuildRankingRequest>
     {
@@ -18,18 +15,19 @@ namespace CommanderCS.Packets.Handlers.Guild
                 Result = true,
             };
 
-			List<CommanderCSLibrary.Shared.Protocols.GuildRankingInfo> test = [];
+            List<CommanderCSLibrary.Shared.Protocols.GuildRankingInfo> test = [];
 
-			response.Result = test;
+            response.Result = test;
 
             return response;
         }
     }
-	public class GetGuildRankingRequest
-	{
-		[JsonProperty("type")]
-		public int type { get; set; }
-	}
+
+    public class GetGuildRankingRequest
+    {
+        [JsonProperty("type")]
+        public int type { get; set; }
+    }
 }
 
 /*	// Token: 0x06006084 RID: 24708 RVA: 0x000120F8 File Offset: 0x000102F8

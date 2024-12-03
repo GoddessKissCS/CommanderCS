@@ -9,7 +9,6 @@ namespace CommanderCS.Host.Handlers.UserTerm
     {
         public override object Handle(GetBadWordListRequest @params)
         {
-
             BadWordListResponse badWord = new()
             {
                 word = []
@@ -32,7 +31,6 @@ namespace CommanderCS.Host.Handlers.UserTerm
             public Dictionary<string, List<string>> word { get; set; }
         }
 
-
         public static List<string> ReadBadWordsFromFile(string fileName)
         {
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -45,7 +43,6 @@ namespace CommanderCS.Host.Handlers.UserTerm
             // Check if the file exists
             if (File.Exists(fileContent))
             {
-
                 var file = File.ReadLines(fileContent);
 
                 // Read each line from the file
@@ -64,11 +61,7 @@ namespace CommanderCS.Host.Handlers.UserTerm
 
             return linesList;
         }
-
     }
-
-
-
 
     public class GetBadWordListRequest
     {

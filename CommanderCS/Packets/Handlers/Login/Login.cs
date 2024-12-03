@@ -31,7 +31,6 @@ namespace CommanderCS.Host.Handlers.Login
 
             //foreach (var item in Regulation.goodsDtbl)
             //{
-
             //    var itemId = item.type;
 
             //    if (itemId == "1" || itemId == "2" || itemId == "3" || itemId == "4")
@@ -42,12 +41,10 @@ namespace CommanderCS.Host.Handlers.Login
             //    userInformationResponse.itemData.TryAdd(item.type, int.Parse(item.type));
             //}
 
-
             //foreach (var item in Regulation.commanderCostumeDtbl)
             //{
             //    userInformationResponse.medalData.TryAdd("" + item.cid, item.cid);
             //}
-
 
             LoginResponse loginResponse = new()
             {

@@ -7,7 +7,6 @@ namespace CommanderCS.Packets.Handlers.Bank
     {
         public override object Handle(GetBankRewardRequest @params)
         {
-
             GetBankRewardResponse getBankRewardResponse = new()
             {
                 gold = User.Resources.gold

@@ -1,11 +1,7 @@
 ﻿using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using NuGet.Common;
-using static CommanderCSLibrary.Shared.Protocols.AlarmData;
-using static CommanderCSLibrary.Shared.Protocols.UserInformationResponse;
 
 namespace CommanderCS.Host.Handlers.Nickname
 {
@@ -26,7 +22,6 @@ namespace CommanderCS.Host.Handlers.Nickname
 
                 return error;
             }
-
 
             if (User.TutorialData.skip)
             {
@@ -62,7 +57,8 @@ namespace CommanderCS.Host.Handlers.Nickname
                 };
 
                 return tutorialResponse;
-            } else
+            }
+            else
             {
                 ResponsePacket response = new()
                 {
@@ -79,7 +75,6 @@ namespace CommanderCS.Host.Handlers.Nickname
 
         internal class SetNickNameResponse
         {
-
             [JsonProperty("step")]
             public int step { get; set; }
         }

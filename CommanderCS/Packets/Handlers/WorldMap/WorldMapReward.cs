@@ -23,57 +23,75 @@ namespace CommanderCS.Packets.Handlers.WorldMap
                     commanderId = "5";
                     medalsCommander = 10;
                     break;
+
                 case 1:
                     commanderId = "26";
                     break;
+
                 case 2:
                     commanderId = "14";
                     break;
+
                 case 3:
                     commanderId = "19";
                     break;
+
                 case 4:
                     commanderId = "15";
                     break;
+
                 case 5:
                     commanderId = "12";
                     break;
+
                 case 6:
                     commanderId = "27";
                     break;
+
                 case 7:
                     commanderId = "10";
                     break;
+
                 case 8:
                     commanderId = "20";
                     break;
+
                 case 9:
                     commanderId = "30";
                     break;
+
                 case 10:
                     commanderId = "616";
                     break;
+
                 case 11:
                     commanderId = "47";
                     break;
+
                 case 12:
                     commanderId = "50";
                     break;
+
                 case 13:
                     commanderId = "51";
                     break;
+
                 case 14:
                     commanderId = "48";
                     break;
+
                 case 15:
                     commanderId = "62";
                     break;
+
                 case 16:
                     commanderId = "75";
                     break;
+
                 case 17:
                     commanderId = "85";
                     break;
+
                 case 18:
                     commanderId = "92";
                     break;

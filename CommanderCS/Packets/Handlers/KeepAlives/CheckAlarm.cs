@@ -9,26 +9,23 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
     {
         public override object Handle(CheckAlarmRequest @params)
         {
+            AlarmData AlarmData = new();
 
-			AlarmData AlarmData = new();
-
-			//Probably useless but still needs to adjusted if it actually does something
+            //Probably useless but still needs to adjusted if it actually does something
 
             ResponsePacket response = new ResponsePacket()
             {
                 Id = BasePacket.Id,
-				Result = AlarmData,
+                Result = AlarmData,
             };
 
             return response;
-
         }
     }
 
-	public class CheckAlarmRequest
-	{
-
-	}
+    public class CheckAlarmRequest
+    {
+    }
 }
 
 /*	// Token: 0x06006001 RID: 24577 RVA: 0x000120F8 File Offset: 0x000102F8

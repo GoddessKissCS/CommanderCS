@@ -8,7 +8,6 @@ namespace CommanderCS.Host.Handlers.Guild
     {
         public override object Handle(GuildInfoRequest @params)
         {
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

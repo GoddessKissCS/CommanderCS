@@ -97,8 +97,8 @@ namespace CommanderCSLibrary.Shared.Battle
                 Option option = record.option;
                 int[,] array = new int[2, 2]
                 {
-                { option.timeLimit, frame.time },
-                { option.turnLimit, frame._waveTurn }
+                    { option.timeLimit, frame.time },
+                    { option.turnLimit, frame._waveTurn }
                 };
                 for (int i = 0; i < array.GetLength(0); i++)
                 {
@@ -2718,8 +2718,6 @@ namespace CommanderCSLibrary.Shared.Battle
             }
             return simulator;
         }
-
-
 
         //public static Record Simulation(Shared.Regulation.Regulation rg, BattleData bd, bool enableEffect = true)
         //{

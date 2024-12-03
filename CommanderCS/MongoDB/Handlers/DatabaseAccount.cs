@@ -6,7 +6,6 @@ using CommanderCSLibrary.Cryptography;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using MongoDB.Driver;
-using System.Threading.Channels;
 
 namespace CommanderCS.MongoDB.Handlers
 {
@@ -91,7 +90,7 @@ namespace CommanderCS.MongoDB.Handlers
                 Clearance = Clearance.Guest,
                 Name = Utility.CreateGuestName()
             };
-           
+
             DatabaseCollection.InsertOne(user);
 
             return user;

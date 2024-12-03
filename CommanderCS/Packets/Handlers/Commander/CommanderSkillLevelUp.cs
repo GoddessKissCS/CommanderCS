@@ -30,7 +30,6 @@ namespace CommanderCS.Packets.Handlers.Commander
                 i++;
             }
 
-
             switch (@params.skillIndex)
             {
                 case 1:
@@ -74,7 +73,6 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             DatabaseManager.GameProfile.UpdateGold(SessionId, totalCost, false);
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
-
 
             UserInformationResponse user = GetUserInformationResponse(User);
 

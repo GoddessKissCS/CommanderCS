@@ -15,7 +15,6 @@ namespace CommanderCSLibrary.Shared.Regulation.DataRows
         public string icon { get; private set; }
         public int title { get; private set; }
 
-
         private AchievementDataRow()
         {
         }
@@ -29,6 +28,5 @@ namespace CommanderCSLibrary.Shared.Regulation.DataRows
         private void OnDeserialized(StreamingContext context)
         {
         }
-
     }
 }

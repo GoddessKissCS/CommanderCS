@@ -12,6 +12,7 @@ namespace CommanderCSLibrary.Packets
         [JsonProperty("reward")]
         public List<RewardInfo.RewardData> reward { get; set; }
     }
+
     public class WorldMapStageStartRequest
     {
         [JsonProperty("type")]
@@ -32,5 +33,4 @@ namespace CommanderCSLibrary.Packets
         [JsonProperty("np")]
         public int Np { get; set; }
     }
-
 }

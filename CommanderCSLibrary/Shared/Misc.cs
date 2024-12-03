@@ -1,5 +1,5 @@
-﻿using System.Net.Sockets;
-using System.Net;
+﻿using System.Net;
+using System.Net.Sockets;
 using System.Reflection;
 
 namespace CommanderCSLibrary.Shared
@@ -11,9 +11,7 @@ namespace CommanderCSLibrary.Shared
             "/", ".", "=", "Mod", "Admin", "Owner", "_", "?", "&", "$", "!",
         };
 
-
         public static List<string> BannedWords { get; set; }
-
 
         public static bool NameCheck(string username)
         {
@@ -47,7 +45,6 @@ namespace CommanderCSLibrary.Shared
                 }
             }
             return linesList;
-
         }
 
         public static string GetLocalIPAddress()

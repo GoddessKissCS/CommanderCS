@@ -15,6 +15,7 @@ namespace CommanderCS.MongoDB.Handlers
         public DatabaseEventNotice() : base("EventNotice")
         {
         }
+
         public NoticeDataScheme Insert(double startdate, double eventstartdate, double enddate, double eventenddate, int idx, string img, string link, string notice, int notifixed)
         {
             NoticeDataScheme dataInfo = new()
@@ -65,9 +66,7 @@ namespace CommanderCS.MongoDB.Handlers
             }
 
             return notices;
-
         }
-
 
         public bool DeleteEventNotice(int idx)
         {

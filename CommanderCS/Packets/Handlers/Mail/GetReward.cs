@@ -9,7 +9,6 @@ namespace CommanderCS.Packets.Handlers.Mail
     {
         public override object Handle(GetRewardRequest @params)
         {
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

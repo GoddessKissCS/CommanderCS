@@ -12,7 +12,6 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
     {
         public override object Handle(ResourceRechargeRequest @params)
         {
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

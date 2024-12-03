@@ -12,6 +12,7 @@ namespace CommanderCSLibrary.Shared.Regulation.DataRows
         public string endDate { get; private set; }
         public string endTime { get; private set; }
         public string weekIdx { get; private set; }
+
         private BattleTimeDataRow()
         {
         }

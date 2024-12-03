@@ -2,7 +2,6 @@ using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCSLibrary.Shared.Battle
 {
-
     public class ClearMissionItem
     {
         public int id;

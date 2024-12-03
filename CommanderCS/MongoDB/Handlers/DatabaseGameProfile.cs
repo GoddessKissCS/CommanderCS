@@ -295,7 +295,6 @@ namespace CommanderCS.MongoDB.Handlers
                         }
                     }
                 }
-
             };
 
             DatabaseCollection.InsertOne(user);
@@ -674,10 +673,8 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
-
         public void UpdateCashAndNickName(string session, string accountName, int cash, bool useAddition)
         {
-
             var user = FindBySession(session);
 
             if (useAddition)
@@ -822,13 +819,12 @@ namespace CommanderCS.MongoDB.Handlers
             var filter = Builders<GameProfileScheme>.Filter.And(
                 Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
                 Builders<GameProfileScheme>.Filter.Eq("CommanderData.Key", commander.id)
-            );
+                                                               );
 
             var update = Builders<GameProfileScheme>.Update.Set("CommanderData.$", commander);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
-
 
         /// <summary>
         /// Updates the food data for a user in the database.
@@ -1199,7 +1195,6 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>The error code indicating the result of the request.</returns>
         public ErrorCode RequestNicknameAfterTutorial(string sess, string nickname)
         {
-
             ErrorCode result = ValidateNickname(nickname);
 
             if (result == ErrorCode.Success)
@@ -1247,12 +1242,10 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>The error code indicating the result of the request.</returns>
         public ErrorCode RequestNickNameChange(string AccountName, string sess)
         {
-
             ErrorCode result = ValidateNickname(AccountName);
 
             if (result == ErrorCode.Success)
             {
-
                 DatabaseManager.GameProfile.UpdateNickName(sess, AccountName);
                 DatabaseManager.GameProfile.UpdateOnlyCash(sess, 100, false);
 
@@ -1262,8 +1255,6 @@ namespace CommanderCS.MongoDB.Handlers
             {
                 return result;
             }
-
-
         }
 
         /// <summary>
@@ -1382,19 +1373,17 @@ namespace CommanderCS.MongoDB.Handlers
             var filter = Builders<GameProfileScheme>.Filter.And(
             Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
             Builders<GameProfileScheme>.Filter.Eq("CommanderData.Key", commander.id)
-            );
+                                                               );
 
             var update = Builders<GameProfileScheme>.Update.Set("CommanderData.$", commander);
 
             DatabaseCollection.UpdateOne(filter, update);
-
 
             var filter2 = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
             var update2 = Builders<GameProfileScheme>.Update.Set(x => x.Resources.ring, user.Resources.ring);
 
             DatabaseCollection.UpdateOne(filter2, update2);
         }
-
 
         public void UpdateLastStageAndStageInfo(string session, GameProfileScheme user)
         {
@@ -1403,6 +1392,5 @@ namespace CommanderCS.MongoDB.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
-
     }
 }

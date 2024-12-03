@@ -66,9 +66,7 @@ namespace CommanderCS.MongoDB.Handlers
             }
 
             return notices;
-
         }
-
 
         public bool DeleteEventNotice(int idx)
         {
@@ -78,7 +76,5 @@ namespace CommanderCS.MongoDB.Handlers
 
             return result.DeletedCount > 0;
         }
-
-
     }
 }

@@ -19,6 +19,7 @@ namespace CommanderCSLibrary.Shared.Regulation.DataRows
         public int MOTORBLOCK_ID_AMOUNT { get; set; }
         public string PLATE_ID { get; set; }
         public int PLATE_AMOUNT { get; set; }
+
         private CommanderClassUpDataRow()
         {
         }
@@ -32,8 +33,5 @@ namespace CommanderCSLibrary.Shared.Regulation.DataRows
         private void OnDeserialized(StreamingContext context)
         {
         }
-
-
     }
-
 }

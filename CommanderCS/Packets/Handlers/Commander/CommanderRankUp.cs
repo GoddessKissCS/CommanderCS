@@ -19,7 +19,6 @@ namespace CommanderCS.Host.Handlers.Commander
 
             if (commanderExists)
             {
-
                 int commanderRank = int.Parse(commander.__rank);
 
                 CommanderRankDataRow commanderRankData = Regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == commanderRank);
@@ -50,14 +49,12 @@ namespace CommanderCS.Host.Handlers.Commander
                 DatabaseManager.GameProfile.UpdateGold(SessionId, commanderRankData.gold, false);
                 DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
                 DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.Inventory.medalData);
-
             }
             else
             {
-
                 int recruitCost = (@params.commanderId == 1 || @params.commanderId == 2 || @params.commanderId == 5 ||
-                       @params.commanderId == 14 || @params.commanderId == 17 || @params.commanderId == 18 ||
-                       @params.commanderId == 26) ? 1000 : 50000;
+                        @params.commanderId == 14 || @params.commanderId == 17 || @params.commanderId == 18 ||
+                        @params.commanderId == 26) ? 1000 : 50000;
 
                 User.Inventory.medalData.TryGetValue(cid, out int commanderMedals);
 
@@ -171,7 +168,6 @@ namespace CommanderCS.Host.Handlers.Commander
         {
             var commanderRole = RemoteObjectManager.instance.regulation.commanderRoleDtbl.Find(x => x.Id == commanderid).Role;
             var costumeId = RemoteObjectManager.instance.regulation.commanderCostumeDtbl.FirstOrDefault(x => x.cid == commanderid).ctid;
-
 
             //need to check if hero starts with other grades or cls
 

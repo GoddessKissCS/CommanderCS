@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>CommanderCS</RootNamespace>
@@ -17,11 +17,7 @@
 	  <EmbeddedResource Remove="Resources\**" />
 	  <None Remove="Resources\**" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="FileCDN\copyfileshere" />
-	</ItemGroup>
-
+	
 	<ItemGroup>
 	  <Content Include="crying.ico" />
 	  <Content Include="FileCDN\copyfileshere">

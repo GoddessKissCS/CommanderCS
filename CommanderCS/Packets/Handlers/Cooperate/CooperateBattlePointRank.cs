@@ -15,33 +15,32 @@ namespace CommanderCS.Packets.Handlers.Cooperate
                 Id = BasePacket.Id,
             };
 
-			switch (@params.step)
-			{
-				case 1:
-					break;
-				case 2:
-					break;
-				case 3:
-					break;
-			}
+            switch (@params.step)
+            {
+                case 1:
+                    break;
 
+                case 2:
+                    break;
+
+                case 3:
+                    break;
+            }
 
             // ADD sometime missing data
 
             List<CommanderCSLibrary.Shared.Protocols.CooperateBattlePointGuildRankingInfo> cooperateBattlePointGuildRankingInfos = new() { };
 
-
             response.Result = cooperateBattlePointGuildRankingInfos;
 
             return response;
-
         }
 
-        public class CooperateBattlePointRankRequest 
-		{
+        public class CooperateBattlePointRankRequest
+        {
             [JsonProperty("step")]
-            public int step { get; set; } 
-		}
+            public int step { get; set; }
+        }
     }
 }
 

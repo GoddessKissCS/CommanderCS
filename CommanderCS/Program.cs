@@ -41,14 +41,14 @@ namespace CommanderCS
 
             //builder.Services.AddRazorPages();
 
-            builder.Services.AddHttpClient();
+            //builder.Services.AddHttpClient();
 
             var app = builder.Build();
-
 
             var status = new Status()
             {
                 Message = "Started Sucessfully!",
+                IPv4 = Misc.GetLocalIPAddress(),
                 CommandsLoaded = PacketHandler.CommandsMapped,
             };
 
@@ -63,26 +63,23 @@ namespace CommanderCS
 
             app.MapPost("/checkData.php", async (HttpContext context, IServiceProvider provider) =>
             {
-                //Check if the request contains the user agent BestHTTP
                 if (!context.Request.Headers.UserAgent.Contains("BestHTTP"))
                 {
                     return;
                 }
 
-
-                // The Response
                 string responseData = await PacketHandler.ProcessRequest(context, provider);
 
-                // Set the Response Contenttype and length
                 context.Response.ContentType = "application/json";
                 context.Response.ContentLength = responseData.Length;
+
+                //I dont remember what this was for.
 
                 //if(session != "" || session is not null)
                 //{
                 //    context.Response.Headers.TryAdd("SET-COOKIE", session);
                 //}
 
-                // Write response to the response body stream
                 await context.Response.WriteAsync(responseData);
             });
 
@@ -96,9 +93,6 @@ namespace CommanderCS
                 {
                     context.Response.StatusCode = StatusCodes.Status400BadRequest;
                 }
-
-
-
             });
 
             // Configure the HTTP request pipeline.
@@ -111,6 +105,7 @@ namespace CommanderCS
             //app.UseMiddleware<CustomExceptionHandlerMiddleware>();
 
             //PROBABLY SHOULD BE MOVED TO A CDN SERVER
+
             #region StaticFileServer
 
             const string StaticFilesPath = "FileCDN";
@@ -150,21 +145,21 @@ namespace CommanderCS
 
             //app.UseAuthorization();
 
-
-            File.WriteAllText(BasePath + "ipconfig.txt", Misc.GetLocalIPAddress());
-
             DatabaseManager.Init();
 
             RemoteObjectManager.instance.regulation = Regulation.Create();
 
             app.Run();
         }
-
     }
 
     internal class Status
     {
+        public string commment { get; set; } = "If you see the message below, the Server started successfully.";
         public string Message { get; set; }
+        public string commment_1 { get; set; } = "Below is your IPv4 IP, aka your local IP of the Device your Server is running.";
+        public string IPv4 { get; set; }
+        public string commment_2 { get; set; } = "Below are the currently loaded Opcodes.";
         public List<string> CommandsLoaded { get; set; }
     }
 }

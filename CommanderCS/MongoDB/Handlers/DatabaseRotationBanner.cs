@@ -17,6 +17,7 @@ namespace CommanderCS.MongoDB.Handlers
         public DatabaseRotationBanner() : base("RotationBanner")
         {
         }
+
         public RotationBannerScheme Insert(string startdate, string enddate, int eventId, int id, string imgUrl, string link, BannerListType bannerType)
         {
             RotationBannerScheme dataInfo = new()
@@ -59,17 +60,14 @@ namespace CommanderCS.MongoDB.Handlers
 
                 if (notice.LinkIdx == 0 || notice.LinkIdx == 1)
                 {
-
                     var time = TimeManager.TomorrowEpochInMilliseconds;
                     notice.EndDateTime = time.ToString();
                 }
-
 
                 banners.Add(noticeData);
             }
 
             return banners;
         }
-
     }
 }

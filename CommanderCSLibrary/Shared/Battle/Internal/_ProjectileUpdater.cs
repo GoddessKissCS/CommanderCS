@@ -3,7 +3,6 @@ using CommanderCSLibrary.Shared.Regulation.DataRows;
 
 namespace CommanderCSLibrary.Shared.Battle.Internal
 {
-
     public class _ProjectileUpdater : FrameAccessor
     {
         private Random _random;
