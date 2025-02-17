@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandHandlerMappingsSourc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommanderCSLibrary", "CommanderCSLibrary\CommanderCSLibrary.csproj", "{306DA463-D99A-4A0E-A96A-F284B5C9B973}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommanderCSCMD", "CommanderCSCMD\CommanderCSCMD.csproj", "{1B53914E-C616-4219-94FC-509B19CDEE98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{306DA463-D99A-4A0E-A96A-F284B5C9B973}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{306DA463-D99A-4A0E-A96A-F284B5C9B973}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{306DA463-D99A-4A0E-A96A-F284B5C9B973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B53914E-C616-4219-94FC-509B19CDEE98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B53914E-C616-4219-94FC-509B19CDEE98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B53914E-C616-4219-94FC-509B19CDEE98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B53914E-C616-4219-94FC-509B19CDEE98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

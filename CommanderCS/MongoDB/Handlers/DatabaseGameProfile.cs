@@ -812,6 +812,19 @@ namespace CommanderCS.MongoDB.Handlers
         /// <summary>
         /// Updates the commander data for a user in the database.
         /// </summary>
+        /// <param name="accountId">The accountId associated with the user.</param>
+        /// <param name="commanderList">The updated commander data to be stored.</param>
+        public void UpdateCommanderData(int accountId, Dictionary<string, UserInformationResponse.Commander> commanderList)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, accountId);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.CommanderData, commanderList);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the commander data for a user in the database.
+        /// </summary>
         /// <param name="session">The session associated with the user.</param>
         /// <param name="commander">The updated commander to be stored.</param>
         public void UpdateSpecificCommander(string session, UserInformationResponse.Commander commander)
@@ -887,6 +900,19 @@ namespace CommanderCS.MongoDB.Handlers
         public void UpdateItemData(string session, Dictionary<string, int> items)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.itemData, items);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the item data associated with the user in the database.
+        /// </summary>
+        /// <param name="accountid">The accountid associated with the user.</param>
+        /// <param name="items">The updated dictionary containing the item data.</param>
+        public void UpdateItemData(int accountid, Dictionary<string, int> items)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, accountid);
             var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.itemData, items);
 
             DatabaseCollection.UpdateOne(filter, update);
@@ -1389,6 +1415,14 @@ namespace CommanderCS.MongoDB.Handlers
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
             var update = Builders<GameProfileScheme>.Update.Set(x => x.LastStage, user.LastStage).Set(x => x.BattleData.WorldMapStages, user.BattleData.WorldMapStages);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        public void UpdateExpAndLevel(int accountId, int exp, int level)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, accountId);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.level, level).Set(x => x.Resources.exp, exp);
 
             DatabaseCollection.UpdateOne(filter, update);
         }

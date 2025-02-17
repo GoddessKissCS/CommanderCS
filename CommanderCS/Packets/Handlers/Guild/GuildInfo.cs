@@ -11,7 +11,7 @@ namespace CommanderCS.Host.Handlers.Guild
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = GetDatabaseUserInformationResponse(User),
+                Result = DatabaseGetUserInformationResponse(User),
             };
 
             return response;

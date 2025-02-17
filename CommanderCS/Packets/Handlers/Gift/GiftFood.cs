@@ -137,6 +137,9 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             if (commander.favorPoint > row.favor)
             {
+
+                // Might SOME Cases break and minus
+
                 commander.favorStep += 1;
                 commander.favorPoint -= row.favor;
 

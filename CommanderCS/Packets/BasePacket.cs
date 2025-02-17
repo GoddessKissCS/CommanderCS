@@ -221,7 +221,7 @@ namespace CommanderCS.Host
             return userInformationResponse;
         }
 
-        public UserInformationResponse GetDatabaseUserInformationResponse(GameProfileScheme user)
+        public UserInformationResponse DatabaseGetUserInformationResponse(GameProfileScheme user)
         {
             var goods = DatabaseManager.GameProfile.UserResourcesFromSession(BasePacket.SessionId);
             var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(BasePacket.SessionId);

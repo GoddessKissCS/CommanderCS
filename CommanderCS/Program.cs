@@ -3,6 +3,7 @@ using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Regulation;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Logging;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -11,6 +12,19 @@ namespace CommanderCS
     public class Program
     {
         private static void Main(string[] args)
+        {
+            Thread thread = new(static () => {
+
+                string[] args = [];
+                HTTPServer(args);
+            });
+
+            thread.Start();
+
+        }
+
+
+        private static void HTTPServer(string[] args)
         {
             var configurationBuilder = new ConfigurationBuilder();
             configurationBuilder.AddJsonFile(path: "appsettings.json", optional: false, reloadOnChange: true);

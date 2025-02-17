@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="StellarGKLibrary.Shared\**" />
-    <EmbeddedResource Remove="StellarGKLibrary.Shared\**" />
-    <None Remove="StellarGKLibrary.Shared\**" />
+    <Compile Remove="CommanderCSLibrary.Shared\**" />
+    <EmbeddedResource Remove="CommanderCSLibrary.Shared\**" />
+    <None Remove="CommanderCSLibrary.Shared\**" />
   </ItemGroup>
 
   <ItemGroup>

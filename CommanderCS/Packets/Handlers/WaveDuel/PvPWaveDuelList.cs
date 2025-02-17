@@ -1,9 +1,9 @@
 using CommanderCS.Host;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
-using static StellarGK.Packets.Handlers.WaveDuel.PvPWaveDuelList;
+using static CommanderCS.Packets.Handlers.WaveDuel.PvPWaveDuelList;
 
-namespace StellarGK.Packets.Handlers.WaveDuel
+namespace CommanderCS.Packets.Handlers.WaveDuel
 {
     [Packet(Id = Method.PvPWaveDuelList)]
     public class PvPWaveDuelList : BaseMethodHandler<PvPWaveDuelListRequest>

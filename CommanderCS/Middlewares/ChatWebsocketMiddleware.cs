@@ -2,7 +2,7 @@
 using System.Net.WebSockets;
 using System.Text;
 
-namespace StellarGK.Middlewares
+namespace CommanderCS.Middlewares
 {
     public class ChatWebSocketMiddleware
     {
