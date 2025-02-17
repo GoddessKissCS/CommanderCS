@@ -4,7 +4,7 @@ using CommanderCSLibrary.Shared;
 
 namespace CommanderCSCMD.Commands
 {
-    [CommandHandler("AddAllGoods", "[id]", CommandType.Console)]
+    [CommandHandler("addallgoods", "[id]", CommandType.Console)]
     internal class AddAllGoodsCommand : Command
     {
         public override void Run(string[] args)

@@ -5,7 +5,7 @@ using CommanderCSLibrary.Shared.Regulation.DataRows;
 
 namespace CommanderCSCMD.Commands
 {
-    [CommandHandler("AddAllCommanders", "[id]", CommandType.Console)]
+    [CommandHandler("addallcommanders", "[id]", CommandType.Console)]
     public class AddAllCommandersCommand : Command
     {
         public override void Run(string[] args)
