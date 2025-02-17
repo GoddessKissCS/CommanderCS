@@ -83,7 +83,6 @@ namespace CommanderCS.MongoDB
 
             var gametables = GameTableVersion.Get();
 
-
             if (gametables is not null)
             {
                 if (gametables.Version == 20220312000000)
@@ -109,15 +108,11 @@ namespace CommanderCS.MongoDB
             Region.Insert(1, "Korea", 140, "18-20", 1643673600, 0, 0);
             Region.Insert(2, "Global", 140, "18-20", 1643673600, 0, 0);
 
-
             // Initialize Server
-
 
             // initalize some banners
             RotationBanner.Insert("1720097316", "1722170916", 0, 0, "http://" + ip + ":5000/FileCDN/Event/TitleBanner/Notice_Icon.png", "", CommanderCSLibrary.Shared.Enum.BannerListType.None);
             RotationBanner.Insert("1720097316", "1722170916", 1, 1, "http://" + ip + ":5000/FileCDN/Event/TitleBanner/Event_Icon.png", "", CommanderCSLibrary.Shared.Enum.BannerListType.None);
-
-
         }
     }
 }

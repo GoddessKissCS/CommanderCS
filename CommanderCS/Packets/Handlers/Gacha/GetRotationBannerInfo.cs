@@ -15,7 +15,6 @@ namespace CommanderCS.Host.Handlers.Gacha
 
             List<RotationBanner.BannerList> bannerListFromDatabase = DatabaseManager.RotationBanner.GetAllCurrentBannersList();
 
-
             RotationBanner rotationBanner = new()
             {
                 //max banner rotation

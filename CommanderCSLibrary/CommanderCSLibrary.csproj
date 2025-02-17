@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackAsTool>False</PackAsTool>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="StellarGKLibrary.Shared\**" />
-    <EmbeddedResource Remove="StellarGKLibrary.Shared\**" />
-    <None Remove="StellarGKLibrary.Shared\**" />
+    <Compile Remove="CommanderCSLibrary.Shared\**" />
+    <EmbeddedResource Remove="CommanderCSLibrary.Shared\**" />
+    <None Remove="CommanderCSLibrary.Shared\**" />
   </ItemGroup>
 
   <ItemGroup>

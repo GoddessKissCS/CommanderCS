@@ -93,6 +93,7 @@ namespace CommanderCS.MongoDB.Handlers
 
             return string.Empty;
         }
+
         /// <summary>
         /// Checks if a guild application exists from the given user's session and guild index.
         /// </summary>

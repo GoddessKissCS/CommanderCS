@@ -10,6 +10,7 @@ namespace CommanderCSLibrary.Shared.Regulation.DataRows
         private CommanderRoleDataRow()
         {
         }
+
         public string GetKey()
         {
             return Id.ToString();

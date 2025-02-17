@@ -42,7 +42,6 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             var commanderCID = CheckCommanderFavour(commander, Regulation);
 
-
             User.CommanderData[commanderId] = commanderCID;
 
             DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, commanderCID);
@@ -78,53 +77,69 @@ namespace CommanderCS.Packets.Handlers.Gift
                 case 0:
                     row = rg.favorStepDtbl.Find(x => x.step == 1);
                     break;
+
                 case 1:
                     row = rg.favorStepDtbl.Find(x => x.step == 2);
                     break;
+
                 case 2:
                     row = rg.favorStepDtbl.Find(x => x.step == 3);
                     break;
+
                 case 3:
                     row = rg.favorStepDtbl.Find(x => x.step == 4);
                     break;
+
                 case 4:
                     row = rg.favorStepDtbl.Find(x => x.step == 5);
                     break;
+
                 case 5:
                     row = rg.favorStepDtbl.Find(x => x.step == 6);
                     break;
+
                 case 6:
                     row = rg.favorStepDtbl.Find(x => x.step == 7);
                     break;
+
                 case 7:
                     row = rg.favorStepDtbl.Find(x => x.step == 8);
                     break;
+
                 case 8:
                     row = rg.favorStepDtbl.Find(x => x.step == 9);
                     break;
+
                 case 9:
                     row = rg.favorStepDtbl.Find(x => x.step == 10);
                     break;
+
                 case 10:
                     row = rg.favorStepDtbl.Find(x => x.step == 11);
                     break;
+
                 case 11:
                     row = rg.favorStepDtbl.Find(x => x.step == 12);
                     break;
+
                 case 12:
                     row = rg.favorStepDtbl.Find(x => x.step == 13);
                     break;
+
                 case 13:
                     row = rg.favorStepDtbl.Find(x => x.step == 14);
                     break;
+
                 case 14:
                     row = rg.favorStepDtbl.Find(x => x.step == 15);
                     break;
             };
 
-
             if (commander.favorPoint > row.favor)
             {
+
+                // Might SOME Cases break and minus
+
                 commander.favorStep += 1;
                 commander.favorPoint -= row.favor;
 

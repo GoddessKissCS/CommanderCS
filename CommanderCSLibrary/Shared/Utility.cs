@@ -32,7 +32,6 @@ namespace CommanderCSLibrary.Shared
             return name;
         }
 
-
         public static string CreateRandomString()
         {
             const string characters = "abcd0123456789";

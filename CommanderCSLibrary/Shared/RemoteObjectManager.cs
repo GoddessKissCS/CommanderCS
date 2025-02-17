@@ -219,6 +219,5 @@
             public const int INFINITY_TOWER_MAX_FIELD = 78;
             public const int INFINITY_TOWER_PAGE_COUNT = 25;
         }
-
     }
 }

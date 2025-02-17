@@ -1,8 +1,8 @@
 ﻿using CommanderCS.MongoDB;
 using CommanderCSLibrary.Shared.Protocols;
-using StellarGK.MongoDB.Schemes;
+using CommanderCS.MongoDB.Schemes;
 
-namespace StellarGK.MongoDB.Handlers
+namespace CommanderCS.MongoDB.Handlers
 {
     /// <summary>
     /// Represents a database table for storing PvP wave duel rank list data.

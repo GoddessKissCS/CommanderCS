@@ -14,6 +14,7 @@ namespace CommanderCS.Host
     {
         public Method Id { get; set; }
     }
+
     public class BasePacket
     {
         [JsonProperty("id")]
@@ -35,10 +36,13 @@ namespace CommanderCS.Host
     public abstract class BaseMethodHandler<TParams>
     {
         public BasePacket BasePacket { get; set; }
+
         public abstract object Handle(TParams @params);
+
         public string SessionId => BasePacket.SessionId;
 
         private GameProfileScheme _user = null;
+
         public GameProfileScheme User
         {
             get
@@ -52,6 +56,7 @@ namespace CommanderCS.Host
         }
 
         private AccountScheme _account = null;
+
         public AccountScheme Account
         {
             get
@@ -65,6 +70,7 @@ namespace CommanderCS.Host
         }
 
         private DormitoryScheme _dormitory = null;
+
         public DormitoryScheme Dormitory
         {
             get
@@ -78,6 +84,7 @@ namespace CommanderCS.Host
         }
 
         private GuildScheme _guild = null;
+
         public GuildScheme Guild
         {
             get
@@ -91,6 +98,7 @@ namespace CommanderCS.Host
         }
 
         private Regulation _regulation = null;
+
         public Regulation Regulation
         {
             get
@@ -213,7 +221,7 @@ namespace CommanderCS.Host
             return userInformationResponse;
         }
 
-        public UserInformationResponse GetDatabaseUserInformationResponse(GameProfileScheme user)
+        public UserInformationResponse DatabaseGetUserInformationResponse(GameProfileScheme user)
         {
             var goods = DatabaseManager.GameProfile.UserResourcesFromSession(BasePacket.SessionId);
             var battlestats = DatabaseManager.GameProfile.UserStatisticsFromSession(BasePacket.SessionId);

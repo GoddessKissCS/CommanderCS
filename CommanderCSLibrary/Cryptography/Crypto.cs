@@ -125,7 +125,5 @@ namespace CommanderCSLibrary.Cryptography
             var decodedPlainText = Encoding.UTF8.GetString(base64EncodedBytes);
             return decodedPlainText;
         }
-
     }
-
 }

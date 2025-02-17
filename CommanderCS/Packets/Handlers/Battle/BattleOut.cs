@@ -14,7 +14,6 @@ namespace CommanderCS.Host.Handlers.Battle
     {
         public override object Handle(BattleOutRequest @params)
         {
-
             ErrorPacket error = new()
             {
                 Id = BasePacket.Id,
@@ -38,15 +37,11 @@ namespace CommanderCS.Host.Handlers.Battle
 
                     worldstagetbl = Regulation.worldMapStageDtbl.Find(x => x.id == record.initState.stageID);
 
-
                     break;
-
             }
-
 
             if (simulatedBattle is not null)
             {
-
             }
 
 #if DEBUG
@@ -92,20 +87,15 @@ namespace CommanderCS.Host.Handlers.Battle
                         }
 
                         DatabaseManager.GameProfile.UpdateLastStageAndStageInfo(SessionId, User);
-
                     }
 
                     if (!isRecordGoldHigher)
                     {
-
                     }
                 }
             }
 
-
             var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
-
-
 
             UserInformationResponse.BattleResult battleResult = new()
             {
@@ -139,7 +129,6 @@ namespace CommanderCS.Host.Handlers.Battle
 
         public static UserInformationResponse.Resource CheckIfLevelUp(int bullet, UserInformationResponse.Resource user, Regulation rg)
         {
-
             int user_xp = int.Parse(user.__exp);
 
             user_xp += bullet;
@@ -160,9 +149,7 @@ namespace CommanderCS.Host.Handlers.Battle
                 return CheckIfLevelUp(0, user, rg);
             }
 
-
             return user;
-
         }
     }
 

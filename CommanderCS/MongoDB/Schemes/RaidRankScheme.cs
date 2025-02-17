@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using Newtonsoft.Json;
 
-namespace StellarGK.MongoDB.Schemes
+namespace CommanderCS.MongoDB.Schemes
 {
     /// <summary>
     /// Represents a Raid rank list scheme.

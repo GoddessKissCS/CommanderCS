@@ -71,7 +71,6 @@
             }
         }
 
-
         public static long TenDayEpoch
         {
             get

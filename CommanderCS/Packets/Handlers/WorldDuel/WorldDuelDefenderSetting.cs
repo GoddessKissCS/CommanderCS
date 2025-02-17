@@ -11,7 +11,6 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
     {
         public override object Handle(WorldDuelDefenderSettingRequest @params)
         {
-
             Dictionary<string, string> decks = @params.Deck.ToObject<Dictionary<string, string>>();
 
             DatabaseManager.GameProfile.UpdateWorldDefenderDeck(SessionId, decks);

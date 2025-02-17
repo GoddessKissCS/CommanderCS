@@ -62,7 +62,7 @@ namespace CommanderCS.Host
         CannotPurchauseSinceBuyLimitIsReached = 10128,
         UnknownErrorCode_2 = 10129,
         InsufficientEnergy = 21006,
-        InsufficientParticipationEntries = 21007, // Those migh be swapped
+        InsufficientParticipationEntries = 21007, // Those might be swapped
         FederationNameAlreadyExists = 71005,
         FederationNameContainsBadwordsOrIsInvalid = 71009,
         CannotProceedWithConquestBattleAtThisTime = 71501,

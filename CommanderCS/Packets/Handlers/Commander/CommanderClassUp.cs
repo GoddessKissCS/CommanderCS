@@ -225,7 +225,6 @@ namespace CommanderCS.Packets.Handlers.Commander
             DatabaseManager.GameProfile.UpdateGold(SessionId, commanderClassUpInfo.UPGRADE_COST, false);
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
 
-
             var userInformation = GetUserInformationResponse(User);
 
             ResponsePacket response = new()

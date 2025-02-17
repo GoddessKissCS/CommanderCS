@@ -4,7 +4,7 @@ using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 
-namespace StellarGK.Packets.Handlers.WaveDuel
+namespace CommanderCS.Packets.Handlers.WaveDuel
 {
     [Packet(Id = Method.RefreshPvPWaveDuelList)]
     public class RefreshPvPWaveDuelList : BaseMethodHandler<RefreshPvPWaveDuelListRequest>

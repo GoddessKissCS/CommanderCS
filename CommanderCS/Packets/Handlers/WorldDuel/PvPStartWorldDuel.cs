@@ -2,7 +2,7 @@ using CommanderCS.Host;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace StellarGK.Packets.Handlers.WorldDuel
+namespace CommanderCS.Packets.Handlers.WorldDuel
 {
     [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.PvPStartWorldDuel)]
     public class PvPStartWorldDuel : BaseMethodHandler<PvPStartWorldDuelRequest>

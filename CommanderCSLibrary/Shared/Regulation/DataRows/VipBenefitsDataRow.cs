@@ -30,6 +30,7 @@ namespace CommanderCSLibrary.Shared.Regulation.DataRows
         private VipBenefitsDataRow()
         {
         }
+
         public string GetKey()
         {
             return vipLevel.ToString();

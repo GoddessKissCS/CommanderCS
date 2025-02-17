@@ -15,7 +15,6 @@ namespace CommanderCS.Host.Handlers.WorldMap
             //TODO: look at the stage and then the rewards it can gen
             List<RewardInfo.RewardData> test = [];
 
-
             string worldMapId = @params.Mid.ToString();
 
             var worldstagetbl = Regulation.worldMapStageDtbl.Find(x => x.id == worldMapId);
@@ -39,7 +38,6 @@ namespace CommanderCS.Host.Handlers.WorldMap
                     });
 
                     break;
-
             }
 
             //TODO: find out how to add exp

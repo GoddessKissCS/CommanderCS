@@ -295,7 +295,6 @@ namespace CommanderCS.MongoDB.Handlers
                         }
                     }
                 }
-
             };
 
             DatabaseCollection.InsertOne(user);
@@ -674,10 +673,8 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
-
         public void UpdateCashAndNickName(string session, string accountName, int cash, bool useAddition)
         {
-
             var user = FindBySession(session);
 
             if (useAddition)
@@ -815,6 +812,19 @@ namespace CommanderCS.MongoDB.Handlers
         /// <summary>
         /// Updates the commander data for a user in the database.
         /// </summary>
+        /// <param name="accountId">The accountId associated with the user.</param>
+        /// <param name="commanderList">The updated commander data to be stored.</param>
+        public void UpdateCommanderData(int accountId, Dictionary<string, UserInformationResponse.Commander> commanderList)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, accountId);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.CommanderData, commanderList);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the commander data for a user in the database.
+        /// </summary>
         /// <param name="session">The session associated with the user.</param>
         /// <param name="commander">The updated commander to be stored.</param>
         public void UpdateSpecificCommander(string session, UserInformationResponse.Commander commander)
@@ -822,13 +832,12 @@ namespace CommanderCS.MongoDB.Handlers
             var filter = Builders<GameProfileScheme>.Filter.And(
                 Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
                 Builders<GameProfileScheme>.Filter.Eq("CommanderData.Key", commander.id)
-            );
+                                                               );
 
             var update = Builders<GameProfileScheme>.Update.Set("CommanderData.$", commander);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
-
 
         /// <summary>
         /// Updates the food data for a user in the database.
@@ -891,6 +900,19 @@ namespace CommanderCS.MongoDB.Handlers
         public void UpdateItemData(string session, Dictionary<string, int> items)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.itemData, items);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the item data associated with the user in the database.
+        /// </summary>
+        /// <param name="accountid">The accountid associated with the user.</param>
+        /// <param name="items">The updated dictionary containing the item data.</param>
+        public void UpdateItemData(int accountid, Dictionary<string, int> items)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, accountid);
             var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.itemData, items);
 
             DatabaseCollection.UpdateOne(filter, update);
@@ -1199,7 +1221,6 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>The error code indicating the result of the request.</returns>
         public ErrorCode RequestNicknameAfterTutorial(string sess, string nickname)
         {
-
             ErrorCode result = ValidateNickname(nickname);
 
             if (result == ErrorCode.Success)
@@ -1247,12 +1268,10 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>The error code indicating the result of the request.</returns>
         public ErrorCode RequestNickNameChange(string AccountName, string sess)
         {
-
             ErrorCode result = ValidateNickname(AccountName);
 
             if (result == ErrorCode.Success)
             {
-
                 DatabaseManager.GameProfile.UpdateNickName(sess, AccountName);
                 DatabaseManager.GameProfile.UpdateOnlyCash(sess, 100, false);
 
@@ -1262,8 +1281,6 @@ namespace CommanderCS.MongoDB.Handlers
             {
                 return result;
             }
-
-
         }
 
         /// <summary>
@@ -1382,19 +1399,17 @@ namespace CommanderCS.MongoDB.Handlers
             var filter = Builders<GameProfileScheme>.Filter.And(
             Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
             Builders<GameProfileScheme>.Filter.Eq("CommanderData.Key", commander.id)
-            );
+                                                               );
 
             var update = Builders<GameProfileScheme>.Update.Set("CommanderData.$", commander);
 
             DatabaseCollection.UpdateOne(filter, update);
-
 
             var filter2 = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
             var update2 = Builders<GameProfileScheme>.Update.Set(x => x.Resources.ring, user.Resources.ring);
 
             DatabaseCollection.UpdateOne(filter2, update2);
         }
-
 
         public void UpdateLastStageAndStageInfo(string session, GameProfileScheme user)
         {
@@ -1404,5 +1419,12 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        public void UpdateExpAndLevel(int accountId, int exp, int level)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, accountId);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.level, level).Set(x => x.Resources.exp, exp);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
     }
 }

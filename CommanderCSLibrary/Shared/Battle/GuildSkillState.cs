@@ -57,4 +57,3 @@ namespace CommanderCSLibrary.Shared.Battle
         }
     }
 }
-

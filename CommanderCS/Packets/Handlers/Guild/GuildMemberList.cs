@@ -14,7 +14,6 @@ namespace CommanderCS.Host.Handlers.Guild
                 Id = BasePacket.Id,
             };
 
-
             if (User.GuildId is null)
             {
                 response.Result = null;

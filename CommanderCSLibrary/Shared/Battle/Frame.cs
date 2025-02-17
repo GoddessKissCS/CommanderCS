@@ -94,65 +94,65 @@ namespace CommanderCSLibrary.Shared.Battle
 
         public static readonly int[,] _PriorityTable036 = new int[3, 3]
         {
-        { 0, 3, 6 },
-        { 1, 4, 7 },
-        { 2, 5, 8 }
+            { 0, 3, 6 },
+            { 1, 4, 7 },
+            { 2, 5, 8 }
         };
 
         public static readonly int[,] _PriorityTable258 = new int[3, 3]
         {
-        { 2, 5, 8 },
-        { 1, 4, 7 },
-        { 0, 3, 6 }
+            { 2, 5, 8 },
+            { 1, 4, 7 },
+            { 0, 3, 6 }
         };
 
         public static readonly int[,] _PriorityTable147 = new int[3, 3]
         {
-        { 1, 4, 7 },
-        { 0, 3, 6 },
-        { 2, 5, 8 }
+            { 1, 4, 7 },
+            { 0, 3, 6 },
+            { 2, 5, 8 }
         };
 
         public static readonly int[,] _PriorityFrontTable036 = new int[3, 3]
         {
-        { 0, 1, 2 },
-        { 3, 4, 5 },
-        { 6, 7, 8 }
+            { 0, 1, 2 },
+            { 3, 4, 5 },
+            { 6, 7, 8 }
         };
 
         public static readonly int[,] _PriorityFrontTable258 = new int[3, 3]
         {
-        { 2, 1, 0 },
-        { 5, 4, 3 },
-        { 8, 7, 6 }
+            { 2, 1, 0 },
+            { 5, 4, 3 },
+            { 8, 7, 6 }
         };
 
         public static readonly int[,] _PriorityFrontTable147 = new int[3, 3]
         {
-        { 1, 0, 2 },
-        { 4, 3, 5 },
-        { 7, 6, 8 }
+            { 1, 0, 2 },
+            { 4, 3, 5 },
+            { 7, 6, 8 }
         };
 
         public static readonly int[,] _PriorityBackTable036 = new int[3, 3]
         {
-        { 6, 7, 8 },
-        { 3, 4, 5 },
-        { 0, 1, 2 }
+            { 6, 7, 8 },
+            { 3, 4, 5 },
+            { 0, 1, 2 }
         };
 
         public static readonly int[,] _PriorityBackTable258 = new int[3, 3]
         {
-        { 8, 7, 6 },
-        { 5, 4, 3 },
-        { 2, 1, 0 }
+            { 8, 7, 6 },
+            { 5, 4, 3 },
+            { 2, 1, 0 }
         };
 
         public static readonly int[,] _PriorityBackTable147 = new int[3, 3]
         {
-        { 7, 6, 8 },
-        { 4, 3, 5 },
-        { 1, 0, 2 }
+            { 7, 6, 8 },
+            { 4, 3, 5 },
+            { 1, 0, 2 }
         };
 
         public int randomSeed => _randomSeed;

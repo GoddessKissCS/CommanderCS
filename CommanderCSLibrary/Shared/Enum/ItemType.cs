@@ -26,6 +26,5 @@
         OopartUpgradeBox,
         Gold,
         Diamond,
-
     }
 }

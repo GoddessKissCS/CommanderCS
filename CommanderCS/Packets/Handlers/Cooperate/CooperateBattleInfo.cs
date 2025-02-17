@@ -9,10 +9,9 @@ namespace CommanderCS.Packets.Handlers.Cooperate
     {
         public override object Handle(CooperateBattleInfoRequest @params)
         {
-
 #warning editdata
 
-			ResponsePacket response = new ResponsePacket()
+            ResponsePacket response = new ResponsePacket()
             {
                 Id = BasePacket.Id,
             };
@@ -37,12 +36,10 @@ namespace CommanderCS.Packets.Handlers.Cooperate
             response.Result = battleData;
 
             return response;
-
         }
 
         public class CooperateBattleInfoRequest
         {
-
         }
     }
 }

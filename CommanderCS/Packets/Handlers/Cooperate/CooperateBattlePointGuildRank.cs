@@ -4,11 +4,9 @@ using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Packets.Handlers.Cooperate
 {
-
     [Packet(Id = Method.CooperateBattlePointGuildRank)]
-    public class CooperateBattlePointGuildRank : BaseMethodHandler<CooperateBattlePointGuildRankRequest> 
-	{
-
+    public class CooperateBattlePointGuildRank : BaseMethodHandler<CooperateBattlePointGuildRankRequest>
+    {
         public override object Handle(CooperateBattlePointGuildRankRequest @params)
         {
             ResponsePacket response = new ResponsePacket()
@@ -16,22 +14,18 @@ namespace CommanderCS.Packets.Handlers.Cooperate
                 Id = BasePacket.Id,
             };
 
+            // ADD sometime missing data
 
-			// ADD sometime missing data
-
-			List<CooperateBattlePointGuildRankingInfo> cooperateBattlePointGuildRankingInfos = new() { };
-
+            List<CooperateBattlePointGuildRankingInfo> cooperateBattlePointGuildRankingInfos = new() { };
 
             response.Result = cooperateBattlePointGuildRankingInfos;
 
             return response;
-
         }
-
-
     }
 
-    public class CooperateBattlePointGuildRankRequest { }
+    public class CooperateBattlePointGuildRankRequest
+    { }
 }
 
 /*	// Token: 0x06006105 RID: 24837 RVA: 0x000120F8 File Offset: 0x000102F8

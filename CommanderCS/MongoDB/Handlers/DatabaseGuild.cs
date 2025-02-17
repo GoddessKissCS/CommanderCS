@@ -358,7 +358,6 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>A list of guilds with limited count.</returns>
         public List<RoGuild> GetAllGuilds(string session)
         {
-
             var allGuilds = DatabaseCollection.Aggregate()
                             .Sample(20)
                             .ToList();
@@ -567,7 +566,6 @@ namespace CommanderCS.MongoDB.Handlers
         /// <param name="member">The member data to be added.</param>
         public void AddGuildMember(int uno, int guildId, GuildMember.MemberData member)
         {
-
             var time = TimeManager.CurrentEpoch;
 
             var memberData = new MemberData()
@@ -698,7 +696,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// <param name="uno">The unique identifier of the current guild master.</param>
         /// <param name="tuno">The unique identifier of the member who will become the new guild master.</param>
         public void AppointNewGuildMaster(int? guildId, int uno, int tuno)
-        { 
+        {
             var filter = Builders<GuildScheme>.Filter.Eq("GuildId", guildId)
                          & Builders<GuildScheme>.Filter.ElemMatch("MemberData",
                              Builders<MemberData>.Filter.Eq("uno", uno));

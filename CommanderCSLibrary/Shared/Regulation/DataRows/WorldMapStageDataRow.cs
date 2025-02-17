@@ -110,6 +110,5 @@ namespace CommanderCSLibrary.Shared.Regulation.DataRows
         {
             return id;
         }
-
     }
 }

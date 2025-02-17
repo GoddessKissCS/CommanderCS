@@ -12,7 +12,6 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
     {
         public override object Handle(ResourceRechargeRequest @params)
         {
-
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
@@ -35,7 +34,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
                     DatabaseManager.GameProfile.UpdateVipRechargeCount(SessionId, @params.vidx, count);
                     DatabaseManager.GameProfile.UpdateDailyBuyableRaidKeys(SessionId, User.DailyBuyables.RaidKeys);
 
-                    var userInfo = GetDatabaseUserInformationResponse(User);
+                    var userInfo = DatabaseGetUserInformationResponse(User);
 
                     response.Result = JObject.FromObject(userInfo);
                     return response;

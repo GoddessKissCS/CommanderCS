@@ -19,6 +19,5 @@ namespace CommanderCSLibrary.Cryptography
             await instream.CopyToAsync(memoryStream);
             return memoryStream.ToArray();
         }
-
     }
 }

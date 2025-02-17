@@ -1,6 +1,5 @@
 ﻿using CommanderCS.Host.Handlers.Commander;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
@@ -12,7 +11,6 @@ namespace CommanderCS.Host.Handlers.Tutorial
     {
         public override object Handle(LoginTutorialSkipRequest @params)
         {
-
             UserInformationResponse.TutorialData tutorialData = new() { skip = Convert.ToBoolean(@params.skip), step = 12 };
 
             if (@params.skip == 1)
@@ -33,13 +31,10 @@ namespace CommanderCS.Host.Handlers.Tutorial
                 var secondCommander = CommanderRankUp.CreateCommander(1, 0, 1);
                 var thirdCommander = CommanderRankUp.CreateCommander(1, 0, 1);
 
-
                 User.CommanderData.Add("1", firstCommander);
 
                 DatabaseManager.GameProfile.UpdateUserData(SessionId, User);
-
             }
-
 
             DatabaseManager.GameProfile.UpdateTutorialData(SessionId, tutorialData);
 
