@@ -1,10 +1,10 @@
 ﻿using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
 using CommanderCSLibrary.Shared.Enum;
-
 using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
+
 
 namespace CommanderCS.Host.Handlers.Commander
 {
@@ -28,16 +28,15 @@ namespace CommanderCS.Host.Handlers.Commander
 
             string cid = @params.commanderId.ToString();
 
-            if (User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander is not null)
+            if (User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
             {
                 int commanderXP = Convert.ToInt32(commander.__exp);
 
-                for (int i = 1; i < @params.count;)
+                for (int i = 0; i < @params.count;)
                 {
-                    if (User.Inventory.itemData[sid] > 0)
-                    {
-                        User.Inventory.itemData[sid] -= 1;
-                    }
+
+                    //NEED TO CHECK IF its 0
+                    User.Inventory.itemData[sid] -= 1;
 
                     TryLevelingUp(sid, ref commanderXP);
 
@@ -46,7 +45,7 @@ namespace CommanderCS.Host.Handlers.Commander
 
                 commander.__exp = commanderXP.ToString();
 
-                commander = CheckCommanderLevelRecursive(commander, Regulation, User);
+                commander = CheckCommanderLevel(commander, Regulation, User);
             }
 
             if (int.Parse(commander.__level) > User.Resources.level)
@@ -60,8 +59,14 @@ namespace CommanderCS.Host.Handlers.Commander
                 return error;
             }
 
+            User.CommanderData[cid] = commander;
+
             DatabaseManager.GameProfile.UpdateItemData(SessionId, User.Inventory.itemData);
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+
+            User.CommanderData = [];
+
+            User.CommanderData[cid] = commander;
 
             ResponsePacket response = new()
             {
@@ -81,21 +86,24 @@ namespace CommanderCS.Host.Handlers.Commander
             { "19" , 10000 }
         };
 
-        private static UserInformationResponse.Commander CheckCommanderLevelRecursive(UserInformationResponse.Commander commander, Regulation rg, GameProfileScheme user)
+        private static UserInformationResponse.Commander CheckCommanderLevel(UserInformationResponse.Commander commander, Regulation rg, GameProfileScheme user)
         {
             int commanderLevel = int.Parse(commander.__level);
-
-            var row = rg.commanderLevelDtbl.Find(x => x.level == commanderLevel);
-
             int commanderXp = int.Parse(commander.__exp);
 
-            if (commanderXp > row.exp)
+            while (true)
             {
-                commander.__level = (commanderLevel + 1).ToString();
-                commander.__exp = (commanderXp -= row.exp).ToString();
+                var row = rg.commanderLevelDtbl.Find(x => x.level == commanderLevel);
+                if (row == null || row.exp == 0) break; // Prevent potential errors or infinite loops
 
-                return CheckCommanderLevelRecursive(commander, rg, user);
+                if (commanderXp < row.exp) break; // Exit when XP is not enough for next level
+
+                commanderXp -= row.exp;
+                commanderLevel++;
             }
+
+            commander.__level = commanderLevel.ToString();
+            commander.__exp = commanderXp.ToString();
 
             return commander;
         }
@@ -105,11 +113,6 @@ namespace CommanderCS.Host.Handlers.Commander
             if (!ExpList.TryGetValue(ticketId, out var addingXp))
             {
                 throw new Exception($"Grade {ticketId} Not Defined");
-            }
-
-            if (xp < addingXp)
-            {
-                return false;
             }
 
             xp += addingXp;

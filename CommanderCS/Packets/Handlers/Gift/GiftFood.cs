@@ -1,5 +1,6 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
+using CommanderCS.Packets.Handlers.Profile;
 using CommanderCSLibrary.Shared;
 using CommanderCSLibrary.Shared.Enum;
 using CommanderCSLibrary.Shared.Protocols;
@@ -24,17 +25,36 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             //might need to add the thing to remove the entry upon reaching 0 of the gifted item
 
-            for (var i = 1; i <= favourGiftAmount;)
+            if (User.Inventory.foodData.TryGetValue(favourGiftId, out var foodItem))
             {
-                if (User.Inventory.foodData[favourGiftId] > 0)
+                for (var i = 1; i <= favourGiftAmount;)
                 {
-                    User.Inventory.foodData[favourGiftId] -= 1;
+                    if (User.Inventory.foodData[favourGiftId] > 0)
+                    {
+                        User.Inventory.foodData[favourGiftId] -= 1;
+                    }
+
+
+                    TryAddingFavour(@params.cgid, ref commanderfavorPoint);
+
+                    i++;
                 }
+            } else {
+                for (var i = 1; i <= favourGiftAmount;)
+                {
+                    if (User.Inventory.itemData[favourGiftId] > 0)
+                    {
+                        User.Inventory.itemData[favourGiftId] -= 1;
+                    }
 
-                TryAddingFavour(@params.cgid, ref commanderfavorPoint);
 
-                i++;
+                    TryAddingFavour(@params.cgid, ref commanderfavorPoint);
+
+                    i++;
+                }
             }
+
+            // Removing from inventory not yet added
 
             // adding to favr might not be needed needs to be rechecked in the future
             commander.favr += commanderfavorPoint;
@@ -44,7 +64,12 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             User.CommanderData[commanderId] = commanderCID;
 
-            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, commanderCID);
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+
+            User.CommanderData = new() { };
+
+            User.CommanderData[commanderId] = commanderCID;
+
             UserInformationResponse informationResponse = GetUserInformationResponse(User);
 
             ResponsePacket response = new()
@@ -55,6 +80,8 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             return response;
         }
+
+        
 
         private static bool TryAddingFavour(int affectionId, ref int favour)
         {

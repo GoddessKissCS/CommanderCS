@@ -4,7 +4,7 @@ using CommanderCSLibrary.Shared.Regulation;
 
 namespace CommanderCSCMD.Commands
 {
-    [CommandHandler("level", "[id], <1-140>", CommandType.Player)]
+    [CommandHandler("level", "[id], <1-140>", CommandType.Console)]
     public class LevelCommand : Command
     {
         public override void Run(string[] args)
@@ -18,7 +18,6 @@ namespace CommanderCSCMD.Commands
             DatabaseManager.GameProfile.UpdateExpAndLevel(accountId, exp, level);
 
             Console.WriteLine($"Changed {args[0]}, exp and level to {exp} & {level}");
-
         }
     }
 }

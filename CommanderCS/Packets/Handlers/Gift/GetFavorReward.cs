@@ -19,10 +19,16 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
 
+            var uCommander = new Dictionary<string, UserInformationResponse.Commander>
+            {
+                [cid] = User.CommanderData[cid]
+            };
+
             RewardInfo rewardInfo = new()
             {
-                commander = User.CommanderData,
+                commander = uCommander,
                 resource = rsoc,
+                reward = [],
             };
 
             ResponsePacket response = new()
