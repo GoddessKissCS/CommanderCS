@@ -14,6 +14,8 @@ namespace CommanderCS.Packets.Handlers.Commander
         {
             string cid = @params.cid.ToString();
 
+            //needs to be reworked to be more readable
+
             if (User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander is not null)
             {
                 var commanderRankData = Regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == int.Parse(commander.__rank));
@@ -81,7 +83,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             var newResources = User;
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(newResources.Resources);
+            var rsoc = UserResources2Resource(newResources.Resources);
 
             CommanderRankUpImmediateResponse cmrup = new()
             {

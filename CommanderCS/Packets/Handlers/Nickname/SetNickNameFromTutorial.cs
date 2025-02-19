@@ -27,7 +27,7 @@ namespace CommanderCS.Host.Handlers.Nickname
             {
                 var information = GetUserInformationResponse(User);
 
-                JObject tutorialResponse = new JObject
+                JObject tutorialResponse = new()
                 {
                     ["id"] = BasePacket.Id,
                     ["result"] = new JObject

@@ -12,7 +12,7 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
         {
             WorldDuelBuffUpgradeResponse worldDuelBuffUpgradeResponse = new()
             {
-                rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources),
+                rsoc = UserResources2Resource(User.Resources),
                 buff = [],
             };
 

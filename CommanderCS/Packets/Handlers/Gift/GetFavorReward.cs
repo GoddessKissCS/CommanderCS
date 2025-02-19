@@ -17,7 +17,7 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
+            var rsoc = UserResources2Resource(User.Resources);
 
             var uCommander = new Dictionary<string, UserInformationResponse.Commander>
             {

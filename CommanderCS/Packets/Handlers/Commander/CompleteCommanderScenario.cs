@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Newtonsoft.Json;
 using CommanderCSLibrary.Packets;
 using CommanderCS.MongoDB;
+using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Packets.Handlers.Commander
 {
@@ -11,7 +12,6 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CompleteCommanderScenarioRequest @params)
         {
-
 			ResponsePacket response = new()
 			{
 				Id = BasePacket.Id,
@@ -26,7 +26,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 					eventResourceData = User.Inventory.eventResourceData,
 					reward = [],
 					duelScoreData = [],
-					resource = DatabaseManager.GameProfile.UserResources2Resource(User.Resources)
+					resource = UserResources2Resource(User.Resources)
 				},
 			};
 			

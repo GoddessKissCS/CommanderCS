@@ -1,5 +1,4 @@
 ﻿using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Host.Handlers.Commander
 {
@@ -8,12 +7,11 @@ namespace CommanderCS.Host.Handlers.Commander
     {
         public override object Handle(GetCommanderScenarioRequest @params)
         {
-            ResponsePacket response = new();
-
-            Dictionary<string, Dictionary<string, CommanderScenario>> result = new();
-
-            response.Result = result;
-            response.Id = BasePacket.Id;
+            ResponsePacket response = new()
+            {
+                Result = User.CommanderScenario,
+                Id = BasePacket.Id
+            };
 
             return response;
         }

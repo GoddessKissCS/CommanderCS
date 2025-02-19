@@ -11,7 +11,7 @@ namespace CommanderCS.Packets.Handlers.PvP
     {
         public override object Handle(GetRankingRewardRequest @params)
         {
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
+            var rsoc = UserResources2Resource(User.Resources);
 
             RankingReward reward = new()
             {

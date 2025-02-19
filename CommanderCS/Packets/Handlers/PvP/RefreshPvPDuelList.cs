@@ -13,7 +13,7 @@ namespace CommanderCS.Packets.Handlers.PvP
         {
             // need to check score and the get duelist between the range
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
+            var rsoc = UserResources2Resource(User.Resources);
 
             RefreshPvPDuel refreshDuel = new()
             {

@@ -18,8 +18,8 @@ namespace CommanderCS.Packets.Handlers.Commander
             DatabaseManager.GameProfile.UpdateOnlyCash(SessionId, RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH, false);
             DatabaseManager.GameProfile.UpdateWeaponInventoryCount(SessionId, User.Statistics.WeaponInventoryCount);
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
-            var uifo = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(User.Statistics);
+            var rsoc = UserResources2Resource(User.Resources);
+            var uifo = UserStatistics2BattleStatistics(User.Statistics);
 
             UpgradeWeaponInventoryResponse weaponInventoryResponse = new()
             {

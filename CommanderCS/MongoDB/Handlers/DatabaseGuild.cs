@@ -171,7 +171,7 @@ namespace CommanderCS.MongoDB.Handlers
 
             var user = DatabaseManager.GameProfile.FindBySession(session);
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(user.Resources);
+            var rsoc = UserResources2Resource(user.Resources);
 
             var userguild = RequestGuild(user.GuildId, user.Uno);
 
@@ -819,6 +819,60 @@ namespace CommanderCS.MongoDB.Handlers
             var update = Builders<GuildScheme>.Update.Set("MemberData.$.thumnail", costumeId);
 
             DatabaseCollection.UpdateOne(filter, update);
+        }
+
+
+        /// <summary>
+        /// Converts user resources to the response format.
+        /// </summary>
+        /// <param name="resources">User resources to convert.</param>
+        /// <returns>User resources in the response format.</returns>
+        public UserInformationResponse.Resource? UserResources2Resource(UserResources resources)
+        {
+            UserInformationResponse.Resource resource = new()
+            {
+                __nickname = resources.nickname,
+                __annCoin = Convert.ToString(resources.annCoin),
+                __level = Convert.ToString(resources.level),
+                __blackChallenge = Convert.ToString(resources.BlackChallenge),
+                __blueprintArmy = Convert.ToString(resources.blueprintArmy),
+                __blueprintNavy = Convert.ToString(resources.blueprintNavy),
+                __bullet = Convert.ToString(resources.bullet),
+                __cash = Convert.ToString(resources.cash),
+                __challenge = Convert.ToString(resources.challenge),
+                __challengeCoin = Convert.ToString(resources.challengeCoin),
+                __chip = Convert.ToString(resources.chip),
+                __commanderGift = Convert.ToString(resources.commanderGift),
+                __commanderPromotionPoint = Convert.ToString(resources.commanderPromotionPoint),
+                __eventRaidTicket = Convert.ToString(resources.eventRaidTicket),
+                __exp = Convert.ToString(resources.exp),
+                __explorationTicket = Convert.ToString(resources.explorationTicket),
+                __gold = Convert.ToString(resources.gold),
+                __guildCoin = Convert.ToString(resources.guildCoin),
+                __honor = Convert.ToString(resources.honor),
+                __oil = Convert.ToString(resources.oil),
+                __opcon = Convert.ToString(resources.opcon),
+                __opener = Convert.ToString(resources.opener),
+                __raidCoin = Convert.ToString(resources.raidCoin),
+                __ring = Convert.ToString(resources.ring),
+                __sweepTicket = Convert.ToString(resources.sweepTicket),
+                __thumbnailId = Convert.ToString(resources.thumbnailId),
+                __vipExp = Convert.ToString(resources.vipExp),
+                __vipLevel = Convert.ToString(resources.vipLevel),
+                __waveDuelCoin = Convert.ToString(resources.waveDuelCoin),
+                __waveDuelTicket = Convert.ToString(resources.waveDuelTicket),
+                __weaponImmediateTicket = Convert.ToString(resources.weaponImmediateTicket),
+                __weaponMakeTicket = Convert.ToString(resources.weaponMakeTicket),
+                __weaponMaterial1 = Convert.ToString(resources.weaponMaterial1),
+                __weaponMaterial2 = Convert.ToString(resources.weaponMaterial2),
+                __weaponMaterial3 = Convert.ToString(resources.weaponMaterial3),
+                __weaponMaterial4 = Convert.ToString(resources.weaponMaterial4),
+                __worldDuelCoin = Convert.ToString(resources.worldDuelCoin),
+                __worldDuelTicket = Convert.ToString(resources.worldDuelTicket),
+                __worldDuelUpgradeCoin = Convert.ToString(resources.worldDuelUpgradeCoin),
+            };
+
+            return resource;
         }
     }
 }

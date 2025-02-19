@@ -294,7 +294,12 @@ namespace CommanderCS.MongoDB.Handlers
                             type = "2",
                         }
                     }
-                }
+                },
+                CommanderScenario = new()
+                {
+
+                },
+
             };
 
             DatabaseCollection.InsertOne(user);
@@ -452,48 +457,6 @@ namespace CommanderCS.MongoDB.Handlers
         }
 
         /// <summary>
-        /// Converts user battle statistics to battle statistics for response.
-        /// </summary>
-        /// <param name="statistics">The user battle statistics to convert.</param>
-        /// <returns>Battle statistics suitable for response.</returns>
-        public UserInformationResponse.BattleStatistics UserStatistics2BattleStatistics(UserBattleStatistics statistics)
-        {
-            UserInformationResponse.BattleStatistics BattleStatisticstis = new()
-            {
-                navyCommanderDestroyCount = statistics.NavyCommanderDestroyCount,
-                stageClearCount = statistics.StageClearCount,
-                sweepClearCount = statistics.SweepClearCount,
-                preWinStreak = statistics.PreWinStreak,
-                raidHighScore = statistics.RaidHighScore,
-                vipShop = statistics.VipShop,
-                vipShopResetTime = statistics.VipShopResetTime,
-                weaponMakeSlotCount = statistics.WeaponMakeSlotCount,
-                winMostStreak = statistics.WinMostStreak,
-                winStreak = statistics.WinStreak,
-                arenaHighRank = statistics.ArenaHighRank,
-                armyCommanderDestroyCount = statistics.ArmyCommanderDestroyCount,
-                armyUnitDestroyCount = statistics.ArmyUnitDestroyCount,
-                commanderDestroyCount = statistics.CommanderDestroyCount,
-                firstPayment = statistics.FirstPayment,
-                navyUnitDestroyCount = statistics.NavyUnitDestroyCount,
-                normalGachaCount = statistics.NormalGachaCount,
-                predeckCount = statistics.PredeckCount,
-                premiumGachaCount = statistics.PremiumGachaCount,
-                pveLoseCount = statistics.PveLoseCount,
-                pveWinCount = statistics.PveWinCount,
-                pvpLoseCount = statistics.PvpLoseCount,
-                pvpWinCount = statistics.PvpWinCount,
-                raidHighRank = statistics.RaidHighRank,
-                totalGold = statistics.TotalGold,
-                totalPlunderGold = statistics.TotalPlunderGold,
-                weaponInventoryCount = statistics.WeaponInventoryCount,
-                unitDestroyCount = statistics.UnitDestroyCount,
-            };
-
-            return BattleStatisticstis;
-        }
-
-        /// <summary>
         /// Retrieves user resources from the game profile associated with the specified session.
         /// </summary>
         /// <param name="session">The session associated with the game profile.</param>
@@ -504,59 +467,6 @@ namespace CommanderCS.MongoDB.Handlers
 
             var resources = user.Resources;
 
-            UserInformationResponse.Resource resource = new()
-            {
-                __nickname = resources.nickname,
-                __annCoin = Convert.ToString(resources.annCoin),
-                __level = Convert.ToString(resources.level),
-                __blackChallenge = Convert.ToString(resources.BlackChallenge),
-                __blueprintArmy = Convert.ToString(resources.blueprintArmy),
-                __blueprintNavy = Convert.ToString(resources.blueprintNavy),
-                __bullet = Convert.ToString(resources.bullet),
-                __cash = Convert.ToString(resources.cash),
-                __challenge = Convert.ToString(resources.challenge),
-                __challengeCoin = Convert.ToString(resources.challengeCoin),
-                __chip = Convert.ToString(resources.chip),
-                __commanderGift = Convert.ToString(resources.commanderGift),
-                __commanderPromotionPoint = Convert.ToString(resources.commanderPromotionPoint),
-                __eventRaidTicket = Convert.ToString(resources.eventRaidTicket),
-                __exp = Convert.ToString(resources.exp),
-                __explorationTicket = Convert.ToString(resources.explorationTicket),
-                __gold = Convert.ToString(resources.gold),
-                __guildCoin = Convert.ToString(resources.guildCoin),
-                __honor = Convert.ToString(resources.honor),
-                __oil = Convert.ToString(resources.oil),
-                __opcon = Convert.ToString(resources.opcon),
-                __opener = Convert.ToString(resources.opener),
-                __raidCoin = Convert.ToString(resources.raidCoin),
-                __ring = Convert.ToString(resources.ring),
-                __sweepTicket = Convert.ToString(resources.sweepTicket),
-                __thumbnailId = Convert.ToString(resources.thumbnailId),
-                __vipExp = Convert.ToString(resources.vipExp),
-                __vipLevel = Convert.ToString(resources.vipLevel),
-                __waveDuelCoin = Convert.ToString(resources.waveDuelCoin),
-                __waveDuelTicket = Convert.ToString(resources.waveDuelTicket),
-                __weaponImmediateTicket = Convert.ToString(resources.weaponImmediateTicket),
-                __weaponMakeTicket = Convert.ToString(resources.weaponMakeTicket),
-                __weaponMaterial1 = Convert.ToString(resources.weaponMaterial1),
-                __weaponMaterial2 = Convert.ToString(resources.weaponMaterial2),
-                __weaponMaterial3 = Convert.ToString(resources.weaponMaterial3),
-                __weaponMaterial4 = Convert.ToString(resources.weaponMaterial4),
-                __worldDuelCoin = Convert.ToString(resources.worldDuelCoin),
-                __worldDuelTicket = Convert.ToString(resources.worldDuelTicket),
-                __worldDuelUpgradeCoin = Convert.ToString(resources.worldDuelUpgradeCoin),
-            };
-
-            return resource;
-        }
-
-        /// <summary>
-        /// Converts user resources to the response format.
-        /// </summary>
-        /// <param name="resources">User resources to convert.</param>
-        /// <returns>User resources in the response format.</returns>
-        public UserInformationResponse.Resource? UserResources2Resource(UserResources resources)
-        {
             UserInformationResponse.Resource resource = new()
             {
                 __nickname = resources.nickname,
@@ -829,12 +739,9 @@ namespace CommanderCS.MongoDB.Handlers
         /// <param name="commander">The updated commander to be stored.</param>
         public void UpdateSpecificCommander(string session, UserInformationResponse.Commander commander)
         {
-            var filter = Builders<GameProfileScheme>.Filter.And(
-                Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
-                Builders<GameProfileScheme>.Filter.Eq("CommanderData.id", commander.id)
-            );
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
 
-            var update = Builders<GameProfileScheme>.Update.Set("CommanderData.$", commander); 
+            var update = Builders<GameProfileScheme>.Update.Set($"CommanderData.{commander.id}", commander);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -1056,8 +963,11 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>True if the notification setting was successfully updated, false otherwise.</returns>
         public bool UpdateNotifaction(string session, int onoff)
         {
+
+            bool noti = Convert.ToBoolean(onoff);
+
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update = Builders<GameProfileScheme>.Update.Set(x => x.Notification, Convert.ToBoolean(onoff));
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Notification, noti);
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
@@ -1272,8 +1182,8 @@ namespace CommanderCS.MongoDB.Handlers
 
             if (result == ErrorCode.Success)
             {
-                DatabaseManager.GameProfile.UpdateNickName(sess, AccountName);
-                DatabaseManager.GameProfile.UpdateOnlyCash(sess, 100, false);
+                UpdateNickName(sess, AccountName);
+                UpdateOnlyCash(sess, 100, false);
 
                 return ErrorCode.Success;
             }
@@ -1425,5 +1335,14 @@ namespace CommanderCS.MongoDB.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+        public void AddCommanderScenario(int accountId, Dictionary<string, Dictionary<string, CommanderScenario>> commanderScenario)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, accountId);
+
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.CommanderScenario, commanderScenario);
+
+            DatabaseCollection.UpdateOne(filter, update, new UpdateOptions { IsUpsert = true });
+        }
+
     }
 }

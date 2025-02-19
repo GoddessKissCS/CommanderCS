@@ -179,6 +179,7 @@ namespace CommanderCS.MongoDB.Schemes
         /// Gets or sets the dictionary containing gacha information.
         /// </summary>
         public Dictionary<string, GachaInformationResponse>? GachaInformation { get; set; }
+        public Dictionary<string, Dictionary<string, CommanderScenario>>? CommanderScenario { get; set; }
     }
 
     /// <summary>
