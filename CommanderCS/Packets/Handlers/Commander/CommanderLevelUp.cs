@@ -62,7 +62,7 @@ namespace CommanderCS.Host.Handlers.Commander
             User.CommanderData[cid] = commander;
 
             DatabaseManager.GameProfile.UpdateItemData(SessionId, User.Inventory.itemData);
-            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
 
             User.CommanderData = [];
 

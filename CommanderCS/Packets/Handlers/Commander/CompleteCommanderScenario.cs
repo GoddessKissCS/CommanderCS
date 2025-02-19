@@ -1,8 +1,51 @@
+using CommanderCS.Host;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Newtonsoft.Json;
+using CommanderCSLibrary.Packets;
+using CommanderCS.MongoDB;
+
 namespace CommanderCS.Packets.Handlers.Commander
 {
-    public class CompleteCommanderScenario
+	[Packet(Id = CommanderCSLibrary.Shared.Enum.Method.CompleteCommanderScenario)]
+    public class CompleteCommanderScenario : BaseMethodHandler<CompleteCommanderScenarioRequest>
     {
+        public override object Handle(CompleteCommanderScenarioRequest @params)
+        {
+
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = new CommanderCSLibrary.Shared.Protocols.CompleteScenario()
+				{
+					commander = User.CommanderData,
+					costumeData = User.Inventory.costumeData,
+					foodData = User.Inventory.foodData,
+					medalData = User.Inventory.medalData,
+					itemData = User.Inventory.itemData,
+					partData = User.Inventory.partData,
+					eventResourceData = User.Inventory.eventResourceData,
+					reward = [],
+					duelScoreData = [],
+					resource = DatabaseManager.GameProfile.UserResources2Resource(User.Resources)
+				},
+			};
+			
+			// Allows you to
+
+            return response;
+        }
     }
+	public class CompleteCommanderScenarioRequest
+	{
+        [JsonProperty("cid")]
+        public int cid { get; set; }
+
+        [JsonProperty("sid")]
+        public int sid { get; set; }
+
+        [JsonProperty("sqid")]
+        public int sqid { get; set; }
+	}
 }
 
 /*	// Token: 0x060060DF RID: 24799 RVA: 0x000120F8 File Offset: 0x000102F8

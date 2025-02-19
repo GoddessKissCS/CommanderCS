@@ -16,7 +16,13 @@ namespace CommanderCS.Packets.Handlers.Gift
             User.CommanderData[cid].marry = 1;
             User.Resources.ring -= 1;
 
-            DatabaseManager.GameProfile.UpdateCommanderMarriage(SessionId, User, User.CommanderData[cid]);
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+
+			User.CommanderData = new()
+            {
+                [cid] = User.CommanderData[cid]
+            };
+
             UserInformationResponse userInformationResponse = GetUserInformationResponse(User);
 
             ResponsePacket response = new()

@@ -15,6 +15,7 @@ namespace CommanderCSCMD.Commands
 
 #warning TODO UPDATE
             DatabaseManager.GameProfile.UpdateItemData(accountId, itemData);
+            DatabaseManager.GameProfile.UpdateRings(accountId, 999);
 
             Console.WriteLine($"Added All Goods to id {args[0]}");
 

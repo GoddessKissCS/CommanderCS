@@ -49,7 +49,6 @@ namespace CommanderCS.Packets.Handlers.Gift
                         User.Inventory.itemData[favourGiftId] -= 1;
                     }
 
-
                     TryAddingFavour(@params.cgid, ref commanderfavorPoint);
 
                     i++;
@@ -66,10 +65,11 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             User.CommanderData[cid] = commanderCID;
 
-            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateItemData(SessionId, User.Inventory.itemData);
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
 
             User.CommanderData = [];
-
+                
             User.CommanderData[cid] = commanderCID;
 
             UserInformationResponse informationResponse = GetUserInformationResponse(User);
@@ -162,21 +162,30 @@ namespace CommanderCS.Packets.Handlers.Gift
                 case 14:
                     row = rg.favorStepDtbl.Find(x => x.step == 15);
                     break;
+
+                default:
+                    row = rg.favorStepDtbl.Find(x => x.step == 15);
+                    break;
+
             }
             ;
 
             if (commander.favorPoint > row.favor)
             {
 
+                if (commander.favorStep >= 15 && commander.favorPoint >= 1000000)
+                {
+                    commander.favorStep = 15;
+                    commander.favorPoint = 1000000;
+
+                    return commander;
+                }
+
                 // Might SOME Cases break and minus
 
                 commander.favorStep += 1;
                 commander.favorPoint -= row.favor;
 
-                if (commander.favorStep == 15 && commander.favorPoint >= 1000000)
-                {
-                    commander.favorPoint = 1000000;
-                }
 
                 return CheckCommanderFavour(commander, rg);
             }

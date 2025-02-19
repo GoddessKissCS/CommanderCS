@@ -831,10 +831,10 @@ namespace CommanderCS.MongoDB.Handlers
         {
             var filter = Builders<GameProfileScheme>.Filter.And(
                 Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
-                Builders<GameProfileScheme>.Filter.Eq("CommanderData.Key", commander.id)
-                                                               );
+                Builders<GameProfileScheme>.Filter.Eq("CommanderData.id", commander.id)
+            );
 
-            var update = Builders<GameProfileScheme>.Update.Set("CommanderData.$", commander);
+            var update = Builders<GameProfileScheme>.Update.Set("CommanderData.$", commander); 
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -1301,9 +1301,9 @@ namespace CommanderCS.MongoDB.Handlers
         /// </summary>
         /// <param name="session">The session ID of the user.</param>
         /// <param name="ring">The new number of rings for the user.</param>
-        public void UpdateRings(string session, int ring)
+        public void UpdateRings(int accountId, int ring)
         {
-            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, accountId);
             var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.ring, ring);
 
             DatabaseCollection.UpdateOne(filter, update);
@@ -1396,19 +1396,18 @@ namespace CommanderCS.MongoDB.Handlers
         /// <param name="user">The updated user profile.</param>
         public void UpdateCommanderMarriage(string session, GameProfileScheme user, UserInformationResponse.Commander commander)
         {
-            var filter = Builders<GameProfileScheme>.Filter.And(
-            Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
-            Builders<GameProfileScheme>.Filter.Eq("CommanderData.Key", commander.id)
-                                                               );
+            var commanderFilter = Builders<GameProfileScheme>.Filter.And(
+                Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
+                Builders<GameProfileScheme>.Filter.Eq("CommanderData.Key", commander.id)
+            );
 
-            var update = Builders<GameProfileScheme>.Update.Set("CommanderData.$", commander);
+            var commanderUpdate = Builders<GameProfileScheme>.Update.Set("CommanderData.$", commander);
+            DatabaseCollection.UpdateOne(commanderFilter, commanderUpdate);
 
-            DatabaseCollection.UpdateOne(filter, update);
-
-            var filter2 = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
-            var update2 = Builders<GameProfileScheme>.Update.Set(x => x.Resources.ring, user.Resources.ring);
-
-            DatabaseCollection.UpdateOne(filter2, update2);
+            // Update the user's ring resource
+            var ringFilter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var ringUpdate = Builders<GameProfileScheme>.Update.Set(x => x.Resources.ring, user.Resources.ring);
+            DatabaseCollection.UpdateOne(ringFilter, ringUpdate);
         }
 
         public void UpdateLastStageAndStageInfo(string session, GameProfileScheme user)
