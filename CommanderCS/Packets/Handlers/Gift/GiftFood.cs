@@ -7,6 +7,7 @@ using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Regulation;
 using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
 
 namespace CommanderCS.Packets.Handlers.Gift
 {
@@ -15,11 +16,11 @@ namespace CommanderCS.Packets.Handlers.Gift
     {
         public override object Handle(GiftFoodRequest @params)
         {
-            string commanderId = @params.cid.ToString();
+            string cid = @params.cid.ToString();
             string favourGiftId = @params.cgid.ToString();
             int favourGiftAmount = @params.amnt;
 
-            User.CommanderData.TryGetValue(commanderId, out var commander);
+            User.CommanderData.TryGetValue(cid, out var commander);
 
             int commanderfavorPoint = commander.favorPoint;
 
@@ -62,13 +63,14 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             var commanderCID = CheckCommanderFavour(commander, Regulation);
 
-            User.CommanderData[commanderId] = commanderCID;
+            User.CommanderData[cid] = commanderCID;
 
-            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
 
-            User.CommanderData = new() { };
-
-            User.CommanderData[commanderId] = commanderCID;
+            User.CommanderData = new()
+            {
+                [cid] = commanderCID
+            };
 
             UserInformationResponse informationResponse = GetUserInformationResponse(User);
 

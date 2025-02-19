@@ -5,8 +5,8 @@ using CommanderCSLibrary.Shared.Regulation.DataRows;
 
 namespace CommanderCSCMD.Commands
 {
-    [CommandHandler("addallcommanders", "[id]", CommandType.Console)]
-    public class AddAllCommandersCommand : Command
+    [CommandHandler("unlockallcommanders", "[id]", CommandType.Console)]
+    public class UnlockAllCommandersCommand : Command
     {
         public override void Run(string[] args)
         {
