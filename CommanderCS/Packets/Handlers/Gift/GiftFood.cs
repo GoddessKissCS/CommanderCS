@@ -1,4 +1,5 @@
 using CommanderCS.Host;
+using CommanderCS.Host.Handlers.Commander;
 using CommanderCS.MongoDB;
 using CommanderCS.Packets.Handlers.Profile;
 using CommanderCSLibrary.Shared;
@@ -65,12 +66,11 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             User.CommanderData[cid] = commanderCID;
 
-            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
 
-            User.CommanderData = new()
-            {
-                [cid] = commanderCID
-            };
+            User.CommanderData = [];
+
+            User.CommanderData[cid] = commanderCID;
 
             UserInformationResponse informationResponse = GetUserInformationResponse(User);
 
@@ -162,7 +162,8 @@ namespace CommanderCS.Packets.Handlers.Gift
                 case 14:
                     row = rg.favorStepDtbl.Find(x => x.step == 15);
                     break;
-            };
+            }
+            ;
 
             if (commander.favorPoint > row.favor)
             {
