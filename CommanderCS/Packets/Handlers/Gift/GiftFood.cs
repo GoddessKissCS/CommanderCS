@@ -1,4 +1,5 @@
 using CommanderCS.Host;
+using CommanderCS.Host.Handlers.Commander;
 using CommanderCS.MongoDB;
 using CommanderCS.Packets.Handlers.Profile;
 using CommanderCSLibrary.Shared;
@@ -7,6 +8,7 @@ using CommanderCSLibrary.Shared.Protocols;
 using CommanderCSLibrary.Shared.Regulation;
 using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
 
 namespace CommanderCS.Packets.Handlers.Gift
 {
@@ -15,11 +17,11 @@ namespace CommanderCS.Packets.Handlers.Gift
     {
         public override object Handle(GiftFoodRequest @params)
         {
-            string commanderId = @params.cid.ToString();
+            string cid = @params.cid.ToString();
             string favourGiftId = @params.cgid.ToString();
             int favourGiftAmount = @params.amnt;
 
-            User.CommanderData.TryGetValue(commanderId, out var commander);
+            User.CommanderData.TryGetValue(cid, out var commander);
 
             int commanderfavorPoint = commander.favorPoint;
 
@@ -62,13 +64,13 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             var commanderCID = CheckCommanderFavour(commander, Regulation);
 
-            User.CommanderData[commanderId] = commanderCID;
+            User.CommanderData[cid] = commanderCID;
 
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
 
-            User.CommanderData = new() { };
+            User.CommanderData = [];
 
-            User.CommanderData[commanderId] = commanderCID;
+            User.CommanderData[cid] = commanderCID;
 
             UserInformationResponse informationResponse = GetUserInformationResponse(User);
 
@@ -160,7 +162,8 @@ namespace CommanderCS.Packets.Handlers.Gift
                 case 14:
                     row = rg.favorStepDtbl.Find(x => x.step == 15);
                     break;
-            };
+            }
+            ;
 
             if (commander.favorPoint > row.favor)
             {
