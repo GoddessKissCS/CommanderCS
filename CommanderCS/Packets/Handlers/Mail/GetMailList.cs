@@ -1,6 +1,6 @@
 using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Shared.Protocols;
 
 namespace CommanderCS.Packets.Handlers.Mail
 {

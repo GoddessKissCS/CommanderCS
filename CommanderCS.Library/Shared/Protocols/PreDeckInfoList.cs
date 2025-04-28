@@ -1,4 +1,4 @@
-﻿namespace CommanderCSLibrary.Shared.Protocols
+﻿namespace CommanderCS.Library.Shared.Protocols
 {
     public class PreDeckInfoList
     {

@@ -1,4 +1,4 @@
-namespace CommanderCSLibrary.Packets
+namespace CommanderCS.Library.Packets.Structure
 {
     public class WorldDuelInformationRequest
     {

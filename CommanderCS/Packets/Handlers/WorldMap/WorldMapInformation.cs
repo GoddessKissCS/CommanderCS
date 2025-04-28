@@ -1,6 +1,6 @@
-﻿using CommanderCSLibrary.Packets;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCS.Library.Packets.Structure;
+using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Shared.Protocols;
 
 namespace CommanderCS.Host.Handlers.WorldMap
 {

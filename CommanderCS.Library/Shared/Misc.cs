@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using System.Reflection;
 
-namespace CommanderCSLibrary.Shared
+namespace CommanderCS.Library.Shared
 {
     public static class Misc
     {

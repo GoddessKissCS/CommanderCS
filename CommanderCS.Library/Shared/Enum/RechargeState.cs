@@ -1,5 +1,5 @@
 ﻿// Token: 0x0200126F RID: 4719
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum RechargeState
     {

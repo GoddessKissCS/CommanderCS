@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared
+namespace CommanderCS.Library.Shared
 {
     [JsonObject]
     public class TimeData

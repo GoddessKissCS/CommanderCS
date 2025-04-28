@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F82 RID: 3970
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ERewardState
     {

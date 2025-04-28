@@ -1,4 +1,4 @@
-namespace CommanderCSLibrary.Shared.Battle
+namespace CommanderCS.Library.Shared.Battle
 {
     public class Random
     {

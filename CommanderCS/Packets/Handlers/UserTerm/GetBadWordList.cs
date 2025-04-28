@@ -1,4 +1,4 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Shared.Enum;
 using Newtonsoft.Json;
 using System.Reflection;
 

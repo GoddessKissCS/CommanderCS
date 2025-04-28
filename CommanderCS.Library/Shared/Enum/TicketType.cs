@@ -1,6 +1,6 @@
 ﻿// Token: 0x0200130D RID: 4877
 
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum TicketType
     {

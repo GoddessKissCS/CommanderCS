@@ -1,13 +1,13 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCSLibrary.Shared.Regulation;
+using CommanderCS.Library.Shared.Regulation;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.KeepAlives
 {
-    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.ResourceRecharge)]
+    [Packet(Id = CommanderCS.Library.Shared.Enum.Method.ResourceRecharge)]
     public class ResourceRecharge : BaseMethodHandler<ResourceRechargeRequest>
     {
         public override object Handle(ResourceRechargeRequest @params)

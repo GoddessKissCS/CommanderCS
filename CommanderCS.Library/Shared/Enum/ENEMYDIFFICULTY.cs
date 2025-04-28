@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F85 RID: 3973
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ENEMYDIFFICULTY
     {

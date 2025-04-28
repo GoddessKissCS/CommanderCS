@@ -1,5 +1,5 @@
 ﻿// Token: 0x02001244 RID: 4676
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum PurChaseType
     {

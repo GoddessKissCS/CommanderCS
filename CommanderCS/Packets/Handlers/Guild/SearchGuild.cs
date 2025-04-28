@@ -1,7 +1,7 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Ro;
+using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Shared.Ro;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild

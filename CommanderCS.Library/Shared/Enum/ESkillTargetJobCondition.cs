@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F8B RID: 3979
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ESkillTargetJobCondition
     {

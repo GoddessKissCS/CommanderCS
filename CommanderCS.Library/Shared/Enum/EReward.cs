@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F60 RID: 3936
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum EReward
     {

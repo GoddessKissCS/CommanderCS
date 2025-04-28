@@ -1,9 +1,9 @@
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Regulation;
-using CommanderCSLibrary.Shared.Regulation.DataRows;
+using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Shared.Regulation;
+using CommanderCS.Library.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Ro
+namespace CommanderCS.Library.Shared.Ro
 {
     [JsonObject]
     public class RoCommander

@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F64 RID: 3940
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ETrainingTicketType
     {

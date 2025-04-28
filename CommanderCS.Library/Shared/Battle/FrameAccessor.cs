@@ -1,7 +1,7 @@
-using CommanderCSLibrary.Shared.Regulation;
-using CommanderCSLibrary.Shared.Regulation.DataRows;
+using CommanderCS.Library.Shared.Regulation;
+using CommanderCS.Library.Shared.Regulation.DataRows;
 
-namespace CommanderCSLibrary.Shared.Battle
+namespace CommanderCS.Library.Shared.Battle
 {
     public class FrameAccessor
     {

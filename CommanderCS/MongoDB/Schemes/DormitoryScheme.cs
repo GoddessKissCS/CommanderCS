@@ -1,4 +1,4 @@
-﻿using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCS.Library.Shared.Protocols;
 using MongoDB.Bson;
 
 namespace CommanderCS.MongoDB.Schemes

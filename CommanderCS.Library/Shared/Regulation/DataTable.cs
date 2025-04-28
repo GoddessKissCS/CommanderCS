@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections;
 
-namespace CommanderCSLibrary.Shared.Regulation
+namespace CommanderCS.Library.Shared.Regulation
 {
     [Serializable]
     [JsonConverter(typeof(DataTableConverter))]

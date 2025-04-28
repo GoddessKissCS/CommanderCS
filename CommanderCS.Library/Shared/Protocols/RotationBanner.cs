@@ -1,7 +1,7 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Shared.Enum;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Protocols
+namespace CommanderCS.Library.Shared.Protocols
 {
     public class RotationBanner
     {

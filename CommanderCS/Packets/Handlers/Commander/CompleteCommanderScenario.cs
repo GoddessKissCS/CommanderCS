@@ -1,13 +1,13 @@
 using CommanderCS.Host;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Newtonsoft.Json;
-using CommanderCSLibrary.Packets;
+using CommanderCS.Library.Packets;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Protocols;
+using CommanderCS.Library.Shared.Protocols;
 
 namespace CommanderCS.Packets.Handlers.Commander
 {
-	[Packet(Id = CommanderCSLibrary.Shared.Enum.Method.CompleteCommanderScenario)]
+	[Packet(Id = CommanderCS.Library.Shared.Enum.Method.CompleteCommanderScenario)]
     public class CompleteCommanderScenario : BaseMethodHandler<CompleteCommanderScenarioRequest>
     {
         public override object Handle(CompleteCommanderScenarioRequest @params)

@@ -1,5 +1,5 @@
 using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Shared.Enum;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Mission
@@ -13,14 +13,14 @@ namespace CommanderCS.Packets.Handlers.Mission
             {
             }
 
-            CommanderCSLibrary.Shared.Protocols.AchievementInfo achievement = new()
+            CommanderCS.Library.Shared.Protocols.AchievementInfo achievement = new()
             {
                 AchievementList = [],
                 completeCount = 0,
                 goal = 0,
             };
 
-            CommanderCSLibrary.Shared.Protocols.MissionInfo missionInfo = new()
+            CommanderCS.Library.Shared.Protocols.MissionInfo missionInfo = new()
             {
                 completeCount = 0,
                 goal = 0,

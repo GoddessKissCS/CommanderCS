@@ -1,4 +1,4 @@
-namespace CommanderCSLibrary.Shared.Battle.Internal
+namespace CommanderCS.Library.Shared.Battle.Internal
 {
     public class _StatusEffectCleaner : FrameAccessor
     {

@@ -1,9 +1,9 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCSLibrary.Packets;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Packets.Structure;
+using CommanderCS.Library.Shared;
+using CommanderCS.Library.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.WorldMap
 {
@@ -110,11 +110,11 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             return response;
         }
 
-        private static CommanderCSLibrary.Shared.Protocols.WorldMapReward UserWorldReward(string commanderId, GameProfileScheme user, string session)
+        private static CommanderCS.Library.Shared.Protocols.WorldMapReward UserWorldReward(string commanderId, GameProfileScheme user, string session)
         {
             int medals = 20;
 
-            CommanderCSLibrary.Shared.Protocols.WorldMapReward WorldMapReward = new();
+            CommanderCS.Library.Shared.Protocols.WorldMapReward WorldMapReward = new();
 
             user.CommanderData.TryGetValue(commanderId, out var commander);
 

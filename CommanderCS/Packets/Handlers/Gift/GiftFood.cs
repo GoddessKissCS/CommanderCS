@@ -2,11 +2,11 @@ using CommanderCS.Host;
 using CommanderCS.Host.Handlers.Commander;
 using CommanderCS.MongoDB;
 using CommanderCS.Packets.Handlers.Profile;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
-using CommanderCSLibrary.Shared.Regulation;
-using CommanderCSLibrary.Shared.Regulation.DataRows;
+using CommanderCS.Library.Shared;
+using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Shared.Protocols;
+using CommanderCS.Library.Shared.Regulation;
+using CommanderCS.Library.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
 

@@ -1,5 +1,5 @@
 ﻿using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Shared.Enum;
 
 namespace CommanderCS.Host.Handlers.Guild
 {
@@ -8,7 +8,7 @@ namespace CommanderCS.Host.Handlers.Guild
     {
         public override object Handle(GuildListRequest @params)
         {
-            CommanderCSLibrary.Shared.Protocols.GuildInfo guildList = new()
+            CommanderCS.Library.Shared.Protocols.GuildInfo guildList = new()
             {
                 resource = null,
                 guildInfo = null,

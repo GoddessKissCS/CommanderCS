@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CommanderCSLibrary.Shared
+namespace CommanderCS.Library.Shared
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class RaidData

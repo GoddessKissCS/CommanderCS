@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using System.Reflection;
 
-namespace CommanderCSLibrary.Shared.Regulation
+namespace CommanderCS.Library.Shared.Regulation
 {
     public class DataTableConverter : JsonConverter
     {

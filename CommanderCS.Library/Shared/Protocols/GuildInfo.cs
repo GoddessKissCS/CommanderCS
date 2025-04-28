@@ -1,7 +1,7 @@
-﻿using CommanderCSLibrary.Shared.Ro;
+﻿using CommanderCS.Library.Shared.Ro;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Protocols
+namespace CommanderCS.Library.Shared.Protocols
 {
     public class GuildInfo
     {

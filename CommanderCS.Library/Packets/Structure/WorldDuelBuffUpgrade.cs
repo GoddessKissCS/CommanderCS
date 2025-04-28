@@ -1,7 +1,7 @@
-using CommanderCSLibrary.Shared.Protocols;
+using CommanderCS.Library.Shared.Protocols;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Packets
+namespace CommanderCS.Library.Packets
 {
     public class WorldDuelBuffUpgradeRequest
     {

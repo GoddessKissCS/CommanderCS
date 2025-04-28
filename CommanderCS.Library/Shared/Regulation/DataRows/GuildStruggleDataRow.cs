@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 using System.Numerics;
 using System.Runtime.Serialization;
 
-namespace CommanderCSLibrary.Shared.Regulation.DataRows
+namespace CommanderCS.Library.Shared.Regulation.DataRows
 {
     [Serializable]
     [JsonObject]

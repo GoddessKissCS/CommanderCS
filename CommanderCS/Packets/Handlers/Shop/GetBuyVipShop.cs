@@ -1,4 +1,4 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Shared.Enum;
 
 namespace CommanderCS.Host.Handlers.Shop
 {

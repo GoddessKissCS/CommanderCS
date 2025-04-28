@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CommanderCSLibrary.Shared.Battle
+namespace CommanderCS.Library.Shared.Battle
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class Result

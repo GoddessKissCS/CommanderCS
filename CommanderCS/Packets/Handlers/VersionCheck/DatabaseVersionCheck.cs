@@ -1,6 +1,6 @@
 ﻿using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Shared.Enum;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.VersionCheck

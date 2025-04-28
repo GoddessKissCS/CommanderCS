@@ -1,4 +1,4 @@
-namespace CommanderCSLibrary.Shared.Regulation
+namespace CommanderCS.Library.Shared.Regulation
 {
     public interface DataRow
     {

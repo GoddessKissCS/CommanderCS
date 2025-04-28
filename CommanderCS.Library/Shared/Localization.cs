@@ -1,7 +1,7 @@
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Shared.Enum;
 using System.Text;
 
-namespace CommanderCSLibrary.Shared
+namespace CommanderCS.Library.Shared
 {
     public static class Localization
     {

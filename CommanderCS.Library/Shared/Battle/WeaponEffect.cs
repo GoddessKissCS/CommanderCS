@@ -1,7 +1,7 @@
-using CommanderCSLibrary.Shared.Regulation.DataRows;
+using CommanderCS.Library.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Battle
+namespace CommanderCS.Library.Shared.Battle
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class WeaponEffect

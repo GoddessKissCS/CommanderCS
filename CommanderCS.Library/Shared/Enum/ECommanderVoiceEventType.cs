@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F97 RID: 3991
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ECommanderVoiceEventType
     {

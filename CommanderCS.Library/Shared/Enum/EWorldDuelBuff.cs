@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000FA6 RID: 4006
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum EWorldDuelBuff
     {

@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F80 RID: 3968
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum EStorageType
     {

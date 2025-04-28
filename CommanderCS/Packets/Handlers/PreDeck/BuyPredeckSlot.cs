@@ -1,7 +1,7 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Shared;
+using CommanderCS.Library.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.PreDeck
 {

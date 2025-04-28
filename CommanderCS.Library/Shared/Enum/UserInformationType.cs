@@ -1,4 +1,4 @@
-﻿namespace CommanderCSLibrary.Shared.Enum
+﻿namespace CommanderCS.Library.Shared.Enum
 {
     public enum UserInformationType
     {

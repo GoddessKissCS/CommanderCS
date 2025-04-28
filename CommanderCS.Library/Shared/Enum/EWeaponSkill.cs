@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000FA8 RID: 4008
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum EWeaponSkill
     {

@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F74 RID: 3956
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ETooltipType
     {

@@ -1,6 +1,6 @@
 ﻿// Token: 0x02000F7E RID: 3966
 
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ThumbnailType
     {

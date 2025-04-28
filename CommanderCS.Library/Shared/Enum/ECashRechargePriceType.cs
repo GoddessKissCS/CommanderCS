@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F84 RID: 3972
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ECashRechargePriceType
     {

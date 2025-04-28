@@ -1,7 +1,7 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Regulation;
+using CommanderCS.Library.Shared;
+using CommanderCS.Library.Shared.Regulation;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;

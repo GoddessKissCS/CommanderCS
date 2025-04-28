@@ -1,6 +1,6 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -23,7 +23,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             var guildInfo = DatabaseManager.Guild.RequestGuild(User.GuildId, User.Uno);
 
-            CommanderCSLibrary.Shared.Protocols.GuildInfo guildList = new()
+            CommanderCS.Library.Shared.Protocols.GuildInfo guildList = new()
             {
                 resource = null,
                 guildInfo = guildInfo,

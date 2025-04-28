@@ -1,7 +1,7 @@
-using CommanderCSLibrary.Shared.Regulation;
-using CommanderCSLibrary.Shared.Regulation.DataRows;
+using CommanderCS.Library.Shared.Regulation;
+using CommanderCS.Library.Shared.Regulation.DataRows;
 
-namespace CommanderCSLibrary.Shared.Battle.Internal
+namespace CommanderCS.Library.Shared.Battle.Internal
 {
     public class _SkillUpdater : FrameAccessor
     {

@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000FA3 RID: 4003
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum EventCarnivalCheckType
     {

@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CommanderCSLibrary.Packets
+namespace CommanderCS.Library.Packets.Structure
 {
     public class WorldDuelDefenderSettingRequest
     {

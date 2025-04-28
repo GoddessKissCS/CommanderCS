@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Battle
+namespace CommanderCS.Library.Shared.Battle
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class Input

@@ -1,6 +1,6 @@
 ﻿// Token: 0x0200123E RID: 4670
 
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum PlateType
     {

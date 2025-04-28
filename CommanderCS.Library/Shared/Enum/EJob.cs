@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F5B RID: 3931
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum EJob
     {

@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F61 RID: 3937
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ETroopState
     {

@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F8E RID: 3982
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ERankingContentsType
     {

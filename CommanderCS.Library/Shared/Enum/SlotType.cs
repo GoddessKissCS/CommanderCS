@@ -1,6 +1,6 @@
 ﻿// Token: 0x020012F4 RID: 4852
 
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     internal enum SlotType
     {

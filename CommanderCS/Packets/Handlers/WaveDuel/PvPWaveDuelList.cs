@@ -1,6 +1,6 @@
 using CommanderCS.Host;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Shared;
+using CommanderCS.Library.Shared.Enum;
 using static CommanderCS.Packets.Handlers.WaveDuel.PvPWaveDuelList;
 
 namespace CommanderCS.Packets.Handlers.WaveDuel
@@ -15,7 +15,7 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
 
             //			User.RankingData.PvPDuelRankingData.score;
 
-            CommanderCSLibrary.Shared.Protocols.PvPDuelList pvPDuel = new()
+            CommanderCS.Library.Shared.Protocols.PvPDuelList pvPDuel = new()
             {
                 duelList = [],
                 openRemain = 86400,

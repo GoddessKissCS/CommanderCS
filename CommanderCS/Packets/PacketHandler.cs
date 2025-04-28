@@ -1,5 +1,5 @@
-﻿using CommanderCSLibrary.Cryptography;
-using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Cryptography;
+using CommanderCS.Library.Shared.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

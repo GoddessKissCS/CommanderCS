@@ -1,4 +1,4 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Shared.Enum;
 using MongoDB.Bson;
 
 namespace CommanderCS.MongoDB.Schemes

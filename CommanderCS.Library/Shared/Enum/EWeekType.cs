@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F6A RID: 3946
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum EWeekType
     {

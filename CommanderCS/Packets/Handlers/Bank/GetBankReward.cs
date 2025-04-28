@@ -2,7 +2,7 @@ using CommanderCS.Host;
 
 namespace CommanderCS.Packets.Handlers.Bank
 {
-    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.GetBankReward)]
+    [Packet(Id = CommanderCS.Library.Shared.Enum.Method.GetBankReward)]
     public class GetBankReward : BaseMethodHandler<GetBankRewardRequest>
     {
         public override object Handle(GetBankRewardRequest @params)

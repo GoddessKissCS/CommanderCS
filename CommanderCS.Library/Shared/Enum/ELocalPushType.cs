@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000FA2 RID: 4002
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ELocalPushType
     {

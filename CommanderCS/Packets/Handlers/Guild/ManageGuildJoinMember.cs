@@ -1,6 +1,6 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {

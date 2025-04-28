@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CommanderCSLibrary.Shared
+namespace CommanderCS.Library.Shared
 {
     public class Logger
     {

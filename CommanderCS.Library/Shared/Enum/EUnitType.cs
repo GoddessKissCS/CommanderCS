@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F5C RID: 3932
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum EUnitType
     {

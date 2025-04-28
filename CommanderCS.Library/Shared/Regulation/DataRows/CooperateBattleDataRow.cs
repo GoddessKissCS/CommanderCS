@@ -1,6 +1,6 @@
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Shared.Enum;
 
-namespace CommanderCSLibrary.Shared.Regulation.DataRows
+namespace CommanderCS.Library.Shared.Regulation.DataRows
 {
     [Serializable]
     public class CooperateBattleDataRow : DataRow

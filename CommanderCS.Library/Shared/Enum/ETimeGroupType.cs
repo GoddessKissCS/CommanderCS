@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000913 RID: 2323
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ETimeGroupType
     {

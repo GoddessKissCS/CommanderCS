@@ -1,4 +1,4 @@
-﻿using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCS.Library.Shared.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Host

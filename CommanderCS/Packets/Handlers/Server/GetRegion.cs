@@ -1,5 +1,5 @@
 ﻿using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Shared.Enum;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Server

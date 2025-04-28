@@ -1,7 +1,7 @@
-using CommanderCSLibrary.Shared.Regulation.DataRows;
+using CommanderCS.Library.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Shared.Ro
+namespace CommanderCS.Library.Shared.Ro
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class RoRaid

@@ -1,6 +1,6 @@
 using System.Reflection;
 
-using CommanderCSLibrary.Shared;
+using CommanderCS.Library.Shared;
 
 namespace CommanderCSCMD.Commands
 {

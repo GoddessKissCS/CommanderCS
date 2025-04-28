@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F9D RID: 3997
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum EItemStatType
     {

@@ -1,12 +1,12 @@
-using CommanderCSLibrary.Shared.Battle.Internal;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Regulation.DataRows;
+using CommanderCS.Library.Shared.Battle.Internal;
+using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace CommanderCSLibrary.Shared.Battle
+namespace CommanderCS.Library.Shared.Battle
 {
     [JsonObject]
     public class Simulator

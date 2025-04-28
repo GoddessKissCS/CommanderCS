@@ -1,4 +1,4 @@
-﻿namespace CommanderCSLibrary.Shared
+﻿namespace CommanderCS.Library.Shared
 {
     public class RemoteObjectManager
     {

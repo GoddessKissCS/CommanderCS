@@ -1,8 +1,8 @@
 using CommanderCS.Host;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Shared;
+using CommanderCS.Library.Shared.Enum;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Dispatch

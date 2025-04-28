@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F78 RID: 3960
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ERePlaySubType
     {

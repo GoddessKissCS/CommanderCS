@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace CommanderCSLibrary.Packets
+namespace CommanderCS.Library.Packets.Structure
 {
     public class WorldMapRewardRequest
     {

@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace CommanderCSLibrary.Shared;
+namespace CommanderCS.Library.Shared;
 
 public class ByteReader
 {

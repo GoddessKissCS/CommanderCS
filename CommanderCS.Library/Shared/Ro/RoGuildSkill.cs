@@ -1,7 +1,7 @@
-using CommanderCSLibrary.Shared.Battle;
-using CommanderCSLibrary.Shared.Regulation.DataRows;
+using CommanderCS.Library.Shared.Battle;
+using CommanderCS.Library.Shared.Regulation.DataRows;
 
-namespace CommanderCSLibrary.Shared.Ro
+namespace CommanderCS.Library.Shared.Ro
 {
     public class RoGuildSkill
     {

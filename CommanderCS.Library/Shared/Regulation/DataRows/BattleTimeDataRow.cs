@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace CommanderCSLibrary.Shared.Regulation.DataRows
+namespace CommanderCS.Library.Shared.Regulation.DataRows
 {
     public class BattleTimeDataRow : DataRow
     {

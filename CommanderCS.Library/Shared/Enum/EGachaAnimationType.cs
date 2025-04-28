@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F6C RID: 3948
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum EGachaAnimationType
     {

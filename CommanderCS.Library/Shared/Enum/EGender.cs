@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F5E RID: 3934
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum EGender
     {

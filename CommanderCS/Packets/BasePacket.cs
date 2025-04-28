@@ -1,9 +1,9 @@
 ﻿using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
-using CommanderCSLibrary.Shared.Regulation;
+using CommanderCS.Library.Shared;
+using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Shared.Protocols;
+using CommanderCS.Library.Shared.Regulation;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

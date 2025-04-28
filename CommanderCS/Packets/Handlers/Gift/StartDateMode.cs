@@ -2,7 +2,7 @@ using CommanderCS.Host;
 
 namespace CommanderCS.Packets.Handlers.Gift
 {
-	[Packet(Id = CommanderCSLibrary.Shared.Enum.Method.StartDateMode)]
+	[Packet(Id = CommanderCS.Library.Shared.Enum.Method.StartDateMode)]
     public class StartDateMode : BaseMethodHandler<StartDateModeRequest>
     {
         public override object Handle(StartDateModeRequest @params)
@@ -10,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.Gift
 			ResponsePacket response = new()
 			{
 				Id = BasePacket.Id,
-				Result = new CommanderCSLibrary.Shared.Protocols.ResourceRecharge(),
+				Result = new CommanderCS.Library.Shared.Protocols.ResourceRecharge(),
 			};
 
 

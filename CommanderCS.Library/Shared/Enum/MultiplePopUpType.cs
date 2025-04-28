@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F6B RID: 3947
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum MultiplePopUpType
     {

@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F8A RID: 3978
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ESkillTargetStatusCondition
     {

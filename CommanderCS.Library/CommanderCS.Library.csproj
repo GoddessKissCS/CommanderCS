@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="CommanderCSLibrary.Shared\**" />
-    <EmbeddedResource Remove="CommanderCSLibrary.Shared\**" />
-    <None Remove="CommanderCSLibrary.Shared\**" />
+    <Compile Remove="CommanderCS.Library.Shared\**" />
+    <EmbeddedResource Remove="CommanderCS.Library.Shared\**" />
+    <None Remove="CommanderCS.Library.Shared\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -560,6 +560,10 @@
     <None Update="Resources\PrivayAndTerms\TermsofService.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Packets\Structure\" />
   </ItemGroup>
 
 </Project>

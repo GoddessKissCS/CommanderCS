@@ -1,8 +1,8 @@
 ﻿using CommanderCS.Host;
 using CommanderCS.Host.Handlers.Login;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Protocols;
+using CommanderCS.Library.Shared;
+using CommanderCS.Library.Shared.Protocols;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using Newtonsoft.Json.Linq;

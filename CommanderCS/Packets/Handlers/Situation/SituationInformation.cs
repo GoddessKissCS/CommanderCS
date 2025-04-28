@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Situation
 {
-    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.SituationInformation)]
+    [Packet(Id = CommanderCS.Library.Shared.Enum.Method.SituationInformation)]
     public class SituationInformation : BaseMethodHandler<SituationInformationRequest>
     {
         public override object Handle(SituationInformationRequest @params)

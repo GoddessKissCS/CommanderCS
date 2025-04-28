@@ -1,8 +1,8 @@
-﻿using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCS.Library.Shared.Protocols;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CommanderCSLibrary.Packets
+namespace CommanderCS.Library.Packets
 {
     public class WorldMapStageStartResponse
     {

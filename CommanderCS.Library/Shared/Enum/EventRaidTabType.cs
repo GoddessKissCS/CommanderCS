@@ -1,6 +1,6 @@
 ﻿// Token: 0x020011A4 RID: 4516
 
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum EventRaidTabType
     {

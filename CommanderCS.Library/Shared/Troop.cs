@@ -1,9 +1,9 @@
-using CommanderCSLibrary.Shared.Battle;
-using CommanderCSLibrary.Shared.Ro;
+using CommanderCS.Library.Shared.Battle;
+using CommanderCS.Library.Shared.Ro;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CommanderCSLibrary.Shared
+namespace CommanderCS.Library.Shared
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class Troop

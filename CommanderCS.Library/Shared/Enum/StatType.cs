@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F76 RID: 3958
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum StatType
     {

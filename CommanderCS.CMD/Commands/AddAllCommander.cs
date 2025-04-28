@@ -1,7 +1,6 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Protocols;
-using CommanderCSLibrary.Shared.Regulation.DataRows;
+﻿using CommanderCS.Library.Shared;
+using CommanderCS.Library.Shared.Protocols;
+using CommanderCS.MongoDB;
 
 namespace CommanderCSCMD.Commands
 {

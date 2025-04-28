@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000FAB RID: 4011
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum EInfinityStageType
     {

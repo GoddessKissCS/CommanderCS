@@ -1,12 +1,12 @@
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
-using CommanderCSLibrary.Shared.Regulation.DataRows;
+using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Shared.Protocols;
+using CommanderCS.Library.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Reflection;
-using static CommanderCSLibrary.Shared.Protocols.UserInformationResponse;
+using static CommanderCS.Library.Shared.Protocols.UserInformationResponse;
 
-namespace CommanderCSLibrary.Shared.Regulation
+namespace CommanderCS.Library.Shared.Regulation
 {
     [Serializable]
     [JsonObject]

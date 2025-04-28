@@ -1,8 +1,8 @@
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Shared.Enum;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
-namespace CommanderCSLibrary.Shared.Regulation.DataRows
+namespace CommanderCS.Library.Shared.Regulation.DataRows
 {
     [Serializable]
     public class UnitDataRow : DataRow

@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F7A RID: 3962
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ESortType
     {

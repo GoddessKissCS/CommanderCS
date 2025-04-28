@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F5D RID: 3933
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ETerrainType
     {

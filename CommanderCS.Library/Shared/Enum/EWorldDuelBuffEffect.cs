@@ -1,6 +1,6 @@
 ﻿// Token: 0x02000FA7 RID: 4007
 
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum EWorldDuelBuffEffect
     {

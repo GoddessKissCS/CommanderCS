@@ -1,4 +1,4 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Shared.Enum;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Host.Handlers.Dormitory
@@ -8,7 +8,7 @@ namespace CommanderCS.Host.Handlers.Dormitory
     {
         public override object Handle(GetDormitoryInfoRequest @params)
         {
-            CommanderCSLibrary.Shared.Protocols.Dormitory.Info DormitoryInfo = new()
+            CommanderCS.Library.Shared.Protocols.Dormitory.Info DormitoryInfo = new()
             {
                 costumeBody = Dormitory.CostumeBody,
                 itemNormal = Dormitory.ItemNormal,

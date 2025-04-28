@@ -1,6 +1,6 @@
 ﻿using Tival.GZipCompressor;
 
-namespace CommanderCSLibrary.Cryptography
+namespace CommanderCS.Library.Cryptography
 {
     public class Compression
     {

@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 
-namespace CommanderCSLibrary.Shared.Regulation.DataRows
+namespace CommanderCS.Library.Shared.Regulation.DataRows
 {
     [Serializable]
     [JsonObject]

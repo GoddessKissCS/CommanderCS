@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F93 RID: 3987
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum ETimeMachineType
     {

@@ -1,9 +1,9 @@
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Ro;
+using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Shared.Ro;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
-namespace CommanderCSLibrary.Shared.Regulation.DataRows
+namespace CommanderCS.Library.Shared.Regulation.DataRows
 {
     [Obsolete("deleted")]
     [JsonObject]

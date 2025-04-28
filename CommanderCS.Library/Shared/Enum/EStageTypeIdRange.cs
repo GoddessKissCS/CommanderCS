@@ -1,5 +1,5 @@
 ﻿// Token: 0x02000F65 RID: 3941
-namespace CommanderCSLibrary.Shared.Enum
+namespace CommanderCS.Library.Shared.Enum
 {
     public enum EStageTypeIdRange
     {

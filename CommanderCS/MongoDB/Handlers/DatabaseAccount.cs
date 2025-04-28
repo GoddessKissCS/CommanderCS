@@ -2,9 +2,9 @@
 using CommanderCS.Host.Handlers.Login;
 using CommanderCS.MongoDB.Schemes;
 using CommanderCS.Packets.Handlers.UserTerm;
-using CommanderCSLibrary.Cryptography;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Cryptography;
+using CommanderCS.Library.Shared;
+using CommanderCS.Library.Shared.Enum;
 using MongoDB.Driver;
 
 namespace CommanderCS.MongoDB.Handlers

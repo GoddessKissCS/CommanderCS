@@ -1,9 +1,9 @@
-using CommanderCSLibrary.Shared.Battle;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
-using CommanderCSLibrary.Shared.Ro;
+using CommanderCS.Library.Shared.Battle;
+using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Shared.Protocols;
+using CommanderCS.Library.Shared.Ro;
 
-namespace CommanderCSLibrary.Shared
+namespace CommanderCS.Library.Shared
 {
     public class BattleData
     {
