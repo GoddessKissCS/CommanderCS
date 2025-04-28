@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CommanderCSLibrary\CommanderCSLibrary.csproj" />
+    <ProjectReference Include="..\CommanderCS.Library\CommanderCS.Library.csproj" />
     <ProjectReference Include="..\CommanderCS\CommanderCS.csproj" />
   </ItemGroup>
 

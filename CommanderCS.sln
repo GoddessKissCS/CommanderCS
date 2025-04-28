@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommanderCS", "CommanderCS\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandHandlerMappingsSourceGenerator", "CommandHandlerMappingsSourceGenerator\CommandHandlerMappingsSourceGenerator.csproj", "{60F44908-2161-4619-91C5-418D9B388983}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommanderCSLibrary", "CommanderCSLibrary\CommanderCSLibrary.csproj", "{306DA463-D99A-4A0E-A96A-F284B5C9B973}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommanderCS.Library", "CommanderCS.Library\CommanderCS.Library.csproj", "{306DA463-D99A-4A0E-A96A-F284B5C9B973}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommanderCSCMD", "CommanderCSCMD\CommanderCSCMD.csproj", "{1B53914E-C616-4219-94FC-509B19CDEE98}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommanderCS.CMD", "CommanderCS.CMD\CommanderCS.CMD.csproj", "{1B53914E-C616-4219-94FC-509B19CDEE98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

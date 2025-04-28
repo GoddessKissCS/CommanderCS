@@ -14,6 +14,8 @@ namespace CommanderCS.Packets.Handlers.Event
                 buff = []
             };
 
+			// Not sure how this one works 
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

@@ -12,10 +12,14 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CompleteCommanderScenarioRequest @params)
         {
-			ResponsePacket response = new()
+
+			var resc = UserResources2Resource(User.Resources);
+
+
+            ResponsePacket response = new()
 			{
 				Id = BasePacket.Id,
-				Result = new CommanderCSLibrary.Shared.Protocols.CompleteScenario()
+				Result = new CompleteScenario()
 				{
 					commander = User.CommanderData,
 					costumeData = User.Inventory.costumeData,
@@ -26,11 +30,11 @@ namespace CommanderCS.Packets.Handlers.Commander
 					eventResourceData = User.Inventory.eventResourceData,
 					reward = [],
 					duelScoreData = [],
-					resource = UserResources2Resource(User.Resources)
-				},
+					resource = resc,
+				}
 			};
 			
-			// Allows you to
+			// Allows you to complete scenarios? and gives you shit if you complete x
 
             return response;
         }

@@ -97,19 +97,8 @@ namespace CommanderCS.Host
             }
         }
 
-        private Regulation _regulation = null;
+        public Regulation Regulation = RemoteObjectManager.instance.regulation;
 
-        public Regulation Regulation
-        {
-            get
-            {
-                if (_regulation is null)
-                {
-                    _regulation = RemoteObjectManager.instance.regulation;
-                }
-                return _regulation;
-            }
-        }
 
         /// <summary>
         /// Converts user battle statistics to battle statistics for response.
