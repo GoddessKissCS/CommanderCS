@@ -1,8 +1,8 @@
-﻿using CommanderCS.Library.Shared.Enum;
-using CommanderCS.Library.Shared.Protocols;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Tutorial
+namespace CommanderCS.Packets.Handlers.Tutorial
 {
     [Packet(Id = Method.GetTutorialStep)]
     public class GetTutorialStep : BaseMethodHandler<GetTutorialStepRequest>

@@ -1,4 +1,4 @@
-﻿using CommanderCS.Library.Shared.Protocols;
+﻿using CommanderCS.Library.Protocols;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

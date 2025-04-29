@@ -1,7 +1,7 @@
-﻿using CommanderCS.Library.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.UserTerm
+namespace CommanderCS.Packets.Handlers.UserTerm
 {
     [Packet(Id = Method.UserTerm)]
     public class UserTerm : BaseMethodHandler<UserTermRequest>

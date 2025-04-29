@@ -1,8 +1,8 @@
-﻿using CommanderCS.Library.Shared;
-using CommanderCS.Library.Shared.Enum;
-using CommanderCS.Library.Shared.Protocols;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 
-namespace CommanderCS.Host.Handlers.Dispatch
+namespace CommanderCS.Packets.Handlers.Dispatch
 {
     [Packet(Id = Method.GetDispatchCommanderListFromLogin)]
     public class GetDispatchCommanderListFromLogin : BaseMethodHandler<GetDispatchCommanderListFromLoginRequest>

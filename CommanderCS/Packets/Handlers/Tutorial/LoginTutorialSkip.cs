@@ -1,10 +1,10 @@
-﻿using CommanderCS.Host.Handlers.Commander;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared.Enum;
-using CommanderCS.Library.Shared.Protocols;
+using CommanderCS.Packets.Handlers.Commander;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Tutorial
+namespace CommanderCS.Packets.Handlers.Tutorial
 {
     [Packet(Id = Method.LoginTutorialSkip)]
     public class LoginTutorialSkip : BaseMethodHandler<LoginTutorialSkipRequest>

@@ -1,6 +1,5 @@
-using CommanderCS.Host;
 using CommanderCS.Library.Cryptography;
-using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Payment

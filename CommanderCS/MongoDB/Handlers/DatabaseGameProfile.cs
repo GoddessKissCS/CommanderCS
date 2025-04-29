@@ -1,8 +1,8 @@
-﻿using CommanderCS.Host;
-using CommanderCS.Host.Handlers.Login;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCS.Library.Shared;
-using CommanderCS.Library.Shared.Protocols;
+using CommanderCS.Packets;
+using CommanderCS.Packets.Handlers.Login;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using Newtonsoft.Json.Linq;
@@ -297,9 +297,7 @@ namespace CommanderCS.MongoDB.Handlers
                 },
                 CommanderScenario = new()
                 {
-
                 },
-
             };
 
             DatabaseCollection.InsertOne(user);
@@ -963,7 +961,6 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>True if the notification setting was successfully updated, false otherwise.</returns>
         public bool UpdateNotifaction(string session, int onoff)
         {
-
             bool noti = Convert.ToBoolean(onoff);
 
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
@@ -1309,7 +1306,7 @@ namespace CommanderCS.MongoDB.Handlers
             var commanderFilter = Builders<GameProfileScheme>.Filter.And(
                 Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session),
                 Builders<GameProfileScheme>.Filter.Eq("CommanderData.Key", commander.id)
-            );
+                                                                        );
 
             var commanderUpdate = Builders<GameProfileScheme>.Update.Set("CommanderData.$", commander);
             DatabaseCollection.UpdateOne(commanderFilter, commanderUpdate);
@@ -1335,6 +1332,7 @@ namespace CommanderCS.MongoDB.Handlers
 
             DatabaseCollection.UpdateOne(filter, update);
         }
+
         public void AddCommanderScenario(int accountId, Dictionary<string, Dictionary<string, CommanderScenario>> commanderScenario)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, accountId);
@@ -1343,6 +1341,5 @@ namespace CommanderCS.MongoDB.Handlers
 
             DatabaseCollection.UpdateOne(filter, update, new UpdateOptions { IsUpsert = true });
         }
-
     }
 }

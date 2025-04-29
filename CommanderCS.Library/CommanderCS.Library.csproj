@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Ro\xRoCommander.cs" />
     <Compile Remove="Shared\Ro\xRoCommander.cs" />
   </ItemGroup>
 

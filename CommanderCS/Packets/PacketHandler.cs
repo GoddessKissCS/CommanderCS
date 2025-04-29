@@ -1,9 +1,9 @@
 ﻿using CommanderCS.Library.Cryptography;
-using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CommanderCS.Host
+namespace CommanderCS.Packets
 {
     public partial class PacketHandler
     {

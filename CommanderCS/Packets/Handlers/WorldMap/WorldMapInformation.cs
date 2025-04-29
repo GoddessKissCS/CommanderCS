@@ -1,8 +1,8 @@
-﻿using CommanderCS.Library.Packets.Structure;
-using CommanderCS.Library.Shared.Enum;
-using CommanderCS.Library.Shared.Protocols;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Packets.Structure;
+using CommanderCS.Library.Protocols;
 
-namespace CommanderCS.Host.Handlers.WorldMap
+namespace CommanderCS.Packets.Handlers.WorldMap
 {
     [Packet(Id = Method.WorldMapInformation)]
     public class WorldMapInformation : BaseMethodHandler<WorldMapInformationRequest>

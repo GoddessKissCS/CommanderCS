@@ -1,9 +1,9 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CommanderCS.Host.Handlers.Nickname
+namespace CommanderCS.Packets.Handlers.Nickname
 {
     [Packet(Id = Method.SetNickNameFromTutorial)]
     public class SetNickNameFromTutorial : BaseMethodHandler<SetNickNameFromTutorialRequest>

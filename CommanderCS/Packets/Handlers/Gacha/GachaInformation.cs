@@ -1,6 +1,6 @@
-﻿using CommanderCS.Library.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
 
-namespace CommanderCS.Host.Handlers.Gacha
+namespace CommanderCS.Packets.Handlers.Gacha
 {
     [Packet(Id = Method.GachaInformation)]
     public class GachaInformation : BaseMethodHandler<GachaInformationRequest>

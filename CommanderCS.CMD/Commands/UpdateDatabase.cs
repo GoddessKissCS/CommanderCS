@@ -1,6 +1,6 @@
 ﻿using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCS.Library.Shared.Protocols;
+using CommanderCS.Library.Protocols;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;

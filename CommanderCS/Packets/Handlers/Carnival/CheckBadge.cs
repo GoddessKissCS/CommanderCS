@@ -1,7 +1,7 @@
-﻿using CommanderCS.Library.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Carnival
+namespace CommanderCS.Packets.Handlers.Carnival
 {
     [Packet(Id = Method.CheckBadge)]
     public class CheckBadge : BaseMethodHandler<CheckBadgeRequest>

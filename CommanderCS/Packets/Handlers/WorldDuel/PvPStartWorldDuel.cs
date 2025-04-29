@@ -1,15 +1,14 @@
-using CommanderCS.Host;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.WorldDuel
 {
-    [Packet(Id = CommanderCS.Library.Shared.Enum.Method.PvPStartWorldDuel)]
+    [Packet(Id = CommanderCS.Library.Enums.Method.PvPStartWorldDuel)]
     public class PvPStartWorldDuel : BaseMethodHandler<PvPStartWorldDuelRequest>
     {
         public override object Handle(PvPStartWorldDuelRequest @params)
         {
-            CommanderCS.Library.Shared.Protocols.UserInformationResponse.BattleResult battleResult = new() { };
+            CommanderCS.Library.Protocols.UserInformationResponse.BattleResult battleResult = new() { };
 
             ResponsePacket response = new()
             {

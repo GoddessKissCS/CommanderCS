@@ -1,10 +1,10 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared;
-using CommanderCS.Library.Shared.Enum;
-using CommanderCS.Library.Shared.Protocols;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Bank
+namespace CommanderCS.Packets.Handlers.Bank
 {
     [Packet(Id = Method.BankRoulletStart)]
     public class BankRoulletStart : BaseMethodHandler<BankRoulletStartRequest>

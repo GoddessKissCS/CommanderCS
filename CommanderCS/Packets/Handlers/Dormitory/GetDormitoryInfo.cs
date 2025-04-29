@@ -1,14 +1,14 @@
-﻿using CommanderCS.Library.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Dormitory
+namespace CommanderCS.Packets.Handlers.Dormitory
 {
     [Packet(Id = Method.GetDormitoryInfo)]
     public class GetDormitoryInfo : BaseMethodHandler<GetDormitoryInfoRequest>
     {
         public override object Handle(GetDormitoryInfoRequest @params)
         {
-            CommanderCS.Library.Shared.Protocols.Dormitory.Info DormitoryInfo = new()
+            CommanderCS.Library.Protocols.Dormitory.Info DormitoryInfo = new()
             {
                 costumeBody = Dormitory.CostumeBody,
                 itemNormal = Dormitory.ItemNormal,

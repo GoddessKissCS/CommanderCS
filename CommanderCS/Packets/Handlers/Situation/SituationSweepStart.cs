@@ -1,11 +1,10 @@
-using CommanderCS.Host;
-using CommanderCS.Library.Shared.Protocols;
+using CommanderCS.Library.Protocols;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Situation
 {
-    [Packet(Id = CommanderCS.Library.Shared.Enum.Method.SituationSweepStart)]
+    [Packet(Id = CommanderCS.Library.Enums.Method.SituationSweepStart)]
     public class SituationSweepStart : BaseMethodHandler<SituationSweepStartRequest>
     {
         public override object Handle(SituationSweepStartRequest @params)

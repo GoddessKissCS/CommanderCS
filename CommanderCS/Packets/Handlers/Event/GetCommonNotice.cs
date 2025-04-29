@@ -1,8 +1,8 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared.Enum;
-using CommanderCS.Library.Shared.Protocols;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 
-namespace CommanderCS.Host.Handlers.Event
+namespace CommanderCS.Packets.Handlers.Event
 {
     [Packet(Id = Method.GetCommonNotice)]
     public class GetCommonNotice : BaseMethodHandler<GetCommonNoticeRequest>

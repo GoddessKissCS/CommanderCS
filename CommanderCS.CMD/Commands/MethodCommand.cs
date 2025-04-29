@@ -1,5 +1,5 @@
 ﻿
-using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Enums;
 
 namespace CommanderCSCMD.Commands
 {

@@ -1,9 +1,8 @@
-﻿using CommanderCS.Host;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Troop
 {
-    [Packet(Id = CommanderCS.Library.Shared.Enum.Method.GetTroopInformation)]
+    [Packet(Id = CommanderCS.Library.Enums.Method.GetTroopInformation)]
     public class GetTroopInformation : BaseMethodHandler<GetTroopInformationRequest>
     {
         public override object Handle(GetTroopInformationRequest @params)
@@ -11,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.Troop
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = new CommanderCS.Library.Shared.Protocols.UserInformationResponse.Commander(),
+                Result = new CommanderCS.Library.Protocols.UserInformationResponse.Commander(),
             };
 
             return response;

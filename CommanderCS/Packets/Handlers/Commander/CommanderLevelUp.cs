@@ -1,12 +1,11 @@
-﻿using CommanderCS.MongoDB;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.Library.Regulation;
+using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCS.Library.Shared.Enum;
-using CommanderCS.Library.Shared.Protocols;
-using CommanderCS.Library.Shared.Regulation;
 using Newtonsoft.Json;
 
-
-namespace CommanderCS.Host.Handlers.Commander
+namespace CommanderCS.Packets.Handlers.Commander
 {
     [Packet(Id = Method.CommanderLevelUp)]
     public class CommanderLevelUp : BaseMethodHandler<CommanderLevelUpRequest>
@@ -34,7 +33,6 @@ namespace CommanderCS.Host.Handlers.Commander
 
                 for (int i = 0; i < @params.count;)
                 {
-
                     //NEED TO CHECK IF its 0
                     User.Inventory.itemData[sid] -= 1;
 

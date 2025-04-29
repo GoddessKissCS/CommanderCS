@@ -1,9 +1,9 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared.Enum;
-using CommanderCS.Library.Shared.Protocols;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Login
+namespace CommanderCS.Packets.Handlers.Login
 {
     [Packet(Id = Method.Login)]
     public class Login : BaseMethodHandler<LoginRequest>

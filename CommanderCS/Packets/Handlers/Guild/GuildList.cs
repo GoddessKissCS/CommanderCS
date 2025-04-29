@@ -1,14 +1,14 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 
-namespace CommanderCS.Host.Handlers.Guild
+namespace CommanderCS.Packets.Handlers.Guild
 {
     [Packet(Id = Method.GuildList)]
     public class GuildList : BaseMethodHandler<GuildListRequest>
     {
         public override object Handle(GuildListRequest @params)
         {
-            CommanderCS.Library.Shared.Protocols.GuildInfo guildList = new()
+            CommanderCS.Library.Protocols.GuildInfo guildList = new()
             {
                 resource = null,
                 guildInfo = null,

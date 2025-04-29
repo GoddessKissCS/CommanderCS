@@ -1,6 +1,6 @@
-﻿using CommanderCS.Library.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
 
-namespace CommanderCS.Host.Handlers.Commander
+namespace CommanderCS.Packets.Handlers.Commander
 {
     [Packet(Id = Method.GetCommanderScenario)]
     public class GetCommanderScenario : BaseMethodHandler<GetCommanderScenarioRequest>

@@ -1,12 +1,12 @@
 ﻿using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared.Protocols;
-using CommanderCS.Library.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommanderCS.Packets.Handlers.Profile;
+using CommanderCS.Library;
+using CommanderCS.Library.Protocols;
 
 namespace CommanderCSCMD.Commands
 {

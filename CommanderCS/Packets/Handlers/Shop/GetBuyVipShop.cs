@@ -1,6 +1,6 @@
-﻿using CommanderCS.Library.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
 
-namespace CommanderCS.Host.Handlers.Shop
+namespace CommanderCS.Packets.Handlers.Shop
 {
     [Packet(Id = Method.GetBuyVipShop)]
     public class GetBuyVipShop : BaseMethodHandler<GetBuyVipShopRequest>

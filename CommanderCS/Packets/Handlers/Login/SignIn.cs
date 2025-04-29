@@ -1,10 +1,10 @@
-﻿using CommanderCS.MongoDB;
+﻿using CommanderCS.Library.Cryptography;
+using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCS.Library.Cryptography;
-using CommanderCS.Library.Shared.Enum;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Sign
+namespace CommanderCS.Packets.Handlers.Sign
 {
     [Packet(Id = Method.SignIn)]
     public class SignIn : BaseMethodHandler<SignInRequest>

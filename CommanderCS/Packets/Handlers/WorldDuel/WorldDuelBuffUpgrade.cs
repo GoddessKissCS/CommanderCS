@@ -1,11 +1,9 @@
-using CommanderCS.Host;
-using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared.Protocols;
+using CommanderCS.Library.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.WorldDuel
 {
-    [Packet(Id = CommanderCS.Library.Shared.Enum.Method.WorldDuelBuffUpgrade)]
+    [Packet(Id = CommanderCS.Library.Enums.Method.WorldDuelBuffUpgrade)]
     public class WorldDuelBuffUpgrade : BaseMethodHandler<WorldDuelBuffUpgradeRequest>
     {
         public override object Handle(WorldDuelBuffUpgradeRequest @params)

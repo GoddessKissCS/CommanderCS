@@ -1,9 +1,8 @@
-using CommanderCS.Host;
-using CommanderCS.Library.Shared.Protocols;
+using CommanderCS.Library.Protocols;
 
 namespace CommanderCS.Packets.Handlers.Gift
 {
-    [Packet(Id = CommanderCS.Library.Shared.Enum.Method.DateModeGetGift)]
+    [Packet(Id = CommanderCS.Library.Enums.Method.DateModeGetGift)]
     public class DateModeGetGift : BaseMethodHandler<DateModeGetGiftRequest>
     {
         public override object Handle(DateModeGetGiftRequest @params)

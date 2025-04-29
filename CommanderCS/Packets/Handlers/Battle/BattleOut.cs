@@ -1,13 +1,13 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared.Battle;
-using CommanderCS.Library.Shared.Enum;
-using CommanderCS.Library.Shared.Protocols;
-using CommanderCS.Library.Shared.Regulation;
-using CommanderCS.Library.Shared.Regulation.DataRows;
+﻿using CommanderCS.Library.Battle;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.Library.Regulation;
+using CommanderCS.Library.Regulation.DataRows;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CommanderCS.Host.Handlers.Battle
+namespace CommanderCS.Packets.Handlers.Battle
 {
     [Packet(Id = Method.BattleOut)]
     public class BattleOut : BaseMethodHandler<BattleOutRequest>

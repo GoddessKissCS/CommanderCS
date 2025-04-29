@@ -1,7 +1,5 @@
-using CommanderCS.Host;
-using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared.Enum;
-using CommanderCS.Library.Shared.Protocols;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.PvP

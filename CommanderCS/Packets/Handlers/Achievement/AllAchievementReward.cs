@@ -1,9 +1,8 @@
-using CommanderCS.Host;
-using CommanderCS.Library.Shared.Protocols;
+using CommanderCS.Library.Protocols;
 
 namespace CommanderCS.Packets.Handlers.Achievement
 {
-    [Packet(Id = CommanderCS.Library.Shared.Enum.Method.AllAchievementReward)]
+    [Packet(Id = CommanderCS.Library.Enums.Method.AllAchievementReward)]
     public class AllAchievementReward : BaseMethodHandler<AllAchievementRewardRequest>
     {
         public override object Handle(AllAchievementRewardRequest @params)

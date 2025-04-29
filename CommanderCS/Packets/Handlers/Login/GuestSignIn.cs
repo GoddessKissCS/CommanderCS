@@ -1,8 +1,8 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Sign
+namespace CommanderCS.Packets.Handlers.Sign
 {
     [Packet(Id = Method.GuestSignIn)]
     public class GuestSignIn : BaseMethodHandler<GuestSignInRequest>

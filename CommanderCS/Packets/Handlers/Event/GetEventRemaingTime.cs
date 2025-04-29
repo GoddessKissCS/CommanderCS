@@ -1,5 +1,4 @@
-using CommanderCS.Host;
-using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Event
@@ -14,7 +13,7 @@ namespace CommanderCS.Packets.Handlers.Event
                 buff = []
             };
 
-			// Not sure how this one works 
+            // Not sure how this one works
 
             ResponsePacket response = new()
             {

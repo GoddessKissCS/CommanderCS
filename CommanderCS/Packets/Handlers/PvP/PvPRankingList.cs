@@ -1,5 +1,4 @@
-using CommanderCS.Host;
-using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Enums;
 
 namespace CommanderCS.Packets.Handlers.PvP
 {
@@ -8,7 +7,7 @@ namespace CommanderCS.Packets.Handlers.PvP
     {
         public override object Handle(PvPRankingListRequest @params)
         {
-            CommanderCS.Library.Shared.Protocols.PvPRankingList pvPRankingList = new()
+            CommanderCS.Library.Protocols.PvPRankingList pvPRankingList = new()
             {
             };
 

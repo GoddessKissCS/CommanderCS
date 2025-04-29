@@ -1,46 +1,41 @@
-using CommanderCS.Host;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
+using CommanderCS.Library.Protocols;
 using Newtonsoft.Json;
-using CommanderCS.Library.Packets;
-using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared.Protocols;
 
 namespace CommanderCS.Packets.Handlers.Commander
 {
-	[Packet(Id = CommanderCS.Library.Shared.Enum.Method.CompleteCommanderScenario)]
+    [Packet(Id = CommanderCS.Library.Enums.Method.CompleteCommanderScenario)]
     public class CompleteCommanderScenario : BaseMethodHandler<CompleteCommanderScenarioRequest>
     {
         public override object Handle(CompleteCommanderScenarioRequest @params)
         {
-
-			var resc = UserResources2Resource(User.Resources);
-
+            var resc = UserResources2Resource(User.Resources);
 
             ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = new CompleteScenario()
-				{
-					commander = User.CommanderData,
-					costumeData = User.Inventory.costumeData,
-					foodData = User.Inventory.foodData,
-					medalData = User.Inventory.medalData,
-					itemData = User.Inventory.itemData,
-					partData = User.Inventory.partData,
-					eventResourceData = User.Inventory.eventResourceData,
-					reward = [],
-					duelScoreData = [],
-					resource = resc,
-				}
-			};
-			
-			// Allows you to complete scenarios? and gives you shit if you complete x
+            {
+                Id = BasePacket.Id,
+                Result = new CompleteScenario()
+                {
+                    commander = User.CommanderData,
+                    costumeData = User.Inventory.costumeData,
+                    foodData = User.Inventory.foodData,
+                    medalData = User.Inventory.medalData,
+                    itemData = User.Inventory.itemData,
+                    partData = User.Inventory.partData,
+                    eventResourceData = User.Inventory.eventResourceData,
+                    reward = [],
+                    duelScoreData = [],
+                    resource = resc,
+                }
+            };
+
+            // Allows you to complete scenarios? and gives you shit if you complete x
 
             return response;
         }
     }
-	public class CompleteCommanderScenarioRequest
-	{
+
+    public class CompleteCommanderScenarioRequest
+    {
         [JsonProperty("cid")]
         public int cid { get; set; }
 
@@ -49,7 +44,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
         [JsonProperty("sqid")]
         public int sqid { get; set; }
-	}
+    }
 }
 
 /*	// Token: 0x060060DF RID: 24799 RVA: 0x000120F8 File Offset: 0x000102F8

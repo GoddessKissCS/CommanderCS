@@ -1,9 +1,8 @@
-﻿using CommanderCS.Host;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.Library.Regulation;
+using CommanderCS.Library.Regulation.DataRows;
 using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared.Enum;
-using CommanderCS.Library.Shared.Protocols;
-using CommanderCS.Library.Shared.Regulation;
-using CommanderCS.Library.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Commander

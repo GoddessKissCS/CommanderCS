@@ -1,8 +1,8 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.VersionCheck
+namespace CommanderCS.Packets.Handlers.VersionCheck
 {
     [Packet(Id = Method.GameVersionInfo)]
     public class GameVersionInfo : BaseMethodHandler<GameVersionInfoRequest>

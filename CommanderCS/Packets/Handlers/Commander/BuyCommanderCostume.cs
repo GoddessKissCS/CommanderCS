@@ -1,7 +1,6 @@
-using CommanderCS.Host;
+using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCS.Library.Shared.Enum;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 

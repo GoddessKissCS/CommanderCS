@@ -1,8 +1,8 @@
-﻿using CommanderCS.Library.Shared.Enum;
-using CommanderCS.Library.Shared.Protocols;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Carnival
+namespace CommanderCS.Packets.Handlers.Carnival
 {
     [Packet(Id = Method.GetCarnivalList)]
     public class GetCarnivalList : BaseMethodHandler<GetCarnivalListRequest>

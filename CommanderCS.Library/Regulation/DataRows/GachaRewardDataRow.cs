@@ -1,0 +1,32 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Regulation;
+using Newtonsoft.Json;
+using System.Runtime.Serialization;
+
+namespace CommanderCS.Library.Regulation.DataRows
+{
+    [Serializable]
+    [JsonObject]
+    public class GachaRewardDataRow : DataRow
+    {
+        public string gachaType { get; private set; }
+
+        public ERewardType rewardType { get; private set; }
+
+        public string rewardId { get; private set; }
+
+        public int rewardCount { get; private set; }
+
+        public int effectType { get; private set; }
+
+        public string GetKey()
+        {
+            return gachaType;
+        }
+
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context)
+        {
+        }
+    }
+}

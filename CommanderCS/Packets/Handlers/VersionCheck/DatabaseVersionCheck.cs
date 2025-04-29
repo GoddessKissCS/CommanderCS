@@ -1,9 +1,9 @@
-﻿using CommanderCS.MongoDB;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCS.Library.Shared.Enum;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.VersionCheck
+namespace CommanderCS.Packets.Handlers.VersionCheck
 {
     [Packet(Id = Method.DBVersionCheck)]
     public class DatabaseVersionCheck : BaseMethodHandler<DatabaseVersionCheckRequest>

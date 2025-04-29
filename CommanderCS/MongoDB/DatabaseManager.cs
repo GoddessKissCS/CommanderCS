@@ -1,6 +1,6 @@
-﻿using CommanderCS.MongoDB.Handlers;
+﻿using CommanderCS.Library;
 using CommanderCS.Library.Cryptography;
-using CommanderCS.Library.Shared;
+using CommanderCS.MongoDB.Handlers;
 
 namespace CommanderCS.MongoDB
 {
@@ -111,8 +111,8 @@ namespace CommanderCS.MongoDB
             // Initialize Server
 
             // initalize some banners
-            RotationBanner.Insert("1720097316", "1722170916", 0, 0, "http://" + ip + ":5000/FileCDN/Event/TitleBanner/Notice_Icon.png", "", CommanderCS.Library.Shared.Enum.BannerListType.None);
-            RotationBanner.Insert("1720097316", "1722170916", 1, 1, "http://" + ip + ":5000/FileCDN/Event/TitleBanner/Event_Icon.png", "", CommanderCS.Library.Shared.Enum.BannerListType.None);
+            RotationBanner.Insert("1720097316", "1722170916", 0, 0, "http://" + ip + ":5000/FileCDN/Event/TitleBanner/Notice_Icon.png", "", CommanderCS.Library.Enums.BannerListType.None);
+            RotationBanner.Insert("1720097316", "1722170916", 1, 1, "http://" + ip + ":5000/FileCDN/Event/TitleBanner/Event_Icon.png", "", CommanderCS.Library.Enums.BannerListType.None);
         }
     }
 }

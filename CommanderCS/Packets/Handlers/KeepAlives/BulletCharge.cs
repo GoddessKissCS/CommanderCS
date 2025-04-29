@@ -1,8 +1,6 @@
-﻿using CommanderCS.Library.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
 
-using CommanderCS.Library.Shared.Protocols;
-
-namespace CommanderCS.Host.Handlers.KeepAlives
+namespace CommanderCS.Packets.Handlers.KeepAlives
 {
     [Packet(Id = Method.BulletCharge)]
     public class BulletCharge : BaseMethodHandler<BulletChargeResult>
@@ -11,7 +9,7 @@ namespace CommanderCS.Host.Handlers.KeepAlives
         {
             int bullets = Regulation.userLevelDtbl.Find(x => x.level == User.Resources.level).maxBullet;
 
-            ResourceRecharge resource = new()
+            Library.Protocols.ResourceRecharge resource = new()
             {
                 bulletData = new()
                 {

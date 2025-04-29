@@ -1,13 +1,13 @@
-﻿using CommanderCS.MongoDB;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.Library.Regulation;
+using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCS.Library.Shared;
-using CommanderCS.Library.Shared.Enum;
-using CommanderCS.Library.Shared.Protocols;
-using CommanderCS.Library.Shared.Regulation;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CommanderCS.Host
+namespace CommanderCS.Packets
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
     public sealed class PacketAttribute : Attribute
@@ -98,7 +98,6 @@ namespace CommanderCS.Host
         }
 
         public Regulation Regulation = RemoteObjectManager.instance.regulation;
-
 
         /// <summary>
         /// Converts user battle statistics to battle statistics for response.
@@ -304,6 +303,7 @@ namespace CommanderCS.Host
 
             return userInformationResponse;
         }
+
         public UserInformationResponse DatabaseGetUserInformationResponse(GameProfileScheme user)
         {
             var goods = DatabaseManager.GameProfile.UserResourcesFromSession(BasePacket.SessionId);

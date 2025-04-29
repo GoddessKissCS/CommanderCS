@@ -1,14 +1,10 @@
-using CommanderCS.Host;
-using CommanderCS.Host.Handlers.Commander;
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.Library.Regulation;
+using CommanderCS.Library.Regulation.DataRows;
 using CommanderCS.MongoDB;
-using CommanderCS.Packets.Handlers.Profile;
-using CommanderCS.Library.Shared;
-using CommanderCS.Library.Shared.Enum;
-using CommanderCS.Library.Shared.Protocols;
-using CommanderCS.Library.Shared.Regulation;
-using CommanderCS.Library.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
-using System.Security.Cryptography;
 
 namespace CommanderCS.Packets.Handlers.Gift
 {
@@ -36,12 +32,13 @@ namespace CommanderCS.Packets.Handlers.Gift
                         User.Inventory.foodData[favourGiftId] -= 1;
                     }
 
-
                     TryAddingFavour(@params.cgid, ref commanderfavorPoint);
 
                     i++;
                 }
-            } else {
+            }
+            else
+            {
                 for (var i = 1; i <= favourGiftAmount;)
                 {
                     if (User.Inventory.itemData[favourGiftId] > 0)
@@ -69,7 +66,7 @@ namespace CommanderCS.Packets.Handlers.Gift
             DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
 
             User.CommanderData = [];
-                
+
             User.CommanderData[cid] = commanderCID;
 
             UserInformationResponse informationResponse = GetUserInformationResponse(User);
@@ -82,8 +79,6 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             return response;
         }
-
-        
 
         private static bool TryAddingFavour(int affectionId, ref int favour)
         {
@@ -166,13 +161,11 @@ namespace CommanderCS.Packets.Handlers.Gift
                 default:
                     row = rg.favorStepDtbl.Find(x => x.step == 15);
                     break;
-
             }
             ;
 
             if (commander.favorPoint > row.favor)
             {
-
                 if (commander.favorStep >= 15 && commander.favorPoint >= 1000000)
                 {
                     commander.favorStep = 15;
@@ -185,7 +178,6 @@ namespace CommanderCS.Packets.Handlers.Gift
 
                 commander.favorStep += 1;
                 commander.favorPoint -= row.favor;
-
 
                 return CheckCommanderFavour(commander, rg);
             }

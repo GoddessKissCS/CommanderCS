@@ -1,7 +1,7 @@
-﻿using CommanderCS.Library.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Login
+namespace CommanderCS.Packets.Handlers.Login
 {
     [Packet(Id = Method.Logout)]
     public class Logout : BaseMethodHandler<LogoutRequest>

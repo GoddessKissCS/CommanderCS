@@ -1,9 +1,8 @@
-using CommanderCS.Host;
+using CommanderCS.Library;
+using CommanderCS.Library.Regulation;
 using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared;
-using CommanderCS.Library.Shared.Regulation;
+using CommanderCS.Packets;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.Logging;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -13,16 +12,14 @@ namespace CommanderCS
     {
         private static void Main(string[] args)
         {
-            Thread thread = new(static () => {
-
+            Thread thread = new(static () =>
+            {
                 string[] args = [];
                 HTTPServer(args);
             });
 
             thread.Start();
-
         }
-
 
         private static void HTTPServer(string[] args)
         {

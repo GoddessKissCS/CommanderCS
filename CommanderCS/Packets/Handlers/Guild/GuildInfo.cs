@@ -1,7 +1,7 @@
-﻿using CommanderCS.Library.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Guild
+namespace CommanderCS.Packets.Handlers.Guild
 {
     [Packet(Id = Method.GuildInfo)]
     public class GuildInfo : BaseMethodHandler<GuildInfoRequest>

@@ -1,7 +1,7 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 
-namespace CommanderCS.Host.Handlers.UserTerm
+namespace CommanderCS.Packets.Handlers.UserTerm
 {
     [Packet(Id = Method.GetChangeDeviceCode)]
     public class GetChangeDeviceCode : BaseMethodHandler<GetChangeDeviceCodeRequest>

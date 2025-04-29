@@ -1,9 +1,9 @@
-﻿using CommanderCS.MongoDB;
+﻿using CommanderCS.Library.Enums;
 using CommanderCS.Library.Packets;
-using CommanderCS.Library.Shared.Enum;
-using CommanderCS.Library.Shared.Protocols;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 
-namespace CommanderCS.Host.Handlers.WorldMap
+namespace CommanderCS.Packets.Handlers.WorldMap
 {
     [Packet(Id = Method.WorldMapStageStart)]
     public class WorldMapStageStart : BaseMethodHandler<WorldMapStageStartRequest>

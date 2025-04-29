@@ -1,5 +1,4 @@
-using CommanderCS.Host;
-using CommanderCS.Library.Shared.Enum;
+using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.KeepAlives

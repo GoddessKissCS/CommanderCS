@@ -1,6 +1,6 @@
 ﻿using CommanderCS.MongoDB;
-using CommanderCS.Library.Shared;
-using CommanderCS.Library.Shared.Regulation;
+using CommanderCS.Library.Regulation;
+using CommanderCS.Library;
 
 namespace CommanderCSCMD.Commands
 {
