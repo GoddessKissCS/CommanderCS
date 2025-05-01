@@ -19,7 +19,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
 #warning STILL NEED TO ADD THE MISSING ERRORPACKET IF IT FAILS
 
-            GuildInfo guildList = new()
+            Library.Protocols.GuildInfo guildList = new()
             {
                 resource = rsoc,
                 guildInfo = userGuild,
