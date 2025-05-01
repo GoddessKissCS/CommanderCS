@@ -244,116 +244,127 @@ namespace CommanderCS.Library.Regulation
             return regulation;
         }
 
-        public string LoadJson(string filename)
+        public static DataTable<T> LoadTable<T>(string filename) where T : DataRow
         {
-            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            string fileContent = File.ReadAllText($"{path}//Resources//ExcelOutputAsset//{filename}");
+            string basePath = Path.Combine(
+                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                "Resources",
+                "ExcelOutputAsset"
+            );
 
-            return fileContent;
+            DataTable<T> table = null;
+
+            try
+            {
+                string filePath = Path.Combine(basePath, filename);
+                if (File.Exists(filePath))
+                {
+                    string json = File.ReadAllText(filePath);
+                    table = JsonConvert.DeserializeObject<DataTable<T>>(json, SerializerSettings);
+
+                    return table;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading {filename}: {ex.Message}");
+                return table;
+            }
+
+            return table;
         }
-
-#pragma warning disable CS8601 // Possible null reference assignment.
-
         public void Init()
         {
-            rewardDtbl = JsonConvert.DeserializeObject<DataTable<RewardDataRow>>(LoadJson("RewardDataTable.json"), SerializerSettings);
-            userLevelDtbl = JsonConvert.DeserializeObject<DataTable<UserLevelDataRow>>(LoadJson("UserLevelDataTable.json"), SerializerSettings);
-            partDtbl = JsonConvert.DeserializeObject<DataTable<PartDataRow>>(LoadJson("PartDataTable.json"), SerializerSettings);
-            interactionDtbl = JsonConvert.DeserializeObject<DataTable<InteractionDataRow>>(LoadJson("InteractionDataTable.json"), SerializerSettings);
-            goodsDtbl = JsonConvert.DeserializeObject<DataTable<GoodsDataRow>>(LoadJson("GoodsDataTable.json"), SerializerSettings);
-            buildingLevelDtbl = JsonConvert.DeserializeObject<DataTable<BuildingLevelDataRow>>(LoadJson("BuildingLevelDataTable.json"), SerializerSettings);
-            commanderDtbl = JsonConvert.DeserializeObject<DataTable<CommanderDataRow>>(LoadJson("CommanderDataTable.json"), SerializerSettings);
-            commanderLevelDtbl = JsonConvert.DeserializeObject<DataTable<CommanderLevelDataRow>>(LoadJson("CommanderLevelDataTable.json"), SerializerSettings);
-            commanderRankDtbl = JsonConvert.DeserializeObject<DataTable<CommanderRankDataRow>>(LoadJson("CommanderRankDataTable.json"), SerializerSettings);
-            commanderTrainingTicketDtbl = JsonConvert.DeserializeObject<DataTable<CommanderTrainingTicketDataRow>>(LoadJson("CommanderTrainingTicketDataTable.json"), SerializerSettings);
-            commanderClassDtbl = JsonConvert.DeserializeObject<DataTable<CommanderClassDataRow>>(LoadJson("CommanderClassDataTable.json"), SerializerSettings);
-            commanderCostumeDtbl = JsonConvert.DeserializeObject<DataTable<CommanderCostumeDataRow>>(LoadJson("CommanderCostumeDataTable.json"), SerializerSettings);
-            commanderGiftDtbl = JsonConvert.DeserializeObject<DataTable<CommanderGiftDataRow>>(LoadJson("CommanderGiftDataTable.json"), SerializerSettings);
-            favorDtbl = JsonConvert.DeserializeObject<DataTable<FavorDataRow>>(LoadJson("FavorDataTable.json"), SerializerSettings);
-            worldMapDtbl = JsonConvert.DeserializeObject<DataTable<WorldMapDataRow>>(LoadJson("WorldMapDataTable.json"), SerializerSettings);
-            worldMapStageDtbl = JsonConvert.DeserializeObject<DataTable<WorldMapStageDataRow>>(LoadJson("WorldMapStageDataTable.json"), SerializerSettings);
-            worldMapStageTypeDtbl = JsonConvert.DeserializeObject<DataTable<WorldMapStageTypeDataRow>>(LoadJson("WorldMapStageTypeDataTable.json"), SerializerSettings);
-            enemyCommanderDtbl = JsonConvert.DeserializeObject<DataTable<EnemyCommanderDataRow>>(LoadJson("EnemyCommanderDataTable.json"), SerializerSettings);
-            enemyUnitDtbl = JsonConvert.DeserializeObject<DataTable<EnemyUnitDataRow>>(LoadJson("EnemyUnitDataTable.json"), SerializerSettings);
-            unitDtbl = JsonConvert.DeserializeObject<DataTable<UnitDataRow>>(LoadJson("UnitDataTable.json"), SerializerSettings);
-            skillDtbl = JsonConvert.DeserializeObject<DataTable<SkillDataRow>>(LoadJson("SkillDataTable.json"), SerializerSettings);
-            skillCostDtbl = JsonConvert.DeserializeObject<DataTable<SkillCostDataRow>>(LoadJson("SkillCostDataTable.json"), SerializerSettings);
-            skillUpgradeDtbl = JsonConvert.DeserializeObject<DataTable<SkillUpgradeDataRow>>(LoadJson("SkillUpgradeDataTable.json"), SerializerSettings);
-            projectileDtbl = JsonConvert.DeserializeObject<DataTable<ProjectileDataRow>>(LoadJson("ProjectileDataTable.json"), SerializerSettings);
-            statusEffectDtbl = JsonConvert.DeserializeObject<DataTable<StatusEffectDataRow>>(LoadJson("StatusEffectDataTable.json"), SerializerSettings);
-            unitMotionDtbl = JsonConvert.DeserializeObject<DataTable<UnitMotionDataRow>>(LoadJson("UnitMotionDataTable.json"), SerializerSettings);
-            projectileMotionPhaseDtbl = JsonConvert.DeserializeObject<DataTable<ProjectileMotionPhaseDataRow>>(LoadJson("ProjectileMotionPhaseDataTable.json"), SerializerSettings);
-            dailyBonusDtbl = JsonConvert.DeserializeObject<DataTable<DailyBonusDataRow>>(LoadJson("DailyBonusDataTable.json"), SerializerSettings);
-            gachaDtbl = JsonConvert.DeserializeObject<DataTable<GachaDataRow>>(LoadJson("GachaDataTable.json"), SerializerSettings);
-            gachaRewardDtbl = JsonConvert.DeserializeObject<DataTable<GachaRewardDataRow>>(LoadJson("GachaRewardDataTable.json"), SerializerSettings);
-            gachaCostDtbl = JsonConvert.DeserializeObject<DataTable<GachaCostDataRow>>(LoadJson("GachaCostDataTable.json"), SerializerSettings);
-            sweepDtbl = JsonConvert.DeserializeObject<DataTable<SweepDataRow>>(LoadJson("SweepDataTable.json"), SerializerSettings);
-            raidDtbl = JsonConvert.DeserializeObject<DataTable<RaidDataRow>>(LoadJson("RaidDataTable.json"), SerializerSettings);
-            levelPatternDtbl = JsonConvert.DeserializeObject<DataTable<LevelPatternDataRow>>(LoadJson("LevelPatternDataTable.json"), SerializerSettings);
-            classPatternDtbl = JsonConvert.DeserializeObject<DataTable<ClassPatternDataRow>>(LoadJson("ClassPatternDataTable.json"), SerializerSettings);
-            dropGoldPatternDtbl = JsonConvert.DeserializeObject<DataTable<DropGoldPatternDataRow>>(LoadJson("DropGoldPatternDataTable.json"), SerializerSettings);
-            metroBankLuckDtbl = JsonConvert.DeserializeObject<DataTable<MetroBankLuckDataRow>>(LoadJson("MetroBankLuckDataTable.json"), SerializerSettings);
-            vipRechargeDtbl = JsonConvert.DeserializeObject<DataTable<VipRechargeDataRow>>(LoadJson("VipRechargeDataTable.json"), SerializerSettings);
-            rankingRewardDtbl = JsonConvert.DeserializeObject<DataTable<RankingRewardDataRow>>(LoadJson("RankingRewardDataTable.json"), SerializerSettings);
-            rankingDtbl = JsonConvert.DeserializeObject<DataTable<RankingDataRow>>(LoadJson("RankingDataTable.json"), SerializerSettings);
-            guildSkillDtbl = JsonConvert.DeserializeObject<DataTable<GuildSkillDataRow>>(LoadJson("GuildSkillDataTable.json"), SerializerSettings);
-            guildStruggleDtbl = JsonConvert.DeserializeObject<DataTable<GuildStruggleDataRow>>(LoadJson("GuildStruggleDataTable.json"), SerializerSettings);
-            guildLevelInfoDtbl = JsonConvert.DeserializeObject<DataTable<GuildLevelInfoDataRow>>(LoadJson("GuildLevelInfoDataTable.json"), SerializerSettings);
-            guildOccupyDtbl = JsonConvert.DeserializeObject<DataTable<GuildOccupyDataRow>>(LoadJson("GuildOccupyDataTable.json"), SerializerSettings);
-            vipExpDtbl = JsonConvert.DeserializeObject<DataTable<VipExpDataRow>>(LoadJson("VipExpDataTable.json"), SerializerSettings);
-            favorStepDtbl = JsonConvert.DeserializeObject<DataTable<FavorStepDataRow>>(LoadJson("FavorStepDataTable.json"), SerializerSettings);
-            shopDtbl = JsonConvert.DeserializeObject<DataTable<ShopDataRow>>(LoadJson("ShopDataTable.json"), SerializerSettings);
-            thumbnailDtbl = JsonConvert.DeserializeObject<DataTable<ThumbnailDataRow>>(LoadJson("ThumbnailDataTable.json"), SerializerSettings);
-            itemExchangeDtbl = JsonConvert.DeserializeObject<DataTable<ItemExchangeDataRow>>(LoadJson("ItemExchangeDataTable.json"), SerializerSettings);
-            dailyEventDtbl = JsonConvert.DeserializeObject<DataTable<DailyEventDataRow>>(LoadJson("DailyEventDataTable.json"), SerializerSettings);
-            //defineDtbl = JsonConvert.DeserializeObject<DataTable<DefineDataRow>>(LoadJson(""),SerializerSettings);
-            fireActionDtbl = JsonConvert.DeserializeObject<DataTable<FireActionDataRow>>(LoadJson("FireActionDataTable.json"), SerializerSettings);
-            //loadingTipDtbl = JsonConvert.DeserializeObject<DataTable<LoadingTipDataRow>>(LoadJson(""),SerializerSettings);
-            annihilateBattleDtbl = JsonConvert.DeserializeObject<DataTable<AnnihilateBattleDataRow>>(LoadJson("AnnihilateBattleDataTable.json"), SerializerSettings);
-            inAppProductDtbl = JsonConvert.DeserializeObject<DataTable<InAppProductDataRow>>(LoadJson("InAppProductDataTable.json"), SerializerSettings);
-            carnivalDtbl = JsonConvert.DeserializeObject<DataTable<CarnivalDataRow>>(LoadJson("CarnivalDataTable.json"), SerializerSettings);
-            carnivalTypeDtbl = JsonConvert.DeserializeObject<DataTable<CarnivalTypeDataRow>>(LoadJson("CarnivalTypeDataTable.json"), SerializerSettings);
-            groupInfoDtbl = JsonConvert.DeserializeObject<DataTable<GroupInfoDataRow>>(LoadJson("GroupInfoDataTable.json"), SerializerSettings);
-            groupMemberDtbl = JsonConvert.DeserializeObject<DataTable<GroupMemberDataRow>>(LoadJson("GroupMemberDataTable.json"), SerializerSettings);
-            raidChallengeDtbl = JsonConvert.DeserializeObject<DataTable<RaidChallengeDataRow>>(LoadJson("RaidChallengeDataTable.json"), SerializerSettings);
-            //commanderVoiceDtbl = JsonConvert.DeserializeObject<DataTable<CommanderVoiceDataRow>>(LoadJson("CommanderVoiceDataTable.json"),SerializerSettings);
-            commanderScenarioDtbl = JsonConvert.DeserializeObject<DataTable<CommanderScenarioDataRow>>(LoadJson("CommanderScenarioDataTable.json"), SerializerSettings);
-            scenarioQuarterDtbl = JsonConvert.DeserializeObject<DataTable<ScenarioQuarterDataRow>>(LoadJson("ScenarioQuarterDataTable.json"), SerializerSettings);
-            scenarioBattleDtbl = JsonConvert.DeserializeObject<DataTable<ScenarioBattleDataRow>>(LoadJson("ScenarioBattleDataTable.json"), SerializerSettings);
-            //scenarioBattleUnitDtbl = JsonConvert.DeserializeObject<DataTable<ScenarioBattleUnitDataRow>>(LoadJson("ScenarioBattleUnitData.json"),SerializerSettings);
-            waveBattleDtbl = JsonConvert.DeserializeObject<DataTable<WaveBattleDataRow>>(LoadJson("WaveBattleDataTable.json"), SerializerSettings);
-            equipItemDtbl = JsonConvert.DeserializeObject<DataTable<EquipItemDataRow>>(LoadJson("EquipItemDataTable.json"), SerializerSettings);
-            equipItemUpgradeDtbl = JsonConvert.DeserializeObject<DataTable<EquipItemUpgradeDataRow>>(LoadJson("EquipItemUpgradeDataTable.json"), SerializerSettings);
-            equipItemDisassembleDtbl = JsonConvert.DeserializeObject<DataTable<EquipItemDisassembleDataRow>>(LoadJson("EquipItemDisassembleDataTable.json"), SerializerSettings);
-            explorationDtbl = JsonConvert.DeserializeObject<DataTable<ExplorationDataRow>>(LoadJson("BattleFieldSearchDataTable.json"), SerializerSettings);
-            cooperateBattleDtbl = JsonConvert.DeserializeObject<DataTable<CooperateBattleDataRow>>(LoadJson("CooperateBattleDataTable.json"), SerializerSettings);
-            eventBattleDtbl = JsonConvert.DeserializeObject<DataTable<EventBattleDataRow>>(LoadJson("EventBattleDataTable.json"), SerializerSettings);
-            eventBattleFieldDtbl = JsonConvert.DeserializeObject<DataTable<EventBattleFieldDataRow>>(LoadJson("EventBattleFieldDataTable.json"), SerializerSettings);
-            eventRaidDtbl = JsonConvert.DeserializeObject<DataTable<EventRaidDataRow>>(LoadJson("EventRaidDataTable.json"), SerializerSettings);
-            eventBattleScenarioDtbl = JsonConvert.DeserializeObject<DataTable<EventBattleScenarioDataRow>>(LoadJson("EventBattleScenarioDataTable.json"), SerializerSettings);
-            eventBattleGachaRewardDtbl = JsonConvert.DeserializeObject<DataTable<EventBattleGachaRewardDataRow>>(LoadJson("EventBattleGachaRewardDataTable.json"), SerializerSettings);
-            randomBoxRewardDtbl = JsonConvert.DeserializeObject<DataTable<RandomBoxRewardDataRow>>(LoadJson("RandomBoxRewardDataTable.json"), SerializerSettings);
-            skillDamagePatternDtbl = JsonConvert.DeserializeObject<DataTable<SkillDamagePatternDataRow>>(LoadJson("SkillDamagePatternDataTable.json"), SerializerSettings);
-            eventRemaingTimeDtbl = JsonConvert.DeserializeObject<DataTable<EventRemaingTimeDataRow>>(LoadJson("EventRemaingTimeDataTable.json"), SerializerSettings);
-            npcMercenaryDtbl = JsonConvert.DeserializeObject<DataTable<NPCMercenaryDataRow>>(LoadJson("NPCMercenaryDataTable.json"), SerializerSettings);
-            transcendenceSlotDtbl = JsonConvert.DeserializeObject<DataTable<TranscendenceSlotDataRow>>(LoadJson("TranscendenceSlotDataTable.json"), SerializerSettings);
-            transcendenceStepUpgradeDtbl = JsonConvert.DeserializeObject<DataTable<TranscendenceStepUpgradeDataRow>>(LoadJson("TranscendenceStepUpgradeDataTable.json"), SerializerSettings);
-            weaponDtbl = JsonConvert.DeserializeObject<DataTable<WeaponDataRow>>(LoadJson("WeaponDataTable.json"), SerializerSettings);
-            weaponUpgradeDtbl = JsonConvert.DeserializeObject<DataTable<WeaponUpgradeDataRow>>(LoadJson("WeaponUpgradeDataTable.json"), SerializerSettings);
-            weaponSetDtbl = JsonConvert.DeserializeObject<DataTable<WeaponSetDataRow>>(LoadJson("WeaponSetDataTable.json"), SerializerSettings);
-            goodsComposeDtbl = JsonConvert.DeserializeObject<DataTable<GoodsComposeDataRow>>(LoadJson("GoodsComposeDataTable.json"), SerializerSettings);
-
-            missionDtbl = JsonConvert.DeserializeObject<DataTable<MissionDataRow>>(LoadJson("MissionTable.json"), SerializerSettings);
-            achievementDtbl = JsonConvert.DeserializeObject<DataTable<AchievementDataRow>>(LoadJson("AchievementTable.json"), SerializerSettings);
-            commanderRoleDtbl = JsonConvert.DeserializeObject<DataTable<CommanderRoleDataRow>>(LoadJson("CommanderRoleDataTable.json"), SerializerSettings);
-            battletimeDtbl = JsonConvert.DeserializeObject<DataTable<BattleTimeDataRow>>(LoadJson("BattleTimeDataTable.json"), SerializerSettings);
-
-            commanderClassUpDtbl = JsonConvert.DeserializeObject<DataTable<CommanderClassUpDataRow>>(LoadJson("CommanderClassUpDataTable.json"), SerializerSettings);
-
-            VipBenefitsDtbl = JsonConvert.DeserializeObject<DataTable<VipBenefitsDataRow>>(LoadJson("VipBenefitsDataTable.json"), SerializerSettings);
-
-#pragma warning restore CS8601 // Possible null reference assignment.
+            // Load all tables using the static LoadTable method
+            rewardDtbl = LoadTable<RewardDataRow>("RewardDataTable.json");
+            userLevelDtbl = LoadTable<UserLevelDataRow>("UserLevelDataTable.json");
+            partDtbl = LoadTable<PartDataRow>("PartDataTable.json");
+            interactionDtbl = LoadTable<InteractionDataRow>("InteractionDataTable.json");
+            goodsDtbl = LoadTable<GoodsDataRow>("GoodsDataTable.json");
+            buildingLevelDtbl = LoadTable<BuildingLevelDataRow>("BuildingLevelDataTable.json");
+            commanderDtbl = LoadTable<CommanderDataRow>("CommanderDataTable.json");
+            commanderLevelDtbl = LoadTable<CommanderLevelDataRow>("CommanderLevelDataTable.json");
+            commanderRankDtbl = LoadTable<CommanderRankDataRow>("CommanderRankDataTable.json");
+            commanderTrainingTicketDtbl = LoadTable<CommanderTrainingTicketDataRow>("CommanderTrainingTicketDataTable.json");
+            commanderClassDtbl = LoadTable<CommanderClassDataRow>("CommanderClassDataTable.json");
+            commanderCostumeDtbl = LoadTable<CommanderCostumeDataRow>("CommanderCostumeDataTable.json");
+            commanderGiftDtbl = LoadTable<CommanderGiftDataRow>("CommanderGiftDataTable.json");
+            favorDtbl = LoadTable<FavorDataRow>("FavorDataTable.json");
+            worldMapDtbl = LoadTable<WorldMapDataRow>("WorldMapDataTable.json");
+            worldMapStageDtbl = LoadTable<WorldMapStageDataRow>("WorldMapStageDataTable.json");
+            worldMapStageTypeDtbl = LoadTable<WorldMapStageTypeDataRow>("WorldMapStageTypeDataTable.json");
+            enemyCommanderDtbl = LoadTable<EnemyCommanderDataRow>("EnemyCommanderDataTable.json");
+            enemyUnitDtbl = LoadTable<EnemyUnitDataRow>("EnemyUnitDataTable.json");
+            unitDtbl = LoadTable<UnitDataRow>("UnitDataTable.json");
+            skillDtbl = LoadTable<SkillDataRow>("SkillDataTable.json");
+            skillCostDtbl = LoadTable<SkillCostDataRow>("SkillCostDataTable.json");
+            skillUpgradeDtbl = LoadTable<SkillUpgradeDataRow>("SkillUpgradeDataTable.json");
+            projectileDtbl = LoadTable<ProjectileDataRow>("ProjectileDataTable.json");
+            statusEffectDtbl = LoadTable<StatusEffectDataRow>("StatusEffectDataTable.json");
+            unitMotionDtbl = LoadTable<UnitMotionDataRow>("UnitMotionDataTable.json");
+            projectileMotionPhaseDtbl = LoadTable<ProjectileMotionPhaseDataRow>("ProjectileMotionPhaseDataTable.json");
+            dailyBonusDtbl = LoadTable<DailyBonusDataRow>("DailyBonusDataTable.json");
+            gachaDtbl = LoadTable<GachaDataRow>("GachaDataTable.json");
+            gachaRewardDtbl = LoadTable<GachaRewardDataRow>("GachaRewardDataTable.json");
+            gachaCostDtbl = LoadTable<GachaCostDataRow>("GachaCostDataTable.json");
+            sweepDtbl = LoadTable<SweepDataRow>("SweepDataTable.json");
+            raidDtbl = LoadTable<RaidDataRow>("RaidDataTable.json");
+            levelPatternDtbl = LoadTable<LevelPatternDataRow>("LevelPatternDataTable.json");
+            classPatternDtbl = LoadTable<ClassPatternDataRow>("ClassPatternDataTable.json");
+            dropGoldPatternDtbl = LoadTable<DropGoldPatternDataRow>("DropGoldPatternDataTable.json");
+            metroBankLuckDtbl = LoadTable<MetroBankLuckDataRow>("MetroBankLuckDataTable.json");
+            vipRechargeDtbl = LoadTable<VipRechargeDataRow>("VipRechargeDataTable.json");
+            rankingRewardDtbl = LoadTable<RankingRewardDataRow>("RankingRewardDataTable.json");
+            rankingDtbl = LoadTable<RankingDataRow>("RankingDataTable.json");
+            guildSkillDtbl = LoadTable<GuildSkillDataRow>("GuildSkillDataTable.json");
+            guildStruggleDtbl = LoadTable<GuildStruggleDataRow>("GuildStruggleDataTable.json");
+            guildLevelInfoDtbl = LoadTable<GuildLevelInfoDataRow>("GuildLevelInfoDataTable.json");
+            guildOccupyDtbl = LoadTable<GuildOccupyDataRow>("GuildOccupyDataTable.json");
+            vipExpDtbl = LoadTable<VipExpDataRow>("VipExpDataTable.json");
+            favorStepDtbl = LoadTable<FavorStepDataRow>("FavorStepDataTable.json");
+            shopDtbl = LoadTable<ShopDataRow>("ShopDataTable.json");
+            thumbnailDtbl = LoadTable<ThumbnailDataRow>("ThumbnailDataTable.json");
+            itemExchangeDtbl = LoadTable<ItemExchangeDataRow>("ItemExchangeDataTable.json");
+            dailyEventDtbl = LoadTable<DailyEventDataRow>("DailyEventDataTable.json");
+            fireActionDtbl = LoadTable<FireActionDataRow>("FireActionDataTable.json");
+            annihilateBattleDtbl = LoadTable<AnnihilateBattleDataRow>("AnnihilateBattleDataTable.json");
+            inAppProductDtbl = LoadTable<InAppProductDataRow>("InAppProductDataTable.json");
+            carnivalDtbl = LoadTable<CarnivalDataRow>("CarnivalDataTable.json");
+            carnivalTypeDtbl = LoadTable<CarnivalTypeDataRow>("CarnivalTypeDataTable.json");
+            groupInfoDtbl = LoadTable<GroupInfoDataRow>("GroupInfoDataTable.json");
+            groupMemberDtbl = LoadTable<GroupMemberDataRow>("GroupMemberDataTable.json");
+            raidChallengeDtbl = LoadTable<RaidChallengeDataRow>("RaidChallengeDataTable.json");
+            commanderScenarioDtbl = LoadTable<CommanderScenarioDataRow>("CommanderScenarioDataTable.json");
+            scenarioQuarterDtbl = LoadTable<ScenarioQuarterDataRow>("ScenarioQuarterDataTable.json");
+            scenarioBattleDtbl = LoadTable<ScenarioBattleDataRow>("ScenarioBattleDataTable.json");
+            waveBattleDtbl = LoadTable<WaveBattleDataRow>("WaveBattleDataTable.json");
+            equipItemDtbl = LoadTable<EquipItemDataRow>("EquipItemDataTable.json");
+            equipItemUpgradeDtbl = LoadTable<EquipItemUpgradeDataRow>("EquipItemUpgradeDataTable.json");
+            equipItemDisassembleDtbl = LoadTable<EquipItemDisassembleDataRow>("EquipItemDisassembleDataTable.json");
+            explorationDtbl = LoadTable<ExplorationDataRow>("BattleFieldSearchDataTable.json");
+            cooperateBattleDtbl = LoadTable<CooperateBattleDataRow>("CooperateBattleDataTable.json");
+            eventBattleDtbl = LoadTable<EventBattleDataRow>("EventBattleDataTable.json");
+            eventBattleFieldDtbl = LoadTable<EventBattleFieldDataRow>("EventBattleFieldDataTable.json");
+            eventRaidDtbl = LoadTable<EventRaidDataRow>("EventRaidDataTable.json");
+            eventBattleScenarioDtbl = LoadTable<EventBattleScenarioDataRow>("EventBattleScenarioDataTable.json");
+            eventBattleGachaRewardDtbl = LoadTable<EventBattleGachaRewardDataRow>("EventBattleGachaRewardDataTable.json");
+            randomBoxRewardDtbl = LoadTable<RandomBoxRewardDataRow>("RandomBoxRewardDataTable.json");
+            skillDamagePatternDtbl = LoadTable<SkillDamagePatternDataRow>("SkillDamagePatternDataTable.json");
+            eventRemaingTimeDtbl = LoadTable<EventRemaingTimeDataRow>("EventRemaingTimeDataTable.json");
+            npcMercenaryDtbl = LoadTable<NPCMercenaryDataRow>("NPCMercenaryDataTable.json");
+            transcendenceSlotDtbl = LoadTable<TranscendenceSlotDataRow>("TranscendenceSlotDataTable.json");
+            transcendenceStepUpgradeDtbl = LoadTable<TranscendenceStepUpgradeDataRow>("TranscendenceStepUpgradeDataTable.json");
+            weaponDtbl = LoadTable<WeaponDataRow>("WeaponDataTable.json");
+            weaponUpgradeDtbl = LoadTable<WeaponUpgradeDataRow>("WeaponUpgradeDataTable.json");
+            weaponSetDtbl = LoadTable<WeaponSetDataRow>("WeaponSetDataTable.json");
+            goodsComposeDtbl = LoadTable<GoodsComposeDataRow>("GoodsComposeDataTable.json");
+            missionDtbl = LoadTable<MissionDataRow>("MissionTable.json");
+            achievementDtbl = LoadTable<AchievementDataRow>("AchievementTable.json");
+            commanderRoleDtbl = LoadTable<CommanderRoleDataRow>("CommanderRoleDataTable.json");
+            battletimeDtbl = LoadTable<BattleTimeDataRow>("BattleTimeDataTable.json");
+            commanderClassUpDtbl = LoadTable<CommanderClassUpDataRow>("CommanderClassUpDataTable.json");
+            VipBenefitsDtbl = LoadTable<VipBenefitsDataRow>("VipBenefitsDataTable.json");
         }
 
         public static void ExtendList<T>(ref List<T> list, int count)
