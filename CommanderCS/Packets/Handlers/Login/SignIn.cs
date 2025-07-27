@@ -47,7 +47,7 @@ namespace CommanderCS.Packets.Handlers.Sign
 
             if (user.Password_Hash == password_hash)
             {
-                DatabaseManager.Account.UpdateLoginTime(user.MemberId);
+                //DatabaseManager.Account.UpdateLoginTime(user.MemberId);
                 signInP.mIdx = user.MemberId;
                 signInP.tokn = user.Token;
                 signInP.srv = user.LastServerLoggedIn;

@@ -1,4 +1,5 @@
 ﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 
 namespace CommanderCS.Packets.Handlers.Gacha
 {
@@ -7,6 +8,8 @@ namespace CommanderCS.Packets.Handlers.Gacha
     {
         public override object Handle(GachaInformationRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

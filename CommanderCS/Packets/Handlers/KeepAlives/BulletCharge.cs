@@ -1,4 +1,5 @@
 ﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 
 namespace CommanderCS.Packets.Handlers.KeepAlives
 {
@@ -7,6 +8,8 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
     {
         public override object Handle(BulletChargeResult @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             int bullets = Regulation.userLevelDtbl.Find(x => x.level == User.Resources.level).maxBullet;
 
             Library.Protocols.ResourceRecharge resource = new()

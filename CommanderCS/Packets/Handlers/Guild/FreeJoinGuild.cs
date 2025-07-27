@@ -9,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(FreeJoinGuildRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             DatabaseManager.Guild.AddFreeJoinGuildMember(User.Uno, @params.gidx);
 
             var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);

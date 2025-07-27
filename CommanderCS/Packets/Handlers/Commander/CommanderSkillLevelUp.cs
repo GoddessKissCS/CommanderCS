@@ -12,6 +12,8 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CommanderSkillLevelUpRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             string cid = @params.CommanderId.ToString();
 
             int totalCost = 0;

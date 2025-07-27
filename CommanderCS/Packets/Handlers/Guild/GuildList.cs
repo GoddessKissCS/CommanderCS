@@ -8,6 +8,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(GuildListRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             CommanderCS.Library.Protocols.GuildInfo guildList = new()
             {
                 resource = null,

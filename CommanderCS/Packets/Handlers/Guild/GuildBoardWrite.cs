@@ -11,6 +11,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(GuildBoardWriteRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             if (Misc.NameCheck(@params.msg))
             {
                 ErrorPacket error = new()

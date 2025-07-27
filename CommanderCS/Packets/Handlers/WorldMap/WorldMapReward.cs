@@ -11,6 +11,8 @@ namespace CommanderCS.Packets.Handlers.WorldMap
     {
         public override object Handle(WorldMapRewardRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
 #warning TODO: REVAMP THIS FUNCTION
 
             string commanderId = "0";

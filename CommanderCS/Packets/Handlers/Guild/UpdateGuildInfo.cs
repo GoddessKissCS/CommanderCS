@@ -9,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(UpdateGuildInfoRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             ErrorCode code = DatabaseManager.Guild.UpdateGuildInfo(SessionId, @params.act, @params.val);
 
             if (code != ErrorCode.Success)

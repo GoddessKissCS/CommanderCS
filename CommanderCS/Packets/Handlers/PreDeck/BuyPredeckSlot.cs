@@ -9,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.PreDeck
     {
         public override object Handle(BuyPredeckSlotRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             if (User.Statistics.PredeckCount >= 20)
             {
                 ErrorPacket errorPacket = new()

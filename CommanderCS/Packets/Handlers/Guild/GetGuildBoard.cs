@@ -10,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(GetGuildBoardRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             var list = DatabaseManager.Guild.GetGuildBoard(User.GuildId, out ErrorCode code);
 
             if (code != ErrorCode.Success)

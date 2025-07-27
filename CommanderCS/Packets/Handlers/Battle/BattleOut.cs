@@ -14,6 +14,8 @@ namespace CommanderCS.Packets.Handlers.Battle
     {
         public override object Handle(BattleOutRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             ErrorPacket error = new()
             {
                 Id = BasePacket.Id,

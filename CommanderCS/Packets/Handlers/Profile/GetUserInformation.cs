@@ -1,4 +1,5 @@
 ﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Profile
@@ -8,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Profile
     {
         public override object Handle(GetUserInformationRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             var userInformationResponse = GetUserInformationResponse(User);
 
             ResponsePacket response = new()

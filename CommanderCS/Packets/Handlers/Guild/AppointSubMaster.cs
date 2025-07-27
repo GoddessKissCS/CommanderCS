@@ -9,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(AppointSubMasterRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             int submaster = DatabaseManager.Guild.GetTotalSubMasters(User.GuildId);
 
             if (submaster > 2)

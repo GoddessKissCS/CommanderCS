@@ -8,6 +8,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(ManageGuildJoinMemberRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             var application = DatabaseManager.GuildApplication.GetGuildApplications(User.GuildId);
 
             ResponsePacket response = new()

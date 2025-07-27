@@ -79,6 +79,14 @@
             }
         }
 
+        public static DateTime ConvertUnixToDateTime(double unixTimestamp)
+        {
+            // Unix timestamp is seconds past epoch (UTC)
+            DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            dateTime = dateTime.AddSeconds(unixTimestamp).ToLocalTime();
+            return dateTime;
+        }
+
         public static double GetCurrentTime()
         {
             return CurrentEpoch;

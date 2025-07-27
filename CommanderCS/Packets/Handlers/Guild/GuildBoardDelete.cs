@@ -9,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(GuildBoardDeleteRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             DatabaseManager.Guild.DeleteGuildBoardEntry(User.GuildId, @params.idx);
 
 #warning TODO ADD THE TIMECHECK FAIL

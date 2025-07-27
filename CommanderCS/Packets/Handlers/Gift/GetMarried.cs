@@ -10,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.Gift
     {
         public override object Handle(GetMarriedRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             string cid = @params.cid.ToString();
 
             User.CommanderData[cid].marry = 1;

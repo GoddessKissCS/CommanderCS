@@ -50,7 +50,7 @@ namespace CommanderCS
                 options.WriteIndented = true;
             });
 
-            //builder.Services.AddRazorPages();
+            builder.Services.AddRazorPages();
 
             //builder.Services.AddHttpClient();
 
@@ -159,6 +159,10 @@ namespace CommanderCS
             DatabaseManager.Init();
 
             RemoteObjectManager.instance.regulation = Regulation.Create();
+
+            app.UseRouting();
+
+            app.MapRazorPages(); // For Razor Pages
 
             app.Run();
         }

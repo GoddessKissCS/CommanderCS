@@ -11,6 +11,8 @@ namespace CommanderCS.Packets.Handlers.Dispatch
     {
         public override object Handle(RecallDispatchRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             // TODO: add errorhandling
 
             var RecallCommander = new RecallCommander();

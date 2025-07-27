@@ -13,6 +13,8 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CommanderRankUpRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             string cid = @params.commanderId.ToString();
 
             bool commanderExists = User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander is not null;

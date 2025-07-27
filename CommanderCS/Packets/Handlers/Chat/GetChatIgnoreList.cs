@@ -1,4 +1,5 @@
 ﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 
 namespace CommanderCS.Packets.Handlers.Chat
 {
@@ -7,6 +8,8 @@ namespace CommanderCS.Packets.Handlers.Chat
     {
         public override object Handle(GetChatIgnoreListRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             ResponsePacket response = new()
             {
                 Result = User.BlockedUsers,

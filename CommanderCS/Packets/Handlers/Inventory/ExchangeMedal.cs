@@ -9,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Inventory
     {
         public override object Handle(ExchangeMedalRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             string cid = @params.cid.ToString();
             int medalExchangeAmount = @params.amnt;
 

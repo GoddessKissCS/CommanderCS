@@ -9,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Profile
     {
         public override object Handle(ChangeThumbnailRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             bool success = false;
 
             string idx = @params.idx.ToString();

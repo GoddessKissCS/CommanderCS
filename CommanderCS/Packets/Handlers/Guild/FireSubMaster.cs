@@ -9,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(FireSubMasterRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             bool isInGuild = DatabaseManager.Guild.IsUnoInMemberData(User.GuildId, User.Uno);
 
             if (!isInGuild)

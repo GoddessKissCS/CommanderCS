@@ -9,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CommanderClassUpRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             string cid = @params.commanderId.ToString();
 
             User.CommanderData.TryGetValue(cid, out var commander);

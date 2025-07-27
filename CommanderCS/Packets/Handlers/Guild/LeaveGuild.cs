@@ -8,6 +8,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(LeaveGuildRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             DatabaseManager.Guild.QuitGuild(User.GuildId, User.Uno);
 
             ResponsePacket response = new()

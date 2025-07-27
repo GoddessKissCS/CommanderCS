@@ -10,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(GuildCloseDownRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             var closeTime = TimeManager.CurrentEpoch;
 
             DatabaseManager.Guild.CloseDownGuild(User.GuildId, closeTime);

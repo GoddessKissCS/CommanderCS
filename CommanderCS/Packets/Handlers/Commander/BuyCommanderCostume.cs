@@ -11,6 +11,9 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(BuyCommanderCostumeRequest @params)
         {
+
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             // ig implement a check to check if you actually have enough cash ?
             // seems overrated but you never know ig?
             // client says no if you cant buy, but ig you could in theory send a request and buy it anyways

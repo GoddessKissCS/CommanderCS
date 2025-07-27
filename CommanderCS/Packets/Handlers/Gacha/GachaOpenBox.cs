@@ -10,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.Gacha
     {
         public override object Handle(GachaOpenBoxRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             List<GachaOpenBoxResponse.Reward> rewards = [];
 
             GachaInformationResponse ws = new()

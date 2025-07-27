@@ -1,5 +1,6 @@
 ﻿using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Vip
@@ -9,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.Vip
     {
         public override object Handle(GetVipBuyCountRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             //gets send EVipRechargeType enum + ["rchg"]
 
 #warning TODO: MIGHT NEED A BE CHECKED IF ITS CORRECT

@@ -10,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(UpgradeGuildSkillRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             var guild = DatabaseManager.Guild.FindByUid(User.GuildId);
 
             var guildSkill = guild.SkillDada.Where(d => d.idx == @params.gsid).FirstOrDefault();

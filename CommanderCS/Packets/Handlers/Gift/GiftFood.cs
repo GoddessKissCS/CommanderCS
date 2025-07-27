@@ -13,6 +13,8 @@ namespace CommanderCS.Packets.Handlers.Gift
     {
         public override object Handle(GiftFoodRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             string cid = @params.cid.ToString();
             string favourGiftId = @params.cgid.ToString();
             int favourGiftAmount = @params.amnt;

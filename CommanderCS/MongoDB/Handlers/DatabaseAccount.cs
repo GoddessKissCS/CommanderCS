@@ -237,8 +237,6 @@ namespace CommanderCS.MongoDB.Handlers
             //    return ErrorCode.UnableToJoin;
             //}
 
-            DatabaseManager.GameProfile.UpdateOnLogin(@params, session);
-
             UpdateLastServerLoggedIn(@params.world, @params.memberId);
 
             return ErrorCode.Success;

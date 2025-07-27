@@ -1,6 +1,7 @@
 ﻿using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 
 namespace CommanderCS.Packets.Handlers.Dispatch
 {
@@ -9,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.Dispatch
     {
         public override object Handle(GetDispatchCommanderListFromLoginRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             Dictionary<string, DiapatchCommanderInfo> dispatchedcommanders = [];
 
             if (User.DispatchedCommanders is not null)

@@ -11,6 +11,8 @@ namespace CommanderCS.Packets.Handlers.Tutorial
     {
         public override object Handle(LoginTutorialSkipRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             UserInformationResponse.TutorialData tutorialData = new() { skip = Convert.ToBoolean(@params.skip), step = 12 };
 
             if (@params.skip == 1)

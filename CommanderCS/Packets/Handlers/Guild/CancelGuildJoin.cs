@@ -9,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(CancelGuildJoinRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             bool result = DatabaseManager.GuildApplication.DeleteGuildApplication(User.Uno, @params.gidx);
 
             ResponsePacket response = new()

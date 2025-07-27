@@ -1,3 +1,5 @@
+using CommanderCS.MongoDB;
+
 namespace CommanderCS.Packets.Handlers.Bank
 {
     [Packet(Id = CommanderCS.Library.Enums.Method.GetBankReward)]
@@ -5,6 +7,8 @@ namespace CommanderCS.Packets.Handlers.Bank
     {
         public override object Handle(GetBankRewardRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             GetBankRewardResponse getBankRewardResponse = new()
             {
                 gold = User.Resources.gold

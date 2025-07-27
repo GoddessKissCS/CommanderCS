@@ -11,6 +11,8 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CommanderRankUpImmediateRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             string cid = @params.cid.ToString();
 
             //needs to be reworked to be more readable

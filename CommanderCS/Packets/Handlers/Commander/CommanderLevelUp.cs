@@ -12,6 +12,8 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CommanderLevelUpRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             string sid = Regulation.goodsDtbl.FirstOrDefault(x => x.serverFieldName == @params.commanderTrainingTicket).type;
 
             if (@params.count > User.Inventory.itemData[sid])

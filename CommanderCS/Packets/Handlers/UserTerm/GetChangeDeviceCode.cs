@@ -8,6 +8,8 @@ namespace CommanderCS.Packets.Handlers.UserTerm
     {
         public override object Handle(GetChangeDeviceCodeRequest @params)
         {
+            Account = DatabaseManager.Account.FindBySession(BasePacket.SessionId);
+
             var deviceCode = DatabaseManager.DeviceCode.RequestForChangeDeviceCode(Account);
 
             ResponsePacket response = new()

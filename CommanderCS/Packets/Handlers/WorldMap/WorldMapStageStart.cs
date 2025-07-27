@@ -10,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.WorldMap
     {
         public override object Handle(WorldMapStageStartRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             WorldMapStageStartResponse wmssr = new();
 
             //TODO: look at the stage and then the rewards it can gen

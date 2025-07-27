@@ -10,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(UpgradeWeaponInventoryRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             User.Resources.cash -= RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH;
 
             User.Statistics.WeaponInventoryCount += RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADD;

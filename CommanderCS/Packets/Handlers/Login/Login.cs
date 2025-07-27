@@ -46,6 +46,8 @@ namespace CommanderCS.Packets.Handlers.Login
             //    userInformationResponse.medalData.TryAdd("" + item.cid, item.cid);
             //}
 
+            DatabaseManager.GameProfile.UpdateOnLogin(@params, session);
+
             LoginResponse loginResponse = new()
             {
                 info = userInformationResponse,

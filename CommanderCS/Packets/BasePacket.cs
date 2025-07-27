@@ -40,62 +40,10 @@ namespace CommanderCS.Packets
         public abstract object Handle(TParams @params);
 
         public string SessionId => BasePacket.SessionId;
-
-        private GameProfileScheme _user = null;
-
-        public GameProfileScheme User
-        {
-            get
-            {
-                if (_user is null && BasePacket.SessionId is not null)
-                {
-                    _user = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
-                }
-                return _user;
-            }
-        }
-
-        private AccountScheme _account = null;
-
-        public AccountScheme Account
-        {
-            get
-            {
-                if (_account is null && BasePacket.SessionId is not null)
-                {
-                    _account = DatabaseManager.Account.FindBySession(BasePacket.SessionId);
-                }
-                return _account;
-            }
-        }
-
-        private DormitoryScheme _dormitory = null;
-
-        public DormitoryScheme Dormitory
-        {
-            get
-            {
-                if (_dormitory is null && BasePacket.SessionId is not null)
-                {
-                    _dormitory = DatabaseManager.Dormitory.FindBySession(BasePacket.SessionId);
-                }
-                return _dormitory;
-            }
-        }
-
-        private GuildScheme _guild = null;
-
-        public GuildScheme Guild
-        {
-            get
-            {
-                if (_guild is null && BasePacket.SessionId is not null)
-                {
-                    _guild = DatabaseManager.Guild.FindBySession(BasePacket.SessionId);
-                }
-                return _guild;
-            }
-        }
+        public GameProfileScheme User { get; set; }
+        public AccountScheme Account { get; set; }
+        public DormitoryScheme Dormitory { get; set; }
+        public GuildScheme Guild { get; set; }  
 
         public Regulation Regulation = RemoteObjectManager.instance.regulation;
 

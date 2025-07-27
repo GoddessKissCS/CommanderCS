@@ -269,7 +269,7 @@ namespace CommanderCS.Library.Regulation
             catch (Exception ex)
             {
                 Console.WriteLine($"Error loading {filename}: {ex.Message}");
-                return table;
+                throw ex;
             }
 
             return table;

@@ -8,6 +8,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(UpgradeGuildLevelRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             var guild = DatabaseManager.Guild.FindByUid(User.GuildId);
 
             var guildUpgradeData = Regulation.guildLevelInfoDtbl.FirstOrDefault(x => x.level == guild.Level + 1);

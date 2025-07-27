@@ -1,0 +1,255 @@
+﻿@page
+@using CommanderCS.Library
+@using CommanderCS.Library.Regulation
+@using CommanderCS.MongoDB
+@using CommanderCS.MongoDB.Schemes
+@using Microsoft.AspNetCore.Mvc.RazorPages
+@using System.ComponentModel.DataAnnotations
+@model GameProfilePageModel
+@{
+    ViewData["Title"] = "Game Profile Viewer";
+}
+
+@functions {
+    public class GameProfilePageModel : PageModel
+    {
+        [BindProperty]
+        public LoginParams LoginParams { get; set; }
+
+        public GameProfileScheme UserProfile { get; set; }
+
+        public void OnGet()
+        {
+            // Initial page load
+        }
+
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            // Get or create user profile
+            UserProfile = DatabaseManager.GameProfile.GetOrCreate(LoginParams.MemberId, LoginParams.World);
+
+            return Page();
+        }
+    }
+
+    public class LoginParams
+    {
+        [Required]
+        [Display(Name = "Member ID")]
+        public int MemberId { get; set; }
+
+        [Required]
+        [Display(Name = "World ID")]
+        public int World { get; set; }
+    }
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Game Profile Viewer</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Login</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="form-group">
+                            <label asp-for="LoginParams.MemberId" class="control-label"></label>
+                            <input asp-for="LoginParams.MemberId" class="form-control" />
+                            <span asp-validation-for="LoginParams.MemberId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LoginParams.World" class="control-label"></label>
+                            <input asp-for="LoginParams.World" class="form-control" />
+                            <span asp-validation-for="LoginParams.World" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="submit" value="View Profile" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        @if (Model.UserProfile != null)
+        {
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h3>Login Successful</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Welcome, Member ID: @Model.UserProfile.MemberId</p>
+                        <p>Server: @Model.UserProfile.Server</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (Model.UserProfile != null)
+    {
+        <div class="card mt-4">
+            <div class="card-header">
+                <h3>Game Profile Details</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Basic Information</h4>
+                        <dl class="row">
+                            <dt class="col-sm-4">ID:</dt>
+                            <dd class="col-sm-8">@Model.UserProfile.Id</dd>
+
+                            <dt class="col-sm-4">Member ID:</dt>
+                            <dd class="col-sm-8">@Model.UserProfile.MemberId</dd>
+
+                            <dt class="col-sm-4">Server:</dt>
+                            <dd class="col-sm-8">@Model.UserProfile.Server</dd>
+
+                            <dt class="col-sm-4">Guild ID:</dt>
+                            <dd class="col-sm-8">@(Model.UserProfile.GuildId?.ToString() ?? "None")</dd>
+
+                            <dt class="col-sm-4">World State:</dt>
+                            <dd class="col-sm-8">@Model.UserProfile.WorldState</dd>
+
+                            <dt class="col-sm-4">Session:</dt>
+                            <dd class="col-sm-8">@Model.UserProfile.Session</dd>
+
+                            <dt class="col-sm-4">Uno:</dt>
+                            <dd class="col-sm-8">@Model.UserProfile.Uno</dd>
+
+                            <dt class="col-sm-4">Last Stage:</dt>
+                            <dd class="col-sm-8">@Model.UserProfile.LastStage</dd>
+
+                            <dt class="col-sm-4">Notifications:</dt>
+                            <dd class="col-sm-8">@Model.UserProfile.Notification</dd>
+
+                            <dt class="col-sm-4">Reset DateTime:</dt>
+                            <dd class="col-sm-8">@Model.UserProfile.ResetDateTime</dd>
+
+                            <dt class="col-sm-4">Last Login Time:</dt>
+
+
+                            <dd class="col-sm-8">@TimeManager.ConvertUnixToDateTime(Model.UserProfile.LastLoginTime)</dd>
+                        </dl>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h4>Device Information</h4>
+                        @if (Model.UserProfile.DeviceInformation != null)
+                        {
+                            <dl class="row">
+                                <dt class="col-sm-4">Device ID:</dt>
+                                <dd class="col-sm-8">@Model.UserProfile.DeviceInformation.DeviceId</dd>
+
+                                <dt class="col-sm-4">Device Name:</dt>
+                                <dd class="col-sm-8">@Model.UserProfile.DeviceInformation.DeviceName</dd>
+
+                                <dt class="col-sm-4">OS:</dt>
+                                <dd class="col-sm-8">@Model.UserProfile.DeviceInformation.OsCode</dd>
+
+                                <dt class="col-sm-4">OS Version:</dt>
+                                <dd class="col-sm-8">@Model.UserProfile.DeviceInformation.OsVersion</dd>
+
+                                <dt class="col-sm-4">Platform:</dt>
+                                <dd class="col-sm-8">@Model.UserProfile.DeviceInformation.PlatformId</dd>
+
+                                <dt class="col-sm-4">PushRegistrationId ID:</dt>
+                                <dd class="col-sm-8">@Model.UserProfile.DeviceInformation.PushRegistrationId</dd>
+                            </dl>
+                        }
+                        else
+                        {
+                            <p>No device information available.</p>
+                        }
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <h4>Statistics</h4>
+                        @if (Model.UserProfile.Statistics != null)
+                        {
+                            <dl class="row">
+                                <dt class="col-sm-4">Wins:</dt>
+                                <dd class="col-sm-8">@Model.UserProfile.Statistics.PvpWinCount</dd>
+
+                                <dt class="col-sm-4">Losses:</dt>
+                                <dd class="col-sm-8">@Model.UserProfile.Statistics.PvpLoseCount</dd>
+
+                                <dt class="col-sm-4">Total Battles:</dt>
+                                <dd class="col-sm-8">@(Model.UserProfile.Statistics.PvpWinCount + Model.UserProfile.Statistics.PvpLoseCount)</dd>
+
+                                <dt class="col-sm-4">Highest Rank:</dt>
+                                <dd class="col-sm-8">@Model.UserProfile.Statistics.ArenaHighRank</dd>
+
+                            </dl>
+                        }
+                        else
+                        {
+                            <p>No statistics available.</p>
+                        }
+                    </div>
+
+                    <div class="col-md-6">
+                        <h4>Resources</h4>
+                        @if (Model.UserProfile.Resources != null)
+                        {
+                            <dl class="row">
+                                <dt class="col-sm-4">Gold:</dt>
+                                <dd class="col-sm-8">@Model.UserProfile.Resources.gold</dd>
+
+                                <dt class="col-sm-4">Gems:</dt>
+                                <dd class="col-sm-8">@Model.UserProfile.Resources.cash</dd>
+
+                                <dt class="col-sm-4">Energy:</dt>
+                                <dd class="col-sm-8">@Model.UserProfile.Resources.bullet</dd>
+
+                            </dl>
+                        }
+                        else
+                        {
+                            <p>No resources data available.</p>
+                        }
+                    </div>
+                </div>
+
+                <!-- Additional sections for other profile data can be added here -->
+                <!-- Inventory, Badges, Battle Data, Tutorial Data, Commander Data, etc. -->
+                @if (Model.UserProfile.Inventory != null)
+                {
+                    <hr />
+                    <h4>Inventory</h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Items</h5>
+                            <ul>
+                                @foreach (var item in Model.UserProfile.Inventory.itemData)
+                                {
+                                    <li>@item.Key: @item.Value</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

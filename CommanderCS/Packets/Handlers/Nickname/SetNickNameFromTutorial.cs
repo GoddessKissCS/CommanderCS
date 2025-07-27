@@ -10,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.Nickname
     {
         public override object Handle(SetNickNameFromTutorialRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             ErrorCode code = DatabaseManager.GameProfile.RequestNicknameAfterTutorial(SessionId, @params.Unm);
 
             if (code != ErrorCode.Success)

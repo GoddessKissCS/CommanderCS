@@ -1,4 +1,5 @@
 ﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -8,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(GuildInfoRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

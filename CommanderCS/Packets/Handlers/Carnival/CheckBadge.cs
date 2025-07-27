@@ -1,4 +1,5 @@
 ﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Carnival
@@ -8,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Carnival
     {
         public override object Handle(CheckBadgeRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             var badges = User.UserBadges;
 
             var rwd = User.MailDataList.Where(x => x.__receive == "0").Count();

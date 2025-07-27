@@ -11,6 +11,8 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
     {
         public override object Handle(ResourceRechargeRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

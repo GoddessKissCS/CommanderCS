@@ -1341,5 +1341,14 @@ namespace CommanderCS.MongoDB.Handlers
 
             DatabaseCollection.UpdateOne(filter, update, new UpdateOptions { IsUpsert = true });
         }
+
+        internal void UpdateCommanderScenario(string sessionId, Dictionary<string, Dictionary<string, CommanderScenario>> sceens)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, sessionId);
+
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.CommanderScenario, sceens);
+
+            DatabaseCollection.UpdateOne(filter, update, new UpdateOptions { IsUpsert = true });
+        }
     }
 }

@@ -1,4 +1,5 @@
 using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Defender
@@ -8,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Defender
     {
         public override object Handle(GetDefenderInfoRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             GetDefenderInfoResponse getDefenderInfo = new()
             {
                 deck = User.DefenderDeck.PvPDefenderDeck,
