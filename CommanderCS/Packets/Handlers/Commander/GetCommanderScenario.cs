@@ -1,19 +1,20 @@
-﻿using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 
-namespace CommanderCS.Host.Handlers.Commander
+namespace CommanderCS.Packets.Handlers.Commander
 {
     [Packet(Id = Method.GetCommanderScenario)]
     public class GetCommanderScenario : BaseMethodHandler<GetCommanderScenarioRequest>
     {
         public override object Handle(GetCommanderScenarioRequest @params)
         {
-            ResponsePacket response = new();
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
 
-            Dictionary<string, Dictionary<string, CommanderScenario>> result = new();
-
-            response.Result = result;
-            response.Id = BasePacket.Id;
+            ResponsePacket response = new()
+            {
+                Result = User.CommanderScenario,
+                Id = BasePacket.Id
+            };
 
             return response;
         }

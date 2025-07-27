@@ -1,9 +1,8 @@
-using CommanderCS.Host;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Troop
 {
-    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.ChangeTroopNickname)]
+    [Packet(Id = CommanderCS.Library.Enums.Method.ChangeTroopNickname)]
     public class ChangeTroopNickname : BaseMethodHandler<ChangeTroopNicknameRequest>
     {
         public override object Handle(ChangeTroopNicknameRequest @params)

@@ -1,15 +1,17 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CommanderCS.Host.Handlers.Nickname
+namespace CommanderCS.Packets.Handlers.Nickname
 {
     [Packet(Id = Method.SetNickNameFromTutorial)]
     public class SetNickNameFromTutorial : BaseMethodHandler<SetNickNameFromTutorialRequest>
     {
         public override object Handle(SetNickNameFromTutorialRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             ErrorCode code = DatabaseManager.GameProfile.RequestNicknameAfterTutorial(SessionId, @params.Unm);
 
             if (code != ErrorCode.Success)
@@ -27,7 +29,7 @@ namespace CommanderCS.Host.Handlers.Nickname
             {
                 var information = GetUserInformationResponse(User);
 
-                JObject tutorialResponse = new JObject
+                JObject tutorialResponse = new()
                 {
                     ["id"] = BasePacket.Id,
                     ["result"] = new JObject

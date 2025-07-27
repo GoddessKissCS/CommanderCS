@@ -1,7 +1,7 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.KeepAlives
+namespace CommanderCS.Packets.Handlers.KeepAlives
 {
     [Packet(Id = Method.GetCouponList)]
     public class GetCouponList : BaseMethodHandler<GetCouponListRequest>

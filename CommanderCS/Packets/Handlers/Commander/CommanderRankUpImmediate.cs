@@ -1,8 +1,7 @@
-﻿using CommanderCS.Host;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Commander
@@ -12,7 +11,11 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CommanderRankUpImmediateRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             string cid = @params.cid.ToString();
+
+            //needs to be reworked to be more readable
 
             if (User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander is not null)
             {
@@ -81,7 +84,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             var newResources = User;
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(newResources.Resources);
+            var rsoc = UserResources2Resource(newResources.Resources);
 
             CommanderRankUpImmediateResponse cmrup = new()
             {

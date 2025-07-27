@@ -1,10 +1,10 @@
-﻿using CommanderCS.MongoDB;
+﻿using CommanderCS.Library.Cryptography;
+using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCSLibrary.Cryptography;
-using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Sign
+namespace CommanderCS.Packets.Handlers.Sign
 {
     [Packet(Id = Method.SignIn)]
     public class SignIn : BaseMethodHandler<SignInRequest>
@@ -47,7 +47,7 @@ namespace CommanderCS.Host.Handlers.Sign
 
             if (user.Password_Hash == password_hash)
             {
-                DatabaseManager.Account.UpdateLoginTime(user.MemberId);
+                //DatabaseManager.Account.UpdateLoginTime(user.MemberId);
                 signInP.mIdx = user.MemberId;
                 signInP.tokn = user.Token;
                 signInP.srv = user.LastServerLoggedIn;

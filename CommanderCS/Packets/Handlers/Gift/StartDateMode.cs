@@ -1,6 +1,23 @@
 namespace CommanderCS.Packets.Handlers.Gift
 {
-    public class StartDateMode
+    [Packet(Id = CommanderCS.Library.Enums.Method.StartDateMode)]
+    public class StartDateMode : BaseMethodHandler<StartDateModeRequest>
+    {
+        public override object Handle(StartDateModeRequest @params)
+        {
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = new CommanderCS.Library.Protocols.ResourceRecharge(),
+            };
+
+            // shouldnt need to be set
+
+            return response;
+        }
+    }
+
+    public class StartDateModeRequest
     {
     }
 }

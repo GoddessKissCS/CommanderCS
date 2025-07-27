@@ -1,5 +1,5 @@
-﻿using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 
 namespace CommanderCS.Packets.Handlers.Exploration
 {
@@ -8,6 +8,8 @@ namespace CommanderCS.Packets.Handlers.Exploration
     {
         public override object Handle(GetExplorationListRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             ResponsePacket response = new()
             {
                 Result = User.ExplorationData,

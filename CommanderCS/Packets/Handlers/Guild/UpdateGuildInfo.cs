@@ -1,6 +1,5 @@
-using CommanderCS.Host;
+using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -10,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(UpdateGuildInfoRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             ErrorCode code = DatabaseManager.Guild.UpdateGuildInfo(SessionId, @params.act, @params.val);
 
             if (code != ErrorCode.Success)
@@ -25,7 +26,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
             var guild = DatabaseManager.Guild.RequestGuild(User.GuildId, User.Uno);
 
-            CommanderCSLibrary.Shared.Protocols.GuildInfo guildInfo = new()
+            CommanderCS.Library.Protocols.GuildInfo guildInfo = new()
             {
                 resource = rsoc,
                 guildInfo = guild,

@@ -1,5 +1,5 @@
-using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 
 namespace CommanderCS.Packets.Handlers.WaveDuel
 {
@@ -8,6 +8,8 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
     {
         public override object Handle(GetWaveDuelDefenderInfoRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             GetWaveDuelDefenderInfoResponse defenderInfoResponse = new() { decks = User.DefenderDeck.WaveDuelDefenderDecks };
 
             ResponsePacket response = new()

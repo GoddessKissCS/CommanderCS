@@ -1,17 +1,18 @@
-using CommanderCS.Host;
+using CommanderCS.Library.Regulation;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.KeepAlives
 {
-    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.ResourceRecharge)]
+    [Packet(Id = CommanderCS.Library.Enums.Method.ResourceRecharge)]
     public class ResourceRecharge : BaseMethodHandler<ResourceRechargeRequest>
     {
         public override object Handle(ResourceRechargeRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

@@ -1,5 +1,4 @@
-using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Enums;
 
 namespace CommanderCS.Packets.Handlers.Conquest
 {
@@ -14,7 +13,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
                 Result = null,
             };
 
-            CommanderCSLibrary.Shared.Protocols.ConquestInfo test = new()
+            CommanderCS.Library.Protocols.ConquestInfo test = new()
             {
                 join = 0,
                 side = "",

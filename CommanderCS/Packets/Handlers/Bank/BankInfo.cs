@@ -1,5 +1,4 @@
-using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Enums;
 
 namespace CommanderCS.Packets.Handlers.Bank
 {
@@ -8,7 +7,7 @@ namespace CommanderCS.Packets.Handlers.Bank
     {
         public override object Handle(BankInfoRequest @params)
         {
-            var bankInfo = new CommanderCSLibrary.Shared.Protocols.BankInfo()
+            var bankInfo = new CommanderCS.Library.Protocols.BankInfo()
             {
                 exchangeRateCnt = 0,
                 level = 0,

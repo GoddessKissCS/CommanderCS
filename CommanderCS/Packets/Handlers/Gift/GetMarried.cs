@@ -1,7 +1,6 @@
-using CommanderCS.Host;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Gift
@@ -11,12 +10,20 @@ namespace CommanderCS.Packets.Handlers.Gift
     {
         public override object Handle(GetMarriedRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             string cid = @params.cid.ToString();
 
             User.CommanderData[cid].marry = 1;
             User.Resources.ring -= 1;
 
-            DatabaseManager.GameProfile.UpdateCommanderMarriage(SessionId, User, User.CommanderData[cid]);
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+
+            User.CommanderData = new()
+            {
+                [cid] = User.CommanderData[cid]
+            };
+
             UserInformationResponse userInformationResponse = GetUserInformationResponse(User);
 
             ResponsePacket response = new()

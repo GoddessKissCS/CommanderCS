@@ -1,18 +1,20 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
-using CommanderCSLibrary.Shared.Regulation;
-using CommanderCSLibrary.Shared.Regulation.DataRows;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.Library.Regulation;
+using CommanderCS.Library.Regulation.DataRows;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Commander
+namespace CommanderCS.Packets.Handlers.Commander
 {
     [Packet(Id = Method.CommanderRankUp)]
     public class CommanderRankUp : BaseMethodHandler<CommanderRankUpRequest>
     {
         public override object Handle(CommanderRankUpRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             string cid = @params.commanderId.ToString();
 
             bool commanderExists = User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander is not null;

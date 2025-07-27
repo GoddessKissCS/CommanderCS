@@ -1,8 +1,6 @@
-using CommanderCS.Host;
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -36,7 +34,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            GuildInfo createGuild = DatabaseManager.Guild.CreateGuild(SessionId, @params.gnm, @params.emb, @params.gtyp, @params.lvlm);
+            Library.Protocols.GuildInfo createGuild = DatabaseManager.Guild.CreateGuild(SessionId, @params.gnm, @params.emb, @params.gtyp, @params.lvlm);
 
             ResponsePacket response = new()
             {

@@ -1,14 +1,17 @@
-﻿using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 
-namespace CommanderCS.Host.Handlers.Dispatch
+namespace CommanderCS.Packets.Handlers.Dispatch
 {
     [Packet(Id = Method.GetDispatchCommanderListFromLogin)]
     public class GetDispatchCommanderListFromLogin : BaseMethodHandler<GetDispatchCommanderListFromLoginRequest>
     {
         public override object Handle(GetDispatchCommanderListFromLoginRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             Dictionary<string, DiapatchCommanderInfo> dispatchedcommanders = [];
 
             if (User.DispatchedCommanders is not null)

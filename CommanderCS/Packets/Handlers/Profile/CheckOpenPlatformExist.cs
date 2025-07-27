@@ -1,4 +1,4 @@
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Profile

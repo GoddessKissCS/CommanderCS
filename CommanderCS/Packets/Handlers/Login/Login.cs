@@ -1,9 +1,9 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Login
+namespace CommanderCS.Packets.Handlers.Login
 {
     [Packet(Id = Method.Login)]
     public class Login : BaseMethodHandler<LoginRequest>
@@ -45,6 +45,8 @@ namespace CommanderCS.Host.Handlers.Login
             //{
             //    userInformationResponse.medalData.TryAdd("" + item.cid, item.cid);
             //}
+
+            DatabaseManager.GameProfile.UpdateOnLogin(@params, session);
 
             LoginResponse loginResponse = new()
             {

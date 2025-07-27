@@ -1,10 +1,10 @@
-﻿using CommanderCS.Host;
-using CommanderCS.Host.Handlers.Login;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Cryptography;
+using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB.Schemes;
+using CommanderCS.Packets;
+using CommanderCS.Packets.Handlers.Login;
 using CommanderCS.Packets.Handlers.UserTerm;
-using CommanderCSLibrary.Cryptography;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
 using MongoDB.Driver;
 
 namespace CommanderCS.MongoDB.Handlers
@@ -236,8 +236,6 @@ namespace CommanderCS.MongoDB.Handlers
             //{
             //    return ErrorCode.UnableToJoin;
             //}
-
-            DatabaseManager.GameProfile.UpdateOnLogin(@params, session);
 
             UpdateLastServerLoggedIn(@params.world, @params.memberId);
 

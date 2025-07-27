@@ -1,14 +1,17 @@
-﻿using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Tutorial
+namespace CommanderCS.Packets.Handlers.Tutorial
 {
     [Packet(Id = Method.GetTutorialStep)]
     public class GetTutorialStep : BaseMethodHandler<GetTutorialStepRequest>
     {
         public override object Handle(GetTutorialStepRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             TutorialStep tutorialStep = new()
             {
                 ttrl = User.TutorialData,

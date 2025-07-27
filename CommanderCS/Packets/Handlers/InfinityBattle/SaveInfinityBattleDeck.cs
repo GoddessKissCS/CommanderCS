@@ -1,11 +1,10 @@
-using CommanderCS.Host;
 using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.InfinityBattle
 {
-    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.SaveInfinityBattleDeck)]
+    [Packet(Id = CommanderCS.Library.Enums.Method.SaveInfinityBattleDeck)]
     public class SaveInfinityBattleDeck : BaseMethodHandler<SaveInfinityBattleDeckRequest>
     {
         public override object Handle(SaveInfinityBattleDeckRequest @params)

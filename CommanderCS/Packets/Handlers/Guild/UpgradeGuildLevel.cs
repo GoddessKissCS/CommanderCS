@@ -1,6 +1,5 @@
-using CommanderCS.Host;
+using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -9,6 +8,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(UpgradeGuildLevelRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             var guild = DatabaseManager.Guild.FindByUid(User.GuildId);
 
             var guildUpgradeData = Regulation.guildLevelInfoDtbl.FirstOrDefault(x => x.level == guild.Level + 1);
@@ -23,7 +24,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             var guildInfo = DatabaseManager.Guild.RequestGuild(User.GuildId, User.Uno);
 
-            CommanderCSLibrary.Shared.Protocols.GuildInfo guildList = new()
+            CommanderCS.Library.Protocols.GuildInfo guildList = new()
             {
                 resource = null,
                 guildInfo = guildInfo,

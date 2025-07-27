@@ -1,15 +1,17 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCSLibrary.Packets;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Packets;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 
-namespace CommanderCS.Host.Handlers.WorldMap
+namespace CommanderCS.Packets.Handlers.WorldMap
 {
     [Packet(Id = Method.WorldMapStageStart)]
     public class WorldMapStageStart : BaseMethodHandler<WorldMapStageStartRequest>
     {
         public override object Handle(WorldMapStageStartRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             WorldMapStageStartResponse wmssr = new();
 
             //TODO: look at the stage and then the rewards it can gen

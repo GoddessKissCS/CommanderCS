@@ -1,9 +1,8 @@
-using CommanderCS.Host;
+using CommanderCS.Library;
+using CommanderCS.Library.Regulation;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Regulation;
+using CommanderCS.Packets;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.Logging;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -13,16 +12,14 @@ namespace CommanderCS
     {
         private static void Main(string[] args)
         {
-            Thread thread = new(static () => {
-
+            Thread thread = new(static () =>
+            {
                 string[] args = [];
                 HTTPServer(args);
             });
 
             thread.Start();
-
         }
-
 
         private static void HTTPServer(string[] args)
         {
@@ -53,7 +50,7 @@ namespace CommanderCS
                 options.WriteIndented = true;
             });
 
-            //builder.Services.AddRazorPages();
+            builder.Services.AddRazorPages();
 
             //builder.Services.AddHttpClient();
 
@@ -162,6 +159,10 @@ namespace CommanderCS
             DatabaseManager.Init();
 
             RemoteObjectManager.instance.regulation = Regulation.Create();
+
+            app.UseRouting();
+
+            app.MapRazorPages(); // For Razor Pages
 
             app.Run();
         }

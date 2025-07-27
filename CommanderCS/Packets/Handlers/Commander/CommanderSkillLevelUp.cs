@@ -1,9 +1,8 @@
-﻿using CommanderCS.Host;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.Library.Regulation;
+using CommanderCS.Library.Regulation.DataRows;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
-using CommanderCSLibrary.Shared.Regulation;
-using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Commander
@@ -13,6 +12,8 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CommanderSkillLevelUpRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             string cid = @params.CommanderId.ToString();
 
             int totalCost = 0;

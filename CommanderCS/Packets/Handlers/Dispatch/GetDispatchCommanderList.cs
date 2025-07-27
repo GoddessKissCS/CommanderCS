@@ -1,7 +1,7 @@
-using CommanderCS.Host;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 
 namespace CommanderCS.Packets.Handlers.Dispatch
 {
@@ -10,6 +10,10 @@ namespace CommanderCS.Packets.Handlers.Dispatch
     {
         public override object Handle(GetDispatchCommanderListRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
+            Guild = DatabaseManager.Guild.FindBySession(BasePacket.SessionId); 
+
             if (Guild.LastEdit is not null)
             {
                 var difference = TimeManager.GetTimeDifference((double)Guild.LastEdit);

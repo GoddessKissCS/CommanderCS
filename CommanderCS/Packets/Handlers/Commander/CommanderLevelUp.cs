@@ -1,18 +1,19 @@
-﻿using CommanderCS.MongoDB;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.Library.Regulation;
+using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
-using CommanderCSLibrary.Shared.Regulation;
 using Newtonsoft.Json;
 
-
-namespace CommanderCS.Host.Handlers.Commander
+namespace CommanderCS.Packets.Handlers.Commander
 {
     [Packet(Id = Method.CommanderLevelUp)]
     public class CommanderLevelUp : BaseMethodHandler<CommanderLevelUpRequest>
     {
         public override object Handle(CommanderLevelUpRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             string sid = Regulation.goodsDtbl.FirstOrDefault(x => x.serverFieldName == @params.commanderTrainingTicket).type;
 
             if (@params.count > User.Inventory.itemData[sid])
@@ -34,7 +35,6 @@ namespace CommanderCS.Host.Handlers.Commander
 
                 for (int i = 0; i < @params.count;)
                 {
-
                     //NEED TO CHECK IF its 0
                     User.Inventory.itemData[sid] -= 1;
 
@@ -62,7 +62,7 @@ namespace CommanderCS.Host.Handlers.Commander
             User.CommanderData[cid] = commander;
 
             DatabaseManager.GameProfile.UpdateItemData(SessionId, User.Inventory.itemData);
-            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
 
             User.CommanderData = [];
 

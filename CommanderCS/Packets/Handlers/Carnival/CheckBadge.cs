@@ -1,13 +1,16 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Carnival
+namespace CommanderCS.Packets.Handlers.Carnival
 {
     [Packet(Id = Method.CheckBadge)]
     public class CheckBadge : BaseMethodHandler<CheckBadgeRequest>
     {
         public override object Handle(CheckBadgeRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             var badges = User.UserBadges;
 
             var rwd = User.MailDataList.Where(x => x.__receive == "0").Count();

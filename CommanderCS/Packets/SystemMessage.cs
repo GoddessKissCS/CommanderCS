@@ -1,7 +1,7 @@
-﻿using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCS.Library.Protocols;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host
+namespace CommanderCS.Packets
 {
     /// <summary>
     /// Represents a SystemMessagePacket template.

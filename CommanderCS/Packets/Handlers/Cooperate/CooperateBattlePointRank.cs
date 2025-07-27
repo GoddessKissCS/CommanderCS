@@ -1,5 +1,4 @@
-using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 using static CommanderCS.Packets.Handlers.Cooperate.CooperateBattlePointRank;
 
@@ -29,7 +28,7 @@ namespace CommanderCS.Packets.Handlers.Cooperate
 
             // ADD sometime missing data
 
-            List<CommanderCSLibrary.Shared.Protocols.CooperateBattlePointGuildRankingInfo> cooperateBattlePointGuildRankingInfos = new() { };
+            List<CommanderCS.Library.Protocols.CooperateBattlePointGuildRankingInfo> cooperateBattlePointGuildRankingInfos = new() { };
 
             response.Result = cooperateBattlePointGuildRankingInfos;
 

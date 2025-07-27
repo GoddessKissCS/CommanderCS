@@ -1,7 +1,7 @@
-﻿using CommanderCS.MongoDB.Schemes;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB.Schemes;
 using MongoDB.Driver;
 
 namespace CommanderCS.MongoDB.Handlers

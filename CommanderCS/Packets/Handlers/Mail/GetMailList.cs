@@ -1,6 +1,6 @@
-using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 
 namespace CommanderCS.Packets.Handlers.Mail
 {
@@ -9,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Mail
     {
         public override object Handle(GetMailListRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             MailInfo mailInfo = new() { };
 
             var MailDataNotReceived = User.MailDataList.Where(x => x.__receive == "0").ToList();

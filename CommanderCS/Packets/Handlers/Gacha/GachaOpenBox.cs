@@ -1,7 +1,6 @@
-using CommanderCS.Host;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Gacha
@@ -11,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.Gacha
     {
         public override object Handle(GachaOpenBoxRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             List<GachaOpenBoxResponse.Reward> rewards = [];
 
             GachaInformationResponse ws = new()

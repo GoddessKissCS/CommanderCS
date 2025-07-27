@@ -1,19 +1,21 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Battle;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
-using CommanderCSLibrary.Shared.Regulation;
-using CommanderCSLibrary.Shared.Regulation.DataRows;
+﻿using CommanderCS.Library.Battle;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.Library.Regulation;
+using CommanderCS.Library.Regulation.DataRows;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace CommanderCS.Host.Handlers.Battle
+namespace CommanderCS.Packets.Handlers.Battle
 {
     [Packet(Id = Method.BattleOut)]
     public class BattleOut : BaseMethodHandler<BattleOutRequest>
     {
         public override object Handle(BattleOutRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             ErrorPacket error = new()
             {
                 Id = BasePacket.Id,

@@ -1,7 +1,6 @@
-using CommanderCS.Host;
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -11,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(DeportGuildMemberRequest @params)
         {
+            Guild = DatabaseManager.Guild.FindBySession(BasePacket.SessionId);
+
             var target = Guild.MemberData.FirstOrDefault(member => member.Uno == @params.tuno);
 
             var difference = TimeManager.GetTimeDifferenceInDays(target.JoinDate);

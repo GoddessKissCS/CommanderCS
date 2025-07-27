@@ -1,8 +1,8 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 using System.Reflection;
 
-namespace CommanderCS.Host.Handlers.UserTerm
+namespace CommanderCS.Packets.Handlers.UserTerm
 {
     [Packet(Id = Method.GetBadWordList)]
     public class GetBadWordList : BaseMethodHandler<GetBadWordListRequest>

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace CommanderCS.Host
+namespace CommanderCS.Packets
 {
     /// <summary>
     /// Represents a response packet containing an identifier and a result.

@@ -1,5 +1,4 @@
-using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Enums;
 using static CommanderCS.Packets.Handlers.Cooperate.CooperateBattleInfo;
 
 namespace CommanderCS.Packets.Handlers.Cooperate
@@ -16,7 +15,7 @@ namespace CommanderCS.Packets.Handlers.Cooperate
                 Id = BasePacket.Id,
             };
 
-            CommanderCSLibrary.Shared.Protocols.CooperateBattleData battleData = new()
+            CommanderCS.Library.Protocols.CooperateBattleData battleData = new()
             {
                 coop = new()
                 {

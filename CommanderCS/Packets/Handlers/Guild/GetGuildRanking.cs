@@ -1,5 +1,4 @@
-using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -15,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 Result = true,
             };
 
-            List<CommanderCSLibrary.Shared.Protocols.GuildRankingInfo> test = [];
+            List<CommanderCS.Library.Protocols.GuildRankingInfo> test = [];
 
             response.Result = test;
 

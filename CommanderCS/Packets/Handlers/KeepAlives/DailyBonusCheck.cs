@@ -1,7 +1,7 @@
-﻿using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 
-namespace CommanderCS.Host.Handlers.KeepAlives
+namespace CommanderCS.Packets.Handlers.KeepAlives
 {
     [Packet(Id = Method.DailyBonusCheck)]
     public class DailyBonusCheck : BaseMethodHandler<DailyBonusCheckRequest>

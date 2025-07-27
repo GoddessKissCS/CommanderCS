@@ -1,10 +1,10 @@
-﻿using CommanderCS.MongoDB;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Server
+namespace CommanderCS.Packets.Handlers.Server
 {
     [Packet(Id = Method.ServerStatus)]
     public class ServerStatus : BaseMethodHandler<ServerStatusRequest>

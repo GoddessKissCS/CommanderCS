@@ -1,14 +1,10 @@
-using CommanderCS.Host;
-using CommanderCS.Host.Handlers.Commander;
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.Library.Regulation;
+using CommanderCS.Library.Regulation.DataRows;
 using CommanderCS.MongoDB;
-using CommanderCS.Packets.Handlers.Profile;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
-using CommanderCSLibrary.Shared.Regulation;
-using CommanderCSLibrary.Shared.Regulation.DataRows;
 using Newtonsoft.Json;
-using System.Security.Cryptography;
 
 namespace CommanderCS.Packets.Handlers.Gift
 {
@@ -17,6 +13,8 @@ namespace CommanderCS.Packets.Handlers.Gift
     {
         public override object Handle(GiftFoodRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             string cid = @params.cid.ToString();
             string favourGiftId = @params.cgid.ToString();
             int favourGiftAmount = @params.amnt;
@@ -36,19 +34,19 @@ namespace CommanderCS.Packets.Handlers.Gift
                         User.Inventory.foodData[favourGiftId] -= 1;
                     }
 
-
                     TryAddingFavour(@params.cgid, ref commanderfavorPoint);
 
                     i++;
                 }
-            } else {
+            }
+            else
+            {
                 for (var i = 1; i <= favourGiftAmount;)
                 {
                     if (User.Inventory.itemData[favourGiftId] > 0)
                     {
                         User.Inventory.itemData[favourGiftId] -= 1;
                     }
-
 
                     TryAddingFavour(@params.cgid, ref commanderfavorPoint);
 
@@ -66,7 +64,8 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             User.CommanderData[cid] = commanderCID;
 
-            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateItemData(SessionId, User.Inventory.itemData);
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
 
             User.CommanderData = [];
 
@@ -82,8 +81,6 @@ namespace CommanderCS.Packets.Handlers.Gift
 
             return response;
         }
-
-        
 
         private static bool TryAddingFavour(int affectionId, ref int favour)
         {
@@ -162,21 +159,27 @@ namespace CommanderCS.Packets.Handlers.Gift
                 case 14:
                     row = rg.favorStepDtbl.Find(x => x.step == 15);
                     break;
+
+                default:
+                    row = rg.favorStepDtbl.Find(x => x.step == 15);
+                    break;
             }
             ;
 
             if (commander.favorPoint > row.favor)
             {
+                if (commander.favorStep >= 15 && commander.favorPoint >= 1000000)
+                {
+                    commander.favorStep = 15;
+                    commander.favorPoint = 1000000;
+
+                    return commander;
+                }
 
                 // Might SOME Cases break and minus
 
                 commander.favorStep += 1;
                 commander.favorPoint -= row.favor;
-
-                if (commander.favorStep == 15 && commander.favorPoint >= 1000000)
-                {
-                    commander.favorPoint = 1000000;
-                }
 
                 return CheckCommanderFavour(commander, rg);
             }

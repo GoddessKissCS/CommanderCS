@@ -1,5 +1,4 @@
-using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Enums;
 
 namespace CommanderCS.Packets.Handlers.Annihilation
 {

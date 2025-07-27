@@ -1,14 +1,16 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 
-namespace CommanderCS.Host.Handlers.Guild
+namespace CommanderCS.Packets.Handlers.Guild
 {
     [Packet(Id = Method.GuildMemberList)]
     public class GuildMemberList : BaseMethodHandler<GuildMemberListRequest>
     {
         public override object Handle(GuildMemberListRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

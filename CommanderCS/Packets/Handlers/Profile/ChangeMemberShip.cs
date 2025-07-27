@@ -1,8 +1,8 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Profile
+namespace CommanderCS.Packets.Handlers.Profile
 {
     [Packet(Id = Method.ChangeMembership)]
     public class ChangeMemberShip : BaseMethodHandler<ChangeMemberShipRequest>

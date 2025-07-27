@@ -1,8 +1,8 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 
-namespace CommanderCS.Host.Handlers.Gacha
+namespace CommanderCS.Packets.Handlers.Gacha
 {
     [Packet(Id = Method.GetRotationBannerInfo)]
     public class GetRotationBannerInfo : BaseMethodHandler<GetRotationBannerInfoRequest>

@@ -1,5 +1,4 @@
-using CommanderCS.Host;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -11,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.Guild
         {
             //TODO: ADD everyones heros into the guild commanderlist
             //and check here if the commander is your owns and then remove them
-            CommanderCSLibrary.Shared.Protocols.GuildDispatchCommanderList vs = new()
+            CommanderCS.Library.Protocols.GuildDispatchCommanderList vs = new()
             {
                 commanderList = [],
                 npcList = [],

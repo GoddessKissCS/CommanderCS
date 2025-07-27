@@ -1,14 +1,18 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Dormitory
+namespace CommanderCS.Packets.Handlers.Dormitory
 {
     [Packet(Id = Method.GetDormitoryInfo)]
     public class GetDormitoryInfo : BaseMethodHandler<GetDormitoryInfoRequest>
     {
         public override object Handle(GetDormitoryInfoRequest @params)
         {
-            CommanderCSLibrary.Shared.Protocols.Dormitory.Info DormitoryInfo = new()
+
+            Dormitory = DatabaseManager.Dormitory.FindBySession(BasePacket.SessionId);
+
+            CommanderCS.Library.Protocols.Dormitory.Info DormitoryInfo = new()
             {
                 costumeBody = Dormitory.CostumeBody,
                 itemNormal = Dormitory.ItemNormal,

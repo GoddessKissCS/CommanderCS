@@ -1,8 +1,7 @@
-using CommanderCS.Host;
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -12,6 +11,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(GuildBoardWriteRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             if (Misc.NameCheck(@params.msg))
             {
                 ErrorPacket error = new()

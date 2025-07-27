@@ -1,17 +1,18 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 
-using CommanderCSLibrary.Shared.Protocols;
-
-namespace CommanderCS.Host.Handlers.KeepAlives
+namespace CommanderCS.Packets.Handlers.KeepAlives
 {
     [Packet(Id = Method.BulletCharge)]
     public class BulletCharge : BaseMethodHandler<BulletChargeResult>
     {
         public override object Handle(BulletChargeResult @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             int bullets = Regulation.userLevelDtbl.Find(x => x.level == User.Resources.level).maxBullet;
 
-            ResourceRecharge resource = new()
+            Library.Protocols.ResourceRecharge resource = new()
             {
                 bulletData = new()
                 {

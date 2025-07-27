@@ -1,7 +1,6 @@
-using CommanderCS.Host;
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.PreDeck
 {
@@ -10,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.PreDeck
     {
         public override object Handle(BuyPredeckSlotRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             if (User.Statistics.PredeckCount >= 20)
             {
                 ErrorPacket errorPacket = new()

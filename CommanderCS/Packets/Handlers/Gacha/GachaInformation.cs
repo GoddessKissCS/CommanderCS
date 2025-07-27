@@ -1,12 +1,15 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 
-namespace CommanderCS.Host.Handlers.Gacha
+namespace CommanderCS.Packets.Handlers.Gacha
 {
     [Packet(Id = Method.GachaInformation)]
     public class GachaInformation : BaseMethodHandler<GachaInformationRequest>
     {
         public override object Handle(GachaInformationRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

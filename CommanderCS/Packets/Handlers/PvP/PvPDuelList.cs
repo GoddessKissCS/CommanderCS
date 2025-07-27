@@ -1,6 +1,5 @@
-using CommanderCS.Host;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
 
 namespace CommanderCS.Packets.Handlers.PvP
 {
@@ -11,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.PvP
         {
             // need to check score and the get duelist between the range
 
-            CommanderCSLibrary.Shared.Protocols.PvPDuelList pvPDuel = new()
+            CommanderCS.Library.Protocols.PvPDuelList pvPDuel = new()
             {
                 duelList = [],
                 openRemain = 86400,

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace CommanderCS.Host
+namespace CommanderCS.Packets
 {
     /// <summary>
     /// Represents the basic template for an error packet.

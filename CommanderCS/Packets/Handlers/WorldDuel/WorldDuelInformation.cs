@@ -1,13 +1,11 @@
-using CommanderCS.Host;
-
 namespace CommanderCS.Packets.Handlers.WorldDuel
 {
-    [Packet(Id = CommanderCSLibrary.Shared.Enum.Method.WorldDuelInformation)]
+    [Packet(Id = CommanderCS.Library.Enums.Method.WorldDuelInformation)]
     public class WorldDuelInformation : BaseMethodHandler<WorldDuelInformationRequest>
     {
         public override object Handle(WorldDuelInformationRequest @params)
         {
-            CommanderCSLibrary.Shared.Protocols.WorldDuelInformation worldDuelInformation = new() { };
+            CommanderCS.Library.Protocols.WorldDuelInformation worldDuelInformation = new() { };
 
             ResponsePacket response = new()
             {

@@ -1,7 +1,7 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Event
+namespace CommanderCS.Packets.Handlers.Event
 {
     [Packet(Id = Method.GetWebEvent)]
     public class GetWebEvent : BaseMethodHandler<GetWebEventRequest>

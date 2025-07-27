@@ -1,7 +1,6 @@
-using CommanderCS.Host;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Gift
@@ -11,13 +10,15 @@ namespace CommanderCS.Packets.Handlers.Gift
     {
         public override object Handle(GetFavorRewardRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             string cid = @params.cid.ToString();
 
             User.CommanderData[cid].favorRewardStep = @params.step;
 
             DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
+            var rsoc = UserResources2Resource(User.Resources);
 
             var uCommander = new Dictionary<string, UserInformationResponse.Commander>
             {

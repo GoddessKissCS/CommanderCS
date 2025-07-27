@@ -1,14 +1,16 @@
-﻿using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Profile
+namespace CommanderCS.Packets.Handlers.Profile
 {
     [Packet(Id = Method.ChangeUserThumbnail)]
     public class ChangeThumbnail : BaseMethodHandler<ChangeThumbnailRequest>
     {
         public override object Handle(ChangeThumbnailRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             bool success = false;
 
             string idx = @params.idx.ToString();

@@ -1,8 +1,7 @@
-using CommanderCS.Host;
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Packets.Handlers.WaveDuel
 {
@@ -13,7 +12,9 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
         {
             //TODO: add fake duelist + need to check score and the get duelist between the range
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
+            var rsoc = UserResources2Resource(User.Resources);
 
             RefreshPvPDuel refreshDuel = new()
             {

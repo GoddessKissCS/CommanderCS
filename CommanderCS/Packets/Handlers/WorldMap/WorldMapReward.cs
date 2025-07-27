@@ -1,9 +1,8 @@
-using CommanderCS.Host;
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Packets.Structure;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using CommanderCSLibrary.Packets;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
 
 namespace CommanderCS.Packets.Handlers.WorldMap
 {
@@ -12,6 +11,8 @@ namespace CommanderCS.Packets.Handlers.WorldMap
     {
         public override object Handle(WorldMapRewardRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
 #warning TODO: REVAMP THIS FUNCTION
 
             string commanderId = "0";
@@ -110,11 +111,11 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             return response;
         }
 
-        private static CommanderCSLibrary.Shared.Protocols.WorldMapReward UserWorldReward(string commanderId, GameProfileScheme user, string session)
+        private static CommanderCS.Library.Protocols.WorldMapReward UserWorldReward(string commanderId, GameProfileScheme user, string session)
         {
             int medals = 20;
 
-            CommanderCSLibrary.Shared.Protocols.WorldMapReward WorldMapReward = new();
+            CommanderCS.Library.Protocols.WorldMapReward WorldMapReward = new();
 
             user.CommanderData.TryGetValue(commanderId, out var commander);
 

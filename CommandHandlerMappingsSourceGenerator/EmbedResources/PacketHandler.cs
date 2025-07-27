@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CommanderCS.Host;
+using CommanderCS.Packets;
 
-namespace CommanderCS.Host
+namespace CommanderCS.Packets
 {
     public partial class PacketHandler
     {

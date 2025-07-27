@@ -1,13 +1,16 @@
-﻿using CommanderCSLibrary.Shared.Enum;
+﻿using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
-namespace CommanderCS.Host.Handlers.Guild
+namespace CommanderCS.Packets.Handlers.Guild
 {
     [Packet(Id = Method.GuildInfo)]
     public class GuildInfo : BaseMethodHandler<GuildInfoRequest>
     {
         public override object Handle(GuildInfoRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

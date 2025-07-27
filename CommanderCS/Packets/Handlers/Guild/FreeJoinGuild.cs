@@ -1,7 +1,5 @@
-using CommanderCS.Host;
+using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -11,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(FreeJoinGuildRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             DatabaseManager.Guild.AddFreeJoinGuildMember(User.Uno, @params.gidx);
 
             var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
@@ -21,7 +21,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
 #warning STILL NEED TO ADD THE MISSING ERRORPACKET IF IT FAILS
 
-            GuildInfo guildList = new()
+            Library.Protocols.GuildInfo guildList = new()
             {
                 resource = rsoc,
                 guildInfo = userGuild,

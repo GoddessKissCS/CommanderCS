@@ -1,8 +1,7 @@
-using CommanderCS.Host;
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
 
 namespace CommanderCS.Packets.Handlers.Commander
 {
@@ -11,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(UpgradeWeaponInventoryRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             User.Resources.cash -= RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH;
 
             User.Statistics.WeaponInventoryCount += RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADD;
@@ -18,8 +19,8 @@ namespace CommanderCS.Packets.Handlers.Commander
             DatabaseManager.GameProfile.UpdateOnlyCash(SessionId, RemoteObjectManager.DefineDataTable.WEAPON_INVENTORY_ADDCASH, false);
             DatabaseManager.GameProfile.UpdateWeaponInventoryCount(SessionId, User.Statistics.WeaponInventoryCount);
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
-            var uifo = DatabaseManager.GameProfile.UserStatistics2BattleStatistics(User.Statistics);
+            var rsoc = UserResources2Resource(User.Resources);
+            var uifo = UserStatistics2BattleStatistics(User.Statistics);
 
             UpgradeWeaponInventoryResponse weaponInventoryResponse = new()
             {

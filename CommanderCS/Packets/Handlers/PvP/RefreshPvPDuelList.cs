@@ -1,8 +1,6 @@
-using CommanderCS.Host;
-using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared;
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 
 namespace CommanderCS.Packets.Handlers.PvP
 {
@@ -13,7 +11,7 @@ namespace CommanderCS.Packets.Handlers.PvP
         {
             // need to check score and the get duelist between the range
 
-            var rsoc = DatabaseManager.GameProfile.UserResources2Resource(User.Resources);
+            var rsoc = UserResources2Resource(User.Resources);
 
             RefreshPvPDuel refreshDuel = new()
             {

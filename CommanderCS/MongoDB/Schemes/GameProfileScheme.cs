@@ -1,5 +1,5 @@
-using CommanderCSLibrary.Shared.Enum;
-using CommanderCSLibrary.Shared.Protocols;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 using MongoDB.Bson;
 using Newtonsoft.Json.Linq;
 
@@ -179,6 +179,8 @@ namespace CommanderCS.MongoDB.Schemes
         /// Gets or sets the dictionary containing gacha information.
         /// </summary>
         public Dictionary<string, GachaInformationResponse>? GachaInformation { get; set; }
+
+        public Dictionary<string, Dictionary<string, CommanderScenario>>? CommanderScenario { get; set; }
     }
 
     /// <summary>

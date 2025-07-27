@@ -1,6 +1,5 @@
-using CommanderCS.Host;
+using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
-using CommanderCSLibrary.Shared.Enum;
 
 using Newtonsoft.Json;
 
@@ -11,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(UpgradeGuildSkillRequest @params)
         {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
             var guild = DatabaseManager.Guild.FindByUid(User.GuildId);
 
             var guildSkill = guild.SkillDada.Where(d => d.idx == @params.gsid).FirstOrDefault();
@@ -53,7 +54,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             var guildInfo = DatabaseManager.Guild.RequestGuild(User.GuildId, User.Uno);
 
-            CommanderCSLibrary.Shared.Protocols.GuildInfo guildList = new()
+            CommanderCS.Library.Protocols.GuildInfo guildList = new()
             {
                 resource = null,
                 guildInfo = guildInfo,

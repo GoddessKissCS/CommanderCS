@@ -1,7 +1,96 @@
+using Amazon.Runtime.Internal.Transform;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+using Newtonsoft.Json;
+using System.Runtime.InteropServices;
+
 namespace CommanderCS.Packets.Handlers.Commander
 {
-    public class CompleteCommanderScenario
+    [Packet(Id = CommanderCS.Library.Enums.Method.CompleteCommanderScenario)]
+    public class CompleteCommanderScenario : BaseMethodHandler<CompleteCommanderScenarioRequest>
     {
+        public override object Handle(CompleteCommanderScenarioRequest @params)
+        {
+            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+
+            var resc = UserResources2Resource(User.Resources);
+
+
+            string cid = @params.cid.ToString();
+
+            string sid = @params.sid.ToString();
+
+            string sqid = @params.sqid.ToString();
+
+			var scenario = new CommanderScenario() { complete = new() { sqid }, receive = 0 };
+
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = new CompleteScenario()
+                {
+                    commander = User.CommanderData,
+                    costumeData = User.Inventory.costumeData,
+                    foodData = User.Inventory.foodData,
+                    medalData = User.Inventory.medalData,
+                    itemData = User.Inventory.itemData,
+                    partData = User.Inventory.partData,
+                    eventResourceData = User.Inventory.eventResourceData,
+                    reward = [],
+                    duelScoreData = [],
+                    resource = resc,
+                }
+            };
+
+
+
+            if (User.CommanderScenario != null)
+            {
+                if (!User.CommanderScenario.ContainsKey(cid))
+                {
+                    var commandescen = new Dictionary<string, CommanderScenario>
+                    {
+                        { sid, scenario }
+                    };
+
+                    User.CommanderScenario[cid] = commandescen;
+                }
+
+				if (User.CommanderScenario[cid].ContainsKey(sid))
+				{
+					return response;
+				}
+
+                User.CommanderScenario[cid][sid] = scenario;
+            }
+
+
+			DatabaseManager.GameProfile.UpdateCommanderScenario(SessionId, User.CommanderScenario);
+
+
+			//if (User.CommanderScenario[@params.cid + ""][@params.sid + ""].complete.Contains(@params.sqid + "")) {
+			//    return response;
+			//}
+
+
+
+            // Allows you to complete scenarios? and gives you shit if you complete x
+
+            return response;
+        }
+    }
+
+    public class CompleteCommanderScenarioRequest
+    {
+        [JsonProperty("cid")]
+        public int cid { get; set; }
+
+        [JsonProperty("sid")]
+        public int sid { get; set; }
+
+        [JsonProperty("sqid")]
+        public int sqid { get; set; }
     }
 }
 
