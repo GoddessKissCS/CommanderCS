@@ -1,7 +1,9 @@
-﻿using CommanderCS.Library.Enums;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Enums;
 using CommanderCS.Library.Packets;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.WorldMap
 {
@@ -10,7 +12,7 @@ namespace CommanderCS.Packets.Handlers.WorldMap
     {
         public override object Handle(WorldMapStageStartRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             WorldMapStageStartResponse wmssr = new();
 
@@ -19,9 +21,9 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 
             string worldMapId = @params.Mid.ToString();
 
-            var worldstagetbl = Regulation.worldMapStageDtbl.Find(x => x.id == worldMapId);
+            var worldstagetbl = RemoteObjectManager.instance.regulation.worldMapStageDtbl.Find(x => x.id == worldMapId);
 
-            //var worldReward = Regulation.rewardDtbl.Find(x => x.rewardIdx == 10101);
+            //var worldReward = RemoteObjectManager.instance.regulation.rewardDtbl.Find(x => x.rewardIdx == 10101);
 
             User.Resources.bullet -= worldstagetbl.bullet;
 

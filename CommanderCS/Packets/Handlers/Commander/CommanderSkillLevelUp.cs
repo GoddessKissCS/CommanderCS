@@ -1,8 +1,9 @@
-﻿using CommanderCS.Library.Enums;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
-using CommanderCS.Library.Regulation;
 using CommanderCS.Library.Regulation.DataRows;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Commander
@@ -12,7 +13,7 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CommanderSkillLevelUpRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             string cid = @params.CommanderId.ToString();
 
@@ -20,7 +21,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             for (var i = 1; i <= @params.Count;)
             {
-                SkillCostDataRow skillcostdtbl = Regulation.skillCostDtbl.Find(x => x.level == i);
+                SkillCostDataRow skillcostdtbl = RemoteObjectManager.instance.regulation.skillCostDtbl.Find(x => x.level == i);
 
                 if (skillcostdtbl is not null && @params.skillIndex < skillcostdtbl.typeCost.Count)
                 {

@@ -1,6 +1,7 @@
 using Amazon.Runtime.Internal.Transform;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 using System.Runtime.InteropServices;
 
@@ -11,7 +12,7 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CompleteCommanderScenarioRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             var resc = UserResources2Resource(User.Resources);
 

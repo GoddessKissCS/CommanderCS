@@ -29,7 +29,7 @@ namespace CommanderCS.Packets.Handlers.Replay
 			yield break;
 		}
 		this.localUser.playingChatRecord = null;
-		JsonSerializerSettings serializerSettings = Regulation.SerializerSettings;
+		JsonSerializerSettings serializerSettings = RemoteObjectManager.instance.regulation.SerializerSettings;
 		Record record = (Record)JsonConvert.DeserializeObject<JToken>(result.data.ToString());
 		BattleData battleData = BattleData.Get();
 		battleData.isReplayMode = true;

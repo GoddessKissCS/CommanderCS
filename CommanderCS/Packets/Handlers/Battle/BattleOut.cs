@@ -1,9 +1,11 @@
-﻿using CommanderCS.Library.Battle;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Battle;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.Library.Regulation;
 using CommanderCS.Library.Regulation.DataRows;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -14,7 +16,7 @@ namespace CommanderCS.Packets.Handlers.Battle
     {
         public override object Handle(BattleOutRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             ErrorPacket error = new()
             {
@@ -35,9 +37,9 @@ namespace CommanderCS.Packets.Handlers.Battle
             switch (@params.BattleType)
             {
                 case EBattleType.Plunder:
-                    simulatedBattle = Simulator.ReplayPlunderSimulation(Regulation, serializedJson, false);
+                    simulatedBattle = Simulator.ReplayPlunderSimulation(RemoteObjectManager.instance.regulation, serializedJson, false);
 
-                    worldstagetbl = Regulation.worldMapStageDtbl.Find(x => x.id == record.initState.stageID);
+                    worldstagetbl = RemoteObjectManager.instance.regulation.worldMapStageDtbl.Find(x => x.id == record.initState.stageID);
 
                     break;
             }
@@ -211,7 +213,7 @@ namespace CommanderCS.Packets.Handlers.Battle
 		{
 			if (isWin)
 			{
-				WorldMapStageDataRow worldMapStageDataRow = this.regulation.worldMapStageDtbl[battleData.stageId];
+				WorldMapStageDataRow worldMapStageDataRow = this.RemoteObjectManager.instance.regulation.worldMapStageDtbl[battleData.stageId];
 				battleResult2.plunderResult.SetBattleTime((float)UIManager.instance.battle.Simulator.frame.time / 1000f);
 				battleResult2.plunderResult.SetGetExp(worldMapStageDataRow.bullet);
 				battleResult2.plunderResult.SetRewardDataAndOpen(battleResult.rewardList);

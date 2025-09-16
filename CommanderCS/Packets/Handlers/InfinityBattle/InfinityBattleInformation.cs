@@ -18,10 +18,10 @@ namespace CommanderCS.Packets.Handlers.InfinityBattle
 			this.localUser.infinityStageList = new Dictionary<string, Dictionary<int, int>>();
 		}
 		this.localUser.infinityStageList.Clear();
-		int num = this.regulation.infinityFieldDtbl.length - 1;
+		int num = this.RemoteObjectManager.instance.regulation.infinityFieldDtbl.length - 1;
 		while (0 <= num)
 		{
-			InfinityFieldDataRow infinityFieldDataRow = this.regulation.infinityFieldDtbl[num];
+			InfinityFieldDataRow infinityFieldDataRow = this.RemoteObjectManager.instance.regulation.infinityFieldDtbl[num];
 			Dictionary<int, int> dictionary = new Dictionary<int, int>();
 			if (result.infinityData.fieldData.ContainsKey(infinityFieldDataRow.infinityFieldIdx))
 			{

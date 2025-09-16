@@ -17,7 +17,7 @@ namespace CommanderCS.Packets.Handlers.InfinityBattle
 		if (!string.IsNullOrEmpty(result))
 		{
 			string text = this._FindRequestProperty(request, "ifid");
-			InfinityFieldDataRow infinityFieldDataRow = this.regulation.infinityFieldDtbl[text];
+			InfinityFieldDataRow infinityFieldDataRow = this.RemoteObjectManager.instance.regulation.infinityFieldDtbl[text];
 			this.localUser.currScenario.scenarioId = infinityFieldDataRow.scenarioIdx;
 			this.localUser.currScenario.commanderId = 0;
 			Loading.Load(Loading.Scenario);

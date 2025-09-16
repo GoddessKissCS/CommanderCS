@@ -1,5 +1,6 @@
 using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Inventory
@@ -9,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.Inventory
     {
         public override object Handle(ExchangeMedalRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             string cid = @params.cid.ToString();
             int medalExchangeAmount = @params.amnt;

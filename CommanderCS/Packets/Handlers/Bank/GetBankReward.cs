@@ -1,4 +1,5 @@
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.Bank
 {
@@ -7,7 +8,7 @@ namespace CommanderCS.Packets.Handlers.Bank
     {
         public override object Handle(GetBankRewardRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             GetBankRewardResponse getBankRewardResponse = new()
             {

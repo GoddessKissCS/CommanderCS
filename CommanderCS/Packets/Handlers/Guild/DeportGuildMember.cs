@@ -1,6 +1,7 @@
 using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -10,7 +11,8 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(DeportGuildMemberRequest @params)
         {
-            Guild = DatabaseManager.Guild.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
+            GuildScheme Guild = GetUserGuild();
 
             var target = Guild.MemberData.FirstOrDefault(member => member.Uno == @params.tuno);
 

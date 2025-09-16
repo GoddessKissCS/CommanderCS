@@ -1,5 +1,7 @@
+using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Commander
@@ -9,7 +11,7 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(ChangeCommanderCostumeRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             string cid = @params.commanderId.ToString();
 
@@ -17,8 +19,8 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
 
-            var costumeRow = Regulation.commanderCostumeDtbl.Find(x => x.ctid == @params.costumeId);
-            var thumbnailRow = Regulation.commanderCostumeDtbl.Find(x => x.ctid == User.Resources.thumbnailId);
+            var costumeRow = RemoteObjectManager.instance.regulation.commanderCostumeDtbl.Find(x => x.ctid == @params.costumeId);
+            var thumbnailRow = RemoteObjectManager.instance.regulation.commanderCostumeDtbl.Find(x => x.ctid == User.Resources.thumbnailId);
 
             if (costumeRow.cid == thumbnailRow.cid)
             {
@@ -61,7 +63,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 	{
 		string text = this._FindRequestProperty(request, "cid");
 		string text2 = this._FindRequestProperty(request, "cos");
-		if (this.regulation.FindCostumeData(int.Parse(this.localUser.thumbnailId)).cid = int.Parse(text))
+		if (this.RemoteObjectManager.instance.regulation.FindCostumeData(int.Parse(this.localUser.thumbnailId)).cid = int.Parse(text))
 		{
 			this.localUser.thumbnailId = text2;
 		}

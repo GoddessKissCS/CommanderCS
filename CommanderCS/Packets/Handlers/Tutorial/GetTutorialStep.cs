@@ -1,6 +1,7 @@
 ﻿using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Tutorial
@@ -10,7 +11,7 @@ namespace CommanderCS.Packets.Handlers.Tutorial
     {
         public override object Handle(GetTutorialStepRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             TutorialStep tutorialStep = new()
             {

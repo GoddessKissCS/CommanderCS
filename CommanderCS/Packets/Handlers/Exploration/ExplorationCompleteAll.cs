@@ -20,7 +20,7 @@ namespace CommanderCS.Packets.Handlers.Exploration
 			int i;
 			for (i = 0; i < idxs.Count; i++)
 			{
-				ExplorationDataRow explorationDataRow = this.regulation.explorationDtbl[idxs[i].ToString()];
+				ExplorationDataRow explorationDataRow = this.RemoteObjectManager.instance.regulation.explorationDtbl[idxs[i].ToString()];
 				string worldMap = explorationDataRow.worldMap;
 				int num = 0;
 				if (result.explorationExp is not null)
@@ -31,7 +31,7 @@ namespace CommanderCS.Packets.Handlers.Exploration
 						num = result.explorationExp[num2].exp;
 					}
 				}
-				int num3 = this.regulation.commanderLevelDtbl[(this.localUser.level + 1).ToString()].aexp - 1;
+				int num3 = this.RemoteObjectManager.instance.regulation.commanderLevelDtbl[(this.localUser.level + 1).ToString()].aexp - 1;
 				RoExploration roExploration = this.localUser.explorationDtbl[worldMap];
 				for (int j = 0; j < roExploration.commanders.Count; j++)
 				{

@@ -15,12 +15,12 @@ namespace CommanderCS.Packets.Handlers.Exploration
 	private IEnumerator ExplorationCompleteResult(JsonRpcClient.Request request, Protocols.RewardInfo result)
 	{
 		string text = this._FindRequestProperty(request, "idx");
-		ExplorationDataRow explorationDataRow = this.regulation.explorationDtbl[text];
+		ExplorationDataRow explorationDataRow = this.RemoteObjectManager.instance.regulation.explorationDtbl[text];
 		string worldMap = explorationDataRow.worldMap;
 		UIPopup.Create<UIGetItem>("GetItem").Set(result.reward, string.Empty);
 		SoundManager.PlaySFX("SE_ItemGet_001", false, 0f, float.MaxValue, float.MaxValue, default(Vector3), null, SoundDuckingSetting.DoNotDuck, 0f, 1f);
 		this.localUser.RefreshRewardFromNetwork(result);
-		int num = this.regulation.commanderLevelDtbl[(this.localUser.level + 1).ToString()].aexp - 1;
+		int num = this.RemoteObjectManager.instance.regulation.commanderLevelDtbl[(this.localUser.level + 1).ToString()].aexp - 1;
 		RoExploration roExploration = this.localUser.explorationDtbl[worldMap];
 		for (int i = 0; i < roExploration.commanders.Count; i++)
 		{

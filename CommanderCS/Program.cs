@@ -50,6 +50,18 @@ namespace CommanderCS
                 options.WriteIndented = true;
             });
 
+
+            builder.Services.AddDistributedMemoryCache(); // Required for session
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(1);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+                options.Cookie.Name = "GameCMS.Session";
+            });
+
+
+
             builder.Services.AddRazorPages();
 
             //builder.Services.AddHttpClient();
@@ -163,6 +175,10 @@ namespace CommanderCS
             app.UseRouting();
 
             app.MapRazorPages(); // For Razor Pages
+
+            app.MapGet("/", () => Results.Redirect("/Index"));
+
+            app.UseSession();
 
             app.Run();
         }

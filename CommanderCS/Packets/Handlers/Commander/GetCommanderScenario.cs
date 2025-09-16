@@ -1,5 +1,6 @@
 ﻿using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.Commander
 {
@@ -8,7 +9,7 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(GetCommanderScenarioRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             ResponsePacket response = new()
             {

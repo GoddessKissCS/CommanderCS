@@ -1,6 +1,8 @@
+using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Gacha
@@ -10,7 +12,7 @@ namespace CommanderCS.Packets.Handlers.Gacha
     {
         public override object Handle(GachaOpenBoxRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             List<GachaOpenBoxResponse.Reward> rewards = [];
 
@@ -36,7 +38,7 @@ namespace CommanderCS.Packets.Handlers.Gacha
 
                 case 2:
                     rewards.Add(new() { count = 1, id = "2", type = ERewardType.Commander });
-                    User.CommanderData = Regulation.AddSpecificCommander(User.CommanderData, 2);
+                    User.CommanderData = RemoteObjectManager.instance.regulation.AddSpecificCommander(User.CommanderData, 2);
                     DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
                     break;
             }
@@ -107,7 +109,7 @@ namespace CommanderCS.Packets.Handlers.Gacha
 					return;
 				}
 				EGachaAnimationType egachaAnimationType = EGachaAnimationType.Normal;
-				GachaRewardDataRow gachaRewardDataRow = this.regulation.gachaRewardDtbl.Find((GachaRewardDataRow row) => row.gachaType = gachaId && row.rewardType = data.type && row.rewardId = data.id);
+				GachaRewardDataRow gachaRewardDataRow = this.RemoteObjectManager.instance.regulation.gachaRewardDtbl.Find((GachaRewardDataRow row) => row.gachaType = gachaId && row.rewardType = data.type && row.rewardId = data.id);
 				int num = 0;
 				bool flag = false;
 				if (data.type = ERewardType.Medal || data.type = ERewardType.Commander)

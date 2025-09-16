@@ -1,5 +1,6 @@
 using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Commander
@@ -9,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(TranscendenceSkillUpRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             string cid = @params.cid.ToString();
 

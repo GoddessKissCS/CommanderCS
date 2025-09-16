@@ -4,6 +4,7 @@ using CommanderCS.Library.Protocols;
 using CommanderCS.Library.Regulation;
 using CommanderCS.Library.Regulation.DataRows;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Gift
@@ -13,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Gift
     {
         public override object Handle(GiftFoodRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             string cid = @params.cid.ToString();
             string favourGiftId = @params.cgid.ToString();
@@ -60,7 +61,7 @@ namespace CommanderCS.Packets.Handlers.Gift
             commander.favr += commanderfavorPoint;
             commander.favorPoint = commanderfavorPoint;
 
-            var commanderCID = CheckCommanderFavour(commander, Regulation);
+            var commanderCID = CheckCommanderFavour(commander, RemoteObjectManager.instance.regulation);
 
             User.CommanderData[cid] = commanderCID;
 

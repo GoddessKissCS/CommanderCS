@@ -85,7 +85,7 @@ namespace CommanderCS.Packets.Handlers.Cooperate
 		}
 		else if (code = 71605)
 		{
-			int num = int.Parse(this.regulation.defineDtbl["COOPERATE_BATTLE_OPEN_GUILD_LEVEL"].value);
+			int num = int.Parse(this.RemoteObjectManager.instance.regulation.defineDtbl["COOPERATE_BATTLE_OPEN_GUILD_LEVEL"].value);
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Format("110089", new object[] { num }));
 		}
 		yield break;

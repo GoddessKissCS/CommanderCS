@@ -300,5 +300,13 @@ namespace CommanderCS.MongoDB.Handlers
 
             return updatedAccount;
         }
+
+
+        public AccountScheme? LoginAdminIntoCMS(string name, string password)
+        {
+            var password_hash = Crypto.ComputeSha256Hash(password);
+            var account = DatabaseCollection.AsQueryable().Where(d => d.Name == name && d.Password_Hash == password_hash && d.Clearance >= Clearance.Administrator).FirstOrDefault();
+            return account;
+        }
     }
 }

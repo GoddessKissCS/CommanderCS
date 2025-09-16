@@ -1,6 +1,7 @@
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.Mail
 {
@@ -9,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.Mail
     {
         public override object Handle(GetMailListRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             MailInfo mailInfo = new() { };
 
