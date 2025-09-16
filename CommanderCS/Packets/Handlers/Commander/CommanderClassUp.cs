@@ -1,8 +1,10 @@
-﻿using CommanderCS.Library;
+﻿using Amazon.Runtime.Internal.Transform;
+using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.Library.Regulation.DataRows;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Commander
@@ -13,12 +15,29 @@ namespace CommanderCS.Packets.Handlers.Commander
         public override object Handle(CommanderClassUpRequest @params)
         {
             var User = GetUserGameProfile();
+            var Account = GetUserAccount();
 
             string commanderId = @params.commanderId.ToString();
 
             User.CommanderData.TryGetValue(commanderId, out UserInformationResponse.Commander commander);
 
             CommanderClassUpDataRow commanderClassUpInfo = RemoteObjectManager.instance.regulation.commanderClassUpDtbl.Find(x => x.ROLE == commander.role && x.GRADE == commander.__cls);
+
+            if (User.Inventory.partData.Count > 0 || Account.Clearance >= Clearance.Moderator )
+            {
+                User.Inventory.partData.Add("" + commanderClassUpInfo.CPU_ID, commanderClassUpInfo.CPU_AMOUNT);
+                User.Inventory.partData.Add("" + commanderClassUpInfo.ATK_ID, commanderClassUpInfo.ATK_AMOUNT);
+                User.Inventory.partData.Add("" + commanderClassUpInfo.DEF_ID, commanderClassUpInfo.DEF_AMOUNT);
+                User.Inventory.partData.Add("" + commanderClassUpInfo.SUP_ID, commanderClassUpInfo.SUP_AMOUNT);
+                if(commanderClassUpInfo.MOTORBLOCK_ID != "")
+                {
+                    User.Inventory.partData.Add("" + commanderClassUpInfo.MOTORBLOCK_ID, commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT);
+                }
+                if (commanderClassUpInfo.PLATE_ID != "")
+                {
+                    User.Inventory.partData.Add("" + commanderClassUpInfo.PLATE_ID, commanderClassUpInfo.PLATE_AMOUNT);
+                }
+            }
 
             switch (commanderClassUpInfo.GRADE)
             {
