@@ -19,6 +19,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             User.CommanderData[cid].transcendence[transcendenceSlot] += 1;
             User.CommanderData[cid].medl -= 10;
 
+
             User.Inventory.medalData[cid] -= 10;
 
             DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.Inventory.medalData);

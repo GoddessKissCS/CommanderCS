@@ -32,7 +32,7 @@ namespace CommanderCS.Packets.Handlers.Battle
             Simulator simulatedBattle = null;
             int commanderXP = 0;
 
-            WorldMapStageDataRow worldstagetbl = null;
+			WorldMapStageDataRow worldstagetbl = null;
 
             switch (@params.BattleType)
             {

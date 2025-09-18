@@ -45,7 +45,9 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             }
 
             //TODO: find out how to add exp
-            wmssr.reward = test;
+            // this is just a start
+           wmssr.reward = test;
+           
 
             wmssr.rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 

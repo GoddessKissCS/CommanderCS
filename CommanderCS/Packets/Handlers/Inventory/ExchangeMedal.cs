@@ -17,12 +17,34 @@ namespace CommanderCS.Packets.Handlers.Inventory
 
             // need to implement a check that fails if user doesnt have enough , aswell in the expshare gift things etc
 
-            User.CommanderData[cid].medl += medalExchangeAmount;
-            User.Inventory.medalData[cid] += medalExchangeAmount;
+            // IG this helps prevent exploits
+
+            if (User.Inventory.itemData.ContainsKey("202") == false || User.Inventory.itemData["202"] < medalExchangeAmount)
+            {
+                return new ErrorPacket
+                {
+                    Id = BasePacket.Id,
+                    Error = new ErrorMessageId
+                    {
+                        code = ErrorCode.NotEnoughResources
+                    }
+                };
+            }
+
+            //User.CommanderData[cid].medl += medalExchangeAmount;
+            if (!User.Inventory.medalData.ContainsKey(cid))
+            {
+                User.Inventory.medalData.TryAdd(cid, medalExchangeAmount);
+            } else
+            {
+                User.Inventory.medalData[cid] += medalExchangeAmount;
+                User.Inventory.itemData[cid] += medalExchangeAmount;
+            }
 
             User.Inventory.itemData["202"] -= medalExchangeAmount;
 
-            DatabaseManager.GameProfile.UpdateProfile(SessionId, User);
+            DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.Inventory.medalData);
+            DatabaseManager.GameProfile.UpdateItemData(SessionId, User.Inventory.itemData);
 
             var userInformationResponse = GetUserInformationResponse(User);
 

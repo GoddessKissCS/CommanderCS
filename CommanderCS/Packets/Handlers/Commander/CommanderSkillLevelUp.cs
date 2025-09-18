@@ -16,59 +16,47 @@ namespace CommanderCS.Packets.Handlers.Commander
             GameProfileScheme User = GetUserGameProfile();
 
             string cid = @params.CommanderId.ToString();
+            var skillCostDtbl = RemoteObjectManager.instance.regulation.skillCostDtbl;
+            int skillIndex = @params.skillIndex;  // 1-indexed (1-4)
+            int count = @params.Count;
+
+            // Get current skill level based on skill index
+            int currentSkillLevel = skillIndex switch
+            {
+                1 => int.Parse(User.CommanderData[cid].__skv1),
+                2 => int.Parse(User.CommanderData[cid].__skv2),
+                3 => int.Parse(User.CommanderData[cid].__skv3),
+                4 => int.Parse(User.CommanderData[cid].__skv4),
+                _ => throw new ArgumentException("Invalid skill index")
+            };
 
             int totalCost = 0;
+            int targetLevel = currentSkillLevel + count;
 
-            for (var i = 1; i <= @params.Count;)
+            for (int level = currentSkillLevel; level < targetLevel;)
             {
-                SkillCostDataRow skillcostdtbl = RemoteObjectManager.instance.regulation.skillCostDtbl.Find(x => x.level == i);
+                totalCost += skillCostDtbl[level - 1].typeCost[skillIndex - 1];
 
-                if (skillcostdtbl is not null && @params.skillIndex < skillcostdtbl.typeCost.Count)
-                {
-                    var cost = skillcostdtbl.typeCost[@params.skillIndex - 1];
-                    totalCost += cost;
-                }
-
-                i++;
+                level++;
             }
+
 
             switch (@params.skillIndex)
             {
                 case 1:
-
-                    int skillLevel = int.Parse(User.CommanderData[cid].__skv1) + @params.Count;
-
-                    string skillLevelStringed = skillLevel.ToString();
-
-                    User.CommanderData[cid].__skv1 = skillLevelStringed;
+                    User.CommanderData[cid].__skv1 = targetLevel.ToString();
                     break;
-
                 case 2:
-
-                    int skillLevel2 = int.Parse(User.CommanderData[cid].__skv2) + @params.Count;
-
-                    string skillLevelStringed2 = skillLevel2.ToString();
-
-                    User.CommanderData[cid].__skv2 = skillLevelStringed2;
+                    User.CommanderData[cid].__skv1 = targetLevel.ToString();
                     break;
-
                 case 3:
-
-                    int skillLevel3 = int.Parse(User.CommanderData[cid].__skv3) + @params.Count;
-
-                    string skillLevelStringed3 = skillLevel3.ToString();
-
-                    User.CommanderData[cid].__skv3 = skillLevelStringed3;
+                    User.CommanderData[cid].__skv1 = targetLevel.ToString();
                     break;
-
                 case 4:
-
-                    int skillLevel4 = int.Parse(User.CommanderData[cid].__skv4) + @params.Count;
-
-                    string skillLevelStringed4 = skillLevel4.ToString();
-
-                    User.CommanderData[cid].__skv4 = skillLevelStringed4;
+                    User.CommanderData[cid].__skv1 = targetLevel.ToString();
                     break;
+                default:
+                    throw new ArgumentException("Invalid skill index");
             }
 
             User.Resources.gold -= totalCost;
