@@ -1,3 +1,4 @@
+using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using static CommanderCS.Packets.Handlers.Cooperate.CooperateBattleInfo;
 
@@ -8,31 +9,37 @@ namespace CommanderCS.Packets.Handlers.Cooperate
     {
         public override object Handle(CooperateBattleInfoRequest @params)
         {
-#warning editdata
-
-            ResponsePacket response = new ResponsePacket()
-            {
-                Id = BasePacket.Id,
-            };
 
             CommanderCS.Library.Protocols.CooperateBattleData battleData = new()
             {
                 coop = new()
                 {
-                    stage = 1,
-                    step = 1,
-                    dmg = 1,
-                    remain = 5,
+					//stage
+                    stage = 5,
+					//step of the stage
+                    step = 3,
+                    // Dealt BOSS DMG
+                    dmg = 2400,
+                    // how long the stage will remain active (in milliseconds)
+                    remain = (int)TimeManager.CurrentEpochMilliseconds + 60,
+                    // number of tickets the player has to join a battle
                     ticket = 1,
                 },
                 recv = new()
                 {
-                    stage = 1,
-                    step = 1
-                }
+                    // obtained rewards of the stage and step
+                    stage = 5,
+                    step = 3,
+                },
+				
+				
             };
 
-            response.Result = battleData;
+            ResponsePacket response = new ResponsePacket()
+            {
+                Id = BasePacket.Id,
+                Result = battleData
+            };
 
             return response;
         }
@@ -85,7 +92,7 @@ namespace CommanderCS.Packets.Handlers.Cooperate
 		}
 		else if (code = 71605)
 		{
-			int num = int.Parse(this.regulation.defineDtbl["COOPERATE_BATTLE_OPEN_GUILD_LEVEL"].value);
+			int num = int.Parse(this.RemoteObjectManager.instance.regulation.defineDtbl["COOPERATE_BATTLE_OPEN_GUILD_LEVEL"].value);
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Format("110089", new object[] { num }));
 		}
 		yield break;
