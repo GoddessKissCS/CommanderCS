@@ -47,10 +47,12 @@ namespace CommanderCS.Packets.Handlers.Battle
 				case EBattleType.Raid:
                     simulatedBattle = Simulator.Simulation(RemoteObjectManager.instance.regulation, serializedJson, false);
                     break;
-            }
 
-            if (simulatedBattle is not null)				
-            {
+
+                // this is just for debugging purposes
+                default:
+                    simulatedBattle = Simulator.Simulation(RemoteObjectManager.instance.regulation, serializedJson, false);
+                    break;
             }
 
 #if DEBUG
@@ -85,42 +87,42 @@ namespace CommanderCS.Packets.Handlers.Battle
 
 
 
-            if (result.winSide == simulatedBattle.result.winSide && result.winSide != 1 && simulatedBattle.result.winSide != 1)
-            {
-                double maxDifference = simulatedBattle.result.totalAttackDamage * 0.05;
+            //if (result.winSide == simulatedBattle.result.winSide && result.winSide != 1 && simulatedBattle.result.winSide != 1)
+            //{
+            //    double maxDifference = simulatedBattle.result.totalAttackDamage * 0.05;
 
-                double lowerBound = simulatedBattle.result.totalAttackDamage - maxDifference;
-                double upperBound = simulatedBattle.result.totalAttackDamage + maxDifference;
+            //    double lowerBound = simulatedBattle.result.totalAttackDamage - maxDifference;
+            //    double upperBound = simulatedBattle.result.totalAttackDamage + maxDifference;
 
-                if (result.totalAttackDamage >= lowerBound && result.totalAttackDamage <= upperBound)
-                {
-                    bool isRecordGoldHigher = result.gold >= simulatedBattle.result.gold;
+            //    if (result.totalAttackDamage >= lowerBound && result.totalAttackDamage <= upperBound)
+            //    {
+            //        bool isRecordGoldHigher = result.gold >= simulatedBattle.result.gold;
 
-                    if (@params.BattleType == EBattleType.Plunder)
-                    {
-                        User.LastStage = int.Parse(worldstagetbl.id);
+            //        if (@params.BattleType == EBattleType.Plunder)
+            //        {
+            //            User.LastStage = int.Parse(worldstagetbl.id);
 
-                        User.BattleData.WorldMapStages.TryGetValue(worldstagetbl.worldMapId, out var map);
+            //            User.BattleData.WorldMapStages.TryGetValue(worldstagetbl.worldMapId, out var map);
 
-                        int index = map.FindIndex(x => x.stageId == worldstagetbl.id);
+            //            int index = map.FindIndex(x => x.stageId == worldstagetbl.id);
 
-                        User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].clearCount++;
+            //            User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].clearCount++;
 
-                        int star = User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].star;
+            //            int star = User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].star;
 
-                        if (star < 3 && result.clearRank > star)
-                        {
-                            User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].star = result.clearRank;
-                        }
+            //            if (star < 3 && result.clearRank > star)
+            //            {
+            //                User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].star = result.clearRank;
+            //            }
 
-                        DatabaseManager.GameProfile.UpdateLastStageAndStageInfo(SessionId, User);
-                    }
+            //            DatabaseManager.GameProfile.UpdateLastStageAndStageInfo(SessionId, User);
+            //        }
 
-                    if (!isRecordGoldHigher)
-                    {
-                    }
-                }
-            }
+            //        if (!isRecordGoldHigher)
+            //        {
+            //        }
+            //    }
+            //}
 
 		X:
 			var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
@@ -142,12 +144,11 @@ namespace CommanderCS.Packets.Handlers.Battle
 				rewardList = [],
 				user = new()
 				{
-					curScore = (int)simulatedBattle.result.totalAttackDamage,
-					rank = 1,
-					rankPercent = 0.01f,
-					prevScore = 1,
-					getScore = (int)simulatedBattle.result.totalAttackDamage,
-
+					//curScore = (int)simulatedBattle.result.totalAttackDamage,
+					//rank = 1,
+					//rankPercent = 0.01f,
+					//prevScore = 1,
+					//getScore = (int)simulatedBattle.result.totalAttackDamage,
 				},
 				__resource = rsoc,
 			};
