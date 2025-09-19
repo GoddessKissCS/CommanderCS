@@ -17,29 +17,28 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             string cid = @params.CommanderId.ToString();
             var skillCostDtbl = RemoteObjectManager.instance.regulation.skillCostDtbl;
-            int skillIndex = @params.skillIndex;  // 1-indexed (1-4)
+            int skillIndex = @params.skillIndex;
             int count = @params.Count;
 
-            // Get current skill level based on skill index
             int currentSkillLevel = skillIndex switch
             {
                 1 => int.Parse(User.CommanderData[cid].__skv1),
                 2 => int.Parse(User.CommanderData[cid].__skv2),
                 3 => int.Parse(User.CommanderData[cid].__skv3),
                 4 => int.Parse(User.CommanderData[cid].__skv4),
-                _ => throw new ArgumentException("Invalid skill index")
             };
 
-            int totalCost = 0;
+            int totalCost = 0, skillCostDtblIndex = 0, typeCostSkillIndex = skillIndex - 1;
             int targetLevel = currentSkillLevel + count;
 
             for (int level = currentSkillLevel; level < targetLevel;)
             {
-                totalCost += skillCostDtbl[level - 1].typeCost[skillIndex - 1];
+                skillCostDtblIndex = level - 1;
+
+                totalCost += skillCostDtbl[skillCostDtblIndex].typeCost[typeCostSkillIndex];
 
                 level++;
             }
-
 
             switch (@params.skillIndex)
             {
@@ -62,7 +61,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             User.Resources.gold -= totalCost;
 
             DatabaseManager.GameProfile.UpdateGold(SessionId, totalCost, false);
-            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
 
             UserInformationResponse user = GetUserInformationResponse(User);
 

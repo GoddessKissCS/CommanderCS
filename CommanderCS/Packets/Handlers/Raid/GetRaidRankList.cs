@@ -1,5 +1,7 @@
+using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Raid
@@ -15,7 +17,8 @@ namespace CommanderCS.Packets.Handlers.Raid
             {
                 info = new()
                 {
-                    endTime = 86400
+                    endTime = 60,
+                    
                 },
                 user = new()
                 {
@@ -46,16 +49,18 @@ namespace CommanderCS.Packets.Handlers.Raid
 
             // Monday - Friday
 
+            raidRankingList.rankList = DatabaseManager.RaidRankList.GetTopRanks();
+
             Dictionary<string, int> bossData3 = new()
             {
                 { "3", 172800 },
             };
 
             // Tuesday - Thursday - Saturday
-
+           
             Dictionary<string, int> bossData = new()
             {
-                { "1", 15 },
+                { "1", 0 },
             };
 
             // Wednesday - Sunday
@@ -66,8 +71,8 @@ namespace CommanderCS.Packets.Handlers.Raid
             };
 
             raidRankingList.bossData.Add(bossData);
-            //pvPRankingList.bossData.Add(bossData2);
-            //pvPRankingList.bossData.Add(bossData3);
+            raidRankingList.bossData.Add(bossData2);
+            raidRankingList.bossData.Add(bossData3);
 
             ResponsePacket response = new()
             {

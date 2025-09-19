@@ -17,9 +17,9 @@ namespace CommanderCS.Packets.Handlers.Commander
             var User = GetUserGameProfile();
             var Account = GetUserAccount();
 
-            string commanderId = @params.commanderId.ToString();
+            string cid = @params.commanderId.ToString();
 
-            User.CommanderData.TryGetValue(commanderId, out UserInformationResponse.Commander commander);
+            User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander);
 
             CommanderClassUpDataRow commanderClassUpInfo = RemoteObjectManager.instance.regulation.commanderClassUpDtbl.Find(x => x.ROLE == commander.role && x.GRADE == commander.__cls);
 
@@ -39,6 +39,12 @@ namespace CommanderCS.Packets.Handlers.Commander
                 }
             }
 
+            //i just assume if we go through this method we have the parts and gold needed
+            //to upgrade and dont spit out errors
+
+            int grade = int.Parse(commanderClassUpInfo.GRADE) + 1;
+            string gradeStr = grade.ToString();
+
             switch (commanderClassUpInfo.GRADE)
             {
                 case "1":
@@ -51,9 +57,7 @@ namespace CommanderCS.Packets.Handlers.Commander
                     User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    int grade = int.Parse(commanderClassUpInfo.GRADE) + 1;
-                    string gradeStr = grade.ToString();
-                    User.CommanderData[commanderId].__cls = gradeStr;
+                    User.CommanderData[cid].__cls = gradeStr;
                     break;
 
                 case "3":
@@ -68,9 +72,7 @@ namespace CommanderCS.Packets.Handlers.Commander
                     User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    int grade1 = int.Parse(commanderClassUpInfo.GRADE) + 1;
-                    string gradeStr1 = grade1.ToString();
-                    User.CommanderData[commanderId].__cls = gradeStr1;
+                    User.CommanderData[cid].__cls = gradeStr;
                     break;
 
                 case "7":
@@ -87,9 +89,7 @@ namespace CommanderCS.Packets.Handlers.Commander
                     User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.PLATE_ID] -= commanderClassUpInfo.PLATE_AMOUNT;
-                    int grade2 = int.Parse(commanderClassUpInfo.GRADE) + 1;
-                    string gradeStr2 = grade2.ToString();
-                    User.CommanderData[commanderId].__cls = gradeStr2;
+                    User.CommanderData[cid].__cls = gradeStr;
                     break;
 
             }
@@ -98,7 +98,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             DatabaseManager.GameProfile.UpdatePartData(SessionId, User.Inventory.partData);
             DatabaseManager.GameProfile.UpdateGold(SessionId, commanderClassUpInfo.UPGRADE_COST, false);
-            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
 
             var userInformation = GetUserInformationResponse(User);
 

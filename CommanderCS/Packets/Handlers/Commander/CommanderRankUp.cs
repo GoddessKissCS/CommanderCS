@@ -23,7 +23,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             {
                 int commanderRank = int.Parse(commander.__rank);
 
-                CommanderRankDataRow commanderRankData = RemoteObjectManager.instance.regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == commanderRank);
+                CommanderRankDataRow commanderRankData = RemoteObjectManager.instance.regulation.commanderRankDtbl[commanderRank - 1];
 
                 User.Inventory.medalData.TryGetValue(cid, out var commanderMedals);
 
@@ -38,18 +38,26 @@ namespace CommanderCS.Packets.Handlers.Commander
                     return error;
                 }
 
+                // 0 1-1
+                // 1 2-1
+                // 2 3-1
+                // 3 4-1
+                // 4 5-1
+                // 5 6-1
+
+
                 int upgradedRank = Convert.ToInt32(commander.__rank) + 1;
 
                 commander.__rank = upgradedRank.ToString();
                 commander.state = "N";
 
-                commanderRankData = RemoteObjectManager.instance.regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == upgradedRank);
+                commanderRankData = RemoteObjectManager.instance.regulation.commanderRankDtbl[commanderRank];
 
                 User.Inventory.medalData[cid] = commanderMedals;
                 User.CommanderData[cid] = commander;
 
                 DatabaseManager.GameProfile.UpdateGold(SessionId, commanderRankData.gold, false);
-                DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+                DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
                 DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.Inventory.medalData);
             }
             else

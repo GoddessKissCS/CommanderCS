@@ -16,11 +16,8 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             var resc = UserResources2Resource(User.Resources);
 
-
             string cid = @params.cid.ToString();
-
             string sid = @params.sid.ToString();
-
             string sqid = @params.sqid.ToString();
 
 			var scenario = new CommanderScenario() { complete = new() { sqid }, receive = 0 };

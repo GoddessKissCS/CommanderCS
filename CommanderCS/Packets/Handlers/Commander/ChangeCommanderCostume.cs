@@ -17,7 +17,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             User.CommanderData[cid].currentCostume = @params.costumeId;
 
-            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
 
             var costumeRow = RemoteObjectManager.instance.regulation.commanderCostumeDtbl.Find(x => x.ctid == @params.costumeId);
             var thumbnailRow = RemoteObjectManager.instance.regulation.commanderCostumeDtbl.Find(x => x.ctid == User.Resources.thumbnailId);
@@ -26,7 +26,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             {
                 DatabaseManager.GameProfile.ChangeThumbnailId(SessionId, @params.costumeId);
 
-                if (User.GuildId is not null)
+                if (User.GuildId != null)
                 {
                     DatabaseManager.Guild.UpdateSpecificMemberThumbnail(User.GuildId, User.Uno, @params.costumeId);
                 }

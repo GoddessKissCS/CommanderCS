@@ -1,6 +1,38 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+
 namespace CommanderCS.Packets.Handlers.Gacha
 {
-    public class GachaRatingInformationType
+	[Packet(Id = Library.Enums.Method.GachaRatingInformationType)]
+	public class GachaRatingInformationType : BaseMethodHandler<GachaRatingInformationTypeRequest>
+    {
+        public override object Handle(GachaRatingInformationTypeRequest @params)
+        {
+
+			Dictionary<ERewardType, GachaRatingDataTypeA> gameRatingDataA = new()
+			{
+
+			};
+
+            Dictionary<ERewardType, GachaRatingDataTypeB> gameRatingDataB = new()
+            {
+
+            };
+
+			gameRatingDataA.Add(ERewardType.Costume, new() { rating = 1 });
+
+			ResponsePacket response = new()
+			{
+				Id = BasePacket.Id,
+				Result = null
+			};
+
+			return response;
+
+        }
+    }
+
+    public class GachaRatingInformationTypeRequest
     {
     }
 }

@@ -8,6 +8,7 @@ using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Text;
 
 namespace CommanderCS.Packets.Handlers.Battle
 {
@@ -42,9 +43,13 @@ namespace CommanderCS.Packets.Handlers.Battle
                     worldstagetbl = RemoteObjectManager.instance.regulation.worldMapStageDtbl.Find(x => x.id == record.initState.stageID);
 
                     break;
+
+				case EBattleType.Raid:
+                    simulatedBattle = Simulator.Simulation(RemoteObjectManager.instance.regulation, serializedJson, false);
+                    break;
             }
 
-            if (simulatedBattle is not null)
+            if (simulatedBattle is not null)				
             {
             }
 
@@ -57,10 +62,23 @@ namespace CommanderCS.Packets.Handlers.Battle
 
             File.WriteAllText("Record.json", record1);
             File.WriteAllText("Result.json", result1);
-            File.WriteAllText("simulatedRecord.json", simRec);
-            File.WriteAllText("simulatedResult.json", simRes);
+            //File.WriteAllText("simulatedRecord.json", simRec);
+            //File.WriteAllText("simulatedResult.json", simRes);
 
 #endif
+
+			if(@params.BattleType == EBattleType.Raid)
+			{
+                string client_replay = Convert.ToBase64String(Encoding.UTF8.GetBytes(record1));
+
+                string server_replay = Convert.ToBase64String(Encoding.UTF8.GetBytes(simRec));
+
+                ReplayScheme replay = DatabaseManager.ReplayList.Insert(User.Uno, User.MemberId, client_replay, server_replay, @params.BattleType);
+
+				DatabaseManager.RaidRankList.Insert(User, (int)simulatedBattle.result.totalAttackDamage, simulatedBattle.record.length);
+
+                goto X;
+            }
 
             if (result.winSide == simulatedBattle.result.winSide && result.winSide != 1 && simulatedBattle.result.winSide != 1)
             {
@@ -99,26 +117,27 @@ namespace CommanderCS.Packets.Handlers.Battle
                 }
             }
 
+			X:
             var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
-            UserInformationResponse.BattleResult battleResult = new()
-            {
-                save = false,
-                VipShopOpen = 0,
-                VipShopResetTime = 0,
-                commanderData = User.CommanderData,
-                commanderFavor = [],
-                eventResourceData = User.Inventory.eventResourceData,
-                foodData = User.Inventory.foodData,
-                groupItemData = User.Inventory.groupItemData,
-                infinityData = new(),
-                itemData = User.Inventory.itemData,
-                medalData = User.Inventory.medalData,
-                partData = User.Inventory.partData,
-                rewardList = [],
-                user = new(),
-                __resource = rsoc,
-            };
+			UserInformationResponse.BattleResult battleResult = new()
+			{
+				save = false,
+				VipShopOpen = 0,
+				VipShopResetTime = 0,
+				commanderData = User.CommanderData,
+				commanderFavor = [],
+				eventResourceData = User.Inventory.eventResourceData,
+				foodData = User.Inventory.foodData,
+				groupItemData = User.Inventory.groupItemData,
+				infinityData = new(),
+				itemData = User.Inventory.itemData,
+				medalData = User.Inventory.medalData,
+				partData = User.Inventory.partData,
+				rewardList = [],
+				user = new(),
+				__resource = rsoc,
+			};
 
             var res = JObject.FromObject(battleResult);
 

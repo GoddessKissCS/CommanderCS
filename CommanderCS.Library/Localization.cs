@@ -1,4 +1,5 @@
 using CommanderCS.Library.Enums;
+using System.Reflection;
 using System.Text;
 
 namespace CommanderCS.Library
@@ -74,13 +75,15 @@ namespace CommanderCS.Library
             {
                 if (loadFunction is null)
                 {
-                    string Local = File.ReadAllText($"Resources\\ExcelOutputAsset\\Localization.txt");
+                    string basePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),"Resources","ExcelOutputAsset");
+
+                    string Local = File.ReadAllText($"{basePath}Localization.txt");
                     array = Encoding.UTF8.GetBytes(Local);
-                    string Local2 = File.ReadAllText($"Resources\\ExcelOutputAsset\\ScenarioLocalization.txt");
+                    string Local2 = File.ReadAllText($"{basePath}ScenarioLocalization.txt");
                     bytes = Encoding.UTF8.GetBytes(Local2);
-                    string Local3 = File.ReadAllText($"Resources\\ExcelOutputAsset\\EventScenarioLocalization.txt");
+                    string Local3 = File.ReadAllText($"{basePath}EventScenarioLocalization.txt");
                     bytes2 = Encoding.UTF8.GetBytes(Local3);
-                    string Local4 = File.ReadAllText($"Resources\\ExcelOutputAsset\\InfinityScenarioLocalization.txt");
+                    string Local4 = File.ReadAllText($"{basePath}InfinityScenarioLocalization.txt");
                     bytes3 = Encoding.UTF8.GetBytes(Local4);
                 }
                 localizationHasBeenSet = true;

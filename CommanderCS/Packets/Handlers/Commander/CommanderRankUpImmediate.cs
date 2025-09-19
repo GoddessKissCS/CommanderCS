@@ -80,7 +80,7 @@ namespace CommanderCS.Packets.Handlers.Commander
                 DatabaseManager.GameProfile.UpdateGold(SessionId, commanderData.recruitGold, false);
             }
 
-            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
             DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.Inventory.medalData);
 
             var newResources = User;

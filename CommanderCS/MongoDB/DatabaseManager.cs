@@ -74,6 +74,10 @@ namespace CommanderCS.MongoDB
         /// </summary>
         public static DatabaseRotationBanner RotationBanner { get; } = new();
 
+        public static DatabaseRaidRankList RaidRankList { get; } = new();
+
+        public static DatabaseReplayList ReplayList { get; } = new();
+
         /// <summary>
         /// Initializes the database manager.
         /// </summary>

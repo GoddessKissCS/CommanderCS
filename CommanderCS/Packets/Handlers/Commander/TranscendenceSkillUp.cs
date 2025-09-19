@@ -23,7 +23,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             User.Inventory.medalData[cid] -= 10;
 
             DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.Inventory.medalData);
-            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
 
             var userInformationResponse = GetUserInformationResponse(User);
 
