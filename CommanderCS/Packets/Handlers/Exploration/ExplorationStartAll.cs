@@ -22,7 +22,7 @@ namespace CommanderCS.Packets.Handlers.Exploration
 			{
 				for (int i = 0; i < list.Count; i++)
 				{
-					ExplorationDataRow explorationDataRow = this.regulation.explorationDtbl[list[i].idx.ToString()];
+					ExplorationDataRow explorationDataRow = this.RemoteObjectManager.instance.regulation.explorationDtbl[list[i].idx.ToString()];
 					string worldMap = explorationDataRow.worldMap;
 					Protocols.ExplorationData explorationData = new Protocols.ExplorationData();
 					explorationData.idx = explorationDataRow.idx;

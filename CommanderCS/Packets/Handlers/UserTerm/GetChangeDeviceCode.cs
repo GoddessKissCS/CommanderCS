@@ -1,5 +1,6 @@
 ﻿using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.UserTerm
 {
@@ -8,7 +9,7 @@ namespace CommanderCS.Packets.Handlers.UserTerm
     {
         public override object Handle(GetChangeDeviceCodeRequest @params)
         {
-            Account = DatabaseManager.Account.FindBySession(BasePacket.SessionId);
+            AccountScheme Account = GetUserAccount();
 
             var deviceCode = DatabaseManager.DeviceCode.RequestForChangeDeviceCode(Account);
 

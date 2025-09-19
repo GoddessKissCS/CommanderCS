@@ -1,4 +1,5 @@
 using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -9,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.InfinityBattle
     {
         public override object Handle(GetInfinityBattleDeckRequest @params)
         {
+            GameProfileScheme User = GetUserGameProfile();
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

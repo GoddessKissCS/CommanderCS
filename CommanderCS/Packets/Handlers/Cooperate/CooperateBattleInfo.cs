@@ -1,3 +1,4 @@
+using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using static CommanderCS.Packets.Handlers.Cooperate.CooperateBattleInfo;
 
@@ -21,15 +22,17 @@ namespace CommanderCS.Packets.Handlers.Cooperate
                 {
                     stage = 1,
                     step = 1,
-                    dmg = 1,
-                    remain = 5,
+                    dmg = 2400,
+                    remain = (int)TimeManager.CurrentEpochMilliseconds + 60,
                     ticket = 1,
                 },
                 recv = new()
                 {
-                    stage = 1,
-                    step = 1
-                }
+                    stage = 0,
+                    step = 0,
+                },
+				
+				
             };
 
             response.Result = battleData;
@@ -85,7 +88,7 @@ namespace CommanderCS.Packets.Handlers.Cooperate
 		}
 		else if (code = 71605)
 		{
-			int num = int.Parse(this.regulation.defineDtbl["COOPERATE_BATTLE_OPEN_GUILD_LEVEL"].value);
+			int num = int.Parse(this.RemoteObjectManager.instance.regulation.defineDtbl["COOPERATE_BATTLE_OPEN_GUILD_LEVEL"].value);
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Format("110089", new object[] { num }));
 		}
 		yield break;

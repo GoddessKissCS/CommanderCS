@@ -2,6 +2,7 @@ using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Dispatch
@@ -11,7 +12,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
     {
         public override object Handle(RecallDispatchRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             // TODO: add errorhandling
 

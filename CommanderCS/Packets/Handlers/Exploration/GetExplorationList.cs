@@ -1,5 +1,6 @@
 ﻿using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.Exploration
 {
@@ -8,7 +9,7 @@ namespace CommanderCS.Packets.Handlers.Exploration
     {
         public override object Handle(GetExplorationListRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             ResponsePacket response = new()
             {
@@ -36,7 +37,7 @@ namespace CommanderCS.Packets.Handlers.Exploration
 	{
 		for (int i = 0; i < result.Count; i++)
 		{
-			string worldMap = this.regulation.explorationDtbl[result[i].idx.ToString()].worldMap;
+			string worldMap = this.RemoteObjectManager.instance.regulation.explorationDtbl[result[i].idx.ToString()].worldMap;
 			this.localUser.explorationDtbl[worldMap].Set(result[i]);
 		}
 		yield break;

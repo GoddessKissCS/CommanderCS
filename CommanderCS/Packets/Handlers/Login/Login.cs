@@ -29,7 +29,7 @@ namespace CommanderCS.Packets.Handlers.Login
 
             var userInformationResponse = GetUserInformationResponse(user);
 
-            //foreach (var item in Regulation.goodsDtbl)
+            //foreach (var item in RemoteObjectManager.instance.regulation.goodsDtbl)
             //{
             //    var itemId = item.type;
 
@@ -41,7 +41,7 @@ namespace CommanderCS.Packets.Handlers.Login
             //    userInformationResponse.itemData.TryAdd(item.type, int.Parse(item.type));
             //}
 
-            //foreach (var item in Regulation.commanderCostumeDtbl)
+            //foreach (var item in RemoteObjectManager.instance.regulation.commanderCostumeDtbl)
             //{
             //    userInformationResponse.medalData.TryAdd("" + item.cid, item.cid);
             //}

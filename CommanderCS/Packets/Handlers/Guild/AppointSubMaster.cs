@@ -1,5 +1,6 @@
 using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -9,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(AppointSubMasterRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             int submaster = DatabaseManager.Guild.GetTotalSubMasters(User.GuildId);
 
@@ -80,7 +81,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 		}
 		else if (code = 71019)
 		{
-			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Format("110114", new object[] { this.regulation.defineDtbl["GUILD_MAX_AIDE"].value }));
+			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Format("110114", new object[] { this.RemoteObjectManager.instance.regulation.defineDtbl["GUILD_MAX_AIDE"].value }));
 		}
 		else
 		{

@@ -1,5 +1,10 @@
-﻿using CommanderCS.Library.Enums;
+﻿using Amazon.Runtime.Internal.Transform;
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.Library.Regulation.DataRows;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Commander
@@ -9,206 +14,74 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CommanderClassUpRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            var User = GetUserGameProfile();
+            var Account = GetUserAccount();
 
             string cid = @params.commanderId.ToString();
 
-            User.CommanderData.TryGetValue(cid, out var commander);
+            User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander);
 
-            var commanderClassUpInfo = Regulation.commanderClassUpDtbl.Find(x => x.ROLE == commander.role && x.GRADE == commander.__cls);
+            CommanderClassUpDataRow commanderClassUpInfo = RemoteObjectManager.instance.regulation.commanderClassUpDtbl.Find(x => x.ROLE == commander.role && x.GRADE == commander.__cls);
+
+            if (User.Inventory.partData.Count > 0 || Account.Clearance >= Clearance.Moderator )
+            {
+                User.Inventory.partData.Add("" + commanderClassUpInfo.CPU_ID, commanderClassUpInfo.CPU_AMOUNT);
+                User.Inventory.partData.Add("" + commanderClassUpInfo.ATK_ID, commanderClassUpInfo.ATK_AMOUNT);
+                User.Inventory.partData.Add("" + commanderClassUpInfo.DEF_ID, commanderClassUpInfo.DEF_AMOUNT);
+                User.Inventory.partData.Add("" + commanderClassUpInfo.SUP_ID, commanderClassUpInfo.SUP_AMOUNT);
+                if(commanderClassUpInfo.MOTORBLOCK_ID != "")
+                {
+                    User.Inventory.partData.Add("" + commanderClassUpInfo.MOTORBLOCK_ID, commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT);
+                }
+                if (commanderClassUpInfo.PLATE_ID != "")
+                {
+                    User.Inventory.partData.Add("" + commanderClassUpInfo.PLATE_ID, commanderClassUpInfo.PLATE_AMOUNT);
+                }
+            }
+
+            //i just assume if we go through this method we have the parts and gold needed
+            //to upgrade and dont spit out errors
+
+            int grade = int.Parse(commanderClassUpInfo.GRADE) + 1;
+            string gradeStr = grade.ToString();
 
             switch (commanderClassUpInfo.GRADE)
             {
                 case "1":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.CommanderData[cid].__cls = "2";
-                    break;
-
                 case "2":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.CommanderData[cid].__cls = "3";
-                    break;
-
-                case "3":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    User.CommanderData[cid].__cls = "4";
-                    break;
-
-                case "4":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    User.CommanderData[cid].__cls = "5";
-                    break;
-
                 case "5":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.CommanderData[cid].__cls = "6";
-                    break;
-
-                case "6":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    User.CommanderData[cid].__cls = "7";
-                    break;
-
-                case "7":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.PLATE_ID] -= commanderClassUpInfo.PLATE_AMOUNT;
-                    User.CommanderData[cid].__cls = "8";
-                    break;
-
-                case "8":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.PLATE_ID] -= commanderClassUpInfo.PLATE_AMOUNT;
-                    User.CommanderData[cid].__cls = "9";
-                    break;
-
                 case "9":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.CommanderData[cid].__cls = "10";
-                    break;
-
-                case "10":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    User.CommanderData[cid].__cls = "11";
-                    break;
-
-                case "11":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    User.CommanderData[cid].__cls = "12";
-                    break;
-
-                case "12":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.PLATE_ID] -= commanderClassUpInfo.PLATE_AMOUNT;
-                    User.CommanderData[cid].__cls = "13";
-                    break;
-
-                case "13":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.PLATE_ID] -= commanderClassUpInfo.PLATE_AMOUNT;
-                    User.CommanderData[cid].__cls = "14";
-                    break;
-
                 case "14":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.CommanderData[cid].__cls = "15";
-                    break;
-
-                case "15":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    User.CommanderData[cid].__cls = "16";
-                    break;
-
-                case "16":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.PLATE_ID] -= commanderClassUpInfo.PLATE_AMOUNT;
-                    User.CommanderData[cid].__cls = "17";
-                    break;
-
-                case "17":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    User.CommanderData[cid].__cls = "18";
-                    break;
-
-                case "18":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.PLATE_ID] -= commanderClassUpInfo.PLATE_AMOUNT;
-                    User.CommanderData[cid].__cls = "19";
-                    break;
-
                 case "19":
                     User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.CommanderData[cid].__cls = "20";
+                    User.CommanderData[cid].__cls = gradeStr;
                     break;
 
+                case "3":
+                case "4":
+                case "6":
+                case "10":
+                case "15":
+                case "11":
                 case "20":
                     User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    User.CommanderData[cid].__cls = "21";
+                    User.CommanderData[cid].__cls = gradeStr;
                     break;
 
+                case "7":
+                case "8":
+                case "12":
+                case "13":
+                case "16":
+                case "18":
                 case "21":
-                    User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.DEF_ID] -= commanderClassUpInfo.DEF_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
-                    User.Inventory.partData[commanderClassUpInfo.PLATE_ID] -= commanderClassUpInfo.PLATE_AMOUNT;
-                    User.CommanderData[cid].__cls = "22";
-                    break;
-
                 case "22":
                     User.Inventory.partData[commanderClassUpInfo.CPU_ID] -= commanderClassUpInfo.CPU_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.ATK_ID] -= commanderClassUpInfo.ATK_AMOUNT;
@@ -216,15 +89,16 @@ namespace CommanderCS.Packets.Handlers.Commander
                     User.Inventory.partData[commanderClassUpInfo.SUP_ID] -= commanderClassUpInfo.SUP_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.MOTORBLOCK_ID] -= commanderClassUpInfo.MOTORBLOCK_ID_AMOUNT;
                     User.Inventory.partData[commanderClassUpInfo.PLATE_ID] -= commanderClassUpInfo.PLATE_AMOUNT;
-                    User.CommanderData[cid].__cls = "23";
+                    User.CommanderData[cid].__cls = gradeStr;
                     break;
+
             }
 
             User.Resources.gold -= commanderClassUpInfo.UPGRADE_COST;
 
             DatabaseManager.GameProfile.UpdatePartData(SessionId, User.Inventory.partData);
             DatabaseManager.GameProfile.UpdateGold(SessionId, commanderClassUpInfo.UPGRADE_COST, false);
-            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
 
             var userInformation = GetUserInformationResponse(User);
 

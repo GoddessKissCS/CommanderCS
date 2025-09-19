@@ -2,6 +2,7 @@ using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.WaveDuel
 {
@@ -12,7 +13,7 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
         {
             //TODO: add fake duelist + need to check score and the get duelist between the range
 
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             var rsoc = UserResources2Resource(User.Resources);
 

@@ -1,6 +1,7 @@
 ﻿using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Vip
@@ -10,7 +11,7 @@ namespace CommanderCS.Packets.Handlers.Vip
     {
         public override object Handle(GetVipBuyCountRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             //gets send EVipRechargeType enum + ["rchg"]
 
@@ -69,7 +70,7 @@ public void GetVipBuyCount(List<string> type, int renewType)
 		}
 		for (int i = 0; i < rchg.Count; i++)
 		{
-			VipRechargeDataRow vipRechargeDataRow = this.regulation.vipRechargeDtbl[rchg[i].idx.ToString()];
+			VipRechargeDataRow vipRechargeDataRow = this.RemoteObjectManager.instance.regulation.vipRechargeDtbl[rchg[i].idx.ToString()];
 			if (vipRechargeDataRow.type != 2)
 			{
 				string text = rchg[i].idx.ToString();

@@ -2,6 +2,7 @@
 using CommanderCS.Library.Packets.Structure;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.WorldMap
 {
@@ -10,7 +11,7 @@ namespace CommanderCS.Packets.Handlers.WorldMap
     {
         public override object Handle(WorldMapInformationRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             string worldId = @params.world.ToString();
 
