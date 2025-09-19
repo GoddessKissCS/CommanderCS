@@ -75,10 +75,15 @@ namespace CommanderCS.Packets.Handlers.Battle
 
                 ReplayScheme replay = DatabaseManager.ReplayList.Insert(User.Uno, User.MemberId, client_replay, server_replay, @params.BattleType);
 
+				// LOOK UP IF WE HAVE A BETTER SCORE BEFORE WE INSERT IT
+				// OR UPDATE IT
+
 				DatabaseManager.RaidRankList.Insert(User, (int)simulatedBattle.result.totalAttackDamage, simulatedBattle.record.length);
 
                 goto X;
             }
+
+
 
             if (result.winSide == simulatedBattle.result.winSide && result.winSide != 1 && simulatedBattle.result.winSide != 1)
             {
@@ -117,8 +122,8 @@ namespace CommanderCS.Packets.Handlers.Battle
                 }
             }
 
-			X:
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
+		X:
+			var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
 			UserInformationResponse.BattleResult battleResult = new()
 			{
@@ -135,7 +140,15 @@ namespace CommanderCS.Packets.Handlers.Battle
 				medalData = User.Inventory.medalData,
 				partData = User.Inventory.partData,
 				rewardList = [],
-				user = new(),
+				user = new()
+				{
+					curScore = (int)simulatedBattle.result.totalAttackDamage,
+					rank = 1,
+					rankPercent = 0.01f,
+					prevScore = 1,
+					getScore = (int)simulatedBattle.result.totalAttackDamage,
+
+				},
 				__resource = rsoc,
 			};
 

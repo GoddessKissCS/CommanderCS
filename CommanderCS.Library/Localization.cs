@@ -77,13 +77,13 @@ namespace CommanderCS.Library
                 {
                     string basePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),"Resources","ExcelOutputAsset");
 
-                    string Local = File.ReadAllText($"{basePath}Localization.txt");
+                    string Local = File.ReadAllText($"{basePath}/Localization.txt");
                     array = Encoding.UTF8.GetBytes(Local);
-                    string Local2 = File.ReadAllText($"{basePath}ScenarioLocalization.txt");
+                    string Local2 = File.ReadAllText($"{basePath}/ScenarioLocalization.txt");
                     bytes = Encoding.UTF8.GetBytes(Local2);
-                    string Local3 = File.ReadAllText($"{basePath}EventScenarioLocalization.txt");
+                    string Local3 = File.ReadAllText($"{basePath}/EventScenarioLocalization.txt");
                     bytes2 = Encoding.UTF8.GetBytes(Local3);
-                    string Local4 = File.ReadAllText($"{basePath}InfinityScenarioLocalization.txt");
+                    string Local4 = File.ReadAllText($"{basePath}/InfinityScenarioLocalization.txt");
                     bytes3 = Encoding.UTF8.GetBytes(Local4);
                 }
                 localizationHasBeenSet = true;

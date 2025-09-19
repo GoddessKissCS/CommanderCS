@@ -53,7 +53,7 @@ namespace CommanderCS.Packets.Handlers.Raid
 
             Dictionary<string, int> bossData3 = new()
             {
-                { "3", 172800 },
+                { "3", 0 },
             };
 
             // Tuesday - Thursday - Saturday
@@ -67,7 +67,7 @@ namespace CommanderCS.Packets.Handlers.Raid
 
             Dictionary<string, int> bossData2 = new()
             {
-                { "2", 86400 },
+                { "2", 0 },
             };
 
             raidRankingList.bossData.Add(bossData);
