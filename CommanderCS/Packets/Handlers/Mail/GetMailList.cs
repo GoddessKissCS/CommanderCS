@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Mail
 
             MailInfo mailInfo = new() { };
 
-            var MailDataNotReceived = User.MailDataList.Where(x => x.__receive == "0").ToList();
+            var MailDataNotReceived = User.MailDataList.ToList();
 
             mailInfo.mailList = MailDataNotReceived;
 

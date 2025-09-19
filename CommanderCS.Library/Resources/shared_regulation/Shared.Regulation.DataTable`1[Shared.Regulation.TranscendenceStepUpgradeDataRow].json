@@ -1,0 +1,162 @@
+[
+    {
+        "step": 1,
+        "stepPoint": 100,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 2,
+        "stepPoint": 200,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 3,
+        "stepPoint": 300,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 4,
+        "stepPoint": 400,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 5,
+        "stepPoint": 500,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 6,
+        "stepPoint": 600,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 7,
+        "stepPoint": 700,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 8,
+        "stepPoint": 800,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 9,
+        "stepPoint": 900,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 10,
+        "stepPoint": 1000,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 11,
+        "stepPoint": 1100,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 12,
+        "stepPoint": 1200,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 13,
+        "stepPoint": 1300,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 14,
+        "stepPoint": 1400,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 15,
+        "stepPoint": 1500,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 16,
+        "stepPoint": 1600,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 17,
+        "stepPoint": 1700,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 18,
+        "stepPoint": 1800,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 19,
+        "stepPoint": 1900,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    },
+    {
+        "step": 20,
+        "stepPoint": 2000,
+        "stat": 3,
+        "statAddMeasure": 10,
+        "statAddVolume": 500,
+        "addString": "999"
+    }
+]

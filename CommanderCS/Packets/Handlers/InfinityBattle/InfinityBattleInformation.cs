@@ -1,8 +1,45 @@
+using CommanderCS.Library;
+using CommanderCS.Library.Protocols;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.InfinityBattle
 {
-    public class InfinityBattleInformation
+	[Packet(Id = Library.Enums.Method.InfinityBattleInformation)]
+    public class InfinityBattleInformation : BaseMethodHandler<InfinityBattleInformationRequest>
     {
+		public override object Handle(InfinityBattleInformationRequest @params)
+		{
+
+            Library.Protocols.InfinityTowerInformation InfinityTowerInformation = new()
+			{
+				infinityData = new()
+				{
+					fieldData = [],
+					curField = "",		
+				},
+				retryStage = ""
+			};
+
+            ResponsePacket responsePacket = new()
+			{
+				Id = BasePacket.Id,
+				Result = InfinityTowerInformation
+            };
+
+			return responsePacket;
+        }
     }
+
+	public class InfinityBattleInformationRequest
+	{
+        [JsonProperty("ifid")]
+        public int ifid { get; set; }
+
+        [JsonProperty("deck")]
+        public string retryStage { get; set; }
+    }
+
 }/*	// Token: 0x0600618A RID: 24970 RVA: 0x000120F8 File Offset: 0x000102F8
 
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8700", true, true)]

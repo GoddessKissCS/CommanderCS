@@ -1,0 +1,410 @@
+{
+    "Localization.txt": [
+        "20200924112008",
+        "13710976"
+    ],
+    "DailyBonusDataTable.json": [
+        "20200225145719",
+        "196396"
+    ],
+    "CommanderDataTable.json": [
+        "20200204141500",
+        "128256"
+    ],
+    "WorldMapDataTable.json": [
+        "20180911113408",
+        "3884"
+    ],
+    "WorldMapStageDataTable.json": [
+        "20180911113348",
+        "131756"
+    ],
+    "UnitDataTable.json": [
+        "20200204143501",
+        "5267244"
+    ],
+    "WorldMapStageTypeDataTable.json": [
+        "20180710014940",
+        "1280"
+    ],
+    "EnemyCommanderDataTable.json": [
+        "20200403101826",
+        "255360"
+    ],
+    "EnemyUnitDataTable.json": [
+        "20200403101852",
+        "2473088"
+    ],
+    "UserLevelDataTable.json": [
+        "20190820154830",
+        "23000"
+    ],
+    "GoodsDataTable.json": [
+        "20200924110817",
+        "87936"
+    ],
+    "BuildingLevelDataTable.json": [
+        "20200403101654",
+        "2136"
+    ],
+    "CommanderLevelDataTable.json": [
+        "20190820153351",
+        "7424"
+    ],
+    "CommanderRankDataTable.json": [
+        "20190130141359",
+        "300"
+    ],
+    "CommanderTrainingTicketDataTable.json": [
+        "20180710014940",
+        "172"
+    ],
+    "SweepDataTable.json": [
+        "20180710014940",
+        "5760"
+    ],
+    "SkillDataTable.json": [
+        "20200204143952",
+        "5181696"
+    ],
+    "ProjectileDataTable.json": [
+        "20200204144508",
+        "872064"
+    ],
+    "StatusEffectDataTable.json": [
+        "20200204144306",
+        "2969728"
+    ],
+    "MissionTable.json": [
+        "20191015165030",
+        "4780"
+    ],
+    "MetroBankLuckDataTable.json": [
+        "20200821110237",
+        "1368"
+    ],
+    "SkillCostDataTable.json": [
+        "20200821110321",
+        "25772"
+    ],
+    "RaidDataTable.json": [
+        "20190827144309",
+        "37976"
+    ],
+    "SkillUpgradeDataTable.json": [
+        "20200204144602",
+        "837164"
+    ],
+    "InteractionDataTable.json": [
+        "20200204142629",
+        "1259308"
+    ],
+    "RankingRewardDataTable.json": [
+        "20180710014940",
+        "21888"
+    ],
+    "ProjectileMotionPhaseDataTable.json": [
+        "20200204142825",
+        "525272"
+    ],
+    "UnitMotionDataTable.json": [
+        "20200204143521",
+        "762840"
+    ],
+    "FireActionDataTable.json": [
+        "20200204142333",
+        "48684"
+    ],
+    "PartDataTable.json": [
+        "20200218142239",
+        "12844"
+    ],
+    "AchievementTable.json": [
+        "20190402114102",
+        "49664"
+    ],
+    "GachaDataTable.json": [
+        "20200924110700",
+        "4056"
+    ],
+    "GachaCostDataTable.json": [
+        "20200924110740",
+        "1752"
+    ],
+    "GachaRewardDataTable.json": [
+        "20200924110800",
+        "82860"
+    ],
+    "LevelPatternDataTable.json": [
+        "20200204142744",
+        "180824"
+    ],
+    "DropGoldPatternDataTable.json": [
+        "20180710014940",
+        "172"
+    ],
+    "RewardDataTable.json": [
+        "20200924111717",
+        "1834328"
+    ],
+    "GuildStruggleDataTable.json": [
+        "20180710014940",
+        "3160"
+    ],
+    "GuildSkillDataTable.json": [
+        "20180710014940",
+        "12120"
+    ],
+    "GuildOccupyDataTable.json": [
+        "20180710014940",
+        "6232"
+    ],
+    "GuildLevelInfoDataTable.json": [
+        "20200225145809",
+        "5420"
+    ],
+    "VipRechargeDataTable.json": [
+        "20200821110335",
+        "3500"
+    ],
+    "VipExpDataTable.json": [
+        "20180710014940",
+        "1024"
+    ],
+    "ShopDataTable.json": [
+        "20191105141712",
+        "7000"
+    ],
+    "FavorStepDataTable.json": [
+        "20180710014940",
+        "556"
+    ],
+    "ClassPatternDataTable.json": [
+        "20200218141223",
+        "394328"
+    ],
+    "CommanderClassDataTable.json": [
+        "20200204141840",
+        "640896"
+    ],
+    "ItemExchangeDataTable.json": [
+        "20200924111101",
+        "159872"
+    ],
+    "DefineDataTable.json": [
+        "20200128140948",
+        "11736"
+    ],
+    "DailyEventDataTable.json": [
+        "20180710014940",
+        "684"
+    ],
+    "AnnihilateBattleDataTable.json": [
+        "20180710014940",
+        "19756"
+    ],
+    "CommanderCostumeDataTable.json": [
+        "20200403101807",
+        "87552"
+    ],
+    "LoadingTipDataTable.json": [
+        "20200107142613",
+        "12332"
+    ],
+    "FavorDataTable.json": [
+        "20200204142319",
+        "134316"
+    ],
+    "CommanderGiftDataTable.json": [
+        "20180731145419",
+        "684"
+    ],
+    "InAppProductDataTable.json": [
+        "20200403102005",
+        "72920"
+    ],
+    "CarnivalTypeDataTable.json": [
+        "20200924110604",
+        "45784"
+    ],
+    "CarnivalDataTable.json": [
+        "20200924110425",
+        "435456"
+    ],
+    "CommanderVoiceDataTable.json": [
+        "20200204141950",
+        "48856"
+    ],
+    "CommanderScenarioDataTable.json": [
+        "20191224141908",
+        "41176"
+    ],
+    "ScenarioBattleDataTable.json": [
+        "20180710014940",
+        "172"
+    ],
+    "ScenarioQuarterDataTable.json": [
+        "20191224143955",
+        "8236"
+    ],
+    "ScenarioBattleUnitDataTable.json": [
+        "20180710014940",
+        "344"
+    ],
+    "ScenarioLocalization.txt": [
+        "20191224144102",
+        "12002688"
+    ],
+    "RaidChallengeDataTable.json": [
+        "20190827144328",
+        "1664"
+    ],
+    "BattleTimeDataTable.json": [
+        "20200403101638",
+        "2816"
+    ],
+    "WaveBattleDataTable.json": [
+        "20180710014940",
+        "1280"
+    ],
+    "EquipItemDataTable.json": [
+        "20180911112454",
+        "35200"
+    ],
+    "EquipItemUpgradeDataTable.json": [
+        "20180710014940",
+        "178904"
+    ],
+    "EquipItemDisassembleDataTable.json": [
+        "20180710014940",
+        "148224"
+    ],
+    "BattleFieldSearchDataTable.json": [
+        "20180911111347",
+        "6956"
+    ],
+    "ThumbnailDataTable.json": [
+        "20180710014940",
+        "2688"
+    ],
+    "CooperateBattleDataTable.json": [
+        "20180710014940",
+        "2136"
+    ],
+    "GroupInfoDataTable.json": [
+        "20200218141832",
+        "28544"
+    ],
+    "GroupMemberDataTable.json": [
+        "20200218141858",
+        "48384"
+    ],
+    "EventBattleDataTable.json": [
+        "20200403101904",
+        "10752"
+    ],
+    "EventBattleFieldDataTable.json": [
+        "20200403101915",
+        "114092"
+    ],
+    "EventBattleScenarioDataTable.json": [
+        "20191112142221",
+        "2220"
+    ],
+    "EventRaidDataTable.json": [
+        "20180710014940",
+        "2176"
+    ],
+    "EventScenarioLocalization.txt": [
+        "20191112142258",
+        "2352172"
+    ],
+    "RankingDataTable.json": [
+        "20190827144347",
+        "30296"
+    ],
+    "SkillDamagePatternDataTable.json": [
+        "20190402114917",
+        "1240"
+    ],
+    "EventRemaingTimeDataTable.json": [
+        "20200121141814",
+        "15404"
+    ],
+    "NPCMercenaryDataTable.json": [
+        "20200403111819",
+        "1280"
+    ],
+    "RandomBoxRewardDataTable.json": [
+        "20200924111508",
+        "289280"
+    ],
+    "DormitoryBodyCostumeDataTable.json": [
+        "20190326141723",
+        "3200"
+    ],
+    "DormitoryDecorationDataTable.json": [
+        "20190326141826",
+        "12076"
+    ],
+    "DormitoryHeadCostumeDataTable.json": [
+        "20190820153457",
+        "133548"
+    ],
+    "DormitoryShopDataTable.json": [
+        "20190326142146",
+        "14508"
+    ],
+    "DormitoryThemeDataTable.json": [
+        "20190326142212",
+        "6700"
+    ],
+    "DormitoryUpgradeDataTable.json": [
+        "20181113115305",
+        "1408"
+    ],
+    "DormitoryWallPaperDataTable.json": [
+        "20190326142252",
+        "812"
+    ],
+    "StrongestBuffBattleDataTable.json": [
+        "20181231144948",
+        "25644"
+    ],
+    "EventBattleGachaRewardDataTable.json": [
+        "20200218141632",
+        "34688"
+    ],
+    "TranscendenceSlotDataTable.json": [
+        "20190709144041",
+        "940"
+    ],
+    "TranscendenceStepUpgradeDataTable.json": [
+        "20190709144112",
+        "2520"
+    ],
+    "WeaponDataTable.json": [
+        "20190402115634",
+        "87808"
+    ],
+    "WeaponSetDataTable.json": [
+        "20190402115704",
+        "2092"
+    ],
+    "WeaponUpgradeDataTable.json": [
+        "20200211141811",
+        "5080"
+    ],
+    "GoodsComposeDataTable.json": [
+        "20190226120454",
+        "984"
+    ],
+    "InfinityFieldDataTable.json": [
+        "20190917151745",
+        "27820"
+    ],
+    "InfinityScenarioLocalization.txt": [
+        "20190917151808",
+        "844588"
+    ]
+}

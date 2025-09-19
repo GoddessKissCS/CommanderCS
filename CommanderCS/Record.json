@@ -5,9 +5,9 @@
     "efct": true
   },
   "init": {
-    "type": 5,
-    "stgn": null,
-    "rdsd": 24089,
+    "type": 14,
+    "stgn": "1",
+    "rdsd": 11198,
     "ltrp": [
       {
         "slots": [
@@ -59,10 +59,6 @@
               0
             ]
           },
-          null,
-          null,
-          null,
-          null,
           {
             "id": "5001",
             "cid": "1",
@@ -113,6 +109,10 @@
           },
           null,
           null,
+          null,
+          null,
+          null,
+          null,
           null
         ]
       }
@@ -123,37 +123,16 @@
           null,
           null,
           null,
+          null,
           {
-            "id": "4100003",
-            "cid": "",
-            "ctyp": 6,
-            "midx": 4,
-            "pidx": 0,
-            "rnk": 1,
-            "cls": 1,
-            "lv": 1,
-            "cos": 0,
-            "rsf": 0,
-            "mry": 0,
-            "exp": 0,
-            "pos": 0,
-            "hp": 999999,
-            "dmghp": 0,
-            "dict": 0,
-            "skills": [],
-            "itms": {},
-            "wepns": {},
-            "tsdc": []
-          },
-          {
-            "id": "4100001",
+            "id": "31001",
             "cid": "",
             "ctyp": 5,
             "midx": 0,
             "pidx": 0,
             "rnk": 1,
-            "cls": 1,
-            "lv": 1,
+            "cls": 16,
+            "lv": 99,
             "cos": 0,
             "rsf": 0,
             "mry": 0,
@@ -167,69 +146,16 @@
             "wepns": {},
             "tsdc": []
           },
-          {
-            "id": "4100002",
-            "cid": "",
-            "ctyp": 6,
-            "midx": 4,
-            "pidx": 1,
-            "rnk": 1,
-            "cls": 1,
-            "lv": 1,
-            "cos": 0,
-            "rsf": 0,
-            "mry": 0,
-            "exp": 0,
-            "pos": 0,
-            "hp": 999999,
-            "dmghp": 0,
-            "dict": 0,
-            "skills": [],
-            "itms": {},
-            "wepns": {},
-            "tsdc": []
-          },
+          null,
           null,
           null,
           null
         ]
       }
     ],
-    "raid": {
-      "rid": 1,
-      "stm": 0.0,
-      "etm": 50.0,
-      "ctm": 0.0
-    },
     "grp": null
   },
-  "flen": 1214,
-  "lipt": {
-    "295": {
-      "uidx": 5,
-      "sidx": 1,
-      "tidx": -1
-    },
-    "491": {
-      "uidx": 5,
-      "sidx": 1,
-      "tidx": -1
-    },
-    "722": {
-      "uidx": 5,
-      "sidx": 1,
-      "tidx": -1
-    },
-    "935": {
-      "uidx": 5,
-      "sidx": 1,
-      "tidx": -1
-    },
-    "1131": {
-      "uidx": 5,
-      "sidx": 1,
-      "tidx": -1
-    }
-  },
+  "flen": 526,
+  "lipt": {},
   "ript": {}
 }
