@@ -1,6 +1,7 @@
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Gift
@@ -10,7 +11,7 @@ namespace CommanderCS.Packets.Handlers.Gift
     {
         public override object Handle(GetMarriedRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             string cid = @params.cid.ToString();
 
@@ -64,7 +65,7 @@ namespace CommanderCS.Packets.Handlers.Gift
 		}
 		this.localUser.RefreshGoodsFromNetwork(result.goodsInfo);
 		UIManager.instance.RefreshOpenedUI();
-		CommanderScenarioDataRow commanderScenarioDataRow = this.regulation.FindCommanderScenario(text, 0);
+		CommanderScenarioDataRow commanderScenarioDataRow = this.RemoteObjectManager.instance.regulation.FindCommanderScenario(text, 0);
 		if (commanderScenarioDataRow is not null)
 		{
 			this.localUser.currScenario.scenarioId = commanderScenarioDataRow.csid;

@@ -1,6 +1,7 @@
 using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.PreDeck
 {
@@ -9,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.PreDeck
     {
         public override object Handle(BuyPredeckSlotRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             if (User.Statistics.PredeckCount >= 20)
             {

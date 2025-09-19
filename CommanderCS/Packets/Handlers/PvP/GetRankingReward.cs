@@ -1,5 +1,6 @@
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.PvP
@@ -9,6 +10,8 @@ namespace CommanderCS.Packets.Handlers.PvP
     {
         public override object Handle(GetRankingRewardRequest @params)
         {
+            GameProfileScheme User = GetUserGameProfile();
+
             var rsoc = UserResources2Resource(User.Resources);
 
             RankingReward reward = new()

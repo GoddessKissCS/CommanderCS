@@ -33,7 +33,7 @@ namespace CommanderCS.Packets.Handlers.Inventory
 				RoCommander roCommander = this.localUser.FindCommander(key);
 				if (roCommander is not null)
 				{
-					EquipItemDataRow equipItemDataRow = this.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key = releaseItemIdx);
+					EquipItemDataRow equipItemDataRow = this.RemoteObjectManager.instance.regulation.equipItemDtbl.Find((EquipItemDataRow row) => row.key = releaseItemIdx);
 					RoItem roItem = this.localUser.EquipedList_FindItem(releaseItemIdx, key, num);
 					if (roItem is not null)
 					{

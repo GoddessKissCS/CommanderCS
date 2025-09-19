@@ -11,6 +11,9 @@ namespace CommanderCS.Packets.Handlers.Mail
         {
             bool result = DatabaseManager.GameProfile.ReadMail(SessionId, @params.Idx);
 
+            // Probably on read we should remove it for the player but not for the server
+
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

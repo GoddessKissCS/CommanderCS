@@ -1,7 +1,63 @@
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Packets;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.Raid
 {
-    public class RaidStart
+	[Packet(Id = Method.RaidStart)]
+    public class RaidStart : BaseMethodHandler<RaidStartRequest>
     {
+		public override object Handle(RaidStartRequest @params)
+		{
+            GameProfileScheme User = GetUserGameProfile();
+
+            WorldMapStageStartResponse wmssr = new();
+
+            //TODO: look at the stage and then the rewards it can gen
+            List<RewardInfo.RewardData> test = [];
+
+
+            //- the key so you know you started the raid
+
+            wmssr.reward = test;
+
+
+            wmssr.rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = wmssr
+            };
+
+            return response;
+        }
+    }
+
+    public class RaidStartRequest
+    {
+        [JsonProperty("type")]
+        public int Type { get; set; }
+
+        [JsonProperty("deck")]
+        public JObject Deck { get; set; }
+
+        [JsonProperty("gdp")]
+        public JObject Gdp { get; set; }
+
+        [JsonProperty("ucash")]
+        public int Ucash { get; set; }
+
+        [JsonProperty("bid")]
+        public int bid { get; set; }
+
+        [JsonProperty("np")]
+        public int Np { get; set; }
     }
 }
 

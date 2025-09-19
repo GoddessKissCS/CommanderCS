@@ -2,12 +2,12 @@ using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Situation
 {
-    [Packet(Id = CommanderCS.Library.Enums.Method.SituationInformation)]
+    //[Packet(Id = CommanderCS.Library.Enums.Method.SituationInformation)]
     public class SituationInformation : BaseMethodHandler<SituationInformationRequest>
     {
         public override object Handle(SituationInformationRequest @params)
         {
-            SituationInformationResponse InforeSponse = new();
+            SituationInformationResponse InforeSponse = new() { did = 0, rtm = 86400 };
 
             ResponsePacket response = new()
             {

@@ -1,5 +1,6 @@
 using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -9,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(FireSubMasterRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             bool isInGuild = DatabaseManager.Guild.IsUnoInMemberData(User.GuildId, User.Uno);
 

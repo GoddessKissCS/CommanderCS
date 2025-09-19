@@ -17,7 +17,7 @@ namespace CommanderCS.Packets.Handlers.Exploration
 		if (result)
 		{
 			string text = this._FindRequestProperty(request, "idx");
-			ExplorationDataRow explorationDataRow = this.regulation.explorationDtbl[text];
+			ExplorationDataRow explorationDataRow = this.RemoteObjectManager.instance.regulation.explorationDtbl[text];
 			string worldMap = explorationDataRow.worldMap;
 			Protocols.ExplorationData explorationData = new Protocols.ExplorationData();
 			explorationData.idx = explorationDataRow.idx;

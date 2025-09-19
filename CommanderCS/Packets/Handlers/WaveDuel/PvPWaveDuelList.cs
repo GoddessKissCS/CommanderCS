@@ -1,5 +1,6 @@
 using CommanderCS.Library;
 using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB.Schemes;
 using static CommanderCS.Packets.Handlers.WaveDuel.PvPWaveDuelList;
 
 namespace CommanderCS.Packets.Handlers.WaveDuel
@@ -13,6 +14,8 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
             // need to check score and the get duelist between the range
 
             //			User.RankingData.PvPDuelRankingData.score;
+            GameProfileScheme User = GetUserGameProfile();
+
 
             CommanderCS.Library.Protocols.PvPDuelList pvPDuel = new()
             {

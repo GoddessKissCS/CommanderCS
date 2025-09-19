@@ -1,4 +1,5 @@
-﻿using CommanderCS.Library.Enums;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.Library.Regulation;
 using CommanderCS.MongoDB;
@@ -12,9 +13,9 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CommanderLevelUpRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
-            string sid = Regulation.goodsDtbl.FirstOrDefault(x => x.serverFieldName == @params.commanderTrainingTicket).type;
+            string sid = RemoteObjectManager.instance.regulation.goodsDtbl.FirstOrDefault(x => x.serverFieldName == @params.commanderTrainingTicket).type;
 
             if (@params.count > User.Inventory.itemData[sid])
             {
@@ -45,7 +46,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
                 commander.__exp = commanderXP.ToString();
 
-                commander = CheckCommanderLevel(commander, Regulation, User);
+                commander = CheckCommanderLevel(commander, RemoteObjectManager.instance.regulation, User);
             }
 
             if (int.Parse(commander.__level) > User.Resources.level)

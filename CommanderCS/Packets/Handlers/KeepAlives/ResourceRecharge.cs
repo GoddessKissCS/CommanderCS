@@ -1,3 +1,4 @@
+using CommanderCS.Library;
 using CommanderCS.Library.Regulation;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
@@ -11,7 +12,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
     {
         public override object Handle(ResourceRechargeRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             ResponsePacket response = new()
             {
@@ -26,7 +27,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
                     //BUY PRICE STARTS AT 15 diamonds and then + 100% everytime you buy a new ticket
                     var raidKeys = User.VipRechargeData.Find(x => x.idx == @params.vidx);
 
-                    var ticketPrice = CalculateRaidTicketBuyPrice(User.DailyBuyables.RaidKeys, User, Regulation);
+                    var ticketPrice = CalculateRaidTicketBuyPrice(User.DailyBuyables.RaidKeys, User, RemoteObjectManager.instance.regulation);
 
                     var count = raidKeys.count++;
                     User.DailyBuyables.RaidKeys--;
@@ -94,7 +95,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
 	{
 		string text = this._FindRequestProperty(request, "vidx");
 		int num = 0;
-		VipRechargeDataRow vipRechargeDataRow = this.regulation.vipRechargeDtbl[text];
+		VipRechargeDataRow vipRechargeDataRow = this.RemoteObjectManager.instance.regulation.vipRechargeDtbl[text];
 		if (vipRechargeDataRow.type = 1 || vipRechargeDataRow.type = 4)
 		{
 			if (this.localUser.resourceRechargeList.ContainsKey(text))

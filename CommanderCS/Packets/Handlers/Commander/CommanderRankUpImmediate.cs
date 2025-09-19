@@ -2,6 +2,7 @@
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Commander
@@ -11,7 +12,7 @@ namespace CommanderCS.Packets.Handlers.Commander
     {
         public override object Handle(CommanderRankUpImmediateRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             string cid = @params.cid.ToString();
 
@@ -19,7 +20,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             if (User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander is not null)
             {
-                var commanderRankData = Regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == int.Parse(commander.__rank));
+                var commanderRankData = RemoteObjectManager.instance.regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == int.Parse(commander.__rank));
 
                 User.Inventory.medalData.TryGetValue(cid, out var commanderMedals);
 
@@ -37,7 +38,7 @@ namespace CommanderCS.Packets.Handlers.Commander
                 commander.__rank = (Convert.ToInt32(commander.__rank) + 1).ToString();
                 commander.medl = commanderMedals;
 
-                commanderRankData = Regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == commanderRankData.rank);
+                commanderRankData = RemoteObjectManager.instance.regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == commanderRankData.rank);
 
                 User.Inventory.medalData[cid] = commanderMedals;
                 User.CommanderData[cid] = commander;
@@ -48,9 +49,9 @@ namespace CommanderCS.Packets.Handlers.Commander
             {
                 User.Inventory.medalData.TryGetValue(cid, out var commanderMedals);
 
-                var CostumeData = Regulation.commanderCostumeDtbl.FirstOrDefault(x => x.cid == int.Parse(cid));
+                var CostumeData = RemoteObjectManager.instance.regulation.commanderCostumeDtbl.FirstOrDefault(x => x.cid == int.Parse(cid));
 
-                var commanderData = Regulation.commanderDtbl.FirstOrDefault(x => x.id == cid);
+                var commanderData = RemoteObjectManager.instance.regulation.commanderDtbl.FirstOrDefault(x => x.id == cid);
 
                 if (!TryRecruitCommander(commanderData.grade, ref commanderMedals))
                 {
@@ -79,7 +80,7 @@ namespace CommanderCS.Packets.Handlers.Commander
                 DatabaseManager.GameProfile.UpdateGold(SessionId, commanderData.recruitGold, false);
             }
 
-            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
             DatabaseManager.GameProfile.UpdateMedalData(SessionId, User.Inventory.medalData);
 
             var newResources = User;

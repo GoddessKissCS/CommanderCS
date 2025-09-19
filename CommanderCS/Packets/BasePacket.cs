@@ -40,12 +40,26 @@ namespace CommanderCS.Packets
         public abstract object Handle(TParams @params);
 
         public string SessionId => BasePacket.SessionId;
-        public GameProfileScheme User { get; set; }
-        public AccountScheme Account { get; set; }
-        public DormitoryScheme Dormitory { get; set; }
-        public GuildScheme Guild { get; set; }  
 
-        public Regulation Regulation = RemoteObjectManager.instance.regulation;
+        public AccountScheme? GetUserAccount()
+        {
+            return DatabaseManager.Account.FindBySession(BasePacket.SessionId);
+        }
+
+        public GameProfileScheme? GetUserGameProfile()
+        {
+            return DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+        }
+
+        public DormitoryScheme? GetUserDormitory()
+        {
+            return DatabaseManager.Dormitory.FindBySession(BasePacket.SessionId);
+        }
+
+        public GuildScheme GetUserGuild()
+        {
+            return DatabaseManager.Guild.FindBySession(BasePacket.SessionId);
+        }
 
         /// <summary>
         /// Converts user battle statistics to battle statistics for response.

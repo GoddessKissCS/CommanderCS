@@ -1,6 +1,7 @@
+using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
-
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -10,15 +11,15 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(UpgradeGuildSkillRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
-            var guild = DatabaseManager.Guild.FindByUid(User.GuildId);
+            GuildScheme Guild = GetUserGuild();
 
-            var guildSkill = guild.SkillDada.Where(d => d.idx == @params.gsid).FirstOrDefault();
+            var guildSkill = Guild.SkillDada.Where(d => d.idx == @params.gsid).FirstOrDefault();
 
-            var upgradeSkill = Regulation.guildSkillDtbl.FirstOrDefault(x => x.level == guildSkill.level + 1);
+            var upgradeSkill = RemoteObjectManager.instance.regulation.guildSkillDtbl.FirstOrDefault(x => x.level == guildSkill.level + 1);
 
-            if (upgradeSkill.level < guild.Level)
+            if (upgradeSkill.level < Guild.Level)
             {
                 ErrorPacket error = new()
                 {
@@ -29,7 +30,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            if (upgradeSkill.cost < guild.Point)
+            if (upgradeSkill.cost < Guild.Point)
             {
                 ErrorPacket error = new()
                 {
@@ -40,17 +41,17 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            int index = guild.SkillDada.FindIndex(skill => skill.idx == @params.gsid);
+            int index = Guild.SkillDada.FindIndex(skill => skill.idx == @params.gsid);
 
             if (index >= 0)
             {
                 guildSkill.level += 1;
-                guild.SkillDada[index] = guildSkill;
+                Guild.SkillDada[index] = guildSkill;
             }
 
-            guild.Point -= upgradeSkill.cost;
+            Guild.Point -= upgradeSkill.cost;
 
-            DatabaseManager.Guild.UpdateGuildSkill(User.GuildId, guild.SkillDada, guild.Point);
+            DatabaseManager.Guild.UpdateGuildSkill(User.GuildId, Guild.SkillDada, Guild.Point);
 
             var guildInfo = DatabaseManager.Guild.RequestGuild(User.GuildId, User.Uno);
 

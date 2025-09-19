@@ -1,6 +1,7 @@
 ﻿using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using CommanderCS.Packets.Handlers.Commander;
 using Newtonsoft.Json;
 
@@ -11,7 +12,7 @@ namespace CommanderCS.Packets.Handlers.Tutorial
     {
         public override object Handle(LoginTutorialSkipRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             UserInformationResponse.TutorialData tutorialData = new() { skip = Convert.ToBoolean(@params.skip), step = 12 };
 

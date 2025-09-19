@@ -455,13 +455,13 @@ namespace CommanderCS.Packets.Handlers.Payment
 		{
 			UIManager.instance.RefreshOpenedUI();
 		}
-		int num2 = int.Parse(this.regulation.defineDtbl["VIPGRADE_GACHA_DELAY_FREE"].value);
-		int num3 = int.Parse(this.regulation.defineDtbl["VIPGRADE_GACHA_FREE_PREMIUM"].value);
+		int num2 = int.Parse(this.RemoteObjectManager.instance.regulation.defineDtbl["VIPGRADE_GACHA_DELAY_FREE"].value);
+		int num3 = int.Parse(this.RemoteObjectManager.instance.regulation.defineDtbl["VIPGRADE_GACHA_FREE_PREMIUM"].value);
 		if (world is not null && world.existGacha && world.gacha.isActive && (this.localUser.vipLevel >= num2 || this.localUser.vipLevel >= num3) && flag)
 		{
 			this.RequestGachaInformation();
 		}
-		int num4 = int.Parse(this.regulation.defineDtbl["VIPGRADE_BATTLESHOP_REFRESH"].value);
+		int num4 = int.Parse(this.RemoteObjectManager.instance.regulation.defineDtbl["VIPGRADE_BATTLESHOP_REFRESH"].value);
 		if (world is not null && world.existSecretShop && world.secretShop.isActive && this.localUser.vipLevel >= num4 && flag)
 		{
 			UIManager.instance.RefreshOpenedUI();
@@ -470,7 +470,7 @@ namespace CommanderCS.Packets.Handlers.Payment
 		{
 			this.RequestWaveBattleList();
 		}
-		int num5 = int.Parse(this.regulation.defineDtbl["DAILYMISSION_MIN_VIP"].value);
+		int num5 = int.Parse(this.RemoteObjectManager.instance.regulation.defineDtbl["DAILYMISSION_MIN_VIP"].value);
 		if (world is not null && world.existWarHome && world.warHome.isActive && this.localUser.vipLevel >= num5 && flag)
 		{
 			world.warHome.Close();

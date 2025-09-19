@@ -1,3 +1,4 @@
+using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
@@ -12,7 +13,7 @@ namespace CommanderCS.Packets.Handlers.Commander
         public override object Handle(BuyCommanderCostumeRequest @params)
         {
 
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             // ig implement a check to check if you actually have enough cash ?
             // seems overrated but you never know ig?
@@ -20,7 +21,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             string cid = @params.commanderId.ToString();
 
-            var costumeData = Regulation.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == @params.costumeId);
+            var costumeData = RemoteObjectManager.instance.regulation.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == @params.costumeId);
 
             // TODO MAYBECHECK WHEN WE CREATE A CHARACTER TO SEE IF WE OWN ANY COSTUMES
             // AND THEN TRANSFER THEM TO THE haveCostume and delete them from donHaveCommCostume

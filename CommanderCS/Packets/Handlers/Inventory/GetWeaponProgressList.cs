@@ -1,4 +1,5 @@
 using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.Inventory
 {
@@ -7,6 +8,8 @@ namespace CommanderCS.Packets.Handlers.Inventory
     {
         public override object Handle(GetWeaponProgressListRequest @params)
         {
+            GameProfileScheme User = GetUserGameProfile();
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,

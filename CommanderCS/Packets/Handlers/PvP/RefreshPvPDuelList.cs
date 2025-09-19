@@ -1,6 +1,7 @@
 using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.PvP
 {
@@ -10,6 +11,7 @@ namespace CommanderCS.Packets.Handlers.PvP
         public override object Handle(RefreshPvPDuelListRequest @params)
         {
             // need to check score and the get duelist between the range
+            GameProfileScheme User = GetUserGameProfile();
 
             var rsoc = UserResources2Resource(User.Resources);
 

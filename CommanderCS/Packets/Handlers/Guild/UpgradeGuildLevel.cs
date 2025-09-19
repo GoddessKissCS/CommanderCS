@@ -1,5 +1,7 @@
+using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -8,11 +10,11 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(UpgradeGuildLevelRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             var guild = DatabaseManager.Guild.FindByUid(User.GuildId);
 
-            var guildUpgradeData = Regulation.guildLevelInfoDtbl.FirstOrDefault(x => x.level == guild.Level + 1);
+            var guildUpgradeData = RemoteObjectManager.instance.regulation.guildLevelInfoDtbl.FirstOrDefault(x => x.level == guild.Level + 1);
 
             guild.Point -= guildUpgradeData.cost;
 

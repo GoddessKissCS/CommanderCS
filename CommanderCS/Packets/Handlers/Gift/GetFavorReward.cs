@@ -1,6 +1,7 @@
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Gift
@@ -10,7 +11,7 @@ namespace CommanderCS.Packets.Handlers.Gift
     {
         public override object Handle(GetFavorRewardRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             string cid = @params.cid.ToString();
 
@@ -70,7 +71,7 @@ namespace CommanderCS.Packets.Handlers.Gift
 		}
 		this.localUser.RefreshRewardFromNetwork(result);
 		UIManager.instance.RefreshOpenedUI();
-		if (this.regulation.FindCostumeData(int.Parse(this.localUser.thumbnailId)).cid = int.Parse(this._FindRequestProperty(request, "cid")))
+		if (this.RemoteObjectManager.instance.regulation.FindCostumeData(int.Parse(this.localUser.thumbnailId)).cid = int.Parse(this._FindRequestProperty(request, "cid")))
 		{
 			UIManager.instance.world.mainCommand.spineTest.SetInteraction(roCommander);
 		}

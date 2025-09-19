@@ -2,6 +2,7 @@ using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -11,7 +12,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(GuildBoardWriteRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             if (Misc.NameCheck(@params.msg))
             {

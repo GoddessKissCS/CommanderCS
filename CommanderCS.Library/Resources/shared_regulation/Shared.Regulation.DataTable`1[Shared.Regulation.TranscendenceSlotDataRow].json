@@ -1,0 +1,46 @@
+[
+    {
+        "slot": 1,
+        "stat": 1,
+        "addStat": 40,
+        "firstStepLimit": 50,
+        "addStepLimit": 100,
+        "statString": "6600014",
+        "icon": "ak-abilityicon1",
+        "tip": "6600022",
+        "tipTitle": "6600018"
+    },
+    {
+        "slot": 2,
+        "stat": 2,
+        "addStat": 5,
+        "firstStepLimit": 50,
+        "addStepLimit": 100,
+        "statString": "6600015",
+        "icon": "ak-abilityicon2",
+        "tip": "6600023",
+        "tipTitle": "6600019"
+    },
+    {
+        "slot": 3,
+        "stat": 4,
+        "addStat": 20,
+        "firstStepLimit": 50,
+        "addStepLimit": 100,
+        "statString": "6600016",
+        "icon": "ak-abilityicon3",
+        "tip": "6600024",
+        "tipTitle": "6600020"
+    },
+    {
+        "slot": 4,
+        "stat": 5,
+        "addStat": 15,
+        "firstStepLimit": 50,
+        "addStepLimit": 100,
+        "statString": "6600017",
+        "icon": "ak-abilityicon4",
+        "tip": "6600025",
+        "tipTitle": "6600021"
+    }
+]

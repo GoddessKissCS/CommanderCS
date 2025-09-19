@@ -1,0 +1,161 @@
+{
+  "smvr": 1000000,
+  "rgvr": 20220312000000.0,
+  "optn": {
+    "efct": true
+  },
+  "init": {
+    "type": 14,
+    "stgn": "1",
+    "rdsd": 11198,
+    "ltrp": [
+      {
+        "slots": [
+          {
+            "id": "5002",
+            "cid": "2",
+            "ctyp": 1,
+            "midx": 0,
+            "pidx": 0,
+            "rnk": 1,
+            "cls": 1,
+            "lv": 1,
+            "cos": 2001,
+            "rsf": 0,
+            "mry": 0,
+            "exp": 0,
+            "pos": 0,
+            "hp": 1348,
+            "dmghp": 0,
+            "dict": 0,
+            "skills": [
+              {
+                "id": "50021",
+                "lv": 1,
+                "sp": 0
+              },
+              {
+                "id": "50022",
+                "lv": 1,
+                "sp": 0
+              },
+              {
+                "id": "50023",
+                "lv": 1,
+                "sp": 0
+              },
+              {
+                "id": "50024",
+                "lv": 1,
+                "sp": 0
+              }
+            ],
+            "itms": {},
+            "wepns": {},
+            "tsdc": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": "5001",
+            "cid": "1",
+            "ctyp": 1,
+            "midx": 0,
+            "pidx": 0,
+            "rnk": 6,
+            "cls": 1,
+            "lv": 122,
+            "cos": 1001,
+            "rsf": 0,
+            "mry": 0,
+            "exp": 0,
+            "pos": 0,
+            "hp": 145562,
+            "dmghp": 0,
+            "dict": 0,
+            "skills": [
+              {
+                "id": "50011",
+                "lv": 122,
+                "sp": 0
+              },
+              {
+                "id": "50012",
+                "lv": 1,
+                "sp": 0
+              },
+              {
+                "id": "50013",
+                "lv": 1,
+                "sp": 0
+              },
+              {
+                "id": "50014",
+                "lv": 1,
+                "sp": 0
+              }
+            ],
+            "itms": {},
+            "wepns": {},
+            "tsdc": [
+              520,
+              506,
+              500,
+              500
+            ]
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "rtrp": [
+      {
+        "slots": [
+          null,
+          null,
+          null,
+          null,
+          {
+            "id": "31001",
+            "cid": "",
+            "ctyp": 5,
+            "midx": 0,
+            "pidx": 0,
+            "rnk": 1,
+            "cls": 16,
+            "lv": 99,
+            "cos": 0,
+            "rsf": 0,
+            "mry": 0,
+            "exp": 0,
+            "pos": 0,
+            "hp": 999999,
+            "dmghp": 0,
+            "dict": 0,
+            "skills": [],
+            "itms": {},
+            "wepns": {},
+            "tsdc": []
+          },
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "grp": null
+  },
+  "flen": 526,
+  "lipt": {},
+  "ript": {}
+}

@@ -18,7 +18,7 @@ namespace CommanderCS.Packets
         {
             var rawRequest = await Compression.Stream2ByteArray(context.Request.Body);
 
-            var decompressedRequest = Compression.Decompress(rawRequest);
+            var decompressedRequest = Compression.DecompressGZipToString(rawRequest);
 
             var keyIndex = Crypto.Decrypt(decompressedRequest, out var decryptedRequest);
 

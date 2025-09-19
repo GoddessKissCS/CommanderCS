@@ -16,7 +16,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 	{
 		this.localUser.lastClearAnnihilationStage = result.stage;
 		List<string> list = JsonConvert.DeserializeObject<List<string>>(this._FindRequestProperty(request, "cids"));
-		AnnihilateBattleDataRow annihilateBattleDataRow = this.regulation.annihilateBattleDtbl[(this.localUser.lastClearAnnihilationStage - 1).ToString()];
+		AnnihilateBattleDataRow annihilateBattleDataRow = this.RemoteObjectManager.instance.regulation.annihilateBattleDtbl[(this.localUser.lastClearAnnihilationStage - 1).ToString()];
 		for (int i = 0; i < list.Count; i++)
 		{
 			RoCommander roCommander = this.localUser.FindCommander(list[i]);

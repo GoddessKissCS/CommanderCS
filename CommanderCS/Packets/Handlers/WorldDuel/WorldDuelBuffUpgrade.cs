@@ -1,4 +1,5 @@
 using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.WorldDuel
@@ -8,6 +9,8 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
     {
         public override object Handle(WorldDuelBuffUpgradeRequest @params)
         {
+            GameProfileScheme User = GetUserGameProfile();
+
             WorldDuelBuffUpgradeResponse worldDuelBuffUpgradeResponse = new()
             {
                 rsoc = UserResources2Resource(User.Resources),

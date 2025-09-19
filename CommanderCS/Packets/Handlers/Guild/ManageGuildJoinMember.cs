@@ -1,5 +1,6 @@
 using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
@@ -8,7 +9,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     {
         public override object Handle(ManageGuildJoinMemberRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             var application = DatabaseManager.GuildApplication.GetGuildApplications(User.GuildId);
 

@@ -1,0 +1,117 @@
+[
+    {
+        "type": "1",
+        "wallpaperName": "6400001",
+        "image": "mr-thema-bg01",
+        "thumbnail": "mr-bg-icon-01",
+        "atlasNumber": 1,
+        "desc": "6410001",
+        "itemExchangeDr": {
+            "idx": "120001",
+            "type": 13,
+            "typeidx": "1",
+            "display": 0,
+            "pricetype": 1,
+            "pricetypeidx": "7004",
+            "price": 3000,
+            "navigatortype1": 0,
+            "position1": 0,
+            "navigatortype2": 0,
+            "position2": 0,
+            "navigatortype3": 0,
+            "position3": 0
+        }
+    },
+    {
+        "type": "2",
+        "wallpaperName": "6400002",
+        "image": "mr-thema-bg02",
+        "thumbnail": "mr-bg-icon-02",
+        "atlasNumber": 1,
+        "desc": "6410002",
+        "itemExchangeDr": {
+            "idx": "120002",
+            "type": 13,
+            "typeidx": "2",
+            "display": 0,
+            "pricetype": 1,
+            "pricetypeidx": "7004",
+            "price": 3000,
+            "navigatortype1": 0,
+            "position1": 0,
+            "navigatortype2": 0,
+            "position2": 0,
+            "navigatortype3": 0,
+            "position3": 0
+        }
+    },
+    {
+        "type": "3",
+        "wallpaperName": "6400003",
+        "image": "mr-thema-bg03",
+        "thumbnail": "mr-bg-icon-03",
+        "atlasNumber": 1,
+        "desc": "6410003",
+        "itemExchangeDr": {
+            "idx": "120003",
+            "type": 13,
+            "typeidx": "3",
+            "display": 0,
+            "pricetype": 1,
+            "pricetypeidx": "7004",
+            "price": 3000,
+            "navigatortype1": 0,
+            "position1": 0,
+            "navigatortype2": 0,
+            "position2": 0,
+            "navigatortype3": 0,
+            "position3": 0
+        }
+    },
+    {
+        "type": "4",
+        "wallpaperName": "6400004",
+        "image": "mr-thema-bg04",
+        "thumbnail": "mr-bg-icon-04",
+        "atlasNumber": 1,
+        "desc": "6410004",
+        "itemExchangeDr": {
+            "idx": "120004",
+            "type": 13,
+            "typeidx": "4",
+            "display": 0,
+            "pricetype": 1,
+            "pricetypeidx": "7004",
+            "price": 3000,
+            "navigatortype1": 0,
+            "position1": 0,
+            "navigatortype2": 0,
+            "position2": 0,
+            "navigatortype3": 0,
+            "position3": 0
+        }
+    },
+    {
+        "type": "5",
+        "wallpaperName": "6400005",
+        "image": "mr-thema-bg05",
+        "thumbnail": "mr-bg-icon-05",
+        "atlasNumber": 1,
+        "desc": "6410005",
+        "itemExchangeDr": {
+            "idx": "120005",
+            "type": 13,
+            "typeidx": "5",
+            "display": 0,
+            "pricetype": 1,
+            "pricetypeidx": "7004",
+            "price": 3000,
+            "navigatortype1": 0,
+            "position1": 0,
+            "navigatortype2": 0,
+            "position2": 0,
+            "navigatortype3": 0,
+            "position3": 0
+        }
+    }
+]

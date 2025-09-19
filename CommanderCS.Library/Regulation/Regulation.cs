@@ -365,6 +365,8 @@ namespace CommanderCS.Library.Regulation
             battletimeDtbl = LoadTable<BattleTimeDataRow>("BattleTimeDataTable.json");
             commanderClassUpDtbl = LoadTable<CommanderClassUpDataRow>("CommanderClassUpDataTable.json");
             VipBenefitsDtbl = LoadTable<VipBenefitsDataRow>("VipBenefitsDataTable.json");
+
+            infinityFieldDtbl = LoadTable<InfinityFieldDataRow>("InfinityFieldDataTable.json");
         }
 
         public static void ExtendList<T>(ref List<T> list, int count)

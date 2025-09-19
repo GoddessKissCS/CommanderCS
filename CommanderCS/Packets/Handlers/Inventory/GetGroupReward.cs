@@ -30,7 +30,7 @@ namespace CommanderCS.Packets.Handlers.Inventory
 		else
 		{
 			string text2 = string.Empty;
-			GroupInfoDataRow groupInfoDataRow = RemoteObjectManager.instance.regulation.FindGroupInfoWhereGroupIdx(text);
+			GroupInfoDataRow groupInfoDataRow = RemoteObjectManager.instance.RemoteObjectManager.instance.regulation.FindGroupInfoWhereGroupIdx(text);
 			if (groupInfoDataRow is not null)
 			{
 				text2 = groupInfoDataRow.groupComment;

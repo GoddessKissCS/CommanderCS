@@ -48,7 +48,7 @@ namespace CommanderCS.Packets.Handlers.Carnival
 			{
 				foreach (KeyValuePair<string, Protocols.CarnivalList.ProcessData> keyValuePair2 in keyValuePair.Value)
 				{
-					switch (this.regulation.FindCarnivalType(keyValuePair.Key))
+					switch (this.RemoteObjectManager.instance.regulation.FindCarnivalType(keyValuePair.Key))
 					{
 					case ECarnivalType.NewUserExchangeEvent_Reward:
 					case ECarnivalType.NewUserExchangeEvent_Mission:

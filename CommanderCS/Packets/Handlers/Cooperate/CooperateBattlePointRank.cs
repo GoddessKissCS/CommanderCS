@@ -28,7 +28,7 @@ namespace CommanderCS.Packets.Handlers.Cooperate
 
             // ADD sometime missing data
 
-            List<CommanderCS.Library.Protocols.CooperateBattlePointGuildRankingInfo> cooperateBattlePointGuildRankingInfos = new() { };
+            List<Library.Protocols.CooperateBattlePointGuildRankingInfo> cooperateBattlePointGuildRankingInfos = new() { };
 
             response.Result = cooperateBattlePointGuildRankingInfos;
 

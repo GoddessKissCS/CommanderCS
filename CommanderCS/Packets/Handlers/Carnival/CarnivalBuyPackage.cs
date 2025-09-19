@@ -17,7 +17,7 @@ namespace CommanderCS.Packets.Handlers.Carnival
 		if (result is not null)
 		{
 			string text = this._FindRequestProperty(request, "ctid");
-			ECarnivalCategory categoryType = this.regulation.carnivalTypeDtbl[text].categoryType;
+			ECarnivalCategory categoryType = this.RemoteObjectManager.instance.regulation.carnivalTypeDtbl[text].categoryType;
 			if (result.rewardList is not null)
 			{
 				UIPopup.Create<UIGetItem>("GetItem").Set(result.rewardList, string.Empty);

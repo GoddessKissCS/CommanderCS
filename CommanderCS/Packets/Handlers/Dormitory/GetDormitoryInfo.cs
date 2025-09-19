@@ -1,5 +1,6 @@
 ﻿using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Dormitory
@@ -10,7 +11,7 @@ namespace CommanderCS.Packets.Handlers.Dormitory
         public override object Handle(GetDormitoryInfoRequest @params)
         {
 
-            Dormitory = DatabaseManager.Dormitory.FindBySession(BasePacket.SessionId);
+            DormitoryScheme Dormitory = GetUserDormitory();
 
             CommanderCS.Library.Protocols.Dormitory.Info DormitoryInfo = new()
             {

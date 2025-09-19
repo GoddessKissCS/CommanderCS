@@ -1,11 +1,14 @@
-﻿using CommanderCS.Library.Battle;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Battle;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.Library.Regulation;
 using CommanderCS.Library.Regulation.DataRows;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Text;
 
 namespace CommanderCS.Packets.Handlers.Battle
 {
@@ -14,7 +17,7 @@ namespace CommanderCS.Packets.Handlers.Battle
     {
         public override object Handle(BattleOutRequest @params)
         {
-            User = DatabaseManager.GameProfile.FindBySession(BasePacket.SessionId);
+            GameProfileScheme User = GetUserGameProfile();
 
             ErrorPacket error = new()
             {
@@ -30,20 +33,26 @@ namespace CommanderCS.Packets.Handlers.Battle
             Simulator simulatedBattle = null;
             int commanderXP = 0;
 
-            WorldMapStageDataRow worldstagetbl = null;
+			WorldMapStageDataRow worldstagetbl = null;
 
             switch (@params.BattleType)
             {
                 case EBattleType.Plunder:
-                    simulatedBattle = Simulator.ReplayPlunderSimulation(Regulation, serializedJson, false);
+                    simulatedBattle = Simulator.ReplayPlunderSimulation(RemoteObjectManager.instance.regulation, serializedJson, false);
 
-                    worldstagetbl = Regulation.worldMapStageDtbl.Find(x => x.id == record.initState.stageID);
+                    worldstagetbl = RemoteObjectManager.instance.regulation.worldMapStageDtbl.Find(x => x.id == record.initState.stageID);
 
                     break;
-            }
 
-            if (simulatedBattle is not null)
-            {
+				case EBattleType.Raid:
+                    simulatedBattle = Simulator.Simulation(RemoteObjectManager.instance.regulation, serializedJson, false);
+                    break;
+
+
+                // this is just for debugging purposes
+                default:
+                    simulatedBattle = Simulator.Simulation(RemoteObjectManager.instance.regulation, serializedJson, false);
+                    break;
             }
 
 #if DEBUG
@@ -55,68 +64,94 @@ namespace CommanderCS.Packets.Handlers.Battle
 
             File.WriteAllText("Record.json", record1);
             File.WriteAllText("Result.json", result1);
-            File.WriteAllText("simulatedRecord.json", simRec);
-            File.WriteAllText("simulatedResult.json", simRes);
+            //File.WriteAllText("simulatedRecord.json", simRec);
+            //File.WriteAllText("simulatedResult.json", simRes);
 
 #endif
 
-            if (result.winSide == simulatedBattle.result.winSide && result.winSide != 1 && simulatedBattle.result.winSide != 1)
-            {
-                double maxDifference = simulatedBattle.result.totalAttackDamage * 0.05;
+			if(@params.BattleType == EBattleType.Raid)
+			{
+                string client_replay = Convert.ToBase64String(Encoding.UTF8.GetBytes(record1));
 
-                double lowerBound = simulatedBattle.result.totalAttackDamage - maxDifference;
-                double upperBound = simulatedBattle.result.totalAttackDamage + maxDifference;
+                string server_replay = Convert.ToBase64String(Encoding.UTF8.GetBytes(simRec));
 
-                if (result.totalAttackDamage >= lowerBound && result.totalAttackDamage <= upperBound)
-                {
-                    bool isRecordGoldHigher = result.gold >= simulatedBattle.result.gold;
+                ReplayScheme replay = DatabaseManager.ReplayList.Insert(User.Uno, User.MemberId, client_replay, server_replay, @params.BattleType);
 
-                    if (@params.BattleType == EBattleType.Plunder)
-                    {
-                        User.LastStage = int.Parse(worldstagetbl.id);
+				// LOOK UP IF WE HAVE A BETTER SCORE BEFORE WE INSERT IT
+				// OR UPDATE IT
 
-                        User.BattleData.WorldMapStages.TryGetValue(worldstagetbl.worldMapId, out var map);
+				DatabaseManager.RaidRankList.Insert(User, (int)simulatedBattle.result.totalAttackDamage, simulatedBattle.record.length);
 
-                        int index = map.FindIndex(x => x.stageId == worldstagetbl.id);
-
-                        User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].clearCount++;
-
-                        int star = User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].star;
-
-                        if (star < 3 && result.clearRank > star)
-                        {
-                            User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].star = result.clearRank;
-                        }
-
-                        DatabaseManager.GameProfile.UpdateLastStageAndStageInfo(SessionId, User);
-                    }
-
-                    if (!isRecordGoldHigher)
-                    {
-                    }
-                }
+                goto X;
             }
 
-            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
-            UserInformationResponse.BattleResult battleResult = new()
-            {
-                save = false,
-                VipShopOpen = 0,
-                VipShopResetTime = 0,
-                commanderData = User.CommanderData,
-                commanderFavor = [],
-                eventResourceData = User.Inventory.eventResourceData,
-                foodData = User.Inventory.foodData,
-                groupItemData = User.Inventory.groupItemData,
-                infinityData = new(),
-                itemData = User.Inventory.itemData,
-                medalData = User.Inventory.medalData,
-                partData = User.Inventory.partData,
-                rewardList = [],
-                user = new(),
-                __resource = rsoc,
-            };
+
+            //if (result.winSide == simulatedBattle.result.winSide && result.winSide != 1 && simulatedBattle.result.winSide != 1)
+            //{
+            //    double maxDifference = simulatedBattle.result.totalAttackDamage * 0.05;
+
+            //    double lowerBound = simulatedBattle.result.totalAttackDamage - maxDifference;
+            //    double upperBound = simulatedBattle.result.totalAttackDamage + maxDifference;
+
+            //    if (result.totalAttackDamage >= lowerBound && result.totalAttackDamage <= upperBound)
+            //    {
+            //        bool isRecordGoldHigher = result.gold >= simulatedBattle.result.gold;
+
+            //        if (@params.BattleType == EBattleType.Plunder)
+            //        {
+            //            User.LastStage = int.Parse(worldstagetbl.id);
+
+            //            User.BattleData.WorldMapStages.TryGetValue(worldstagetbl.worldMapId, out var map);
+
+            //            int index = map.FindIndex(x => x.stageId == worldstagetbl.id);
+
+            //            User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].clearCount++;
+
+            //            int star = User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].star;
+
+            //            if (star < 3 && result.clearRank > star)
+            //            {
+            //                User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].star = result.clearRank;
+            //            }
+
+            //            DatabaseManager.GameProfile.UpdateLastStageAndStageInfo(SessionId, User);
+            //        }
+
+            //        if (!isRecordGoldHigher)
+            //        {
+            //        }
+            //    }
+            //}
+
+		X:
+			var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
+
+			UserInformationResponse.BattleResult battleResult = new()
+			{
+				save = false,
+				VipShopOpen = 0,
+				VipShopResetTime = 0,
+				commanderData = User.CommanderData,
+				commanderFavor = [],
+				eventResourceData = User.Inventory.eventResourceData,
+				foodData = User.Inventory.foodData,
+				groupItemData = User.Inventory.groupItemData,
+				infinityData = new(),
+				itemData = User.Inventory.itemData,
+				medalData = User.Inventory.medalData,
+				partData = User.Inventory.partData,
+				rewardList = [],
+				user = new()
+				{
+					//curScore = (int)simulatedBattle.result.totalAttackDamage,
+					//rank = 1,
+					//rankPercent = 0.01f,
+					//prevScore = 1,
+					//getScore = (int)simulatedBattle.result.totalAttackDamage,
+				},
+				__resource = rsoc,
+			};
 
             var res = JObject.FromObject(battleResult);
 
@@ -211,7 +246,7 @@ namespace CommanderCS.Packets.Handlers.Battle
 		{
 			if (isWin)
 			{
-				WorldMapStageDataRow worldMapStageDataRow = this.regulation.worldMapStageDtbl[battleData.stageId];
+				WorldMapStageDataRow worldMapStageDataRow = this.RemoteObjectManager.instance.regulation.worldMapStageDtbl[battleData.stageId];
 				battleResult2.plunderResult.SetBattleTime((float)UIManager.instance.battle.Simulator.frame.time / 1000f);
 				battleResult2.plunderResult.SetGetExp(worldMapStageDataRow.bullet);
 				battleResult2.plunderResult.SetRewardDataAndOpen(battleResult.rewardList);

@@ -1,0 +1,7377 @@
+[
+    {
+        "idx": "1",
+        "weaponName": "73001",
+        "slotType": 1,
+        "weaponGrade": 1,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            160,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            50,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 720,
+        "weaponIcon": "weapon_0001",
+        "weaponDescription": "93001",
+        "weaponSetType": "1"
+    },
+    {
+        "idx": "2",
+        "weaponName": "73002",
+        "slotType": 1,
+        "weaponGrade": 2,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            240,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            100,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 1320,
+        "weaponIcon": "weapon_0001",
+        "weaponDescription": "93002",
+        "weaponSetType": "2"
+    },
+    {
+        "idx": "3",
+        "weaponName": "73003",
+        "slotType": 1,
+        "weaponGrade": 3,
+        "statType": [
+            1,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            320,
+            20,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            150,
+            2,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 1920,
+        "weaponIcon": "weapon_0001",
+        "weaponDescription": "93003",
+        "weaponSetType": "3"
+    },
+    {
+        "idx": "4",
+        "weaponName": "73004",
+        "slotType": 1,
+        "weaponGrade": 4,
+        "statType": [
+            1,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            400,
+            25,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            200,
+            2,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 2520,
+        "weaponIcon": "weapon_0001",
+        "weaponDescription": "93004",
+        "weaponSetType": "4"
+    },
+    {
+        "idx": "5",
+        "weaponName": "73005",
+        "slotType": 1,
+        "weaponGrade": 5,
+        "statType": [
+            1,
+            2,
+            3,
+            4
+        ],
+        "statBasePoint": [
+            800,
+            50,
+            375,
+            190
+        ],
+        "statAddPoint": [
+            250,
+            5,
+            12,
+            10
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 3120,
+        "weaponIcon": "weapon_0001",
+        "weaponDescription": "93005",
+        "weaponSetType": "5"
+    },
+    {
+        "idx": "6",
+        "weaponName": "73006",
+        "slotType": 1,
+        "weaponGrade": 1,
+        "statType": [
+            2,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            40,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            7,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 840,
+        "weaponIcon": "weapon_0002",
+        "weaponDescription": "93006",
+        "weaponSetType": "6"
+    },
+    {
+        "idx": "7",
+        "weaponName": "73007",
+        "slotType": 1,
+        "weaponGrade": 2,
+        "statType": [
+            2,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            60,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            15,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 1440,
+        "weaponIcon": "weapon_0002",
+        "weaponDescription": "93007",
+        "weaponSetType": "7"
+    },
+    {
+        "idx": "8",
+        "weaponName": "73008",
+        "slotType": 1,
+        "weaponGrade": 3,
+        "statType": [
+            2,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            80,
+            150,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            22,
+            7,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 2040,
+        "weaponIcon": "weapon_0002",
+        "weaponDescription": "93008",
+        "weaponSetType": "8"
+    },
+    {
+        "idx": "9",
+        "weaponName": "73009",
+        "slotType": 1,
+        "weaponGrade": 4,
+        "statType": [
+            2,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            100,
+            200,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            30,
+            10,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 2640,
+        "weaponIcon": "weapon_0002",
+        "weaponDescription": "93009",
+        "weaponSetType": "9"
+    },
+    {
+        "idx": "10",
+        "weaponName": "73010",
+        "slotType": 1,
+        "weaponGrade": 5,
+        "statType": [
+            2,
+            3,
+            1,
+            0
+        ],
+        "statBasePoint": [
+            200,
+            375,
+            500,
+            0
+        ],
+        "statAddPoint": [
+            37,
+            12,
+            25,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 3240,
+        "weaponIcon": "weapon_0002",
+        "weaponDescription": "93010",
+        "weaponSetType": "10"
+    },
+    {
+        "idx": "11",
+        "weaponName": "73011",
+        "slotType": 1,
+        "weaponGrade": 1,
+        "statType": [
+            4,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            75,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            17,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 960,
+        "weaponIcon": "weapon_0003",
+        "weaponDescription": "93011",
+        "weaponSetType": "11"
+    },
+    {
+        "idx": "12",
+        "weaponName": "73012",
+        "slotType": 1,
+        "weaponGrade": 2,
+        "statType": [
+            4,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            110,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            35,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 1560,
+        "weaponIcon": "weapon_0003",
+        "weaponDescription": "93012",
+        "weaponSetType": "12"
+    },
+    {
+        "idx": "13",
+        "weaponName": "73013",
+        "slotType": 1,
+        "weaponGrade": 3,
+        "statType": [
+            4,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            150,
+            150,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            55,
+            7,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 2160,
+        "weaponIcon": "weapon_0003",
+        "weaponDescription": "93013",
+        "weaponSetType": "13"
+    },
+    {
+        "idx": "14",
+        "weaponName": "73014",
+        "slotType": 1,
+        "weaponGrade": 4,
+        "statType": [
+            4,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            190,
+            200,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            75,
+            10,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 2760,
+        "weaponIcon": "weapon_0003",
+        "weaponDescription": "93014",
+        "weaponSetType": "14"
+    },
+    {
+        "idx": "15",
+        "weaponName": "73015",
+        "slotType": 1,
+        "weaponGrade": 5,
+        "statType": [
+            4,
+            3,
+            6,
+            0
+        ],
+        "statBasePoint": [
+            375,
+            375,
+            15,
+            0
+        ],
+        "statAddPoint": [
+            95,
+            12,
+            2,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 3360,
+        "weaponIcon": "weapon_0003",
+        "weaponDescription": "93015",
+        "weaponSetType": "15"
+    },
+    {
+        "idx": "16",
+        "weaponName": "73016",
+        "slotType": 1,
+        "weaponGrade": 1,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            200,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            50,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 1080,
+        "weaponIcon": "weapon_0004",
+        "weaponDescription": "93016",
+        "weaponSetType": "16"
+    },
+    {
+        "idx": "17",
+        "weaponName": "73017",
+        "slotType": 1,
+        "weaponGrade": 2,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            300,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            100,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 1680,
+        "weaponIcon": "weapon_0004",
+        "weaponDescription": "93017",
+        "weaponSetType": "17"
+    },
+    {
+        "idx": "18",
+        "weaponName": "73018",
+        "slotType": 1,
+        "weaponGrade": 3,
+        "statType": [
+            1,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            400,
+            150,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            150,
+            7,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 2280,
+        "weaponIcon": "weapon_0004",
+        "weaponDescription": "93018",
+        "weaponSetType": "18"
+    },
+    {
+        "idx": "19",
+        "weaponName": "73019",
+        "slotType": 1,
+        "weaponGrade": 4,
+        "statType": [
+            1,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            500,
+            200,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            200,
+            10,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 2880,
+        "weaponIcon": "weapon_0004",
+        "weaponDescription": "93019",
+        "weaponSetType": "19"
+    },
+    {
+        "idx": "20",
+        "weaponName": "73020",
+        "slotType": 1,
+        "weaponGrade": 5,
+        "statType": [
+            1,
+            3,
+            6,
+            0
+        ],
+        "statBasePoint": [
+            1000,
+            375,
+            15,
+            0
+        ],
+        "statAddPoint": [
+            250,
+            12,
+            2,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 3480,
+        "weaponIcon": "weapon_0004",
+        "weaponDescription": "93020",
+        "weaponSetType": "20"
+    },
+    {
+        "idx": "21",
+        "weaponName": "73021",
+        "slotType": 1,
+        "weaponGrade": 1,
+        "statType": [
+            3,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            150,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            25,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 1200,
+        "weaponIcon": "weapon_0005",
+        "weaponDescription": "93021",
+        "weaponSetType": "21"
+    },
+    {
+        "idx": "22",
+        "weaponName": "73022",
+        "slotType": 1,
+        "weaponGrade": 2,
+        "statType": [
+            3,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            225,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            50,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 1800,
+        "weaponIcon": "weapon_0005",
+        "weaponDescription": "93022",
+        "weaponSetType": "22"
+    },
+    {
+        "idx": "23",
+        "weaponName": "73023",
+        "slotType": 1,
+        "weaponGrade": 3,
+        "statType": [
+            3,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            300,
+            20,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            75,
+            2,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            170,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 2400,
+        "weaponIcon": "weapon_0005",
+        "weaponDescription": "93023",
+        "weaponSetType": "23"
+    },
+    {
+        "idx": "24",
+        "weaponName": "73024",
+        "slotType": 1,
+        "weaponGrade": 4,
+        "statType": [
+            3,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            375,
+            25,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            100,
+            3,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            225,
+            185,
+            225,
+            185
+        ],
+        "productionTime": 3000,
+        "weaponIcon": "weapon_0005",
+        "weaponDescription": "93024",
+        "weaponSetType": "24"
+    },
+    {
+        "idx": "25",
+        "weaponName": "73025",
+        "slotType": 1,
+        "weaponGrade": 5,
+        "statType": [
+            3,
+            2,
+            1,
+            0
+        ],
+        "statBasePoint": [
+            750,
+            50,
+            500,
+            0
+        ],
+        "statAddPoint": [
+            125,
+            4,
+            25,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 5,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60002",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            335,
+            275,
+            335,
+            275
+        ],
+        "productionTime": 3600,
+        "weaponIcon": "weapon_0005",
+        "weaponDescription": "93025",
+        "weaponSetType": "25"
+    },
+    {
+        "idx": "1001",
+        "weaponName": "74001",
+        "slotType": 2,
+        "weaponGrade": 1,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            256,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            50,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 600,
+        "weaponIcon": "weapon_1001",
+        "weaponDescription": "94001",
+        "weaponSetType": "1"
+    },
+    {
+        "idx": "1002",
+        "weaponName": "74002",
+        "slotType": 2,
+        "weaponGrade": 2,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            384,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            100,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 1200,
+        "weaponIcon": "weapon_1001",
+        "weaponDescription": "94002",
+        "weaponSetType": "2"
+    },
+    {
+        "idx": "1003",
+        "weaponName": "74003",
+        "slotType": 2,
+        "weaponGrade": 3,
+        "statType": [
+            1,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            512,
+            20,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            150,
+            2,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 1800,
+        "weaponIcon": "weapon_1001",
+        "weaponDescription": "94003",
+        "weaponSetType": "3"
+    },
+    {
+        "idx": "1004",
+        "weaponName": "74004",
+        "slotType": 2,
+        "weaponGrade": 4,
+        "statType": [
+            1,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            640,
+            25,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            200,
+            3,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 2400,
+        "weaponIcon": "weapon_1001",
+        "weaponDescription": "94004",
+        "weaponSetType": "4"
+    },
+    {
+        "idx": "1005",
+        "weaponName": "74005",
+        "slotType": 2,
+        "weaponGrade": 5,
+        "statType": [
+            1,
+            2,
+            3,
+            4
+        ],
+        "statBasePoint": [
+            1280,
+            50,
+            300,
+            95
+        ],
+        "statAddPoint": [
+            250,
+            4,
+            12,
+            10
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 5,
+        "materialMax": [
+            500,
+            255,
+            500,
+            255
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 3000,
+        "weaponIcon": "weapon_1001",
+        "weaponDescription": "94005",
+        "weaponSetType": "5"
+    },
+    {
+        "idx": "1006",
+        "weaponName": "74006",
+        "slotType": 2,
+        "weaponGrade": 1,
+        "statType": [
+            2,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            20,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            7,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 720,
+        "weaponIcon": "weapon_1002",
+        "weaponDescription": "94006",
+        "weaponSetType": "6"
+    },
+    {
+        "idx": "1007",
+        "weaponName": "74007",
+        "slotType": 2,
+        "weaponGrade": 2,
+        "statType": [
+            2,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            30,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            15,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 1320,
+        "weaponIcon": "weapon_1002",
+        "weaponDescription": "94007",
+        "weaponSetType": "7"
+    },
+    {
+        "idx": "1008",
+        "weaponName": "74008",
+        "slotType": 2,
+        "weaponGrade": 3,
+        "statType": [
+            2,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            40,
+            120,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            22,
+            7,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 1920,
+        "weaponIcon": "weapon_1002",
+        "weaponDescription": "94008",
+        "weaponSetType": "8"
+    },
+    {
+        "idx": "1009",
+        "weaponName": "74009",
+        "slotType": 2,
+        "weaponGrade": 4,
+        "statType": [
+            2,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            50,
+            150,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            30,
+            10,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 2520,
+        "weaponIcon": "weapon_1002",
+        "weaponDescription": "94009",
+        "weaponSetType": "9"
+    },
+    {
+        "idx": "1010",
+        "weaponName": "74010",
+        "slotType": 2,
+        "weaponGrade": 5,
+        "statType": [
+            2,
+            3,
+            1,
+            0
+        ],
+        "statBasePoint": [
+            100,
+            300,
+            800,
+            0
+        ],
+        "statAddPoint": [
+            37,
+            12,
+            25,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 5,
+        "materialMax": [
+            500,
+            255,
+            500,
+            255
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 3120,
+        "weaponIcon": "weapon_1002",
+        "weaponDescription": "94010",
+        "weaponSetType": "10"
+    },
+    {
+        "idx": "1011",
+        "weaponName": "74011",
+        "slotType": 2,
+        "weaponGrade": 1,
+        "statType": [
+            4,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            38,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            17,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 840,
+        "weaponIcon": "weapon_1003",
+        "weaponDescription": "94011",
+        "weaponSetType": "11"
+    },
+    {
+        "idx": "1012",
+        "weaponName": "74012",
+        "slotType": 2,
+        "weaponGrade": 2,
+        "statType": [
+            4,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            55,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            35,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 1440,
+        "weaponIcon": "weapon_1003",
+        "weaponDescription": "94012",
+        "weaponSetType": "12"
+    },
+    {
+        "idx": "1013",
+        "weaponName": "74013",
+        "slotType": 2,
+        "weaponGrade": 3,
+        "statType": [
+            4,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            75,
+            120,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            55,
+            7,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 2040,
+        "weaponIcon": "weapon_1003",
+        "weaponDescription": "94013",
+        "weaponSetType": "13"
+    },
+    {
+        "idx": "1014",
+        "weaponName": "74014",
+        "slotType": 2,
+        "weaponGrade": 4,
+        "statType": [
+            4,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            95,
+            150,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            75,
+            10,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 2640,
+        "weaponIcon": "weapon_1003",
+        "weaponDescription": "94014",
+        "weaponSetType": "14"
+    },
+    {
+        "idx": "1015",
+        "weaponName": "74015",
+        "slotType": 2,
+        "weaponGrade": 5,
+        "statType": [
+            4,
+            3,
+            6,
+            0
+        ],
+        "statBasePoint": [
+            188,
+            300,
+            30,
+            0
+        ],
+        "statAddPoint": [
+            95,
+            12,
+            2,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 5,
+        "materialMax": [
+            500,
+            255,
+            500,
+            255
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 3240,
+        "weaponIcon": "weapon_1003",
+        "weaponDescription": "94015",
+        "weaponSetType": "15"
+    },
+    {
+        "idx": "1016",
+        "weaponName": "74016",
+        "slotType": 2,
+        "weaponGrade": 1,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            320,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            50,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 1,
+        "materialMax": [
+            500,
+            255,
+            500,
+            255
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 960,
+        "weaponIcon": "weapon_1004",
+        "weaponDescription": "94016",
+        "weaponSetType": "16"
+    },
+    {
+        "idx": "1017",
+        "weaponName": "74017",
+        "slotType": 2,
+        "weaponGrade": 2,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            480,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            100,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 2,
+        "materialMax": [
+            500,
+            255,
+            500,
+            255
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 1560,
+        "weaponIcon": "weapon_1004",
+        "weaponDescription": "94017",
+        "weaponSetType": "17"
+    },
+    {
+        "idx": "1018",
+        "weaponName": "74018",
+        "slotType": 2,
+        "weaponGrade": 3,
+        "statType": [
+            1,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            640,
+            120,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            150,
+            7,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 3,
+        "materialMax": [
+            500,
+            255,
+            500,
+            255
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 2160,
+        "weaponIcon": "weapon_1004",
+        "weaponDescription": "94018",
+        "weaponSetType": "18"
+    },
+    {
+        "idx": "1019",
+        "weaponName": "74019",
+        "slotType": 2,
+        "weaponGrade": 4,
+        "statType": [
+            1,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            800,
+            150,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            200,
+            10,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 4,
+        "materialMax": [
+            500,
+            255,
+            500,
+            255
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 2760,
+        "weaponIcon": "weapon_1004",
+        "weaponDescription": "94019",
+        "weaponSetType": "19"
+    },
+    {
+        "idx": "1020",
+        "weaponName": "74020",
+        "slotType": 2,
+        "weaponGrade": 5,
+        "statType": [
+            1,
+            3,
+            6,
+            0
+        ],
+        "statBasePoint": [
+            1600,
+            300,
+            30,
+            0
+        ],
+        "statAddPoint": [
+            250,
+            12,
+            2,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 5,
+        "materialMax": [
+            500,
+            255,
+            500,
+            255
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 3360,
+        "weaponIcon": "weapon_1004",
+        "weaponDescription": "94020",
+        "weaponSetType": "20"
+    },
+    {
+        "idx": "1021",
+        "weaponName": "74021",
+        "slotType": 2,
+        "weaponGrade": 1,
+        "statType": [
+            3,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            120,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            25,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 1,
+        "materialMax": [
+            500,
+            255,
+            500,
+            255
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 1080,
+        "weaponIcon": "weapon_1005",
+        "weaponDescription": "94021",
+        "weaponSetType": "21"
+    },
+    {
+        "idx": "1022",
+        "weaponName": "74022",
+        "slotType": 2,
+        "weaponGrade": 2,
+        "statType": [
+            3,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            180,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            50,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 2,
+        "materialMax": [
+            500,
+            255,
+            500,
+            255
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 1680,
+        "weaponIcon": "weapon_1005",
+        "weaponDescription": "94022",
+        "weaponSetType": "22"
+    },
+    {
+        "idx": "1023",
+        "weaponName": "74023",
+        "slotType": 2,
+        "weaponGrade": 3,
+        "statType": [
+            3,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            240,
+            20,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            75,
+            2,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 3,
+        "materialMax": [
+            500,
+            255,
+            500,
+            255
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 2280,
+        "weaponIcon": "weapon_1005",
+        "weaponDescription": "94023",
+        "weaponSetType": "23"
+    },
+    {
+        "idx": "1024",
+        "weaponName": "74024",
+        "slotType": 2,
+        "weaponGrade": 4,
+        "statType": [
+            3,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            300,
+            25,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            100,
+            3,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 4,
+        "materialMax": [
+            500,
+            255,
+            500,
+            255
+        ],
+        "materialMin": [
+            185,
+            100,
+            185,
+            100
+        ],
+        "productionTime": 2880,
+        "weaponIcon": "weapon_1005",
+        "weaponDescription": "94024",
+        "weaponSetType": "24"
+    },
+    {
+        "idx": "1025",
+        "weaponName": "74025",
+        "slotType": 2,
+        "weaponGrade": 5,
+        "statType": [
+            3,
+            2,
+            1,
+            0
+        ],
+        "statBasePoint": [
+            600,
+            50,
+            800,
+            0
+        ],
+        "statAddPoint": [
+            125,
+            4,
+            25,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 2,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60003",
+        "value": 5,
+        "materialMax": [
+            500,
+            255,
+            500,
+            255
+        ],
+        "materialMin": [
+            275,
+            150,
+            275,
+            150
+        ],
+        "productionTime": 3480,
+        "weaponIcon": "weapon_1005",
+        "weaponDescription": "94025",
+        "weaponSetType": "25"
+    },
+    {
+        "idx": "2001",
+        "weaponName": "75001",
+        "slotType": 3,
+        "weaponGrade": 1,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            80,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            50,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 660,
+        "weaponIcon": "weapon_2001",
+        "weaponDescription": "95001",
+        "weaponSetType": "1"
+    },
+    {
+        "idx": "2002",
+        "weaponName": "75002",
+        "slotType": 3,
+        "weaponGrade": 2,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            120,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            100,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 1260,
+        "weaponIcon": "weapon_2001",
+        "weaponDescription": "95002",
+        "weaponSetType": "2"
+    },
+    {
+        "idx": "2003",
+        "weaponName": "75003",
+        "slotType": 3,
+        "weaponGrade": 3,
+        "statType": [
+            1,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            160,
+            65,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            150,
+            2,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 1860,
+        "weaponIcon": "weapon_2001",
+        "weaponDescription": "95003",
+        "weaponSetType": "3"
+    },
+    {
+        "idx": "2004",
+        "weaponName": "75004",
+        "slotType": 3,
+        "weaponGrade": 4,
+        "statType": [
+            1,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            200,
+            80,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            200,
+            3,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 2460,
+        "weaponIcon": "weapon_2001",
+        "weaponDescription": "95004",
+        "weaponSetType": "4"
+    },
+    {
+        "idx": "2005",
+        "weaponName": "75005",
+        "slotType": 3,
+        "weaponGrade": 5,
+        "statType": [
+            1,
+            2,
+            3,
+            4
+        ],
+        "statBasePoint": [
+            400,
+            160,
+            250,
+            95
+        ],
+        "statAddPoint": [
+            250,
+            4,
+            12,
+            10
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 3060,
+        "weaponIcon": "weapon_2001",
+        "weaponDescription": "95005",
+        "weaponSetType": "5"
+    },
+    {
+        "idx": "2006",
+        "weaponName": "75006",
+        "slotType": 3,
+        "weaponGrade": 1,
+        "statType": [
+            2,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            64,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            7,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 780,
+        "weaponIcon": "weapon_2002",
+        "weaponDescription": "95006",
+        "weaponSetType": "6"
+    },
+    {
+        "idx": "2007",
+        "weaponName": "75007",
+        "slotType": 3,
+        "weaponGrade": 2,
+        "statType": [
+            2,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            96,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            15,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 1380,
+        "weaponIcon": "weapon_2002",
+        "weaponDescription": "95007",
+        "weaponSetType": "7"
+    },
+    {
+        "idx": "2008",
+        "weaponName": "75008",
+        "slotType": 3,
+        "weaponGrade": 3,
+        "statType": [
+            2,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            128,
+            100,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            22,
+            7,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 1980,
+        "weaponIcon": "weapon_2002",
+        "weaponDescription": "95008",
+        "weaponSetType": "8"
+    },
+    {
+        "idx": "2009",
+        "weaponName": "75009",
+        "slotType": 3,
+        "weaponGrade": 4,
+        "statType": [
+            2,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            160,
+            125,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            30,
+            10,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            50,
+            50,
+            50
+        ],
+        "productionTime": 2580,
+        "weaponIcon": "weapon_2002",
+        "weaponDescription": "95009",
+        "weaponSetType": "9"
+    },
+    {
+        "idx": "2010",
+        "weaponName": "75010",
+        "slotType": 3,
+        "weaponGrade": 5,
+        "statType": [
+            2,
+            3,
+            1,
+            0
+        ],
+        "statBasePoint": [
+            320,
+            250,
+            250,
+            0
+        ],
+        "statAddPoint": [
+            37,
+            12,
+            25,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 3180,
+        "weaponIcon": "weapon_2002",
+        "weaponDescription": "95010",
+        "weaponSetType": "10"
+    },
+    {
+        "idx": "2011",
+        "weaponName": "75011",
+        "slotType": 3,
+        "weaponGrade": 1,
+        "statType": [
+            4,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            38,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            17,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 900,
+        "weaponIcon": "weapon_2003",
+        "weaponDescription": "95011",
+        "weaponSetType": "11"
+    },
+    {
+        "idx": "2012",
+        "weaponName": "75012",
+        "slotType": 3,
+        "weaponGrade": 2,
+        "statType": [
+            4,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            55,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            35,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 1500,
+        "weaponIcon": "weapon_2003",
+        "weaponDescription": "95012",
+        "weaponSetType": "12"
+    },
+    {
+        "idx": "2013",
+        "weaponName": "75013",
+        "slotType": 3,
+        "weaponGrade": 3,
+        "statType": [
+            4,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            75,
+            100,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            55,
+            7,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 2100,
+        "weaponIcon": "weapon_2003",
+        "weaponDescription": "95013",
+        "weaponSetType": "13"
+    },
+    {
+        "idx": "2014",
+        "weaponName": "75014",
+        "slotType": 3,
+        "weaponGrade": 4,
+        "statType": [
+            4,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            95,
+            125,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            75,
+            10,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 2700,
+        "weaponIcon": "weapon_2003",
+        "weaponDescription": "95014",
+        "weaponSetType": "14"
+    },
+    {
+        "idx": "2015",
+        "weaponName": "75015",
+        "slotType": 3,
+        "weaponGrade": 5,
+        "statType": [
+            4,
+            3,
+            6,
+            0
+        ],
+        "statBasePoint": [
+            188,
+            250,
+            15,
+            0
+        ],
+        "statAddPoint": [
+            95,
+            12,
+            2,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 3300,
+        "weaponIcon": "weapon_2003",
+        "weaponDescription": "95015",
+        "weaponSetType": "15"
+    },
+    {
+        "idx": "2016",
+        "weaponName": "75016",
+        "slotType": 3,
+        "weaponGrade": 1,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            100,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            50,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 1020,
+        "weaponIcon": "weapon_2004",
+        "weaponDescription": "95016",
+        "weaponSetType": "16"
+    },
+    {
+        "idx": "2017",
+        "weaponName": "75017",
+        "slotType": 3,
+        "weaponGrade": 2,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            150,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            100,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 1620,
+        "weaponIcon": "weapon_2004",
+        "weaponDescription": "95017",
+        "weaponSetType": "17"
+    },
+    {
+        "idx": "2018",
+        "weaponName": "75018",
+        "slotType": 3,
+        "weaponGrade": 3,
+        "statType": [
+            1,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            200,
+            100,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            150,
+            7,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 2220,
+        "weaponIcon": "weapon_2004",
+        "weaponDescription": "95018",
+        "weaponSetType": "18"
+    },
+    {
+        "idx": "2019",
+        "weaponName": "75019",
+        "slotType": 3,
+        "weaponGrade": 4,
+        "statType": [
+            1,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            250,
+            125,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            200,
+            10,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 2820,
+        "weaponIcon": "weapon_2004",
+        "weaponDescription": "95019",
+        "weaponSetType": "19"
+    },
+    {
+        "idx": "2020",
+        "weaponName": "75020",
+        "slotType": 3,
+        "weaponGrade": 5,
+        "statType": [
+            1,
+            3,
+            6,
+            0
+        ],
+        "statBasePoint": [
+            500,
+            250,
+            15,
+            0
+        ],
+        "statAddPoint": [
+            250,
+            12,
+            2,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 3420,
+        "weaponIcon": "weapon_2004",
+        "weaponDescription": "95020",
+        "weaponSetType": "20"
+    },
+    {
+        "idx": "2021",
+        "weaponName": "75021",
+        "slotType": 3,
+        "weaponGrade": 1,
+        "statType": [
+            3,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            100,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            25,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 1140,
+        "weaponIcon": "weapon_2005",
+        "weaponDescription": "95021",
+        "weaponSetType": "21"
+    },
+    {
+        "idx": "2022",
+        "weaponName": "75022",
+        "slotType": 3,
+        "weaponGrade": 2,
+        "statType": [
+            3,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            150,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            50,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 1740,
+        "weaponIcon": "weapon_2005",
+        "weaponDescription": "95022",
+        "weaponSetType": "22"
+    },
+    {
+        "idx": "2023",
+        "weaponName": "75023",
+        "slotType": 3,
+        "weaponGrade": 3,
+        "statType": [
+            3,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            200,
+            65,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            75,
+            2,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            50,
+            170,
+            50
+        ],
+        "productionTime": 2340,
+        "weaponIcon": "weapon_2005",
+        "weaponDescription": "95023",
+        "weaponSetType": "23"
+    },
+    {
+        "idx": "2024",
+        "weaponName": "75024",
+        "slotType": 3,
+        "weaponGrade": 4,
+        "statType": [
+            3,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            250,
+            80,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            100,
+            3,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            195,
+            185,
+            225,
+            185
+        ],
+        "productionTime": 2940,
+        "weaponIcon": "weapon_2005",
+        "weaponDescription": "95024",
+        "weaponSetType": "24"
+    },
+    {
+        "idx": "2025",
+        "weaponName": "75025",
+        "slotType": 3,
+        "weaponGrade": 5,
+        "statType": [
+            3,
+            2,
+            1,
+            0
+        ],
+        "statBasePoint": [
+            500,
+            160,
+            250,
+            0
+        ],
+        "statAddPoint": [
+            125,
+            4,
+            25,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 1,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60004",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            290,
+            275,
+            335,
+            275
+        ],
+        "productionTime": 3540,
+        "weaponIcon": "weapon_2005",
+        "weaponDescription": "95025",
+        "weaponSetType": "25"
+    },
+    {
+        "idx": "3001",
+        "weaponName": "76001",
+        "slotType": 4,
+        "weaponGrade": 1,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            128,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            50,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 900,
+        "weaponIcon": "weapon_3001",
+        "weaponDescription": "96001",
+        "weaponSetType": "1"
+    },
+    {
+        "idx": "3002",
+        "weaponName": "76002",
+        "slotType": 4,
+        "weaponGrade": 2,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            192,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            100,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 1800,
+        "weaponIcon": "weapon_3001",
+        "weaponDescription": "96002",
+        "weaponSetType": "2"
+    },
+    {
+        "idx": "3003",
+        "weaponName": "76003",
+        "slotType": 4,
+        "weaponGrade": 3,
+        "statType": [
+            1,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            256,
+            55,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            150,
+            2,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 2700,
+        "weaponIcon": "weapon_3001",
+        "weaponDescription": "96003",
+        "weaponSetType": "3"
+    },
+    {
+        "idx": "3004",
+        "weaponName": "76004",
+        "slotType": 4,
+        "weaponGrade": 4,
+        "statType": [
+            1,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            320,
+            70,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            200,
+            3,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 3600,
+        "weaponIcon": "weapon_3001",
+        "weaponDescription": "96004",
+        "weaponSetType": "4"
+    },
+    {
+        "idx": "3005",
+        "weaponName": "76005",
+        "slotType": 4,
+        "weaponGrade": 5,
+        "statType": [
+            1,
+            2,
+            3,
+            4
+        ],
+        "statBasePoint": [
+            640,
+            140,
+            250,
+            95
+        ],
+        "statAddPoint": [
+            250,
+            4,
+            12,
+            10
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 4500,
+        "weaponIcon": "weapon_3001",
+        "weaponDescription": "96005",
+        "weaponSetType": "5"
+    },
+    {
+        "idx": "3006",
+        "weaponName": "76006",
+        "slotType": 4,
+        "weaponGrade": 1,
+        "statType": [
+            2,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            56,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            7,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 1080,
+        "weaponIcon": "weapon_3002",
+        "weaponDescription": "96006",
+        "weaponSetType": "6"
+    },
+    {
+        "idx": "3007",
+        "weaponName": "76007",
+        "slotType": 4,
+        "weaponGrade": 2,
+        "statType": [
+            2,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            84,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            15,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 1980,
+        "weaponIcon": "weapon_3002",
+        "weaponDescription": "96007",
+        "weaponSetType": "7"
+    },
+    {
+        "idx": "3008",
+        "weaponName": "76008",
+        "slotType": 4,
+        "weaponGrade": 3,
+        "statType": [
+            2,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            112,
+            100,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            22,
+            7,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 2880,
+        "weaponIcon": "weapon_3002",
+        "weaponDescription": "96008",
+        "weaponSetType": "8"
+    },
+    {
+        "idx": "3009",
+        "weaponName": "76009",
+        "slotType": 4,
+        "weaponGrade": 4,
+        "statType": [
+            2,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            140,
+            125,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            30,
+            10,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 3780,
+        "weaponIcon": "weapon_3002",
+        "weaponDescription": "96009",
+        "weaponSetType": "9"
+    },
+    {
+        "idx": "3010",
+        "weaponName": "76010",
+        "slotType": 4,
+        "weaponGrade": 5,
+        "statType": [
+            2,
+            3,
+            1,
+            0
+        ],
+        "statBasePoint": [
+            280,
+            250,
+            400,
+            0
+        ],
+        "statAddPoint": [
+            37,
+            12,
+            25,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 4680,
+        "weaponIcon": "weapon_3002",
+        "weaponDescription": "96010",
+        "weaponSetType": "10"
+    },
+    {
+        "idx": "3011",
+        "weaponName": "76011",
+        "slotType": 4,
+        "weaponGrade": 1,
+        "statType": [
+            4,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            38,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            17,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 1260,
+        "weaponIcon": "weapon_3003",
+        "weaponDescription": "96011",
+        "weaponSetType": "11"
+    },
+    {
+        "idx": "3012",
+        "weaponName": "76012",
+        "slotType": 4,
+        "weaponGrade": 2,
+        "statType": [
+            4,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            55,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            35,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 2160,
+        "weaponIcon": "weapon_3003",
+        "weaponDescription": "96012",
+        "weaponSetType": "12"
+    },
+    {
+        "idx": "3013",
+        "weaponName": "76013",
+        "slotType": 4,
+        "weaponGrade": 3,
+        "statType": [
+            4,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            75,
+            100,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            55,
+            7,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 3060,
+        "weaponIcon": "weapon_3003",
+        "weaponDescription": "96013",
+        "weaponSetType": "13"
+    },
+    {
+        "idx": "3014",
+        "weaponName": "76014",
+        "slotType": 4,
+        "weaponGrade": 4,
+        "statType": [
+            4,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            95,
+            125,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            75,
+            10,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 3960,
+        "weaponIcon": "weapon_3003",
+        "weaponDescription": "96014",
+        "weaponSetType": "14"
+    },
+    {
+        "idx": "3015",
+        "weaponName": "76015",
+        "slotType": 4,
+        "weaponGrade": 5,
+        "statType": [
+            4,
+            3,
+            6,
+            0
+        ],
+        "statBasePoint": [
+            188,
+            250,
+            15,
+            0
+        ],
+        "statAddPoint": [
+            95,
+            12,
+            2,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 4860,
+        "weaponIcon": "weapon_3003",
+        "weaponDescription": "96015",
+        "weaponSetType": "15"
+    },
+    {
+        "idx": "3016",
+        "weaponName": "76016",
+        "slotType": 4,
+        "weaponGrade": 1,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            160,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            50,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 1440,
+        "weaponIcon": "weapon_3004",
+        "weaponDescription": "96016",
+        "weaponSetType": "16"
+    },
+    {
+        "idx": "3017",
+        "weaponName": "76017",
+        "slotType": 4,
+        "weaponGrade": 2,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            240,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            100,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 2340,
+        "weaponIcon": "weapon_3004",
+        "weaponDescription": "96017",
+        "weaponSetType": "17"
+    },
+    {
+        "idx": "3018",
+        "weaponName": "76018",
+        "slotType": 4,
+        "weaponGrade": 3,
+        "statType": [
+            1,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            320,
+            100,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            150,
+            7,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 3240,
+        "weaponIcon": "weapon_3004",
+        "weaponDescription": "96018",
+        "weaponSetType": "18"
+    },
+    {
+        "idx": "3019",
+        "weaponName": "76019",
+        "slotType": 4,
+        "weaponGrade": 4,
+        "statType": [
+            1,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            400,
+            125,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            200,
+            10,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 4140,
+        "weaponIcon": "weapon_3004",
+        "weaponDescription": "96019",
+        "weaponSetType": "19"
+    },
+    {
+        "idx": "3020",
+        "weaponName": "76020",
+        "slotType": 4,
+        "weaponGrade": 5,
+        "statType": [
+            1,
+            3,
+            6,
+            0
+        ],
+        "statBasePoint": [
+            800,
+            250,
+            15,
+            0
+        ],
+        "statAddPoint": [
+            250,
+            12,
+            2,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 5040,
+        "weaponIcon": "weapon_3004",
+        "weaponDescription": "96020",
+        "weaponSetType": "20"
+    },
+    {
+        "idx": "3021",
+        "weaponName": "76021",
+        "slotType": 4,
+        "weaponGrade": 1,
+        "statType": [
+            3,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            100,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            25,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 1620,
+        "weaponIcon": "weapon_3005",
+        "weaponDescription": "96021",
+        "weaponSetType": "21"
+    },
+    {
+        "idx": "3022",
+        "weaponName": "76022",
+        "slotType": 4,
+        "weaponGrade": 2,
+        "statType": [
+            3,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            150,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            50,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 2520,
+        "weaponIcon": "weapon_3005",
+        "weaponDescription": "96022",
+        "weaponSetType": "22"
+    },
+    {
+        "idx": "3023",
+        "weaponName": "76023",
+        "slotType": 4,
+        "weaponGrade": 3,
+        "statType": [
+            3,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            200,
+            55,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            75,
+            2,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            50,
+            255,
+            50,
+            85
+        ],
+        "productionTime": 3420,
+        "weaponIcon": "weapon_3005",
+        "weaponDescription": "96023",
+        "weaponSetType": "23"
+    },
+    {
+        "idx": "3024",
+        "weaponName": "76024",
+        "slotType": 4,
+        "weaponGrade": 4,
+        "statType": [
+            3,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            250,
+            70,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            100,
+            3,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            185,
+            250,
+            185,
+            195
+        ],
+        "productionTime": 4320,
+        "weaponIcon": "weapon_3005",
+        "weaponDescription": "96024",
+        "weaponSetType": "24"
+    },
+    {
+        "idx": "3025",
+        "weaponName": "76025",
+        "slotType": 4,
+        "weaponGrade": 5,
+        "statType": [
+            3,
+            2,
+            1,
+            0
+        ],
+        "statBasePoint": [
+            500,
+            140,
+            400,
+            0
+        ],
+        "statAddPoint": [
+            125,
+            4,
+            25,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 3,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60005",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            275,
+            380,
+            275,
+            290
+        ],
+        "productionTime": 5220,
+        "weaponIcon": "weapon_3005",
+        "weaponDescription": "96025",
+        "weaponSetType": "25"
+    },
+    {
+        "idx": "4001",
+        "weaponName": "77001",
+        "slotType": 5,
+        "weaponGrade": 1,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            160,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            50,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 1200,
+        "weaponIcon": "weapon_4001",
+        "weaponDescription": "97001",
+        "weaponSetType": "1"
+    },
+    {
+        "idx": "4002",
+        "weaponName": "77002",
+        "slotType": 5,
+        "weaponGrade": 2,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            240,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            100,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 2400,
+        "weaponIcon": "weapon_4001",
+        "weaponDescription": "97002",
+        "weaponSetType": "2"
+    },
+    {
+        "idx": "4003",
+        "weaponName": "77003",
+        "slotType": 5,
+        "weaponGrade": 3,
+        "statType": [
+            1,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            320,
+            40,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            150,
+            2,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 3600,
+        "weaponIcon": "weapon_4001",
+        "weaponDescription": "97003",
+        "weaponSetType": "3"
+    },
+    {
+        "idx": "4004",
+        "weaponName": "77004",
+        "slotType": 5,
+        "weaponGrade": 4,
+        "statType": [
+            1,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            400,
+            50,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            200,
+            3,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 4800,
+        "weaponIcon": "weapon_4001",
+        "weaponDescription": "97004",
+        "weaponSetType": "4"
+    },
+    {
+        "idx": "4005",
+        "weaponName": "77005",
+        "slotType": 5,
+        "weaponGrade": 5,
+        "statType": [
+            1,
+            2,
+            3,
+            4
+        ],
+        "statBasePoint": [
+            800,
+            100,
+            250,
+            190
+        ],
+        "statAddPoint": [
+            250,
+            4,
+            12,
+            10
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 6000,
+        "weaponIcon": "weapon_4001",
+        "weaponDescription": "97005",
+        "weaponSetType": "5"
+    },
+    {
+        "idx": "4006",
+        "weaponName": "77006",
+        "slotType": 5,
+        "weaponGrade": 1,
+        "statType": [
+            2,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            40,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            7,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 1440,
+        "weaponIcon": "weapon_4002",
+        "weaponDescription": "97006",
+        "weaponSetType": "6"
+    },
+    {
+        "idx": "4007",
+        "weaponName": "77007",
+        "slotType": 5,
+        "weaponGrade": 2,
+        "statType": [
+            2,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            60,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            15,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 2640,
+        "weaponIcon": "weapon_4002",
+        "weaponDescription": "97007",
+        "weaponSetType": "7"
+    },
+    {
+        "idx": "4008",
+        "weaponName": "77008",
+        "slotType": 5,
+        "weaponGrade": 3,
+        "statType": [
+            2,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            80,
+            100,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            22,
+            7,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 3840,
+        "weaponIcon": "weapon_4002",
+        "weaponDescription": "97008",
+        "weaponSetType": "8"
+    },
+    {
+        "idx": "4009",
+        "weaponName": "77009",
+        "slotType": 5,
+        "weaponGrade": 4,
+        "statType": [
+            2,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            100,
+            125,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            30,
+            10,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 5040,
+        "weaponIcon": "weapon_4002",
+        "weaponDescription": "97009",
+        "weaponSetType": "9"
+    },
+    {
+        "idx": "4010",
+        "weaponName": "77010",
+        "slotType": 5,
+        "weaponGrade": 5,
+        "statType": [
+            2,
+            3,
+            1,
+            0
+        ],
+        "statBasePoint": [
+            200,
+            250,
+            500,
+            0
+        ],
+        "statAddPoint": [
+            37,
+            12,
+            25,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 6240,
+        "weaponIcon": "weapon_4002",
+        "weaponDescription": "97010",
+        "weaponSetType": "10"
+    },
+    {
+        "idx": "4011",
+        "weaponName": "77011",
+        "slotType": 5,
+        "weaponGrade": 1,
+        "statType": [
+            4,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            75,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            17,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 1680,
+        "weaponIcon": "weapon_4003",
+        "weaponDescription": "97011",
+        "weaponSetType": "11"
+    },
+    {
+        "idx": "4012",
+        "weaponName": "77012",
+        "slotType": 5,
+        "weaponGrade": 2,
+        "statType": [
+            4,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            110,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            35,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 2880,
+        "weaponIcon": "weapon_4003",
+        "weaponDescription": "97012",
+        "weaponSetType": "12"
+    },
+    {
+        "idx": "4013",
+        "weaponName": "77013",
+        "slotType": 5,
+        "weaponGrade": 3,
+        "statType": [
+            4,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            150,
+            100,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            55,
+            7,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 4080,
+        "weaponIcon": "weapon_4003",
+        "weaponDescription": "97013",
+        "weaponSetType": "13"
+    },
+    {
+        "idx": "4014",
+        "weaponName": "77014",
+        "slotType": 5,
+        "weaponGrade": 4,
+        "statType": [
+            4,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            190,
+            125,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            75,
+            10,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 5280,
+        "weaponIcon": "weapon_4003",
+        "weaponDescription": "97014",
+        "weaponSetType": "14"
+    },
+    {
+        "idx": "4015",
+        "weaponName": "77015",
+        "slotType": 5,
+        "weaponGrade": 5,
+        "statType": [
+            4,
+            3,
+            6,
+            0
+        ],
+        "statBasePoint": [
+            375,
+            250,
+            25,
+            0
+        ],
+        "statAddPoint": [
+            95,
+            12,
+            2,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 6480,
+        "weaponIcon": "weapon_4003",
+        "weaponDescription": "97015",
+        "weaponSetType": "15"
+    },
+    {
+        "idx": "4016",
+        "weaponName": "77016",
+        "slotType": 5,
+        "weaponGrade": 1,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            200,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            50,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 1920,
+        "weaponIcon": "weapon_4004",
+        "weaponDescription": "97016",
+        "weaponSetType": "16"
+    },
+    {
+        "idx": "4017",
+        "weaponName": "77017",
+        "slotType": 5,
+        "weaponGrade": 2,
+        "statType": [
+            1,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            300,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            100,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 3120,
+        "weaponIcon": "weapon_4004",
+        "weaponDescription": "97017",
+        "weaponSetType": "17"
+    },
+    {
+        "idx": "4018",
+        "weaponName": "77018",
+        "slotType": 5,
+        "weaponGrade": 3,
+        "statType": [
+            1,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            400,
+            100,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            150,
+            7,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 4320,
+        "weaponIcon": "weapon_4004",
+        "weaponDescription": "97018",
+        "weaponSetType": "18"
+    },
+    {
+        "idx": "4019",
+        "weaponName": "77019",
+        "slotType": 5,
+        "weaponGrade": 4,
+        "statType": [
+            1,
+            3,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            500,
+            125,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            200,
+            10,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 5520,
+        "weaponIcon": "weapon_4004",
+        "weaponDescription": "97019",
+        "weaponSetType": "19"
+    },
+    {
+        "idx": "4020",
+        "weaponName": "77020",
+        "slotType": 5,
+        "weaponGrade": 5,
+        "statType": [
+            1,
+            3,
+            6,
+            0
+        ],
+        "statBasePoint": [
+            1000,
+            250,
+            25,
+            0
+        ],
+        "statAddPoint": [
+            250,
+            12,
+            2,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 6720,
+        "weaponIcon": "weapon_4004",
+        "weaponDescription": "97020",
+        "weaponSetType": "20"
+    },
+    {
+        "idx": "4021",
+        "weaponName": "77021",
+        "slotType": 5,
+        "weaponGrade": 1,
+        "statType": [
+            3,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            100,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            25,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 1,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 2160,
+        "weaponIcon": "weapon_4005",
+        "weaponDescription": "97021",
+        "weaponSetType": "21"
+    },
+    {
+        "idx": "4022",
+        "weaponName": "77022",
+        "slotType": 5,
+        "weaponGrade": 2,
+        "statType": [
+            3,
+            0,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            150,
+            0,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            50,
+            0,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 2,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 3360,
+        "weaponIcon": "weapon_4005",
+        "weaponDescription": "97022",
+        "weaponSetType": "22"
+    },
+    {
+        "idx": "4023",
+        "weaponName": "77023",
+        "slotType": 5,
+        "weaponGrade": 3,
+        "statType": [
+            3,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            200,
+            40,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            75,
+            2,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 3,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            85,
+            85,
+            85,
+            255
+        ],
+        "productionTime": 4560,
+        "weaponIcon": "weapon_4005",
+        "weaponDescription": "97023",
+        "weaponSetType": "23"
+    },
+    {
+        "idx": "4024",
+        "weaponName": "77024",
+        "slotType": 5,
+        "weaponGrade": 4,
+        "statType": [
+            3,
+            2,
+            0,
+            0
+        ],
+        "statBasePoint": [
+            250,
+            50,
+            0,
+            0
+        ],
+        "statAddPoint": [
+            100,
+            3,
+            0,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 4,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            195,
+            195,
+            195,
+            250
+        ],
+        "productionTime": 5760,
+        "weaponIcon": "weapon_4005",
+        "weaponDescription": "97024",
+        "weaponSetType": "24"
+    },
+    {
+        "idx": "4025",
+        "weaponName": "77025",
+        "slotType": 5,
+        "weaponGrade": 5,
+        "statType": [
+            3,
+            2,
+            1,
+            0
+        ],
+        "statBasePoint": [
+            500,
+            100,
+            500,
+            0
+        ],
+        "statAddPoint": [
+            125,
+            4,
+            25,
+            0
+        ],
+        "targetType": 0,
+        "clingingTurn": [
+            0,
+            0
+        ],
+        "statusEffectDrks": [
+            "0",
+            "0"
+        ],
+        "explanation": [
+            "0",
+            "0"
+        ],
+        "privateWeapon": 0,
+        "skillPoint": 4,
+        "unitIdx": "0",
+        "skillIdx": "0",
+        "decompositionReward": "60006",
+        "value": 5,
+        "materialMax": [
+            500,
+            500,
+            500,
+            500
+        ],
+        "materialMin": [
+            290,
+            290,
+            290,
+            380
+        ],
+        "productionTime": 6960,
+        "weaponIcon": "weapon_4005",
+        "weaponDescription": "97025",
+        "weaponSetType": "25"
+    }
+]

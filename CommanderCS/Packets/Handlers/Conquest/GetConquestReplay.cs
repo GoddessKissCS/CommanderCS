@@ -25,7 +25,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 			yield break;
 		}
 		this.localUser.playingChatRecord = null;
-		JsonSerializerSettings serializerSettings = Regulation.SerializerSettings;
+		JsonSerializerSettings serializerSettings = RemoteObjectManager.instance.regulation.SerializerSettings;
 		Record record = (Record)JsonConvert.DeserializeObject<JToken>(result.ToString());
 		BattleData battleData = BattleData.Create(EBattleType.Conquest);
 		battleData.attacker = this.localUser.CreateForBattle(new List<RoTroop> { null });
