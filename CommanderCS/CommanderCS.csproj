@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFramework>net10.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>CommanderCS</RootNamespace>
@@ -9,6 +9,7 @@
 		<ApplicationIcon>crying.ico</ApplicationIcon>
 		<OutputType>Exe</OutputType>
 		<StartupObject>CommanderCS.Program</StartupObject>
+		<UserSecretsId>0341be9c-b70c-45ba-a06c-56931dff1f55</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>

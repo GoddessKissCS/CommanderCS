@@ -14,7 +14,6 @@ namespace CommanderCS.Packets
     {
         public Method Id { get; set; }
     }
-
     public class BasePacket
     {
         [JsonProperty("id")]

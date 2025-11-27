@@ -21,10 +21,15 @@ namespace CommanderCS.Packets.Handlers.Raid
             //TODO: look at the stage and then the rewards it can gen
             List<RewardInfo.RewardData> test = [];
 
+            User.Inventory.itemData["10"] = User.Inventory.itemData["10"] - 1;
+
 
             //- the key so you know you started the raid
 
             wmssr.reward = test;
+
+
+            DatabaseManager.GameProfile.UpdateItemData(SessionId, User.Inventory.itemData);
 
 
             wmssr.rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);

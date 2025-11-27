@@ -362,3 +362,8 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /CommanderCS/Resources
+
+#Created Simulator battle files should not be uploaded
+Record.json
+result.json
+
