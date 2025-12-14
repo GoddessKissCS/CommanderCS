@@ -18,7 +18,6 @@ namespace CommanderCS.Packets.Handlers.Raid
                 info = new()
                 {
                     endTime = 60,
-                    
                 },
                 user = new()
                 {

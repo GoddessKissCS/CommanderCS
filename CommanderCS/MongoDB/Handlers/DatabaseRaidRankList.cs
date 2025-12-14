@@ -25,28 +25,63 @@ namespace CommanderCS.MongoDB.Handlers
         public void Insert(GameProfileScheme User, int score, int time)
         {
             GuildScheme Guild = DatabaseManager.Guild.FindByUid(User.GuildId);
-            
-            // HERE WE WOULD NEED TO CHECK FIRST IF SOMEONE ELSE HAS A HIGHER SCORE OR LOWER Score and place us accordigly
-            
-            RaidRankScheme raidRank = new()
-            {
-                id = User.MemberId,
-                score = score,
-                grade = 0,
-                level = User.Resources.level,
-                rank = 1,
-                thumb = User.Resources.thumbnailId.ToString(),
-                time = time,
-                _name = User.Resources.nickname,
-            };
 
-            if (Guild != null)
-            {
-                raidRank.guildServer = Guild.World;
-                raidRank.guildName = Guild.Name;
+            // HERE WE WOULD NEED TO CHECK FIRST IF SOMEONE ELSE HAS A HIGHER SCORE OR LOWER Score and place us accordigl
+
+            RaidRankScheme Inmput = DatabaseCollection.Find(x => x.Id == User.Id).FirstOrDefault();
+
+            if (Inmput == null) {
+                RaidRankScheme raidRank = new()
+                {
+                    id = User.MemberId,
+                    score = score,
+                    grade = 0,
+                    level = User.Resources.level,
+                    rank = 1,
+                    thumb = User.Resources.thumbnailId.ToString(),
+                    time = time,
+                    _name = User.Resources.nickname,
+                };
+
+                if (Guild != null)
+                {
+                    raidRank.guildServer = Guild.World;
+                    raidRank.guildName = Guild.Name;
+                }
+
+                DatabaseCollection.InsertOne(raidRank);
+
+                return;
             }
 
-            DatabaseCollection.InsertOne(raidRank);
+            if (Inmput.score < score)
+            {
+                var filter = Builders<RaidRankScheme>.Filter.And(
+                    Builders<RaidRankScheme>.Filter.Eq(r => r.id, User.MemberId),
+                    Builders<RaidRankScheme>.Filter.Lt(r => r.score, score) // Only replace if existing score is lower
+                );
+
+                RaidRankScheme raidRank = new()
+                {
+                    id = User.MemberId,
+                    score = score,
+                    grade = 0,
+                    level = User.Resources.level,
+                    rank = 999999,
+                    thumb = User.Resources.thumbnailId.ToString(),
+                    time = time,
+                    _name = User.Resources.nickname,
+                };
+
+                if (Guild != null)
+                {
+                    raidRank.guildServer = Guild.World;
+                    raidRank.guildName = Guild.Name;
+                }
+
+                DatabaseCollection.ReplaceOne(filter, raidRank, new ReplaceOptions { IsUpsert = true });
+            }
+
         }
 
 
@@ -60,7 +95,8 @@ namespace CommanderCS.MongoDB.Handlers
 
             List<RankData> rankList = [];
 
-            foreach(var rank in ranks)
+            int currentRank = 1;
+            foreach (var rank in ranks)
             {
                 RankData rankData = new()
                 {
@@ -70,12 +106,13 @@ namespace CommanderCS.MongoDB.Handlers
                     thumb = rank.thumb,
                     score = rank.score,
                     grade = rank.grade,
-                    rank = rank.rank,
+                    rank = currentRank,
                     time = rank.time,
                     guildName = rank.guildName,
                     guildServer = rank.guildServer,
                 };
                 rankList.Add(rankData);
+                currentRank++;
             }
 
             return rankList;

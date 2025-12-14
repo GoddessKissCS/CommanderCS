@@ -98,7 +98,7 @@ namespace CommanderCS
 
                 //I dont remember what this was for.
 
-                //if(session != "" || session is not null)
+                //if (session != "" || session is not null)
                 //{
                 //    context.Response.Headers.TryAdd("SET-COOKIE", session);
                 //}
@@ -106,17 +106,17 @@ namespace CommanderCS
                 await context.Response.WriteAsync(responseData);
             });
 
-            app.MapGet("/chat.php", async (HttpContext context, IServiceProvider provider) =>
-            {
-                if (context.WebSockets.IsWebSocketRequest)
-                {
-                    // ADD Chat shit here sometime
-                }
-                else
-                {
-                    context.Response.StatusCode = StatusCodes.Status400BadRequest;
-                }
-            });
+            //app.MapGet("/chat.php", async (HttpContext context, IServiceProvider provider) =>
+            //{
+            //    if (context.WebSockets.IsWebSocketRequest)
+            //    {
+            //        // ADD Chat shit here sometime
+            //    }
+            //    else
+            //    {
+            //        context.Response.StatusCode = StatusCodes.Status400BadRequest;
+            //    }
+            //});
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

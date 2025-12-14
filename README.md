@@ -1,22 +1,20 @@
 # CommanderCS
-some gacha game emu
 
-
-## Status
-"Urgent" to-dos
+GoddessKiss Private Server Emulator (partially functioning)
 
 ### Bugs
 
 Getting kicked out of a guild while the game still thinks you are in one will make unable to continue playing (needs to restart the game) (client-sided issue)
 
+### Discord
+
+[Invite Link](https://discord.gg/qz5gs47ygV)
 
 ### IMPORTANT
 
 This is just a POC and its in WIP while it works somewhat it does has very limited usage and not everything works to 100% like its intend.
 
-
-
-### How-To-Use
+### Links
 
 [Mongodb community database](https://www.mongodb.com/try/download/community)
 
@@ -30,20 +28,35 @@ it is the lastest Version GK had just modified so i can easier create this POC, 
 
 This is just the games obb data works with any obb data for the lastest version.
 
-[The ServerSides Files](https://www.mediafire.com/file/v03gsv3tfevkg12/FileCDN.rar/file)
-
-These are just all server sides files you have to download so the game can be used.
- 
-
 ### Setup
 
-Download all these files above (may change in the future), install the mongodb community database, install the apk to your device or emulator (whatever you prefer), put the OBB file after unpacking it to its path, should be straightforward.
+Download the files from the 3 links above.
 
-Download this Project from releases or build it yourself (needs net8.0).
+1. You install the Mongodb Community Database, you pretty much just click next/yes to everything since you only want the standard install. Nothing more to do on your host machine (I cant provide support for anything other than Windows 10, i dont use any other OS)
 
-Put the FileCDN content into the FileCDN folder.
+2. Install the APK on your Emulator or Phone (It might be unable to be installed post Android Version 14 idk, since its an older Game, then you most likely have to use one of those Cloner Apps or anything similar if you dont have access to an Emulator or older Smartphone (if you cant install it on your Phone))
 
-When you run the game for the first time it will not directly connect your server since it doesnt know the ip of it, however thats very easy to change as it should create a file called config.json in your Pictures folder on your device, locate the pre-input ip and replace it with your ip wherever your server is running.
+3. Now open the Game it will say you need to download the obb/it cant download the obb or something similar since you downloaded/installed it from a "non googleplay service" or so. Then close the Game, completely
+
+4. Now you need to put the .obb file into the path "Android/Obb/com.flerogames.GK/" if you cant find this specific folder, do not panic just create the folder named "com.flerogames.GK" in that path instead and move the .obb into that folder. 
+
+5. Download the net9.0.rar from the release section, and unpack it wherever you want it. Then run the CommanderCS.exe it should look kinda like in the picture below. Dont panic if you get an warning or anything similar. 
+
+![PictureHERE](./media/howitshoulLOOK.PNG "Title")
+
+
+6. Now open the cmd (Commandline/Command Prompt), and type in "ipconfig", you might see multiplie adapters like in the picture below, now you look for your primary internet adapter, in my case it would be highlighted "Ethernet adapter Ethernet", and note down your IPv4 Address, this is your local network IP Address of your PC/Machine that the server is running on, most of the time it starts with "192.168".
+
+![PictureHERE](./media/ipconfig.PNG "Title")
+
+7. Now you go on your emulator/device where you installed the APK on, and look for the "Pictures" folder, there should be a file "config.json", and the replace the "192.168.X.X" part with your IP Address you noted down. Keep in mind that it should look like this "http://{your_replaced_ip}:5000/checkData.php", if it doesnt look like this example here, you wont be able to connect
+
+8. If you followed everything according to this i hope, you should be able to connect and create your own Accounts on your own private Server
+
+
+### Progress
+
+You can login, create an Account with DBUser (GooglePlay/Facebook wont be supported due the fact its an third party login), Tutorial partially works of now (12.12.2025), you can do the first like 2 steps of it but if you get to the gacha part it crashes, due missing logic/items i believe. Apart from that you can create an Guild almost all features there should work, Raid boss fights work too
 
 
 ## Credit

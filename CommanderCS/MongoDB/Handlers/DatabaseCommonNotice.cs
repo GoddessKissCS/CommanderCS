@@ -68,7 +68,7 @@ namespace CommanderCS.MongoDB.Handlers
             return notices;
         }
 
-        public bool DeleteEventNotice(int idx)
+        public bool DeleteCommonNotice(int idx)
         {
             var filter = Builders<NoticeDataScheme>.Filter.Eq("Idx", idx);
 
