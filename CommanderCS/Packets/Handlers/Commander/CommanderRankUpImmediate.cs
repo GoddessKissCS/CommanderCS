@@ -18,7 +18,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             //needs to be reworked to be more readable
 
-            if (User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander is not null)
+            if (User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
             {
                 var commanderRankData = RemoteObjectManager.instance.regulation.commanderRankDtbl.FirstOrDefault(x => x.rank == int.Parse(commander.__rank));
 

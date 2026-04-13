@@ -110,15 +110,15 @@ namespace CommanderCS.Packets.Handlers.Commander
 	// Token: 0x06005F35 RID: 24373 RVA: 0x001AE9A8 File Offset: 0x001ACBA8
 	private IEnumerator CommanderClassUpResult(JsonRpcClient.Request request, Protocols.UserInformationResponse result)
 	{
-		if (result.goodsInfo is not null)
+		if (result.goodsInfo != null)
 		{
 			this.localUser.RefreshGoodsFromNetwork(result.goodsInfo);
 		}
-		if (result.partData is not null)
+		if (result.partData != null)
 		{
 			this.localUser.RefreshPartFromNetwork(result.partData);
 		}
-		if (result.commanderInfo is not null)
+		if (result.commanderInfo != null)
 		{
 			SoundManager.PlaySFX("SE_Upgrade_001", false, 0f, float.MaxValue, float.MaxValue, default(Vector3), null, SoundDuckingSetting.DoNotDuck, 0f, 1f);
 			foreach (KeyValuePair<string, Protocols.UserInformationResponse.Commander> keyValuePair in result.commanderInfo)

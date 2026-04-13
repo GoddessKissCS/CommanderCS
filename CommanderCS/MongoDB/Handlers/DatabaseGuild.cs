@@ -488,7 +488,7 @@ namespace CommanderCS.MongoDB.Handlers
 
             if (act == 0)
             {
-                if (FindByName(val) is not null)
+                if (FindByName(val) != null)
                 {
                     return ErrorCode.FederationNameAlreadyExists;
                 }
@@ -503,7 +503,7 @@ namespace CommanderCS.MongoDB.Handlers
                 return ErrorCode.Failure;
             }
 
-            if (guild.LastEdit is not null)
+            if (guild.LastEdit != null)
             {
                 double time = (double)guild.LastEdit;
 
@@ -779,13 +779,13 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
 
             var user = DatabaseManager.GameProfile.FindByUno(uno);
-            if (user is not null && user.GuildId == guildId)
+            if (user != null && user.GuildId == guildId)
             {
                 DatabaseManager.GameProfile.UpdateGuild(uno, null);
             }
 
             var guild = FindByGuildId(guildId);
-            if (guild is not null)
+            if (guild != null)
             {
                 var countUpdate = Builders<GuildScheme>.Update.Set("Count", guild.MemberData.Count);
                 DatabaseCollection.UpdateOne(filter, countUpdate);
@@ -808,13 +808,13 @@ namespace CommanderCS.MongoDB.Handlers
 
             var user = DatabaseManager.GameProfile.FindByUno(uno);
 
-            if (user is not null && user.GuildId == guildId)
+            if (user != null && user.GuildId == guildId)
             {
                 DatabaseManager.GameProfile.UpdateGuild(uno, null);
             }
 
             var guild = FindByGuildId(guildId);
-            if (guild is not null)
+            if (guild != null)
             {
                 var countUpdate = Builders<GuildScheme>.Update.Set("Count", guild.MemberData.Count);
                 DatabaseCollection.UpdateOne(filter, countUpdate);

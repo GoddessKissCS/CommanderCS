@@ -65,7 +65,7 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
 	private IEnumerator PvPWaveDuelRankingListResult(JsonRpcClient.Request request, object result)
 	{
 		this.duelRankingList.Clear();
-		if (result is not null)
+		if (result != null)
 		{
 		}
 		Protocols.PvPRankingList pvPRankingList = this._ConvertJObject<Protocols.PvPRankingList>(result);

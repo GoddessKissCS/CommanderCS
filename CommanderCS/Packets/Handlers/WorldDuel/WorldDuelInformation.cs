@@ -49,7 +49,7 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
 	// Token: 0x0600614F RID: 24911 RVA: 0x001B175C File Offset: 0x001AF95C
 	private IEnumerator WorldDuelInformationResult(JsonRpcClient.Request request, Protocols.WorldDuelInformation result)
 	{
-		if (result is not null)
+		if (result != null)
 		{
 			this.localUser.currentSeasonDuelTime.SetByDuration(result.resetTime);
 			this.localUser.RefreshDefenderTroop(result.deck);

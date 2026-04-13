@@ -15,7 +15,7 @@ namespace CommanderCS.Packets.Handlers.PvP
 	{
 		string text = this._FindRequestProperty(request, "idx");
 		RoUser roUser = this.localUser.duelTargetList[int.Parse(text)];
-		if (target is not null)
+		if (target != null)
 		{
 			roUser.UpdateUserTroop(target);
 		}

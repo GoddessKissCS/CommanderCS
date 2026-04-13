@@ -20,26 +20,26 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 		for (int i = 0; i < list.Count; i++)
 		{
 			RoCommander roCommander = this.localUser.FindCommander(list[i]);
-			if (roCommander is not null)
+			if (roCommander != null)
 			{
 				roCommander.Die();
 				roCommander.SetSp((float)annihilateBattleDataRow.sp);
 			}
 		}
-		if (result.commanderStatusList is not null)
+		if (result.commanderStatusList != null)
 		{
 			for (int j = 0; j < result.commanderStatusList.Count; j++)
 			{
 				Protocols.AnnihilationMapInfo.StatusData statusData = result.commanderStatusList[j];
 				RoCommander roCommander2 = this.localUser.FindCommander(statusData.id);
-				if (roCommander2 is not null)
+				if (roCommander2 != null)
 				{
 					roCommander2.sp = statusData.sp;
 					roCommander2.dmgHp = statusData.dmghp;
 				}
 			}
 		}
-		if (result.advancePartyReward is not null)
+		if (result.advancePartyReward != null)
 		{
 			this.localUser.RefreshGoodsFromNetwork(result.advancePartyReward.resource);
 			this.localUser.RefreshItemFromNetwork(result.advancePartyReward.eventResourceData);

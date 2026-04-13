@@ -36,7 +36,7 @@ namespace CommanderCS.MongoDB.Handlers
                 .Where(d => d.Server == server && d.MemberId == memberId)
                 .FirstOrDefault();
 
-            if (existingUser is not null)
+            if (existingUser != null)
             {
                 return existingUser;
             }
@@ -331,7 +331,7 @@ namespace CommanderCS.MongoDB.Handlers
                           .Where(d => d.Server == server && d.MemberId == memberId)
                           .FirstOrDefault();
 
-            if (tryUser is not null)
+            if (tryUser != null)
             {
                 return tryUser;
             }

@@ -81,7 +81,7 @@ namespace CommanderCS.Packets.Handlers.Inventory
 		this.localUser.FromNetwork(result);
 		UIManager.instance.RefreshOpenedUI();
 		UITranscendencePopup uitranscendencePopup = UnityEngine.Object.FindObjectOfType(typeof(UITranscendencePopup)) as UITranscendencePopup;
-		if (uitranscendencePopup is not null)
+		if (uitranscendencePopup != null)
 		{
 			uitranscendencePopup.Set(0);
 		}

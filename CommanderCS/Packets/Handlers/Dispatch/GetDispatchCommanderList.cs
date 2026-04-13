@@ -106,7 +106,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 	// Token: 0x060060B9 RID: 24761 RVA: 0x001B0B04 File Offset: 0x001AED04
 	private IEnumerator GetDispatchCommanderListResult(JsonRpcClient.Request request, Dictionary<string, Protocols.DiapatchCommanderInfo> result)
 	{
-		if (result is not null)
+		if (result != null)
 		{
 			this.localUser.slotDispatchInfo.Clear();
 			foreach (KeyValuePair<string, Protocols.DiapatchCommanderInfo> keyValuePair in result)
@@ -116,7 +116,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 				slotDispatchInfo.dispatchCommanderInfo = keyValuePair.Value;
 				this.localUser.slotDispatchInfo.Add(slotDispatchInfo);
 			}
-			if (UIManager.instance.world.guild.dispatch is not null)
+			if (UIManager.instance.world.guild.dispatch != null)
 			{
 				UIManager.instance.world.guild.dispatch.SetDispatchList();
 			}

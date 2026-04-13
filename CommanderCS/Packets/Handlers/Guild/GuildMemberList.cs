@@ -57,7 +57,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 		{
 			yield break;
 		}
-		if (result is not null)
+		if (result != null)
 		{
 			UIManager.instance.world.guild.InitAndOpenGuildInfo(result.memberData);
 			UISetter.SetActive(UIManager.instance.world.guild.guildBoardBadge, result.badge = 1);

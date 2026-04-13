@@ -61,7 +61,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 		yield return null;
 		int slot = int.Parse(this._FindRequestProperty(request, "slot"));
 		UITranscendencePopup obj = UnityEngine.Object.FindObjectOfType(typeof(UITranscendencePopup)) as UITranscendencePopup;
-		if (obj is not null)
+		if (obj != null)
 		{
 			obj.Set(slot);
 		}

@@ -490,11 +490,11 @@ namespace CommanderCS.Packets.Handlers.Battle
 			if (isWin)
 			{
 				battleResult2.plunderResult.SetBattleTime((float)UIManager.instance.battle.Simulator.frame.time / 1000f);
-				if (battleResult.resource is not null)
+				if (battleResult.resource != null)
 				{
 					battleResult2.plunderResult.SetGetExp(0);
 				}
-				if (battleResult.rewardList is not null)
+				if (battleResult.rewardList != null)
 				{
 					battleResult2.plunderResult.SetRewardDataAndOpen(battleResult.rewardList);
 				}
@@ -554,7 +554,7 @@ namespace CommanderCS.Packets.Handlers.Battle
 		{
 			battleResult2.Open();
 		}
-		if (battleResult is not null)
+		if (battleResult != null)
 		{
 			this.localUser.RefreshGoodsFromNetwork(battleResult.resource);
 			this.localUser.RefreshPartFromNetwork(battleResult.partData);
@@ -575,7 +575,7 @@ namespace CommanderCS.Packets.Handlers.Battle
 		if (code == 70009)
 		{
 			UISimplePopup uisimplePopup = UISimplePopup.CreateOK(false, Localization.Get("1303"), string.Empty, Localization.Get("7044"), Localization.Get("1004"));
-			if (uisimplePopup is not null)
+			if (uisimplePopup != null)
 			{
 				uisimplePopup.onClose = delegate
 				{
@@ -594,7 +594,7 @@ namespace CommanderCS.Packets.Handlers.Battle
 				code,
 				")"
 			}), Localization.Get("5133"));
-			if (uisimplePopup2 is not null)
+			if (uisimplePopup2 != null)
 			{
 				uisimplePopup2.onClose = delegate
 				{

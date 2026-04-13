@@ -119,7 +119,7 @@ namespace CommanderCS.Packets.Handlers.Vip
 		this.localUser.vipGachaCount = result.gachaCount;
 		this.localUser.vipGachaRefreshTime.SetByDuration((double)result.refreshTime);
 		UIVipGachaContents vipGachaContents = UIManager.instance.world.vipGacha.vipGachaContents;
-		if (vipGachaContents is not null)
+		if (vipGachaContents != null)
 		{
 			vipGachaContents.Init(this.localUser.gachaInfoList);
 			vipGachaContents.RegisterEndPopup();

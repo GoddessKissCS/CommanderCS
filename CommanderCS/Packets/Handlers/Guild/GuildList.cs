@@ -27,7 +27,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             var userGuild = DatabaseManager.Guild.RequestGuild(User.GuildId, User.Uno);
 
-            if (userGuild is not null)
+            if (userGuild != null)
             {
                 var memberData = DatabaseManager.Guild.RequestGuildMembers(User.GuildId);
 

@@ -8,7 +8,7 @@ namespace CommanderCS.Packets.Handlers.Gift
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = new CommanderCS.Library.Protocols.ResourceRecharge(),
+                Result = new Library.Protocols.ResourceRecharge(),
             };
 
             // shouldnt need to be set

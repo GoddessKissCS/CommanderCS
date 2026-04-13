@@ -67,10 +67,10 @@ namespace CommanderCS.Packets.Handlers.Mission
 			this.localUser.missionList[i].combleted = false;
 			this.localUser.missionList[i].conditionCount = 0;
 		}
-		if (result is not null)
+		if (result != null)
 		{
 			Protocols.MissionInfo missionInfo = this._ConvertJObject<Protocols.MissionInfo>(result);
-			if (missionInfo is not null)
+			if (missionInfo != null)
 			{
 				this.localUser.missionCompleteCount = missionInfo.completeCount;
 				this.localUser.missionGoal = missionInfo.goal;
@@ -78,7 +78,7 @@ namespace CommanderCS.Packets.Handlers.Mission
 				for (int j = 0; j < missionInfo.missionList.Count; j++)
 				{
 					RoMission roMission = this.localUser.FindMission(missionInfo.missionList[j].missionId.ToString());
-					if (roMission is not null)
+					if (roMission != null)
 					{
 						roMission.received = missionInfo.missionList[j].receive = 1;
 						roMission.combleted = missionInfo.missionList[j].complete = 1;
@@ -92,7 +92,7 @@ namespace CommanderCS.Packets.Handlers.Mission
 			}
 
 			Protocols.AchievementInfo achievementInfo = this._ConvertJObject<Protocols.AchievementInfo>(result);
-			if (achievementInfo is not null)
+			if (achievementInfo != null)
 			{
 				this.localUser.achievementCompleteCount = achievementInfo.completeCount;
 				this.localUser.achievementGoal = achievementInfo.goal;
@@ -100,7 +100,7 @@ namespace CommanderCS.Packets.Handlers.Mission
 				for (int k = 0; k < achievementInfo.AchievementList.Count; k++)
 				{
 					RoMission roMission2 = this.localUser.FindAchievement(achievementInfo.AchievementList[k].achievementId.ToString(), achievementInfo.AchievementList[k].sort);
-					if (roMission2 is not null)
+					if (roMission2 != null)
 					{
 						roMission2.received = achievementInfo.AchievementList[k].receive = 1;
 						roMission2.combleted = achievementInfo.AchievementList[k].complete = 1;
@@ -115,7 +115,7 @@ namespace CommanderCS.Packets.Handlers.Mission
 			}
 
 			Protocols.UserInformationResponse userInformationResponse = this._ConvertJObject<Protocols.UserInformationResponse>(result);
-			if (userInformationResponse is not null)
+			if (userInformationResponse != null)
 			{
 				this.localUser.FromNetwork(userInformationResponse);
 			}

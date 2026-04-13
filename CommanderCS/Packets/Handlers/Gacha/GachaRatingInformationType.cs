@@ -56,11 +56,11 @@ namespace CommanderCS.Packets.Handlers.Gacha
 			object value = keyValuePair.Value;
 			Dictionary<ERewardType, Protocols.GachaRatingDataTypeA> dictionary2 = this._ConvertJObject<Dictionary<ERewardType, Protocols.GachaRatingDataTypeA>>(value);
 			Dictionary<ERewardType, Protocols.GachaRatingDataTypeB> dictionary3 = this._ConvertJObject<Dictionary<ERewardType, Protocols.GachaRatingDataTypeB>>(value);
-			if (dictionary2 is not null)
+			if (dictionary2 != null)
 			{
 				this.localUser.RefreshGachaProbabilityTypeAFromNetwork(key, dictionary2);
 			}
-			if (dictionary3 is not null)
+			if (dictionary3 != null)
 			{
 				this.localUser.RefreshGachaProbabilityTypeBFromNetwork(key, dictionary3);
 			}

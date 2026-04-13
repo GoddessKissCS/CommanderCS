@@ -57,7 +57,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 		this.localUser.guildInfo.state = 1;
 		this.localUser.guildInfo.memberGrade = 0;
 		UIGuildManagePopup uiguildManagePopup = UnityEngine.Object.FindObjectOfType(typeof(UIGuildManagePopup)) as UIGuildManagePopup;
-		if (uiguildManagePopup is not null)
+		if (uiguildManagePopup != null)
 		{
 			uiguildManagePopup.Close();
 		}

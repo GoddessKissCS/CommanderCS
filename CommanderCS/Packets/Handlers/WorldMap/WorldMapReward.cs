@@ -114,7 +114,7 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 	// Token: 0x06005F55 RID: 24405 RVA: 0x001AEDCC File Offset: 0x001ACFCC
 	private IEnumerator WorldMapRewardResult(JsonRpcClient.Request request, Protocols.WorldMapReward result)
 	{
-		if (result.commanderData is not null)
+		if (result.commanderData != null)
 		{
 			foreach (KeyValuePair<string, Protocols.UserInformationResponse.Commander> keyValuePair in result.commanderData)
 			{
@@ -123,14 +123,14 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 				roCommander.state = ECommanderState.Nomal;
 				UICommanderComplete uicommanderComplete = UIPopup.Create<UICommanderComplete>("CommanderComplete");
 				uicommanderComplete.Init(commanderCompleteType, roCommander.id);
-				if (keyValuePair.Value.haveCostume is not null && keyValuePair.Value.haveCostume.Count > 0)
+				if (keyValuePair.Value.haveCostume != null && keyValuePair.Value.haveCostume.Count > 0)
 				{
 					roCommander.haveCostumeList = keyValuePair.Value.haveCostume;
 				}
 			}
 			UIManager.instance.world.worldMap.currentWorldMap.rwd = true;
 		}
-		if (result.medalData is not null)
+		if (result.medalData != null)
 		{
 			foreach (KeyValuePair<string, int> keyValuePair2 in result.medalData)
 			{

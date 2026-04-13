@@ -18,7 +18,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 
             // -5 diamonds per deck ig
 
-            if (guild is not null)
+            if (guild != null)
             {
                 DatabaseManager.Conquest.AddSlot(guild.GuildId, request.slot);
             }
@@ -51,7 +51,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 	// Token: 0x0600606A RID: 24682 RVA: 0x001B049C File Offset: 0x001AE69C
 	private IEnumerator BuyConquestTroopSlotResult(JsonRpcClient.Request request, string result, Protocols.UserInformationResponse.Resource rsoc)
 	{
-		if (result is not null)
+		if (result != null)
 		{
 			string text = this._FindRequestProperty(request, "slot");
 			this.localUser.RefreshGoodsFromNetwork(rsoc);

@@ -33,7 +33,7 @@ namespace CommanderCS.MongoDB.Handlers
         {
             AccountScheme existingUser = DatabaseCollection.AsQueryable().Where(d => d.Name == name).FirstOrDefault();
 
-            if (existingUser is not null)
+            if (existingUser != null)
             {
                 return existingUser;
             }
@@ -225,7 +225,7 @@ namespace CommanderCS.MongoDB.Handlers
         {
             var user = FindByUid(request.memberId);
 
-            if (user.isBanned == true && user.isBanned is not null)
+            if (user.isBanned == true && user.isBanned != null)
             {
                 return ErrorCode.BannedOrSuspended;
             }
@@ -281,7 +281,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// Changes the device details associated with the account.
         /// </summary>
         /// <param name="params">The parameters for changing the device.</param>
-        /// <returns>The updated account after changing the device details, or null if the account is not found.</returns>
+        /// <returns>The updated account after changing the device details, or null if the account != found.</returns>
         public AccountScheme? ChangeDevice(ChangeDeviceRequest request)
         {
             var account = FindByName(request.uid);

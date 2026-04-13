@@ -26,7 +26,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             // Build the guild's shared dispatch pool, removing commanders the current user dispatched
             List<GuildDispatchCommanderInfo> guildCommanderList = [];
 
-            if (Guild?.GuildDispatchedCommanderList?.commanderList is not null)
+            if (Guild?.GuildDispatchedCommanderList?.commanderList != null)
             {
                 guildCommanderList = Guild.GuildDispatchedCommanderList.commanderList
                     //.Where(c => c.userIdx != User.Uno)
