@@ -211,7 +211,7 @@ namespace CommanderCS.Packets.Handlers.Gift
 	// Token: 0x0600608D RID: 24717 RVA: 0x001B0798 File Offset: 0x001AE998
 	private IEnumerator GiftFoodResult(JsonRpcClient.Request request, Protocols.UserInformationResponse result)
 	{
-		if (result.commanderInfo is not null)
+		if (result.commanderInfo !=null)
 		{
 			foreach (KeyValuePair<string, Protocols.UserInformationResponse.Commander> keyValuePair in result.commanderInfo)
 			{

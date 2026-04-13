@@ -17,7 +17,7 @@ namespace CommanderCS.Packets.Handlers.Dormitory
 		this.localUser.RefreshGoodsFromNetwork(result.resource);
 		Message.Send("Update.Goods");
 		Message.Send<bool>("Room.Update.PointState", result.pointState);
-		if (result.reaminData is not null)
+		if (result.reaminData !=null)
 		{
 			foreach (KeyValuePair<string, Protocols.Dormitory.CommanderRaminData> keyValuePair in result.reaminData)
 			{

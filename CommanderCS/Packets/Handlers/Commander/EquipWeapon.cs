@@ -119,7 +119,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 				roCommander.RemoveWeaponItem(roWeapon.data.slotType);
 			}
 			roCommander = this.localUser.FindCommander(keyValuePair.Value.cid.ToString());
-			if (roCommander is not null)
+			if (roCommander !=null)
 			{
 				roCommander.EquipWeaponItem(roWeapon);
 				if (roCommander.EnableWeaponSet())

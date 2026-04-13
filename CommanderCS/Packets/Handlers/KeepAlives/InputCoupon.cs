@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
 	private IEnumerator InputCouponResult(JsonRpcClient.Request request, Protocols.SendChattingInfo result)
 	{
 		string text = string.Empty;
-		if (result.rewardList is not null)
+		if (result.rewardList !=null)
 		{
 			UIPopup.Create<UIGetItem>("GetItem").Set(result.rewardList, string.Empty);
 			SoundManager.PlaySFX("SE_ItemGet_001", false, 0f, float.MaxValue, float.MaxValue, default(Vector3), null, SoundDuckingSetting.DoNotDuck, 0f, 1f);
@@ -30,10 +30,10 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
 		if (!string.IsNullOrEmpty(text))
 		{
 			RoCommander roCommander = this.localUser.FindCommander(text);
-			if (roCommander is not null)
+			if (roCommander !=null)
 			{
 				UICommanderComplete uicommanderComplete = UIPopup.Create<UICommanderComplete>("CommanderComplete");
-				if (uicommanderComplete is not null)
+				if (uicommanderComplete !=null)
 				{
 					if (roCommander.state != ECommanderState.Nomal)
 					{
@@ -44,11 +44,11 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
 						uicommanderComplete.Init(CommanderCompleteType.Transmission, roCommander.id);
 					}
 				}
-				if (result.commanderData is not null)
+				if (result.commanderData !=null)
 				{
 					foreach (Protocols.UserInformationResponse.Commander commander in result.commanderData.Values)
 					{
-						if (commander.haveCostume is not null && commander.haveCostume.Count > 0)
+						if (commander.haveCostume !=null && commander.haveCostume.Count > 0)
 						{
 							roCommander.haveCostumeList = commander.haveCostume;
 						}

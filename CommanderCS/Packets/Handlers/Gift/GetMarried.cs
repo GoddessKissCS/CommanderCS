@@ -54,7 +54,7 @@ namespace CommanderCS.Packets.Handlers.Gift
 	private IEnumerator GetMarriedResult(JsonRpcClient.Request request, Protocols.UserInformationResponse result)
 	{
 		string text = this._FindRequestProperty(request, "cid");
-		if (result.commanderInfo is not null)
+		if (result.commanderInfo !=null)
 		{
 			foreach (KeyValuePair<string, Protocols.UserInformationResponse.Commander> keyValuePair in result.commanderInfo)
 			{
@@ -66,7 +66,7 @@ namespace CommanderCS.Packets.Handlers.Gift
 		this.localUser.RefreshGoodsFromNetwork(result.goodsInfo);
 		UIManager.instance.RefreshOpenedUI();
 		CommanderScenarioDataRow commanderScenarioDataRow = this.RemoteObjectManager.instance.regulation.FindCommanderScenario(text, 0);
-		if (commanderScenarioDataRow is not null)
+		if (commanderScenarioDataRow !=null)
 		{
 			this.localUser.currScenario.scenarioId = commanderScenarioDataRow.csid;
 			this.localUser.currScenario.commanderId = int.Parse(text);

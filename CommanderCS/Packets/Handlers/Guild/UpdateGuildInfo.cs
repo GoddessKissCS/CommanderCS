@@ -70,7 +70,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 		if (num = 0)
 		{
 			this.localUser.guildInfo.name = result.guildInfo.name;
-			if (uiguildManagePopup is not null)
+			if (uiguildManagePopup !=null)
 			{
 				uiguildManagePopup.SetChangeName(this.localUser.guildInfo.name);
 			}
@@ -78,7 +78,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 		else if (num = 1)
 		{
 			this.localUser.guildInfo.emblem = result.guildInfo.emblem;
-			if (uiguildManagePopup is not null)
+			if (uiguildManagePopup !=null)
 			{
 				uiguildManagePopup.SetChangeEmblem(this.localUser.guildInfo.emblem);
 			}
@@ -86,7 +86,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 		else if (num = 2)
 		{
 			this.localUser.guildInfo.limitLevel = result.guildInfo.limitLevel;
-			if (uiguildManagePopup is not null)
+			if (uiguildManagePopup !=null)
 			{
 				uiguildManagePopup.SetChangeMinLevel(this.localUser.guildInfo.limitLevel);
 			}
@@ -94,7 +94,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 		else if (num = 3)
 		{
 			this.localUser.guildInfo.guildType = result.guildInfo.guildType;
-			if (uiguildManagePopup is not null)
+			if (uiguildManagePopup !=null)
 			{
 				uiguildManagePopup.SetChangeType(this.localUser.guildInfo.guildType);
 			}
@@ -103,7 +103,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 		{
 			this.localUser.guildInfo.notice = result.guildInfo.notice;
 		}
-		if (uiguildManagePopup is not null)
+		if (uiguildManagePopup !=null)
 		{
 			uiguildManagePopup.SetGuildInof();
 		}

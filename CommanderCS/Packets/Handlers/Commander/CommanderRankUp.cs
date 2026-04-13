@@ -17,7 +17,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             string cid = request.commanderId.ToString();
 
-            bool commanderExists = User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander is not null;
+            bool commanderExists = User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander !=null;
 
             if (commanderExists)
             {
@@ -98,7 +98,7 @@ namespace CommanderCS.Packets.Handlers.Commander
                     }
                     else
                     {
-                        throw new InvalidOperationException("The last key in CommanderData is not a valid integer.");
+                        throw new InvalidOperationException("The last key in CommanderData !=a valid integer.");
                     }
                 }
                 else

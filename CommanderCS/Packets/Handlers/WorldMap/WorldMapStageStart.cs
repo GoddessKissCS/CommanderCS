@@ -86,7 +86,7 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 	// Token: 0x06005F58 RID: 24408 RVA: 0x001AEE1C File Offset: 0x001AD01C
 	private IEnumerator WorldMapStageStartError(JsonRpcClient.Request request, string result, int code)
 	{
-		if (UIManager.instance.battle is not null)
+		if (UIManager.instance.battle !=null)
 		{
 			if (code == 21006 || code == 21007)
 			{

@@ -99,10 +99,10 @@ namespace CommanderCS.Packets.Handlers.Achievement
 		roMission.received = true;
 		roMission.bListShow = false;
 		roMission.completeTime = (double)result.time;
-		if (result.nextAchievement is not null)
+		if (result.nextAchievement !=null)
 		{
 			RoMission roMission2 = this.localUser.FindAchievement(result.nextAchievement.achievementId.ToString(), result.nextAchievement.sort);
-			if (roMission2 is not null)
+			if (roMission2 !=null)
 			{
 				roMission2.bListShow = true;
 				roMission2.received = result.nextAchievement.receive == 1;

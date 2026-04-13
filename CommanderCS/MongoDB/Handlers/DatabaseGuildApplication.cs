@@ -89,7 +89,7 @@ namespace CommanderCS.MongoDB.Handlers
                            .Where(d => d.GuildId == guildIdx)
                            .FirstOrDefault();
 
-            if (tryGuild is not null) { return "req"; }
+            if (tryGuild !=null) { return "req"; }
 
             return string.Empty;
         }
@@ -173,7 +173,7 @@ namespace CommanderCS.MongoDB.Handlers
                            .Where(d => d.Uno == user.Uno)
                            .FirstOrDefault();
 
-            if (tryGuild is not null) { return "reg"; }
+            if (tryGuild !=null) { return "reg"; }
 
             return string.Empty;
         }
@@ -292,7 +292,7 @@ namespace CommanderCS.MongoDB.Handlers
         /// <returns>True if the data has changed; otherwise, false.</returns>
         private bool CheckIfRequestMemberDataChanged(GuildApplicationScheme guildApplication, GameProfileScheme user)
         {
-            return guildApplication.JoinMemberData.thumnail != user.Resources.thumbnailId || guildApplication.JoinMemberData.level != user.Resources.level || guildApplication.JoinMemberData.name != user.Resources.nickname || user.GuildId is not null;
+            return guildApplication.JoinMemberData.thumnail != user.Resources.thumbnailId || guildApplication.JoinMemberData.level != user.Resources.level || guildApplication.JoinMemberData.name != user.Resources.nickname || user.GuildId !=null;
         }
     }
 }

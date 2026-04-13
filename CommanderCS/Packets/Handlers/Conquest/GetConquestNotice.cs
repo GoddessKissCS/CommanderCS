@@ -12,7 +12,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 #warning TODO: NOT YET FINISH PLACEHOLDER CODE
             var guild = GetUserGuild();
 
-            string notice = guild is not null
+            string notice = guild !=null
                 ? DatabaseManager.Conquest.GetNotice(guild.GuildId)
                 : "";
 

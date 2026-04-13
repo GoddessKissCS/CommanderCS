@@ -57,7 +57,7 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
 	// Token: 0x060060E5 RID: 24805 RVA: 0x001B0E94 File Offset: 0x001AF094
 	private IEnumerator WaveBattleListResult(JsonRpcClient.Request request, Protocols.WaveBattleInfoList result)
 	{
-		if (result is not null && result.InfoList is not null)
+		if (result !=null && result.InfoList !=null)
 		{
 			if (!UIManager.instance.world.existWaveBattle || !UIManager.instance.world.waveBattle.isActive)
 			{
