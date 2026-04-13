@@ -366,4 +366,5 @@ FodyWeavers.xsd
 #Created Simulator battle files should not be uploaded
 Record.json
 result.json
-
+/CommanderCS.AdminPanel
+/CommanderCS.EncryptTool
