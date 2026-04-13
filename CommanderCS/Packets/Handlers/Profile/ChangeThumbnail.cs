@@ -16,13 +16,13 @@ namespace CommanderCS.Packets.Handlers.Profile
 
             string idx = request.idx.ToString();
 
-            if (User.CommanderData[idx] != null)
+            if (User.CommanderData[idx] is not null)
             {
                 int costumeId = User.CommanderData[idx].currentCostume;
 
                 success = DatabaseManager.GameProfile.ChangeThumbnailId(SessionId, costumeId);
 
-                if (User.GuildId != null)
+                if (User.GuildId is not null)
                 {
                     DatabaseManager.Guild.UpdateSpecificMemberThumbnail(User.GuildId, User.Uno, costumeId);
                 }

@@ -97,7 +97,7 @@ namespace CommanderCS.Packets.Handlers.Commander
                 var row = rg.commanderLevelDtbl.Find(x => x.level == commanderLevel);
                 if (row == null || row.exp == 0) break; // Prevent potential errors or infinite loops
 
-                if (commanderXp < row.exp) break; // Exit when XP != enough for next level
+                if (commanderXp < row.exp) break; // Exit when XP is not enough for next level
 
                 commanderXp -= row.exp;
                 commanderLevel++;

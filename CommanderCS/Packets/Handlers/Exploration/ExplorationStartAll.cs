@@ -18,7 +18,7 @@ namespace CommanderCS.Packets.Handlers.Exploration
 		{
 			string text = this._FindRequestProperty(request, "search");
 			List<Protocols.ExplorationStartInfo> list = JsonConvert.DeserializeObject<List<Protocols.ExplorationStartInfo>>(text);
-			if (list != null)
+			if (list is not null)
 			{
 				for (int i = 0; i < list.Count; i++)
 				{

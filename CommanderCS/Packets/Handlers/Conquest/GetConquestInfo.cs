@@ -50,7 +50,7 @@ namespace CommanderCS.Packets.Handlers.Conquest
 		{
 			yield break;
 		}
-		if (result != null)
+		if (result is not null)
 		{
 			UIManager.instance.world.guild.SetConquestState(result);
 		}

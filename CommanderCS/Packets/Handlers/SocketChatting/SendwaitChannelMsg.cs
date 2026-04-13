@@ -19,11 +19,11 @@ namespace CommanderCS.Packets.Handlers.SocketChatting
 			yield break;
 		}
 		Protocols.ChattingInfo chattingInfo = this._ConvertJObject<Protocols.ChattingInfo>(result);
-		if (chattingInfo.channelList != null)
+		if (chattingInfo.channelList is not null)
 		{
 			for (int i = 0; i < chattingInfo.channelList.Count; i++)
 			{
-				if (chattingInfo.channelList[i].chatMsgData.record != null)
+				if (chattingInfo.channelList[i].chatMsgData.record is not null)
 				{
 					Protocols.ChattingInfo.ChattingData chattingData = new Protocols.ChattingInfo.ChattingData();
 					chattingData.message = chattingInfo.channelList[i].message;
@@ -40,7 +40,7 @@ namespace CommanderCS.Packets.Handlers.SocketChatting
 		}
 		while (this.localUser.chattingchannelList.Count > ConstValue.chatLimitCount)
 		{
-			if (this.localUser.chattingchannelList[0].chatMsgData.record != null)
+			if (this.localUser.chattingchannelList[0].chatMsgData.record is not null)
 			{
 				this.localUser.chattingchannelList.RemoveAt(0);
 				if (this.localUser.chattingchannelList.Count <= 0)

@@ -105,7 +105,7 @@ namespace CommanderCS.Packets.Handlers.Inventory
 	{
 		string text = this._FindRequestProperty(request, "giIdx");
 		this.localUser.AddGroupCompleteData(int.Parse(text));
-		if (result.commander != null)
+		if (result.commander is not null)
 		{
 			foreach (KeyValuePair<string, Protocols.UserInformationResponse.Commander> keyValuePair in result.commander)
 			{
@@ -120,7 +120,7 @@ namespace CommanderCS.Packets.Handlers.Inventory
 		{
 			string text2 = string.Empty;
 			GroupInfoDataRow groupInfoDataRow = RemoteObjectManager.instance.RemoteObjectManager.instance.regulation.FindGroupInfoWhereGroupIdx(text);
-			if (groupInfoDataRow != null)
+			if (groupInfoDataRow is not null)
 			{
 				text2 = groupInfoDataRow.groupComment;
 			}

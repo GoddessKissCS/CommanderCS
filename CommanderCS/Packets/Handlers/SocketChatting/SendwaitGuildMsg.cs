@@ -19,7 +19,7 @@ namespace CommanderCS.Packets.Handlers.SocketChatting
 			yield break;
 		}
 		Protocols.ChattingInfo chattingInfo = this._ConvertJObject<Protocols.ChattingInfo>(result);
-		if (chattingInfo.guildList != null)
+		if (chattingInfo.guildList is not null)
 		{
 			for (int i = 0; i < chattingInfo.guildList.Count; i++)
 			{

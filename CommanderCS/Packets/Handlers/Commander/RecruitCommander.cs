@@ -19,7 +19,7 @@
 			yield break;
 		}
 		RoRecruit.Entry entry = this.localUser.recruit.Find(text);
-		if (entry != null)
+		if (entry is not null)
 		{
 			entry.recruited = true;
 			RoCommander roCommander = this.localUser.FindCommander(text);

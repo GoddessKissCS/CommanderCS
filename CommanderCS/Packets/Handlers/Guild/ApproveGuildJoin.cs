@@ -48,7 +48,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 	{
 		int num = int.Parse(this._FindRequestProperty(request, "uno"));
 		UIGuildMemberJoinPopUp uiguildMemberJoinPopUp = UnityEngine.Object.FindObjectOfType(typeof(UIGuildMemberJoinPopUp)) as UIGuildMemberJoinPopUp;
-		if (uiguildMemberJoinPopUp != null)
+		if (uiguildMemberJoinPopUp is not null)
 		{
 			uiguildMemberJoinPopUp.AddGildMember(num);
 		}
@@ -67,7 +67,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110307"));
 			int num = int.Parse(this._FindRequestProperty(request, "uno"));
 			UIGuildMemberJoinPopUp uiguildMemberJoinPopUp = UnityEngine.Object.FindObjectOfType(typeof(UIGuildMemberJoinPopUp)) as UIGuildMemberJoinPopUp;
-			if (uiguildMemberJoinPopUp != null)
+			if (uiguildMemberJoinPopUp is not null)
 			{
 				uiguildMemberJoinPopUp.RemoveJoinMember(num);
 			}
@@ -76,7 +76,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 		{
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("110303"));
 			UIGuildMemberJoinPopUp uiguildMemberJoinPopUp2 = UnityEngine.Object.FindObjectOfType(typeof(UIGuildMemberJoinPopUp)) as UIGuildMemberJoinPopUp;
-			if (uiguildMemberJoinPopUp2 != null)
+			if (uiguildMemberJoinPopUp2 is not null)
 			{
 				uiguildMemberJoinPopUp2.Close();
 			}

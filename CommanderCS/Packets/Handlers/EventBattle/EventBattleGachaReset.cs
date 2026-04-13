@@ -15,7 +15,7 @@ namespace CommanderCS.Packets.Handlers.Event
 	private IEnumerator EventBattleGachaResetResult(JsonRpcClient.Request request, Protocols.EventBattleGachaInfo result)
 	{
 		int num = int.Parse(this._FindRequestProperty(request, "eidx"));
-		if (result != null && UIManager.instance.world != null)
+		if (result is not null && UIManager.instance.world is not null)
 		{
 			UIManager.instance.world.eventBattle.SetEventGachaData(result);
 			NetworkAnimation.Instance.CreateFloatingText(new Vector3(0f, -0.5f, 0f), Localization.Get("11000004"));

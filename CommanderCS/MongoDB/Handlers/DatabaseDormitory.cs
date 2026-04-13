@@ -22,7 +22,7 @@ namespace CommanderCS.MongoDB.Handlers
         public void Create(int id)
         {
             DormitoryScheme? tryUser = DatabaseCollection.AsQueryable().Where(d => d.Uno == id).FirstOrDefault();
-            if (tryUser != null) { return; }
+            if (tryUser is not null) { return; }
 
             //TODO
             DormitoryScheme user = new()

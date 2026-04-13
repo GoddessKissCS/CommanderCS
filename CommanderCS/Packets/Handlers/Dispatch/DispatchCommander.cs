@@ -36,11 +36,11 @@ namespace CommanderCS.Packets.Handlers.Dispatch
             var user = GetUserGameProfile();
             var guild = GetUserGuild();
 
-            if (guild != null && user.CommanderData != null)
+            if (guild is not null && user.CommanderData is not null)
             {
                 user.CommanderData.TryGetValue(request.cid.ToString(), out var commander);
 
-                if (commander != null)
+                if (commander is not null)
                 {
                     GuildDispatchCommanderInfo guildCommanderInfo = new()
                     {
@@ -112,7 +112,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 				this.localUser.slotDispatchInfo.Add(slotDispatchInfo);
 			}
 		}
-		if (UIManager.instance.world.guild.dispatch != null)
+		if (UIManager.instance.world.guild.dispatch is not null)
 		{
 			UIManager.instance.world.guild.dispatch.SetDispatchList();
 		}

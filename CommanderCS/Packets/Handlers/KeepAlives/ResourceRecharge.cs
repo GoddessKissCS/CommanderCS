@@ -155,7 +155,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
 			this._RefreshRecruitList(recruitCommanderListResponse);
 			this.localUser.RefreshGoodsFromNetwork(recruitCommanderListResponse.resource);
 		}
-		if (UIManager.instance.world != null && UIManager.instance.world.existCarnival && UIManager.instance.world.carnival.isActive)
+		if (UIManager.instance.world is not null && UIManager.instance.world.existCarnival && UIManager.instance.world.carnival.isActive)
 		{
 			this.RequestGetCarnivalList(UIManager.instance.world.carnival.categoryType, 0);
 		}

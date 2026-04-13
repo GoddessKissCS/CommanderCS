@@ -14,7 +14,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 
             Dictionary<string, DiapatchCommanderInfo> dispatchedcommanders = [];
 
-            if (User.DispatchedCommanders != null)
+            if (User.DispatchedCommanders is not null)
             {
                 foreach (var item in User.DispatchedCommanders)
                 {

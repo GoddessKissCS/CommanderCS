@@ -13,15 +13,15 @@ namespace CommanderCS.Packets.Handlers.Payment
 	// Token: 0x06005F78 RID: 24440 RVA: 0x001AF09C File Offset: 0x001AD29C
 	private IEnumerator GetFirstPaymentRewardResult(JsonRpcClient.Request request, Protocols.FirstPaymentRewardInfo result)
 	{
-		if (result.commanderData != null)
+		if (result.commanderData is not null)
 		{
 			string[] array = new string[result.commanderData.Count];
 			result.commanderData.Keys.CopyTo(array, 0);
 			RoCommander roCommander = this.localUser.FindCommander(array[0]);
-			if (roCommander != null)
+			if (roCommander is not null)
 			{
 				UICommanderComplete uicommanderComplete = UIPopup.Create<UICommanderComplete>("CommanderComplete");
-				if (uicommanderComplete != null)
+				if (uicommanderComplete is not null)
 				{
 					if (roCommander.state != ECommanderState.Nomal)
 					{

@@ -42,7 +42,7 @@ namespace CommanderCS.Packets.Handlers.Annihilation
 		battleData.attacker = roUser2;
 		battleData.stageId = text;
 		UIManager.instance.world.readyBattle.InitAndOpenReadyBattle(battleData);
-		if (result.user != null)
+		if (result.user is not null)
 		{
 			UIManager.instance.world.readyBattle.duel.SetProgressingBattle(result.user);
 		}

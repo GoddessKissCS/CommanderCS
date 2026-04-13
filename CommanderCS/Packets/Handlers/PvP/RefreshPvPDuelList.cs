@@ -52,7 +52,7 @@ namespace CommanderCS.Packets.Handlers.PvP
 		this.localUser.RefreshGoodsFromNetwork(result.rsoc);
 		this.localUser.duelTargetRefreshTime.SetByDuration((double)result.remain);
 		this.localUser.currentSeasonDuelTime.SetByDuration((double)result.time);
-		if (result.duelList != null)
+		if (result.duelList is not null)
 		{
 			for (int i = 1; i <= result.duelList.Count; i++)
 			{

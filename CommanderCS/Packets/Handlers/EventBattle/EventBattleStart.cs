@@ -26,7 +26,7 @@ namespace CommanderCS.Packets.Handlers.Event
 	{
 		if (code = 70201)
 		{
-			if (UIManager.instance.world != null)
+			if (UIManager.instance.world is not null)
 			{
 				UISimplePopup uisimplePopup = UISimplePopup.CreateOK(false, Localization.Get("1303"), string.Empty, Localization.Get("6601"), Localization.Get("1001"));
 				uisimplePopup.onClose = delegate
@@ -37,7 +37,7 @@ namespace CommanderCS.Packets.Handlers.Event
 					}
 				};
 			}
-			if (UIManager.instance.battle != null && GameSetting.instance.repeatBattle)
+			if (UIManager.instance.battle is not null && GameSetting.instance.repeatBattle)
 			{
 				GameSetting.instance.repeatBattle = false;
 				UISimplePopup uisimplePopup2 = UISimplePopup.CreateOK(false, Localization.Get("1303"), string.Empty, Localization.Get("10000010"), Localization.Get("1001"));
