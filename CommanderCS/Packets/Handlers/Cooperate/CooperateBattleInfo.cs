@@ -7,7 +7,7 @@ namespace CommanderCS.Packets.Handlers.Cooperate
     [Packet(Id = Method.CooperateBattleInfo)]
     public class CooperateBattleInfo : BaseMethodHandler<CooperateBattleInfoRequest>
     {
-        public override object Handle(CooperateBattleInfoRequest @params)
+        public override object Handle(CooperateBattleInfoRequest request)
         {
 #warning editdata
 
@@ -21,8 +21,8 @@ namespace CommanderCS.Packets.Handlers.Cooperate
                 coop = new()
                 {
                     stage = 1,
-                    step = 1,
-                    dmg = 2400,
+                    step = 2,
+                    dmg = 0,
                     remain = (int)TimeManager.CurrentEpochMilliseconds + 60,
                     ticket = 1,
                 },
@@ -31,8 +31,8 @@ namespace CommanderCS.Packets.Handlers.Cooperate
                     stage = 0,
                     step = 0,
                 },
-				
-				
+
+
             };
 
             response.Result = battleData;

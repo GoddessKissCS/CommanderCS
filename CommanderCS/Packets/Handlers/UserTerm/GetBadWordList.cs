@@ -7,7 +7,7 @@ namespace CommanderCS.Packets.Handlers.UserTerm
     [Packet(Id = Method.GetBadWordList)]
     public class GetBadWordList : BaseMethodHandler<GetBadWordListRequest>
     {
-        public override object Handle(GetBadWordListRequest @params)
+        public override object Handle(GetBadWordListRequest request)
         {
             BadWordListResponse badWord = new()
             {

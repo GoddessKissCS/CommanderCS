@@ -6,9 +6,9 @@ namespace CommanderCS.Packets.Handlers.Cooperate
     [Packet(Id = Method.CooperateBattlePointGuildRank)]
     public class CooperateBattlePointGuildRank : BaseMethodHandler<CooperateBattlePointGuildRankRequest>
     {
-        public override object Handle(CooperateBattlePointGuildRankRequest @params)
+        public override object Handle(CooperateBattlePointGuildRankRequest request)
         {
-            ResponsePacket response = new ResponsePacket()
+            ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
             };

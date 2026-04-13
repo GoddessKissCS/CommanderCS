@@ -1,10 +1,34 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.WaveDuel
 {
-    public class WaveBattleStart
+    [Packet(Id = Method.WaveBattleStart)]
+    public class WaveBattleStart : BaseMethodHandler<WaveBattleStartRequest>
     {
+        public override object Handle(WaveBattleStartRequest request)
+        {
+            GameProfileScheme User = GetUserGameProfile();
+
+            var resource = UserResources2Resource(User.Resources);
+
+            UserInformationResponse userInformationResponse = new()
+            {
+                goodsInfo = resource,
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = userInformationResponse,
+            };
+
+            return response;
+        }
     }
 
     public class WaveBattleStartRequest
@@ -35,7 +59,7 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
 	{
 	}
 
-	// Token: 0x060060E7 RID: 24807 RVA: 0x001B0EB0 File Offset: 0x001AF0B0
+	// Token: 0x060060E7 RID: 24807 RVA: 0x001B0E94 File Offset: 0x001AF094
 	private IEnumerator WaveBattleStartResult(JsonRpcClient.Request request, Protocols.UserInformationResponse result)
 	{
 		if (result is not null)

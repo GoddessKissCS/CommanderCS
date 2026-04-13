@@ -113,6 +113,8 @@ namespace CommanderCS.MongoDB.Schemes
         /// Gets or sets the last edit time of the guild.
         /// </summary>
         public double? LastEdit { get; set; }
+
+        public GuildDispatchCommanderList GuildDispatchedCommanderList { get; set; }
     }
 
     /// <summary>
@@ -186,4 +188,6 @@ namespace CommanderCS.MongoDB.Schemes
         [JsonProperty("world")]
         public int World { get; set; }
     }
+
+   
 }

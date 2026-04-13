@@ -8,9 +8,9 @@ namespace CommanderCS.Packets.Handlers.Defender
     [Packet(Id = Method.DefenderSetting)]
     public class DefenderSetting : BaseMethodHandler<DefenderSettingRequest>
     {
-        public override object Handle(DefenderSettingRequest @params)
+        public override object Handle(DefenderSettingRequest request)
         {
-            Dictionary<string, string> deck = @params.deck.ToObject<Dictionary<string, string>>();
+            Dictionary<string, string> deck = request.deck.ToObject<Dictionary<string, string>>();
 
             ResponsePacket response = new()
             {
@@ -23,9 +23,8 @@ namespace CommanderCS.Packets.Handlers.Defender
             if (didDefenderDeckUpdate)
             {
                 response.Result = "True";
-
-                return response;
             }
+
             response.Result = "False";
             return response;
         }

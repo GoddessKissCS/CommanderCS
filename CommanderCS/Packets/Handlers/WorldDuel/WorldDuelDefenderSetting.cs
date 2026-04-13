@@ -8,9 +8,9 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
     [Packet(Id = Method.WorldDuelDefenderSetting)]
     public class WorldDuelDefenderSetting : BaseMethodHandler<WorldDuelDefenderSettingRequest>
     {
-        public override object Handle(WorldDuelDefenderSettingRequest @params)
+        public override object Handle(WorldDuelDefenderSettingRequest request)
         {
-            Dictionary<string, string> decks = @params.Deck.ToObject<Dictionary<string, string>>();
+            Dictionary<string, string> decks = request.Deck.ToObject<Dictionary<string, string>>();
 
             DatabaseManager.GameProfile.UpdateWorldDefenderDeck(SessionId, decks);
 

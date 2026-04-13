@@ -1,7 +1,57 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-    public class GetConquestStageInfo
+    [Packet(Id = Method.GetConquestStageInfo)]
+    public class GetConquestStageInfo : BaseMethodHandler<GetConquestStageInfoRequest>
     {
+        public override object Handle(GetConquestStageInfoRequest request)
+        {
+#warning TODO: NOT YET FINISH PLACEHOLDER CODE
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = null,
+            };
+
+            ConquestStageInfo stageInfo = new()
+            {
+                enemyInfo = new ConquestStageInfo.EnemyInfo()
+                {
+                    name = "Enemy Guild",
+                    emblem = "",
+                    gidx = 0,
+                },
+                alieList = [new() {
+					auth = 1,
+					standby = 1, 
+					level = 140,
+					move = 0,
+					name = "Zen",
+					thumb = "1001",
+					uno = "1001"
+				}],
+                enemyList = [new() {
+                    auth = 1,
+                    standby = 1,
+                    level = 140,
+                    move = 1,
+                    name = "Zen1",
+                    thumb = "1001",
+                    uno = "1001"
+                }],
+            };
+
+            response.Result = stageInfo;
+
+            return response;
+        }
+    }
+
+    public class GetConquestStageInfoRequest
+    {
+        public int point { get; set; }
     }
 }
 

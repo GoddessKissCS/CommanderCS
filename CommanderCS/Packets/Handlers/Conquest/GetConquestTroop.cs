@@ -1,6 +1,30 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-    public class GetConquestTroop
+    [Packet(Id = Method.GetConquestTroop)]
+    public class GetConquestTroop : BaseMethodHandler<GetConquestTroopRequest>
+    {
+        public override object Handle(GetConquestTroopRequest request)
+        {
+#warning TODO: NOT YET FINISH PLACEHOLDER CODE
+            var guild = GetUserGuild();
+
+            ConquestTroopInfo troopInfo = guild is not null
+                ? DatabaseManager.Conquest.GetTroopInfo(guild.GuildId)
+                : new() { slot = [0, 1, 2], squard = [], eGuild = new() };
+
+            return new ResponsePacket
+            {
+                Id = BasePacket.Id,
+                Result = troopInfo,
+            };
+        }
+    }
+
+    public class GetConquestTroopRequest
     {
     }
 }

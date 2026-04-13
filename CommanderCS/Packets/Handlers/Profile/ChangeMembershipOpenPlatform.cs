@@ -7,13 +7,13 @@ namespace CommanderCS.Packets.Handlers.Profile
     [Packet(Id = Method.ChangeMembershipOpenPlatform)]
     public class ChangeMembershipOpenPlatform : BaseMethodHandler<ChangeMembershipOpenPlatformRequest>
     {
-        public override object Handle(ChangeMembershipOpenPlatformRequest @params)
+        public override object Handle(ChangeMembershipOpenPlatformRequest request)
         {
             //TODO - changing the platform from like google -> dbros? idk
 
             // should be finished? idk it shouldnt affect anything but you never know
 
-            DatabaseManager.Account.ChangeMemberShipOpenPlatform(@params.puid, (int)@params.plfm, @params.tokn, @params.ch);
+            DatabaseManager.Account.ChangeMemberShipOpenPlatform(request.puid, (int)request.plfm, request.tokn, request.ch);
 
             ResponsePacket response = new()
             {

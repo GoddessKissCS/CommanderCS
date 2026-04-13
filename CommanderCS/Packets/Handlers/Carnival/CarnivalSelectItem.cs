@@ -1,7 +1,44 @@
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB.Schemes;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.Carnival
 {
-    public class CarnivalSelectItem
+    [Packet(Id = Method.CarnivalSelectItem)]
+    public class CarnivalSelectItem : BaseMethodHandler<CarnivalSelectItemRequest>
     {
+        public override object Handle(CarnivalSelectItemRequest request)
+        {
+            GameProfileScheme user = GetUserGameProfile();
+
+            Dictionary<string, Dictionary<string, CarnivalList.ProcessData>> carnivalProcessList = [];
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = new JObject
+                {
+                    ["ctnt"] = JToken.FromObject(carnivalProcessList),
+                },
+            };
+
+            return response;
+        }
+    }
+
+    public class CarnivalSelectItemRequest
+    {
+        [JsonProperty("ctid")]
+        public int ctid { get; set; }
+
+        [JsonProperty("cidx")]
+        public int cidx { get; set; }
+
+        [JsonProperty("ridx")]
+        public int ridx { get; set; }
     }
 }
 

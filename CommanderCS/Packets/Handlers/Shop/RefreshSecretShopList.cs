@@ -1,7 +1,85 @@
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.Library.Regulation;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Shop
 {
-    public class RefreshSecretShopList
+    [Packet(Id = Method.RefreshSecretShopList)]
+    public class RefreshSecretShopList : BaseMethodHandler<RefreshSecretShopListRequest>
     {
+        public override object Handle(RefreshSecretShopListRequest request)
+        {
+            var user = GetUserGameProfile();
+
+            var shopData = RemoteObjectManager.instance.regulation.shopDtbl.Find(x => x.type == request.styp);
+
+            var userResource = UserResources2Resource(user.Resources);
+
+            SecretShop shop = new()
+            {
+                refreshCount = 0,
+                reset = 86400,
+                shopList = [],
+                resource = userResource,
+                refreshTime = 86400,
+            };
+
+            switch (request.styp)
+            {
+                case EShopType.BasicShop:
+                    break;
+
+                case EShopType.ChallengeShop:
+                    break;
+
+                case EShopType.RaidShop:
+
+                    shop.shopList.Add(new()
+                    {
+                        cost = 100,
+                        sold = 0,
+                        costType = EPriceType.RaidCoin,
+                        count = 999,
+                        id = 1,
+                        idx = 1,
+                        time = 100,
+                        type = ERewardType.Commander
+                    });
+
+                    break;
+
+                case EShopType.GuildShop:
+                    break;
+
+                case EShopType.VipShop:
+                    break;
+
+                case EShopType.AnnihilationShop:
+                    break;
+
+                case EShopType.WaveDuelShop:
+                    break;
+
+                case EShopType.WorldDuelShop:
+                    break;
+            }
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = shop,
+            };
+
+            return response;
+        }
+    }
+
+    public class RefreshSecretShopListRequest
+    {
+        [JsonProperty("styp")]
+        public EShopType styp { get; set; }
     }
 }
 

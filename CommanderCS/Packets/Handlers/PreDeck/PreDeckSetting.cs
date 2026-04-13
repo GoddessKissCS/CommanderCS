@@ -9,9 +9,9 @@ namespace CommanderCS.Packets.Handlers.PreDeck
     [Packet(Id = Method.PreDeckSetting)]
     public class PreDeckSetting : BaseMethodHandler<PreDeckSettingRequest>
     {
-        public override object Handle(PreDeckSettingRequest @params)
+        public override object Handle(PreDeckSettingRequest request)
         {
-            var preDeckList = @params.list.ToObject<List<UserInformationResponse.PreDeck>>();
+            var preDeckList = request.list.ToObject<List<UserInformationResponse.PreDeck>>();
 
             DatabaseManager.GameProfile.UpdatePreDeck(SessionId, preDeckList);
 

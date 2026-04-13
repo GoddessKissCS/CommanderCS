@@ -1,13 +1,19 @@
+using CommanderCS.Library;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Situation
 {
-    //[Packet(Id = CommanderCS.Library.Enums.Method.SituationInformation)]
+    [Packet(Id = CommanderCS.Library.Enums.Method.SituationInformation)]
     public class SituationInformation : BaseMethodHandler<SituationInformationRequest>
     {
-        public override object Handle(SituationInformationRequest @params)
+        public override object Handle(SituationInformationRequest request)
         {
-            SituationInformationResponse InforeSponse = new() { did = 0, rtm = 86400 };
+            int day = (int)DateTime.UtcNow.DayOfWeek;
+            day = day == 0 ? 7 : day;
+
+            int rtm = (int)(DateTime.UtcNow.Date.AddDays(1) - DateTime.UtcNow).TotalSeconds;
+
+            SituationInformationResponse InforeSponse = new() { did = day, rtm = rtm };
 
             ResponsePacket response = new()
             {

@@ -8,13 +8,13 @@ namespace CommanderCS.Packets.Handlers.Profile
     [Packet(Id = Method.ChangeUserThumbnail)]
     public class ChangeThumbnail : BaseMethodHandler<ChangeThumbnailRequest>
     {
-        public override object Handle(ChangeThumbnailRequest @params)
+        public override object Handle(ChangeThumbnailRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
             bool success = false;
 
-            string idx = @params.idx.ToString();
+            string idx = request.idx.ToString();
 
             if (User.CommanderData[idx] is not null)
             {

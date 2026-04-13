@@ -8,7 +8,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.FireSubMaster)]
     public class FireSubMaster : BaseMethodHandler<FireSubMasterRequest>
     {
-        public override object Handle(FireSubMasterRequest @params)
+        public override object Handle(FireSubMasterRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
@@ -25,7 +25,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            DatabaseManager.Guild.UpdateSpecificMemberGrade(User.GuildId, @params.tuno, 0);
+            DatabaseManager.Guild.UpdateSpecificMemberGrade(User.GuildId, request.tuno, 0);
 
             ResponsePacket response = new()
             {

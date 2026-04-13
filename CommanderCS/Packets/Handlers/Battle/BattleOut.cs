@@ -15,7 +15,7 @@ namespace CommanderCS.Packets.Handlers.Battle
     [Packet(Id = Method.BattleOut)]
     public class BattleOut : BaseMethodHandler<BattleOutRequest>
     {
-        public override object Handle(BattleOutRequest @params)
+        public override object Handle(BattleOutRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
@@ -25,133 +25,185 @@ namespace CommanderCS.Packets.Handlers.Battle
                 Error = new() { code = ErrorCode.Success }
             };
 
-            string serializedJson = JsonConvert.SerializeObject(@params.info, Formatting.Indented);
+            string serializedJson = JsonConvert.SerializeObject(request.info, Formatting.Indented);
 
-            Record record = (Record)@params.info;
-            Result result = (Result)@params.result;
+            Record record = (Record)request.info;
+            Result result = (Result)request.result;
+			EBattleType BattleType = request.BattleType;
 
             Simulator simulatedBattle = null;
             int commanderXP = 0;
 
-			WorldMapStageDataRow worldstagetbl = null;
-
-            switch (@params.BattleType)
-            {
-                case EBattleType.Plunder:
-                    simulatedBattle = Simulator.ReplayPlunderSimulation(RemoteObjectManager.instance.regulation, serializedJson, false);
-
-                    worldstagetbl = RemoteObjectManager.instance.regulation.worldMapStageDtbl.Find(x => x.id == record.initState.stageID);
-
-                    break;
-
-				case EBattleType.Raid:
-                    simulatedBattle = Simulator.Simulation(RemoteObjectManager.instance.regulation, serializedJson, false);
-                    break;
-
-
-                // this is just for debugging purposes
-                default:
-                    simulatedBattle = Simulator.Simulation(RemoteObjectManager.instance.regulation, serializedJson, false);
-                    break;
-            }
-
-#if DEBUG
+            WorldMapStageDataRow worldstagetbl = null;
+			InfinityFieldDataRow infinitytbl = null;
 
             var record1 = JsonConvert.SerializeObject(record, Formatting.Indented);
             var result1 = JsonConvert.SerializeObject(result, Formatting.Indented);
+            switch (BattleType)
+            {
+                case EBattleType.Plunder:
+                    simulatedBattle = Simulator.BattleReplay(RemoteObjectManager.instance.regulation, record);
+                    worldstagetbl = RemoteObjectManager.instance.regulation.worldMapStageDtbl.Find(x => x.id == record.initState.stageID);
+                    break;
+
+                case EBattleType.Raid:
+                    simulatedBattle = Simulator.BattleReplay(RemoteObjectManager.instance.regulation, record);
+
+					var raidInfo = DatabaseManager.RaidBossSchedule.GetBossDataForUpcomingDays(1);
+					//raidDataRow = RemoteObjectManager.instance.regulation.raidChallengeDtbl.Find(x => x.key == "1");
+
+					//we need to check the raid igf or something dunno
+                    break;
+
+				case EBattleType.InfinityBattle:
+                    simulatedBattle = Simulator.BattleReplay(RemoteObjectManager.instance.regulation, record);
+                    infinitytbl = RemoteObjectManager.instance.regulation.infinityFieldDtbl.Find(x => x.infinityFieldIdx == record.initState.stageID);
+                    break;
+
+				case EBattleType.Annihilation:
+                case EBattleType.Guerrilla:
+				case EBattleType.MultiSingleDuel:
+				case EBattleType.WorldDuel:
+				case EBattleType.Conquest:
+				case EBattleType.EventBattle:
+				case EBattleType.EventRaid:
+				case EBattleType.Duel:
+				case EBattleType.GuildScramble:
+				case EBattleType.ScenarioBattle:
+				case EBattleType.SeaRobber:
+				case EBattleType.CooperateBattle:
+				case EBattleType.Attacker:
+				case EBattleType.Defender:
+				case EBattleType.WaveDuel:
+				case EBattleType.WaveBattle:
+				case EBattleType.WaveDuelDefender:
+				case EBattleType.WorldDuelDefender:
+                    simulatedBattle = Simulator.BattleReplay(RemoteObjectManager.instance.regulation, record);
+                    break;
+            }
+
             var simRec = JsonConvert.SerializeObject(simulatedBattle.record, Formatting.Indented);
-            var simRes = JsonConvert.SerializeObject(simulatedBattle.record.result, Formatting.Indented);
 
-            File.WriteAllText("Record.json", record1);
-            File.WriteAllText("Result.json", result1);
-            //File.WriteAllText("simulatedRecord.json", simRec);
-            //File.WriteAllText("simulatedResult.json", simRes);
+			Result simulatedResult = simulatedBattle.result;
 
-#endif
+			bool isBattleDataQual = CompareBatteResult(result, simulatedResult);
 
-			if(@params.BattleType == EBattleType.Raid)
+			if (!isBattleDataQual)
 			{
+				ErrorPacket errorPacket = new()
+				{
+					Error = new()
+					{
+						code = (ErrorCode)70009
+					},
+					Id = BasePacket.Id
+				};	
+			}
+
+
+			if (BattleType == EBattleType.WaveBattle)
+			{
+
+			}
+
+
+            if (BattleType == EBattleType.Raid)
+            {
                 string client_replay = Convert.ToBase64String(Encoding.UTF8.GetBytes(record1));
 
                 string server_replay = Convert.ToBase64String(Encoding.UTF8.GetBytes(simRec));
 
-                ReplayScheme replay = DatabaseManager.ReplayList.Insert(User.Uno, User.MemberId, client_replay, server_replay, @params.BattleType);
+                DatabaseManager.ReplayList.Insert(User.Uno, User.MemberId, client_replay, server_replay, request.BattleType);
 
-				// LOOK UP IF WE HAVE A BETTER SCORE BEFORE WE INSERT IT
-				// OR UPDATE IT
+                DatabaseManager.RaidRankList.Insert(User, (int)simulatedBattle.result.totalAttackDamage, simulatedBattle.record.length);
 
-				DatabaseManager.RaidRankList.Insert(User, (int)simulatedBattle.result.totalAttackDamage, simulatedBattle.record.length);
+                var rsocRaid = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
-                goto X;
+                UserInformationResponse.BattleResult battleResultRaid = new()
+                {
+                    save = false,
+                    VipShopOpen = 0,
+                    VipShopResetTime = 0,
+                    commanderData = User.CommanderData,
+                    commanderFavor = [],
+                    eventResourceData = User.Inventory.eventResourceData,
+                    foodData = User.Inventory.foodData,
+                    groupItemData = User.Inventory.groupItemData,
+                    infinityData = new(),
+                    itemData = User.Inventory.itemData,
+                    medalData = User.Inventory.medalData,
+                    partData = User.Inventory.partData,
+                    rewardList = [],
+                    user = new(),
+                    __resource = rsocRaid,
+                };
+
+                return new ResponsePacket
+                {
+                    Id = BasePacket.Id,
+                    Result = JObject.FromObject(battleResultRaid),
+                };
             }
 
+            var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
+
+            UserInformationResponse.BattleResult battleResult = new()
+            {
+                save = false,
+                VipShopOpen = 0,
+                VipShopResetTime = 0,
+                commanderData = User.CommanderData,
+                commanderFavor = [],
+                eventResourceData = User.Inventory.eventResourceData,
+                foodData = User.Inventory.foodData,
+                groupItemData = User.Inventory.groupItemData,
+                infinityData = new(),
+                itemData = User.Inventory.itemData,
+                medalData = User.Inventory.medalData,
+                partData = User.Inventory.partData,
+                rewardList = [],
+                user = new()
+                {
+                    //curScore = (int)simulatedBattle.result.totalAttackDamage,
+                    //rank = 1,
+                    //rankPercent = 0.01f,
+                    //prevScore = 1,
+                    //getScore = (int)simulatedBattle.result.totalAttackDamage,
+                },
+                __resource = rsoc,
+            };
 
 
-            //if (result.winSide == simulatedBattle.result.winSide && result.winSide != 1 && simulatedBattle.result.winSide != 1)
-            //{
-            //    double maxDifference = simulatedBattle.result.totalAttackDamage * 0.05;
-
-            //    double lowerBound = simulatedBattle.result.totalAttackDamage - maxDifference;
-            //    double upperBound = simulatedBattle.result.totalAttackDamage + maxDifference;
-
-            //    if (result.totalAttackDamage >= lowerBound && result.totalAttackDamage <= upperBound)
-            //    {
-            //        bool isRecordGoldHigher = result.gold >= simulatedBattle.result.gold;
-
-            //        if (@params.BattleType == EBattleType.Plunder)
-            //        {
-            //            User.LastStage = int.Parse(worldstagetbl.id);
-
-            //            User.BattleData.WorldMapStages.TryGetValue(worldstagetbl.worldMapId, out var map);
-
-            //            int index = map.FindIndex(x => x.stageId == worldstagetbl.id);
-
-            //            User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].clearCount++;
-
-            //            int star = User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].star;
-
-            //            if (star < 3 && result.clearRank > star)
-            //            {
-            //                User.BattleData.WorldMapStages[worldstagetbl.worldMapId][index].star = result.clearRank;
-            //            }
-
-            //            DatabaseManager.GameProfile.UpdateLastStageAndStageInfo(SessionId, User);
-            //        }
-
-            //        if (!isRecordGoldHigher)
-            //        {
-            //        }
-            //    }
-            //}
-
-		X:
-			var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
-
-			UserInformationResponse.BattleResult battleResult = new()
+			if(request.BattleType == EBattleType.InfinityBattle)
 			{
-				save = false,
-				VipShopOpen = 0,
-				VipShopResetTime = 0,
-				commanderData = User.CommanderData,
-				commanderFavor = [],
-				eventResourceData = User.Inventory.eventResourceData,
-				foodData = User.Inventory.foodData,
-				groupItemData = User.Inventory.groupItemData,
-				infinityData = new(),
-				itemData = User.Inventory.itemData,
-				medalData = User.Inventory.medalData,
-				partData = User.Inventory.partData,
-				rewardList = [],
-				user = new()
+
+				//InfinityTower
+				//1 is story
+				//11
+				//13
+				//14
+				//24
+				//26 
+				//27
+				//37
+				//39 
+				//40
+				//50
+				//52
+				//53
+				//63
+				//65
+				//66
+				if(result.IsWin && simulatedBattle.result.IsWin)
 				{
-					//curScore = (int)simulatedBattle.result.totalAttackDamage,
-					//rank = 1,
-					//rankPercent = 0.01f,
-					//prevScore = 1,
-					//getScore = (int)simulatedBattle.result.totalAttackDamage,
-				},
-				__resource = rsoc,
-			};
+
+				}
+
+				var x = User.BattleData.InfinityTowerData;
+
+				//if we beat a stage before one of those we unlock that stage
+				//example if we beat stage 10 we unlock 11 and if we beat stage 12 we unlock 12/13?
+            }
 
             var res = JObject.FromObject(battleResult);
 
@@ -180,7 +232,7 @@ namespace CommanderCS.Packets.Handlers.Battle
 
             if (userXP > row.exp)
             {
-                user.__level = (userXP + 1).ToString();
+                user.__level = (userLevel + 1).ToString();
                 user.__exp = (userXP -= row.exp).ToString();
 
                 return CheckIfLevelUp(0, user, rg);
@@ -188,8 +240,89 @@ namespace CommanderCS.Packets.Handlers.Battle
 
             return user;
         }
-    }
 
+        public static bool CompareBatteResult(Result clientResult, Result serverResult)
+        {
+
+            bool checksum = true;
+            bool timeout = true;
+            bool winside = true;
+            bool gold = true;
+            bool clearRank = true;
+            bool totalAttackDamage = true;
+
+            Dictionary<string, int> leftSideTroopsSkillSP_result = [];
+            Dictionary<string, int> leftSideTroopsSkillSP_result1 = [];
+
+            Dictionary<string, int> compareDic = [];
+
+            foreach (var item in clientResult.leftSideTroops[0].slots)
+            {
+				if(item == null)
+				{
+					continue;
+				}
+
+                foreach (var skill in item.skills)
+                {
+                    leftSideTroopsSkillSP_result.Add(skill.id, skill.sp);
+                }
+            }
+
+            foreach (var item in serverResult.leftSideTroops[0].slots)
+            {
+                if (item == null)
+                {
+                    continue;
+                }
+
+                foreach (var skill in item.skills)
+                {
+                    leftSideTroopsSkillSP_result1.Add(skill.id, skill.sp);
+                }
+            }
+
+            bool skillsEqual = leftSideTroopsSkillSP_result.Count == leftSideTroopsSkillSP_result1.Count &&
+                   !leftSideTroopsSkillSP_result.Except(leftSideTroopsSkillSP_result1).Any();
+
+
+            if (clientResult.checksum != serverResult.checksum) checksum = false;
+            if (clientResult.isTimeOut != serverResult.isTimeOut) timeout = false;
+            if (clientResult.winSide != serverResult.winSide) winside = false;
+            if (clientResult.gold != serverResult.gold) gold = false;
+            if (clientResult.clearRank != serverResult.clearRank) clearRank = false;
+            if (clientResult.totalAttackDamage != serverResult.totalAttackDamage) totalAttackDamage = false;
+
+            int compare = 0;
+            if (checksum) compare++;
+            if (timeout) compare++;
+            if (winside) compare++;
+            if (gold) compare++;
+            if (clearRank) compare++;
+            if (totalAttackDamage) compare++;
+            if (skillsEqual) compare++;
+
+            int fixedInt = 7;
+
+            if (compare != fixedInt)
+            {
+                if (compare < fixedInt - 2)
+                {
+					if(checksum == false && skillsEqual == false && totalAttackDamage == true)
+					{
+						return true;
+					}
+                }
+				else
+				{
+					return false;
+				}
+            }
+            return true;
+        }
+
+
+    }
     public class BattleOutRequest
     {
         [JsonProperty("type")]

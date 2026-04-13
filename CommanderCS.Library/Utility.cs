@@ -3,11 +3,46 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
+using CommanderCS.Library.Protocols;
 
 namespace CommanderCS.Library
 {
     public class Utility
     {
+        public static Dictionary<string, Dictionary<int, EquipItemInfo>> ConvertEquipItem(Dictionary<string, Dictionary<string, EquipItemInfo>> equipItem)
+        {
+            var result = new Dictionary<string, Dictionary<int, EquipItemInfo>>();
+
+            foreach (var outer in equipItem)
+            {
+                var innerDict = new Dictionary<int, EquipItemInfo>();
+                foreach (var inner in outer.Value)
+                {
+                    innerDict[int.Parse(inner.Key)] = inner.Value;
+                }
+                result[outer.Key] = innerDict;
+            }
+
+            return result;
+        }
+
+        public static Dictionary<string, Dictionary<int, int>> ConvertInfinityTowerData(Dictionary<string, Dictionary<string, int>> infinityTowerData)
+        {
+            var result = new Dictionary<string, Dictionary<int, int>>();
+
+            foreach (var outer in infinityTowerData)
+            {
+                var innerDict = new Dictionary<int, int>();
+                foreach (var inner in outer.Value)
+                {
+                    innerDict[int.Parse(inner.Key)] = inner.Value;
+                }
+                result[outer.Key] = innerDict;
+            }
+
+            return result;
+        }
+
         public static string CreateGuestName()
         {
             const string characters = "0123456789";

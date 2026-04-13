@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Inventory
     [Packet(Id = Method.GetWeaponProgressList)]
     public class GetWeaponProgressList : BaseMethodHandler<GetWeaponProgressListRequest>
     {
-        public override object Handle(GetWeaponProgressListRequest @params)
+        public override object Handle(GetWeaponProgressListRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 

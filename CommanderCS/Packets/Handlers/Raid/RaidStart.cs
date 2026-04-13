@@ -1,4 +1,3 @@
-using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Packets;
 using CommanderCS.Library.Protocols;
@@ -9,11 +8,11 @@ using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Raid
 {
-	[Packet(Id = Method.RaidStart)]
+    [Packet(Id = Method.RaidStart)]
     public class RaidStart : BaseMethodHandler<RaidStartRequest>
     {
-		public override object Handle(RaidStartRequest @params)
-		{
+        public override object Handle(RaidStartRequest request)
+        {
             GameProfileScheme User = GetUserGameProfile();
 
             WorldMapStageStartResponse wmssr = new();

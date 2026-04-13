@@ -1,23 +1,56 @@
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 
-namespace CommanderCS.Packets.Handlers.KeepAlives
+namespace CommanderCS.Packets.Handlers.Mail
 {
     [Packet(Id = Method.GetRewardAll)]
     public class GetRewardAll : BaseMethodHandler<GetRewardAllRequest>
     {
 #warning TODO NEEDS FURTHER CODE
 
-        public override object Handle(GetRewardAllRequest @params)
+        public override object Handle(GetRewardAllRequest request)
         {
+            var user = GetUserGameProfile();
+
+            // Collect rewards from all mails that have not been received yet
+            var unreceived = user.MailDataList?
+                .Where(m => m.__receive == "0" && m.reward != null && m.reward.Count > 0)
+                .ToList();
+
+            if (unreceived == null || unreceived.Count == 0)
+            {
+                ResponsePacket errorResponse = new()
+                {
+                    Id = BasePacket.Id,
+                    Result = null,
+                };
+
+                return errorResponse;
+            }
+
+            // Gather all rewards from all unreceived mails
+            List<RewardInfo.RewardData> allRewards = [];
+
+            foreach (var mail in unreceived)
+            {
+                allRewards.AddRange(mail.reward);
+                // Mark mail as received (keeps it in the DB but hides from player's mail list)
+                DatabaseManager.GameProfile.MarkMailReceived(SessionId, mail.idx);
+            }
+
+            var rsoc = UserResources2Resource(user.Resources);
+
             RewardInfo rewardInfo = new()
             {
+                reward = allRewards,
+                resource = rsoc,
             };
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = null,
+                Result = rewardInfo,
             };
 
             return response;

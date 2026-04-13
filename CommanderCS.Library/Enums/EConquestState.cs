@@ -3,6 +3,10 @@ namespace CommanderCS.Library.Enums
 {
     public enum EConquestState
     {
-        None, Join, Match, Setting, Battle
+        None, 
+        Join, 
+        Match, 
+        Setting, 
+        Battle
     }
 }

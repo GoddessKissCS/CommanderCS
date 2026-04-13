@@ -8,11 +8,11 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.UpdateGuildInfo)]
     public class UpdateGuildInfo : BaseMethodHandler<UpdateGuildInfoRequest>
     {
-        public override object Handle(UpdateGuildInfoRequest @params)
+        public override object Handle(UpdateGuildInfoRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            ErrorCode code = DatabaseManager.Guild.UpdateGuildInfo(SessionId, @params.act, @params.val);
+            ErrorCode code = DatabaseManager.Guild.UpdateGuildInfo(SessionId, request.action, request.value);
 
             if (code != ErrorCode.Success)
             {
@@ -48,16 +48,16 @@ namespace CommanderCS.Packets.Handlers.Guild
     public class UpdateGuildInfoRequest
     {
         [JsonProperty("act")]
-        public int act { get; set; }
+        public int action { get; set; }
 
         [JsonProperty("val")]
-        public string val { get; set; }
+        public string value { get; set; }
     }
 }
 
 /*	// Token: 0x06006033 RID: 24627 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7213", true, true)]
-	public void UpdateGuildInfo(int act, string val)
+	public void UpdateGuildInfo(int action, string value)
 	{
 	}
 
@@ -66,7 +66,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 	{
 		this.localUser.RefreshGoodsFromNetwork(result.resource);
 		UIGuildManagePopup uiguildManagePopup = UnityEngine.Object.FindObjectOfType(typeof(UIGuildManagePopup)) as UIGuildManagePopup;
-		int num = int.Parse(this._FindRequestProperty(request, "act"));
+		int num = int.Parse(this._FindRequestProperty(request, "action"));
 		if (num = 0)
 		{
 			this.localUser.guildInfo.name = result.guildInfo.name;

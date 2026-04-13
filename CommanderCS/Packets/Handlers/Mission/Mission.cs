@@ -6,9 +6,9 @@ namespace CommanderCS.Packets.Handlers.Mission
     [Packet(Id = Method.Mission)]
     public class Mission : BaseMethodHandler<MissionRequest>
     {
-        public override object Handle(MissionRequest @params)
+        public override object Handle(MissionRequest request)
         {
-            switch (@params.type)
+            switch (request.type)
             {
             }
 

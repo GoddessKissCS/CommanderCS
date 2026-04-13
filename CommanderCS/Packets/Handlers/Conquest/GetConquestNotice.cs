@@ -1,7 +1,37 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-    public class GetConquestNotice
+    [Packet(Id = Method.GetConquestNotice)]
+    public class GetConquestNotice : BaseMethodHandler<GetConquestNoticeRequest>
     {
+        public override object Handle(GetConquestNoticeRequest request)
+        {
+#warning TODO: NOT YET FINISH PLACEHOLDER CODE
+            var guild = GetUserGuild();
+
+            string notice = guild is not null
+                ? DatabaseManager.Conquest.GetNotice(guild.GuildId)
+                : "";
+
+            JObject Response = new()
+            {
+                ["id"] = BasePacket.Id,
+                ["result"] = new JObject
+                {
+                    ["notice"] = notice,
+                }
+            };
+
+            return Response;
+        }
+    }
+
+    public class GetConquestNoticeRequest
+    {
+        public int check { get; set; }
     }
 }
 

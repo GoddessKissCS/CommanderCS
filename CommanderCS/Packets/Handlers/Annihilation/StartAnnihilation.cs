@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Annihilation
     [Packet(Id = Method.StartAnnihilation)]
     public class StartAnnihilation : BaseMethodHandler<StartAnnihilationRequest>
     {
-        public override object Handle(StartAnnihilationRequest @params)
+        public override object Handle(StartAnnihilationRequest request)
         {
             return "{}";
         }

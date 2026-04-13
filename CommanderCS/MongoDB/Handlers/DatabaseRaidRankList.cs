@@ -24,13 +24,14 @@ namespace CommanderCS.MongoDB.Handlers
         /// <param name="rankingData">The ranking data of the player.</param>
         public void Insert(GameProfileScheme User, int score, int time)
         {
-            GuildScheme Guild = DatabaseManager.Guild.FindByUid(User.GuildId);
+            GuildScheme Guild = DatabaseManager.Guild.FindByGuildId(User.GuildId);
 
             // HERE WE WOULD NEED TO CHECK FIRST IF SOMEONE ELSE HAS A HIGHER SCORE OR LOWER Score and place us accordigl
 
-            RaidRankScheme Inmput = DatabaseCollection.Find(x => x.Id == User.Id).FirstOrDefault();
+            RaidRankScheme existing = DatabaseCollection.Find(x => x.id == User.MemberId).FirstOrDefault();
 
-            if (Inmput == null) {
+            if (existing == null)
+            {
                 RaidRankScheme raidRank = new()
                 {
                     id = User.MemberId,
@@ -54,7 +55,7 @@ namespace CommanderCS.MongoDB.Handlers
                 return;
             }
 
-            if (Inmput.score < score)
+            if (existing.score < score)
             {
                 var filter = Builders<RaidRankScheme>.Filter.And(
                     Builders<RaidRankScheme>.Filter.Eq(r => r.id, User.MemberId),
@@ -79,7 +80,7 @@ namespace CommanderCS.MongoDB.Handlers
                     raidRank.guildName = Guild.Name;
                 }
 
-                DatabaseCollection.ReplaceOne(filter, raidRank, new ReplaceOptions { IsUpsert = true });
+                //DatabaseCollection.ReplaceOne(filter, raidRank, new ReplaceOptions { IsUpsert = true });
             }
 
         }
@@ -118,6 +119,49 @@ namespace CommanderCS.MongoDB.Handlers
             return rankList;
         }
 
+
+        public RankingUserData GetUserRaidInfo(int memberId)
+        {
+            List<RaidRankScheme> allRanks = DatabaseCollection.Find(_ => true)
+                .SortByDescending(r => r.score)
+                .ThenBy(r => r.time)
+                .ToList();
+
+            RaidRankScheme userRank = null;
+            int userPosition = 0;
+            int totalPlayers = allRanks.Count;
+
+            for (int i = 0; i < allRanks.Count; i++)
+            {
+                if (allRanks[i].id == memberId)
+                {
+                    userRank = allRanks[i];
+                    userPosition = i + 1;
+                    break;
+                }
+            }
+
+            if (userRank == null)
+            {
+                return new RankingUserData();
+            }
+
+            float rankingRate = totalPlayers > 0 ? (float)userPosition / totalPlayers * 100f : 0f;
+
+
+            var userRanked = new RankingUserData
+            {
+                score = userRank.score,
+                bestScore = userRank.score,
+                ranking = userPosition,
+                rankingRate = rankingRate,
+                raidRank = userRank.grade,
+                raidCnt = 1,
+                averageScore = userRank.score,
+            };
+
+            return userRanked;
+        }
 
     }
 }

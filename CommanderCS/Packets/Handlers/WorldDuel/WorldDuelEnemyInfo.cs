@@ -3,7 +3,7 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
     [Packet(Id = CommanderCS.Library.Enums.Method.WorldDuelEnemyInfo)]
     public class WorldDuelEnemyInfo : BaseMethodHandler<WorldDuelEnemyInfoRequest>
     {
-        public override object Handle(WorldDuelEnemyInfoRequest @params)
+        public override object Handle(WorldDuelEnemyInfoRequest request)
         {
             CommanderCS.Library.Protocols.PvPDuelList.PvPDuelData pDuelData = new() { };
 

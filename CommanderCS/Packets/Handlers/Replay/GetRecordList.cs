@@ -1,7 +1,82 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Replay
 {
-    public class GetRecordList
+    [Packet(Id = Method.GetRecordList)]
+    public class GetRecordList : BaseMethodHandler<GetRecordListRequest>
     {
+        public override object Handle(GetRecordListRequest request)
+        {
+            var User = GetUserGameProfile();
+
+            var battleType = ReplayTypeToBattleType(request.type);
+
+            var replays = battleType == EBattleType.Undefined
+                ? DatabaseManager.ReplayList.FindByUno(User.Uno)
+                : DatabaseManager.ReplayList.FindByUnoAndType(User.Uno, battleType);
+
+            List<RecordInfo> recordList = [];
+
+            foreach (var replay in replays)
+            {
+                var recordUser = DatabaseManager.GameProfile.FindByUno(replay.Uno);
+
+                RecordInfo record = new()
+                {
+                    id = replay.ReplayId.ToString(),
+                    uno = replay.Uno,
+                    _userName = recordUser?.Resources?.nickname ?? "Unknown",
+                    level = recordUser?.Resources?.level ?? 0,
+                    thumbnail = recordUser?.Resources?.thumbnailId.ToString() ?? "0",
+                    date = new DateTimeOffset(replay.Id.CreationTime).ToUnixTimeMilliseconds(),
+                    guildName = GetGuildName(recordUser),
+                };
+
+                recordList.Add(record);
+            }
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = recordList,
+            };
+
+            return response;
+        }
+
+        private static string GetGuildName(GameProfileScheme user)
+        {
+            if (user?.GuildId is null) return null;
+
+            var guild = DatabaseManager.Guild.FindByGuildId(user.GuildId);
+            return guild?.Name;
+        }
+
+        internal static EBattleType ReplayTypeToBattleType(int replayType)
+        {
+            return replayType switch
+            {
+                (int)ERePlayType.WorldMap => EBattleType.Plunder,
+                (int)ERePlayType.Raid => EBattleType.Raid,
+                (int)ERePlayType.Challenge => EBattleType.Duel,
+                (int)ERePlayType.WaveDuel => EBattleType.WaveDuel,
+                (int)ERePlayType.WorldDuel => EBattleType.WorldDuel,
+                _ => EBattleType.Undefined,
+            };
+        }
+    }
+
+    public class GetRecordListRequest
+    {
+        [JsonProperty("type")]
+        public int type { get; set; }
+
+        [JsonProperty("ver")]
+        public int ver { get; set; }
     }
 }
 

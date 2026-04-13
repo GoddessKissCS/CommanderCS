@@ -9,17 +9,19 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.UpgradeGuildSkill)]
     public class UpgradeGuildSkill : BaseMethodHandler<UpgradeGuildSkillRequest>
     {
-        public override object Handle(UpgradeGuildSkillRequest @params)
+        public override object Handle(UpgradeGuildSkillRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
             GuildScheme Guild = GetUserGuild();
 
-            var guildSkill = Guild.SkillDada.Where(d => d.idx == @params.gsid).FirstOrDefault();
+            int guildSkillId = request.guildSkillId;
 
-            var upgradeSkill = RemoteObjectManager.instance.regulation.guildSkillDtbl.FirstOrDefault(x => x.level == guildSkill.level + 1);
+            var guildSkill = Guild.SkillDada.Where(d => d.idx == guildSkillId).FirstOrDefault();
 
-            if (upgradeSkill.level < Guild.Level)
+            var upgradeSkill = RemoteObjectManager.instance.regulation.guildSkillDtbl.FirstOrDefault(x => x.idx == guildSkillId && x.skilllevel == guildSkill.level + 1);
+
+            if (upgradeSkill.level > Guild.Level)
             {
                 ErrorPacket error = new()
                 {
@@ -30,7 +32,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            if (upgradeSkill.cost < Guild.Point)
+            if (upgradeSkill.cost > Guild.Point)
             {
                 ErrorPacket error = new()
                 {
@@ -41,7 +43,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            int index = Guild.SkillDada.FindIndex(skill => skill.idx == @params.gsid);
+            int index = Guild.SkillDada.FindIndex(skill => skill.idx == guildSkillId);
 
             if (index >= 0)
             {
@@ -76,13 +78,13 @@ namespace CommanderCS.Packets.Handlers.Guild
     public class UpgradeGuildSkillRequest
     {
         [JsonProperty("gsid")]
-        public int gsid { get; set; }
+        public int guildSkillId { get; set; }
     }
 }
 
 /*	// Token: 0x0600604C RID: 24652 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7220", true, true)]
-	public void UpgradeGuildSkill(int gsid)
+	public void UpgradeGuildSkill(int guildSkillId)
 	{
 	}
 

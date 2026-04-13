@@ -7,7 +7,7 @@ namespace CommanderCS.Packets.Handlers.UserTerm
     [Packet(Id = Method.GetChangeDeviceCode)]
     public class GetChangeDeviceCode : BaseMethodHandler<GetChangeDeviceCodeRequest>
     {
-        public override object Handle(GetChangeDeviceCodeRequest @params)
+        public override object Handle(GetChangeDeviceCodeRequest request)
         {
             AccountScheme Account = GetUserAccount();
 

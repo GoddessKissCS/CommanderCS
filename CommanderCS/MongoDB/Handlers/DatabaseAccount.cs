@@ -221,9 +221,9 @@ namespace CommanderCS.MongoDB.Handlers
         /// <param name="params">The login request parameters.</param>
         /// <param name="session">The session associated with the login request.</param>
         /// <returns>The error code indicating the result of the login request.</returns>
-        public ErrorCode RequestLogin(LoginRequest @params, string session)
+        public ErrorCode RequestLogin(LoginRequest request, string session)
         {
-            var user = FindByUid(@params.memberId);
+            var user = FindByUid(request.memberId);
 
             if (user.isBanned == true && user.isBanned is not null)
             {
@@ -237,7 +237,7 @@ namespace CommanderCS.MongoDB.Handlers
             //    return ErrorCode.UnableToJoin;
             //}
 
-            UpdateLastServerLoggedIn(@params.world, @params.memberId);
+            UpdateLastServerLoggedIn(request.world, request.memberId);
 
             return ErrorCode.Success;
         }
@@ -282,13 +282,13 @@ namespace CommanderCS.MongoDB.Handlers
         /// </summary>
         /// <param name="params">The parameters for changing the device.</param>
         /// <returns>The updated account after changing the device details, or null if the account is not found.</returns>
-        public AccountScheme? ChangeDevice(ChangeDeviceRequest @params)
+        public AccountScheme? ChangeDevice(ChangeDeviceRequest request)
         {
-            var account = FindByName(@params.uid);
+            var account = FindByName(request.uid);
 
             var filter = Builders<AccountScheme>.Filter.Eq("MemberId", account.MemberId);
 
-            var update = Builders<AccountScheme>.Update.Set("PlatformId", @params.plfm).Set("Channel", @params.plfm).Set("OsCode", @params.oscd);
+            var update = Builders<AccountScheme>.Update.Set("PlatformId", request.plfm).Set("Channel", request.plfm).Set("OsCode", request.oscd);
 
             var options = new FindOneAndUpdateOptions<AccountScheme>
             {

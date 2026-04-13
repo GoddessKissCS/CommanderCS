@@ -1,7 +1,44 @@
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-    public class BuyConquestTroopSlot
+    [Packet(Id = Method.BuyConquestTroopSlot)]
+    public class BuyConquestTroopSlot : BaseMethodHandler<BuyConquestTroopSlotRequest>
     {
+        public override object Handle(BuyConquestTroopSlotRequest request)
+        {
+#warning TODO: NOT YET FINISH PLACEHOLDER CODE
+            var user = GetUserGameProfile();
+            var guild = GetUserGuild();
+
+            // not sure how much to subtract and if they perma stay so this stays for now ig
+
+            // -5 diamonds per deck ig
+
+            if (guild is not null)
+            {
+                DatabaseManager.Conquest.AddSlot(guild.GuildId, request.slot);
+            }
+
+            JObject tutorialResponse = new()
+            {
+                ["id"] = BasePacket.Id,
+                ["result"] = new JObject
+                {
+                    ["rsoc"] = JObject.FromObject(UserResources2Resource(user.Resources)),
+                }
+            };
+
+            return tutorialResponse;
+        }
+    }
+
+    public class BuyConquestTroopSlotRequest
+    {
+        public int slot { get; set; }
     }
 }
 

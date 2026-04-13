@@ -7,9 +7,9 @@ namespace CommanderCS.Packets.Handlers.UserTerm
     [Packet(Id = Method.ChangeDevice)]
     public class ChangeDevice : BaseMethodHandler<ChangeDeviceRequest>
     {
-        public override object Handle(ChangeDeviceRequest @params)
+        public override object Handle(ChangeDeviceRequest request)
         {
-            var ChangedDevice = DatabaseManager.Account.ChangeDevice(@params);
+            var ChangedDevice = DatabaseManager.Account.ChangeDevice(request);
 
 #warning TODO MAYBE CHANGE THE DEVICE AND ETC TO ACCOUNT RATHER THAN GAMEPROFILE?
 

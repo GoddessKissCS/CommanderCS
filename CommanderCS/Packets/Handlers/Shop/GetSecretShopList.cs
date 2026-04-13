@@ -1,5 +1,7 @@
+using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
+using CommanderCS.Library.Regulation;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Shop
@@ -7,29 +9,63 @@ namespace CommanderCS.Packets.Handlers.Shop
     [Packet(Id = Method.GetSecretShopList)]
     public class GetSecretShopList : BaseMethodHandler<GetSecretShopListRequest>
     {
-        public override object Handle(GetSecretShopListRequest @params)
+        public override object Handle(GetSecretShopListRequest request)
         {
+            var user = GetUserGameProfile();
+
+            var shopData = RemoteObjectManager.instance.regulation.shopDtbl.Find(x => x.type == request.styp);
+
+            var userResource = UserResources2Resource(user.Resources);
+
             SecretShop shop = new()
             {
                 refreshCount = 86400,
                 reset = 86400,
                 shopList = [],
-                resource = null,
+                resource = userResource,
                 refreshTime = 86400,
             };
 
-            switch (@params.styp)
+            //Needs to be edited to actually work and refresh and reset are different for each shop,
+            //should also probably be saved per user
+
+            switch (request.styp)
             {
-                case 1: // normal shop
+                case EShopType.BasicShop:
                     break;
 
-                case 2: // ChallengeShop shop
+                case EShopType.ChallengeShop:
                     break;
 
-                case 3: // raid shop
+                case EShopType.RaidShop:
+
+                    shop.shopList.Add(new()
+                    {
+                        cost = 100,
+                        sold = 0,
+                        costType = EPriceType.RaidCoin,
+                        count = 999,
+                        id = 1,
+                        idx = 1,
+                        time = 100,
+                        type = ERewardType.Commander
+                    });
+
                     break;
 
-                case 7: //waveduel shop
+                case EShopType.GuildShop:
+                    break;
+
+                case EShopType.VipShop:
+                    break;
+
+                case EShopType.AnnihilationShop:
+                    break;
+
+                case EShopType.WaveDuelShop:
+                    break;
+
+                case EShopType.WorldDuelShop:
                     break;
             }
 
@@ -46,7 +82,7 @@ namespace CommanderCS.Packets.Handlers.Shop
     public class GetSecretShopListRequest
     {
         [JsonProperty("styp")]
-        public int styp { get; set; }
+        public EShopType styp { get; set; }
     }
 }
 

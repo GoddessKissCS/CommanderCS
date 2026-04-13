@@ -1,3 +1,4 @@
+using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB.Schemes;
@@ -8,16 +9,18 @@ namespace CommanderCS.Packets.Handlers.PvP
     [Packet(Id = Method.GetRankingReward)]
     public class GetRankingReward : BaseMethodHandler<GetRankingRewardRequest>
     {
-        public override object Handle(GetRankingRewardRequest @params)
+        public override object Handle(GetRankingRewardRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
             var rsoc = UserResources2Resource(User.Resources);
 
+            var userEquipData = Utility.ConvertEquipItem(User.Inventory.equipItem);
+
             RankingReward reward = new()
             {
                 commanderData = User.CommanderData,
-                equipItem = User.Inventory.equipItem,
+                equipItem = userEquipData,
                 resource = rsoc,
                 costumeData = User.Inventory.costumeData,
                 eventResourceData = User.Inventory.eventResourceData,

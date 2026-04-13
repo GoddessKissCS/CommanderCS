@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CommanderCS.Library.Enums;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Library.Protocols
 {
@@ -8,6 +9,6 @@ namespace CommanderCS.Library.Protocols
         public string curField { get; set; }
 
         [JsonProperty("field")]
-        public Dictionary<string, Dictionary<int, int>> fieldData { get; set; }
+        public Dictionary<string, Dictionary<int, EInfinityTowerStageState>> fieldData { get; set; }
     }
 }

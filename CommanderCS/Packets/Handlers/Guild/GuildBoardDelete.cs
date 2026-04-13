@@ -8,11 +8,11 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.GuildBoardDelete)]
     public class GuildBoardDelete : BaseMethodHandler<GuildBoardDeleteRequest>
     {
-        public override object Handle(GuildBoardDeleteRequest @params)
+        public override object Handle(GuildBoardDeleteRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            DatabaseManager.Guild.DeleteGuildBoardEntry(User.GuildId, @params.idx);
+            DatabaseManager.Guild.DeleteGuildBoardEntry(User.GuildId, request.idx);
 
 #warning TODO ADD THE TIMECHECK FAIL
 

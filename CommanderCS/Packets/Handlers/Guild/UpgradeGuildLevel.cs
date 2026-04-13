@@ -2,17 +2,20 @@ using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
+using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
     [Packet(Id = Method.UpgradeGuildLevel)]
     public class UpgradeGuildLevel : BaseMethodHandler<UpgradeGuildLevelRequest>
     {
-        public override object Handle(UpgradeGuildLevelRequest @params)
+        public override object Handle(UpgradeGuildLevelRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            var guild = DatabaseManager.Guild.FindByUid(User.GuildId);
+            var guildx = GetUserGuild();
+
+            var guild = DatabaseManager.Guild.FindByGuildId(User.GuildId);
 
             var guildUpgradeData = RemoteObjectManager.instance.regulation.guildLevelInfoDtbl.FirstOrDefault(x => x.level == guild.Level + 1);
 
@@ -26,7 +29,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             var guildInfo = DatabaseManager.Guild.RequestGuild(User.GuildId, User.Uno);
 
-            CommanderCS.Library.Protocols.GuildInfo guildList = new()
+            Library.Protocols.GuildInfo guildList = new()
             {
                 resource = null,
                 guildInfo = guildInfo,

@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Annihilation
     [Packet(Id = Method.ResetAnnihilationStage)]
     public class ResetAnnihilationStage : BaseMethodHandler<ResetAnnihilationStageRequest>
     {
-        public override object Handle(ResetAnnihilationStageRequest @params)
+        public override object Handle(ResetAnnihilationStageRequest request)
         {
             return "{}";
         }

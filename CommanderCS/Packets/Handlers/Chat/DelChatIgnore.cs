@@ -7,9 +7,9 @@ namespace CommanderCS.Packets.Handlers.Chat
     [Packet(Id = Method.DelChatIgnore)]
     public class DelChatIgnore : BaseMethodHandler<DelChatIgnoreRequest>
     {
-        public override object Handle(DelChatIgnoreRequest @params)
+        public override object Handle(DelChatIgnoreRequest request)
         {
-            bool isRemoved = DatabaseManager.GameProfile.DelBlockedUser(SessionId, @params.channel, @params.uno);
+            bool isRemoved = DatabaseManager.GameProfile.DelBlockedUser(SessionId, request.channel, request.uno);
 
             ResponsePacket response = new()
             {

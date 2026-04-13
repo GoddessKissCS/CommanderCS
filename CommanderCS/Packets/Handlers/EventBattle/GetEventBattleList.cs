@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Event
     [Packet(Id = Method.GetEventBattleList)]
     public class GetEventBattleList : BaseMethodHandler<GetEventBattleListRequest>
     {
-        public override object Handle(GetEventBattleListRequest @params)
+        public override object Handle(GetEventBattleListRequest request)
         {
             List<EventBattleInfo> battleInfos = new();
 

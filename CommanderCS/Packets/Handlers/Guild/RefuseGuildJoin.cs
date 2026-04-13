@@ -7,9 +7,9 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.RefuseGuildJoin)]
     public class RefuseGuildJoin : BaseMethodHandler<RefuseGuildJoinRequest>
     {
-        public override object Handle(RefuseGuildJoinRequest @params)
+        public override object Handle(RefuseGuildJoinRequest request)
         {
-            ErrorCode code = DatabaseManager.GuildApplication.DeclineGuildJoinRequest(@params.uno);
+            ErrorCode code = DatabaseManager.GuildApplication.DeclineGuildJoinRequest(request.uno);
 
             if (code != ErrorCode.Success)
             {

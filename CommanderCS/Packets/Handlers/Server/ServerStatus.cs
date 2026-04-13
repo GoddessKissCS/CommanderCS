@@ -9,31 +9,20 @@ namespace CommanderCS.Packets.Handlers.Server
     [Packet(Id = Method.ServerStatus)]
     public class ServerStatus : BaseMethodHandler<ServerStatusRequest>
     {
-        public override object Handle(ServerStatusRequest @params)
+        public override object Handle(ServerStatusRequest request)
         {
-            var serverinfos = ProfilesRequest(@params.mIdx);
+            var serverinfos = ProfilesRequest(request.mIdx);
 
-            int nextIdx = 1;
-
-            while (serverinfos.Count < 1)
+            if (serverinfos.Count < 1)
             {
-                if (serverinfos.Any(server => server.idx == nextIdx))
+                serverinfos.Add(new ServerData.ServerInfo()
                 {
-                    nextIdx++;
-                    continue;
-                }
-
-                ServerData.ServerInfo nullServer = new()
-                {
-                    idx = nextIdx,
+                    idx = 1,
                     status = (int)StatusEnum.Medium,
                     lastLoginTime = 0,
                     level = 0,
                     thumnail = 0,
-                };
-
-                serverinfos.Add(nullServer);
-                nextIdx++;
+                });
             }
 
             ServerData serverData = new()
@@ -58,20 +47,18 @@ namespace CommanderCS.Packets.Handlers.Server
 
             var list = DatabaseManager.GameProfile.FindByMemberIdList(mIdx);
 
-            int i = 1;
             foreach (GameProfileScheme profile in list)
             {
-                ServerData.ServerInfo SIFO = new()
+                ServerData.ServerInfo info = new()
                 {
                     status = (int)StatusEnum.Medium,
-                    idx = i,
+                    idx = profile.Server,
                     lastLoginTime = profile.LastLoginTime,
                     level = profile.Resources.level,
                     thumnail = profile.Resources.thumbnailId
                 };
-                i++;
 
-                serverInfo.Add(SIFO);
+                serverInfo.Add(info);
             }
 
             return serverInfo;

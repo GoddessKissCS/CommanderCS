@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
     [Packet(Id = CommanderCS.Library.Enums.Method.PvPStartWorldDuel)]
     public class PvPStartWorldDuel : BaseMethodHandler<PvPStartWorldDuelRequest>
     {
-        public override object Handle(PvPStartWorldDuelRequest @params)
+        public override object Handle(PvPStartWorldDuelRequest request)
         {
             CommanderCS.Library.Protocols.UserInformationResponse.BattleResult battleResult = new() { };
 

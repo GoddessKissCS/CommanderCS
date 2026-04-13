@@ -8,7 +8,7 @@ namespace CommanderCS.Packets.Handlers.VersionCheck
     [Packet(Id = Method.DBVersionCheck)]
     public class DatabaseVersionCheck : BaseMethodHandler<DatabaseVersionCheckRequest>
     {
-        public override object Handle(DatabaseVersionCheckRequest @params)
+        public override object Handle(DatabaseVersionCheckRequest request)
         {
             DatabaseVersionScheme gametable = DatabaseManager.GameTableVersion.Get();
 

@@ -10,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.WorldMap
     [Packet(Id = Method.WorldMapStageStart)]
     public class WorldMapStageStart : BaseMethodHandler<WorldMapStageStartRequest>
     {
-        public override object Handle(WorldMapStageStartRequest @params)
+        public override object Handle(WorldMapStageStartRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
@@ -19,7 +19,7 @@ namespace CommanderCS.Packets.Handlers.WorldMap
             //TODO: look at the stage and then the rewards it can gen
             List<RewardInfo.RewardData> test = [];
 
-            string worldMapId = @params.Mid.ToString();
+            string worldMapId = request.Mid.ToString();
 
             var worldstagetbl = RemoteObjectManager.instance.regulation.worldMapStageDtbl.Find(x => x.id == worldMapId);
 
@@ -27,7 +27,9 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 
             User.Resources.bullet -= worldstagetbl.bullet;
 
-            switch (@params.Mid)
+            DatabaseManager.GameProfile.UpdateUserResources(SessionId, User.Resources);
+
+            switch (request.Mid)
             {
                 case 1:
 
@@ -46,8 +48,8 @@ namespace CommanderCS.Packets.Handlers.WorldMap
 
             //TODO: find out how to add exp
             // this is just a start
-           wmssr.reward = test;
-           
+            wmssr.reward = test;
+
 
             wmssr.rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 

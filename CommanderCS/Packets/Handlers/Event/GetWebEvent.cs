@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Event
     [Packet(Id = Method.GetWebEvent)]
     public class GetWebEvent : BaseMethodHandler<GetWebEventRequest>
     {
-        public override object Handle(GetWebEventRequest @params)
+        public override object Handle(GetWebEventRequest request)
         {
             GetWebEventPacket gwe = new()
             {

@@ -7,9 +7,9 @@ namespace CommanderCS.Packets.Handlers.Payment
     [Packet(Id = Method.MakeOrderId)]
     public class MakeOrderId : BaseMethodHandler<MakeOrderIdRequest>
     {
-        public override object Handle(MakeOrderIdRequest @params)
+        public override object Handle(MakeOrderIdRequest request)
         {
-            var payload = Crypto.ComputeSha256Hash(@params.productId);
+            var payload = Crypto.ComputeSha256Hash(request.productId);
 
             MakeOrderIdResponse makeOrderIdResponse = new()
             {

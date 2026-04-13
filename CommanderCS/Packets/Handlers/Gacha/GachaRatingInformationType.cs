@@ -3,31 +3,31 @@ using CommanderCS.Library.Protocols;
 
 namespace CommanderCS.Packets.Handlers.Gacha
 {
-	[Packet(Id = Library.Enums.Method.GachaRatingInformationType)]
-	public class GachaRatingInformationType : BaseMethodHandler<GachaRatingInformationTypeRequest>
+    [Packet(Id = Library.Enums.Method.GachaRatingInformationType)]
+    public class GachaRatingInformationType : BaseMethodHandler<GachaRatingInformationTypeRequest>
     {
-        public override object Handle(GachaRatingInformationTypeRequest @params)
+        public override object Handle(GachaRatingInformationTypeRequest request)
         {
 
-			Dictionary<ERewardType, GachaRatingDataTypeA> gameRatingDataA = new()
-			{
+            Dictionary<ERewardType, GachaRatingDataTypeA> gameRatingDataA = new()
+            {
 
-			};
+            };
 
             Dictionary<ERewardType, GachaRatingDataTypeB> gameRatingDataB = new()
             {
 
             };
 
-			gameRatingDataA.Add(ERewardType.Costume, new() { rating = 1 });
+            gameRatingDataA.Add(ERewardType.Costume, new() { rating = 1 });
 
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = null
-			};
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = null
+            };
 
-			return response;
+            return response;
 
         }
     }

@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Annihilation
     [Packet(Id = Method.AnnihilationEnemyInformation)]
     public class AnnihilationEnemyInformation : BaseMethodHandler<AnnihilationEnemyInformationRequest>
     {
-        public override object Handle(AnnihilationEnemyInformationRequest @params)
+        public override object Handle(AnnihilationEnemyInformationRequest request)
         {
             return "{}";
         }

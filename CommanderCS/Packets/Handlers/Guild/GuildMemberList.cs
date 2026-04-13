@@ -8,7 +8,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.GuildMemberList)]
     public class GuildMemberList : BaseMethodHandler<GuildMemberListRequest>
     {
-        public override object Handle(GuildMemberListRequest @params)
+        public override object Handle(GuildMemberListRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
@@ -17,7 +17,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 Id = BasePacket.Id,
             };
 
-            if (User.GuildId is null)
+            if (User.GuildId == null)
             {
                 response.Result = null;
                 return response;

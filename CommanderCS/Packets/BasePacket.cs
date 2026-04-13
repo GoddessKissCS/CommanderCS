@@ -1,7 +1,6 @@
 ﻿using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
-using CommanderCS.Library.Regulation;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
@@ -32,11 +31,11 @@ namespace CommanderCS.Packets
         public JToken Params { get; set; }
     }
 
-    public abstract class BaseMethodHandler<TParams>
+    public abstract class BaseMethodHandler<TRequest>
     {
         public BasePacket BasePacket { get; set; }
 
-        public abstract object Handle(TParams @params);
+        public abstract object Handle(TRequest reqParam);
 
         public string SessionId => BasePacket.SessionId;
 
@@ -60,11 +59,6 @@ namespace CommanderCS.Packets
             return DatabaseManager.Guild.FindBySession(BasePacket.SessionId);
         }
 
-        /// <summary>
-        /// Converts user battle statistics to battle statistics for response.
-        /// </summary>
-        /// <param name="statistics">The user battle statistics to convert.</param>
-        /// <returns>Battle statistics suitable for response.</returns>
         public UserInformationResponse.BattleStatistics UserStatistics2BattleStatistics(UserBattleStatistics statistics)
         {
             UserInformationResponse.BattleStatistics BattleStatisticstis = new()
@@ -102,12 +96,7 @@ namespace CommanderCS.Packets
             return BattleStatisticstis;
         }
 
-        /// <summary>
-        /// Converts user resources to the response format.
-        /// </summary>
-        /// <param name="resources">User resources to convert.</param>
-        /// <returns>User resources in the response format.</returns>
-        public UserInformationResponse.Resource? UserResources2Resource(UserResources resources)
+        public static UserInformationResponse.Resource? UserResources2Resource(UserResources resources)
         {
             UserInformationResponse.Resource resource = new()
             {
@@ -157,82 +146,13 @@ namespace CommanderCS.Packets
 
         public UserInformationResponse GetUserInformationResponse(GameProfileScheme user)
         {
-            UserInformationResponse.Resource Resources = new()
-            {
-                __nickname = user.Resources.nickname,
-                __annCoin = Convert.ToString(user.Resources.annCoin),
-                __level = Convert.ToString(user.Resources.level),
-                __blackChallenge = Convert.ToString(user.Resources.BlackChallenge),
-                __blueprintArmy = Convert.ToString(user.Resources.blueprintArmy),
-                __blueprintNavy = Convert.ToString(user.Resources.blueprintNavy),
-                __bullet = Convert.ToString(user.Resources.bullet),
-                __cash = Convert.ToString(user.Resources.cash),
-                __challenge = Convert.ToString(user.Resources.challenge),
-                __challengeCoin = Convert.ToString(user.Resources.challengeCoin),
-                __chip = Convert.ToString(user.Resources.chip),
-                __commanderGift = Convert.ToString(user.Resources.commanderGift),
-                __commanderPromotionPoint = Convert.ToString(user.Resources.commanderPromotionPoint),
-                __eventRaidTicket = Convert.ToString(user.Resources.eventRaidTicket),
-                __exp = Convert.ToString(user.Resources.exp),
-                __explorationTicket = Convert.ToString(user.Resources.explorationTicket),
-                __gold = Convert.ToString(user.Resources.gold),
-                __guildCoin = Convert.ToString(user.Resources.guildCoin),
-                __honor = Convert.ToString(user.Resources.honor),
-                __oil = Convert.ToString(user.Resources.oil),
-                __opcon = Convert.ToString(user.Resources.opcon),
-                __opener = Convert.ToString(user.Resources.opener),
-                __raidCoin = Convert.ToString(user.Resources.raidCoin),
-                __ring = Convert.ToString(user.Resources.ring),
-                __sweepTicket = Convert.ToString(user.Resources.sweepTicket),
-                __thumbnailId = Convert.ToString(user.Resources.thumbnailId),
-                __vipExp = Convert.ToString(user.Resources.vipExp),
-                __vipLevel = Convert.ToString(user.Resources.vipLevel),
-                __waveDuelCoin = Convert.ToString(user.Resources.waveDuelCoin),
-                __waveDuelTicket = Convert.ToString(user.Resources.waveDuelTicket),
-                __weaponImmediateTicket = Convert.ToString(user.Resources.weaponImmediateTicket),
-                __weaponMakeTicket = Convert.ToString(user.Resources.weaponMakeTicket),
-                __weaponMaterial1 = Convert.ToString(user.Resources.weaponMaterial1),
-                __weaponMaterial2 = Convert.ToString(user.Resources.weaponMaterial2),
-                __weaponMaterial3 = Convert.ToString(user.Resources.weaponMaterial3),
-                __weaponMaterial4 = Convert.ToString(user.Resources.weaponMaterial4),
-                __worldDuelCoin = Convert.ToString(user.Resources.worldDuelCoin),
-                __worldDuelTicket = Convert.ToString(user.Resources.worldDuelTicket),
-                __worldDuelUpgradeCoin = Convert.ToString(user.Resources.worldDuelUpgradeCoin),
-            };
-
-            UserInformationResponse.BattleStatistics BattleStatisticstis = new()
-            {
-                navyCommanderDestroyCount = user.Statistics.NavyCommanderDestroyCount,
-                stageClearCount = user.Statistics.StageClearCount,
-                sweepClearCount = user.Statistics.SweepClearCount,
-                preWinStreak = user.Statistics.PreWinStreak,
-                raidHighScore = user.Statistics.RaidHighScore,
-                vipShop = user.Statistics.VipShop,
-                vipShopResetTime = user.Statistics.VipShopResetTime,
-                weaponMakeSlotCount = user.Statistics.WeaponMakeSlotCount,
-                winMostStreak = user.Statistics.WinMostStreak,
-                winStreak = user.Statistics.WinStreak,
-                arenaHighRank = user.Statistics.ArenaHighRank,
-                armyCommanderDestroyCount = user.Statistics.ArmyCommanderDestroyCount,
-                armyUnitDestroyCount = user.Statistics.ArmyUnitDestroyCount,
-                commanderDestroyCount = user.Statistics.CommanderDestroyCount,
-                firstPayment = user.Statistics.FirstPayment,
-                navyUnitDestroyCount = user.Statistics.NavyUnitDestroyCount,
-                normalGachaCount = user.Statistics.NormalGachaCount,
-                predeckCount = user.Statistics.PredeckCount,
-                premiumGachaCount = user.Statistics.PremiumGachaCount,
-                pveLoseCount = user.Statistics.PveLoseCount,
-                pveWinCount = user.Statistics.PveWinCount,
-                pvpLoseCount = user.Statistics.PvpLoseCount,
-                pvpWinCount = user.Statistics.PvpWinCount,
-                raidHighRank = user.Statistics.RaidHighRank,
-                totalGold = user.Statistics.TotalGold,
-                totalPlunderGold = user.Statistics.TotalPlunderGold,
-                weaponInventoryCount = user.Statistics.WeaponInventoryCount,
-                unitDestroyCount = user.Statistics.UnitDestroyCount,
-            };
+            var Resources = UserResources2Resource(user.Resources);
+            var BattleStatisticstis = UserStatistics2BattleStatistics(user.Statistics);
 
             var guild = DatabaseManager.Guild.RequestGuild(user.GuildId, user.Uno);
+
+
+            var userEquipData = Utility.ConvertEquipItem(user.Inventory.equipItem);
 
             UserInformationResponse userInformationResponse = new()
             {
@@ -251,7 +171,7 @@ namespace CommanderCS.Packets
 
                 resetRemain = user.ResetDateTime, // should it be set?
 
-                equipItem = user.Inventory.equipItem,
+                equipItem = userEquipData,
 
                 donHaveCommCostumeData = user.Inventory.donHaveCommCostumeData,
                 completeRewardGroupIdx = user.CompleteRewardGroupIdx,
@@ -273,6 +193,8 @@ namespace CommanderCS.Packets
 
             var commanderData = JObject.FromObject(user.CommanderData);
 
+            var userEquipData = Utility.ConvertEquipItem(user.Inventory.equipItem);
+
             UserInformationResponse userInformationResponse = new()
             {
                 goodsInfo = goods,
@@ -290,7 +212,7 @@ namespace CommanderCS.Packets
 
                 resetRemain = user.ResetDateTime, // should be set?
 
-                equipItem = user.Inventory.equipItem,
+                equipItem = userEquipData,
 
                 donHaveCommCostumeData = user.Inventory.donHaveCommCostumeData,
                 completeRewardGroupIdx = user.CompleteRewardGroupIdx,
@@ -302,6 +224,30 @@ namespace CommanderCS.Packets
             };
 
             return userInformationResponse;
+        }
+        public SystemPacket GetDailyResetSystemMessage()
+        {
+            SystemPacket system = new()
+            {
+                Result = new()
+                {
+                    systemCheck = new()
+                    {
+                        message = new()
+                        {
+                            cn = "Daily Reset happend.",
+                            en = "Daily Reset happend.",
+                            jp = "Daily Reset happend.",
+                            ko = "Daily Reset happend.",
+                            ru = "Daily Reset happend.",
+                            tw = "Daily Reset happend.",
+                        },
+                        nowTime = TimeManager.CurrentEpochMilliseconds
+                    },
+                }
+            };
+
+            return system;
         }
     }
 }

@@ -2,15 +2,15 @@
 
 namespace CommanderCS.Packets.Handlers.Troop
 {
-    [Packet(Id = CommanderCS.Library.Enums.Method.GetTroopInformation)]
+    [Packet(Id = Library.Enums.Method.GetTroopInformation)]
     public class GetTroopInformation : BaseMethodHandler<GetTroopInformationRequest>
     {
-        public override object Handle(GetTroopInformationRequest @params)
+        public override object Handle(GetTroopInformationRequest request)
         {
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = new CommanderCS.Library.Protocols.UserInformationResponse.Commander(),
+                Result = new Library.Protocols.UserInformationResponse.Commander(),
             };
 
             return response;

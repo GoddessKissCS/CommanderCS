@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Shop
     [Packet(Id = Method.GetCashShopList)]
     public class GetCashShopList : BaseMethodHandler<GetCashShopListRequest>
     {
-        public override object Handle(GetCashShopListRequest @params)
+        public override object Handle(GetCashShopListRequest request)
         {
             List<CashShopData> csl = [];
 

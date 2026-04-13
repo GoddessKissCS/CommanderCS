@@ -1,7 +1,6 @@
 ﻿using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
-using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.Dispatch
@@ -9,7 +8,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
     [Packet(Id = Method.GetDispatchCommanderListFromLogin)]
     public class GetDispatchCommanderListFromLogin : BaseMethodHandler<GetDispatchCommanderListFromLoginRequest>
     {
-        public override object Handle(GetDispatchCommanderListFromLoginRequest @params)
+        public override object Handle(GetDispatchCommanderListFromLoginRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 

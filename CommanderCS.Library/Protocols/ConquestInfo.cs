@@ -5,18 +5,41 @@ namespace CommanderCS.Library.Protocols
 {
     public class ConquestInfo
     {
+
+        /// <summary>
+        /// Gets or sets state of the Conquest.
+        /// None is idk
+        /// Join means we joined
+        /// Match means matching for opponent
+        /// Setting is if we are in the battle state
+        /// and Battle is for finishing the guild battle
+        /// </summary>
         [JsonProperty("step")]
         public EConquestState state { get; set; }
 
+
+        /// <summary>
+        /// Gets or sets remaing time for the certain state
+        /// </summary>
         [JsonProperty("remain")]
         public int remain { get; set; }
+        
+        /// <summary>
+        /// Gets or sets , if we signed up for guild battle
+        /// </summary>
 
         [JsonProperty("signed")]
         public int sign { get; set; }
 
+        /// <summary>
+        /// Gets or sets join of the Guild Battle
+        /// </summary>
         [JsonProperty("join")]
         public int join { get; set; }
 
+        /// <summary>
+        /// Gets or sets the side can only be R for Red or B for Blue
+        /// </summary>
         [JsonProperty("side")]
         public string side { get; set; }
 

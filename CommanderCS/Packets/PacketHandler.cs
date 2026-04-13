@@ -102,13 +102,13 @@ namespace CommanderCS.Packets
         /// <returns>The response handled by the endpoint.</returns>
         internal static object CommandMapping<TEndpoint, TParams>(ParamsPacket paramsPacket, IServiceProvider serviceProvider) where TEndpoint : BaseMethodHandler<TParams>
         {
-            var @params = paramsPacket.Params.ToObject<TParams>();
+            var request = paramsPacket.Params.ToObject<TParams>();
 
             var commandHandler = ActivatorUtilities.CreateInstance<TEndpoint>(serviceProvider);
 
             commandHandler.BasePacket = paramsPacket;
 
-            object handledResponse = commandHandler.Handle(@params);
+            object handledResponse = commandHandler.Handle(request);
 
             return handledResponse;
         }

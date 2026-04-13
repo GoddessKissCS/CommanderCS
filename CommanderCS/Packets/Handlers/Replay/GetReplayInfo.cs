@@ -1,7 +1,89 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Text;
+
 namespace CommanderCS.Packets.Handlers.Replay
 {
-    public class GetReplayInfo
+    [Packet(Id = Method.GetReplayInfo)]
+    public class GetReplayInfo : BaseMethodHandler<GetReplayInfoRequest>
     {
+        public override object Handle(GetReplayInfoRequest request)
+        {
+            if (!int.TryParse(request.rid, out int replayId))
+            {
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = ErrorCode.Failure },
+                };
+
+                return error;
+            }
+
+            var replay = DatabaseManager.ReplayList.FindByReplayId(replayId);
+
+            if (replay is null)
+            {
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = ErrorCode.Failure },
+                };
+
+                return error;
+            }
+
+            var recordUser = DatabaseManager.GameProfile.FindByUno(replay.Uno);
+
+            // Decode the base64 client replay data back to JSON for the client to play
+            object replayData = null;
+            if (!string.IsNullOrEmpty(replay.ReplayClientData))
+            {
+                string jsonData = Encoding.UTF8.GetString(Convert.FromBase64String(replay.ReplayClientData));
+                replayData = JToken.Parse(jsonData);
+            }
+
+            RecordInfo record = new()
+            {
+                id = replay.ReplayId.ToString(),
+                uno = replay.Uno,
+                data = replayData,
+                _userName = recordUser?.Resources?.nickname ?? "Unknown",
+                level = recordUser?.Resources?.level ?? 0,
+                thumbnail = recordUser?.Resources?.thumbnailId.ToString() ?? "0",
+                date = new DateTimeOffset(replay.Id.CreationTime).ToUnixTimeMilliseconds(),
+                guildName = GetGuildName(recordUser),
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = record,
+            };
+
+            return response;
+        }
+
+        private static string GetGuildName(GameProfileScheme user)
+        {
+            if (user?.GuildId is null) return null;
+
+            var guild = DatabaseManager.Guild.FindByGuildId(user.GuildId);
+            return guild?.Name;
+        }
+    }
+
+    public class GetReplayInfoRequest
+    {
+        [JsonProperty("rid")]
+        public string rid { get; set; }
+
+        [JsonProperty("type")]
+        public int type { get; set; }
     }
 }
 

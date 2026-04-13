@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Login
     [Packet(Id = Method.FBSignIn)]
     public class FBSignIn : BaseMethodHandler<FBSignInRequest>
     {
-        public override object Handle(FBSignInRequest @params)
+        public override object Handle(FBSignInRequest request)
         {
             // WILL NOT SUPPORT PROBABLY
 

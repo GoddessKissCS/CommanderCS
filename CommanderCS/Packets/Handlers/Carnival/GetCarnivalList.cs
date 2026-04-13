@@ -1,23 +1,89 @@
-﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Carnival
 {
     [Packet(Id = Method.GetCarnivalList)]
     public class GetCarnivalList : BaseMethodHandler<GetCarnivalListRequest>
     {
-        public override object Handle(GetCarnivalListRequest @params)
+        public override object Handle(GetCarnivalListRequest request)
         {
-            ResponsePacket response = new();
+            GameProfileScheme user = GetUserGameProfile();
 
-            CarnivalList CLlist = new CarnivalList();
+            var resource = UserResources2Resource(user.Resources);
 
-            Dictionary<string, CarnivalList.CarnivaTime> carnivalList = new Dictionary<string, CarnivalList.CarnivaTime>();
-            Dictionary<string, Dictionary<string, CarnivalList.ProcessData>> carnivalProcessList = new Dictionary<string, Dictionary<string, CarnivalList.ProcessData>>();
-            List<RewardInfo.RewardData> rewardList = new List<RewardInfo.RewardData>();
+            int connectTime = (int)TimeManager.CurrentEpoch;
+            DateTime now = DateTime.UtcNow;
 
-            return "{}";
+            var regulation = RemoteObjectManager.instance.regulation;
+
+            Dictionary<string, CarnivalList.CarnivaTime> carnivalList = [];
+            Dictionary<string, Dictionary<string, CarnivalList.ProcessData>> carnivalProcessList = [];
+
+            foreach (var carnivalType in regulation.carnivalTypeDtbl)
+            {
+                DateTime startDate = DateTime.Parse($"{carnivalType.startDate} {carnivalType.startTime}");
+                DateTime endDate = DateTime.Parse($"{carnivalType.endDate} {carnivalType.endTime}");
+
+                if (now < startDate || now > endDate)
+                {
+                    continue;
+                }
+
+                int remainSeconds = (int)(endDate - now).TotalSeconds;
+
+                carnivalList[carnivalType.idx] = new CarnivalList.CarnivaTime()
+                {
+                    remain = remainSeconds.ToString(),
+                };
+
+                Dictionary<string, CarnivalList.ProcessData> processEntries = [];
+
+                foreach (var entry in regulation.carnivalDtbl)
+                {
+                    if (entry.cTidx != carnivalType.idx)
+                    {
+                        continue;
+                    }
+
+                    processEntries[entry.idx] = new CarnivalList.ProcessData()
+                    {
+                        count = 0,
+                        complete = 0,
+                        receive = 0,
+                        able = 0,
+                        startTime = startDate.ToString("yyyy-MM-dd HH:mm:ss"),
+                        endTime = endDate.ToString("yyyy-MM-dd HH:mm:ss"),
+                        remain = remainSeconds.ToString(),
+                    };
+                }
+
+                if (processEntries.Count > 0)
+                {
+                    carnivalProcessList[carnivalType.idx] = processEntries;
+                }
+            }
+
+            CarnivalList result = new()
+            {
+                carnivalList = carnivalList,
+                carnivalProcessList = carnivalProcessList,
+                rewardList = [],
+                resource = resource,
+                connectTime = connectTime,
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = JObject.FromObject(result),
+            };
+
+            return response;
         }
     }
 

@@ -4,36 +4,36 @@ using static CommanderCS.Packets.Handlers.Cooperate.CooperateBattleStart;
 
 namespace CommanderCS.Packets.Handlers.Cooperate
 {
-	[Packet(Id = Library.Enums.Method.CooperateBattleStart)]
-	public class CooperateBattleStart : BaseMethodHandler<CooperateBattleStartRequest>
-	{
-		public override object Handle(CooperateBattleStartRequest @params)
-		{
+    [Packet(Id = Library.Enums.Method.CooperateBattleStart)]
+    public class CooperateBattleStart : BaseMethodHandler<CooperateBattleStartRequest>
+    {
+        public override object Handle(CooperateBattleStartRequest request)
+        {
 
-			ResponsePacket response = new()
-			{
-				Id = BasePacket.Id,
-				Result = bool.TrueString
-			};
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = bool.TrueString
+            };
 
             return response;
         }
 
-		public class CooperateBattleStartRequest
-		{
-			[JsonProperty("type")]
-			public int Type { get; set; }
+        public class CooperateBattleStartRequest
+        {
+            [JsonProperty("type")]
+            public int Type { get; set; }
 
-			[JsonProperty("deck")]
-			public JObject Deck { get; set; }
+            [JsonProperty("deck")]
+            public JObject Deck { get; set; }
 
-			[JsonProperty("stage")]
-			public int stage { get; set; }
+            [JsonProperty("stage")]
+            public int stage { get; set; }
 
-			[JsonProperty("step")]
-			public int step { get; set; }
-		}
-	}
+            [JsonProperty("step")]
+            public int step { get; set; }
+        }
+    }
 }
 
 /*	// Token: 0x0600610E RID: 24846 RVA: 0x000120F8 File Offset: 0x000102F8

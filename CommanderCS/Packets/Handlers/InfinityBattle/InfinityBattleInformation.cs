@@ -1,5 +1,6 @@
 using CommanderCS.Library;
 using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -8,20 +9,16 @@ namespace CommanderCS.Packets.Handlers.InfinityBattle
 	[Packet(Id = Library.Enums.Method.InfinityBattleInformation)]
     public class InfinityBattleInformation : BaseMethodHandler<InfinityBattleInformationRequest>
     {
-		public override object Handle(InfinityBattleInformationRequest @params)
+		public override object Handle(InfinityBattleInformationRequest request)
 		{
 
-            Library.Protocols.InfinityTowerInformation InfinityTowerInformation = new()
-			{
-				infinityData = new()
-				{
-					fieldData = [],
-					curField = "",		
-				},
-				retryStage = ""
-			};
+			var user = GetUserGameProfile();
 
-            ResponsePacket responsePacket = new()
+			InfinityTowerInformation InfinityTowerInformation = InfinityTowerSchemeToInfinityTowerData(user.BattleData.InfinityTowerData.infinityData);
+
+			// hope this fix
+
+			ResponsePacket responsePacket = new()
 			{
 				Id = BasePacket.Id,
 				Result = InfinityTowerInformation
@@ -29,6 +26,27 @@ namespace CommanderCS.Packets.Handlers.InfinityBattle
 
 			return responsePacket;
         }
+
+
+        private InfinityTowerInformation InfinityTowerSchemeToInfinityTowerData(InfinityTowerDataScheme scheme)
+		{
+            InfinityTowerInformation towerData = new()
+			{
+				infinityData = new()
+				{
+					curField = scheme.curField,
+					fieldData = scheme.fieldData?.ToDictionary(
+                        outer => outer.Key,
+                        outer => outer.Value?.ToDictionary(
+                            inner => int.Parse(inner.Key),
+                            inner => inner.Value))
+                        ?? []
+				}
+			};
+
+            return towerData;
+        }
+
     }
 
 	public class InfinityBattleInformationRequest
@@ -36,11 +54,12 @@ namespace CommanderCS.Packets.Handlers.InfinityBattle
         [JsonProperty("ifid")]
         public int ifid { get; set; }
 
-        [JsonProperty("deck")]
+        [JsonProperty("retryStage")]
         public string retryStage { get; set; }
     }
 
-}/*	// Token: 0x0600618A RID: 24970 RVA: 0x000120F8 File Offset: 0x000102F8
+}
+/*	// Token: 0x0600618A RID: 24970 RVA: 0x000120F8 File Offset: 0x000102F8
 
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "8700", true, true)]
 	public void InfinityBattleInformation(int ifid, string retryStage)

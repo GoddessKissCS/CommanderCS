@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
     [Packet(Id = Method.GetCouponList)]
     public class GetCouponList : BaseMethodHandler<GetCouponListRequest>
     {
-        public override object Handle(GetCouponListRequest @params)
+        public override object Handle(GetCouponListRequest request)
         {
             CouponList couponList = new()
             {

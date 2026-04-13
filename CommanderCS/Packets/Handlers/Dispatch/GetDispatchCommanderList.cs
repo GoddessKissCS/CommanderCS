@@ -1,21 +1,21 @@
 using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
-using CommanderCS.MongoDB;
-using CommanderCS.MongoDB.Handlers;
 using CommanderCS.MongoDB.Schemes;
+using Newtonsoft.Json.Linq;
+using static CommanderCS.Library.Protocols.GuildDispatchCommanderList;
 
 namespace CommanderCS.Packets.Handlers.Dispatch
 {
     [Packet(Id = Method.GetDispatchCommanderList)]
     public class GetDispatchCommanderList : BaseMethodHandler<GetDispatchCommanderListRequest>
     {
-        public override object Handle(GetDispatchCommanderListRequest @params)
+        public override object Handle(GetDispatchCommanderListRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
-            GuildScheme Guild = GetUserGuild(); 
+            GuildScheme Guild = GetUserGuild();
 
-            if (Guild.LastEdit is not null)
+            if (Guild.LastEdit != null)
             {
                 var difference = TimeManager.GetTimeDifference((double)Guild.LastEdit);
 
@@ -32,7 +32,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 
             Dictionary<string, DiapatchCommanderInfo> dispatchedcommanders = [];
 
-            if (User.DispatchedCommanders is not null)
+            if (User.DispatchedCommanders != null)
             {
                 foreach (var item in User.DispatchedCommanders)
                 {
@@ -68,13 +68,13 @@ namespace CommanderCS.Packets.Handlers.Dispatch
                 dispatchedcommanders = null;
             }
 
-            ResponsePacket response = new()
+            ResponsePacket result = new()
             {
                 Id = BasePacket.Id,
                 Result = dispatchedcommanders,
             };
 
-            return response;
+            return result;
         }
 
         public int GetDispatchGold(string level, string cls, string rank) => GetDispatchGold(int.Parse(level), int.Parse(cls), int.Parse(rank));

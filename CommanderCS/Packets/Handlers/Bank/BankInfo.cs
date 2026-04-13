@@ -5,9 +5,9 @@ namespace CommanderCS.Packets.Handlers.Bank
     [Packet(Id = Method.BankInfo)]
     public class BankInfo : BaseMethodHandler<BankInfoRequest>
     {
-        public override object Handle(BankInfoRequest @params)
+        public override object Handle(BankInfoRequest request)
         {
-            var bankInfo = new CommanderCS.Library.Protocols.BankInfo()
+            Library.Protocols.BankInfo bankInfo = new()
             {
                 exchangeRateCnt = 0,
                 level = 0,

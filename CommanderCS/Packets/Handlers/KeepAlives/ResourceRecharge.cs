@@ -1,4 +1,5 @@
 using CommanderCS.Library;
+using CommanderCS.Library.Protocols;
 using CommanderCS.Library.Regulation;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
@@ -10,7 +11,7 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
     [Packet(Id = CommanderCS.Library.Enums.Method.ResourceRecharge)]
     public class ResourceRecharge : BaseMethodHandler<ResourceRechargeRequest>
     {
-        public override object Handle(ResourceRechargeRequest @params)
+        public override object Handle(ResourceRechargeRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
@@ -20,25 +21,32 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
                 Result = "{}",
             };
 
-            switch (@params.vidx)
+            switch (request.vidx)
             {
                 case 106:
 
                     //BUY PRICE STARTS AT 15 diamonds and then + 100% everytime you buy a new ticket
-                    var raidKeys = User.VipRechargeData.Find(x => x.idx == @params.vidx);
+                    var raidKeys = User.VipRechargeData.Find(x => x.idx == request.vidx);
 
                     var ticketPrice = CalculateRaidTicketBuyPrice(User.DailyBuyables.RaidKeys, User, RemoteObjectManager.instance.regulation);
 
                     var count = raidKeys.count++;
                     User.DailyBuyables.RaidKeys--;
+					User.Resources.opener++;
+
+					//opener are also raidkeys
 
                     DatabaseManager.GameProfile.UpdateOnlyCash(SessionId, ticketPrice, false);
-                    DatabaseManager.GameProfile.UpdateVipRechargeCount(SessionId, @params.vidx, count);
+                    DatabaseManager.GameProfile.UpdateVipRechargeCount(SessionId, request.vidx, count);
                     DatabaseManager.GameProfile.UpdateDailyBuyableRaidKeys(SessionId, User.DailyBuyables.RaidKeys);
 
-                    var userInfo = DatabaseGetUserInformationResponse(User);
+					UserInformationResponse userInformationRes = new()
+					{
+						goodsInfo = DatabaseGetUserInformationResponse(User).goodsInfo
+                    };
 
-                    response.Result = JObject.FromObject(userInfo);
+
+                    response.Result = JObject.FromObject(userInformationRes);
                     return response;
             }
 
@@ -54,15 +62,6 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
             const double increasePercentage = 1.0; // Percentage increase for each ticket (100%)
 
             var vipData = rg.VipBenefitsDtbl.Find(x => x.vipLevel == user.Resources.vipLevel);
-
-            if (user.DailyBuyables.RaidKeys > vipData.dailyRaidTicketRefill)
-            {
-                throw new ArgumentException();
-            }
-            else if (ticketsLeft > maxTickets)
-            {
-                throw new ArgumentException("Number of tickets left exceeds maximum limit.");
-            }
 
             // Calculate the current buy price based on the remaining tickets
             double totalPrice = startingPrice * Math.Pow(2, maxTickets - ticketsLeft) - startingPrice;

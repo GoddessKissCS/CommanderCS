@@ -11,11 +11,11 @@ namespace CommanderCS.Packets.Handlers.Commander
     [Packet(Id = Method.CommanderRankUp)]
     public class CommanderRankUp : BaseMethodHandler<CommanderRankUpRequest>
     {
-        public override object Handle(CommanderRankUpRequest @params)
+        public override object Handle(CommanderRankUpRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            string cid = @params.commanderId.ToString();
+            string cid = request.commanderId.ToString();
 
             bool commanderExists = User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander is not null;
 
@@ -62,9 +62,9 @@ namespace CommanderCS.Packets.Handlers.Commander
             }
             else
             {
-                int recruitCost = (@params.commanderId == 1 || @params.commanderId == 2 || @params.commanderId == 5 ||
-                        @params.commanderId == 14 || @params.commanderId == 17 || @params.commanderId == 18 ||
-                        @params.commanderId == 26) ? 1000 : 50000;
+                int recruitCost = (request.commanderId == 1 || request.commanderId == 2 || request.commanderId == 5 ||
+                        request.commanderId == 14 || request.commanderId == 17 || request.commanderId == 18 ||
+                        request.commanderId == 26) ? 1000 : 50000;
 
                 User.Inventory.medalData.TryGetValue(cid, out int commanderMedals);
 
@@ -83,7 +83,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
                 User.Inventory.medalData[cid] = commanderMedals;
 
-                var newestCommander = CreateCommander(@params.commanderId, commanderMedals, commanderData.grade);
+                var newestCommander = CreateCommander(request.commanderId, commanderMedals, commanderData.grade);
 
                 int newcommanderId;
 

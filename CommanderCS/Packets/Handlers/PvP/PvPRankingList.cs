@@ -1,19 +1,48 @@
 using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB.Schemes;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.PvP
 {
     [Packet(Id = Method.PvPRankingList)]
     public class PvPRankingList : BaseMethodHandler<PvPRankingListRequest>
     {
-        public override object Handle(PvPRankingListRequest @params)
+        public override object Handle(PvPRankingListRequest request)
         {
+            GameProfileScheme User = GetUserGameProfile();
+
+            List<Library.Protocols.PvPRankingList.RankData> rankList = [];
+
+            rankList.Add(new()
+            {
+                grade = 1,
+                score = 10000,
+                guildServer = 1,
+                guildName = "kek",
+                id = 1,
+                level = 140,
+                rank = 1,
+                replayId = "1",
+                thumb = "1001",
+                time = 0,
+                _name = "s"
+            });
+
+            // TODO: Pull actual ranked players from DB and populate rankList
+
             CommanderCS.Library.Protocols.PvPRankingList pvPRankingList = new()
             {
+                rankList = rankList,
+                user = User.RankingData.WaveDuelRankingData,
             };
+
+            JsonConvert.SerializeObject(pvPRankingList);
+
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
+                Result = pvPRankingList,
             };
 
             return response;

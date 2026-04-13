@@ -2,10 +2,10 @@ using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Troop
 {
-    [Packet(Id = CommanderCS.Library.Enums.Method.ChangeTroopNickname)]
+    [Packet(Id = Library.Enums.Method.ChangeTroopNickname)]
     public class ChangeTroopNickname : BaseMethodHandler<ChangeTroopNicknameRequest>
     {
-        public override object Handle(ChangeTroopNicknameRequest @params)
+        public override object Handle(ChangeTroopNicknameRequest request)
         {
             ResponsePacket response = new()
             {

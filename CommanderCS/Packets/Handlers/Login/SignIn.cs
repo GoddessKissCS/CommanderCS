@@ -9,9 +9,9 @@ namespace CommanderCS.Packets.Handlers.Sign
     [Packet(Id = Method.SignIn)]
     public class SignIn : BaseMethodHandler<SignInRequest>
     {
-        public override object Handle(SignInRequest @params)
+        public override object Handle(SignInRequest request)
         {
-            ErrorCode code = RequestSignIn(@params.uid, @params.pwd, out SignInP SignInP);
+            ErrorCode code = RequestSignIn(request.uid, request.pwd, out SignInP SignInP);
 
             if (code != ErrorCode.Success)
             {
@@ -23,6 +23,7 @@ namespace CommanderCS.Packets.Handlers.Sign
 
                 return error;
             }
+
 
             ResponsePacket response = new()
             {

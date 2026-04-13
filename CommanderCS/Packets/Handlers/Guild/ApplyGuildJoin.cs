@@ -7,9 +7,9 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.ApplyGuildJoin)]
     public class ApplyGuildJoin : BaseMethodHandler<ApplyGuildJoinRequest>
     {
-        public override object Handle(ApplyGuildJoinRequest @params)
+        public override object Handle(ApplyGuildJoinRequest request)
         {
-            ErrorCode code = DatabaseManager.GuildApplication.CreateGuildApplication(SessionId, @params.gidx);
+            ErrorCode code = DatabaseManager.GuildApplication.CreateGuildApplication(SessionId, request.gidx);
 
 #warning TODO NEED TO ADD ALL ERRORCODES
 

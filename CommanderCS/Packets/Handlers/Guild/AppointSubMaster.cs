@@ -8,7 +8,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.AppointSubMaster)]
     public class AppointSubMaster : BaseMethodHandler<AppointSubMasterRequest>
     {
-        public override object Handle(AppointSubMasterRequest @params)
+        public override object Handle(AppointSubMasterRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
@@ -25,7 +25,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            bool succeed = DatabaseManager.Guild.AppointSubMaster(@params.tuno, User.GuildId);
+            bool succeed = DatabaseManager.Guild.AppointSubMaster(request.tuno, User.GuildId);
 
             if (!succeed)
             {

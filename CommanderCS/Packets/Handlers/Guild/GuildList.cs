@@ -7,7 +7,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.GuildList)]
     public class GuildList : BaseMethodHandler<GuildListRequest>
     {
-        public override object Handle(GuildListRequest @params)
+        public override object Handle(GuildListRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 

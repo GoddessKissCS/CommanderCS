@@ -9,11 +9,11 @@ namespace CommanderCS.Packets.Handlers.Gift
     [Packet(Id = Method.GetMarried)]
     public class GetMarried : BaseMethodHandler<GetMarriedRequest>
     {
-        public override object Handle(GetMarriedRequest @params)
+        public override object Handle(GetMarriedRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            string cid = @params.cid.ToString();
+            string cid = request.cid.ToString();
 
             User.CommanderData[cid].marry = 1;
             User.Resources.ring -= 1;

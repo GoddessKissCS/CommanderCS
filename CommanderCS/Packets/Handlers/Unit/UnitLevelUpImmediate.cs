@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Unit
     [Packet(Id = Method.UnitLevelUpImmediate)]
     public class UnitLevelUpImmediate : BaseMethodHandler<UnitLevelUpImmediateRequest>
     {
-        public override object Handle(UnitLevelUpImmediateRequest @params)
+        public override object Handle(UnitLevelUpImmediateRequest request)
         {
             ResponsePacket response = new()
             {

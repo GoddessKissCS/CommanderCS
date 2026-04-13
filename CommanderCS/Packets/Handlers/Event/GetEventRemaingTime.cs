@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Event
     [Packet(Id = Method.GetEventRemaingTime)]
     public class GetEventRemaingTime : BaseMethodHandler<GetEventRemaingTimeRequest>
     {
-        public override object Handle(GetEventRemaingTimeRequest @params)
+        public override object Handle(GetEventRemaingTimeRequest request)
         {
             GetEventRemainingTimeResponse remainingEventTime = new()
             {

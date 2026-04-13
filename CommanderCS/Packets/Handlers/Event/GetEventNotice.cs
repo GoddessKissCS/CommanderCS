@@ -7,7 +7,7 @@ namespace CommanderCS.Packets.Handlers.Event
     [Packet(Id = Method.GetEventNotice)]
     public class GetEventNotice : BaseMethodHandler<GetEventNoticeRequest>
     {
-        public override object Handle(GetEventNoticeRequest @params)
+        public override object Handle(GetEventNoticeRequest request)
         {
             List<NoticeData> EventNotice = DatabaseManager.EventNotice.GetAllEventNotice();
 

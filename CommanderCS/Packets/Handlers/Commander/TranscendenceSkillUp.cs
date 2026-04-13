@@ -8,13 +8,13 @@ namespace CommanderCS.Packets.Handlers.Commander
     [Packet(Id = Method.TranscendenceSkillUp)]
     public class TranscendenceSkillUp : BaseMethodHandler<TranscendenceSkillUpRequest>
     {
-        public override object Handle(TranscendenceSkillUpRequest @params)
+        public override object Handle(TranscendenceSkillUpRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            string cid = @params.cid.ToString();
+            string cid = request.cid.ToString();
 
-            int transcendenceSlot = @params.slot - 1;
+            int transcendenceSlot = request.slot - 1;
 
             User.CommanderData[cid].transcendence[transcendenceSlot] += 1;
             User.CommanderData[cid].medl -= 10;

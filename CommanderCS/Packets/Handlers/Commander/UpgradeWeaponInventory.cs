@@ -9,7 +9,7 @@ namespace CommanderCS.Packets.Handlers.Commander
     [Packet(Id = Method.UpgradeWeaponInventory)]
     public class UpgradeWeaponInventory : BaseMethodHandler<UpgradeWeaponInventoryRequest>
     {
-        public override object Handle(UpgradeWeaponInventoryRequest @params)
+        public override object Handle(UpgradeWeaponInventoryRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
@@ -29,7 +29,11 @@ namespace CommanderCS.Packets.Handlers.Commander
                 rsoc = rsoc,
             };
 
-            ResponsePacket response = new() { Id = BasePacket.Id, Result = weaponInventoryResponse };
+            ResponsePacket response = new() 
+            { 
+                Id = BasePacket.Id, 
+                Result = weaponInventoryResponse 
+            };
 
             return response;
         }

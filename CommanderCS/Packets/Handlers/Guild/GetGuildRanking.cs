@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.GetGuildRanking)]
     public class GetGuildRanking : BaseMethodHandler<GetGuildRankingRequest>
     {
-        public override object Handle(GetGuildRankingRequest @params)
+        public override object Handle(GetGuildRankingRequest request)
         {
             ResponsePacket response = new()
             {

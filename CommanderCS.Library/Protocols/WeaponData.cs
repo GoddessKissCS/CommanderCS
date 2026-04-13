@@ -5,12 +5,12 @@ namespace CommanderCS.Library.Protocols
     public class WeaponData
     {
         [JsonProperty("wid")]
-        public string id { get; set; }
+        public string weapon_id { get; set; }
 
         [JsonProperty("wlv")]
-        public int level { get; set; }
+        public int weapon_level { get; set; }
 
         [JsonProperty("cid")]
-        public int cid { get; set; }
+        public int commander_id { get; set; }
     }
 }

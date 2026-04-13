@@ -10,40 +10,34 @@ namespace CommanderCS.Packets.Handlers.Gacha
     [Packet(Id = Method.GachaOpenBox)]
     public class GachaOpenBox : BaseMethodHandler<GachaOpenBoxRequest>
     {
-        public override object Handle(GachaOpenBoxRequest @params)
+        private static readonly Random _random = new();
+
+        public override object Handle(GachaOpenBoxRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
             List<GachaOpenBoxResponse.Reward> rewards = [];
 
-            GachaInformationResponse ws = new()
+            string gachaKey = request.gbIdx.ToString();
+            GachaData gachaData = null;
+            User.GachaInformation?.TryGetValue(gachaKey, out gachaData);
+
+            if (User.TutorialData?.step != 6 && User.TutorialData?.skip == false)
             {
-                freeOpenRemainTime = 259200,
-                freeOpenRemainCount = 0,
-                pilotRate = 0,
-                type = "2"
-            };
-
-            // TODO : ADD RANDOM RNG GENERATOR FOR LOOT AND IF ITS COMMANDER ADD IT TO THE USER IF NOT ADD MEDALS AND ETC
-
-            // PUT THE GachaInformationResponse INTO GAMEPROFILESCHEME TO SEE IF USER X KEEPS ETC SHIT AND DO A
-
-            switch (@params.gbIdx)
+               rewards = GetTutorialRewards(request.gbIdx, User, rewards);
+            } else
             {
-                case 1:
-                    rewards.Add(new() { count = 5, id = "8", type = ERewardType.Goods });
-                    User.Inventory.itemData.Add("8", 5);
-                    DatabaseManager.GameProfile.UpdateItemData(SessionId, User.Inventory.itemData);
-                    break;
-
-                case 2:
-                    rewards.Add(new() { count = 1, id = "2", type = ERewardType.Commander });
-                    User.CommanderData = RemoteObjectManager.instance.regulation.AddSpecificCommander(User.CommanderData, 2);
-                    DatabaseManager.GameProfile.UpdateCommanderData(SessionId, User.CommanderData);
-                    break;
+                rewards = GetRandomGachaRewards(request.gbIdx, User, rewards, request.cnt, gachaData);
             }
 
             var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
+
+            GachaInformationResponse ws = User.GachaInformation != null && User.GachaInformation.TryGetValue(gachaKey, out var currentGacha)
+                ? GachaInformation.ToResponse(currentGacha)
+                : new GachaInformationResponse();
+
+
+            var userEquipData = Utility.ConvertEquipItem(User.Inventory.equipItem);
 
             GachaOpenBoxResponse gachaOpen = new()
             {
@@ -57,7 +51,7 @@ namespace CommanderCS.Packets.Handlers.Gacha
                 medalData = User.Inventory.medalData,
                 commanderIdDict = User.CommanderData,
                 eventResourceData = User.Inventory.eventResourceData,
-                equipItem = User.Inventory.equipItem
+                equipItem = userEquipData
             };
 
             ResponsePacket response = new()
@@ -67,6 +61,147 @@ namespace CommanderCS.Packets.Handlers.Gacha
             };
 
             return response;
+        }
+
+
+        // complete pilot is 3.4%, the probability of drawing a costume is 7.14%, and the probability of drawing a medal is 89.45%
+        private List<GachaOpenBoxResponse.Reward> GetTutorialRewards(int gbIdx, GameProfileScheme user, List<GachaOpenBoxResponse.Reward> rewards)
+        {
+            switch (gbIdx)
+            {
+                case 1:
+                   // Tutorial step 6: give the player fixed starter rewards
+                    rewards.Add(new() { count = 5, id = "8", type = ERewardType.Goods });
+                    user.Inventory.itemData.Add("8", 5);
+                    DatabaseManager.GameProfile.UpdateItemData(SessionId, user.Inventory.itemData);
+                    return rewards;
+                case 2:
+                    rewards.Add(new() { count = 1, id = "2", type = ERewardType.Commander });
+                    user.CommanderData = RemoteObjectManager.instance.regulation.AddSpecificCommander(user.CommanderData, 2);
+                    DatabaseManager.GameProfile.UpdateCommanderData(SessionId, user.CommanderData);
+                    return rewards;
+            }
+            return rewards;
+        }
+
+        private List<GachaOpenBoxResponse.Reward> GetRandomGachaRewards(int gbIdx, GameProfileScheme user, List<GachaOpenBoxResponse.Reward> rewards, int count, GachaData gachaData)
+        {
+            // TODO: Replace placeholder logic with actual gacha tables
+
+            string gachaBoxIndex = gbIdx.ToString();
+
+            if (count == 1)
+            {
+                if (gachaData != null)
+                {
+                    // Recalculate in case the cooldown has expired since last check
+                    GachaInformation.ToResponse(gachaData);
+
+                    if (gachaData.freeOpenRemainCount > 0)
+                    {
+
+                        user.GachaInformation[gachaBoxIndex].lastFreeOpenTime = DateTime.UtcNow;
+                        user.GachaInformation[gachaBoxIndex].freeOpenRemainCount = 0;
+                    }
+                }
+
+
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                switch (gbIdx)
+                {
+                    case 1:
+                    {
+                        user.GachaInformation[gachaBoxIndex].pilotRate += 1;
+                         // Normal gacha - random items
+                        string[] itemPool = ["1", "3", "5", "8", "10"];
+                        string itemId = itemPool[_random.Next(itemPool.Length)];
+                        int amount = _random.Next(1, 11);
+
+                        rewards.Add(new() { count = amount, id = itemId, type = ERewardType.Item });
+
+                        if (user.Inventory.itemData.ContainsKey(itemId))
+                            user.Inventory.itemData[itemId] += amount;
+                        else
+                            user.Inventory.itemData[itemId] = amount;
+
+                        break;
+                    }
+                    case 2:
+                    {
+                        // Premium gacha - chance for commander or medals
+                        int roll = _random.Next(100);
+
+                        if (gachaData.pilotRate >= 9)
+                        {
+                                //Now we gurantee an pilot
+                                //or if we got on in a roll we remove the pity too
+                                // but only on 10x if we dont drop a pilot we increase pity
+                        }
+
+                        if (roll < 5)
+                        {
+                            // 10% chance: commander
+                            int[] commanderPool = [2, 3, 5, 7, 10];
+                            int commanderId = commanderPool[_random.Next(commanderPool.Length)];
+                            string commanderIdStringed = commanderId.ToString();
+
+                            rewards.Add(new() { count = 1, id = commanderId.ToString(), type = ERewardType.Commander });
+                                if (!user.CommanderData.ContainsKey(commanderIdStringed))
+                                {
+                                    user.CommanderData = RemoteObjectManager.instance.regulation.AddSpecificCommander(user.CommanderData, commanderId);
+                                } else
+                                {
+                                    if (user.Inventory.medalData.ContainsKey(commanderIdStringed))
+                                        user.Inventory.medalData[commanderIdStringed] += 60;
+                                    else
+                                        user.Inventory.medalData[commanderIdStringed] = 60;
+                                }
+                        }
+                        else if (roll < 45)
+                        {
+                            user.GachaInformation[gachaBoxIndex].pilotRate += 1;
+                                // 30% chance: medals
+                            string[] medalPool = ["1", "2", "3", "5"];
+                            string medalId = medalPool[_random.Next(medalPool.Length)];
+                            int amount = _random.Next(5, 21);
+
+                            rewards.Add(new() { count = amount, id = medalId, type = ERewardType.Medal });
+
+                            if (user.Inventory.medalData.ContainsKey(medalId))
+                                user.Inventory.medalData[medalId] += amount;
+                            else
+                                user.Inventory.medalData[medalId] = amount;
+                        }
+                        else
+                        {
+                            user.GachaInformation[gachaBoxIndex].pilotRate += 1;
+                            // 60% chance: random items
+                            string[] itemPool = ["1", "3", "5", "8", "10"];
+                            string itemId = itemPool[_random.Next(itemPool.Length)];
+                            int amount = _random.Next(1, 6);
+
+                            rewards.Add(new() { count = amount, id = itemId, type = ERewardType.Item });
+
+                            if (user.Inventory.itemData.ContainsKey(itemId))
+                                user.Inventory.itemData[itemId] += amount;
+                            else
+                                user.Inventory.itemData[itemId] = amount;
+                        }
+                        break;
+                    }
+                }
+            }
+
+            // Persist all changes once after the loop
+            DatabaseManager.GameProfile.UpdateItemData(SessionId, user.Inventory.itemData);
+            DatabaseManager.GameProfile.UpdateMedalData(SessionId, user.Inventory.medalData);
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, user.CommanderData);
+            DatabaseManager.GameProfile.UpdateGachaInformation(SessionId, user.GachaInformation);
+
+            return rewards;
         }
     }
 

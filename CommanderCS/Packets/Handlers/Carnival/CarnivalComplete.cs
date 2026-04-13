@@ -1,7 +1,60 @@
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB.Schemes;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.Carnival
 {
-    public class CarnivalComplete
+    [Packet(Id = Method.CarnivalComplete)]
+    public class CarnivalComplete : BaseMethodHandler<CarnivalCompleteRequest>
     {
+        public override object Handle(CarnivalCompleteRequest request)
+        {
+            GameProfileScheme user = GetUserGameProfile();
+
+            var resource = UserResources2Resource(user.Resources);
+
+            CarnivalList result = new()
+            {
+                carnivalList = [],
+                carnivalProcessList = [],
+                rewardList = [],
+                resource = resource,
+                commanderData = user.CommanderData,
+                partData = user.Inventory.partData,
+                medalData = user.Inventory.medalData,
+                eventResourceData = user.Inventory.eventResourceData,
+                itemData = user.Inventory.itemData,
+                costumeData = [],
+                foodData = user.Inventory.foodData,
+                groupItemData = user.Inventory.groupItemData,
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = JObject.FromObject(result),
+            };
+
+            return response;
+        }
+    }
+
+    public class CarnivalCompleteRequest
+    {
+        [JsonProperty("ctid")]
+        public int ctid { get; set; }
+
+        [JsonProperty("cidx")]
+        public int cidx { get; set; }
+
+        [JsonProperty("eidx")]
+        public int eidx { get; set; }
+
+        [JsonProperty("cnt")]
+        public int cnt { get; set; }
     }
 }
 

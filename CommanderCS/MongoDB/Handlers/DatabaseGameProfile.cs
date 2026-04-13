@@ -1,11 +1,14 @@
 ﻿using CommanderCS.Library;
+using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB.Schemes;
 using CommanderCS.Packets;
+using CommanderCS.Packets.Handlers.Commander;
 using CommanderCS.Packets.Handlers.Login;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using Newtonsoft.Json.Linq;
+using System.Runtime.Serialization;
 
 namespace CommanderCS.MongoDB.Handlers
 {
@@ -41,6 +44,9 @@ namespace CommanderCS.MongoDB.Handlers
             int uno = DatabaseManager.AutoIncrements.GetNextNumber("UNO");
 
             var WorldMapStages = RemoteObjectManager.instance.regulation.GetAllWorldMapStages();
+            var dailyBonusCheck = RemoteObjectManager.instance.regulation.GetAllDailyBonusCheckResponses();
+            var scenarios = RemoteObjectManager.instance.regulation.GetCommanderScenarios();
+            var InfinityTowerData = GetAllInfinityTowerStages();
 
             var currentTime = TimeManager.CurrentEpoch;
 
@@ -197,15 +203,18 @@ namespace CommanderCS.MongoDB.Handlers
                     new() { count = 0, idx = 601, mid = 0 },
                     new() { count = 5, idx = 106, mid = 0 }
                     ],
+                //i assume this is how often you can recharge for specifc things
                 BlockedUsers = [],
                 BoughtCashShopItems = [],
                 Session = string.Empty,
                 MailDataList = [],
-                DailyBonusCheck = [],
+                DailyBonusCheck = dailyBonusCheck,
                 DefenderDeck = new()
                 {
                     PvPDefenderDeck = [],
-                    WaveDuelDefenderDecks = []
+                    WaveDuelDefenderDecks = [],
+                    InfinityBattleDeck = [],
+                    WorldDuelDefenderDeck = [],
                 },
                 BattleData = new()
                 {
@@ -232,7 +241,8 @@ namespace CommanderCS.MongoDB.Handlers
                         { "18", 0 },
                     },
                     WorldMapStages = WorldMapStages,
-                    SweepClearData = []
+                    SweepClearData = [],
+                    InfinityTowerData = InfinityTowerData,
                 },
                 RankingData = new()
                 {
@@ -273,6 +283,10 @@ namespace CommanderCS.MongoDB.Handlers
                     WaveDuelShop = new()
                     {
                     },
+                    VipCruiseGacha = new()
+                    {
+
+                    }
                 },
                 GachaInformation = new()
                 {
@@ -280,24 +294,22 @@ namespace CommanderCS.MongoDB.Handlers
                         new()
                         {
                             freeOpenRemainCount = 0,
-                            freeOpenRemainTime = 0,
                             pilotRate = 1,
                             type = "1",
+                            lastFreeOpenTime = null,
                         }
                     },
                     {
                         "2", new()
                         {
                             freeOpenRemainCount = 1,
-                            freeOpenRemainTime = 0,
                             pilotRate = 0,
                             type = "2",
+                            lastFreeOpenTime = null,
                         }
                     }
                 },
-                CommanderScenario = new()
-                {
-                },
+                CommanderScenario = scenarios,
             };
 
             DatabaseCollection.InsertOne(user);
@@ -358,10 +370,6 @@ namespace CommanderCS.MongoDB.Handlers
                           .Where(d => d.Session == session)
                           .FirstOrDefault();
 
-            if (tryUser is null)
-            {
-            }
-
             return tryUser;
         }
 
@@ -390,6 +398,11 @@ namespace CommanderCS.MongoDB.Handlers
         /// </summary>
         /// <param name="memberId">The member ID associated with the game profiles.</param>
         /// <returns>A list of game profiles associated with the member ID.</returns>
+        public GameProfileScheme? FindByMemberId(int memberId)
+        {
+            return DatabaseCollection.AsQueryable().Where(d => d.MemberId == memberId).FirstOrDefault();
+        }
+
         public List<GameProfileScheme> FindByMemberIdList(string memberId)
         {
             return DatabaseCollection.AsQueryable().Where(d => d.MemberId == int.Parse(memberId)).ToList();
@@ -520,6 +533,19 @@ namespace CommanderCS.MongoDB.Handlers
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
             var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources, resources);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the daily bonus check list for the user.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="dailyBonusCheck">The updated daily bonus check list.</param>
+        public void UpdateDailyBonusCheck(string session, List<DailyBonusCheckResponse> dailyBonusCheck)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.DailyBonusCheck, dailyBonusCheck);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -659,33 +685,72 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        public void UpdateBullet(string session, int bullet, bool useAddition)
+        {
+            var user = FindBySession(session);
+
+            if (useAddition)
+            {
+                user.Resources.bullet += bullet;
+            }
+            else
+            {
+                user.Resources.bullet -= bullet;
+            }
+
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.bullet, user.Resources.bullet);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the cash of the user associated with the given session.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="cash">The amount of cash to update.</param>
+        /// <param name="useAddition">A boolean indicating whether to add or subtract the specified amount.</param>
+        /// <returns>The updated game profile scheme of the user.</returns>
+        public void UpdateOnlyVipEXP(string session, int exp)
+        {
+            var user = FindBySession(session);
+
+            user.Resources.vipExp += exp;
+
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Resources.vipExp, user.Resources.vipExp);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+
         /// <summary>
         /// Updates the user's information upon login.
         /// </summary>
         /// <param name="params">The login request parameters.</param>
         /// <param name="session">The session associated with the user.</param>
-        public void UpdateOnLogin(LoginRequest @params, string session)
+        public void UpdateOnLogin(LoginRequest request, string session)
         {
             Device userDevice = new()
             {
-                Apk = @params.apkFileName,
-                Country = @params.countryCode,
-                DeviceName = @params.deviceName,
-                DeviceId = @params.deviceId,
-                GameVersion = @params.gameVersion,
-                Gpid = @params.largoId,
-                Language = @params.languageCode,
-                OsCode = @params.osCode,
-                OsVersion = @params.osVersion,
-                PatchType = @params.patchType,
-                PlatformId = @params.platform,
-                PushRegistrationId = @params.pushRegistrationId,
+                Apk = request.apkFileName,
+                Country = request.countryCode,
+                DeviceName = request.deviceName,
+                DeviceId = request.deviceId,
+                GameVersion = request.gameVersion,
+                Gpid = request.largoId,
+                Language = request.languageCode,
+                OsCode = request.osCode,
+                OsVersion = request.osVersion,
+                PatchType = request.patchType,
+                PlatformId = request.platform,
+                PushRegistrationId = request.pushRegistrationId,
             };
 
             var CurrTimeStamp = TimeManager.CurrentEpoch;
 
-            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, @params.memberId) &
-                         Builders<GameProfileScheme>.Filter.Eq(x => x.Server, @params.world);
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, request.memberId) &
+                         Builders<GameProfileScheme>.Filter.Eq(x => x.Server, request.world);
 
             var update = Builders<GameProfileScheme>.Update.Set(x => x.Session, session).Set(x => x.DeviceInformation, userDevice).Set(x => x.LastLoginTime, CurrTimeStamp);
 
@@ -697,6 +762,8 @@ namespace CommanderCS.MongoDB.Handlers
         /// </summary>
         /// <param name="session">The session associated with the user.</param>
         /// <param name="user">The updated user profile.</param>
+        /// +
+        [Obsolete]
         public void UpdateUserData(string session, GameProfileScheme user)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
@@ -878,6 +945,14 @@ namespace CommanderCS.MongoDB.Handlers
             DatabaseCollection.UpdateOne(filter, update);
         }
 
+        public void UpdateGachaInformation(string session, Dictionary<string, GachaData> gachaInformation)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.GachaInformation, gachaInformation);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
         /// <summary>
         /// Updates the nickname of the user in the database.
         /// </summary>
@@ -901,6 +976,22 @@ namespace CommanderCS.MongoDB.Handlers
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
             var update = Builders<GameProfileScheme>.Update.Push(x => x.BlockedUsers, blockUser);
+
+            var updateResult = DatabaseCollection.UpdateOne(filter, update);
+
+            return updateResult.ModifiedCount > 0;
+        }
+
+        /// <summary>
+        /// Adds a completed reward group index to the user's profile.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="giIdx">The group index to add.</param>
+        /// <returns>True if the group index was successfully added, false otherwise.</returns>
+        public bool AddCompleteRewardGroupIdx(string session, int giIdx)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Push(x => x.CompleteRewardGroupIdx, giIdx);
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
@@ -947,6 +1038,29 @@ namespace CommanderCS.MongoDB.Handlers
                 Builders<MailInfo.MailData>.Filter.And(
                     Builders<MailInfo.MailData>.Filter.Eq(x => x.idx, MailIdx)
                                                       ));
+
+            var updateResult = DatabaseCollection.UpdateOne(filter, update);
+
+            return updateResult.ModifiedCount > 0;
+        }
+
+        /// <summary>
+        /// Marks a specific mail as received for the user (sets __receive to "1").
+        /// The mail stays in the database but will be filtered out from the player's mail list.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="MailIdx">The index of the mail to mark as received.</param>
+        /// <returns>True if the mail was successfully marked as received, false otherwise.</returns>
+        public bool MarkMailReceived(string session, int MailIdx)
+        {
+            var user = DatabaseManager.GameProfile.FindBySession(session);
+
+            var filter = Builders<GameProfileScheme>.Filter.And(
+                Builders<GameProfileScheme>.Filter.Eq(x => x.MemberId, user.MemberId),
+                Builders<GameProfileScheme>.Filter.ElemMatch(x => x.MailDataList, m => m.idx == MailIdx)
+            );
+
+            var update = Builders<GameProfileScheme>.Update.Set("MailDataList.$.recv", "1");
 
             var updateResult = DatabaseCollection.UpdateOne(filter, update);
 
@@ -1051,6 +1165,8 @@ namespace CommanderCS.MongoDB.Handlers
         /// </summary>
         /// <param name="session">The session associated with the user.</param>
         /// <param name="user">The updated user profile.</param>
+        /// 
+        [Obsolete]
         public void UpdateProfile(string session, GameProfileScheme user)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
@@ -1059,10 +1175,10 @@ namespace CommanderCS.MongoDB.Handlers
         }
 
         /// <summary>
-        /// Updates the guild ID associated with a user.
+        /// Updates the guild ID associated with a user. Pass null to clear guild membership.
         /// </summary>
         /// <param name="uno">The unique identifier of the user.</param>
-        /// <param name="guildId">The new guild ID to be associated with the user.</param>
+        /// <param name="guildId">The new guild ID, or null to remove guild membership.</param>
         public void UpdateGuild(int uno, object? guildId)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Uno, uno);
@@ -1230,6 +1346,41 @@ namespace CommanderCS.MongoDB.Handlers
         }
 
         /// <summary>
+        /// Updates the weapon list for a user in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="weaponList">The updated weapon list to be stored.</param>
+        public void UpdateWeaponList(string session, Dictionary<string, WeaponData> weaponList)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.weaponList, weaponList);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
+        /// Updates the equipment item data for a user in the database.
+        /// </summary>
+        /// <param name="session">The session associated with the user.</param>
+        /// <param name="equipItem">The updated equipment item data to be stored.</param>
+        public void UpdateEquipItemData(string session, Dictionary<string, Dictionary<string, EquipItemInfo>> equipItem)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Inventory.equipItem, equipItem);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        public void UpdateSpecificWeaponList(string session, WeaponData weaponData, string weaponid)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+
+            var update = Builders<GameProfileScheme>.Update.Set($"Inventory.weaponList.{weaponid}", weaponData);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        /// <summary>
         /// Updates the PvP defender deck for the user.
         /// </summary>
         /// <param name="session">The session ID of the user.</param>
@@ -1288,10 +1439,18 @@ namespace CommanderCS.MongoDB.Handlers
         /// </summary>
         /// <param name="session">The session ID of the user.</param>
         /// <param name="deck">The new infinity battle deck configuration.</param>
-        public void UpdateInfinityBattleDeck(string session, JObject deck)
+        public void UpdateInfinityBattleDeck(string session, Dictionary<string, string> deck)
         {
             var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
             var update = Builders<GameProfileScheme>.Update.Set(x => x.DefenderDeck.InfinityBattleDeck, deck);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        public void UpdateInfinityTowerFieldData(string session, Dictionary<string, Dictionary<string, EInfinityTowerStageState>> fieldData)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.BattleData.InfinityTowerData.infinityData.fieldData, fieldData);
 
             DatabaseCollection.UpdateOne(filter, update);
         }
@@ -1350,5 +1509,48 @@ namespace CommanderCS.MongoDB.Handlers
 
             DatabaseCollection.UpdateOne(filter, update, new UpdateOptions { IsUpsert = true });
         }
+
+        public void UpdateAchievements(string sessionId, Dictionary<string, AchievementProgress> achievements)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, sessionId);
+
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.Achievements, achievements);
+
+            DatabaseCollection.UpdateOne(filter, update, new UpdateOptions { IsUpsert = true });
+        }
+
+        public void UpdateVipCruiseGacha(string session, VipGacha vipCruiseGacha)
+        {
+            var filter = Builders<GameProfileScheme>.Filter.Eq(x => x.Session, session);
+            var update = Builders<GameProfileScheme>.Update.Set(x => x.ShopData.VipCruiseGacha, vipCruiseGacha);
+
+            DatabaseCollection.UpdateOne(filter, update);
+        }
+
+        public InfinityTowerInformationScheme GetAllInfinityTowerStages()
+        {
+            InfinityTowerInformationScheme infinityTowerInformation = new()
+            {
+                infinityData = new()
+                {
+                    curField = "1",
+                    fieldData = [],
+                },
+            };
+
+            foreach (var infinityField in RemoteObjectManager.instance.regulation.infinityFieldDtbl)
+            {
+                infinityTowerInformation.infinityData.fieldData.Add(infinityField.infinityFieldIdx, new()
+                {
+                    { "1", 0 },
+                    { "2", 0 },
+                    { "3", 0 }
+                });
+
+            }
+
+            return infinityTowerInformation;
+        }
+
     }
 }

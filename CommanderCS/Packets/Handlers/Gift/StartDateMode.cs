@@ -3,7 +3,7 @@ namespace CommanderCS.Packets.Handlers.Gift
     [Packet(Id = CommanderCS.Library.Enums.Method.StartDateMode)]
     public class StartDateMode : BaseMethodHandler<StartDateModeRequest>
     {
-        public override object Handle(StartDateModeRequest @params)
+        public override object Handle(StartDateModeRequest request)
         {
             ResponsePacket response = new()
             {

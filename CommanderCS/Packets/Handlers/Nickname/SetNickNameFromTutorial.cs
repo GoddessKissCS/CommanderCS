@@ -9,11 +9,11 @@ namespace CommanderCS.Packets.Handlers.Nickname
     [Packet(Id = Method.SetNickNameFromTutorial)]
     public class SetNickNameFromTutorial : BaseMethodHandler<SetNickNameFromTutorialRequest>
     {
-        public override object Handle(SetNickNameFromTutorialRequest @params)
+        public override object Handle(SetNickNameFromTutorialRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            ErrorCode code = DatabaseManager.GameProfile.RequestNicknameAfterTutorial(SessionId, @params.Unm);
+            ErrorCode code = DatabaseManager.GameProfile.RequestNicknameAfterTutorial(SessionId, request.Unm);
 
             if (code != ErrorCode.Success)
             {
@@ -35,7 +35,7 @@ namespace CommanderCS.Packets.Handlers.Nickname
                     ["id"] = BasePacket.Id,
                     ["result"] = new JObject
                     {
-                        ["step"] = @params.Step,
+                        ["step"] = request.Step,
                         ["rsoc"] = JObject.FromObject(information.goodsInfo),
                         ["uifo"] = JObject.FromObject(information.battleStatisticsInfo),
                         ["comm"] = JObject.FromObject(information.__commanderInfo),
@@ -68,7 +68,7 @@ namespace CommanderCS.Packets.Handlers.Nickname
                     Id = BasePacket.Id,
                     Result = new SetNickNameResponse()
                     {
-                        step = @params.Step,
+                        step = request.Step,
                     }
                 };
 

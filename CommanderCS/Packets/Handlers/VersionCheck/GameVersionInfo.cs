@@ -7,9 +7,9 @@ namespace CommanderCS.Packets.Handlers.VersionCheck
     [Packet(Id = Method.GameVersionInfo)]
     public class GameVersionInfo : BaseMethodHandler<GameVersionInfoRequest>
     {
-        public override object Handle(GameVersionInfoRequest @params)
+        public override object Handle(GameVersionInfoRequest request)
         {
-            var gameVer = DatabaseManager.GameVersionInfo.Get(@params.ch);
+            var gameVer = DatabaseManager.GameVersionInfo.Get(request.ch);
 
             GameVersionInfoResponse gameversion = new()
             {

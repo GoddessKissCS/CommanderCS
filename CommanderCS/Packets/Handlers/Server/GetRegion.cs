@@ -7,7 +7,7 @@ namespace CommanderCS.Packets.Handlers.Server
     [Packet(Id = Method.GetRegion)]
     public class GetRegion : BaseMethodHandler<GetRegionResult>
     {
-        public override object Handle(GetRegionResult @params)
+        public override object Handle(GetRegionResult request)
         {
             //1 is korea,
             //2 is Global Version 1
@@ -18,6 +18,17 @@ namespace CommanderCS.Packets.Handlers.Server
 
             var server = DatabaseManager.Region.Get(1);
 
+            if (server is null)
+            {
+                ErrorPacket error = new()
+                {
+                    Id = BasePacket.Id,
+                    Error = new() { code = ErrorCode.Failure },
+                };
+
+                return error;
+            }
+
             var playerCount = DatabaseManager.GameProfile.GetGameProfileSchemeCount();
 
             //TODO: MAKE IT BETTER LOOKING
@@ -27,7 +38,7 @@ namespace CommanderCS.Packets.Handlers.Server
                 maxLevel = server.MaxLevel,
                 maxStage = server.MaxStage,
                 openDateTime = server.OpenDate,
-                server_count = "1",
+                server_count = server.ServerCount.ToString(),
                 player_count = playerCount,
             };
 

@@ -1,16 +1,34 @@
 namespace CommanderCS.Packets.Handlers.WorldDuel
 {
-    [Packet(Id = CommanderCS.Library.Enums.Method.WorldDuelInformation)]
+    [Packet(Id = Library.Enums.Method.WorldDuelInformation)]
     public class WorldDuelInformation : BaseMethodHandler<WorldDuelInformationRequest>
     {
-        public override object Handle(WorldDuelInformationRequest @params)
+        public override object Handle(WorldDuelInformationRequest request)
         {
-            CommanderCS.Library.Protocols.WorldDuelInformation worldDuelInformation = new() { };
+			var user = GetUserGameProfile();
+
+			Library.Protocols.WorldDuelInformation worldDuelInformation = new()
+			{
+				activeBuff = [],
+				bestRank = new(),
+				deck = [],
+				duelBuff = [],
+				rankingList = [],
+				resetTime = 1000,
+				resource = null,
+				retryInfo = new(),
+				user = new()
+				{
+					score = 1000,
+					loseCnt = 0,
+				},
+				_open = "true",
+			};
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = worldDuelInformation,
+                Result = null,
             };
 
             return response;

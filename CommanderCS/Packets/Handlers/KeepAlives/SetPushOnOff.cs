@@ -7,9 +7,9 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
     [Packet(Id = Method.SetPushOnOff)]
     public class SetPushOnOff : BaseMethodHandler<SetPushOnOffRequest>
     {
-        public override object Handle(SetPushOnOffRequest @params)
+        public override object Handle(SetPushOnOffRequest request)
         {
-            var result = DatabaseManager.GameProfile.UpdateNotifaction(SessionId, @params.onoff);
+            var result = DatabaseManager.GameProfile.UpdateNotifaction(SessionId, request.onoff);
 
             ResponsePacket response = new()
             {

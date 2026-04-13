@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Unit
     [Packet(Id = Method.UnitLevelUp)]
     public class UnitLevelUp : BaseMethodHandler<UnitLevelUpRequest>
     {
-        public override object Handle(UnitLevelUpRequest @params)
+        public override object Handle(UnitLevelUpRequest request)
         {
             ResponsePacket response = new()
             {

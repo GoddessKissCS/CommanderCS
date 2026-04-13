@@ -6,13 +6,13 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
     [Packet(Id = Method.CheckAlarm)]
     public class CheckAlarm : BaseMethodHandler<CheckAlarmRequest>
     {
-        public override object Handle(CheckAlarmRequest @params)
+        public override object Handle(CheckAlarmRequest request)
         {
             AlarmData AlarmData = new();
 
             //Probably useless but still needs to adjusted if it actually does something
 
-            ResponsePacket response = new ResponsePacket()
+            ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
                 Result = AlarmData,

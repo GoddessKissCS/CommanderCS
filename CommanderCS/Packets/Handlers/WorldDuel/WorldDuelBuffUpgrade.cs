@@ -7,7 +7,7 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
     [Packet(Id = CommanderCS.Library.Enums.Method.WorldDuelBuffUpgrade)]
     public class WorldDuelBuffUpgrade : BaseMethodHandler<WorldDuelBuffUpgradeRequest>
     {
-        public override object Handle(WorldDuelBuffUpgradeRequest @params)
+        public override object Handle(WorldDuelBuffUpgradeRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 

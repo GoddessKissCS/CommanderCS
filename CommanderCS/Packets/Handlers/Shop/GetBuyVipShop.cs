@@ -5,7 +5,7 @@ namespace CommanderCS.Packets.Handlers.Shop
     [Packet(Id = Method.GetBuyVipShop)]
     public class GetBuyVipShop : BaseMethodHandler<GetBuyVipShopRequest>
     {
-        public override object Handle(GetBuyVipShopRequest @params)
+        public override object Handle(GetBuyVipShopRequest request)
         {
             return "{}";
         }

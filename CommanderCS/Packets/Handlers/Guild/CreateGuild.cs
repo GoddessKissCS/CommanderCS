@@ -8,9 +8,9 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.CreateGuild)]
     public class CreateGuild : BaseMethodHandler<CreateGuildRequest>
     {
-        public override object Handle(CreateGuildRequest @params)
+        public override object Handle(CreateGuildRequest request)
         {
-            if (Misc.NameCheck(@params.gnm))
+            if (Misc.NameCheck(request.gnm))
             {
                 ErrorPacket error = new()
                 {
@@ -21,7 +21,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            var guild = DatabaseManager.Guild.FindByName(@params.gnm);
+            var guild = DatabaseManager.Guild.FindByName(request.gnm);
 
             if (guild is not null)
             {
@@ -34,7 +34,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            Library.Protocols.GuildInfo createGuild = DatabaseManager.Guild.CreateGuild(SessionId, @params.gnm, @params.emb, @params.gtyp, @params.lvlm);
+            Library.Protocols.GuildInfo createGuild = DatabaseManager.Guild.CreateGuild(SessionId, request.gnm, request.emb, request.gtyp, request.lvlm);
 
             ResponsePacket response = new()
             {

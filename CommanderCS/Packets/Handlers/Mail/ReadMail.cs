@@ -7,9 +7,9 @@ namespace CommanderCS.Packets.Handlers.Mail
     [Packet(Id = Method.ReadMail)]
     public class ReadMail : BaseMethodHandler<ReadMailRequest>
     {
-        public override object Handle(ReadMailRequest @params)
+        public override object Handle(ReadMailRequest request)
         {
-            bool result = DatabaseManager.GameProfile.ReadMail(SessionId, @params.Idx);
+            bool result = DatabaseManager.GameProfile.ReadMail(SessionId, request.Idx);
 
             // Probably on read we should remove it for the player but not for the server
 

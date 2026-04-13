@@ -7,7 +7,7 @@ namespace CommanderCS.Packets.Handlers.Gacha
     [Packet(Id = Method.GetRotationBannerInfo)]
     public class GetRotationBannerInfo : BaseMethodHandler<GetRotationBannerInfoRequest>
     {
-        public override object Handle(GetRotationBannerInfoRequest @params)
+        public override object Handle(GetRotationBannerInfoRequest request)
         {
             // https://unixtime.org/
 

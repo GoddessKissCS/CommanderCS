@@ -7,16 +7,18 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.LeaveGuild)]
     public class LeaveGuild : BaseMethodHandler<LeaveGuildRequest>
     {
-        public override object Handle(LeaveGuildRequest @params)
+        public override object Handle(LeaveGuildRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
             DatabaseManager.Guild.QuitGuild(User.GuildId, User.Uno);
 
+			//Still need to remove the dispatched Commanders
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = "quited",
+                Result = "quit",
             };
 
             return response;

@@ -1,20 +1,40 @@
 using CommanderCS.Library.Enums;
 using Newtonsoft.Json;
+using static CommanderCS.Library.Protocols.GuildDispatchCommanderList;
 
 namespace CommanderCS.Packets.Handlers.Guild
 {
     [Packet(Id = Method.GuildDispatchCommanderList)]
     public class GuildDispatchCommanderList : BaseMethodHandler<GuildDispatchCommanderListRequest>
     {
-        public override object Handle(GuildDispatchCommanderListRequest @params)
+        public override object Handle(GuildDispatchCommanderListRequest request)
         {
             //TODO: ADD everyones heros into the guild commanderlist
             //and check here if the commander is your owns and then remove them
+
+            //^^^^^ STILL NOT DONE YET
+
+            var Guild = GetUserGuild();
+            var User = GetUserGameProfile();
+
             CommanderCS.Library.Protocols.GuildDispatchCommanderList vs = new()
             {
                 commanderList = [],
                 npcList = [],
             };
+
+            // Build the guild's shared dispatch pool, removing commanders the current user dispatched
+            List<GuildDispatchCommanderInfo> guildCommanderList = [];
+
+            if (Guild?.GuildDispatchedCommanderList?.commanderList is not null)
+            {
+                guildCommanderList = Guild.GuildDispatchedCommanderList.commanderList
+                    //.Where(c => c.userIdx != User.Uno)
+                    .ToList();
+
+                vs.commanderList = guildCommanderList;
+            }
+
 
             ResponsePacket response = new()
             {

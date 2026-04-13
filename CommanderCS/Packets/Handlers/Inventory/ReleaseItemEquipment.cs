@@ -1,7 +1,73 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Inventory
 {
-    public class ReleaseItemEquipment
+    [Packet(Id = Method.ReleaseItemEquipment)]
+    public class ReleaseItemEquipment : BaseMethodHandler<ReleaseItemEquipmentRequest>
     {
+        public override object Handle(ReleaseItemEquipmentRequest request)
+        {
+            var user = GetUserGameProfile();
+
+            var eidx = request.eidx.ToString();
+            var cid = request.cid.ToString();
+
+            if (!user.CommanderData.ContainsKey(cid))
+            {
+                return new ErrorPacket
+                {
+                    Id = BasePacket.Id,
+                    Error = new ErrorMessageId { code = ErrorCode.Failure }
+                };
+            }
+
+            var commander = user.CommanderData[cid];
+
+            if (!commander.equipItemInfo.ContainsKey(eidx))
+            {
+                return new ErrorPacket
+                {
+                    Id = BasePacket.Id,
+                    Error = new ErrorMessageId { code = ErrorCode.Failure }
+                };
+            }
+
+            var elv = commander.equipItemInfo[eidx].ToString();
+
+            if (user.Inventory.equipItem.ContainsKey(eidx) && user.Inventory.equipItem[eidx].ContainsKey(elv))
+            {
+                var equipInfo = user.Inventory.equipItem[eidx][elv];
+                equipInfo.availableCount++;
+                equipInfo.equipCommanderList.Remove(request.cid);
+            }
+
+            commander.equipItemInfo.Remove(eidx);
+
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, user.CommanderData);
+            DatabaseManager.GameProfile.UpdateEquipItemData(SessionId, user.Inventory.equipItem);
+
+            var userInfoResponse = GetUserInformationResponse(user);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = userInfoResponse,
+            };
+
+            return response;
+        }
+    }
+
+    public class ReleaseItemEquipmentRequest
+    {
+        [JsonProperty("eidx")]
+        public int eidx { get; set; }
+
+        [JsonProperty("cid")]
+        public int cid { get; set; }
     }
 }
 

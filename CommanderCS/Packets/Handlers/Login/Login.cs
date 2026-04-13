@@ -1,5 +1,7 @@
-﻿using CommanderCS.Library.Enums;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
+using CommanderCS.Library.Ro;
 using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
@@ -8,13 +10,13 @@ namespace CommanderCS.Packets.Handlers.Login
     [Packet(Id = Method.Login)]
     public class Login : BaseMethodHandler<LoginRequest>
     {
-        public override object Handle(LoginRequest @params)
+        public override object Handle(LoginRequest request)
         {
             string session = GenerateUniqueSessionToken();
 
-            var user = DatabaseManager.GameProfile.GetOrCreate(@params.memberId, @params.world);
+            var user = DatabaseManager.GameProfile.GetOrCreate(request.memberId, request.world);
 
-            ErrorCode code = DatabaseManager.Account.RequestLogin(@params, session);
+            ErrorCode code = DatabaseManager.Account.RequestLogin(request, session);
 
             if (code != ErrorCode.Success)
             {
@@ -46,7 +48,7 @@ namespace CommanderCS.Packets.Handlers.Login
             //    userInformationResponse.medalData.TryAdd("" + item.cid, item.cid);
             //}
 
-            DatabaseManager.GameProfile.UpdateOnLogin(@params, session);
+            DatabaseManager.GameProfile.UpdateOnLogin(request, session);
 
             LoginResponse loginResponse = new()
             {

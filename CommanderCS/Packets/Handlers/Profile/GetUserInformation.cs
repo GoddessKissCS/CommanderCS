@@ -1,5 +1,4 @@
 ﻿using CommanderCS.Library.Enums;
-using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
@@ -8,7 +7,7 @@ namespace CommanderCS.Packets.Handlers.Profile
     [Packet(Id = Method.GetUserInformation)]
     public class GetUserInformation : BaseMethodHandler<GetUserInformationRequest>
     {
-        public override object Handle(GetUserInformationRequest @params)
+        public override object Handle(GetUserInformationRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 

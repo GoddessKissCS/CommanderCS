@@ -10,11 +10,11 @@ namespace CommanderCS.Packets.Handlers.Commander
     [Packet(Id = Method.CommanderRankUpImmediate)]
     public class CommanderRankUpImmediate : BaseMethodHandler<CommanderRankUpImmediateRequest>
     {
-        public override object Handle(CommanderRankUpImmediateRequest @params)
+        public override object Handle(CommanderRankUpImmediateRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            string cid = @params.cid.ToString();
+            string cid = request.cid.ToString();
 
             //needs to be reworked to be more readable
 
@@ -103,25 +103,9 @@ namespace CommanderCS.Packets.Handlers.Commander
             return response;
         }
 
-        private static Dictionary<int, int> GradeCostList { get; set; } = new Dictionary<int, int>()
-        {
-            { 1, 10 },
-            { 2, 30 },
-            { 3, 80 }
-        };
-
-        private static Dictionary<int, int> RankCostList { get; set; } = new Dictionary<int, int>()
-        {
-            { 1, 20 },
-            { 2, 50 },
-            { 3, 100 },
-            { 4, 150 },
-            { 5, 250 }
-        };
-
         private static bool TryRecruitCommander(int grade, ref int medals)
         {
-            if (!GradeCostList.TryGetValue(grade, out var cost))
+            if (!Constants.GradeCostList.TryGetValue(grade, out var cost))
             {
                 throw new Exception($"Grade {grade} Not Defined");
             }
@@ -138,7 +122,7 @@ namespace CommanderCS.Packets.Handlers.Commander
 
         private static bool TryRankUpCommander(int grade, ref int medals)
         {
-            if (!RankCostList.TryGetValue(grade, out var cost))
+            if (!Constants.RankCostList.TryGetValue(grade, out var cost))
             {
                 throw new Exception($"Grade {grade} Not Defined");
             }

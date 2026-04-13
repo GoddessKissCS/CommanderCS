@@ -7,7 +7,7 @@ namespace CommanderCS.Packets.Handlers.Event
     [Packet(Id = Method.GetCommonNotice)]
     public class GetCommonNotice : BaseMethodHandler<GetCommonNoticeRequest>
     {
-        public override object Handle(GetCommonNoticeRequest @params)
+        public override object Handle(GetCommonNoticeRequest request)
         {
             List<NoticeData> CommonNotice = DatabaseManager.CommonNotice.GetAllCommonNotice();
 

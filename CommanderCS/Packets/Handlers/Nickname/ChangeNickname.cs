@@ -8,9 +8,9 @@ namespace CommanderCS.Packets.Handlers.Nickname
     [Packet(Id = Method.ChangeNickname)]
     public class ChangeNickname : BaseMethodHandler<ChangeNicknameRequest>
     {
-        public override object Handle(ChangeNicknameRequest @params)
+        public override object Handle(ChangeNicknameRequest request)
         {
-            ErrorCode code = DatabaseManager.GameProfile.RequestNickNameChange(@params.nickname, SessionId);
+            ErrorCode code = DatabaseManager.GameProfile.RequestNickNameChange(request.nickname, SessionId);
 
             if (code != ErrorCode.Success)
             {

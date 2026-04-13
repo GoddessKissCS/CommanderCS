@@ -1,7 +1,96 @@
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Linq.Expressions;
+
 namespace CommanderCS.Packets.Handlers.Inventory
 {
-    public class GetGroupReward
+    [Packet(Id = Method.GetGroupReward)]
+    public class GetGroupReward : BaseMethodHandler<GetGroupRewardRequest>
     {
+        public override object Handle(GetGroupRewardRequest request)
+        {
+			var groupId = request.giIdx.ToString();
+
+            var groupRewardData = RemoteObjectManager.instance.regulation.groupInfoDtbl[groupId];
+
+			var rewardIdx = groupRewardData.rewardIdx.ToString();
+
+            RewardInfo result = new()
+			{
+				reward =
+				[
+					new(){
+						effect = 0,
+						rewardCnt = groupRewardData.minCount,
+						rewardId = rewardIdx,
+						rewardType = groupRewardData.rewardType
+					}
+				],
+			};
+
+			DatabaseManager.GameProfile.AddCompleteRewardGroupIdx(SessionId, request.giIdx);
+
+			var user = GetUserGameProfile();
+
+			switch(groupRewardData.rewardType)
+			{
+				case ERewardType.Goods:
+					switch (groupRewardData.rewardIdx)
+					{
+						case 2:
+							user.Resources.cash += groupRewardData.minCount;
+							DatabaseManager.GameProfile.UpdateOnlyCash(SessionId, groupRewardData.minCount, true);
+							result.resource = UserResources2Resource(user.Resources);
+							break;
+                        case 55:
+                            if (!user.Inventory.foodData.TryAdd(rewardIdx, groupRewardData.minCount))
+								user.Inventory.foodData[rewardIdx] += groupRewardData.minCount;
+							DatabaseManager.GameProfile.UpdateFoodData(SessionId, user.Inventory.foodData);
+							result.foodData = user.Inventory.foodData;
+                            break;
+
+                        default:
+							if (!user.Inventory.itemData.TryAdd(rewardIdx, groupRewardData.minCount))
+								user.Inventory.itemData[rewardIdx] += groupRewardData.minCount;
+							DatabaseManager.GameProfile.UpdateItemData(SessionId, user.Inventory.itemData);
+							result.itemData = user.Inventory.itemData;
+							break;
+                    }
+					break;
+
+                case ERewardType.UnitMaterial:
+					if (!user.Inventory.partData.TryAdd(rewardIdx, groupRewardData.minCount))
+						user.Inventory.partData[rewardIdx] += groupRewardData.minCount;
+					DatabaseManager.GameProfile.UpdatePartData(SessionId, user.Inventory.partData);
+					result.partData = user.Inventory.partData;
+					break;
+
+                case ERewardType.Box:
+                    if (!user.Inventory.itemData.TryAdd(rewardIdx, groupRewardData.minCount))
+						user.Inventory.itemData[rewardIdx] += groupRewardData.minCount;
+					DatabaseManager.GameProfile.UpdateItemData(SessionId, user.Inventory.itemData);
+					result.itemData = user.Inventory.itemData;
+                    break;
+            }
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = JObject.FromObject(result),
+            };
+
+			return response;
+        }
+    }
+
+    public class GetGroupRewardRequest
+    {
+        [JsonProperty("giIdx")]
+        public int giIdx { get; set; }
     }
 }
 

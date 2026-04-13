@@ -8,7 +8,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.DelegatingGuild)]
     public class DelegatingGuild : BaseMethodHandler<DelegatingGuildRequest>
     {
-        public override object Handle(DelegatingGuildRequest @params)
+        public override object Handle(DelegatingGuildRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
@@ -25,7 +25,7 @@ namespace CommanderCS.Packets.Handlers.Guild
                 return error;
             }
 
-            DatabaseManager.Guild.AppointNewGuildMaster(User.GuildId, User.Uno, @params.tuno);
+            DatabaseManager.Guild.AppointNewGuildMaster(User.GuildId, User.Uno, request.tuno);
 
             ResponsePacket response = new()
             {

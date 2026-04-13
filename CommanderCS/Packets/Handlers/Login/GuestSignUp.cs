@@ -7,9 +7,9 @@ namespace CommanderCS.Packets.Handlers.Sign
     [Packet(Id = Method.GuestSignUp)]
     public class GuestSignUp : BaseMethodHandler<GuestSignUpRequest>
     {
-        public override object Handle(GuestSignUpRequest @params)
+        public override object Handle(GuestSignUpRequest request)
         {
-            var name = DatabaseManager.Account.CreateGuestAccount(@params.plfm, @params.ch).Name;
+            var name = DatabaseManager.Account.CreateGuestAccount(request.plfm, request.ch).Name;
 
             GuestSignUpPacket SignUp = new()
             {

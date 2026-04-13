@@ -9,13 +9,13 @@ namespace CommanderCS.Packets.Handlers.Gift
     [Packet(Id = Method.GetFavorReward)]
     public class GetFavorReward : BaseMethodHandler<GetFavorRewardRequest>
     {
-        public override object Handle(GetFavorRewardRequest @params)
+        public override object Handle(GetFavorRewardRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            string cid = @params.cid.ToString();
+            string cid = request.cid.ToString();
 
-            User.CommanderData[cid].favorRewardStep = @params.step;
+            User.CommanderData[cid].favorRewardStep = request.step;
 
             DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
 

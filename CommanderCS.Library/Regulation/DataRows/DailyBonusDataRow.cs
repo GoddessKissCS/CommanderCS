@@ -31,11 +31,7 @@ namespace CommanderCS.Library.Regulation.DataRows
         {
             get
             {
-                if (string.IsNullOrEmpty(startTimeString))
-                {
-                    return default;
-                }
-                return Utility.ConvertToDateTime(startTimeString);
+                return new();
             }
         }
 
@@ -46,11 +42,7 @@ namespace CommanderCS.Library.Regulation.DataRows
         {
             get
             {
-                if (string.IsNullOrEmpty(endTimeString))
-                {
-                    return default;
-                }
-                return Utility.ConvertToDateTime(endTimeString);
+                return new();
             }
         }
 

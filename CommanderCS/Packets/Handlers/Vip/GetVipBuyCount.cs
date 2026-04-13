@@ -1,6 +1,5 @@
 ﻿using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
-using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
@@ -9,16 +8,19 @@ namespace CommanderCS.Packets.Handlers.Vip
     [Packet(Id = Method.GetVipBuyCount)]
     public class GetVipBuyCount : BaseMethodHandler<GetVipBuyCountRequest>
     {
-        public override object Handle(GetVipBuyCountRequest @params)
+        public override object Handle(GetVipBuyCountRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
             //gets send EVipRechargeType enum + ["rchg"]
 
 #warning TODO: MIGHT NEED A BE CHECKED IF ITS CORRECT
-            GetVIPBuyCountResponse getVIPBuyCount = new();
+            GetVIPBuyCountResponse getVIPBuyCount = new()
+            {
+                rchg = User.VipRechargeData
+            };
 
-            switch (@params.renewType)
+            switch (request.renewType)
             {
                 case EVipRechargeType.None:
                     getVIPBuyCount.rchg = User.VipRechargeData;

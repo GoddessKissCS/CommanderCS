@@ -1,16 +1,81 @@
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
+using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Achievement
 {
-    [Packet(Id = CommanderCS.Library.Enums.Method.AllAchievementReward)]
+    [Packet(Id = Method.AllAchievementReward)]
     public class AllAchievementReward : BaseMethodHandler<AllAchievementRewardRequest>
     {
-        public override object Handle(AllAchievementRewardRequest @params)
+        public override object Handle(AllAchievementRewardRequest request)
         {
+            GameProfileScheme user = GetUserGameProfile();
+
+            user.Achievements ??= [];
+
+            int currentTime = (int)TimeManager.CurrentEpoch;
+
+            Dictionary<string, int> receiveAchievementIdx = [];
+            List<RewardInfo.AchievementData> nextAchievementList = [];
+
+            // Find all completed but not yet received achievements
+            foreach (var kvp in user.Achievements)
+            {
+                if (kvp.Value.complete && !kvp.Value.received)
+                {
+                    kvp.Value.received = true;
+                    kvp.Value.completeTime = currentTime;
+
+                    // Parse back the idx from the key
+                    string[] parts = kvp.Key.Split('_');
+                    string idx = parts[0];
+                    int sort = kvp.Value.sort;
+
+                    receiveAchievementIdx[idx] = sort;
+
+                    // Look for next achievement in chain
+                    int idxInt = int.Parse(idx);
+                    var next = RemoteObjectManager.instance.regulation.achievementDtbl.Find(
+                        x => x.idx == idxInt && x.sort == sort + 1);
+
+                    if (next != null)
+                    {
+                        string nextKey = $"{next.idx}_{next.sort}";
+                        var nextProgress = user.Achievements.ContainsKey(nextKey) ? user.Achievements[nextKey] : null;
+
+                        RewardInfo.AchievementData nextData = new()
+                        {
+                            achievementId = next.idx,
+                            sort = next.sort,
+                            point = nextProgress?.point ?? 0,
+                            complete = nextProgress is { complete: true } ? 1 : 0,
+                            receive = nextProgress is { received: true } ? 1 : 0,
+                        };
+                        nextAchievementList.Add(nextData);
+                    }
+                }
+            }
+
+            DatabaseManager.GameProfile.UpdateAchievements(SessionId, user.Achievements);
+
+            var resource = UserResources2Resource(user.Resources);
+
+            RewardInfo result = new()
+            {
+                reward = [],
+                resource = resource,
+                time = currentTime,
+                receiveAchievementIdx = receiveAchievementIdx,
+                nextAchievementList = nextAchievementList,
+            };
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = new RewardInfo()
+                Result = JObject.FromObject(result),
             };
 
             return response;

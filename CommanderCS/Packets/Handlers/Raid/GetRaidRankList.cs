@@ -2,6 +2,8 @@ using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
+using MongoDB.Driver;
 using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Raid
@@ -9,82 +11,91 @@ namespace CommanderCS.Packets.Handlers.Raid
     [Packet(Id = Method.GetRaidRankList)]
     public class GetRaidRankList : BaseMethodHandler<GetRaidRankListRequest>
     {
-        public override object Handle(GetRaidRankListRequest @params)
+        public override object Handle(GetRaidRankListRequest request)
         {
-            //TODO: ADD RAIDRANKING TO DATABASE
+
+            var user = GetUserGameProfile();
+            var rankList = DatabaseManager.RaidRankList.GetTopRanks();
+            var bossData = GetBossDataForUpcomingDays();
+            var userRaidInfo = DatabaseManager.RaidRankList.GetUserRaidInfo(user.MemberId);
+
+            var endTime = (int)(DateTime.UtcNow.Date.AddDays(1) - DateTime.UtcNow).TotalSeconds;
 
             PvPRankingList raidRankingList = new()
             {
                 info = new()
                 {
-                    endTime = 60,
+                    endTime = endTime,
                 },
-                user = new()
-                {
-                    score = 0,
-                    averageScore = 0,
-                    losingStreak = 0,
-                    bestScore = 0,
-                    nextScore = 0,
-                    winningStreak = 0,
-                    duelPoint = 0,
-                    loseCnt = 0,
-                    raidCnt = 0,
-                    raidRank = 0,
-                    raidRewardPoint = 0,
-                    ranking = 0,
-                    rankingRate = 0,
-                    rewardDuelPoint = 0,
-                    rewardId = 0,
-                    winCnt = 0,
-                    winRank = 0,
-                    winRankIdx = 0,
-                },
-                rankList = [],
-                bossData = []
+
+				//still needs to be modified to pull the other data here
+                user = userRaidInfo,
+                rankList = rankList,
+                bossData = bossData,
             };
 
-            // SPEFICIC BOSS ON SPECIFIC DAYS
-
-            // Monday - Friday
-
-            raidRankingList.rankList = DatabaseManager.RaidRankList.GetTopRanks();
-
-            Dictionary<string, int> bossData3 = new()
-            {
-                { "3", 0 },
-            };
-
-            // Tuesday - Thursday - Saturday
-           
-            Dictionary<string, int> bossData = new()
-            {
-                { "1", 0 },
-            };
-
-            // Wednesday - Sunday
-
-            Dictionary<string, int> bossData2 = new()
-            {
-                { "2", 0 },
-            };
-
-            raidRankingList.bossData.Add(bossData);
-            raidRankingList.bossData.Add(bossData2);
-            raidRankingList.bossData.Add(bossData3);
-
-            ResponsePacket response = new()
+            return new ResponsePacket
             {
                 Id = BasePacket.Id,
                 Result = JObject.FromObject(raidRankingList),
             };
-            return response;
         }
+
+        private static readonly Dictionary<int, List<string>> DefaultSchedule = new()
+        {
+            // Sunday
+            { 0, ["2"] },
+            // Monday
+            { 1, ["3"] },
+            // Tuesday
+            { 2, ["1"] },
+            // Wednesday
+            { 3, ["2"] },
+            // Thursday
+            { 4, ["1"] },
+            // Friday
+            { 5, ["3"] },
+            // Saturday
+            { 6, ["1"] },
+        };
+
+        public static List<Dictionary<string, int>> GetBossDataForUpcomingDays(int days = 3)
+        {
+            var result = new List<Dictionary<string, int>>();
+            var todayMidnightUtc = DateTime.UtcNow.Date;
+
+            for (int i = 0; i < days; i++)
+            {
+                DayOfWeek day = (DayOfWeek)(((int)DateTime.UtcNow.DayOfWeek + i) % 7);
+
+                int endTime = 0;
+
+                // Today expires at +1 day, tomorrow at +2 days, etc.
+                if (i != 0)
+                {
+                    endTime = (int)(todayMidnightUtc.AddDays(i) - DateTime.UtcNow).TotalSeconds;
+                }
+
+                result.AddRange(GetBossDataForDay(day, endTime));
+            }
+
+            return result;
+        }
+
+        public static List<Dictionary<string, int>> GetBossDataForDay(DayOfWeek day, int endTime)
+        {
+            if (!DefaultSchedule.TryGetValue((int)day, out var bossIds))
+                return [];
+
+            return bossIds
+                .Select(id => new Dictionary<string, int> { { id, endTime } })
+                .ToList();
+        }
+
+
     }
 
-    public class GetRaidRankListRequest
-    {
-    }
+    public class GetRaidRankListRequest { }
 }
 
 /*	// Token: 0x06005FD0 RID: 24528 RVA: 0x000120F8 File Offset: 0x000102F8

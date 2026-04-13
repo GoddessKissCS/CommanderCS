@@ -7,7 +7,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.ManageGuildJoinMember)]
     public class ManageGuildJoinMember : BaseMethodHandler<ManageGuildJoinMemberRequest>
     {
-        public override object Handle(ManageGuildJoinMemberRequest @params)
+        public override object Handle(ManageGuildJoinMemberRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 

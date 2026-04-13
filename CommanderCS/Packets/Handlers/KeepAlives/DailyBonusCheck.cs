@@ -1,4 +1,4 @@
-﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 
 namespace CommanderCS.Packets.Handlers.KeepAlives
@@ -6,34 +6,27 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
     [Packet(Id = Method.DailyBonusCheck)]
     public class DailyBonusCheck : BaseMethodHandler<DailyBonusCheckRequest>
     {
-        public override object Handle(DailyBonusCheckRequest @params)
+        public override object Handle(DailyBonusCheckRequest request)
         {
-#warning TODO
             // ADD Daily list that clears every month
             // Check against which day it is today and give the apprioate response
 
-            //DateTime currentDate = DateTime.Now;
-            //DateTime startOfMonth = new(currentDate.Year, currentDate.Month, 1);
-            //int day = currentDate.Day;
-            //int startOfMonthAsInt = int.Parse(startOfMonth.ToString("yyyyMMdd"));
+            var user = GetUserGameProfile();
 
-            //var dailybonus = DailyBonusData.GetInstance().FromDay(day, startOfMonthAsInt);
+            DateTime currentDate = DateTime.Now;
+            int currentDateInt = int.Parse(currentDate.ToString("yyyyMMdd"));
+            int day = currentDate.Day;
 
-            DailyBonusCheckResponse DailyBonusCheckResponse = new()
-            {
-                day = 1,
-                version = "49",
-                goodsId = "3",
-                goodsCount = 400,
-                startTimeString = "2023101",
-                endTimeString = "20231130",
-                receiveState = 1,
-            };
+            // Find the bonus entry matching today's day within the current date range
+            var dailyBonus = user.DailyBonusCheck?.FirstOrDefault(x =>
+                x.day == day
+                && int.Parse(x.startTimeString) <= currentDateInt
+                && int.Parse(x.endTimeString) >= currentDateInt);
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = DailyBonusCheckResponse,
+                Result = "{}",
             };
 
             return response;

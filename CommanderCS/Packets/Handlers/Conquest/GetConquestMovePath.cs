@@ -1,7 +1,33 @@
+using CommanderCS.Library.Enums;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-    public class GetConquestMovePath
+    [Packet(Id = Method.GetConquestMovePath)]
+    public class GetConquestMovePath : BaseMethodHandler<GetConquestMovePathRequest>
     {
+        public override object Handle(GetConquestMovePathRequest request)
+        {
+#warning TODO: NOT YET FINISH PLACEHOLDER CODE
+            JObject response = new()
+            {
+                ["id"] = BasePacket.Id,
+                ["result"] = new JObject
+                {
+                    ["result"] = "True",
+                    ["path"] = new JArray(),
+                    ["distance"] = 0,
+                }
+            };
+
+            return response;
+        }
+    }
+
+    public class GetConquestMovePathRequest
+    {
+        public int dest { get; set; }
+        public int slot { get; set; }
     }
 }
 

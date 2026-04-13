@@ -8,12 +8,12 @@ namespace CommanderCS.Packets.Handlers.Inventory
     [Packet(Id = Method.ExchangeMedal)]
     public class ExchangeMedal : BaseMethodHandler<ExchangeMedalRequest>
     {
-        public override object Handle(ExchangeMedalRequest @params)
+        public override object Handle(ExchangeMedalRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            string cid = @params.cid.ToString();
-            int medalExchangeAmount = @params.amnt;
+            string cid = request.cid.ToString();
+            int medalExchangeAmount = request.amnt;
 
             // need to implement a check that fails if user doesnt have enough , aswell in the expshare gift things etc
 
@@ -35,7 +35,8 @@ namespace CommanderCS.Packets.Handlers.Inventory
             if (!User.Inventory.medalData.ContainsKey(cid))
             {
                 User.Inventory.medalData.TryAdd(cid, medalExchangeAmount);
-            } else
+            }
+            else
             {
                 User.Inventory.medalData[cid] += medalExchangeAmount;
                 User.Inventory.itemData[cid] += medalExchangeAmount;

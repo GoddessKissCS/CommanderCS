@@ -1,40 +1,30 @@
 using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
 
 namespace CommanderCS.Packets.Handlers.Conquest
 {
     [Packet(Id = Method.GetConquestInfo)]
     public class GetConquestInfo : BaseMethodHandler<GetConquestInfoRequest>
     {
-        public override object Handle(GetConquestInfoRequest @params)
+        public override object Handle(GetConquestInfoRequest request)
         {
+#warning TODO: NOT YET FINISH PLACEHOLDER CODE
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
                 Result = null,
             };
 
-            CommanderCS.Library.Protocols.ConquestInfo test = new()
-            {
-                join = 0,
-                side = "",
-                sign = 0,
-                state = EConquestState.Match,
-                prev = new()
-                {
-                    standbyList = [],
-                    exdt = 0,
-                    isWin = 0,
-                    pointData = new()
-                    {
-                        lose = [],
-                        win = []
-                    },
-                    userList = []
-                },
-                remain = 86400,
-            };
+            var guild = GetUserGuild();
 
-            response.Result = test;
+            if (guild is null)
+            {
+                return response;
+            }
+
+            CommanderCS.Library.Protocols.ConquestInfo info = DatabaseManager.Conquest.GetConquestInfo(guild.GuildId);
+
+            response.Result = info;
 
             return response;
         }
@@ -45,7 +35,9 @@ namespace CommanderCS.Packets.Handlers.Conquest
     }
 }
 
-/*	// Token: 0x0600605D RID: 24669 RVA: 0x000120F8 File Offset: 0x000102F8
+/*
+ *
+ *	// Token: 0x0600605D RID: 24669 RVA: 0x000120F8 File Offset: 0x000102F8
 	[JsonRpcClient.RequestAttribute("http://gk.flerogames.com/checkData.php", "7502", true, true)]
 	public void GetConquestInfo()
 	{
@@ -74,4 +66,6 @@ namespace CommanderCS.Packets.Handlers.Conquest
 			UIManager.instance.world.guild.SetConquestError();
 		}
 		yield break;
-	}*/
+	}
+
+ */

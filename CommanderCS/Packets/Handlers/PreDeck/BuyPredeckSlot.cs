@@ -8,7 +8,7 @@ namespace CommanderCS.Packets.Handlers.PreDeck
     [Packet(Id = Method.BuyPredeckSlot)]
     public class BuyPredeckSlot : BaseMethodHandler<BuyPredeckSlotRequest>
     {
-        public override object Handle(BuyPredeckSlotRequest @params)
+        public override object Handle(BuyPredeckSlotRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 

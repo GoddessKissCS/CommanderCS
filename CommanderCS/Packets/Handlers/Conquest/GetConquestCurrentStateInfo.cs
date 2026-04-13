@@ -1,6 +1,27 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-    public class GetConquestCurrentStateInfo
+    [Packet(Id = Method.GetConquestCurrentStateInfo)]
+    public class GetConquestCurrentStateInfo : BaseMethodHandler<GetConquestCurrentStateInfoRequest>
+    {
+        public override object Handle(GetConquestCurrentStateInfoRequest request)
+        {
+#warning TODO: NOT YET FINISH PLACEHOLDER CODE
+            List<ConquestStageInfo.User> userList = [];
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = userList,
+            };
+
+            return response;
+        }
+    }
+
+    public class GetConquestCurrentStateInfoRequest
     {
     }
 }

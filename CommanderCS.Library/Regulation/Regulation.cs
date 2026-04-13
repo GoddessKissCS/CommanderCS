@@ -97,9 +97,11 @@ namespace CommanderCS.Library.Regulation
         public DataTable<UnitMotionDataRow> unitMotionDtbl { get; private set; }
         public DataTable<ProjectileMotionPhaseDataRow> projectileMotionPhaseDtbl { get; private set; }
         public DataTable<DailyBonusDataRow> dailyBonusDtbl { get; private set; }
+        public DataTable<DailyBonusRewardDataRow> dailyBonusRewardDtbl { get; private set; }
         public DataTable<GachaDataRow> gachaDtbl { get; private set; }
         public DataTable<GachaRewardDataRow> gachaRewardDtbl { get; private set; }
         public DataTable<GachaCostDataRow> gachaCostDtbl { get; private set; }
+        public DataTable<RandomGachaRewardDataRow> randomGachaRewardDtbl { get; private set; }
         public DataTable<SweepDataRow> sweepDtbl { get; private set; }
         public DataTable<RaidDataRow> raidDtbl { get; private set; }
         public DataTable<RaidChallengeDataRow> raidChallengeDtbl { get; private set; }
@@ -129,6 +131,7 @@ namespace CommanderCS.Library.Regulation
         public DataTable<GroupInfoDataRow> groupInfoDtbl { get; private set; }
         public DataTable<GroupMemberDataRow> groupMemberDtbl { get; private set; }
         public DataTable<CommanderScenarioDataRow> commanderScenarioDtbl { get; private set; }
+        public DataTable<CommanderScenarioRewardDataRow> commanderScenarioRewardDtbl { get; private set; }
         public DataTable<ScenarioQuarterDataRow> scenarioQuarterDtbl { get; private set; }
         public DataTable<ScenarioBattleDataRow> scenarioBattleDtbl { get; private set; }
         public DataTable<ScenarioBattleUnitDataRow> scenarioBattleUnitDtbl { get; private set; }
@@ -232,7 +235,6 @@ namespace CommanderCS.Library.Regulation
         public DataTable<MissionDataRow> missionDtbl { get; private set; }
         public DataTable<CommanderClassUpDataRow> commanderClassUpDtbl { get; private set; }
         public DataTable<VipBenefitsDataRow> VipBenefitsDtbl { get; private set; }
-
         private Regulation()
         {
         }
@@ -305,9 +307,11 @@ namespace CommanderCS.Library.Regulation
             unitMotionDtbl = LoadTable<UnitMotionDataRow>("UnitMotionDataTable.json");
             projectileMotionPhaseDtbl = LoadTable<ProjectileMotionPhaseDataRow>("ProjectileMotionPhaseDataTable.json");
             dailyBonusDtbl = LoadTable<DailyBonusDataRow>("DailyBonusDataTable.json");
+            dailyBonusRewardDtbl = LoadTable<DailyBonusRewardDataRow>("DailyBonusRewardDataTable.json");
             gachaDtbl = LoadTable<GachaDataRow>("GachaDataTable.json");
             gachaRewardDtbl = LoadTable<GachaRewardDataRow>("GachaRewardDataTable.json");
             gachaCostDtbl = LoadTable<GachaCostDataRow>("GachaCostDataTable.json");
+            randomGachaRewardDtbl = LoadTable<RandomGachaRewardDataRow>("RandomGachaRewardDataTable.json");
             sweepDtbl = LoadTable<SweepDataRow>("SweepDataTable.json");
             raidDtbl = LoadTable<RaidDataRow>("RaidDataTable.json");
             levelPatternDtbl = LoadTable<LevelPatternDataRow>("LevelPatternDataTable.json");
@@ -336,6 +340,7 @@ namespace CommanderCS.Library.Regulation
             groupMemberDtbl = LoadTable<GroupMemberDataRow>("GroupMemberDataTable.json");
             raidChallengeDtbl = LoadTable<RaidChallengeDataRow>("RaidChallengeDataTable.json");
             commanderScenarioDtbl = LoadTable<CommanderScenarioDataRow>("CommanderScenarioDataTable.json");
+            commanderScenarioRewardDtbl = LoadTable<CommanderScenarioRewardDataRow>("CommanderScenarioRewardDataTable.json");
             scenarioQuarterDtbl = LoadTable<ScenarioQuarterDataRow>("ScenarioQuarterDataTable.json");
             scenarioBattleDtbl = LoadTable<ScenarioBattleDataRow>("ScenarioBattleDataTable.json");
             waveBattleDtbl = LoadTable<WaveBattleDataRow>("WaveBattleDataTable.json");
@@ -538,6 +543,11 @@ namespace CommanderCS.Library.Regulation
         public GoodsDataRow FindGoodsServerFieldName(string id)
         {
             return goodsDtbl.Find(row => row.type == id);
+        }
+
+        public GoodsDataRow FindGoodsServerType(string id)
+        {
+            return goodsDtbl.Find(row => row.resourceId == id);
         }
 
         public List<SweepDataRow> FindSweepRow(int type)
@@ -1067,6 +1077,50 @@ namespace CommanderCS.Library.Regulation
             return stages;
         }
 
+        public List<DailyBonusCheckResponse> GetAllDailyBonusCheckResponses()
+        {
+
+            List<DailyBonusCheckResponse> dailyBonusChecks = [];
+
+            foreach (var dailyBonus in dailyBonusRewardDtbl)
+            {
+
+                DailyBonusCheckResponse x = new()
+                {
+                    day = dailyBonus.day,
+                    startTimeString = dailyBonus.startTime.ToString(),
+                    endTimeString = dailyBonus.endTime.ToString(),
+                    receiveState = 0,
+                    goodsCount = dailyBonus.goodsCount,
+                    goodsId = dailyBonus.goodsId.ToString(),
+                    version = dailyBonus.version.ToString(),
+                };
+
+                dailyBonusChecks.Add(x);
+            }
+
+            return dailyBonusChecks;
+        }
+
+        public Dictionary<string, Dictionary<string, CommanderScenario>> GetCommanderScenarios()
+        {
+            Dictionary<string, Dictionary<string, CommanderScenario>> scenarios = [];
+
+            foreach (var scenario in commanderScenarioDtbl)
+            {
+                string cid = scenario.cid;
+                string csid = scenario.csid.ToString();
+
+                if (!scenarios.ContainsKey(cid))
+                {
+                    scenarios[cid] = [];
+                }
+
+                scenarios[cid][csid] = new CommanderScenario() { complete = [], receive = 0 };
+            }
+
+            return scenarios;
+        }
         public Dictionary<string, Commander> AddSpecificCommander(Dictionary<string, Commander> commanderDict, int commanderID)
         {
             var item = commanderCostumeDtbl.FirstOrDefault(c => c.cid == commanderID);
@@ -1105,5 +1159,6 @@ namespace CommanderCS.Library.Regulation
 
             return commanderDict;
         }
+
     }
 }

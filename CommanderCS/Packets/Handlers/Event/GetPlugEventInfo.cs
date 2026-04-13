@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Event
     [Packet(Id = Method.GetPlugEventInfo)]
     public class GetPlugEventInfo : BaseMethodHandler<GetPlugEventInfoRequest>
     {
-        public override object Handle(GetPlugEventInfoRequest @params)
+        public override object Handle(GetPlugEventInfoRequest request)
         {
             GetPlugEventInfoPacket plugEventInfo = new()
             {

@@ -5,7 +5,7 @@ namespace CommanderCS.Packets.Handlers.Gift
     [Packet(Id = CommanderCS.Library.Enums.Method.DateModeGetGift)]
     public class DateModeGetGift : BaseMethodHandler<DateModeGetGiftRequest>
     {
-        public override object Handle(DateModeGetGiftRequest @params)
+        public override object Handle(DateModeGetGiftRequest request)
         {
             ResponsePacket response = new()
             {

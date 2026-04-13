@@ -5,7 +5,7 @@ namespace CommanderCS.Packets.Handlers.Unit
     [Packet(Id = Method.GetUnitResearchList)]
     public class GetUnitResearchList : BaseMethodHandler<GetUnitResearchListRequest>
     {
-        public override object Handle(GetUnitResearchListRequest @params)
+        public override object Handle(GetUnitResearchListRequest request)
         {
             ResponsePacket response = new()
             {

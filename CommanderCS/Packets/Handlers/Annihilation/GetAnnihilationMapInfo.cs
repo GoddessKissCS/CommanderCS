@@ -7,9 +7,9 @@ namespace CommanderCS.Packets.Handlers.Annihilation
     [Packet(Id = Method.GetAnnihilationMapInfo)]
     public class GetAnnihilationMapInfo : BaseMethodHandler<GetAnnihilationMapInfoRequest>
     {
-        public override object Handle(GetAnnihilationMapInfoRequest @params)
+        public override object Handle(GetAnnihilationMapInfoRequest request)
         {
-            switch (@params.goReady)
+            switch (request.goReady)
             {
                 case 0:
                     break;

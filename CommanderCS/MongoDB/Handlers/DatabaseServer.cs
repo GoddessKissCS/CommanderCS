@@ -30,7 +30,8 @@ namespace CommanderCS.MongoDB.Handlers
             return DatabaseCollection.AsQueryable().Where(d => d.Region == Region).ToList();
         }
 
-        public ServerScheme GetFromServerNameAndRegion(string Region, string ServerName) {
+        public ServerScheme GetFromServerNameAndRegion(string Region, string ServerName)
+        {
             return DatabaseCollection.AsQueryable().Where(c => c.Region == Region).FirstOrDefault(d => d.ServerName == ServerName);
         }
 

@@ -5,7 +5,7 @@ namespace CommanderCS.Packets.Handlers.WorldDuel
     [Packet(Id = CommanderCS.Library.Enums.Method.WorldDuelBuffSetting)]
     public class WorldDuelBuffSetting : BaseMethodHandler<WorldDuelBuffSettingRequest>
     {
-        public override object Handle(WorldDuelBuffSettingRequest @params)
+        public override object Handle(WorldDuelBuffSettingRequest request)
         {
             //IDK THIS?
 

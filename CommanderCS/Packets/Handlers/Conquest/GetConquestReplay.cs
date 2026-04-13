@@ -1,7 +1,26 @@
+using CommanderCS.Library.Enums;
+
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-    public class GetConquestReplay
+    [Packet(Id = Method.GetConquestReplay)]
+    public class GetConquestReplay : BaseMethodHandler<GetConquestReplayRequest>
     {
+        public override object Handle(GetConquestReplayRequest request)
+        {
+#warning TODO: NOT YET FINISH PLACEHOLDER CODE
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = null,
+            };
+
+            return response;
+        }
+    }
+
+    public class GetConquestReplayRequest
+    {
+        public string rid { get; set; }
     }
 }
 

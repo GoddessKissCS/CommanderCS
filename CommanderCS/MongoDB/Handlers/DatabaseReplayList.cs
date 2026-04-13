@@ -1,7 +1,7 @@
 using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB.Schemes;
-using System.Buffers.Text;
-using System.Security.Cryptography.X509Certificates;
+using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 
 namespace CommanderCS.MongoDB.Handlers
 {
@@ -15,13 +15,13 @@ namespace CommanderCS.MongoDB.Handlers
         /// </summary>
         public DatabaseReplayList() : base("ReplayList")
         {
-            
+
         }
 
         public ReplayScheme Insert(int uno, int memberId, string ClientReplay, string ServerReplay, EBattleType type)
         {
             int replayId = DatabaseManager.AutoIncrements.GetNextNumber("ReplayId");
-            
+
             ReplayScheme replay = new()
             {
                 ReplayId = replayId,
@@ -30,13 +30,33 @@ namespace CommanderCS.MongoDB.Handlers
                 BattleType = type,
                 Uno = uno,
                 MemberId = memberId,
-                
+
             };
 
 
             DatabaseCollection.InsertOne(replay);
 
             return replay;
+        }
+
+        public List<ReplayScheme> FindByUno(int uno)
+        {
+            return DatabaseCollection.AsQueryable().Where(d => d.Uno == uno).ToList();
+        }
+
+        public List<ReplayScheme> FindByUnoAndType(int uno, EBattleType type)
+        {
+            return DatabaseCollection.AsQueryable().Where(d => d.Uno == uno && d.BattleType == type).ToList();
+        }
+
+        public List<ReplayScheme> FindByType(EBattleType type)
+        {
+            return DatabaseCollection.AsQueryable().Where(d => d.BattleType == type).ToList();
+        }
+
+        public ReplayScheme FindByReplayId(int replayId)
+        {
+            return DatabaseCollection.AsQueryable().Where(d => d.ReplayId == replayId).FirstOrDefault();
         }
 
     }

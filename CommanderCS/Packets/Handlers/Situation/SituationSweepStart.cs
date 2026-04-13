@@ -7,7 +7,7 @@ namespace CommanderCS.Packets.Handlers.Situation
     [Packet(Id = CommanderCS.Library.Enums.Method.SituationSweepStart)]
     public class SituationSweepStart : BaseMethodHandler<SituationSweepStartRequest>
     {
-        public override object Handle(SituationSweepStartRequest @params)
+        public override object Handle(SituationSweepStartRequest request)
         {
             SituationSweepStartResponse situationSweepStartResponse = new()
             {

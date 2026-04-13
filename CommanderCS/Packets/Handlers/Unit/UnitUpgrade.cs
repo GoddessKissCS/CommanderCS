@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Unit
     [Packet(Id = Method.UnitUpgrade)]
     public class UnitUpgrade : BaseMethodHandler<UnitUpgradeRequest>
     {
-        public override object Handle(UnitUpgradeRequest @params)
+        public override object Handle(UnitUpgradeRequest request)
         {
             ResponsePacket response = new()
             {

@@ -1,7 +1,37 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.Dormitory
 {
-    public class GetDormitoryFloorDetailInfo
+    [Packet(Id = Method.GetDormitoryFloorDetailInfo)]
+    public class GetDormitoryFloorDetailInfo : BaseMethodHandler<GetDormitoryFloorDetailInfoRequest>
     {
+        public override object Handle(GetDormitoryFloorDetailInfoRequest request)
+        {
+            Library.Protocols.Dormitory.FloorDetailInfo floorDetailInfo = new()
+            {
+                fno = request.fno,
+                name = "Room " + request.fno,
+                wallpaperId = "1",
+                decos = [],
+                characters = [],
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = floorDetailInfo,
+            };
+
+            return response;
+        }
+    }
+
+    public class GetDormitoryFloorDetailInfoRequest
+    {
+        [JsonProperty("fno")]
+        public string fno { get; set; }
     }
 }
 

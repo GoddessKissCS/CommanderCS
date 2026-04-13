@@ -1,7 +1,6 @@
 ﻿using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
-using CommanderCS.Library.Regulation.DataRows;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
@@ -11,14 +10,14 @@ namespace CommanderCS.Packets.Handlers.Commander
     [Packet(Id = Method.CommanderSkillLevelUp)]
     public class CommanderSkillLevelUp : BaseMethodHandler<CommanderSkillLevelUpRequest>
     {
-        public override object Handle(CommanderSkillLevelUpRequest @params)
+        public override object Handle(CommanderSkillLevelUpRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            string cid = @params.CommanderId.ToString();
+            string cid = request.CommanderId.ToString();
             var skillCostDtbl = RemoteObjectManager.instance.regulation.skillCostDtbl;
-            int skillIndex = @params.skillIndex;
-            int count = @params.Count;
+            int skillIndex = request.skillIndex;
+            int count = request.Count;
 
             int currentSkillLevel = skillIndex switch
             {
@@ -40,19 +39,19 @@ namespace CommanderCS.Packets.Handlers.Commander
                 level++;
             }
 
-            switch (@params.skillIndex)
+            switch (request.skillIndex)
             {
                 case 1:
                     User.CommanderData[cid].__skv1 = targetLevel.ToString();
                     break;
                 case 2:
-                    User.CommanderData[cid].__skv1 = targetLevel.ToString();
+                    User.CommanderData[cid].__skv2 = targetLevel.ToString();
                     break;
                 case 3:
-                    User.CommanderData[cid].__skv1 = targetLevel.ToString();
+                    User.CommanderData[cid].__skv3 = targetLevel.ToString();
                     break;
                 case 4:
-                    User.CommanderData[cid].__skv1 = targetLevel.ToString();
+                    User.CommanderData[cid].__skv4 = targetLevel.ToString();
                     break;
                 default:
                     throw new ArgumentException("Invalid skill index");

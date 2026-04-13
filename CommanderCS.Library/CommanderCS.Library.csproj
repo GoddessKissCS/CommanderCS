@@ -60,6 +60,7 @@
     <None Remove="Resources\ExcelOutputAsset\CommanderRankDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\CommanderRoleDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\CommanderScenarioDataTable.json" />
+    <None Remove="Resources\ExcelOutputAsset\CommanderScenarioRewardDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\CommanderTrainingTicketDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\CommanderVoiceDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\CooperateBattleDataTable.json" />
@@ -118,6 +119,7 @@
     <None Remove="Resources\ExcelOutputAsset\RaidChallengeDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\RaidDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\RandomBoxRewardDataTable.json" />
+    <None Remove="Resources\ExcelOutputAsset\RandomGachaRewardDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\RankingDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\RankingRewardDataTable.json" />
     <None Remove="Resources\ExcelOutputAsset\RewardDataTable.json" />
@@ -274,6 +276,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CommanderScenarioDataTable.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ExcelOutputAsset\CommanderScenarioRewardDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ExcelOutputAsset\CommanderTrainingTicketDataTable.json">
@@ -450,6 +455,9 @@
     <Content Include="Resources\ExcelOutputAsset\RandomBoxRewardDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\ExcelOutputAsset\RandomGachaRewardDataTable.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\ExcelOutputAsset\RankingDataTable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -549,7 +557,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
   </ItemGroup>
 

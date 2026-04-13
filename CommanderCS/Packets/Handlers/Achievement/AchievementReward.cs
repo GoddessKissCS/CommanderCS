@@ -1,17 +1,69 @@
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.Packets.Handlers.Achievement
 {
-    [Packet(Id = CommanderCS.Library.Enums.Method.AchievementReward)]
+    [Packet(Id = Method.AchievementReward)]
     public class AchievementReward : BaseMethodHandler<AchievementRewardRequest>
     {
-        public override object Handle(AchievementRewardRequest @params)
+        public override object Handle(AchievementRewardRequest request)
         {
+            GameProfileScheme user = GetUserGameProfile();
+
+            user.Achievements ??= [];
+
+            int currentTime = (int)TimeManager.CurrentEpoch;
+
+            string key = $"{request.acid}_{request.asot}";
+
+            if (user.Achievements.ContainsKey(key))
+            {
+                user.Achievements[key].received = true;
+                user.Achievements[key].completeTime = currentTime;
+            }
+
+            // Find next achievement in the same idx group with a higher sort
+            RewardInfo.AchievementData nextAchievement = null;
+
+            var next = RemoteObjectManager.instance.regulation.achievementDtbl.Find(
+                x => x.idx == request.acid && x.sort == request.asot + 1);
+
+            if (next != null)
+            {
+                string nextKey = $"{next.idx}_{next.sort}";
+                var nextProgress = user.Achievements.ContainsKey(nextKey) ? user.Achievements[nextKey] : null;
+
+                nextAchievement = new()
+                {
+                    achievementId = next.idx,
+                    sort = next.sort,
+                    point = nextProgress?.point ?? 0,
+                    complete = nextProgress is { complete: true } ? 1 : 0,
+                    receive = nextProgress is { received: true } ? 1 : 0,
+                };
+            }
+
+            DatabaseManager.GameProfile.UpdateAchievements(SessionId, user.Achievements);
+
+            var resource = UserResources2Resource(user.Resources);
+
+            RewardInfo result = new()
+            {
+                reward = [],
+                resource = resource,
+                time = currentTime,
+                nextAchievement = nextAchievement,
+            };
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = new RewardInfo()
+                Result = JObject.FromObject(result),
             };
 
             return response;

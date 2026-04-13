@@ -1,4 +1,5 @@
 ﻿using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
 
@@ -7,17 +8,56 @@ namespace CommanderCS.Packets.Handlers.Gacha
     [Packet(Id = Method.GachaInformation)]
     public class GachaInformation : BaseMethodHandler<GachaInformationRequest>
     {
-        public override object Handle(GachaInformationRequest @params)
+        private const int FreeOpenCooldownSeconds = 172800; // 48 hours
+
+        public override object Handle(GachaInformationRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
+
+            var result = User.GachaInformation?.ToDictionary(
+                kvp => kvp.Key,
+                kvp => ToResponse(kvp.Value)
+            );
+
+            // ToResponse may have updated freeOpenRemainCount, persist changes
+            DatabaseManager.GameProfile.UpdateGachaInformation(SessionId, User.GachaInformation);
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = User.GachaInformation,
+                Result = result,
             };
 
             return response;
+        }
+
+        public static GachaInformationResponse ToResponse(GachaData gachaData)
+        {
+            int remainTime = 0;
+
+            if (gachaData.lastFreeOpenTime.HasValue)
+            {
+                double elapsed = (DateTime.UtcNow - gachaData.lastFreeOpenTime.Value).TotalSeconds;
+                int remaining = FreeOpenCooldownSeconds - (int)elapsed;
+
+                if (remaining > 0)
+                {
+                    remainTime = remaining;
+                }
+                else
+                {
+                    remainTime = 0;
+                    gachaData.freeOpenRemainCount = 1;
+                }
+            }
+
+            return new GachaInformationResponse
+            {
+                type = gachaData.type,
+                freeOpenRemainCount = gachaData.freeOpenRemainCount,
+                freeOpenRemainTime = remainTime,
+                pilotRate = gachaData.pilotRate,
+            };
         }
     }
 

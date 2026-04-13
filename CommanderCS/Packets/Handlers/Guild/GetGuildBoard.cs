@@ -9,7 +9,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.GetGuildBoard)]
     public class GetGuildBoard : BaseMethodHandler<GetGuildBoardRequest>
     {
-        public override object Handle(GetGuildBoardRequest @params)
+        public override object Handle(GetGuildBoardRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 

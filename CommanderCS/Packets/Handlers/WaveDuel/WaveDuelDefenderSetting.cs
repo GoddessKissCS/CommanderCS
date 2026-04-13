@@ -8,9 +8,9 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
     [Packet(Id = Method.WaveDuelDefenderSetting)]
     public class WaveDuelDefenderSetting : BaseMethodHandler<WaveDuelDefenderSettingRequest>
     {
-        public override object Handle(WaveDuelDefenderSettingRequest @params)
+        public override object Handle(WaveDuelDefenderSettingRequest request)
         {
-            Dictionary<string, Dictionary<string, string>> decks = @params.decks.ToObject<Dictionary<string, Dictionary<string, string>>>();
+            Dictionary<string, Dictionary<string, string>> decks = request.decks.ToObject<Dictionary<string, Dictionary<string, string>>>();
 
             DatabaseManager.GameProfile.UpdateWaveDefenderDecks(SessionId, decks);
 #warning TODO CHECK IF FAILS

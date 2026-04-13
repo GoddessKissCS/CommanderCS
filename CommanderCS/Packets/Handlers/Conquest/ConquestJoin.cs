@@ -1,6 +1,42 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
+
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-    public class ConquestJoin
+    [Packet(Id = Method.ConquestJoin)]
+    public class ConquestJoin : BaseMethodHandler<ConquestJoinRequest>
+    {
+        public override object Handle(ConquestJoinRequest request)
+        {
+#warning TODO: NOT YET FINISH PLACEHOLDER CODE
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "True",
+            };
+
+            var user = GetUserGameProfile();
+            var guild = GetUserGuild();
+
+            if (user is null || guild is null)
+            {
+                return response;
+            }
+
+            // Only guild master (1) or sub-master (2) can sign up for conquest
+            int memberGrade = DatabaseManager.Guild.GetMemberGrade(guild.GuildId, user.Uno);
+
+            if (memberGrade != 0)
+            {
+                DatabaseManager.ConquestMatching.AddGuildToPool(guild);
+                DatabaseManager.Conquest.JoinConquest(guild.GuildId);
+            }
+
+            return response;
+        }
+    }
+
+    public class ConquestJoinRequest
     {
     }
 }
@@ -25,22 +61,27 @@ namespace CommanderCS.Packets.Handlers.Conquest
 	{
 		if (code = 71001)
 		{
+			Federation setting has been changed.
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110303"));
 		}
 		else if (code = 71501)
 		{
+			Your data is out of sync with the server.
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
 		else if (code = 71502)
 		{
+			Your data is out of sync with the server.
 			NetworkAnimation.Instance.CreateFloatingText(Localization.Get("110366"));
 		}
 		else if (code = 71007)
 		{
+			\n\nData sync with server is lost.\nReloading to match recent progress.\n\n(Err Code: {0})
 			UISimplePopup.CreateOK(false, Localization.Get("1303"), Localization.Format("110367", new object[] { code }), null, "1001");
 		}
 		else if (code = 71511)
 		{
+			\n\nData sync with server is lost.\nReloading to match recent progress.\n\n(Err Code: {0})
 			UISimplePopup.CreateOK(false, Localization.Get("1303"), Localization.Format("110367", new object[] { code }), null, "1001");
 		}
 		UIManager.instance.world.guild.Close();

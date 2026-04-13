@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Login
     [Packet(Id = Method.GoogleSignIn)]
     public class GoogleSignIn : BaseMethodHandler<GoogleSignInRequest>
     {
-        public override object Handle(GoogleSignInRequest @params)
+        public override object Handle(GoogleSignInRequest request)
         {
             // WILL NOT SUPPORT PROBABLY
 

@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Shop
     [Packet(Id = Method.BuySecretShopItem)]
     public class BuySecretShopItem : BaseMethodHandler<BuySecretShopItemRequest>
     {
-        public override object Handle(BuySecretShopItemRequest @params)
+        public override object Handle(BuySecretShopItemRequest request)
         {
             //TODO: SAVE THE SHOP TO THE DATABASE OF THE SPECIFIC USER AND THE IF YOU BUY IT MARK IT AS SOLD
 

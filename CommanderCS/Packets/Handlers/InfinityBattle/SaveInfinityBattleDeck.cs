@@ -7,14 +7,16 @@ namespace CommanderCS.Packets.Handlers.InfinityBattle
     [Packet(Id = CommanderCS.Library.Enums.Method.SaveInfinityBattleDeck)]
     public class SaveInfinityBattleDeck : BaseMethodHandler<SaveInfinityBattleDeckRequest>
     {
-        public override object Handle(SaveInfinityBattleDeckRequest @params)
+        public override object Handle(SaveInfinityBattleDeckRequest request)
         {
-            DatabaseManager.GameProfile.UpdateInfinityBattleDeck(SessionId, @params.deck);
+            Dictionary<string, string> deck = request.deck.ToObject<Dictionary<string, string>>();
+
+            DatabaseManager.GameProfile.UpdateInfinityBattleDeck(SessionId, deck);
 
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = "success"
+                Result = "pl"
             };
 
             return response;

@@ -7,6 +7,6 @@ namespace CommanderCS.MongoDB.Schemes
         public ObjectId Id { get; set; }
         public string Region { get; set; }
         public string ServerName { get; set; }
-        public int PlayerCount {  get; set; }
+        public int PlayerCount { get; set; }
     }
 }

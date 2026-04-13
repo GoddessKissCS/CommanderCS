@@ -16,7 +16,7 @@
         }
 
         public Regulation.Regulation regulation;
-
+        public static Random Shared => Random.Shared;
         public static class CommandIdsForChatting
         {
             public const string CheckChattingMsg = "checkMsg";

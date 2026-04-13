@@ -2,7 +2,6 @@ using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
-using MongoDB.Driver;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Commander
@@ -10,7 +9,7 @@ namespace CommanderCS.Packets.Handlers.Commander
     [Packet(Id = Method.BuyCommanderCostume)]
     public class BuyCommanderCostume : BaseMethodHandler<BuyCommanderCostumeRequest>
     {
-        public override object Handle(BuyCommanderCostumeRequest @params)
+        public override object Handle(BuyCommanderCostumeRequest request)
         {
 
             GameProfileScheme User = GetUserGameProfile();
@@ -19,9 +18,9 @@ namespace CommanderCS.Packets.Handlers.Commander
             // seems overrated but you never know ig?
             // client says no if you cant buy, but ig you could in theory send a request and buy it anyways
 
-            string cid = @params.commanderId.ToString();
+            string cid = request.commanderId.ToString();
 
-            var costumeData = RemoteObjectManager.instance.regulation.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == @params.costumeId);
+            var costumeData = RemoteObjectManager.instance.regulation.commanderCostumeDtbl.FirstOrDefault(x => x.ctid == request.costumeId);
 
             // TODO MAYBECHECK WHEN WE CREATE A CHARACTER TO SEE IF WE OWN ANY COSTUMES
             // AND THEN TRANSFER THEM TO THE haveCostume and delete them from donHaveCommCostume
@@ -30,7 +29,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             User.Resources.cash -= costumeData.sellPrice;
 
             DatabaseManager.GameProfile.UpdateOnlyCash(SessionId, costumeData.sellPrice, false);
-            var user = AddCostumeData(cid, @params.costumeId, User);
+            var user = AddCostumeData(cid, request.costumeId, User);
             DatabaseManager.GameProfile.UpdateCommanderData(SessionId, user.CommanderData);
             DatabaseManager.GameProfile.UpdateDontHaveCommanderCostumeData(SessionId, user.Inventory.donHaveCommCostumeData);
 

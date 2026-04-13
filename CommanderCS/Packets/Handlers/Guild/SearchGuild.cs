@@ -1,6 +1,7 @@
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Ro;
 using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Guild
@@ -8,12 +9,12 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.SearchGuild)]
     public class SearchGuild : BaseMethodHandler<SearchGuildRequest>
     {
-        public override object Handle(SearchGuildRequest @params)
+        public override object Handle(SearchGuildRequest request)
         {
             ResponsePacket response = new() { Id = BasePacket.Id };
 
-            var guild = DatabaseManager.Guild.FindByName(@params.gnm);
-            var roGuild = guild is not null ? DatabaseManager.GuildApplication.Guild2RoGuild(guild, SessionId) : new RoGuild();
+            GuildScheme guild = DatabaseManager.Guild.FindByName(request.guildName);
+            RoGuild roGuild = guild != null ? DatabaseManager.GuildApplication.Guild2RoGuild(guild, SessionId) : new RoGuild();
 
             response.Result = roGuild;
 
@@ -24,7 +25,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     public class SearchGuildRequest
     {
         [JsonProperty("gnm")]
-        public string gnm { get; set; }
+        public string guildName { get; set; }
     }
 }
 

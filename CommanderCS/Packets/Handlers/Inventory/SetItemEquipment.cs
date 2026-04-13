@@ -1,7 +1,112 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.Inventory
 {
-    public class SetItemEquipment
+    [Packet(Id = Method.SetItemEquipment)]
+    public class SetItemEquipment : BaseMethodHandler<SetItemEquipmentRequest>
     {
+        public override object Handle(SetItemEquipmentRequest request)
+        {
+            var user = GetUserGameProfile();
+
+            var eidx = request.eidx.ToString();
+            var cid = request.cid.ToString();
+            var elv = request.elv.ToString();
+
+            // Check if commander exists
+            if (!user.CommanderData.ContainsKey(cid))
+            {
+                return new ErrorPacket
+                {
+                    Id = BasePacket.Id,
+                    Error = new ErrorMessageId
+                    {
+                        code = ErrorCode.Failure
+                    }
+                };
+            }
+
+            // Check if the equipment exists in inventory
+            if (!user.Inventory.equipItem.ContainsKey(eidx) || !user.Inventory.equipItem[eidx].ContainsKey(elv))
+            {
+                return new ErrorPacket
+                {
+                    Id = BasePacket.Id,
+                    Error = new ErrorMessageId
+                    {
+                        code = ErrorCode.NotEnoughResources
+                    }
+                };
+            }
+
+            var equipInfo = user.Inventory.equipItem[eidx][elv];
+
+            // Check if there's an available item to equip
+            if (equipInfo.availableCount <= 0)
+            {
+                return new ErrorPacket
+                {
+                    Id = BasePacket.Id,
+                    Error = new ErrorMessageId
+                    {
+                        code = ErrorCode.NotEnoughResources
+                    }
+                };
+            }
+
+            var commander = user.CommanderData[cid];
+
+            // If commander already has an item in this slot, unequip it
+            if (commander.equipItemInfo.ContainsKey(eidx))
+            {
+                string oldElv = commander.equipItemInfo[eidx].ToString();
+                if (user.Inventory.equipItem.ContainsKey(eidx) && user.Inventory.equipItem[eidx].ContainsKey(oldElv))
+                {
+                    var oldEquip = user.Inventory.equipItem[eidx][oldElv];
+                    oldEquip.availableCount++;
+                    oldEquip.equipCommanderList.Remove(request.cid);
+                }
+            }
+
+            // Equip the item on the commander
+            commander.equipItemInfo[eidx] = request.elv;
+
+            // Update equipment inventory
+            equipInfo.availableCount--;
+            if (!equipInfo.equipCommanderList.Contains(request.cid))
+            {
+                equipInfo.equipCommanderList.Add(request.cid);
+            }
+
+            DatabaseManager.GameProfile.UpdateCommanderData(SessionId, user.CommanderData);
+            DatabaseManager.GameProfile.UpdateEquipItemData(SessionId, user.Inventory.equipItem);
+
+            var userInfoResponse = GetUserInformationResponse(user);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = userInfoResponse,
+            };
+
+            return response;
+        }
+    }
+
+    public class SetItemEquipmentRequest
+    {
+        [JsonProperty("eidx")]
+        public int eidx { get; set; }
+
+        [JsonProperty("cid")]
+        public int cid { get; set; }
+
+        [JsonProperty("elv")]
+        public int elv { get; set; }
     }
 }
 

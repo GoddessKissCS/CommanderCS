@@ -11,13 +11,13 @@ namespace CommanderCS.Packets.Handlers.Commander
     [Packet(Id = Method.CommanderLevelUp)]
     public class CommanderLevelUp : BaseMethodHandler<CommanderLevelUpRequest>
     {
-        public override object Handle(CommanderLevelUpRequest @params)
+        public override object Handle(CommanderLevelUpRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            string sid = RemoteObjectManager.instance.regulation.goodsDtbl.FirstOrDefault(x => x.serverFieldName == @params.commanderTrainingTicket).type;
+            string sid = RemoteObjectManager.instance.regulation.goodsDtbl.FirstOrDefault(x => x.serverFieldName == request.commanderTrainingTicket).type;
 
-            if (@params.count > User.Inventory.itemData[sid])
+            if (request.count > User.Inventory.itemData[sid])
             {
                 ErrorPacket error = new()
                 {
@@ -28,26 +28,30 @@ namespace CommanderCS.Packets.Handlers.Commander
                 return error;
             }
 
-            string cid = @params.commanderId.ToString();
+            string cid = request.commanderId.ToString();
 
-            if (User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) && commander != null)
+            if (!User.CommanderData.TryGetValue(cid, out UserInformationResponse.Commander commander) || commander == null)
             {
-                int commanderXP = Convert.ToInt32(commander.__exp);
-
-                for (int i = 0; i < @params.count;)
+                ErrorPacket error = new()
                 {
-                    //NEED TO CHECK IF its 0
-                    User.Inventory.itemData[sid] -= 1;
+                    Id = BasePacket.Id,
+                    Error = new() { code = ErrorCode.Failure },
+                };
 
-                    TryLevelingUp(sid, ref commanderXP);
-
-                    i++;
-                }
-
-                commander.__exp = commanderXP.ToString();
-
-                commander = CheckCommanderLevel(commander, RemoteObjectManager.instance.regulation, User);
+                return error;
             }
+
+            int commanderXP = Convert.ToInt32(commander.__exp);
+
+            for (int i = 0; i < request.count; i++)
+            {
+                User.Inventory.itemData[sid] -= 1;
+                AddTicketExp(sid, ref commanderXP);
+            }
+
+            commander.__exp = commanderXP.ToString();
+
+            commander = CheckCommanderLevel(commander, RemoteObjectManager.instance.regulation, User);
 
             if (int.Parse(commander.__level) > User.Resources.level)
             {
@@ -64,10 +68,6 @@ namespace CommanderCS.Packets.Handlers.Commander
 
             DatabaseManager.GameProfile.UpdateItemData(SessionId, User.Inventory.itemData);
             DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, User.CommanderData[cid]);
-
-            User.CommanderData = [];
-
-            User.CommanderData[cid] = commander;
 
             ResponsePacket response = new()
             {
@@ -109,7 +109,7 @@ namespace CommanderCS.Packets.Handlers.Commander
             return commander;
         }
 
-        private static bool TryLevelingUp(string ticketId, ref int xp)
+        private static void AddTicketExp(string ticketId, ref int xp)
         {
             if (!ExpList.TryGetValue(ticketId, out var addingXp))
             {
@@ -117,10 +117,6 @@ namespace CommanderCS.Packets.Handlers.Commander
             }
 
             xp += addingXp;
-
-            return true;
-
-            // needs to add check for the level up while adding xp and checking if the commander level isnt higher than user level
         }
     }
 

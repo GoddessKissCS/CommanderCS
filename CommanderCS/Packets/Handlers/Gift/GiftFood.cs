@@ -12,13 +12,13 @@ namespace CommanderCS.Packets.Handlers.Gift
     [Packet(Id = Method.GiftFood)]
     public class GiftFood : BaseMethodHandler<GiftFoodRequest>
     {
-        public override object Handle(GiftFoodRequest @params)
+        public override object Handle(GiftFoodRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            string cid = @params.cid.ToString();
-            string favourGiftId = @params.cgid.ToString();
-            int favourGiftAmount = @params.amnt;
+            string cid = request.cid.ToString();
+            string favourGiftId = request.cgid.ToString();
+            int favourGiftAmount = request.amnt;
 
             User.CommanderData.TryGetValue(cid, out var commander);
 
@@ -35,7 +35,7 @@ namespace CommanderCS.Packets.Handlers.Gift
                         User.Inventory.foodData[favourGiftId] -= 1;
                     }
 
-                    TryAddingFavour(@params.cgid, ref commanderfavorPoint);
+                    TryAddingFavour(request.cgid, ref commanderfavorPoint);
 
                     i++;
                 }
@@ -49,7 +49,7 @@ namespace CommanderCS.Packets.Handlers.Gift
                         User.Inventory.itemData[favourGiftId] -= 1;
                     }
 
-                    TryAddingFavour(@params.cgid, ref commanderfavorPoint);
+                    TryAddingFavour(request.cgid, ref commanderfavorPoint);
 
                     i++;
                 }

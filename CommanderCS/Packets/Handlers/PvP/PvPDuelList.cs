@@ -7,12 +7,12 @@ namespace CommanderCS.Packets.Handlers.PvP
     [Packet(Id = Method.PvPDuelList)]
     public class PvPDuelList : BaseMethodHandler<PvPDuelListRequest>
     {
-        public override object Handle(PvPDuelListRequest @params)
+        public override object Handle(PvPDuelListRequest request)
         {
             // need to check score and the get duelist between the range
             GameProfileScheme User = GetUserGameProfile();
 
-            CommanderCS.Library.Protocols.PvPDuelList pvPDuel = new()
+            Library.Protocols.PvPDuelList pvPDuel = new()
             {
                 duelList = [],
                 openRemain = 86400,

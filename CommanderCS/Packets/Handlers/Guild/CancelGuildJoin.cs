@@ -8,11 +8,11 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.CancelGuildJoin)]
     public class CancelGuildJoin : BaseMethodHandler<CancelGuildJoinRequest>
     {
-        public override object Handle(CancelGuildJoinRequest @params)
+        public override object Handle(CancelGuildJoinRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            bool result = DatabaseManager.GuildApplication.DeleteGuildApplication(User.Uno, @params.gidx);
+            bool result = DatabaseManager.GuildApplication.DeleteGuildApplication(User.Uno, request.gidx);
 
             ResponsePacket response = new()
             {

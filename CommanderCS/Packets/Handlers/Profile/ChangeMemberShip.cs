@@ -7,11 +7,11 @@ namespace CommanderCS.Packets.Handlers.Profile
     [Packet(Id = Method.ChangeMembership)]
     public class ChangeMemberShip : BaseMethodHandler<ChangeMemberShipRequest>
     {
-        public override object Handle(ChangeMemberShipRequest @params)
+        public override object Handle(ChangeMemberShipRequest request)
         {
             // SHOULD BE FINISHED?
 
-            ErrorCode code = DatabaseManager.Account.ChangeMemberShip(@params.uid, @params.pwd, @params.plfm, @params.puid, @params.ch);
+            ErrorCode code = DatabaseManager.Account.ChangeMemberShip(request.uid, request.pwd, request.plfm, request.puid, request.ch);
 
             if (code != ErrorCode.Success)
             {

@@ -1,5 +1,4 @@
 ﻿using CommanderCS.Library.Enums;
-using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
 using Newtonsoft.Json;
 
@@ -8,7 +7,7 @@ namespace CommanderCS.Packets.Handlers.Carnival
     [Packet(Id = Method.CheckBadge)]
     public class CheckBadge : BaseMethodHandler<CheckBadgeRequest>
     {
-        public override object Handle(CheckBadgeRequest @params)
+        public override object Handle(CheckBadgeRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
@@ -18,7 +17,7 @@ namespace CommanderCS.Packets.Handlers.Carnival
 
             //TODO Check on thing if anything new exists.
 
-            CheckBadgeMaster checkBadgeMaster = new()
+            CheckBadgeResponse checkBadgeMaster = new()
             {
                 id = BasePacket.Id,
                 arena = badges.arena,
@@ -42,7 +41,7 @@ namespace CommanderCS.Packets.Handlers.Carnival
             return checkBadgeMaster;
         }
 
-        public class CheckBadgeMaster
+        public class CheckBadgeResponse
         {
             [JsonProperty("id")]
             public string id { get; set; }

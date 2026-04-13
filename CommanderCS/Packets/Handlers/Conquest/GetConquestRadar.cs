@@ -1,6 +1,37 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-    public class GetConquestRadar
+    [Packet(Id = Method.GetConquestRadar)]
+    public class GetConquestRadar : BaseMethodHandler<GetConquestRadarRequest>
+    {
+        public override object Handle(GetConquestRadarRequest request)
+        {
+#warning TODO: NOT YET FINISH PLACEHOLDER CODE
+            GetRadarData radarData = new()
+            {
+                radar = new GetRadarData.Radar()
+                {
+                    remain = 0,
+                    overTime = 0,
+                    startTime = 0,
+                    uName = "",
+                    info = [],
+                },
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = radarData,
+            };
+
+            return response;
+        }
+    }
+
+    public class GetConquestRadarRequest
     {
     }
 }

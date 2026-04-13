@@ -6,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.UserTerm
     [Packet(Id = Method.UserTerm)]
     public class UserTerm : BaseMethodHandler<UserTermRequest>
     {
-        public override object Handle(UserTermRequest @params)
+        public override object Handle(UserTermRequest request)
         {
             string wemade = File.ReadAllText($"Resources\\PrivacyPolicy\\TermsOfService.txt");
             string member = File.ReadAllText($"Resources\\PrivacyPolicy\\PrivacyPolicy.txt");

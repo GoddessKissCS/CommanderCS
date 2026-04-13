@@ -8,7 +8,7 @@ namespace CommanderCS.Packets.Handlers.PvP
     [Packet(Id = Method.RefreshPvPDuelList)]
     public class RefreshPvPDuelList : BaseMethodHandler<RefreshPvPDuelListRequest>
     {
-        public override object Handle(RefreshPvPDuelListRequest @params)
+        public override object Handle(RefreshPvPDuelListRequest request)
         {
             // need to check score and the get duelist between the range
             GameProfileScheme User = GetUserGameProfile();

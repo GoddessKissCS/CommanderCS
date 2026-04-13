@@ -1,6 +1,7 @@
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
 using MongoDB.Bson;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace CommanderCS.MongoDB.Schemes
@@ -178,9 +179,28 @@ namespace CommanderCS.MongoDB.Schemes
         /// <summary>
         /// Gets or sets the dictionary containing gacha information.
         /// </summary>
-        public Dictionary<string, GachaInformationResponse>? GachaInformation { get; set; }
+        public Dictionary<string, GachaData>? GachaInformation { get; set; }
 
         public Dictionary<string, Dictionary<string, CommanderScenario>>? CommanderScenario { get; set; }
+
+        public Dictionary<string, AchievementProgress>? Achievements { get; set; }
+    }
+
+    public class AchievementProgress
+    {
+        public int sort { get; set; }
+        public int point { get; set; }
+        public bool complete { get; set; }
+        public bool received { get; set; }
+        public int completeTime { get; set; }
+    }
+
+    public class GachaData
+    {
+        public string type { get; set; }
+        public int freeOpenRemainCount { get; set; }
+        public int pilotRate { get; set; }
+        public DateTime? lastFreeOpenTime { get; set; }
     }
 
     /// <summary>
@@ -634,7 +654,7 @@ namespace CommanderCS.MongoDB.Schemes
         /// <summary>
         /// Gets or sets the equipment items of the user.
         /// </summary>
-        public Dictionary<string, Dictionary<int, EquipItemInfo>> equipItem { get; set; }
+        public Dictionary<string, Dictionary<string, EquipItemInfo>> equipItem { get; set; }
 
         /// <summary>
         /// Gets or sets the weapon list of the user.
@@ -752,6 +772,11 @@ namespace CommanderCS.MongoDB.Schemes
         /// Gets or sets the dictionary of sweep clear data.
         /// </summary>
         public Dictionary<string, List<int>> SweepClearData { get; set; }
+
+        /// <summary>
+        /// Gets or sets the InfinityTowerInformation data.
+        /// </summary>
+        public InfinityTowerInformationScheme InfinityTowerData { get; set; }
     }
 
     /// <summary>
@@ -798,7 +823,7 @@ namespace CommanderCS.MongoDB.Schemes
         /// <summary>
         /// Gets or sets the infinity battle deck.
         /// </summary>
-        public JObject InfinityBattleDeck { get; set; }
+        public Dictionary<string, string> InfinityBattleDeck { get; set; }
     }
 
     /// <summary>
@@ -872,6 +897,12 @@ namespace CommanderCS.MongoDB.Schemes
         /// Gets or sets the buy VIP shop data.
         /// </summary>
         public BuyVipShop BuyVipShop { get; set; }
+
+        /// <summary>
+        /// Gets or sets the VipCruiseGacha data.
+        /// </summary>
+        public VipGacha VipCruiseGacha { get; set; }
+
     }
 
     /// <summary>
@@ -883,5 +914,25 @@ namespace CommanderCS.MongoDB.Schemes
         /// Gets or sets the number of raid keys available for purchase daily.
         /// </summary>
         public int RaidKeys { get; set; } = 5;
+    }
+
+    /// <summary>
+    /// MongoDB-safe mirror of <see cref="InfinityTowerInformation"/>.
+    /// Uses string keys for the inner stage-state dictionary so MongoDB can serialize it.
+    /// </summary>
+    public class InfinityTowerInformationScheme
+    {
+        public InfinityTowerDataScheme infinityData { get; set; }
+    }
+
+    /// <summary>
+    /// MongoDB-safe mirror of <see cref="InfinityTowerData"/>.
+    /// Inner dictionary uses <c>string</c> keys instead of <c>int</c> so MongoDB can serialize it.
+    /// </summary>
+    public class InfinityTowerDataScheme
+    {
+        public string curField { get; set; }
+
+        public Dictionary<string, Dictionary<string, EInfinityTowerStageState>> fieldData { get; set; }
     }
 }

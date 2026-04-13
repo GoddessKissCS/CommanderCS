@@ -1,7 +1,40 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-    public class SetConquestTroop
+    [Packet(Id = Method.SetConquestTroop)]
+    public class SetConquestTroop : BaseMethodHandler<SetConquestTroopRequest>
     {
+        public override object Handle(SetConquestTroopRequest request)
+        {
+#warning TODO: NOT YET FINISH PLACEHOLDER CODE
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "True",
+            };
+
+            var guild = GetUserGuild();
+
+            if (guild is null)
+            {
+                return response;
+            }
+
+            var deck = request.deck?.ToObject<Dictionary<string, string>>() ?? [];
+
+            DatabaseManager.Conquest.UpdateTroop(guild.GuildId, request.slot, deck);
+
+            return response;
+        }
+    }
+
+    public class SetConquestTroopRequest
+    {
+        public int slot { get; set; }
+        public JObject deck { get; set; }
     }
 }
 

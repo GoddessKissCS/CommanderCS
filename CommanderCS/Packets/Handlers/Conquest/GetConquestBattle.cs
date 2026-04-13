@@ -1,7 +1,41 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-    public class GetConquestBattle
+    [Packet(Id = Method.GetConquestBattle)]
+    public class GetConquestBattle : BaseMethodHandler<GetConquestBattleRequest>
     {
+        public override object Handle(GetConquestBattleRequest request)
+        {
+#warning TODO: NOT YET FINISH PLACEHOLDER CODE
+            Library.Protocols.GetConquestBattle battleData = new()
+            {
+                enemyWorld = 0,
+                enemyName = "",
+                eSide = "B",
+                entry = new Library.Protocols.GetConquestBattle.Entry()
+                {
+                    red = [],
+                    blue = [],
+                },
+                battle = [],
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = battleData,
+            };
+
+            return response;
+        }
+    }
+
+    public class GetConquestBattleRequest
+    {
+        public int point { get; set; }
+        public int skip { get; set; }
     }
 }
 

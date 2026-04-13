@@ -74,9 +74,14 @@ namespace CommanderCS.Library.Battle
 
         public IList<Troop> rhsTroops => _rhsTroops.AsReadOnly();
 
+        public List<Troop> leftTroops => _lhsTroops;
+
+        public List<Troop> rightTroops => _rhsTroops;
+
         public List<GuildSkillState> guildSkills => _guildSkills;
 
         public List<string> battleItemDrks => _battleItemDrks;
+        public List<string> groupBuffs => _groupBuffs;
 
         public int randomSeed => _randomSeed;
 

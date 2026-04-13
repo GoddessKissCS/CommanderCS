@@ -1,7 +1,44 @@
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using Newtonsoft.Json;
+
 namespace CommanderCS.Packets.Handlers.InfinityBattle
 {
-    public class StartInfinityBattleScenario
+    [Packet(Id = Method.StartInfinityBattleScenario)]
+    public class StartInfinityBattleScenario : BaseMethodHandler<StartInfinityBattleScenarioRequest>
     {
+        public override object Handle(StartInfinityBattleScenarioRequest request)
+        {
+            //var infinityField = RemoteObjectManager.instance.regulation.infinityFieldDtbl.Find(x => x.infinityFieldIdx == request.ifid.ToString());
+
+            //if (infinityField == null)
+            //{
+            //    ErrorPacket error = new()
+            //    {
+            //        Id = BasePacket.Id,
+            //        Error = new ErrorMessageId
+            //        {
+            //            code = ErrorCode.Failure
+            //        }
+            //    };
+
+            //    return error;
+            //}
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "false",
+            };
+
+            return response;
+        }
+    }
+
+    public class StartInfinityBattleScenarioRequest
+    {
+        [JsonProperty("ifid")]
+        public int ifid { get; set; }
     }
 }
 

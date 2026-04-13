@@ -1,5 +1,4 @@
 ﻿using CommanderCS.Library.Enums;
-using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.Exploration
@@ -7,7 +6,7 @@ namespace CommanderCS.Packets.Handlers.Exploration
     [Packet(Id = Method.GetExplorationList)]
     public class GetExplorationList : BaseMethodHandler<GetExplorationListRequest>
     {
-        public override object Handle(GetExplorationListRequest @params)
+        public override object Handle(GetExplorationListRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 

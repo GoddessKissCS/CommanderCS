@@ -66,6 +66,10 @@ namespace CommanderCS.Library.Battle
 
         public IList<Troop> rhsTroops => _rhsTroops.AsReadOnly();
 
+        public List<Troop> leftSideTroops => _lhsTroops;
+
+        public List<Troop> rightSideTroops => _rhsTroops;
+
         public Troop victoryTroop
         {
             get

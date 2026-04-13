@@ -1,7 +1,58 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.WaveDuel
 {
-    public class PvPStartWaveDuel
+    [Packet(Id = Method.PvPStartWaveDuel)]
+    public class PvPStartWaveDuel : BaseMethodHandler<PvPStartWaveDuelRequest>
     {
+        public override object Handle(PvPStartWaveDuelRequest request)
+        {
+            GameProfileScheme User = GetUserGameProfile();
+
+            var resource = UserResources2Resource(User.Resources);
+
+            // TODO: Simulate battle, update win/loss counts, adjust duel score
+
+            UserInformationResponse.BattleResult battleResult = new()
+            {
+                __resource = resource,
+                partData = User.Inventory.partData,
+                medalData = User.Inventory.medalData,
+                eventResourceData = User.Inventory.eventResourceData,
+                itemData = User.Inventory.itemData,
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = battleResult,
+            };
+
+            return response;
+        }
+    }
+
+    public class PvPStartWaveDuelRequest
+    {
+        [JsonProperty("type")]
+        public int Type { get; set; }
+
+        [JsonProperty("idx")]
+        public int Idx { get; set; }
+
+        [JsonProperty("checkSum")]
+        public string CheckSum { get; set; }
+
+        [JsonProperty("info")]
+        public JArray Info { get; set; }
+
+        [JsonProperty("result")]
+        public JArray Result { get; set; }
     }
 }
 

@@ -97,6 +97,25 @@ namespace CommanderCS.MongoDB.Handlers
         /// <summary>
         /// Checks if a guild application exists from the given user's session and guild index.
         /// </summary>
+        /// <param name="session">The session of the user.</param>
+        /// <param name="guildIdx">The unique identifier of the guild.</param>
+        /// <returns>'req' if the user has applied to join the guild, otherwise an empty string.</returns>
+        public int GuildApplicationFromUserUno(int uno)
+        {
+            var tryGuild = DatabaseCollection.AsQueryable()
+                           .Where(d => d.Uno == uno)
+                           .FirstOrDefault();
+
+
+            if (tryGuild != null) { return tryGuild.GuildId; }
+
+            return 0;
+        }
+
+
+        /// <summary>
+        /// Checks if a guild application exists from the given user's session and guild index.
+        /// </summary>
         /// <param name="guild">The Guild.</param>
         /// <param name="session">The session of the user.</param>
         /// <returns>'req' if the user has applied to join the guild, otherwise an empty string.</returns>
@@ -205,7 +224,7 @@ namespace CommanderCS.MongoDB.Handlers
         {
             var guildId = RetrieveGuildApplicationFromId(uno);
 
-            var guild = DatabaseManager.Guild.FindByUid(guildId);
+            var guild = DatabaseManager.Guild.FindByGuildId(guildId);
 
             if (guild.Count == guild.MaxCount)
             {
@@ -239,7 +258,7 @@ namespace CommanderCS.MongoDB.Handlers
         {
             var guildId = RetrieveGuildApplicationFromId(uno);
 
-            var guild = DatabaseManager.Guild.FindByUid(guildId);
+            var guild = DatabaseManager.Guild.FindByGuildId(guildId);
 
             if (guild.Count == guild.MaxCount)
             {

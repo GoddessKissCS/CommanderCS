@@ -78,6 +78,12 @@ namespace CommanderCS.MongoDB
 
         public static DatabaseReplayList ReplayList { get; } = new();
 
+        public static DatabaseRaidBossSchedule RaidBossSchedule { get; } = new();
+
+        public static DatabaseConquest Conquest { get; } = new();
+
+        public static DatabaseConquestMatching ConquestMatching { get; } = new();
+
         /// <summary>
         /// Initializes the database manager.
         /// </summary>
@@ -117,6 +123,8 @@ namespace CommanderCS.MongoDB
             // initalize some banners
             RotationBanner.Insert("1720097316", "1722170916", 0, 0, "http://" + ip + ":5000/FileCDN/Event/TitleBanner/Notice_Icon.png", "", Library.Enums.BannerListType.None);
             RotationBanner.Insert("1720097316", "1722170916", 1, 1, "http://" + ip + ":5000/FileCDN/Event/TitleBanner/Event_Icon.png", "", Library.Enums.BannerListType.None);
+
+            RaidBossSchedule.SeedIfEmpty();
         }
     }
 }

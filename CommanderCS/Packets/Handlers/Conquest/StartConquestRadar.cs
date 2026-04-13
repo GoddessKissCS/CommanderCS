@@ -1,6 +1,38 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-    public class StartConquestRadar
+    [Packet(Id = Method.StartConquestRadar)]
+    public class StartConquestRadar : BaseMethodHandler<StartConquestRadarRequest>
+    {
+        public override object Handle(StartConquestRadarRequest request)
+        {
+#warning TODO: NOT YET FINISH PLACEHOLDER CODE
+            JObject response = new()
+            {
+                ["id"] = BasePacket.Id,
+                ["result"] = new JObject
+                {
+                    ["result"] = "True",
+                    ["rsoc"] = null,
+                    ["Radar"] = JObject.FromObject(new GetRadarData.Radar()
+                    {
+                        remain = 0,
+                        overTime = 1,
+                        startTime = 0,
+                        uName = "",
+                        info = [],
+                    }),
+                }
+            };
+
+            return response;
+        }
+    }
+
+    public class StartConquestRadarRequest
     {
     }
 }

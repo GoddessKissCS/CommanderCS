@@ -8,17 +8,17 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.FreeJoinGuild)]
     public class FreeJoinGuild : BaseMethodHandler<FreeJoinGuildRequest>
     {
-        public override object Handle(FreeJoinGuildRequest @params)
+        public override object Handle(FreeJoinGuildRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            DatabaseManager.Guild.AddFreeJoinGuildMember(User.Uno, @params.gidx);
+            DatabaseManager.Guild.AddFreeJoinGuildMember(User.Uno, request.gidx);
 
             var rsoc = DatabaseManager.GameProfile.UserResourcesFromSession(SessionId);
 
-            var userGuild = DatabaseManager.Guild.RequestGuild(@params.gidx, User.Uno);
+            var userGuild = DatabaseManager.Guild.RequestGuild(request.gidx, User.Uno);
 
-            var members = DatabaseManager.Guild.RequestGuildMembers(@params.gidx);
+            var members = DatabaseManager.Guild.RequestGuildMembers(request.gidx);
 
 #warning STILL NEED TO ADD THE MISSING ERRORPACKET IF IT FAILS
 

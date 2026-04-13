@@ -1,7 +1,36 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
+
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-    public class DeleteConquestTroop
+    [Packet(Id = Method.DeleteConquestTroop)]
+    public class DeleteConquestTroop : BaseMethodHandler<DeleteConquestTroopRequest>
     {
+        public override object Handle(DeleteConquestTroopRequest request)
+        {
+#warning TODO: NOT YET FINISH PLACEHOLDER CODE
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "True",
+            };
+
+            var guild = GetUserGuild();
+
+            if (guild is null)
+            {
+                return response;
+            }
+
+            DatabaseManager.Conquest.DeleteTroop(guild.GuildId, request.slot);
+
+            return response;
+        }
+    }
+
+    public class DeleteConquestTroopRequest
+    {
+        public int slot { get; set; }
     }
 }
 

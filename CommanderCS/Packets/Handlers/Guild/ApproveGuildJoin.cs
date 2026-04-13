@@ -7,9 +7,9 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.ApproveGuildJoin)]
     public class ApproveGuildJoin : BaseMethodHandler<ApproveGuildJoinRequest>
     {
-        public override object Handle(ApproveGuildJoinRequest @params)
+        public override object Handle(ApproveGuildJoinRequest request)
         {
-            ErrorCode code = DatabaseManager.GuildApplication.ApproveGuildJoinRequest(@params.uno);
+            ErrorCode code = DatabaseManager.GuildApplication.ApproveGuildJoinRequest(request.uno);
 
             if (code != ErrorCode.Success)
             {

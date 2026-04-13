@@ -1,17 +1,61 @@
+using CommanderCS.Library;
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.Achievement
 {
     [Packet(Id = Method.CompleteAchievement)]
     public class CompleteAchievement : BaseMethodHandler<CompleteAchievementRequest>
     {
-        public override object Handle(CompleteAchievementRequest @params)
+        public override object Handle(CompleteAchievementRequest request)
         {
+            GameProfileScheme user = GetUserGameProfile();
+
+            user.Achievements ??= [];
+
+            int currentTime = (int)TimeManager.CurrentEpoch;
+
+            List<CompleteAchievementInfo> completedList = [];
+
+            foreach (var achievement in RemoteObjectManager.instance.regulation.achievementDtbl)
+            {
+                string key = $"{achievement.idx}_{achievement.sort}";
+
+                if (user.Achievements.ContainsKey(key) && user.Achievements[key].complete)
+                {
+                    continue;
+                }
+
+                AchievementProgress progress = new()
+                {
+                    sort = achievement.sort,
+                    point = 0,
+                    complete = true,
+                    received = false,
+                    completeTime = currentTime,
+                };
+
+                user.Achievements[key] = progress;
+
+                CompleteAchievementInfo info = new()
+                {
+                    achievementId = achievement.idx,
+                    sort = achievement.sort,
+                    time = currentTime,
+                };
+                completedList.Add(info);
+            }
+
+            DatabaseManager.GameProfile.UpdateAchievements(SessionId, user.Achievements);
+
+            CompleteAchievementInfo[] completeAchievementInfosArray = completedList.ToArray();
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = Array.Empty<CompleteAchievementInfo>(),
+                Result = completeAchievementInfosArray,
             };
 
             return response;

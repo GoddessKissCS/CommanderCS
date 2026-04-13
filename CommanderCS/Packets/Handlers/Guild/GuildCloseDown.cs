@@ -9,7 +9,7 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.GuildCloseDown)]
     public class GuildCloseDown : BaseMethodHandler<GuildCloseDownRequest>
     {
-        public override object Handle(GuildCloseDownRequest @params)
+        public override object Handle(GuildCloseDownRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 

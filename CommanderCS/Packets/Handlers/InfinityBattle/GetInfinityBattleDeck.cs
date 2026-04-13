@@ -8,7 +8,7 @@ namespace CommanderCS.Packets.Handlers.InfinityBattle
     [Packet(Id = Method.GetInfinityBattleDeck)]
     public class GetInfinityBattleDeck : BaseMethodHandler<GetInfinityBattleDeckRequest>
     {
-        public override object Handle(GetInfinityBattleDeckRequest @params)
+        public override object Handle(GetInfinityBattleDeckRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
@@ -24,7 +24,8 @@ namespace CommanderCS.Packets.Handlers.InfinityBattle
 
             if (User.DefenderDeck.InfinityBattleDeck is not null)
             {
-                battleDeckResponse.deck = User.DefenderDeck.InfinityBattleDeck;
+
+                battleDeckResponse.deck = JObject.FromObject(User.DefenderDeck.InfinityBattleDeck);
 
                 response.Result = battleDeckResponse;
 

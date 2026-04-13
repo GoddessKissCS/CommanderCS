@@ -1,7 +1,41 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.MongoDB;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.InfinityBattle
 {
-    public class InfinityBattleStart
+    [Packet(Id = Method.InfinityBattleStart)]
+    public class InfinityBattleStart : BaseMethodHandler<InfinityBattleStartRequest>
     {
+        public override object Handle(InfinityBattleStartRequest request)
+        {
+            var user = GetUserGameProfile();
+
+            Dictionary<string, string> deck = request.deck.ToObject<Dictionary<string, string>>();
+
+            DatabaseManager.GameProfile.UpdateInfinityBattleDeck(SessionId, deck);
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = "success",
+            };
+
+            return response;
+        }
+    }
+
+    public class InfinityBattleStartRequest
+    {
+        [JsonProperty("type")]
+        public int type { get; set; }
+
+        [JsonProperty("ifid")]
+        public int ifid { get; set; }
+
+        [JsonProperty("deck")]
+        public JObject deck { get; set; }
     }
 }
 

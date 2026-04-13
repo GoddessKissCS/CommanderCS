@@ -10,11 +10,11 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.GuildBoardWrite)]
     public class GuildBoardWrite : BaseMethodHandler<GuildBoardWriteRequest>
     {
-        public override object Handle(GuildBoardWriteRequest @params)
+        public override object Handle(GuildBoardWriteRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
-            if (Misc.NameCheck(@params.msg))
+            if (Misc.NameCheck(request.msg))
             {
                 ErrorPacket error = new()
                 {
@@ -31,7 +31,7 @@ namespace CommanderCS.Packets.Handlers.Guild
             {
                 dauth = 0,
                 idx = nextIdx,
-                msg = @params.msg,
+                msg = request.msg,
                 regdt = TimeManager.CurrentEpochMilliseconds,
                 thumb = User.Resources.thumbnailId.ToString(),
                 unm = User.Resources.nickname,

@@ -3,6 +3,13 @@ namespace CommanderCS.Library.Enums
 {
     public enum EItemStatType
     {
-        EQUIPED, ATK, DEF, ACCUR, LUCK, CRITR, CRITDMG, MOB
+        EQUIPED, 
+        ATK, 
+        DEF,
+        ACCUR,
+        LUCK, 
+        CRITR,
+        CRITDMG, 
+        MOB
     }
 }

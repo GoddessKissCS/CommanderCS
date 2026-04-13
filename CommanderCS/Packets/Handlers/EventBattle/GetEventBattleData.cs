@@ -1,7 +1,69 @@
-namespace CommanderCS.Packets.Handlers.Event
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace CommanderCS.Packets.Handlers.EventBattle
 {
-    public class GetEventBattleData
+    [Packet(Id = Method.GetEventBattleData)]
+    public class GetEventBattleData : BaseMethodHandler<GetEventBattleDataRequest>
     {
+        public override object Handle(GetEventBattleDataRequest request)
+        {
+            var eventBattle = RemoteObjectManager.instance.regulation.eventBattleDtbl.Find(x => x.eventIdx == request.eidx.ToString());
+
+            if (eventBattle == null)
+            {
+                return new ResponsePacket
+                {
+                    Id = BasePacket.Id,
+                    Result = JObject.FromObject(new object()),
+                };
+            }
+
+            var stages = RemoteObjectManager.instance.regulation.eventBattleFieldDtbl.FindAll(x => x.eventIdx == request.eidx);
+
+            Dictionary<int, int> clearList = [];
+            foreach (var stage in stages)
+            {
+                clearList[stage.idx] = 0;
+            }
+
+            EventBattleData eventBattleData = new()
+            {
+                eventData = new()
+                {
+                    efid = eventBattle.eventIdx,
+                    esid = "0",
+                    remain = 0,
+                    type = 0,
+                },
+                raidData = new()
+                {
+                    remain = 0,
+                },
+                bossCnt = 0,
+                rewardCnt = 0,
+                rewardCntAll = 0,
+                clearList = clearList,
+            };
+
+            return new ResponsePacket
+            {
+                Id = BasePacket.Id,
+                Result = JObject.FromObject(eventBattleData),
+            };
+        }
+    }
+
+    public class GetEventBattleDataRequest
+    {
+        [JsonProperty("eidx")]
+        public int eidx { get; set; }
+
+        [JsonProperty("level")]
+        public int level { get; set; }
     }
 }
 

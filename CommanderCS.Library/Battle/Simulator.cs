@@ -82,7 +82,7 @@ namespace CommanderCS.Library.Battle
         {
             get
             {
-                if (result is null)
+                if (result == null)
                 {
                     return false;
                 }
@@ -128,179 +128,6 @@ namespace CommanderCS.Library.Battle
         {
         }
 
-        //public static Simulator Create(Shared.Regulation.Regulation rg, BattleData bd)
-        //{
-        //	if (bd is null)
-        //	{
-        //		throw new ArgumentNullException("BattleData");
-        //	}
-        //	if (bd.isReplayMode)
-        //	{
-        //		return Create(rg, bd.record);
-        //	}
-        //	List<string> list = new List<string>();
-        //	List<Troop> list2 = null;
-        //	List<Troop> list3 = null;
-        //	list2 = new List<Troop>();
-        //	for (int i = 0; i < bd.attacker.battleTroopList.Count; i++)
-        //	{
-        //		list2.Add(bd.attacker.battleTroopList[i].ToBattleTroop());
-        //	}
-        //	list3 = new List<Troop>();
-        //	for (int j = 0; j < bd.defender.battleTroopList.Count; j++)
-        //	{
-        //		list3.Add(bd.defender.battleTroopList[j].ToBattleTroop());
-        //	}
-        //	if (bd.rewardItems is not null)
-        //	{
-        //		bd.rewardItems.RemoveAll((Protocols.RewardInfo.RewardData row) => row.rewardType == ERewardType.Favor);
-        //		Protocols.RewardInfo.RewardData rewardData = bd.rewardItems.Find((Protocols.RewardInfo.RewardData row) => row.rewardType == ERewardType.Goods && row.rewardId == "4");
-        //		if (rewardData is not null)
-        //		{
-        //			bd.rewardItems.Remove(rewardData);
-        //		}
-        //		if (bd.rewardItems.Count > 0)
-        //		{
-        //			int count = bd.rewardItems.Count;
-        //			int count2 = list3.Count;
-        //			int num = 0;
-        //			for (int k = 1; k <= count2; k++)
-        //			{
-        //				num += k;
-        //			}
-        //			int num2 = 0;
-        //			for (int l = 0; l < list3.Count; l++)
-        //			{
-        //				Troop troop = list3[l];
-        //				int num3 = 0;
-        //				if (l == list3.Count - 1)
-        //				{
-        //					num3 = count - num2;
-        //				}
-        //				else
-        //				{
-        //					int num4 = (l + 1) * 100 / num;
-        //					int num5 = count * num4 / 100;
-        //					num3 = num5;
-        //				}
-        //				if (num3 > 0)
-        //				{
-        //					num2 += num3;
-        //					List<Troop.Slot> list4 = troop._slots.FindAll((Troop.Slot x) => x is not null && !string.IsNullOrEmpty(x.id));
-        //					for (int m = 0; m < num3; m++)
-        //					{
-        //						int index = UnityEngine.Random.Range(0, list4.Count);
-        //						list4[index].dropItemCnt++;
-        //					}
-        //				}
-        //			}
-        //		}
-        //	}
-        //	int randomSeed = new System.Random().Next();
-        //	InitState initState = InitState.Create(bd.type, list2, list3, list, randomSeed);
-        //	initState._stageId = bd.stageId;
-        //	List<GuildSkillState> list5 = null;
-        //	RoLocalUser localUser = RemoteObjectManager.instance.localUser;
-        //	if (localUser.IsExistGuild() && localUser.guildInfo.idx != 0 && localUser.guildSkillList is not null)
-        //	{
-        //		list5 = new List<GuildSkillState>();
-        //		for (int n = 0; n < localUser.guildSkillList.Count; n++)
-        //		{
-        //			GuildSkillState guildSkillState = localUser.guildSkillList[n].ToBattleGuildSkillData();
-        //			if (guildSkillState is not null && guildSkillState._skillLevel > 0)
-        //			{
-        //				list5.Add(guildSkillState);
-        //			}
-        //		}
-        //	}
-        //	initState._guildSkills = list5;
-        //	List<string> list6 = null;
-        //	if (localUser.completeRewardGroupList is not null)
-        //	{
-        //		list6 = new List<string>();
-        //		for (int num6 = 0; num6 < localUser.completeRewardGroupList.Count; num6++)
-        //		{
-        //			list6.Add(localUser.completeRewardGroupList[num6].ToString());
-        //		}
-        //	}
-        //	initState._groupBuffs = list6;
-        //	if (bd.type == EBattleType.Guerrilla)
-        //	{
-        //		initState._stageId = $"{bd.sweepType}_{bd.sweepLevel}";
-        //	}
-        //	else if (bd.type == EBattleType.Raid)
-        //	{
-        //		initState._raidData = bd.raidData.ToBattleRaidData();
-        //	}
-        //	else if (bd.type == EBattleType.EventBattle)
-        //	{
-        //		initState._stageId = $"{bd.eventId}_{bd.eventLevel}";
-        //	}
-        //	else if (bd.type == EBattleType.EventRaid)
-        //	{
-        //		initState._stageId = $"{bd.eventId}_{bd.eventRaidIdx}";
-        //	}
-        //	else if (bd.type == EBattleType.Duel || bd.type == EBattleType.WaveDuel || bd.type == EBattleType.WorldDuel || bd.type == EBattleType.Conquest)
-        //	{
-        //		initState._dualData = new DualData();
-        //		initState._dualData._playerName = bd.attacker.nickname;
-        //		initState._dualData._playerLevel = bd.attacker.level;
-        //		initState._dualData._playerGuildName = bd.attacker.guildName;
-        //		initState._dualData._enemyName = bd.defender.nickname;
-        //		initState._dualData._enemyLevel = bd.defender.level;
-        //		initState._dualData._enemyRank = bd.defender.duelRanking;
-        //		initState._dualData._enemyGuildName = bd.defender.guildName;
-        //		initState._dualData._enemyUno = bd.defender.uno;
-        //		if (bd.defender.guildSkillList is not null)
-        //		{
-        //			List<GuildSkillState> list7 = new List<GuildSkillState>();
-        //			for (int num7 = 0; num7 < bd.defender.guildSkillList.Count; num7++)
-        //			{
-        //				if (bd.defender.guildSkillList[num7].skillLevel > 0)
-        //				{
-        //					list7.Add(bd.defender.guildSkillList[num7].ToBattleGuildSkillData());
-        //				}
-        //			}
-        //			initState._dualData._enemyGuildSkills = list7;
-        //		}
-        //		List<string> list8 = null;
-        //		if (bd.defender.completeRewardGroupList is not null)
-        //		{
-        //			list8 = new List<string>();
-        //			for (int num8 = 0; num8 < bd.defender.completeRewardGroupList.Count; num8++)
-        //			{
-        //				list8.Add(bd.defender.completeRewardGroupList[num8].ToString());
-        //			}
-        //		}
-        //		initState._dualData._enemyGroupBuffs = list8;
-        //		if (bd.type == EBattleType.WorldDuel)
-        //		{
-        //			initState._dualData._worldDuelData = new WorldDuelData();
-        //			initState._dualData._worldDuelData._playerWorld = bd.attacker.world;
-        //			initState._dualData._worldDuelData._playerBuffs = bd.attacker.GetBuffIdxList();
-        //			initState._dualData._worldDuelData._enemyWorld = bd.defender.world;
-        //			initState._dualData._worldDuelData._enemyBuffs = bd.defender.GetBuffIdxList();
-        //		}
-        //	}
-        //	return Create(rg, initState);
-        //}
-
-        //public static Simulator Create(Shared.Regulation.Regulation rg, InitState initState)
-        //{
-        //	if (initState is null)
-        //	{
-        //		throw new ArgumentNullException("initState");
-        //	}
-        //	Record record = new Record();
-        //	record._simulatorVersion = 1000000;
-        //	record._regulationVersion = rg.version;
-        //	record._initState = initState;
-        //	record._lhsInputMap = new Dictionary<int, Input>();
-        //	record._rhsInputMap = new Dictionary<int, Input>();
-        //	record._frames = new List<Frame>();
-        //	return Create(rg, record);
-        //}
-
         public static Simulator Create(Regulation.Regulation rg, Record record)
         {
             if (rg is null)
@@ -334,7 +161,7 @@ namespace CommanderCS.Library.Battle
                 turnLimit = Option.Default.turnLimit,
                 winSideByTimeOut = Option.Default.winSideByTimeOut,
                 canSelectTarget = Option.Default.canSelectTarget,
-                canEnemyUnitCtl = Option.Default.canEnemyUnitCtl,
+                canEnemyUnitCtl = record.option.canEnemyUnitCtl,
                 immediatelyUseActiveSkill = Option.Default.immediatelyUseActiveSkill,
                 canInterfereSkill = Option.Default.canInterfereSkill,
                 waitingInputMode = Option.Default.waitingInputMode,
@@ -466,6 +293,479 @@ namespace CommanderCS.Library.Battle
             return simulator;
         }
 
+        public static Simulator CreateWithCustomOptions(Regulation.Regulation rg, Record record)
+        {
+            if (rg is null)
+            {
+                throw new ArgumentNullException("rg");
+            }
+            if (record is null)
+            {
+                throw new ArgumentNullException("record");
+            }
+            if (1000000 < record.simulatorVersion)
+            {
+                string message = "Simulator is outdated.";
+                throw new InvalidOperationException(message);
+            }
+            Simulator simulator = new()
+            {
+                regulation = rg,
+                record = Record.Copy(record),
+                _unitUpdater = new _UnitUpdater(),
+                _skillUpdater = new _SkillUpdater(),
+                _projectileUpdater = new _ProjectileUpdater(),
+                _timeLineUpdater = new _TimeLineUpdater(),
+                _statusCleaner = new _StatusEffectCleaner(),
+            };
+
+            simulator.record._option = record._option;
+
+            switch (simulator.initState.battleType)
+            {
+                case EBattleType.Plunder:
+                    int num = rg.worldMapStageDtbl.FindIndex(record.initState.stageID);
+                    if (num >= 0)
+                    {
+                        WorldMapStageDataRow worldMapStageDataRow = rg.worldMapStageDtbl[num];
+                        simulator.record._option.timeLimit = -1;
+                        simulator.record._option.turnLimit = worldMapStageDataRow.turn3;
+                    }
+                    break;
+
+                case EBattleType.Duel:
+                case EBattleType.WorldDuel:
+                case EBattleType.Conquest:
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = RemoteObjectManager.DefineDataTable.ARENA_END_TURN;
+                    break;
+
+                case EBattleType.WaveDuel:
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = RemoteObjectManager.DefineDataTable.ARENA_3WAVE_END_TURN;
+                    break;
+
+                case EBattleType.Guerrilla:
+                    SweepDataRow sweepDataRow = rg.sweepDtbl[simulator.initState.stageID];
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = sweepDataRow.endTurn;
+                    break;
+
+                case EBattleType.Annihilation:
+                    AnnihilateBattleDataRow annihilateBattleDataRow = rg.annihilateBattleDtbl[simulator.initState.stageID];
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = annihilateBattleDataRow.endTurn;
+                    break;
+
+                case EBattleType.ScenarioBattle:
+                    ScenarioBattleDataRow scenarioBattleDataRow = rg.scenarioBattleDtbl[record.initState.stageID];
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = scenarioBattleDataRow.turn3;
+                    break;
+
+                case EBattleType.WaveBattle:
+                    WaveBattleDataRow waveBattleDataRow = rg.FindWaveBattleData(int.Parse(record.initState.stageID));
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = waveBattleDataRow.endTurn;
+                    break;
+
+                case EBattleType.CooperateBattle:
+                    CooperateBattleDataRow cooperateBattleDataRow = rg.cooperateBattleDtbl[record.initState.stageID];
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = cooperateBattleDataRow.endTurn;
+                    break;
+
+                case EBattleType.EventBattle:
+                    EventBattleFieldDataRow eventBattleFieldDataRow = rg.eventBattleFieldDtbl[record.initState.stageID];
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = eventBattleFieldDataRow.endTurn;
+                    break;
+
+                case EBattleType.EventRaid:
+                    EventRaidDataRow eventRaidDataRow = rg.eventRaidDtbl[record.initState.stageID];
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = eventRaidDataRow.endTurn;
+                    break;
+
+                case EBattleType.InfinityBattle:
+                    InfinityFieldDataRow infinityFieldDataRow = rg.infinityFieldDtbl[record.initState.stageID];
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = infinityFieldDataRow.endTurn;
+                    break;
+
+                case EBattleType.Raid:
+                    int endPhase = 0;
+                    rg.raidDtbl.FindAll(delegate (RaidDataRow x)
+                    {
+                        if (x.key == record.initState.raidData.raidId)
+                        {
+                            if (x.phase >= endPhase)
+                            {
+                                endPhase = x.phase;
+                            }
+                            return true;
+                        }
+                        return false;
+                    });
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = endPhase;
+                    break;
+            }
+
+            if (simulator.record.frames.Count == 0)
+            {
+                Frame item = simulator._CreateInitFrame();
+                simulator.record._frames.Add(item);
+                if (simulator.record._length < 1)
+                {
+                    simulator.record._length = 1;
+                }
+                else
+                {
+                    simulator.isReplayMode = true;
+                }
+            }
+            else
+            {
+                simulator.isReplayMode = true;
+            }
+
+            simulator.frameNum = 0;
+            simulator.isLhsAnnihilated = false;
+            simulator.isRhsAnnihilated = false;
+            simulator.isWaitingNextTurn = true;
+            simulator.ableAuto = false;
+            simulator.mission = new ClearMission();
+            simulator.mission.Init(simulator);
+            return simulator;
+        }
+
+        public static Simulator CreateWithReplayMode(Regulation.Regulation rg, Record record)
+        {
+            if (rg is null)
+            {
+                throw new ArgumentNullException("rg");
+            }
+            if (record is null)
+            {
+                throw new ArgumentNullException("record");
+            }
+            if (1000000 < record.simulatorVersion)
+            {
+                string message = "Simulator is outdated.";
+                throw new InvalidOperationException(message);
+            }
+
+            Simulator simulator = new()
+            {
+                regulation = rg,
+                record = Record.Copy(record),
+                _unitUpdater = new _UnitUpdater(),
+                _skillUpdater = new _SkillUpdater(),
+                _projectileUpdater = new _ProjectileUpdater(),
+                _timeLineUpdater = new _TimeLineUpdater(),
+                _statusCleaner = new _StatusEffectCleaner(),
+                isReplayMode = true,
+            };
+
+            switch (simulator.initState.battleType)
+            {
+                case EBattleType.Plunder:
+                    int num = rg.worldMapStageDtbl.FindIndex(record.initState.stageID);
+                    if (num >= 0)
+                    {
+                        WorldMapStageDataRow worldMapStageDataRow = rg.worldMapStageDtbl[num];
+                        simulator.record._option.timeLimit = -1;
+                        simulator.record._option.turnLimit = worldMapStageDataRow.turn3;
+                    }
+                    break;
+
+                case EBattleType.Duel:
+                case EBattleType.WorldDuel:
+                case EBattleType.Conquest:
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = RemoteObjectManager.DefineDataTable.ARENA_END_TURN;
+                    break;
+
+                case EBattleType.WaveDuel:
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = RemoteObjectManager.DefineDataTable.ARENA_3WAVE_END_TURN;
+                    break;
+
+                case EBattleType.Guerrilla:
+                    SweepDataRow sweepDataRow = rg.sweepDtbl[simulator.initState.stageID];
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = sweepDataRow.endTurn;
+                    break;
+
+                case EBattleType.Annihilation:
+                    AnnihilateBattleDataRow annihilateBattleDataRow = rg.annihilateBattleDtbl[simulator.initState.stageID];
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = annihilateBattleDataRow.endTurn;
+                    break;
+
+                case EBattleType.ScenarioBattle:
+                    ScenarioBattleDataRow scenarioBattleDataRow = rg.scenarioBattleDtbl[record.initState.stageID];
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = scenarioBattleDataRow.turn3;
+                    break;
+
+                case EBattleType.WaveBattle:
+                    WaveBattleDataRow waveBattleDataRow = rg.FindWaveBattleData(int.Parse(record.initState.stageID));
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = waveBattleDataRow.endTurn;
+                    break;
+
+                case EBattleType.CooperateBattle:
+                    CooperateBattleDataRow cooperateBattleDataRow = rg.cooperateBattleDtbl[record.initState.stageID];
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = cooperateBattleDataRow.endTurn;
+                    break;
+
+                case EBattleType.EventBattle:
+                    EventBattleFieldDataRow eventBattleFieldDataRow = rg.eventBattleFieldDtbl[record.initState.stageID];
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = eventBattleFieldDataRow.endTurn;
+                    break;
+
+                case EBattleType.EventRaid:
+                    EventRaidDataRow eventRaidDataRow = rg.eventRaidDtbl[record.initState.stageID];
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = eventRaidDataRow.endTurn;
+                    break;
+
+                case EBattleType.InfinityBattle:
+                    InfinityFieldDataRow infinityFieldDataRow = rg.infinityFieldDtbl[record.initState.stageID];
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = infinityFieldDataRow.endTurn;
+                    break;
+
+                case EBattleType.Raid:
+                    int endPhase = 0;
+                    rg.raidDtbl.FindAll(delegate (RaidDataRow x)
+                    {
+                        if (x.key == record.initState.raidData.raidId)
+                        {
+                            if (x.phase >= endPhase)
+                            {
+                                endPhase = x.phase;
+                            }
+                            return true;
+                        }
+                        return false;
+                    });
+                    simulator.record._option.timeLimit = -1;
+                    simulator.record._option.turnLimit = endPhase;
+                    break;
+            }
+
+            if (simulator.record.frames.Count == 0)
+            {
+                Frame frame = simulator._CreateInitFrame();
+                simulator.record._frames.Add(frame);
+                if (simulator.record._length < 1)
+                {
+                    simulator.record._length = 1;
+                }
+                else
+                {
+                    simulator.isReplayMode = true;
+                }
+            }
+            else
+            {
+                simulator.isReplayMode = true;
+            }
+            simulator.frameNum = 0;
+            simulator.isLhsAnnihilated = false;
+            simulator.isRhsAnnihilated = false;
+            simulator.isWaitingNextTurn = true;
+            simulator.ableAuto = false;
+            simulator.mission = new ClearMission();
+            simulator.mission.Init(simulator);
+            return simulator;
+        }
+
+        public static Simulator BattleSimulation(Regulation.Regulation rg, Record recordedBattle, InitState recordInitState)
+        {
+
+            if (recordInitState.lhsTroops == null || recordInitState.lhsTroops.Count == 0)
+            {
+                throw new ArgumentException("lhsTroops must not be empty.");
+            }
+
+            if (recordInitState.rhsTroops == null || recordInitState.rhsTroops.Count == 0)
+            {
+                throw new ArgumentException("rhsTroops must not be empty.");
+            }
+
+            int randomSeed = 0;
+
+            if (recordInitState.randomSeed == -1)
+            {
+                randomSeed = new System.Random().Next();
+            }
+
+            InitState initState = InitState.Create(recordInitState.battleType, recordInitState.leftTroops, recordInitState.rightTroops, recordInitState.battleItemDrks, recordInitState.randomSeed);
+            initState._stageId = recordInitState.stageID;
+            initState._guildSkills = recordInitState.guildSkills;
+            initState._groupBuffs = recordInitState.groupBuffs;
+            initState._battleType = (int)recordInitState.battleType;
+
+
+            if (recordInitState.waveBattleData != null)
+            {
+                initState._waveBattleData = recordInitState.waveBattleData;
+            }
+
+            Record record = new()
+            {
+                _simulatorVersion = Simulator.Version,
+                _regulationVersion = recordedBattle.regulationVersion,
+                _initState = initState,
+                _option = new()
+                {
+                    canEnemyUnitCtl = true,
+                    playMode = Option.PlayMode.Default,
+                    timeLimit = 900000,
+                    turnLimit = -1,
+                    winSideByTimeOut = 1,
+                    canSelectTarget = false,
+                    immediatelyUseActiveSkill = true,
+                    canInterfereSkill = false,
+                    waitingInputMode = false,
+                    enableEffect = true,
+                    canLhsCutIn = true,
+                    canRhsCutIn = false,
+                    enableLhsFireAction = true,
+                    enableRhsFireAction = false,
+                    enableFatalCut = true,
+                    delayTurnChangeTime = 1200
+                },
+                _lhsInputMap = [],
+                _rhsInputMap = [],
+                _frames = [],
+                _length = 0,
+            };
+
+            Simulator simulator = Simulator.CreateWithCustomOptions(rg, record);
+
+            Input lhsInput = null;
+            Input rhsInput = null;
+
+            while (!simulator.isEnded)
+            {
+                lhsInput = FindBestInput(simulator, simulator.frame.lhsTroopStartIndex);
+                rhsInput = FindBestInput(simulator, simulator.frame.rhsTroopStartIndex);
+
+                simulator.Step(lhsInput, rhsInput);
+            }
+
+            return simulator;
+        }
+        public static Simulator BattleReplay(Regulation.Regulation rg, Record recordedBattle)
+        {
+            if (recordedBattle._initState == null)
+            {
+                throw new ArgumentException("Record must contain an init state.");
+            }
+
+            if (recordedBattle._lhsInputMap == null || recordedBattle._rhsInputMap == null)
+            {
+                throw new ArgumentException("Record must contain input maps for replay.");
+            }
+
+            // Keep the existing input maps intact so the simulator enters replay mode
+            Simulator simulator = Simulator.CreateWithReplayMode(rg, recordedBattle);
+
+            // In replay mode, Step() reads inputs from the record's input maps
+            while (!simulator.isEnded)
+            {
+                simulator.Step(null, null);
+            }
+
+            return simulator;
+        }
+        public static Simulator BattleResimulate(Regulation.Regulation rg, Record recordedBattle)
+        {
+            if (recordedBattle._initState == null)
+            {
+                throw new ArgumentException("Record must contain an init state.");
+            }
+
+            // Clear existing inputs so the simulator does NOT enter replay mode
+            recordedBattle._lhsInputMap.Clear();
+            recordedBattle._rhsInputMap.Clear();
+            recordedBattle._length = 0;
+
+            Simulator simulator = Simulator.CreateWithCustomOptions(rg, recordedBattle);
+
+            Input lhsInput = null;
+            Input rhsInput = null;
+
+            while (!simulator.isEnded)
+            {
+                lhsInput = FindBestInput(simulator, simulator.frame.lhsTroopStartIndex);
+                rhsInput = FindBestInput(simulator, simulator.frame.rhsTroopStartIndex);
+
+                simulator.Step(lhsInput, rhsInput);
+            }
+
+            return simulator;
+        }
+        private static Input FindBestInput(Simulator simulator, int troopStartIndex)
+        {
+            if (troopStartIndex < 0 || troopStartIndex >= simulator.frame.units.Count)
+            {
+                return null;
+            }
+
+            for (int i = 0; i < 9; i++)
+            {
+                int unitIdx = troopStartIndex + i;
+                if (unitIdx >= simulator.frame.units.Count)
+                {
+                    break;
+                }
+
+                Unit unit = simulator.frame.units[unitIdx];
+
+                if (unit == null)
+                {
+                    continue;
+                }
+
+                if (!simulator.CanUnitControl(unit))
+                {
+                    continue;
+                }
+
+                if (!unit.hasActiveSkill)
+                {
+                    continue;
+                }
+
+                if (!simulator.frame.CanUseSkill(simulator.option))
+                {
+                    continue;
+                }
+
+                if (!simulator.CanSkillAction(unit, unit._activeSkillIdx))
+                {
+                    continue;
+                }
+
+                int target = simulator.frame.FindSkillTarget(simulator.regulation, unit._unitIdx, unit._activeSkillIdx);
+
+                if (target >= 0)
+                {
+                    Input input = new(unit._unitIdx, unit._activeSkillIdx, -1);
+                    return input;
+                }
+            }
+
+            return null;
+        }
         public static bool HasTimeEvent(int eventTime, int elapsedTime)
         {
             int num = elapsedTime - 66;
@@ -1650,10 +1950,10 @@ namespace CommanderCS.Library.Battle
                     frame._isWaitingNextTurn = false;
                     frame._isWaitingInput = true;
                     Unit unit = frame.units[frame._turnUnitIndex];
-                    if (unit is not null)
+                    if (unit != null)
                     {
                         Skill skill = unit._skills[0];
-                        if (skill is not null)
+                        if (skill != null)
                         {
                             SkillDataRow skillDataRow = regulation.skillDtbl[skill.dri];
                             skill._sp = skillDataRow.maxSp;
@@ -1973,7 +2273,7 @@ namespace CommanderCS.Library.Battle
                         for (int n = 1; n < 4; n++)
                         {
                             Skill skill4 = unit.skills[n];
-                            if (skill4 is not null)
+                            if (skill4 != null)
                             {
                                 Troop.Slot.Skill skill5 = new()
                                 {
@@ -1989,7 +2289,7 @@ namespace CommanderCS.Library.Battle
                         slot.statsDefense = unit.statsDefense;
                     }
                     troop._slots[j - lhsTroopStartIndex] = slot;
-                    if (slot is not null)
+                    if (slot != null)
                     {
                         troop._statsAttack += slot.statsAttack;
                         troop._statsHealing += slot.statsHealing;
@@ -2590,7 +2890,7 @@ namespace CommanderCS.Library.Battle
                             int num = simulator.frame.FindSkillTarget(simulator.regulation, unit._unitIdx, unit._activeSkillIdx);
                             if (num >= 0)
                             {
-                                lhsInput = new Input(unit._unitIdx, unit._activeSkillIdx, -1);
+                                rhsInput = new Input(unit._unitIdx, unit._activeSkillIdx, -1);
                             }
                         }
                     }
@@ -2704,12 +3004,12 @@ namespace CommanderCS.Library.Battle
                     for (int i = 0; i < 9; i++)
                     {
                         Unit unit = simulator.frame.units[rhsTroopStartIndex + i];
-                        if (unit is not null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
+                        if (unit != null && simulator.CanUnitControl(unit) && unit.hasActiveSkill && simulator.frame.CanUseSkill(simulator.option) && simulator.CanSkillAction(unit, unit._activeSkillIdx))
                         {
                             int num = simulator.frame.FindSkillTarget(simulator.regulation, unit._unitIdx, unit._activeSkillIdx);
                             if (num >= 0)
                             {
-                                lhsInput = new Input(unit._unitIdx, unit._activeSkillIdx, -1);
+                                rhsInput = new Input(unit._unitIdx, unit._activeSkillIdx, -1);
                             }
                         }
                     }

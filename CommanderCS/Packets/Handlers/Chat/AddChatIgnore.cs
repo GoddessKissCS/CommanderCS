@@ -8,14 +8,14 @@ namespace CommanderCS.Packets.Handlers.Chat
     [Packet(Id = Method.AddChatIgnore)]
     public class AddChatIgnore : BaseMethodHandler<AddChatIgnoreRequest>
     {
-        public override object Handle(AddChatIgnoreRequest @params)
+        public override object Handle(AddChatIgnoreRequest request)
         {
             BlockUser blockUser = new()
             {
-                channel = @params.channel,
-                nickName = @params.nickname,
-                thumbnail = @params.thumbnail,
-                uno = @params.uno,
+                channel = request.channel,
+                nickName = request.nickname,
+                thumbnail = request.thumbnail,
+                uno = request.uno,
             };
 
             DatabaseManager.GameProfile.AddBlockedUser(SessionId, blockUser);

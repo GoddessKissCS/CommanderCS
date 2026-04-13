@@ -1,7 +1,107 @@
+using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+using CommanderCS.MongoDB.Schemes;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.Commander
 {
-    public class RecieveCommanderScenarioReward
+    [Packet(Id = CommanderCS.Library.Enums.Method.RecieveCommanderScenarioReward)]
+    public class RecieveCommanderScenarioReward : BaseMethodHandler<RecieveCommanderScenarioRewardRequest>
     {
+        public override object Handle(RecieveCommanderScenarioRewardRequest request)
+        {
+            GameProfileScheme user = GetUserGameProfile();
+
+            var resource = UserResources2Resource(user.Resources);
+
+            string cid = request.cid.ToString();
+            string sid = request.sid.ToString();
+
+            var rewardData = RemoteObjectManager.instance.regulation.commanderScenarioRewardDtbl.Find(x => x.csid == request.sid && x.cid == cid);
+
+            List<RewardInfo.RewardData> rewards = [];
+
+            if (rewardData != null)
+            {
+                RewardInfo.RewardData reward = new()
+                {
+                    effect = 0,
+                    rewardCnt = rewardData.rewardCount,
+                    rewardId = rewardData.rewardIdx.ToString(),
+                    rewardType = rewardData.rewardType
+                };
+                rewards.Add(reward);
+
+                if (rewardData.rewardType == ERewardType.Costume)
+                {
+                    if (user.CommanderData.ContainsKey(cid))
+                    {
+                        if (!user.CommanderData[cid].haveCostume.Contains(rewardData.rewardIdx))
+                        {
+                            user.CommanderData[cid].haveCostume.Add(rewardData.rewardIdx);
+                        }
+                    }
+                    else if (!user.Inventory.donHaveCommCostumeData.ContainsKey(cid))
+                    {
+                        user.Inventory.donHaveCommCostumeData.Add(cid, [rewardData.rewardIdx]);
+                    }
+                    else if (!user.Inventory.donHaveCommCostumeData[cid].Contains(rewardData.rewardIdx))
+                    {
+                        user.Inventory.donHaveCommCostumeData[cid].Add(rewardData.rewardIdx);
+                    }
+
+                    DatabaseManager.GameProfile.UpdateCommanderData(SessionId, user.CommanderData);
+                    DatabaseManager.GameProfile.UpdateDontHaveCommanderCostumeData(SessionId, user.Inventory.donHaveCommCostumeData);
+                }
+                else if (rewardData.rewardType == ERewardType.Goods)
+                {
+                    DatabaseManager.GameProfile.UpdateGoldAndCash(SessionId, 0, rewardData.rewardCount, true);
+                    user.Resources.cash += rewardData.rewardCount;
+                }
+            }
+
+            if (user.CommanderScenario.ContainsKey(cid)
+                && user.CommanderScenario[cid].ContainsKey(sid))
+            {
+                user.CommanderScenario[cid][sid].receive = 1;
+                DatabaseManager.GameProfile.UpdateCommanderScenario(SessionId, user.CommanderScenario);
+            }
+
+            var updatedResource = UserResources2Resource(user.Resources);
+
+            RecieveScenarioReward result = new()
+            {
+                reward = rewards,
+                resource = updatedResource,
+                commander = user.CommanderData,
+                partData = user.Inventory.partData,
+                medalData = user.Inventory.medalData,
+                eventResourceData = user.Inventory.eventResourceData,
+                itemData = user.Inventory.itemData,
+                foodData = user.Inventory.foodData,
+                costumeData = [],
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = JObject.FromObject(result),
+            };
+
+            return response;
+        }
+    }
+
+    public class RecieveCommanderScenarioRewardRequest
+    {
+        [JsonProperty("cid")]
+        public int cid { get; set; }
+
+        [JsonProperty("sid")]
+        public int sid { get; set; }
     }
 }
 

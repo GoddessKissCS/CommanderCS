@@ -80,14 +80,14 @@ namespace CommanderCS.MongoDB.Handlers
 
             try
             {
-                if (devicechange is null)
+                if (devicechange == null)
                 {
                     var device = DatabaseManager.DeviceCode.Insert(account.MemberId);
 
                     return device.Code;
                 }
             }
-            catch (Exception _)
+            catch (Exception)
             {
                 return "Contact Admin";
             }

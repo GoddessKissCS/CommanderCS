@@ -1,7 +1,51 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+
 namespace CommanderCS.Packets.Handlers.Conquest
 {
-    public class SetConquestMoveTroop
+    [Packet(Id = Method.SetConquestMoveTroop)]
+    public class SetConquestMoveTroop : BaseMethodHandler<SetConquestMoveTroopRequest>
     {
+        public override object Handle(SetConquestMoveTroopRequest request)
+        {
+#warning TODO: NOT YET FINISH PLACEHOLDER CODE
+            var guild = GetUserGuild();
+
+            if (guild is not null)
+            {
+                DatabaseManager.Conquest.UpdateTroopPosition(
+                    guild.GuildId,
+                    request.slot,
+                    request.dest,
+                    [],
+                    0,
+                    request.ucash);
+            }
+
+            MoveConquestTroop moveData = new()
+            {
+                path = [],
+                distance = 0,
+                ucash = request.ucash,
+                rsoc = null,
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = moveData,
+            };
+
+            return response;
+        }
+    }
+
+    public class SetConquestMoveTroopRequest
+    {
+        public int dest { get; set; }
+        public int slot { get; set; }
+        public int ucash { get; set; }
     }
 }
 

@@ -1,4 +1,3 @@
-using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.Bank
@@ -6,7 +5,7 @@ namespace CommanderCS.Packets.Handlers.Bank
     [Packet(Id = CommanderCS.Library.Enums.Method.GetBankReward)]
     public class GetBankReward : BaseMethodHandler<GetBankRewardRequest>
     {
-        public override object Handle(GetBankRewardRequest @params)
+        public override object Handle(GetBankRewardRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 

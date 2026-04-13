@@ -1,4 +1,6 @@
 using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
 using Newtonsoft.Json;
 
 namespace CommanderCS.Packets.Handlers.Mail
@@ -6,12 +8,38 @@ namespace CommanderCS.Packets.Handlers.Mail
     [Packet(Id = Method.GetReward)]
     public class GetReward : BaseMethodHandler<GetRewardRequest>
     {
-        public override object Handle(GetRewardRequest @params)
+        public override object Handle(GetRewardRequest request)
         {
+            var user = GetUserGameProfile();
+
+            var mail = user.MailDataList?.FirstOrDefault(m => m.idx == request.idx);
+
+            if (mail?.reward == null || mail.reward.Count == 0)
+            {
+                ResponsePacket errorResponse = new()
+                {
+                    Id = BasePacket.Id,
+                    Result = null,
+                };
+
+                return errorResponse;
+            }
+
+            // Mark mail as received (keeps it in the DB but hides from player's mail list)
+            DatabaseManager.GameProfile.MarkMailReceived(SessionId, request.idx);
+
+            var rsoc = UserResources2Resource(user.Resources);
+
+            RewardInfo rewardInfo = new()
+            {
+                reward = mail.reward,
+                resource = rsoc,
+            };
+
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = null,
+                Result = rewardInfo,
             };
 
             return response;

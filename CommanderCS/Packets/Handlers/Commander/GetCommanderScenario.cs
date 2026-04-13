@@ -1,4 +1,6 @@
-﻿using CommanderCS.Library.Enums;
+﻿using CommanderCS.Library;
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
 using CommanderCS.MongoDB;
 using CommanderCS.MongoDB.Schemes;
 
@@ -7,7 +9,7 @@ namespace CommanderCS.Packets.Handlers.Commander
     [Packet(Id = Method.GetCommanderScenario)]
     public class GetCommanderScenario : BaseMethodHandler<GetCommanderScenarioRequest>
     {
-        public override object Handle(GetCommanderScenarioRequest @params)
+        public override object Handle(GetCommanderScenarioRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 

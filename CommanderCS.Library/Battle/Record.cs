@@ -32,6 +32,8 @@ namespace CommanderCS.Library.Battle
 
         [JsonIgnore]
         internal Result _result;
+        public Dictionary<int, Input> rightSideMap => _rhsInputMap;
+        public Dictionary<int, Input> leftSideMap => _lhsInputMap;
 
         public int simulatorVersion => _simulatorVersion;
 
@@ -82,6 +84,31 @@ namespace CommanderCS.Library.Battle
                 _lhsInputMap = [],
                 _rhsInputMap = [],
                 _frames = [],
+                _length = src._length,
+                _result = null,
+            };
+            foreach (KeyValuePair<int, Input> item in src._lhsInputMap)
+            {
+                record._lhsInputMap.Add(item.Key, Input.Copy(item.Value));
+            }
+            foreach (KeyValuePair<int, Input> item2 in src._rhsInputMap)
+            {
+                record._rhsInputMap.Add(item2.Key, Input.Copy(item2.Value));
+            }
+            return record;
+        }
+
+        public static Record Copy1(Record src)
+        {
+            Record record = new()
+            {
+                _simulatorVersion = src._simulatorVersion,
+                _regulationVersion = src._regulationVersion,
+                _option = src._option,
+                _initState = InitState.Copy(src._initState),
+                _lhsInputMap = [],
+                _rhsInputMap = [],
+                _frames = src._frames,
                 _length = src._length,
                 _result = null,
             };

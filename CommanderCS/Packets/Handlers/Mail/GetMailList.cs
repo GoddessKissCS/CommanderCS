@@ -1,22 +1,24 @@
 using CommanderCS.Library.Enums;
 using CommanderCS.Library.Protocols;
-using CommanderCS.MongoDB;
-using CommanderCS.MongoDB.Schemes;
 
 namespace CommanderCS.Packets.Handlers.Mail
 {
     [Packet(Id = Method.GetMailList)]
     public class GetMailList : BaseMethodHandler<GetMailListRequest>
     {
-        public override object Handle(GetMailListRequest @params)
+        public override object Handle(GetMailListRequest request)
         {
-            GameProfileScheme User = GetUserGameProfile();
+            var user = GetUserGameProfile();
 
-            MailInfo mailInfo = new() { };
+            // Only send mails that haven't been received yet to the player
+            var unreceivedMail = user.MailDataList?
+                .Where(m => m.__receive != "1")
+                .ToList();
 
-            var MailDataNotReceived = User.MailDataList.ToList();
-
-            mailInfo.mailList = MailDataNotReceived;
+            MailInfo mailInfo = new()
+            {
+                mailList = unreceivedMail,
+            };
 
             ResponsePacket response = new()
             {

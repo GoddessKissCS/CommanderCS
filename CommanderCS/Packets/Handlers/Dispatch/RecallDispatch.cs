@@ -10,7 +10,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
     [Packet(Id = Method.RecallDispatch)]
     public class RecallDispatch : BaseMethodHandler<RecallDispatchRequest>
     {
-        public override object Handle(RecallDispatchRequest @params)
+        public override object Handle(RecallDispatchRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
 
@@ -20,7 +20,7 @@ namespace CommanderCS.Packets.Handlers.Dispatch
 
             if (User.DispatchedCommanders is not null)
             {
-                string slot = @params.slot.ToString();
+                string slot = request.slot.ToString();
 
                 User.DispatchedCommanders.TryGetValue(slot, out var dispatchedCommanderInfo);
 
@@ -41,6 +41,11 @@ namespace CommanderCS.Packets.Handlers.Dispatch
                     {
                         engageGold = engageCount * (int)(GetdispatchFloatGold(commander.__level, commander.__cls, commander.__rank) * 10f);
                     }
+                }
+
+                if(User.Resources.vipLevel >= 4)
+                {
+                    runetimeGold = runetimeGold * 2;
                 }
 
                 RecallCommander.runtime = dispatchTime;

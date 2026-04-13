@@ -4,6 +4,7 @@ namespace CommanderCS.Library.Protocols
 {
     public class ResourceRecharge
     {
+
         [JsonProperty("bult")]
         public RechargeData bulletData { get; set; }
 

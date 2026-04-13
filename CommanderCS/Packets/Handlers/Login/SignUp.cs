@@ -8,9 +8,9 @@ namespace CommanderCS.Packets.Handlers.Sign
     [Packet(Id = Method.SignUp)]
     public class SignUp : BaseMethodHandler<SignUpRequest>
     {
-        public override object Handle(SignUpRequest @params)
+        public override object Handle(SignUpRequest request)
         {
-            ErrorCode code = RequestSignUp(@params.uid, @params.pwd, @params.plfm, @params.ch);
+            ErrorCode code = RequestSignUp(request.uid, request.pwd, request.plfm, request.ch);
 
             if (code != ErrorCode.Success)
             {
@@ -25,7 +25,7 @@ namespace CommanderCS.Packets.Handlers.Sign
 
             SignUpPacket SignUp = new()
             {
-                uid = @params.uid,
+                uid = request.uid,
             };
 
             ResponsePacket response = new()

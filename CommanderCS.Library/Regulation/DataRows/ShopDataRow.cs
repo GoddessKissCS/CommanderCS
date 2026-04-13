@@ -31,7 +31,7 @@ namespace CommanderCS.Library.Regulation.DataRows
 
         public string GetKey()
         {
-            return id;
+            return g_idx;
         }
 
         [OnDeserialized]

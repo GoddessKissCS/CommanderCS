@@ -1,8 +1,8 @@
 using CommanderCS.Library;
+using CommanderCS.Library.Cryptography;
 using CommanderCS.Library.Regulation;
 using CommanderCS.MongoDB;
 using CommanderCS.Packets;
-using Microsoft.Extensions.FileProviders;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -29,8 +29,6 @@ namespace CommanderCS
 
             var builder = WebApplication.CreateBuilder(args);
 
-            // Configure & Add services to the container.
-
             builder.Configuration.AddConfiguration(iConfigurationRoot);
 
             var iLoggerFactory = LoggerFactory.Create((iLoggingBuilder) =>
@@ -54,35 +52,15 @@ namespace CommanderCS
             builder.Services.AddDistributedMemoryCache(); // Required for session
             builder.Services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(1);
+                options.IdleTimeout = TimeSpan.FromMinutes(5);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
-                options.Cookie.Name = "GameCMS.Session";
+                options.Cookie.Name = "?Session";
             });
-
-
 
             builder.Services.AddRazorPages();
 
-            //builder.Services.AddHttpClient();
-
             var app = builder.Build();
-
-            var status = new Status()
-            {
-                Message = "Started Sucessfully!",
-                IPv4 = Misc.GetLocalIPAddress(),
-                CommandsLoaded = PacketHandler.CommandsMapped,
-            };
-
-            JsonSerializerOptions stausStringOptions = new()
-            {
-                WriteIndented = true,
-            };
-
-            var statusString = JsonSerializer.Serialize(status, stausStringOptions);
-
-            app.MapGet("/commandStrings.html", () => statusString);
 
             app.MapPost("/checkData.php", async (HttpContext context, IServiceProvider provider) =>
             {
@@ -96,101 +74,61 @@ namespace CommanderCS
                 context.Response.ContentType = "application/json";
                 context.Response.ContentLength = responseData.Length;
 
-                //I dont remember what this was for.
-
-                //if (session != "" || session is not null)
-                //{
-                //    context.Response.Headers.TryAdd("SET-COOKIE", session);
-                //}
-
                 await context.Response.WriteAsync(responseData);
             });
 
-            //app.MapGet("/chat.php", async (HttpContext context, IServiceProvider provider) =>
-            //{
-            //    if (context.WebSockets.IsWebSocketRequest)
-            //    {
-            //        // ADD Chat shit here sometime
-            //    }
-            //    else
-            //    {
-            //        context.Response.StatusCode = StatusCodes.Status400BadRequest;
-            //    }
-            //});
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                //app.UseHttpLogging();
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseMiddleware<CustomExceptionHandlerMiddleware>();
 
-            //PROBABLY SHOULD BE MOVED TO A CDN SERVER
+            app.UseRouting();
 
-            #region StaticFileServer
+            app.UseSession();
 
-            const string StaticFilesPath = "FileCDN";
-            const string SlashStaticFilesPath = $"/{StaticFilesPath}";
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
-            //// Working Directory path
-            // var BasePath = builder.Environment.ContentRootPath;
-            // Executable file path
-            var BasePath = AppDomain.CurrentDomain.BaseDirectory;
-            var staticFilesProviderPath = Path.Combine(BasePath, StaticFilesPath);
-            var fileProvider = new PhysicalFileProvider(staticFilesProviderPath);
+            app.MapRazorPages(); // For Razor Pages
 
-            app.UseDirectoryBrowser(new DirectoryBrowserOptions()
-            {
-                FileProvider = fileProvider,
-                RedirectToAppendTrailingSlash = true,
-                RequestPath = SlashStaticFilesPath,
-            });
 
-            // https://stackoverflow.com/questions/50381490/what-is-the-difference-between-usestaticfiles-and-usefileserver-in-asp-net-c
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = fileProvider,
-                RequestPath = SlashStaticFilesPath,
-                HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
-                ServeUnknownFileTypes = true
-            });
+            SetupGKCronScheduler();
 
-            #endregion StaticFileServer
+            app.Run();
+        }
 
-            //app.UseCors((policyBuilder) =>
-            //{
-            //    policyBuilder.AllowAnyHeader();
-            //    policyBuilder.AllowAnyMethod();
-            //    policyBuilder.AllowAnyOrigin();
-            //});
 
-            //app.UseAuthorization();
+        public static void SetupGKCronScheduler()
+        {
 
             DatabaseManager.Init();
 
             RemoteObjectManager.instance.regulation = Regulation.Create();
 
-            app.UseRouting();
+            CronScheduler scheduler = new();
 
-            app.MapRazorPages(); // For Razor Pages
+            // 1. Register handlers (the actual logic)
+            scheduler.RegisterHandler("DailyReset", () => { /* reset logic */ });
+            scheduler.RegisterHandler("WeeklyReset", () => { /* weekly logic */ });
 
-            app.MapGet("/", () => Results.Redirect("/Index"));
+            scheduler.RegisterHandler("6HourResetForShootOutArenaOnWeekends", () => { /* reset logic */ });
+            scheduler.RegisterHandler("12HourResetForShootOutArenaOnWeekdays", () => { /* reset logic */ });
 
-            app.UseSession();
+            // 2. Load saved state from cronschedule.json (restores LastRunUtc, catches missed runs)
+            scheduler.LoadFromFile();
 
-            app.Run();
+            // 3. If first run, register the jobs (this saves to file automatically)
+            // On subsequent runs, LoadFromFile already loaded them
+            scheduler.Register("DailyReset", "0 16 * * *", () => { /* reset logic */ });
+            scheduler.Register("WeeklyReset", "0 16 * * 1", () => { });
+            scheduler.Register("6HourResetForShootOutArenaOnWeekends", "0 16 * * 1", () => { });
+            scheduler.Register("12HourResetForShootOutArenaOnWeekdays", "0 16 * * 1", () => { });
+            // 4. Start
+            scheduler.Start();
         }
+
     }
 
-    internal class Status
-    {
-        public string commment { get; set; } = "If you see the message below, the Server started successfully.";
-        public string Message { get; set; }
-        public string commment_1 { get; set; } = "Below is your IPv4 IP, aka your local IP of the Device your Server is running.";
-        public string IPv4 { get; set; }
-        public string commment_2 { get; set; } = "Below are the currently loaded Opcodes.";
-        public List<string> CommandsLoaded { get; set; }
-    }
 }

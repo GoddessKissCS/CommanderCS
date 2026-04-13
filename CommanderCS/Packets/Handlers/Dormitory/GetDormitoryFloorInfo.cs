@@ -1,6 +1,44 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+
 namespace CommanderCS.Packets.Handlers.Dormitory
 {
-    public class GetDormitoryFloorInfo
+    [Packet(Id = Method.GetDormitoryFloorInfo)]
+    public class GetDormitoryFloorInfo : BaseMethodHandler<GetDormitoryFloorInfoRequest>
+    {
+        public override object Handle(GetDormitoryFloorInfoRequest request)
+        {
+            // Return floor info with a default constructed first floor
+            Library.Protocols.Dormitory.FloorInfo floorInfo = new()
+            {
+                pointState = false,
+                floors = new Dictionary<string, Library.Protocols.Dormitory.RoomInfo>
+                {
+                    ["1"] = new Library.Protocols.Dormitory.RoomInfo
+                    {
+                        fno = "1",
+                        name = "Room 1",
+                        state = "N",
+                        commanders = [],
+                        remain = 0,
+                        commanderInfos = [],  
+                    }
+                },
+                isMasterUser = false
+            };
+
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = floorInfo,
+            };
+
+            return response;
+        }
+    }
+
+    public class GetDormitoryFloorInfoRequest
     {
     }
 }

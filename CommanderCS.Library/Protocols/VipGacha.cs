@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CommanderCS.Library.Enums;
+using Newtonsoft.Json;
 
 namespace CommanderCS.Library.Protocols
 {
@@ -37,7 +38,7 @@ namespace CommanderCS.Library.Protocols
         public class VipGachaInfo
         {
             [JsonProperty("rwdType")]
-            public int rewardType { get; set; }
+            public ERewardType rewardType { get; set; }
 
             [JsonProperty("rwdIdx")]
             public int rewardIdx { get; set; }

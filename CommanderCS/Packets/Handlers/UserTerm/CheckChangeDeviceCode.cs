@@ -7,9 +7,9 @@ namespace CommanderCS.Packets.Handlers.UserTerm
     [Packet(Id = Method.CheckChangeDeviceCode)]
     public class CheckChangeDeviceCode : BaseMethodHandler<CheckChangeDeviceCodeRequest>
     {
-        public override object Handle(CheckChangeDeviceCodeRequest @params)
+        public override object Handle(CheckChangeDeviceCodeRequest request)
         {
-            var result = DatabaseManager.DeviceCode.FindByDeviceCode(@params.dac);
+            var result = DatabaseManager.DeviceCode.FindByDeviceCode(request.dac);
 
             if (result is null)
             {

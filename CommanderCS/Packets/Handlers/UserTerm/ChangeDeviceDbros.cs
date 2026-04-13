@@ -11,9 +11,9 @@ namespace CommanderCS.Packets.Handlers.UserTerm
 
         // Something might not work fully
 
-        public override object Handle(ChangeDeviceDbrosRequest @params)
+        public override object Handle(ChangeDeviceDbrosRequest request)
         {
-            ErrorCode code = DatabaseManager.Account.ChangeDevice(@params.plfm, @params.uid, @params.pwd);
+            ErrorCode code = DatabaseManager.Account.ChangeDevice(request.plfm, request.uid, request.pwd);
 
             if (code != ErrorCode.Success)
             {

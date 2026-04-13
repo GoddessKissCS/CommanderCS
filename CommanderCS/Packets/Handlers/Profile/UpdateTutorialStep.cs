@@ -7,13 +7,13 @@ namespace CommanderCS.Packets.Handlers.Profile
     [Packet(Id = Method.UpdateTutorialStep)]
     public class UpdateTutorialStep : BaseMethodHandler<UpdateTutorialStepRequest>
     {
-        public override object Handle(UpdateTutorialStepRequest @params)
+        public override object Handle(UpdateTutorialStepRequest request)
         {
-            DatabaseManager.GameProfile.UpdateTutorialStep(SessionId, @params.step);
+            DatabaseManager.GameProfile.UpdateTutorialStep(SessionId, request.step);
 
             UpdateTutorialStepInfo utsi = new()
             {
-                step = @params.step
+                step = request.step
             };
 
             ResponsePacket response = new()

@@ -6,12 +6,12 @@ namespace CommanderCS.Packets.Handlers.KeepAlives
     [Packet(Id = Method.ChangeLanguage)]
     public class ChangeLanguage : BaseMethodHandler<ChangeLanguageRequest>
     {
-        public override object Handle(ChangeLanguageRequest @params)
+        public override object Handle(ChangeLanguageRequest request)
         {
             ResponsePacket response = new()
             {
                 Id = BasePacket.Id,
-                Result = @params.lang,
+                Result = request.lang,
             };
 
             return response;

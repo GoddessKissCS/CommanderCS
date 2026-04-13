@@ -9,12 +9,12 @@ namespace CommanderCS.Packets.Handlers.Guild
     [Packet(Id = Method.DeportGuildMember)]
     public class DeportGuildMember : BaseMethodHandler<DeportGuildMemberRequest>
     {
-        public override object Handle(DeportGuildMemberRequest @params)
+        public override object Handle(DeportGuildMemberRequest request)
         {
             GameProfileScheme User = GetUserGameProfile();
             GuildScheme Guild = GetUserGuild();
 
-            var target = Guild.MemberData.FirstOrDefault(member => member.Uno == @params.tuno);
+            var target = Guild.MemberData.FirstOrDefault(member => member.Uno == request.tuno);
 
             var difference = TimeManager.GetTimeDifferenceInDays(target.JoinDate);
 
@@ -33,7 +33,7 @@ namespace CommanderCS.Packets.Handlers.Guild
 
             bool isInGuild = DatabaseManager.Guild.IsUnoInMemberData(User.GuildId, User.Uno);
 
-            bool isntRemoved = DatabaseManager.Guild.RemoveMemberDataByUno(User.GuildId, @params.tuno);
+            bool isntRemoved = DatabaseManager.Guild.RemoveMemberDataByUno(User.GuildId, request.tuno);
 
             if (!isInGuild || !isntRemoved)
             {

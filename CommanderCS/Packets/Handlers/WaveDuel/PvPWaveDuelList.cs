@@ -8,7 +8,7 @@ namespace CommanderCS.Packets.Handlers.WaveDuel
     [Packet(Id = Method.PvPWaveDuelList)]
     public class PvPWaveDuelList : BaseMethodHandler<PvPWaveDuelListRequest>
     {
-        public override object Handle(PvPWaveDuelListRequest @params)
+        public override object Handle(PvPWaveDuelListRequest request)
         {
             // TODO FINISH
             // need to check score and the get duelist between the range

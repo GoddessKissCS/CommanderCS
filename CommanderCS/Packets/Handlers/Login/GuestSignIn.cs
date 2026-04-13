@@ -7,9 +7,9 @@ namespace CommanderCS.Packets.Handlers.Sign
     [Packet(Id = Method.GuestSignIn)]
     public class GuestSignIn : BaseMethodHandler<GuestSignInRequest>
     {
-        public override object Handle(GuestSignInRequest @params)
+        public override object Handle(GuestSignInRequest request)
         {
-            var user = DatabaseManager.Account.FindByName(@params.uid);
+            var user = DatabaseManager.Account.FindByName(request.uid);
 
             SignInP Sign = new();
 

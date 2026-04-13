@@ -1,7 +1,102 @@
+using CommanderCS.Library.Enums;
+using CommanderCS.Library.Protocols;
+using CommanderCS.MongoDB;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace CommanderCS.Packets.Handlers.Commander
 {
-    public class EquipWeapon
+    [Packet(Id = Method.EquipWeapon)]
+    public class EquipWeapon : BaseMethodHandler<EquipWeaponRequest>
     {
+        public override object Handle(EquipWeaponRequest request)
+        {
+            var user = GetUserGameProfile();
+
+            var cid = request.cid.ToString();
+            var wno = request.wno.ToString();
+
+            // Check if weapon exists in inventory
+            if (!user.Inventory.weaponList.ContainsKey(wno))
+            {
+                return new ErrorPacket
+                {
+                    Id = BasePacket.Id,
+                    Error = new ErrorMessageId
+                    {
+                        code = ErrorCode.Failure
+                    }
+                };
+            }
+
+            // Check if commander exists
+            if (!user.CommanderData.ContainsKey(cid))
+            {
+                return new ErrorPacket
+                {
+                    Id = BasePacket.Id,
+                    Error = new ErrorMessageId
+                    {
+                        code = ErrorCode.Failure
+                    }
+                };
+            }
+
+            var weapon = user.Inventory.weaponList[wno];
+            var commander = user.CommanderData[cid];
+
+            if (weapon.commander_id != 0)
+            {
+                var prevCid = weapon.commander_id.ToString();
+                if (user.CommanderData.ContainsKey(prevCid))
+                {
+                    user.CommanderData[prevCid].equipWeaponInfo.Remove(wno);
+                }
+            }
+
+            // Equip weapon on the new commander
+            weapon.commander_id = request.cid;
+            commander.equipWeaponInfo[wno] = weapon;
+
+
+            user.CommanderData[cid].equipWeaponInfo[wno] = weapon;
+            user.Inventory.weaponList[wno] = weapon;
+
+            DatabaseManager.GameProfile.UpdateSpecificWeaponList(SessionId, weapon, wno);
+            DatabaseManager.GameProfile.UpdateSpecificCommander(SessionId, user.CommanderData[cid]);
+
+            Dictionary<string, WeaponData> weaponResult = new()
+            {
+                { wno, weapon }
+            };
+
+            WeaponResponse weaponResponse = new()
+            {
+                weapon = weaponResult
+            };
+
+            ResponsePacket response = new()
+            {
+                Id = BasePacket.Id,
+                Result = weaponResponse,
+            };
+
+            return response;
+        }
+    }
+
+    public class WeaponResponse
+    {
+        public Dictionary<string, WeaponData> weapon { get; set; }
+    }
+
+    public class EquipWeaponRequest
+    {
+        [JsonProperty("cid")]
+        public int cid { get; set; }
+
+        [JsonProperty("wno")]
+        public int wno { get; set; }
     }
 }
 
